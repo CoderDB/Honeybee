@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */; };
+		863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703B11DEEDF7900BC1153 /* CardViewController.swift */; };
 		8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9A51DE56CB9002369F9 /* AppDelegate.swift */; };
 		8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9AC1DE56CB9002369F9 /* Assets.xcassets */; };
 		8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		863703B11DEEDF7900BC1153 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		8638A9A21DE56CB9002369F9 /* Honeybee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honeybee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8638A9A51DE56CB9002369F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8638A9AC1DE56CB9002369F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
 				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
 				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
+				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
 				8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */,
 				8638A9B11DE56CB9002369F9 /* Info.plist */,
@@ -267,6 +270,7 @@
 				863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */,
 				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
+				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
