@@ -1,18 +1,20 @@
 //
-//  ViewController.swift
+//  CurveViewController.swift
 //  Honeybee
 //
-//  Created by Dongbing Hou on 23/11/2016.
+//  Created by Dongbing Hou on 30/11/2016.
 //  Copyright © 2016 Dongbing Hou. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class CurveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        view.backgroundColor = UIColor.blue
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +22,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-

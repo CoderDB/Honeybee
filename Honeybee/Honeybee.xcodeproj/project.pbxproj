@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */; };
 		8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9A51DE56CB9002369F9 /* AppDelegate.swift */; };
-		8638A9A81DE56CB9002369F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9A71DE56CB9002369F9 /* ViewController.swift */; };
-		8638A9AB1DE56CB9002369F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9A91DE56CB9002369F9 /* Main.storyboard */; };
 		8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9AC1DE56CB9002369F9 /* Assets.xcassets */; };
 		8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */; };
 		8638A9BB1DE56CB9002369F9 /* HoneybeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9BA1DE56CB9002369F9 /* HoneybeeTests.swift */; };
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
+		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
+		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		8638A9A21DE56CB9002369F9 /* Honeybee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honeybee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8638A9A51DE56CB9002369F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8638A9A71DE56CB9002369F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8638A9AA1DE56CB9002369F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8638A9AC1DE56CB9002369F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8638A9AF1DE56CB9002369F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8638A9B11DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		8638A9C11DE56CB9002369F9 /* HoneybeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoneybeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneybeeUITests.swift; sourceTree = "<group>"; };
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
-				8638A9A71DE56CB9002369F9 /* ViewController.swift */,
-				8638A9A91DE56CB9002369F9 /* Main.storyboard */,
+				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
+				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
+				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
 				8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */,
 				8638A9B11DE56CB9002369F9 /* Info.plist */,
@@ -237,7 +240,6 @@
 			files = (
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
-				8638A9AB1DE56CB9002369F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8638A9A81DE56CB9002369F9 /* ViewController.swift in Sources */,
+				863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */,
+				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
+				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,14 +303,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8638A9A91DE56CB9002369F9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8638A9AA1DE56CB9002369F9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -512,6 +508,7 @@
 				8638A9CC1DE56CB9002369F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8638A9CD1DE56CB9002369F9 /* Build configuration list for PBXNativeTarget "HoneybeeTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +517,7 @@
 				8638A9CF1DE56CB9002369F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8638A9D01DE56CB9002369F9 /* Build configuration list for PBXNativeTarget "HoneybeeUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +526,7 @@
 				8638A9D21DE56CB9002369F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let nav = UINavigationController(rootViewController: MainViewController())
+        nav.title = "主页"
+        nav.navigationBar.barTintColor = UIColor.cyan
+        nav.navigationBar.titleTextAttributes = [UIFontDescriptorTextStyleAttribute: UIColor.white]
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
