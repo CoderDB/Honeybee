@@ -42,9 +42,12 @@ class MainViewController: UIViewController {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
         addBtn.frame = CGRect(x: (ScreenW - 60) * 0.5, y: ScreenH - 80, width: 60, height: 60)
+        addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
     }
-    
+    func addBtnClicked() {
+        present(CardViewController(), animated: false, completion: nil)
+    }
     
     func leftItemAction() {
         let nav = UINavigationController(rootViewController: SetupViewController())
