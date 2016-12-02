@@ -14,6 +14,8 @@ class CardViewController: UIViewController {
     
     let AnimateDuration: TimeInterval = 0.3
     
+    var calculateView: UIView!
+    
     override func loadView() {
         super.loadView()
         
@@ -30,23 +32,48 @@ class CardViewController: UIViewController {
         
         modalPresentationStyle = .overFullScreen
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
+        view.addGestureRecognizer(tap)
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
+        swipe.direction = .down
+        cardView.addGestureRecognizer(swipe)
+        
+        addCalculateView()
+    }
+    func swipeDownGestureAction() {
+        removeCardView()
+    }
+    
+    
+    func addCalculateView() {
+        calculateView = CalculateView()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        cardView.addSubview(calculateView)
         view.addSubview(cardView)
+        
+        calculateView.translatesAutoresizingMaskIntoConstraints = false
         cardView.translatesAutoresizingMaskIntoConstraints = false
+        calculateView.leftAnchor.constraint(equalTo: cardView.leftAnchor).isActive = true
+        calculateView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 10).isActive = true
+        calculateView.widthAnchor.constraint(equalTo: cardView.widthAnchor, multiplier: 1.0).isActive = true
+        calculateView.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.3).isActive = true
+        
         cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
         cardView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9).isActive = true
         
-        cardView.transform = CGAffineTransform(translationX: 0, y: ScreenH)
+        
+        cardView.transform = CGAffineTransform(translationX: 0, y: ScreenH/2)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,7 +91,7 @@ class CardViewController: UIViewController {
     }
     func removeCardView() {
         UIView.animate(withDuration: AnimateDuration, delay: 0, options: .curveLinear, animations: {
-            self.cardView.transform = CGAffineTransform(translationX: 0, y: ScreenH)
+            self.cardView.transform = CGAffineTransform(translationX: 0, y: ScreenH/2)
         }) { (_) in
             self.cardView.removeFromSuperview()
             self.cardView.transform = CGAffineTransform.identity
@@ -72,7 +99,4 @@ class CardViewController: UIViewController {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        removeCardView()
-    }
 }
