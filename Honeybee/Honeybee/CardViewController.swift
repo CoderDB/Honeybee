@@ -14,7 +14,7 @@ class CardViewController: UIViewController {
     
     let AnimateDuration: TimeInterval = 0.3
     
-    var calculateView: UIView!
+    var hb_keyboard: HBKeyboard!
     
     override func loadView() {
         super.loadView()
@@ -43,29 +43,44 @@ class CardViewController: UIViewController {
         swipe.direction = .down
         cardView.addGestureRecognizer(swipe)
         
-        addCalculateView()
+        addHBKeyboardView()
+        
+        addResultLabel()
     }
     func swipeDownGestureAction() {
         removeCardView()
     }
     
     
-    func addCalculateView() {
-        calculateView = CalculateView()
+    func addHBKeyboardView() {
+        hb_keyboard = HBKeyboard()
+        hb_keyboard.delegate = self
     }
+    
+    
+    
+    func addResultLabel() {
+        let label = UILabel(frame: CGRect(x: 100, y: 100, width: 300, height: 30))
+        label.backgroundColor = UIColor.orange
+        label.tag = 1000
+        cardView.addSubview(label)
+    }
+    
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        cardView.addSubview(calculateView)
+        cardView.addSubview(hb_keyboard)
         view.addSubview(cardView)
         
-        calculateView.translatesAutoresizingMaskIntoConstraints = false
+        hb_keyboard.translatesAutoresizingMaskIntoConstraints = false
         cardView.translatesAutoresizingMaskIntoConstraints = false
-        calculateView.leftAnchor.constraint(equalTo: cardView.leftAnchor).isActive = true
-        calculateView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 10).isActive = true
-        calculateView.widthAnchor.constraint(equalTo: cardView.widthAnchor, multiplier: 1.0).isActive = true
-        calculateView.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.3).isActive = true
+        
+        hb_keyboard.leftAnchor.constraint(equalTo: cardView.leftAnchor).isActive = true
+        hb_keyboard.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 10).isActive = true
+        hb_keyboard.widthAnchor.constraint(equalTo: cardView.widthAnchor, multiplier: 1.0).isActive = true
+        hb_keyboard.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.3).isActive = true
         
         cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
@@ -99,4 +114,12 @@ class CardViewController: UIViewController {
         }
     }
     
+}
+
+
+extension CardViewController: HBKeyboardProtocol {
+    
+    func callCamera() {
+        print("---call camera")
+    }
 }
