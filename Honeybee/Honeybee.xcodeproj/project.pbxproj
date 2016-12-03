@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
 		8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627434D1DF2A8F8002597E1 /* DateView.swift */; };
 		863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */; };
@@ -19,6 +20,8 @@
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86937D281DF2783300F180F6 /* HBKeyboard.swift */; };
+		951AFDF0EF2C81C80129CFEA /* Pods_HoneybeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */; };
+		DEBACD03F2F9F4F098685DAD /* Pods_Honeybee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5692E3AB3757B76FF611A5 /* Pods_Honeybee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.release.xcconfig"; sourceTree = "<group>"; };
+		3B5692E3AB3757B76FF611A5 /* Pods_Honeybee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Honeybee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		602B4AA0738D3A5A175F2145 /* Pods-HoneybeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.release.xcconfig"; sourceTree = "<group>"; };
+		7F9F8339673706F2CFC7B4F1 /* Pods-HoneybeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		8627434D1DF2A8F8002597E1 /* DateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +65,10 @@
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
+		92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE21B7DC4D76AD098C5311D /* Pods-HoneybeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F982BFEEE7A582773E068CF7 /* Pods-Honeybee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.debug.xcconfig"; sourceTree = "<group>"; };
+		FF2FA733DB868EB5C063512A /* Pods-HoneybeeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBACD03F2F9F4F098685DAD /* Pods_Honeybee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951AFDF0EF2C81C80129CFEA /* Pods_HoneybeeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +106,8 @@
 				8638A9B91DE56CB9002369F9 /* HoneybeeTests */,
 				8638A9C41DE56CB9002369F9 /* HoneybeeUITests */,
 				8638A9A31DE56CB9002369F9 /* Products */,
+				AF9030F8C63A9F064CC120DD /* Pods */,
+				DDA4C8184388152671527A32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +157,29 @@
 			path = HoneybeeUITests;
 			sourceTree = "<group>";
 		};
+		AF9030F8C63A9F064CC120DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F982BFEEE7A582773E068CF7 /* Pods-Honeybee.debug.xcconfig */,
+				243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */,
+				CEE21B7DC4D76AD098C5311D /* Pods-HoneybeeTests.debug.xcconfig */,
+				602B4AA0738D3A5A175F2145 /* Pods-HoneybeeTests.release.xcconfig */,
+				7F9F8339673706F2CFC7B4F1 /* Pods-HoneybeeUITests.debug.xcconfig */,
+				FF2FA733DB868EB5C063512A /* Pods-HoneybeeUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DDA4C8184388152671527A32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B5692E3AB3757B76FF611A5 /* Pods_Honeybee.framework */,
+				3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */,
+				92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8638A9CA1DE56CB9002369F9 /* Build configuration list for PBXNativeTarget "Honeybee" */;
 			buildPhases = (
+				40FD0DCD7789CC56F4F06B48 /* [CP] Check Pods Manifest.lock */,
 				8638A99E1DE56CB9002369F9 /* Sources */,
 				8638A99F1DE56CB9002369F9 /* Frameworks */,
 				8638A9A01DE56CB9002369F9 /* Resources */,
+				C648265B7348E548F8AA9EEC /* [CP] Embed Pods Frameworks */,
+				C690695FE873F3D4094E1110 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8638A9CD1DE56CB9002369F9 /* Build configuration list for PBXNativeTarget "HoneybeeTests" */;
 			buildPhases = (
+				1843FDDB9F5C6271CDAA1D17 /* [CP] Check Pods Manifest.lock */,
 				8638A9B21DE56CB9002369F9 /* Sources */,
 				8638A9B31DE56CB9002369F9 /* Frameworks */,
 				8638A9B41DE56CB9002369F9 /* Resources */,
+				F2BDCC69BCC1478FD6C63610 /* [CP] Embed Pods Frameworks */,
+				D66A4F76845CC4E6B53A4978 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8638A9D01DE56CB9002369F9 /* Build configuration list for PBXNativeTarget "HoneybeeUITests" */;
 			buildPhases = (
+				7D4FBD2AA3771BF784A071C9 /* [CP] Check Pods Manifest.lock */,
 				8638A9BD1DE56CB9002369F9 /* Sources */,
 				8638A9BE1DE56CB9002369F9 /* Frameworks */,
 				8638A9BF1DE56CB9002369F9 /* Resources */,
+				7C1EC23EFB6C80A3617962E3 /* [CP] Embed Pods Frameworks */,
+				80B96AC0724B6BA2F9E240C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,6 +319,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1843FDDB9F5C6271CDAA1D17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		40FD0DCD7789CC56F4F06B48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7C1EC23EFB6C80A3617962E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D4FBD2AA3771BF784A071C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		80B96AC0724B6BA2F9E240C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C648265B7348E548F8AA9EEC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C690695FE873F3D4094E1110 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D66A4F76845CC4E6B53A4978 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2BDCC69BCC1478FD6C63610 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8638A99E1DE56CB9002369F9 /* Sources */ = {
@@ -423,6 +610,7 @@
 		};
 		8638A9CB1DE56CB9002369F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F982BFEEE7A582773E068CF7 /* Pods-Honeybee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WH5LSELR4Q;
@@ -436,6 +624,7 @@
 		};
 		8638A9CC1DE56CB9002369F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WH5LSELR4Q;
@@ -449,6 +638,7 @@
 		};
 		8638A9CE1DE56CB9002369F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEE21B7DC4D76AD098C5311D /* Pods-HoneybeeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -464,6 +654,7 @@
 		};
 		8638A9CF1DE56CB9002369F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 602B4AA0738D3A5A175F2145 /* Pods-HoneybeeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -479,6 +670,7 @@
 		};
 		8638A9D11DE56CB9002369F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F9F8339673706F2CFC7B4F1 /* Pods-HoneybeeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = WH5LSELR4Q;
@@ -493,6 +685,7 @@
 		};
 		8638A9D21DE56CB9002369F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF2FA733DB868EB5C063512A /* Pods-HoneybeeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = WH5LSELR4Q;
