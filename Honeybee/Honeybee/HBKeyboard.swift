@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol HBKeyboardProtocol: class {
     func callCamera()
@@ -15,49 +16,93 @@ protocol HBKeyboardProtocol: class {
 class HBKeyboard: UIView {
 
     
-    var scrollView: UIScrollView!
     weak var delegate: HBKeyboardProtocol?
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
+        scrollView.backgroundColor = UIColor.brown
+        scrollView.isPagingEnabled = true
+        scrollView.bounces = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    
+    private let selfHeight: CGFloat = 280
+    private let toolViewHeight: CGFloat = 60
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         print("-----frame:  \(frame)")
         
-        setupUI(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 300))
+        addToolView()
+        addScrollView()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
-    func setupUI(frame: CGRect) {
-        let toolView = UIView(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: 50)))
+    private func addToolView() {
+        let toolView = UIView()
         toolView.backgroundColor = UIColor.white
-        let dateBtn = UIButton(type: .contactAdd)
-        dateBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        dateBtn.addTarget(self, action: #selector(dateBtnClick), for: .touchUpInside)
-        toolView.addSubview(dateBtn)
-        
-        let cameraBtn = UIButton(type: .contactAdd)
-        cameraBtn.frame = CGRect(x: ScreenW - 30, y: 0, width: 30, height: 30)
-        cameraBtn.addTarget(self, action: #selector(cameraBtnClick), for: .touchUpInside)
-        toolView.addSubview(cameraBtn)
         addSubview(toolView)
+       
+        let dateBtn = createButton(imageName: "time", sel: #selector(dateBtnClicked))
+        toolView.addSubview(dateBtn)
+        let remarkBtn = createButton(imageName: "remark", sel: #selector(remarkBtnClicked))
+        toolView.addSubview(remarkBtn)
+        let cameraBtn = createButton(imageName: "camera", sel: #selector(cameraBtnClicked))
+        toolView.addSubview(cameraBtn)
         
-        scrollView = UIScrollView(frame: CGRect(x: 0, y: 50, width: frame.width, height: frame.height-50))
-        scrollView.isUserInteractionEnabled = true
-        scrollView.backgroundColor = UIColor.red
-        scrollView.isPagingEnabled = true
-        scrollView.contentSize = CGSize(width: frame.width * 2, height: frame.height)
-        let calculateView = CalculateView(frame: frame)
-        scrollView.addSubview(calculateView)
-        addSubview(scrollView)
+        toolView.snp.makeConstraints { (make) in
+            make.top.left.width.equalTo(self)
+            make.height.equalTo(toolViewHeight)
+        }
+        
+        dateBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(10)
+            make.width.height.equalTo(40)
+        }
+        remarkBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(dateBtn.snp.right).offset(10)
+            make.top.width.height.equalTo(dateBtn)
+        }
+        cameraBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(-20)
+            make.top.width.height.equalTo(dateBtn)
+        }
     }
-    func dateBtnClick() {
+    private func addScrollView() {
+        let scrollViewH = selfHeight - toolViewHeight
+        scrollView.frame = CGRect(x: 0, y: toolViewHeight, width: ScreenW, height: scrollViewH)
+        scrollView.contentSize = CGSize(width: ScreenW * 2, height: scrollViewH)
+        addSubview(scrollView)
+        
+        let calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: scrollViewH))
+        scrollView.addSubview(calculateView)
+        
+        let dateView = DateView(frame: CGRect(x: ScreenW, y: 0, width: ScreenW, height: scrollViewH))
+        scrollView.addSubview(dateView)
+    }
+    
+    private func createButton(imageName: String, sel: Selector) -> UIButton {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: imageName), for: .normal)
+        btn.addTarget(self, action: sel, for: .touchUpInside)
+        return btn
+    }
+    
+    
+    @objc private func remarkBtnClicked() {
+        print("--remark")
+    }
+    @objc private func dateBtnClicked() {
         scrollView.setContentOffset(CGPoint(x: ScreenW, y: 0), animated: true)
     }
-    func cameraBtnClick() {
+    @objc private func cameraBtnClicked() {
         print("cameraBtnClick")
         delegate?.callCamera()
     }

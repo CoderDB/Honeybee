@@ -16,10 +16,17 @@ extension UIColor {
 
 class CalculateView: UIView {
     
-    var resultString = ""
+    private var resultString = ""
 
+    private let btnTitles = [["7", "8", "9", "⬅️"], ["4", "5", "6", "+"], ["1", "2", "3", "-"], [".", "0"]]
+    private let btnW: CGFloat
+    private var btnH: CGFloat
+    
     override init(frame: CGRect) {
+        btnH = frame.height / 4
+        btnW = frame.width / 4
         super.init(frame: frame)
+        
         backgroundColor = UIColor.cyan
         setupButtons()
     }
@@ -29,18 +36,17 @@ class CalculateView: UIView {
     }
     
     
-    func setupButtons() {
-        let btnTitles = [["7", "8", "9", "⬅️"], ["4", "5", "6", "+"], ["1", "2", "3", "-"], [".", "0"]]
-        let btnW = CGFloat(ScreenW / 4)
-        let btnH: CGFloat = 40
+    private func setupButtons() {
         for i in 0..<4 {
             for j in 0..<4 {
-                if (i == 2 || i == 3) && j == 3 {
+                if i == 2 && j == 3 {
                     let btn_0 = UIButton(frame: CGRect(x: 2 * btnW, y: 3 * btnH, width: btnW * 2, height: btnH))
                     btn_0.setTitle("OK", for: .normal)
                     btn_0.backgroundColor = UIColor.red
                     btn_0.addTarget(self, action: #selector(okBtnClcked), for: .touchDown)
                     addSubview(btn_0)
+                } else if i == 3 && j == 3 {
+                    
                 } else {
                     let btn = UIButton(frame: CGRect(x: CGFloat(i) * btnW, y: CGFloat(j) * btnH, width: btnW, height: btnH))
                     btn.backgroundColor = UIColor.randomColor()

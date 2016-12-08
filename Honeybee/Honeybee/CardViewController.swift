@@ -36,8 +36,8 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
+//        view.addGestureRecognizer(tap)
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
         swipe.direction = .down
@@ -78,9 +78,10 @@ class CardViewController: UIViewController {
         cardView.translatesAutoresizingMaskIntoConstraints = false
         
         hb_keyboard.leftAnchor.constraint(equalTo: cardView.leftAnchor).isActive = true
-        hb_keyboard.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 10).isActive = true
-        hb_keyboard.widthAnchor.constraint(equalTo: cardView.widthAnchor, multiplier: 1.0).isActive = true
-        hb_keyboard.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.3).isActive = true
+        hb_keyboard.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
+        hb_keyboard.widthAnchor.constraint(equalTo: cardView.widthAnchor).isActive = true
+        hb_keyboard.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        
         
         cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
