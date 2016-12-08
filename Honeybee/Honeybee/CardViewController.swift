@@ -36,8 +36,10 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
-//        view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnSelfView(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
         swipe.direction = .down
@@ -47,6 +49,13 @@ class CardViewController: UIViewController {
         
         addResultLabel()
     }
+    
+    func tapOnSelfView(_ tap: UITapGestureRecognizer) {
+        if cardView != nil {
+            removeCardView()
+        }
+    }
+    
     func swipeDownGestureAction() {
         removeCardView()
     }
@@ -117,7 +126,17 @@ class CardViewController: UIViewController {
     
 }
 
+// MARK: UIGestureRecognizerDelegate
+extension CardViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view!.isDescendant(of: cardView) {
+            return false
+        }
+        return true
+    }
+}
 
+// MARK: HBKeyboardProtocol
 extension CardViewController: HBKeyboardProtocol {
     
     func callCamera() {

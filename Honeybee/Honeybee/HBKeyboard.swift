@@ -21,7 +21,7 @@ class HBKeyboard: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
-        scrollView.backgroundColor = UIColor.brown
+        scrollView.backgroundColor = UIColor.white
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -34,8 +34,6 @@ class HBKeyboard: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        print("-----frame:  \(frame)")
         
         addToolView()
         addScrollView()
