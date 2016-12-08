@@ -21,10 +21,11 @@ class CalculateView: UIView {
     private let btnTitles = [["7", "8", "9", "⬅️"], ["4", "5", "6", "+"], ["1", "2", "3", "-"], [".", "0"]]
     private let btnW: CGFloat
     private var btnH: CGFloat
+    private let margin: CGFloat = 1
     
     override init(frame: CGRect) {
-        btnH = frame.height / 4
-        btnW = frame.width / 4
+        btnH = (frame.height - margin) / 4
+        btnW = (frame.width - margin) / 4
         super.init(frame: frame)
         
         backgroundColor = UIColor.cyan
@@ -39,21 +40,24 @@ class CalculateView: UIView {
     private func setupButtons() {
         for i in 0..<4 {
             for j in 0..<4 {
+                let x = CGFloat(i) * (btnW + margin)
+                let y = CGFloat(j) * (btnH + margin)
                 if i == 2 && j == 3 {
-                    let btn_0 = UIButton(frame: CGRect(x: 2 * btnW, y: 3 * btnH, width: btnW * 2, height: btnH))
+                    let btn_0 = UIButton(frame: CGRect(x: x, y: y, width: btnW * 2, height: btnH))
                     btn_0.setTitle("OK", for: .normal)
                     btn_0.backgroundColor = UIColor.red
                     btn_0.addTarget(self, action: #selector(okBtnClcked), for: .touchDown)
                     addSubview(btn_0)
-                } else if i == 3 && j == 3 {
-                    
-                } else {
-                    let btn = UIButton(frame: CGRect(x: CGFloat(i) * btnW, y: CGFloat(j) * btnH, width: btnW, height: btnH))
-                    btn.backgroundColor = UIColor.randomColor()
+                } else if i == 3 && j == 3 {}
+                else {
+                    let btn = UIButton(frame: CGRect(x: x, y: y, width: btnW, height: btnH))
+                    btn.backgroundColor = UIColor.black
                     btn.setTitle(btnTitles[j][i], for: .normal)
                     btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
                     addSubview(btn)
                 }
+                
+                
             }
         }
     }

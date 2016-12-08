@@ -84,7 +84,7 @@ class CardViewController: UIViewController {
         
         
         cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
+        cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         cardView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9).isActive = true
         
