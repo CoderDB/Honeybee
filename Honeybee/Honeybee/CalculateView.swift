@@ -8,12 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-    class func randomColor() -> UIColor {
-        return UIColor(colorLiteralRed: Float(arc4random() % 256) / 255.0, green: Float(arc4random() % 256) / 255.0, blue: Float(arc4random() % 256) / 255.0, alpha: 1)
-    }
-}
-
 class CalculateView: UIView {
     
     private var resultString = ""
@@ -24,14 +18,12 @@ class CalculateView: UIView {
     private let margin: CGFloat = 1
     
     override init(frame: CGRect) {
-        btnH = (frame.height - margin) / 4
-        btnW = (frame.width - margin) / 4
+        btnH = (frame.height - margin * 3) / 4
+        btnW = (frame.width - margin * 3) / 4
         super.init(frame: frame)
         
-        backgroundColor = UIColor.cyan
         setupButtons()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -43,15 +35,16 @@ class CalculateView: UIView {
                 let x = CGFloat(i) * (btnW + margin)
                 let y = CGFloat(j) * (btnH + margin)
                 if i == 2 && j == 3 {
-                    let btn_0 = UIButton(frame: CGRect(x: x, y: y, width: btnW * 2, height: btnH))
+                    // btnW * 2 + margin 
+                    let btn_0 = UIButton(frame: CGRect(x: x, y: y, width: btnW * 2 + margin, height: btnH))
                     btn_0.setTitle("OK", for: .normal)
-                    btn_0.backgroundColor = UIColor.red
+                    btn_0.backgroundColor = Theme.mainColor
                     btn_0.addTarget(self, action: #selector(okBtnClcked), for: .touchDown)
                     addSubview(btn_0)
                 } else if i == 3 && j == 3 {}
                 else {
                     let btn = UIButton(frame: CGRect(x: x, y: y, width: btnW, height: btnH))
-                    btn.backgroundColor = UIColor.black
+                    btn.backgroundColor = Theme.mainColor
                     btn.setTitle(btnTitles[j][i], for: .normal)
                     btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
                     addSubview(btn)
