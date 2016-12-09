@@ -22,6 +22,8 @@
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
 		868915801DF9955B0035CFD3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157F1DF9955B0035CFD3 /* Theme.swift */; };
 		86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86937D281DF2783300F180F6 /* HBKeyboard.swift */; };
+		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
+		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		951AFDF0EF2C81C80129CFEA /* Pods_HoneybeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */; };
 		DEBACD03F2F9F4F098685DAD /* Pods_Honeybee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5692E3AB3757B76FF611A5 /* Pods_Honeybee.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,8 @@
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8689157F1DF9955B0035CFD3 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
+		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
+		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE21B7DC4D76AD098C5311D /* Pods-HoneybeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F982BFEEE7A582773E068CF7 /* Pods-Honeybee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,9 +134,11 @@
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
+				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
+				8699664D1DFAE245006EAD41 /* HBPresentationController.swift */,
+				8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */,
 				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
 				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
-				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
 				86937D281DF2783300F180F6 /* HBKeyboard.swift */,
 				8612C2811DF02DEE00B3AD65 /* CalculateView.swift */,
 				8627434D1DF2A8F8002597E1 /* DateView.swift */,
@@ -472,10 +478,12 @@
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
 				863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */,
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,
+				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
 				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
+				8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */,
 				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,

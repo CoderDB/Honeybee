@@ -14,6 +14,9 @@ let ScreenH = UIScreen.main.bounds.height
 
 class MainViewController: UIViewController {
 
+    lazy var cardVC: CardViewController = CardViewController()
+    lazy var customPresentationController: HBPresentationController = HBPresentationController(presentedViewController: self.cardVC, presenting: self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -22,8 +25,19 @@ class MainViewController: UIViewController {
         addNavRightItem()
         
         addAddBtn()
+        
+        cardVC.transitioningDelegate = customPresentationController
     }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
+
+// MARK: UI
+
+extension MainViewController {
+    
     func addNavLeftItem() {
         let nicknameBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
         nicknameBtn.backgroundColor = UIColor.red
@@ -37,7 +51,6 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         btn.addTarget(self, action: #selector(rightItemAction), for: .touchUpInside)
     }
-    
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
@@ -45,9 +58,12 @@ class MainViewController: UIViewController {
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
     }
-    func addBtnClicked() {
-        present(CardViewController(), animated: false, completion: nil)
-    }
+}
+
+
+// MARK: UI Event
+
+extension MainViewController {
     
     func leftItemAction() {
         let nav = UINavigationController(rootViewController: SetupViewController())
@@ -56,6 +72,8 @@ class MainViewController: UIViewController {
     func rightItemAction() {
         navigationController?.pushViewController(CurveViewController(), animated: true)
     }
-
-
+    
+    func addBtnClicked() {
+        present(cardVC, animated: true, completion: nil)
+    }
 }

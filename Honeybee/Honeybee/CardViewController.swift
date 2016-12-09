@@ -10,129 +10,75 @@ import UIKit
 
 class CardViewController: UIViewController {
 
-    var cardView: UIView!
+    lazy var hb_keyboard: HBKeyboard = {
+        let keyboard = HBKeyboard()
+        keyboard.delegate = self
+        return keyboard
+    }()
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.dataSource = self
+        return tv
+    }()
     
-    let AnimateDuration: TimeInterval = 0.3
     
-    var hb_keyboard: HBKeyboard!
-    
-    override func loadView() {
-        super.loadView()
-        
-        /*
-         let mask = UIBezierPath(roundedRect: cardView.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
-         let shapeLayer = CAShapeLayer()
-         shapeLayer.bounds = cardView.bounds
-         shapeLayer.path = mask.cgPath
-         cardView.layer.mask = shapeLayer
-         */
-        cardView = UIView()
-        cardView.backgroundColor = UIColor.gray
-        cardView.layer.cornerRadius = 8.0
-        
-        modalPresentationStyle = .overFullScreen
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnSelfView(_:)))
-        tap.delegate = self
-        view.addGestureRecognizer(tap)
-        
+        view.backgroundColor = UIColor.cyan
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
         swipe.direction = .down
-        cardView.addGestureRecognizer(swipe)
+        view.addGestureRecognizer(swipe)
         
-        addHBKeyboardView()
-        
-        addResultLabel()
+        updatePreferredContentSizeWithTraitCollection(traitCollection)
     }
-    
-    func tapOnSelfView(_ tap: UITapGestureRecognizer) {
-        if cardView != nil {
-            removeCardView()
-        }
-    }
-    
-    func swipeDownGestureAction() {
-        removeCardView()
-    }
-    
-    
-    func addHBKeyboardView() {
-        hb_keyboard = HBKeyboard()
-        hb_keyboard.delegate = self
-    }
-    
-    
-    
-    func addResultLabel() {
-        let label = UILabel(frame: CGRect(x: 100, y: 100, width: 300, height: 30))
-        label.backgroundColor = UIColor.orange
-        label.tag = 1000
-        cardView.addSubview(label)
-    }
-    
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        cardView.addSubview(hb_keyboard)
-        view.addSubview(cardView)
+        view.addSubview(hb_keyboard)
         
-        hb_keyboard.translatesAutoresizingMaskIntoConstraints = false
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        
-        hb_keyboard.leftAnchor.constraint(equalTo: cardView.leftAnchor).isActive = true
-        hb_keyboard.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
-        hb_keyboard.widthAnchor.constraint(equalTo: cardView.widthAnchor).isActive = true
-        hb_keyboard.heightAnchor.constraint(equalToConstant: 280).isActive = true
-        
-        
-        cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        cardView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
-        cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9).isActive = true
-        
-        
-        cardView.transform = CGAffineTransform(translationX: 0, y: ScreenH/2)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        if cardView != nil {
-            addCardView()
+        hb_keyboard.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(view)
+            make.height.equalTo(280)
         }
+//        hb_keyboard.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    func addCardView() {
-        UIView.animate(withDuration: AnimateDuration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: UIViewAnimationOptions(rawValue: 0), animations: {
-            self.cardView.transform = CGAffineTransform.identity
-        }, completion: nil)
-    }
-    func removeCardView() {
-        UIView.animate(withDuration: AnimateDuration, delay: 0, options: .curveLinear, animations: {
-            self.cardView.transform = CGAffineTransform(translationX: 0, y: ScreenH/2)
-        }) { (_) in
-            self.cardView.removeFromSuperview()
-            self.cardView.transform = CGAffineTransform.identity
-            self.dismiss(animated: false, completion: nil)
-        }
-    }
-    
 }
 
-// MARK: UIGestureRecognizerDelegate
-extension CardViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view!.isDescendant(of: cardView) {
-            return false
+
+
+// MARK: UI Event
+extension CardViewController {
+    func swipeDownGestureAction() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension CardViewController {
+    func updatePreferredContentSizeWithTraitCollection(_ traitCollection: UITraitCollection) {
+        preferredContentSize = CGSize(width: ScreenW, height: ScreenH * 0.9)
+    }
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        updatePreferredContentSizeWithTraitCollection(newCollection)
+    }
+}
+
+
+extension CardViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 50
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
-        return true
+        cell?.textLabel?.text = "text"
+        return cell!
+        
     }
 }
 
