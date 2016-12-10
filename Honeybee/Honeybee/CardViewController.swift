@@ -15,12 +15,17 @@ class CardViewController: UIViewController {
         keyboard.delegate = self
         return keyboard
     }()
-    lazy var tableView: UITableView = {
-        let tv = UITableView()
-        tv.dataSource = self
-        return tv
-    }()
+    var collectionView: UICollectionView!
+        
+//        = {
+//        let cv = UICollectionView()
+//        cv.backgroundColor = UIColor.white
+//        cv.dataSource = self
+//        return cv
+//    }()
     
+    
+    var lastOffsetY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +36,24 @@ class CardViewController: UIViewController {
         view.addGestureRecognizer(swipe)
         
         updatePreferredContentSizeWithTraitCollection(traitCollection)
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.backgroundColor = UIColor.white
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        view.addSubview(collectionView)
         view.addSubview(hb_keyboard)
+        
+        collectionView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(view)
+            make.top.equalTo(view).offset(100)
+        }
         
         hb_keyboard.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(view)
@@ -45,7 +62,6 @@ class CardViewController: UIViewController {
 //        hb_keyboard.translatesAutoresizingMaskIntoConstraints = false
     }
 }
-
 
 
 // MARK: UI Event
@@ -66,19 +82,43 @@ extension CardViewController {
     }
 }
 
-
-extension CardViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+// MARK: UICollectionViewDataSource
+extension CardViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 500
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.backgroundColor = UIColor.randomColor()
+        return cell
+    }
+}
+
+// MARK: UICollectionViewDelegate
+extension CardViewController: UICollectionViewDelegate {
+
+}
+
+// MARK: UIScrollViewDelegate
+extension CardViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > lastOffsetY {
+//            hb_keyboard.frame.origin.y = ScreenH * 0.9 - 60
+            UIView.animate(withDuration: 0.3, animations: {
+                self.hb_keyboard.transform = CGAffineTransform(translationX: 0, y: 220)
+            })
+        } else {
+//            hb_keyboard.frame.origin.y = ScreenH * 0.9 - 280
+            UIView.animate(withDuration: 0.3, animations: {
+                self.hb_keyboard.transform = CGAffineTransform.identity
+            })
         }
-        cell?.textLabel?.text = "text"
-        return cell!
-        
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastOffsetY = scrollView.contentOffset.y
     }
 }
 

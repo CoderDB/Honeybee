@@ -8,9 +8,13 @@
 
 import UIKit
 
+
+
+
 class CalculateView: UIView {
     
-    private var resultString = ""
+    private var input = ""
+    private var history = ""
 
     private let btnTitles = [["7", "8", "9", "⬅️"], ["4", "5", "6", "+"], ["1", "2", "3", "-"], [".", "0"]]
     private let btnW: CGFloat
@@ -56,7 +60,7 @@ class CalculateView: UIView {
     }
     
     func okBtnClcked() {
-        print("---okBtnClcked")
+        print("-----history---\(history)")
     }
     
     func btnClicked(_ btn: UIButton) {
@@ -64,49 +68,54 @@ class CalculateView: UIView {
         switch btn.titleLabel!.text! {
         case "7":
             print(7)
-            resultString += "7"
+            input = "7"
         case "8":
             print(8)
-            resultString += "8"
+            input = "8"
         case "9":
             print(9)
-            resultString += "9"
+            input = "9"
         case "4":
             print(4)
-            resultString += "4"
+            input = "4"
         case "5":
             print(5)
-            resultString += "5"
+            input = "5"
         case "6":
             print(6)
-            resultString += "6"
+            input = "6"
         case "1":
             print(1)
-            resultString += "1"
+            input = "1"
         case "2":
             print(2)
-            resultString += "2"
+            input = "2"
         case "3":
             print(3)
-            resultString += "3"
-            
+            input = "3"
         case "0":
             print(0)
         case ".":
-            print(".")
-            
+            input = "."
         case "⬅️":
-            print("删除")
+            input.removeAll()
+            print(input)
+            history.remove(at: history.index(before: history.endIndex))
+            
+            print("--\(history)")
         case "+":
+            input = "+"
             print("+")
         case "-":
+            input = "-"
             print("-")
         default:
-            print(100)
+            break
         }
-//        let label = self.superview!.viewWithTag(1000) as! UILabel
-//        label.text = resultString
-
-       
+        history += input
+    }
+    
+    func calculate(inputA: Double, inputB: Double, operate: String) {
+        
     }
 }
