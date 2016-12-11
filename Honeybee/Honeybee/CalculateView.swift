@@ -9,7 +9,10 @@
 import UIKit
 
 
-
+enum operation {
+    case binaryOperation((Double, Double) -> Double, (String, String) -> String, Int)
+    case equal
+}
 
 class CalculateView: UIView {
     
@@ -47,16 +50,40 @@ class CalculateView: UIView {
                     addSubview(btn_0)
                 } else if i == 3 && j == 3 {}
                 else {
+                    
                     let btn = UIButton(frame: CGRect(x: x, y: y, width: btnW, height: btnH))
                     btn.backgroundColor = Theme.mainColor
                     btn.setTitle(btnTitles[j][i], for: .normal)
-                    btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
                     addSubview(btn)
+
+                    if i == 3 && j == 0 {
+                        btn.addTarget(self, action: #selector(backBtnClicked(_:)), for: .touchUpInside)
+                    } else if i == 3 && j == 1 {
+                        btn.addTarget(self, action: #selector(addBtnClicked(_:)), for: .touchUpInside)
+                    }
+                    else if i == 3 && j == 2 {
+                        btn.addTarget(self, action: #selector(subtractBtnClicked(_:)), for: .touchUpInside)
+                    }
+                    else {
+                        btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
+                    }
                 }
                 
                 
             }
         }
+    }
+    func backBtnClicked(_ btn: UIButton) {
+        print("___backBtnClicked")
+    }
+    
+    func addBtnClicked(_ btn: UIButton) {
+        print("addBtnClicked")
+        
+    }
+    func subtractBtnClicked(_ btn: UIButton) {
+        print("subtractBtnClicked")
+        
     }
     
     func okBtnClcked() {
@@ -115,7 +142,14 @@ class CalculateView: UIView {
         history += input
     }
     
-    func calculate(inputA: Double, inputB: Double, operate: String) {
-        
-    }
+    
+    private var operations: Dictionary<String, operation> = [
+        "+": operation.binaryOperation({ (a, b) -> Double in
+            return a + b
+        }, { (a, b) -> String in
+            return a + b
+        }, 0),
+        "-": operation.binaryOperation(-, {$0 + "-" + $1}, 0),
+        "=": operation.equal
+    ]
 }
