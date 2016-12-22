@@ -5,6 +5,11 @@ target 'Honeybee' do
 use_frameworks!
 
 pod 'SnapKit', '~> 3.0.2'
+pod 'Charts', '~> 3.0.1'
+
+
+
+
 #pod 'PNChart', '~> 0.8.9'
 
   # Pods for Honeybee
