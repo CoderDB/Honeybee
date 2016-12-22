@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import PNChart
 
 class CurveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.blue
-        
+        view.backgroundColor = UIColor.white
         
     }
 
