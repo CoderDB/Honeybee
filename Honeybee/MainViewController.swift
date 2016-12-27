@@ -70,7 +70,8 @@ extension MainViewController {
         present(nav, animated: true, completion: nil)
     }
     func rightItemAction() {
-        navigationController?.pushViewController(CurveViewController(), animated: true)
+//        navigationController?.pushViewController(CurveViewController(), animated: true)
+        navigationController?.pushViewController(PieViewController(), animated: true)
     }
     
     func addBtnClicked() {

@@ -80,6 +80,8 @@ class LineView: UIView {
         // y轴
         lineChartView.rightAxis.enabled = false
         
+        
+        
     }
 
 }
