@@ -43,6 +43,17 @@ class BarView: UIView {
         
         barChartDataSet.colors = [UIColor.white.withAlphaComponent(0.5)] //条形柱颜色
         
+//        barChartDataSet.label = "每日消费" //条形主下方指示说明
+        
+        // legend
+//        barView.legend.drawInside = false //指示块位置
+//        barView.legend.direction = .rightToLeft
+        barView.legend.form = .none
+        
+        // offset
+        barView.extraBottomOffset = -10
+//        barView.extraLeftOffset = 10
+        
         barView.noDataText = "请稍等"
         barView.data = barChartData
         barView.chartDescription?.text = ""
@@ -71,11 +82,16 @@ class BarView: UIView {
         barView.scaleXEnabled = false
         barView.scaleYEnabled = false
         
+        barView.isUserInteractionEnabled = false
+        
     }
     
     
     override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()!
+        super.draw(rect)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return
+        }
         context.saveGState()
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
