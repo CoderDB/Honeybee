@@ -74,10 +74,16 @@ extension MainViewController {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 2
+        } else if section == 1 {
+            return 4
+        } else {
+            return 3
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
@@ -86,9 +92,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.costLabel.text = "108.95"
         return cell
     }
-    
-    
-    
     
 }
 
