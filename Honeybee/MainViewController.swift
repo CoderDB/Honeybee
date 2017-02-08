@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 let ScreenW = UIScreen.main.bounds.width
 let ScreenH = UIScreen.main.bounds.height
@@ -17,13 +18,19 @@ class MainViewController: UIViewController {
     lazy var cardVC: CardViewController = CardViewController()
     lazy var customPresentationController: HBPresentationController = HBPresentationController(presentedViewController: self.cardVC, presenting: self)
     
+    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        cardVC.transitioningDelegate = customPresentationController
+
+        addTableView()
+
         addAddBtn()
         
-        cardVC.transitioningDelegate = customPresentationController
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,6 +47,22 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     
+    func addTableView() {
+        tableView.backgroundColor = UIColor.white
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.addSubview(tableView)
+        tableView.tableHeaderView = HeaderView()
+        tableView.tableFooterView = UIView()
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(view).offset(20)
+            make.left.right.bottom.equalTo(view)
+        }
+        
+        tableView.rowHeight = 75
+        tableView.register(UINib(nibName: "RecordCell", bundle: nil), forCellReuseIdentifier: "RecordCell")
+    }
+    
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
@@ -49,11 +72,30 @@ extension MainViewController {
     }
 }
 
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
+        cell.dateLabel.text = "今天"
+        cell.categoryLabel.text = "吃饭"
+        cell.costLabel.text = "108.95"
+        return cell
+    }
+    
+    
+    
+    
+}
+
 
 // MARK: UI Event
 
 extension MainViewController {
-    
     func addBtnClicked() {
         present(cardVC, animated: true, completion: nil)
     }

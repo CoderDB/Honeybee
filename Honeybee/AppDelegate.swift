@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let nav = UINavigationController(rootViewController: MainViewController())
-        nav.title = "主页"
-        nav.navigationBar.barTintColor = UIColor.cyan
         nav.navigationBar.titleTextAttributes = [UIFontDescriptorTextStyleAttribute: UIColor.white]
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
