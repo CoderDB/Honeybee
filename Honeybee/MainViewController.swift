@@ -95,16 +95,15 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
+        cell.backgroundView = UIImageView(image: cell.roundRect(cornerRadius: 10))
         cell.dateLabel.text = "今天"
         cell.categoryLabel.text = "吃饭"
         cell.costLabel.text = "108.95"
+//        cell.layer.cornerRadius = 10
+//        cell.layer.masksToBounds = true
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return "Test"
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 1 ? 300 : 75
     }
