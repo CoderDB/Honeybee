@@ -19,6 +19,8 @@
 		8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */; };
 		8638A9BB1DE56CB9002369F9 /* HoneybeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9BA1DE56CB9002369F9 /* HoneybeeTests.swift */; };
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
+		86631B981E4C5BC600C33CA7 /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86631B961E4C5BC600C33CA7 /* SectionCell.swift */; };
+		86631B991E4C5BC600C33CA7 /* SectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86631B971E4C5BC600C33CA7 /* SectionCell.xib */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
@@ -77,6 +79,8 @@
 		8638A9C11DE56CB9002369F9 /* HoneybeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoneybeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneybeeUITests.swift; sourceTree = "<group>"; };
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86631B961E4C5BC600C33CA7 /* SectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
+		86631B971E4C5BC600C33CA7 /* SectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionCell.xib; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -151,26 +155,11 @@
 			isa = PBXGroup;
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
-				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
-				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
-				86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */,
-				86DEBC9F1E4B10F9003F8FCF /* RecordCell.xib */,
-				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
-				86A442811DFBF433006D2A44 /* CollectionViewCell.swift */,
-				86A442821DFBF433006D2A44 /* CollectionViewCell.xib */,
-				8699664D1DFAE245006EAD41 /* HBPresentationController.swift */,
-				8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */,
-				86FC4EC51E1112B10048E183 /* PieViewController.swift */,
-				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
-				8627BFB41E0BADFD00C1A257 /* CurveCell.swift */,
-				8627BFB81E0BC83300C1A257 /* LineView.swift */,
-				86BBC33C1E0FAA0A009A7D5D /* BarView.swift */,
-				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
-				86937D281DF2783300F180F6 /* HBKeyboard.swift */,
-				8612C2811DF02DEE00B3AD65 /* CalculateView.swift */,
-				8627434D1DF2A8F8002597E1 /* DateView.swift */,
-				8689157D1DF990D20035CFD3 /* Extension.swift */,
-				8689157F1DF9955B0035CFD3 /* Theme.swift */,
+				86E5746C1E4C6E1C001255CD /* Mian */,
+				86E5746D1E4C6E32001255CD /* Add */,
+				86E5746E1E4C6E6C001255CD /* Chart */,
+				86E5746F1E4C6E88001255CD /* Profile */,
+				86E574701E4C6EBC001255CD /* Other */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
 				8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */,
 				8638A9B11DE56CB9002369F9 /* Info.plist */,
@@ -194,6 +183,79 @@
 				8638A9C71DE56CB9002369F9 /* Info.plist */,
 			);
 			path = HoneybeeUITests;
+			sourceTree = "<group>";
+		};
+		86E5746C1E4C6E1C001255CD /* Mian */ = {
+			isa = PBXGroup;
+			children = (
+				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
+				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
+				86631B961E4C5BC600C33CA7 /* SectionCell.swift */,
+				86631B971E4C5BC600C33CA7 /* SectionCell.xib */,
+				86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */,
+				86DEBC9F1E4B10F9003F8FCF /* RecordCell.xib */,
+			);
+			name = Mian;
+			sourceTree = "<group>";
+		};
+		86E5746D1E4C6E32001255CD /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
+				86E574711E4C6ED5001255CD /* Keyboard */,
+				86A442811DFBF433006D2A44 /* CollectionViewCell.swift */,
+				86A442821DFBF433006D2A44 /* CollectionViewCell.xib */,
+				86E574721E4C6EE7001255CD /* Transition */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
+		86E5746E1E4C6E6C001255CD /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				86BBC33C1E0FAA0A009A7D5D /* BarView.swift */,
+				86FC4EC51E1112B10048E183 /* PieViewController.swift */,
+				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
+				8627BFB41E0BADFD00C1A257 /* CurveCell.swift */,
+				8627BFB81E0BC83300C1A257 /* LineView.swift */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
+		86E5746F1E4C6E88001255CD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		86E574701E4C6EBC001255CD /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8689157D1DF990D20035CFD3 /* Extension.swift */,
+				8689157F1DF9955B0035CFD3 /* Theme.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		86E574711E4C6ED5001255CD /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8627434D1DF2A8F8002597E1 /* DateView.swift */,
+				8612C2811DF02DEE00B3AD65 /* CalculateView.swift */,
+				86937D281DF2783300F180F6 /* HBKeyboard.swift */,
+			);
+			name = Keyboard;
+			sourceTree = "<group>";
+		};
+		86E574721E4C6EE7001255CD /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				8699664D1DFAE245006EAD41 /* HBPresentationController.swift */,
+				8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 		AF9030F8C63A9F064CC120DD /* Pods */ = {
@@ -343,6 +405,7 @@
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
 				86DEBCA11E4B10F9003F8FCF /* RecordCell.xib in Resources */,
 				86A442841DFBF433006D2A44 /* CollectionViewCell.xib in Resources */,
+				86631B991E4C5BC600C33CA7 /* SectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +581,7 @@
 				86BBC33D1E0FAA0A009A7D5D /* BarView.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
+				86631B981E4C5BC600C33CA7 /* SectionCell.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
 				86A442831DFBF433006D2A44 /* CollectionViewCell.swift in Sources */,
 				8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */,

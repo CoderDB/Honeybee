@@ -59,8 +59,11 @@ extension MainViewController {
             make.left.right.bottom.equalTo(view)
         }
         
-        tableView.rowHeight = 75
+//        tableView.rowHeight = 75
+        tableView.estimatedRowHeight = 75
         tableView.register(UINib(nibName: "RecordCell", bundle: nil), forCellReuseIdentifier: "RecordCell")
+        tableView.register(UINib(nibName: "SectionCell", bundle: nil), forCellReuseIdentifier: "SectionCell")
+        
     }
     
     func addAddBtn() {
@@ -86,11 +89,24 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
+            return cell
+            
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
         cell.dateLabel.text = "今天"
         cell.categoryLabel.text = "吃饭"
         cell.costLabel.text = "108.95"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return "Test"
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 1 ? 300 : 75
     }
     
 }
