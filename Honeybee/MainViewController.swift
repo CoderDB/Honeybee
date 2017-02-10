@@ -58,10 +58,9 @@ extension MainViewController {
             make.top.equalTo(view).offset(20)
             make.left.right.bottom.equalTo(view)
         }
-        
+        tableView.separatorStyle = .none
 //        tableView.rowHeight = 75
         tableView.estimatedRowHeight = 75
-//        tableView.register(UINib(nibName: "RecordCell", bundle: nil), forCellReuseIdentifier: "RecordCell")
         tableView.register(RecordCell.self, forCellReuseIdentifier: "RecordCell")
         tableView.register(UINib(nibName: "SectionCell", bundle: nil), forCellReuseIdentifier: "SectionCell")
         
@@ -96,7 +95,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 //            
 //        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
-//        cell.backgroundView = UIImageView(image: cell.roundRect(cornerRadius: 10))
+
         cell.dateLabel.text = "今天"
         cell.categoryLabel.text = "吃饭"
         cell.numberLabel.text = "108.95"
