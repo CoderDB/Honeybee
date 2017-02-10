@@ -61,7 +61,8 @@ extension MainViewController {
         
 //        tableView.rowHeight = 75
         tableView.estimatedRowHeight = 75
-        tableView.register(UINib(nibName: "RecordCell", bundle: nil), forCellReuseIdentifier: "RecordCell")
+//        tableView.register(UINib(nibName: "RecordCell", bundle: nil), forCellReuseIdentifier: "RecordCell")
+        tableView.register(RecordCell.self, forCellReuseIdentifier: "RecordCell")
         tableView.register(UINib(nibName: "SectionCell", bundle: nil), forCellReuseIdentifier: "SectionCell")
         
     }
@@ -89,23 +90,24 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
-            return cell
-            
-        }
+//        if indexPath.section == 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
+//            return cell
+//            
+//        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
-        cell.backgroundView = UIImageView(image: cell.roundRect(cornerRadius: 10))
+//        cell.backgroundView = UIImageView(image: cell.roundRect(cornerRadius: 10))
         cell.dateLabel.text = "今天"
         cell.categoryLabel.text = "吃饭"
-        cell.costLabel.text = "108.95"
+        cell.numberLabel.text = "108.95"
 //        cell.layer.cornerRadius = 10
 //        cell.layer.masksToBounds = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 1 ? 300 : 75
+//        return indexPath.section == 1 ? 300 : 75
+        return 75
     }
     
 }
