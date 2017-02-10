@@ -41,6 +41,8 @@ class RecordCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
+        layer.cornerRadius = 5
+        backgroundColor = UIColor.cyan
         setupUI()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -56,11 +58,7 @@ class RecordCell: UITableViewCell {
             
         }
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        backgroundColor = UIColor.cyan
-//        backgroundView = UIImageView(image: roundRect(cornerRadius: 10))
-    }
+    
     func setupUI() {
         contentView.addSubview(imgView)
         contentView.addSubview(dateLabel)
@@ -68,7 +66,8 @@ class RecordCell: UITableViewCell {
         contentView.addSubview(numberLabel)
         
         imgView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(contentView).offset(10)
+            make.left.equalTo(contentView).offset(10)
+            make.centerY.equalTo(contentView)
             make.width.height.equalTo(45)
         }
         
