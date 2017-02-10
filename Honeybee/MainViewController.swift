@@ -59,7 +59,6 @@ extension MainViewController {
             make.left.right.bottom.equalTo(view)
         }
         tableView.separatorStyle = .none
-//        tableView.rowHeight = 75
         tableView.estimatedRowHeight = 75
         tableView.register(RecordCell.self, forCellReuseIdentifier: "RecordCell")
         tableView.register(UINib(nibName: "SectionCell", bundle: nil), forCellReuseIdentifier: "SectionCell")
@@ -81,11 +80,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return 20
         } else if section == 1 {
-            return 4
+            return 40
         } else {
-            return 3
+            return 30
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,8 +98,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.dateLabel.text = "今天"
         cell.categoryLabel.text = "吃饭"
         cell.numberLabel.text = "108.95"
-//        cell.layer.cornerRadius = 10
-//        cell.layer.masksToBounds = true
         return cell
     }
     
