@@ -10,6 +10,8 @@ pod 'RealmSwift', '~> 2.1.2'
 
 
 
+pod 'Reveal-SDK', '~> 4'
+
 #pod 'PNChart', '~> 0.8.9'
 
   # Pods for Honeybee

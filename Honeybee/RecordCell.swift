@@ -40,12 +40,27 @@ class RecordCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         setupUI()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    override var frame: CGRect {
+        didSet {
+            var newFrame = frame
+            newFrame.origin.x += 10
+            newFrame.origin.y += 10
+            newFrame.size = CGSize(width: frame.width-20, height: frame.height-20)
+            super.frame = newFrame
+            
+        }
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundColor = UIColor.cyan
+//        backgroundView = UIImageView(image: roundRect(cornerRadius: 10))
+    }
     func setupUI() {
         contentView.addSubview(imgView)
         contentView.addSubview(dateLabel)
