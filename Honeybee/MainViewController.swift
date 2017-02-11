@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        
         cardVC.transitioningDelegate = customPresentationController
 
         addTableView()
@@ -38,7 +39,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
 
@@ -76,7 +77,7 @@ extension MainViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+extension MainViewController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -101,7 +102,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.numberLabel.text = "108.95"
         return cell
     }
-    
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(RecordDetailController(), animated: true)
+    }
 }
 
 
