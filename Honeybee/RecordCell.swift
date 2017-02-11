@@ -92,7 +92,7 @@ class RecordCell: UITableViewCell {
             make.left.width.equalTo(dateLabel)
         }
         weekdayLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(dateLabel.snp.top)
+            make.top.equalTo(contentView).offset(10)
             make.right.equalTo(contentView.snp.right).offset(-10)
             make.width.equalTo(40)
             make.height.equalTo(20)
