@@ -16,7 +16,7 @@ class RecordCell: UITableViewCell {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = Honybee.recordDateFont
+        label.font = HonybeeFont.recordDateFont
         label.textColor = UIColor.black
         label.text = "2月10日"
         return label
@@ -24,7 +24,7 @@ class RecordCell: UITableViewCell {
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = Honybee.subTitleFont
+        label.font = HonybeeFont.subTitleFont
         label.textColor = UIColor.black
         label.text = "打车"
         return label
@@ -32,7 +32,7 @@ class RecordCell: UITableViewCell {
     lazy var weekdayLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = Honybee.weekFont
+        label.font = HonybeeFont.weekFont
         label.textColor = UIColor.black
         label.text = "星期二"
         return label
@@ -40,7 +40,7 @@ class RecordCell: UITableViewCell {
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = Honybee.recordNumberFont
+        label.font = HonybeeFont.recordNumberFont
         label.textColor = UIColor.black
         label.text = "256.80"
         return label

@@ -14,7 +14,7 @@ class SectionCell: UITableViewCell {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = Honybee.recordDateFont
+        label.font = HonybeeFont.recordDateFont
         label.textColor = UIColor.black
         label.text = "2月10日"
         return label
@@ -22,7 +22,7 @@ class SectionCell: UITableViewCell {
     lazy var weekdayLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = Honybee.weekFont
+        label.font = HonybeeFont.weekFont
         label.textColor = UIColor.black
         label.text = "星期二"
         return label
