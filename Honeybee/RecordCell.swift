@@ -29,6 +29,14 @@ class RecordCell: UITableViewCell {
         label.text = "打车"
         return label
     }()
+    lazy var weekdayLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = Honybee.weekFont
+        label.textColor = UIColor.black
+        label.text = "星期二"
+        return label
+    }()
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
@@ -63,6 +71,7 @@ class RecordCell: UITableViewCell {
         contentView.addSubview(imgView)
         contentView.addSubview(dateLabel)
         contentView.addSubview(categoryLabel)
+        contentView.addSubview(weekdayLabel)
         contentView.addSubview(numberLabel)
         
         imgView.snp.makeConstraints { (make) in
@@ -82,12 +91,17 @@ class RecordCell: UITableViewCell {
             make.bottom.equalTo(imgView.snp.bottom)
             make.left.width.equalTo(dateLabel)
         }
-        numberLabel.snp.makeConstraints { (make) in
+        weekdayLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(dateLabel.snp.top)
             make.right.equalTo(contentView.snp.right).offset(-10)
+            make.width.equalTo(40)
+            make.height.equalTo(20)
+        }
+        numberLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(weekdayLabel.snp.right)
             make.left.equalTo(categoryLabel.snp.right)
-            make.centerY.equalTo(contentView.snp.centerY)
-            
-            make.height.equalTo(45)
+            make.top.equalTo(weekdayLabel.snp.bottom)
+            make.bottom.equalTo(categoryLabel.snp.bottom)
         }
     }
 }

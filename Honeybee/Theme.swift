@@ -20,6 +20,8 @@ struct Honybee {
     
     static let subTitleFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 18)
     
+    static let weekFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 12)
+    
     static let recordDateFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 20)
     
     static let recordNumberFont = UIFont(name: "Silom", size: 30)
