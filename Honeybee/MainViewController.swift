@@ -60,8 +60,10 @@ extension MainViewController {
         }
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 75
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(RecordCell.self, forCellReuseIdentifier: "RecordCell")
-        tableView.register(UINib(nibName: "SectionCell", bundle: nil), forCellReuseIdentifier: "SectionCell")
+        tableView.register(SectionCell.self, forCellReuseIdentifier: "SectionCell")
+        tableView.register(RecordLiteCell.self, forCellReuseIdentifier: "RecordLiteCell")
         
     }
     
@@ -88,22 +90,16 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.section == 1 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
-//            return cell
-//            
-//        }
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
 
         cell.dateLabel.text = "今天"
         cell.categoryLabel.text = "吃饭"
         cell.numberLabel.text = "108.95"
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return indexPath.section == 1 ? 300 : 75
-        return 75
     }
     
 }
