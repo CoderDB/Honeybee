@@ -10,15 +10,36 @@ import UIKit
 
 class SectionCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = Honybee.recordDateFont
+        label.textColor = UIColor.black
+        label.text = "2月10日"
+        return label
+    }()
+    lazy var categoryLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = Honybee.subTitleFont
+        label.textColor = UIColor.black
+        label.text = "打车"
+        return label
+    }()
+    lazy var weekdayLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = Honybee.weekFont
+        label.textColor = UIColor.black
+        label.text = "星期二"
+        return label
+    }()
+    lazy var numberLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = Honybee.recordNumberFont
+        label.textColor = UIColor.black
+        label.text = "256.80"
+        return label
+    }()
 }
