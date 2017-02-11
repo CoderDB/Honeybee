@@ -14,9 +14,16 @@ struct Theme {
     
 }
 
-struct Honybee {
+struct HonybeeColor {
     static let mainColor = UIColor.RGB(r: 250, g: 45, b: 66)
+}
+
+struct HonybeeFont {
+    
     static let titleFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 36)
+    
+    
+    static let recordDetailMainTitle = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 30)
     
     static let subTitleFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 18)
     
