@@ -18,10 +18,11 @@ class RecordDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         navigationController?.navigationBar.shadowImage = UIImage() //只有设为default黑线才能去除
         // 设置导航栏返回按钮，返回文字颜色
-        navigationController?.navigationBar.tintColor = HonybeeColor.mainColor
+        navigationController?.navigationBar.tintColor = HonybeeColor.main
         
         // 设置 UIBarButtonItem 字体颜色
 //        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.green], for: UIControlState.normal)
@@ -42,7 +43,7 @@ class RecordDetailController: UIViewController {
         titleLabel.text = "详情"
         titleLabel.textAlignment = .center
         titleLabel.font = HonybeeFont.subTitleFont
-        titleLabel.textColor = HonybeeColor.mainColor
+        titleLabel.textColor = HonybeeColor.main
         navigationItem.titleView = titleLabel
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -52,28 +53,32 @@ class RecordDetailController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func addTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
+        
+//        tableView.estimatedRowHeight = 60
+//        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.rowHeight = 60
+        
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         
-        tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.showsHorizontalScrollIndicator = false // 不用显示水品的UIImageView
         
         tableView.register(RecordDetailCell.self, forCellReuseIdentifier: "RecordDetailCell")
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(64)
+            make.top.equalTo(view).offset(64) // 导航栏本是透明的，假装导航栏是白色
             make.left.right.bottom.equalTo(view)
 //            make.edges.equalTo(view)
         }
         let header = RecordDetailHeader(height: 115, title: "吃饭", imageName: "meal")
-        tableView.tableHeaderView = header
+        tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度
         
     }
 }

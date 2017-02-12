@@ -14,7 +14,7 @@ class DateView: UIView {
     
     private lazy var datePicker: UIDatePicker = {
         let dp = UIDatePicker()
-        dp.backgroundColor = Theme.mainColor
+        dp.backgroundColor = Theme.main
         dp.datePickerMode = .dateAndTime
         dp.timeZone = TimeZone.current
         dp.locale = Locale(identifier: "zh_CN")

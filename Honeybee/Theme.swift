@@ -9,13 +9,13 @@
 import UIKit
 
 struct Theme {
-    static let mainColor = UIColor.RGB(r: 0, g: 187, b: 156)
+    static let main = UIColor.RGB(r: 0, g: 187, b: 156)
     
     
 }
 
 struct HonybeeColor {
-    static let mainColor = UIColor.RGB(r: 250, g: 45, b: 66)
+    static let main = UIColor.RGB(r: 250, g: 45, b: 66)
 }
 
 struct HonybeeFont {
@@ -33,3 +33,10 @@ struct HonybeeFont {
     
     static let recordNumberFont = UIFont(name: "Silom", size: 30)
 }
+
+struct HonybeePriority {
+    static let `default` = 1000
+    static let mid = 720
+    static let low = 250
+}
+
