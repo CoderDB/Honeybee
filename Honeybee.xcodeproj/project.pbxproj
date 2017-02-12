@@ -11,6 +11,7 @@
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
 		8615444B1E4DE50200A6EEBD /* Reocder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8615444A1E4DE50200A6EEBD /* Reocder.swift */; };
+		8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624F61C1E5047C00059788A /* RecordDetailHeader.swift */; };
 		8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627434D1DF2A8F8002597E1 /* DateView.swift */; };
 		8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB41E0BADFD00C1A257 /* CurveCell.swift */; };
 		8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB81E0BC83300C1A257 /* LineView.swift */; };
@@ -69,6 +70,7 @@
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
 		8615444A1E4DE50200A6EEBD /* Reocder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reocder.swift; sourceTree = "<group>"; };
+		8624F61C1E5047C00059788A /* RecordDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailHeader.swift; sourceTree = "<group>"; };
 		8627434D1DF2A8F8002597E1 /* DateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		8627BFB41E0BADFD00C1A257 /* CurveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveCell.swift; sourceTree = "<group>"; };
 		8627BFB81E0BC83300C1A257 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
+				8624F61C1E5047C00059788A /* RecordDetailHeader.swift */,
 				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
 			);
 			name = RecordDetail;
@@ -607,6 +610,7 @@
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
+				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
 				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
 				86BBC33D1E0FAA0A009A7D5D /* BarView.swift in Sources */,

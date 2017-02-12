@@ -25,7 +25,6 @@ class RecordDetailCell: UITableViewCell {
         
         layer.cornerRadius = 10
         layer.borderWidth = 1
-        
         setupUI()
         
     }
@@ -51,8 +50,7 @@ class RecordDetailCell: UITableViewCell {
             make.centerY.equalTo(contentView)
             make.left.equalTo(10)
             make.width.equalTo(120)
-            make.height.equalTo(45)
-//            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
     }
     
