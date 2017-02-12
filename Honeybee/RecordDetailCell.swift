@@ -8,8 +8,28 @@
 
 import UIKit
 
-class RecordDetailCell: UITableViewCell {
+enum ReocderDetallCellType: String {
+    case number = "RecordNumberCell"
+    case date = "RecordDateCell"
+    case category = "RecordCategoryCell"
+    case describle = "RecordDescirbleCell"
+}
 
+class RecordDetailCell: UITableViewCell {
+    
+    convenience init(type: ReocderDetallCellType) {
+        
+        
+        switch type {
+        case .number:
+            let _ = RecordNumberCell(style: .default, reuseIdentifier: type.rawValue)
+        default:
+            break
+        }
+        
+        self.init(style: .default, reuseIdentifier: type.rawValue)
+    }
+    
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()

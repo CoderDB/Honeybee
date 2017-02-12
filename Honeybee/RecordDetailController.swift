@@ -71,6 +71,8 @@ class RecordDetailController: UIViewController {
         
         
         tableView.register(RecordDetailCell.self, forCellReuseIdentifier: "RecordDetailCell")
+        tableView.register(RecordNumberCell.self, forCellReuseIdentifier: "RecordNumberCell")
+        tableView.register(RecordDateCell.self, forCellReuseIdentifier: "RecordDateCell")
         
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(64) // 导航栏本是透明的，假装导航栏是白色
@@ -95,7 +97,14 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "RecordDetailCell") as! RecordDetailCell
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "RecordNumberCell") as? RecordDetailCell
+        if cell!.isKind(of: RecordNumberCell.self) {
+            cell = RecordDetailCell(style: .default, reuseIdentifier: "RecordNumberCell")
+        } else if cell!.isKind(of: RecordDateCell.self) {
+            cell = RecordDetailCell(style: .default, reuseIdentifier: "RecordDateCell")
+        }
+        return cell!
     }
     
 }

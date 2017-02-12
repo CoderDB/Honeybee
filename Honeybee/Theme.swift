@@ -29,9 +29,10 @@ struct HonybeeFont {
     
     static let weekFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 12)
     
-    static let recordDateFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 20)
+//    static let recordDateFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 20)
     
     static let recordNumberFont = UIFont(name: "Silom", size: 30)
+    static let recordDateFont = UIFont(name: "Silom", size: 18)
 }
 
 struct HonybeePriority {
