@@ -15,16 +15,29 @@ class RecordDetailHeader: UIView {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = HonybeeFont.recordDetailMainTitle
-        
         return label
     }()
-    
+    lazy var editButton: UIButton = {
+        let btn = UIButton(type: UIButtonType.system)
+        btn.setTitle("编辑", for: .normal)
+        btn.setTitleColor(HonybeeColor.main, for: .normal)
+        btn.titleLabel?.font = HonybeeFont.subTitleFont
+        return btn
+    }()
     lazy var imgView = UIImageView()
+    
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        view.backgroundColor = UIColor.cyan
+        view.isUserInteractionEnabled = false
+        return view
+    }()
     
     
 
     convenience init(height: CGFloat, title: String?, imageName: String) {
-        self.init(frame: CGRect(x: 10, y: 10, width: ScreenW-20, height: height))
+        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height)) // width = 0,以 tableHeaderView 设置的 header 宽度一定是 tableView 的宽度
         
         titleLabel.text = title ?? nil
         imgView.image = UIImage(named: imageName)
@@ -33,29 +46,39 @@ class RecordDetailHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layer.cornerRadius = 10
-        backgroundColor = UIColor.cyan
         setupUI()
     }
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupUI() {
-        addSubview(imgView)
-        addSubview(titleLabel)
+        addSubview(editButton)
+        addSubview(containerView)
+        containerView.addSubview(imgView)
+        containerView.addSubview(titleLabel)
         
+        
+        editButton.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(self).offset(-10)
+            make.width.equalTo(40)
+            make.height.equalTo(25)
+        }
+        containerView.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(self)
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(editButton.snp.left).offset(-20).priority(HonybeePriority.mid)
+        }
         imgView.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
+            make.center.equalTo(containerView)
             make.width.height.equalTo(100)
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.left.top.equalTo(self).offset(10)
+            make.left.top.equalTo(containerView).offset(10)
             make.height.equalTo(45)
             make.width.equalTo(60)
         }
+        
     }
 }

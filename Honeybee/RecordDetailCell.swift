@@ -38,7 +38,7 @@ class RecordDetailCell: UITableViewCell {
             var newFrame = frame
             newFrame.origin.x += 10
             newFrame.origin.y += 10
-            newFrame.size = CGSize(width: frame.width-20, height: frame.height-20)
+            newFrame.size = CGSize(width: frame.width-20, height: frame.height-10)
             super.frame = newFrame
         }
     }
@@ -50,7 +50,7 @@ class RecordDetailCell: UITableViewCell {
             make.centerY.equalTo(contentView)
             make.left.equalTo(10)
             make.width.equalTo(120)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
+            make.height.equalTo(45)
         }
     }
     

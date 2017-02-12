@@ -45,14 +45,14 @@ class CalculateView: UIView {
                     // btnW * 2 + margin 
                     let btn_0 = UIButton(frame: CGRect(x: x, y: y, width: btnW * 2 + margin, height: btnH))
                     btn_0.setTitle("OK", for: .normal)
-                    btn_0.backgroundColor = Theme.mainColor
+                    btn_0.backgroundColor = Theme.main
                     btn_0.addTarget(self, action: #selector(okBtnClcked), for: .touchDown)
                     addSubview(btn_0)
                 } else if i == 3 && j == 3 {}
                 else {
                     
                     let btn = UIButton(frame: CGRect(x: x, y: y, width: btnW, height: btnH))
-                    btn.backgroundColor = Theme.mainColor
+                    btn.backgroundColor = Theme.main
                     btn.setTitle(btnTitles[j][i], for: .normal)
                     addSubview(btn)
 
