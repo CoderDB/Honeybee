@@ -30,10 +30,10 @@ class RecordDetailController: UIViewController {
         let buttonItem = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonItem.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
         
+        automaticallyAdjustsScrollViewInsets = false // 默认 true (0, 0)点从导航栏下开始， false： (0, 0)就是屏幕左上角
         
         setupNavTitle()
         
-//        addRoundRect()
         addTableView()
     }
     
@@ -61,20 +61,20 @@ class RecordDetailController: UIViewController {
         view.addSubview(tableView)
         tableView.separatorStyle = .none
         
-        tableView.estimatedRowHeight = 70
+        tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.showsHorizontalScrollIndicator = false // 不用显示水品的UIImageView
         
         tableView.register(RecordDetailCell.self, forCellReuseIdentifier: "RecordDetailCell")
+        
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.top.equalTo(view).offset(64)
+            make.left.right.bottom.equalTo(view)
+//            make.edges.equalTo(view)
         }
-    }
-    
-    func addRoundRect() {
-        let roundView = UIView(frame: CGRect(x: 10, y: 74, width: 300, height: 100))
-        roundView.layer.cornerRadius = 10
-        roundView.backgroundColor = UIColor.cyan
-        view.addSubview(roundView)
+        let header = RecordDetailHeader(height: 115, title: "吃饭", imageName: "meal")
+        tableView.tableHeaderView = header
+        
     }
 }
 
@@ -92,4 +92,5 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: "RecordDetailCell") as! RecordDetailCell
     }
+    
 }
