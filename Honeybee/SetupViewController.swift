@@ -12,6 +12,9 @@ class SetupViewController: UIViewController {
     
     var tableView: UITableView!
 
+    
+    
+    var dataSource = [SetupItem]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -20,6 +23,16 @@ class SetupViewController: UIViewController {
         setupNavTitle()
         
         addTableView()
+        
+        
+        let item1 = SetupItem(title: "记账提醒", subTitle: "每天\n10:00")
+        let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
+        let item3 = SetupImageItem(title: "头像", subTitle: "")
+        
+        
+        dataSource.append(item1)
+        dataSource.append(item2)
+        dataSource.append(item3)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -44,40 +57,40 @@ extension SetupViewController {
     
     func addTableView() {
         tableView = UITableView()
-        tableView.dataSource = self
-        tableView.delegate = self
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(64)
             make.left.right.bottom.equalTo(view)
         }
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        
+        tableView.rowHeight = 60
+        
+        tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
+        
         tableView.tableHeaderView = SetupHeader(height: 135)
+        tableView.tableFooterView = SetupFooter(height: 50)
     }
 }
 
 
 
 // MARK: UITableViewDataSource
-extension SetupViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
+extension SetupViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        }
-        cell?.textLabel?.text = "test"
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)") as! SetupCell
+        cell.item = dataSource[indexPath.row]
+        return cell
     }
-}
-
-// MARK: UITableViewDataSource
-extension SetupViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("----\(indexPath.row)")
     }
