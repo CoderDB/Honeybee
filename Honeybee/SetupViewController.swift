@@ -93,5 +93,7 @@ extension SetupViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("----\(indexPath.row)")
+        
+        navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 }
