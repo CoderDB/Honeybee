@@ -22,6 +22,51 @@ extension UIColor {
     
 }
 
+
+extension UIImage {
+    
+    static func image(color: UIColor,size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContext(rect.size);
+        let context = UIGraphicsGetCurrentContext();
+        context?.setFillColor(color.cgColor);
+        context?.fill(rect);
+        
+        let theImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return theImage!;
+    }
+    
+    func roundedCornerImage(cornerRadius radius: CGFloat) -> UIImage {
+        
+        let w = self.size.width
+        let h = self.size.height
+        
+        var targetCornerRadius = radius
+        if radius < 0 {
+            targetCornerRadius = 0
+        }
+        if radius > min(w, h) {
+            targetCornerRadius = min(w,h)
+        }
+        
+        let imageFrame = CGRect(x: 0, y: 0, width: w, height: h)
+        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        
+        UIBezierPath(roundedRect: imageFrame, cornerRadius: targetCornerRadius).addClip()
+        self.draw(in: imageFrame)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image!
+    }
+    
+}
+
+
+
+
 extension UIView {
 
     func roundRect(cornerRadius radius: CGFloat) -> UIImage {
