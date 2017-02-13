@@ -285,9 +285,9 @@
 			isa = PBXGroup;
 			children = (
 				8624F61C1E5047C00059788A /* RecordDetailHeader.swift */,
+				86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */,
 				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
 				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
-				86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */,
 			);
 			name = RecordDetail;
 			sourceTree = "<group>";

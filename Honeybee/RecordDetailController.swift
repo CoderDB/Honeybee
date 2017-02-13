@@ -52,7 +52,7 @@ class RecordDetailController: UIViewController {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
         titleLabel.text = "详情"
         titleLabel.textAlignment = .center
-        titleLabel.font = HonybeeFont.h3
+        titleLabel.font = HonybeeFont.h4
         titleLabel.textColor = HonybeeColor.main
         navigationItem.titleView = titleLabel
     }
@@ -117,7 +117,7 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == 1 {
             cell.subTitleLabel.attributedText = NSAttributedString(string: "2017-02-13" + "\n" + "15:11" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h2_number!])
         } else if indexPath.row == 2 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h3])
+            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4])
         } else {
             cell.subTitleLabel.text = model.remark
         }

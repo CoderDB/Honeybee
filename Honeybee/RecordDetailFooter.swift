@@ -25,24 +25,33 @@ class RecordDetailFooter: UIView {
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
+    }
+    override var frame: CGRect {
+        didSet {
+            var newFrame = frame
+            newFrame.origin.y += 50 // 因为 tableView 中 cell 都往下移动了，所以这里也要移动一下，以防 button 点不到
+            super.frame = newFrame
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupUI() {
+        button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
         addSubview(button)
         button.snp.makeConstraints { (make) in
-            make.top.equalTo(self).offset(40)
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self).offset(-10).priority(750)
-            make.height.equalTo(50)
+            make.top.bottom.equalTo(self)
         }
+    }
+    
+    func buttonClicked() {
+        print("----buttonClicked")
     }
         
 

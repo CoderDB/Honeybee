@@ -27,7 +27,7 @@ class HeaderView: UIView {
 //        btn.backgroundColor = UIColor.cyan
         btn.setTitle("分类", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h3
+        btn.titleLabel?.font = HonybeeFont.h4
         btn.contentHorizontalAlignment = .left
         return btn
     }()

@@ -21,7 +21,7 @@ class RecordDetailHeader: UIView {
         let btn = UIButton(type: UIButtonType.system)
         btn.setTitle("编辑", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h3
+        btn.titleLabel?.font = HonybeeFont.h4
         return btn
     }()
     lazy var imgView = UIImageView()
