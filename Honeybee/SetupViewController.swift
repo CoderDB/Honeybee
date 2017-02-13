@@ -15,48 +15,48 @@ class SetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        title = "设置"
-        addNavRightItem()
+        automaticallyAdjustsScrollViewInsets = false
+        
+        setupNavTitle()
+        
         addTableView()
-        addTableHeader()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    deinit {
+        print("deinit --SetupViewController")
+    }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+// MARK: UI
+extension SetupViewController {
     
-    
-    func addNavRightItem() {
-        let completeBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-        completeBtn.backgroundColor = UIColor.red
-        completeBtn.setTitle("完成", for: .normal)
-        completeBtn.addTarget(self, action: #selector(rightItemAction), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: completeBtn)
+    func setupNavTitle() {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        titleLabel.text = "设置"
+        titleLabel.textAlignment = .center
+        titleLabel.font = HonybeeFont.h4
+        titleLabel.textColor = HonybeeColor.main
+        navigationItem.titleView = titleLabel
     }
-    func rightItemAction() {
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     func addTableView() {
-        tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
-    }
-    
-    func addTableHeader() {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 150))
-        view.backgroundColor = UIColor.orange
-        let imgView = UIImageView(frame: CGRect(x: (ScreenW-100) * 0.5, y: 25, width: 100, height: 100))
-        imgView.image = UIImage(named: "add")
-        view.addSubview(imgView)
-        tableView.tableHeaderView = view
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(view).offset(64)
+            make.left.right.bottom.equalTo(view)
+        }
         
+        tableView.tableHeaderView = SetupHeader(height: 135)
     }
-
 }
+
+
 
 // MARK: UITableViewDataSource
 extension SetupViewController: UITableViewDataSource {
@@ -75,8 +75,6 @@ extension SetupViewController: UITableViewDataSource {
         return cell!
     }
 }
-
-
 
 // MARK: UITableViewDataSource
 extension SetupViewController: UITableViewDelegate {

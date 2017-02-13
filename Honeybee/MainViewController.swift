@@ -18,6 +18,9 @@ class MainViewController: UIViewController {
     lazy var cardVC: CardViewController = CardViewController()
     lazy var customPresentationController: HBPresentationController = HBPresentationController(presentedViewController: self.cardVC, presenting: self)
     
+    lazy var profileVC: SetupViewController = SetupViewController()
+    lazy var customPC: HBPresentationController = HBPresentationController(presentedViewController: self.profileVC, presenting: self)
+    
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     
     
@@ -25,8 +28,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        
         cardVC.transitioningDelegate = customPresentationController
+        profileVC.transitioningDelegate = customPC
 
         addTableView()
 
@@ -53,7 +56,13 @@ extension MainViewController {
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
-        tableView.tableHeaderView = HeaderView()
+        let header = HeaderView()
+        header.usernameAction = { [unowned self] in
+            print("********")
+            self.navigationController?.pushViewController(SetupViewController(), animated: true)
+        }
+        
+        tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(20)

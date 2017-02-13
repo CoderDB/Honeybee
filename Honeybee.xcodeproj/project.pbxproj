@@ -34,6 +34,7 @@
 		86A442841DFBF433006D2A44 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A442821DFBF433006D2A44 /* CollectionViewCell.xib */; };
 		86BBC33D1E0FAA0A009A7D5D /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBC33C1E0FAA0A009A7D5D /* BarView.swift */; };
 		86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */; };
+		86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702C1E51BA560004E192 /* SetupHeader.swift */; };
 		86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */; };
 		86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */; };
 		86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */; };
@@ -100,6 +101,7 @@
 		86A442821DFBF433006D2A44 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		86BBC33C1E0FAA0A009A7D5D /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailFooter.swift; sourceTree = "<group>"; };
+		86D1702C1E51BA560004E192 /* SetupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHeader.swift; sourceTree = "<group>"; };
 		86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordLiteCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				86E5746E1E4C6E6C001255CD /* Chart */,
 				86E5746F1E4C6E88001255CD /* Profile */,
 				86E574701E4C6EBC001255CD /* Other */,
+				86E574721E4C6EE7001255CD /* PresentTransition */,
 				861544471E4DA9D200A6EEBD /* Source */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
 				8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */,
@@ -228,7 +231,6 @@
 				86E574711E4C6ED5001255CD /* Keyboard */,
 				86A442811DFBF433006D2A44 /* CollectionViewCell.swift */,
 				86A442821DFBF433006D2A44 /* CollectionViewCell.xib */,
-				86E574721E4C6EE7001255CD /* Transition */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
+				86D1702C1E51BA560004E192 /* SetupHeader.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -272,21 +275,21 @@
 			name = Keyboard;
 			sourceTree = "<group>";
 		};
-		86E574721E4C6EE7001255CD /* Transition */ = {
+		86E574721E4C6EE7001255CD /* PresentTransition */ = {
 			isa = PBXGroup;
 			children = (
 				8699664D1DFAE245006EAD41 /* HBPresentationController.swift */,
 				8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */,
 			);
-			name = Transition;
+			name = PresentTransition;
 			sourceTree = "<group>";
 		};
 		86F6C8651E4F2F11002016DB /* RecordDetail */ = {
 			isa = PBXGroup;
 			children = (
+				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
 				8624F61C1E5047C00059788A /* RecordDetailHeader.swift */,
 				86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */,
-				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
 				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
 			);
 			name = RecordDetail;
@@ -603,6 +606,7 @@
 			files = (
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
+				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
 				86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
