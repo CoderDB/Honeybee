@@ -52,7 +52,7 @@ class RecordDetailController: UIViewController {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
         titleLabel.text = "详情"
         titleLabel.textAlignment = .center
-        titleLabel.font = HonybeeFont.subTitleFont
+        titleLabel.font = HonybeeFont.h3
         titleLabel.textColor = HonybeeColor.main
         navigationItem.titleView = titleLabel
     }
@@ -88,6 +88,8 @@ class RecordDetailController: UIViewController {
         let header = RecordDetailHeader(height: 115, title: "吃饭", imageName: "meal")
         tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度
         
+        tableView.tableFooterView = RecordDetailFooter(height: 50)
+        
     }
 }
 
@@ -111,11 +113,11 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func setSubTitleAttributes(cell: RecordDetailCell, indexPath: IndexPath, model: Reocder) {
         if indexPath.row == 0 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.recordNumberFont!])
+            cell.subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.h1_number!])
         } else if indexPath.row == 1 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: "2017-02-13" + "\n" + "15:11" + "\n", attributes: [NSFontAttributeName: HonybeeFont.recordDateFont!])
+            cell.subTitleLabel.attributedText = NSAttributedString(string: "2017-02-13" + "\n" + "15:11" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h2_number!])
         } else if indexPath.row == 2 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.subTitleFont])
+            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h3])
         } else {
             cell.subTitleLabel.text = model.remark
         }

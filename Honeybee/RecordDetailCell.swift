@@ -14,7 +14,7 @@ class RecordDetailCell: UITableViewCell {
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = HonybeeFont.recordDetailMainTitle
+        label.font = HonybeeFont.h2
         label.text = "记录时间"
         return label
     }()
@@ -25,7 +25,7 @@ class RecordDetailCell: UITableViewCell {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 200
         label.lineBreakMode = .byWordWrapping
-        label.font = HonybeeFont.subTitleFont
+        label.font = HonybeeFont.h3
         
         return label
     }()
