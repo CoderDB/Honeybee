@@ -8,28 +8,8 @@
 
 import UIKit
 
-enum ReocderDetallCellType: String {
-    case number = "RecordNumberCell"
-    case date = "RecordDateCell"
-    case category = "RecordCategoryCell"
-    case describle = "RecordDescirbleCell"
-}
 
 class RecordDetailCell: UITableViewCell {
-    
-    convenience init(type: ReocderDetallCellType) {
-        
-        
-        switch type {
-        case .number:
-            let _ = RecordNumberCell(style: .default, reuseIdentifier: type.rawValue)
-        default:
-            break
-        }
-        
-        self.init(style: .default, reuseIdentifier: type.rawValue)
-    }
-    
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
@@ -38,6 +18,18 @@ class RecordDetailCell: UITableViewCell {
         label.text = "记录时间"
         return label
     }()
+    
+    lazy var subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.numberOfLines = 0
+        label.preferredMaxLayoutWidth = 200
+        label.lineBreakMode = .byWordWrapping
+        label.font = HonybeeFont.subTitleFont
+        
+        return label
+    }()
+    
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -57,7 +49,7 @@ class RecordDetailCell: UITableViewCell {
         didSet {
             var newFrame = frame
             newFrame.origin.x += 10
-            newFrame.origin.y += 10
+            newFrame.origin.y += 20
             newFrame.size = CGSize(width: frame.width-20, height: frame.height-10)
             super.frame = newFrame
         }
@@ -65,13 +57,20 @@ class RecordDetailCell: UITableViewCell {
     
     func setupUI() {
         contentView.addSubview(mainTitleLabel)
+        contentView.addSubview(subTitleLabel)
         
         mainTitleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(contentView)
             make.left.equalTo(10)
             make.width.equalTo(120)
-            make.height.equalTo(45)
+            make.height.greaterThanOrEqualTo(45)
+        }
+        
+        subTitleLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(contentView).offset(-10)
+            make.centerY.equalTo(contentView)
+            make.left.equalTo(mainTitleLabel.snp.right).offset(10)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
     }
-    
 }
