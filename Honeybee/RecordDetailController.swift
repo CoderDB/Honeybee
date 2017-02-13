@@ -14,6 +14,12 @@ class RecordDetailController: UIViewController {
     
     lazy var tableView = UITableView()
     
+    
+    var model: Reocder!
+    
+    let cellTitles = ["金额", "记录时间", "分类", "备注"]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,10 @@ class RecordDetailController: UIViewController {
         setupNavTitle()
         
         addTableView()
+        model = Reocder(date: "", category: "金额", money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n")
+        
+        
+        
     }
     
     func setupNavTitle() {
@@ -60,24 +70,20 @@ class RecordDetailController: UIViewController {
         tableView.delegate = self
         view.addSubview(tableView)
         
-//        tableView.estimatedRowHeight = 60
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        tableView.rowHeight = 60
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.rowHeight = 60
         
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         
         
-        tableView.register(RecordDetailCell.self, forCellReuseIdentifier: "RecordDetailCell")
-        tableView.register(RecordNumberCell.self, forCellReuseIdentifier: "RecordNumberCell")
-        tableView.register(RecordDateCell.self, forCellReuseIdentifier: "RecordDateCell")
+        tableView.register(RecordDetailCell.self, forCellReuseIdentifier: "\(RecordDetailCell.self)")
         
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(64) // 导航栏本是透明的，假装导航栏是白色
             make.left.right.bottom.equalTo(view)
-//            make.edges.equalTo(view)
         }
         let header = RecordDetailHeader(height: 115, title: "吃饭", imageName: "meal")
         tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度
@@ -93,18 +99,26 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return cellTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: "RecordNumberCell") as? RecordDetailCell
-        if cell!.isKind(of: RecordNumberCell.self) {
-            cell = RecordDetailCell(style: .default, reuseIdentifier: "RecordNumberCell")
-        } else if cell!.isKind(of: RecordDateCell.self) {
-            cell = RecordDetailCell(style: .default, reuseIdentifier: "RecordDateCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordDetailCell.self)") as! RecordDetailCell
+        cell.mainTitleLabel.text = cellTitles[indexPath.row]
+        setSubTitleAttributes(cell: cell, indexPath: indexPath, model: model)
+        return cell
+    }
+    
+    func setSubTitleAttributes(cell: RecordDetailCell, indexPath: IndexPath, model: Reocder) {
+        if indexPath.row == 0 {
+            cell.subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.recordNumberFont!])
+        } else if indexPath.row == 1 {
+            cell.subTitleLabel.attributedText = NSAttributedString(string: "2017-02-13" + "\n" + "15:11" + "\n", attributes: [NSFontAttributeName: HonybeeFont.recordDateFont!])
+        } else if indexPath.row == 2 {
+            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.subTitleFont])
+        } else {
+            cell.subTitleLabel.text = model.remark
         }
-        return cell!
     }
     
 }
