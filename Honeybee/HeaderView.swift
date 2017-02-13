@@ -11,10 +11,9 @@ import SnapKit
 
 class HeaderView: UIView {
     
-    
     lazy var usernameBtn: UIButton = {
         let btn = UIButton(type: .custom)
-//        btn.backgroundColor = UIColor.cyan
+        btn.backgroundColor = UIColor.cyan
         btn.setTitle("二狗哥", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = HonybeeFont.h1
@@ -24,7 +23,7 @@ class HeaderView: UIView {
     
     lazy var filterBtn: UIButton = {
         let btn = UIButton(type: .custom)
-//        btn.backgroundColor = UIColor.cyan
+        btn.backgroundColor = UIColor.cyan
         btn.setTitle("分类", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
         btn.titleLabel?.font = HonybeeFont.h4
@@ -32,6 +31,7 @@ class HeaderView: UIView {
         return btn
     }()
 
+    
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 80))
         setupUI()
@@ -39,6 +39,7 @@ class HeaderView: UIView {
     
     
     func setupUI() {
+        usernameBtn.addTarget(self, action: #selector(usernameBtnClicked), for: .touchUpInside)
         addSubview(usernameBtn)
         addSubview(filterBtn)
         
@@ -57,6 +58,11 @@ class HeaderView: UIView {
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var usernameAction: (() -> ())?
+    func usernameBtnClicked() {
+        usernameAction?()
     }
 
 }

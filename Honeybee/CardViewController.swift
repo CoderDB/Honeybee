@@ -16,13 +16,6 @@ class CardViewController: UIViewController {
         return keyboard
     }()
     var collectionView: UICollectionView!
-        
-//        = {
-//        let cv = UICollectionView()
-//        cv.backgroundColor = UIColor.white
-//        cv.dataSource = self
-//        return cv
-//    }()
     
     
     var lastOffsetY: CGFloat = 0

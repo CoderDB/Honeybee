@@ -32,7 +32,7 @@ class RecordCell: UITableViewCell {
     lazy var weekdayLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h5
+        label.font = HonybeeFont.h6
         label.textColor = UIColor.black
         label.text = "星期二"
         return label

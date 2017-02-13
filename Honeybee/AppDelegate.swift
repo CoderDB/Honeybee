@@ -17,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        
+        let barAppearence = UINavigationBar.appearance()
+        barAppearence.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        barAppearence.shadowImage = UIImage()
+        // 设置导航栏返回按钮，返回文字颜色
+        barAppearence.tintColor = HonybeeColor.main
+        
+        let buttonItem = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
+        buttonItem.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
+        
+        
+        
         let nav = UINavigationController(rootViewController: MainViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
