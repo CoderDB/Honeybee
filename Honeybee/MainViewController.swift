@@ -97,7 +97,7 @@ extension MainViewController: UITableViewDataSource{
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
 
-        cell.dateLabel.text = "今天"
+        cell.dateLabel.text = "2月13日"
         cell.categoryLabel.text = "吃饭"
         cell.numberLabel.text = "108.95"
         return cell

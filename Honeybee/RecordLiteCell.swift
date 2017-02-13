@@ -13,7 +13,7 @@ class RecordLiteCell: UITableViewCell {
     lazy var category: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = HonybeeFont.h3
+        label.font = HonybeeFont.h4
         label.textColor = UIColor.black
         label.text = "购物"
         return label

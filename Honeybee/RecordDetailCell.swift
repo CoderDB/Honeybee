@@ -25,7 +25,7 @@ class RecordDetailCell: UITableViewCell {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 200
         label.lineBreakMode = .byWordWrapping
-        label.font = HonybeeFont.h3
+        label.font = HonybeeFont.h4
         
         return label
     }()
