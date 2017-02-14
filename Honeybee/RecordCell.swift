@@ -40,7 +40,7 @@ class RecordCell: UITableViewCell {
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h2_number
+        label.font = HonybeeFont.h3_number
         label.textColor = UIColor.black
         label.text = "256.80"
         return label

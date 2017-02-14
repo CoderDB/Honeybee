@@ -22,6 +22,16 @@ extension UIColor {
     
 }
 
+extension UIView {
+    
+    func rotateY360() {
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
+        rotationAnimation.toValue = NSNumber(value: M_PI*2)
+        rotationAnimation.duration = 0.4
+        layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
+}
+
 
 extension UIImage {
     

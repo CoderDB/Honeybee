@@ -21,7 +21,7 @@ class RecordLiteCell: UITableViewCell {
     lazy var number: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h2_number
+        label.font = HonybeeFont.h3_number
         label.textColor = UIColor.black
         label.text = "98456.87"
         return label

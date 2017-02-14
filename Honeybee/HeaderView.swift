@@ -21,7 +21,8 @@ class HeaderView: UIView {
     }()
     lazy var userImgView: UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "avatar"))
-        imgView.layer.cornerRadius = 10
+        imgView.backgroundColor = HonybeeColor.main
+        imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
         return imgView
     }()
@@ -35,11 +36,48 @@ class HeaderView: UIView {
         return btn
     }()
     
+    
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = HonybeeColor.main
         view.layer.cornerRadius = 10
         return view
+    }()
+    
+    lazy var eyeBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "eye_close"), for: .normal)
+        btn.setImage(UIImage(named: "eye_open"), for: .selected)
+        return btn
+    }()
+    
+    lazy var outLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h4
+        label.textColor = UIColor.white
+        label.text = "本月支出"
+        return label
+    }()
+    lazy var inLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h4
+        label.textColor = UIColor.white
+        label.text = "本月收入"
+        return label
+    }()
+    lazy var outMoneyLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h2_number
+        label.textColor = UIColor.white
+        label.text = "34567"
+        return label
+    }()
+    lazy var inMoneyLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h2_number
+        label.textColor = UIColor.white
+        label.text = "76853"
+        return label
     }()
 
     
@@ -59,11 +97,18 @@ class HeaderView: UIView {
     
     func setupUI() {
         usernameBtn.addTarget(self, action: #selector(usernameBtnClicked), for: .touchUpInside)
+        eyeBtn.addTarget(self, action: #selector(eyeBtnClicked(_:)), for: .touchUpInside)
         
         addSubview(usernameBtn)
         addSubview(userImgView)
         addSubview(filterBtn)
         addSubview(containerView)
+        
+        containerView.addSubview(eyeBtn)
+        containerView.addSubview(outLabel)
+        containerView.addSubview(inLabel)
+        containerView.addSubview(outMoneyLabel)
+        containerView.addSubview(inMoneyLabel)
         
         usernameBtn.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
@@ -77,11 +122,32 @@ class HeaderView: UIView {
         filterBtn.snp.makeConstraints { (make) in
             make.right.bottom.equalTo(self).offset(-10)
         }
+        
         containerView.snp.makeConstraints { (make) in
             make.left.equalTo(usernameBtn)
             make.top.equalTo(usernameBtn.snp.bottom)
             make.bottom.equalTo(self).offset(-10)
             make.right.equalTo(filterBtn.snp.left).offset(-10).priority(HonybeePriority.low)
+        }
+        eyeBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(containerView).offset(10)
+            make.right.equalTo(containerView).offset(-10)
+            make.width.equalTo(30)
+            make.height.equalTo(20)
+        }
+        outLabel.snp.makeConstraints { (make) in
+            make.left.top.equalTo(containerView).offset(10)
+        }
+        inLabel.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(containerView).offset(-10)
+        }
+        outMoneyLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(outLabel)
+            make.top.equalTo(outLabel.snp.bottom)
+        }
+        inMoneyLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(inLabel)
+            make.bottom.equalTo(inLabel.snp.top)
         }
     }
     
@@ -89,5 +155,20 @@ class HeaderView: UIView {
     func usernameBtnClicked() {
         usernameAction?()
     }
+    
+    func eyeBtnClicked(_ btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        containerView.rotateY360()
+        if btn.isSelected {
+            outMoneyLabel.text = "***"
+            inMoneyLabel.text = "***"
+        } else {
+            outMoneyLabel.text = "123"
+            inMoneyLabel.text = "34589"
+        }
+    }
 
+    func translate3D() {
+        
+    }
 }
