@@ -15,7 +15,7 @@ class ProfileViewController: BaseViewController {
         
         setupNav(title: "个人信息")
         
-        tableView.tableHeaderView = ProfileHeader(height: 165)
+        tableView.tableHeaderView = ProfileHeader(height: 135)
     }
     
     

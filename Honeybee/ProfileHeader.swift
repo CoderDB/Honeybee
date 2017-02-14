@@ -13,16 +13,15 @@ class ProfileHeader: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4
+        label.font = HonybeeFont.h3
         label.textColor = UIColor.white
         label.text = "累计记账"
         return label
     }()
     lazy var countLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h1_big
+        label.font = HonybeeFont.h1_number
         label.textColor = UIColor.white
-        label.text = "179天"
         return label
     }()
     
@@ -67,9 +66,9 @@ class ProfileHeader: UIView {
         }
         
         containView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(self).offset(10)
+            make.top.bottom.equalTo(self)
+            make.left.equalTo(self).offset(10)
             make.right.equalTo(editButton.snp.left).offset(-10)
-            make.height.equalTo(self)
         }
         
         titleLabel.snp.makeConstraints { (make) in

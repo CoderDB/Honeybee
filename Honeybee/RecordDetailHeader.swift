@@ -67,11 +67,11 @@ class RecordDetailHeader: UIView {
         containerView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self)
             make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-20).priority(HonybeePriority.mid)
+            make.right.equalTo(editButton.snp.left).offset(-10).priority(HonybeePriority.mid)
         }
         imgView.snp.makeConstraints { (make) in
             make.center.equalTo(containerView)
-            make.width.height.equalTo(100)
+            make.width.height.equalTo(containerView.snp.height).offset(-20)
         }
         
         titleLabel.snp.makeConstraints { (make) in

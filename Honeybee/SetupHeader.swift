@@ -83,7 +83,8 @@ class SetupHeader: UIView {
         }
         bioLabel.snp.makeConstraints { (make) in
             make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
-            make.left.right.equalTo(nicknameLabel)
+            make.left.equalTo(nicknameLabel)
+            make.right.equalTo(editButton.snp.left).offset(-5).priority(750)
             make.bottom.equalTo(headButton).offset(-10)
         } 
     }
