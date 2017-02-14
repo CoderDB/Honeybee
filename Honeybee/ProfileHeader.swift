@@ -78,31 +78,30 @@ class ProfileHeader: UIView {
         }
         
         countLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(containView)
+            make.bottom.equalTo(containView).offset(-10)
+            make.centerX.equalTo(containView)
         }
     }
 
     
     func calculateChargeUpDays() -> NSAttributedString {
-        let start = "2017-01-01" // 注册日
-        let end = "2017-02-14"
+        let start = "2015-01-01" // 注册日
+//        let end = "2017-02-14"
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let day1 = formatter.date(from: start)!
-        let day2 = formatter.date(from: end)!
+        let day2 = Date()//formatter.date(from: end)!
         
-        let days = whichDayOfYear(date: day2) - whichDayOfYear(date: day1)
-        let dayStr = "\(days) 天"
+        let cal = Calendar(identifier: .gregorian)
+        let days = cal.dateComponents([.day], from: day1, to: day2).day ?? 0
+        
+        let dayStr = "\(days)天"
         
         let attr = NSMutableAttributedString(string: dayStr)
         attr.addAttributes([NSFontAttributeName: HonybeeFont.h3], range: NSRange(location: dayStr.characters.count-1, length: 1))
         return attr
     }
-    
-    func whichDayOfYear(date: Date) -> Int {
-        let cal = Calendar(identifier: .gregorian)
-        return cal.ordinality(of: .day, in: .year, for: date)!
-    }
+
  
     
     
