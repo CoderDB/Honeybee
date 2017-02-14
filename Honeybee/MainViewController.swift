@@ -18,28 +18,23 @@ class MainViewController: UIViewController {
     lazy var cardVC: CardViewController = CardViewController()
     lazy var customPresentationController: HBPresentationController = HBPresentationController(presentedViewController: self.cardVC, presenting: self)
     
-    lazy var profileVC: SetupViewController = SetupViewController()
-    lazy var customPC: HBPresentationController = HBPresentationController(presentedViewController: self.profileVC, presenting: self)
-    
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        automaticallyAdjustsScrollViewInsets = false
         
         cardVC.transitioningDelegate = customPresentationController
-        profileVC.transitioningDelegate = customPC
 
-        addTableView()
-
-        addAddBtn()
         
+        addTableView()
+        addAddBtn()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -53,28 +48,27 @@ extension MainViewController {
     
     func addTableView() {
         tableView.backgroundColor = UIColor.white
-        tableView.dataSource = self
-        tableView.delegate = self
         view.addSubview(tableView)
-        let header = HeaderView()
-        header.usernameAction = { [unowned self] in
-            print("********")
-            self.navigationController?.pushViewController(SetupViewController(), animated: true)
-        }
-        
-        tableView.tableHeaderView = header
-        tableView.tableFooterView = UIView()
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(20)
             make.left.right.bottom.equalTo(view)
         }
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 75
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let header = HeaderView()
+        header.usernameAction = { [unowned self] in
+            self.navigationController?.pushViewController(SetupViewController(), animated: true)
+        }
+        tableView.tableHeaderView = header
+        tableView.tableFooterView = UIView()
+        
         tableView.register(RecordCell.self, forCellReuseIdentifier: "RecordCell")
         tableView.register(SectionCell.self, forCellReuseIdentifier: "SectionCell")
         tableView.register(RecordLiteCell.self, forCellReuseIdentifier: "RecordLiteCell")
-        
     }
     
     func addAddBtn() {
