@@ -13,7 +13,7 @@ class GroupCell: UITableViewCell {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = HonybeeFont.h3_number
+        label.font = HonybeeFont.h4_number
         label.textColor = UIColor.black
         label.text = "2月10日"
         return label

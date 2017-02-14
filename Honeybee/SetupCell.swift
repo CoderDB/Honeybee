@@ -24,7 +24,7 @@ class SetupCell: UITableViewCell {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 200
         label.lineBreakMode = .byWordWrapping
-        label.font = HonybeeFont.h3_number
+        label.font = HonybeeFont.h4_number
         return label
     }()
     

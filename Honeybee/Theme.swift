@@ -30,8 +30,9 @@ struct HonybeeFont {
     
     
     static let h1_number = UIFont(name: "Silom", size: 70)
-    static let h2_number = UIFont(name: "Silom", size: 30)
-    static let h3_number = UIFont(name: "Silom", size: 18)
+    static let h2_number = UIFont(name: "Silom", size: 36)
+    static let h3_number = UIFont(name: "Silom", size: 30)
+    static let h4_number = UIFont(name: "Silom", size: 18)
 }
 
 struct HonybeePriority {
