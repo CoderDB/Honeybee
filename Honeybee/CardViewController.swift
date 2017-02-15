@@ -22,43 +22,47 @@ class CardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.cyan
-        
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
-        swipe.direction = .down
-        view.addGestureRecognizer(swipe)
+        view.backgroundColor = UIColor.white
         
         updatePreferredContentSizeWithTraitCollection(traitCollection)
+
+        addSwipeDownGesture()
         
+        addCollectionView()
+        addKeyboard()
+    }
+}
+
+
+// MARK: UI / Event
+extension CardViewController {
+    func addCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
         view.addSubview(collectionView)
-        view.addSubview(hb_keyboard)
-        
         collectionView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(view)
             make.top.equalTo(view).offset(100)
         }
-        
+    }
+    
+    func addKeyboard() {
+        view.addSubview(hb_keyboard)
         hb_keyboard.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(view)
             make.height.equalTo(280)
         }
-//        hb_keyboard.translatesAutoresizingMaskIntoConstraints = false
     }
-}
-
-
-// MARK: UI Event
-extension CardViewController {
+    
+    func addSwipeDownGesture() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
+        swipe.direction = .down
+        view.addGestureRecognizer(swipe)
+    }
+    
     func swipeDownGestureAction() {
         dismiss(animated: true, completion: nil)
     }
@@ -67,7 +71,7 @@ extension CardViewController {
 
 extension CardViewController {
     func updatePreferredContentSizeWithTraitCollection(_ traitCollection: UITraitCollection) {
-        preferredContentSize = CGSize(width: ScreenW, height: ScreenH * 0.9)
+        preferredContentSize = CGSize(width: ScreenW, height: ScreenH * 0.95)
     }
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
@@ -81,7 +85,7 @@ extension CardViewController: UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 500
+        return 200
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
@@ -99,12 +103,10 @@ extension CardViewController: UICollectionViewDelegate {
 extension CardViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > lastOffsetY {
-//            hb_keyboard.frame.origin.y = ScreenH * 0.9 - 60
             UIView.animate(withDuration: 0.3, animations: {
                 self.hb_keyboard.transform = CGAffineTransform(translationX: 0, y: 220)
             })
         } else {
-//            hb_keyboard.frame.origin.y = ScreenH * 0.9 - 280
             UIView.animate(withDuration: 0.3, animations: {
                 self.hb_keyboard.transform = CGAffineTransform.identity
             })
@@ -117,7 +119,6 @@ extension CardViewController: UIScrollViewDelegate {
 
 // MARK: HBKeyboardProtocol
 extension CardViewController: HBKeyboardProtocol {
-    
     func callCamera() {
         print("---call camera")
     }
