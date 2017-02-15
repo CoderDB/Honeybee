@@ -26,7 +26,6 @@ class HeaderView: UIView {
         imgView.layer.masksToBounds = true
         return imgView
     }()
-    
     lazy var filterBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitle("分类", for: .normal)
@@ -35,22 +34,18 @@ class HeaderView: UIView {
         btn.contentHorizontalAlignment = .left
         return btn
     }()
-    
-    
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = HonybeeColor.main
         view.layer.cornerRadius = 10
         return view
     }()
-    
     lazy var eyeBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(named: "eye_close"), for: .normal)
         btn.setImage(UIImage(named: "eye_open"), for: .selected)
         return btn
     }()
-    
     lazy var outLabel: UILabel = {
         let label = UILabel()
         label.font = HonybeeFont.h4
@@ -80,9 +75,6 @@ class HeaderView: UIView {
         return label
     }()
 
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 205))
         
@@ -91,9 +83,6 @@ class HeaderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
     
     func setupUI() {
         usernameBtn.addTarget(self, action: #selector(usernameBtnClicked), for: .touchUpInside)
@@ -106,9 +95,9 @@ class HeaderView: UIView {
         
         containerView.addSubview(eyeBtn)
         containerView.addSubview(outLabel)
-        containerView.addSubview(inLabel)
         containerView.addSubview(outMoneyLabel)
         containerView.addSubview(inMoneyLabel)
+        containerView.addSubview(inLabel)
         
         usernameBtn.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
@@ -138,16 +127,16 @@ class HeaderView: UIView {
         outLabel.snp.makeConstraints { (make) in
             make.left.top.equalTo(containerView).offset(10)
         }
-        inLabel.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(containerView).offset(-10)
-        }
         outMoneyLabel.snp.makeConstraints { (make) in
             make.left.equalTo(outLabel)
             make.top.equalTo(outLabel.snp.bottom)
         }
         inMoneyLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(inLabel)
-            make.bottom.equalTo(inLabel.snp.top)
+            make.right.bottom.equalTo(containerView).offset(-10)
+        }
+        inLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(inMoneyLabel)
+            make.bottom.equalTo(inMoneyLabel.snp.top)
         }
     }
     
@@ -155,7 +144,6 @@ class HeaderView: UIView {
     func usernameBtnClicked() {
         usernameAction?()
     }
-    
     func eyeBtnClicked(_ btn: UIButton) {
         btn.isSelected = !btn.isSelected
         containerView.rotateY360()
@@ -166,9 +154,5 @@ class HeaderView: UIView {
             outMoneyLabel.text = "123"
             inMoneyLabel.text = "34589"
         }
-    }
-
-    func translate3D() {
-        
     }
 }
