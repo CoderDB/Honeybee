@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -43,7 +42,6 @@ class MainViewController: UIViewController {
 
 
 // MARK: UI
-
 extension MainViewController {
     
     func addTableView() {
@@ -70,7 +68,6 @@ extension MainViewController {
         tableView.register(SectionCell.self, forCellReuseIdentifier: "SectionCell")
         tableView.register(RecordLiteCell.self, forCellReuseIdentifier: "RecordLiteCell")
     }
-    
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
@@ -80,7 +77,17 @@ extension MainViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource{
+
+// MARK: UI Event
+extension MainViewController {
+    func addBtnClicked() {
+        present(cardVC, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: UITableViewDatasource
+extension MainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -105,19 +112,8 @@ extension MainViewController: UITableViewDataSource{
         cell.numberLabel.text = "108.95"
         return cell
     }
-}
-
-extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(RecordDetailController(), animated: true)
     }
 }
 
-
-// MARK: UI Event
-
-extension MainViewController {
-    func addBtnClicked() {
-        present(cardVC, animated: true, completion: nil)
-    }
-}
