@@ -63,14 +63,15 @@ class ProfileHeader: UIView {
         containView.addSubview(countLabel)
         
         editButton.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(self).offset(-10)
+            make.right.equalTo(self).offset(-10)
+            make.bottom.equalTo(self)
             make.width.equalTo(40)
         }
         
         containView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self)
             make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10)
+            make.right.equalTo(editButton.snp.left).offset(-10).priority(HonybeePriority.mid)
         }
         
         titleLabel.snp.makeConstraints { (make) in
@@ -85,7 +86,7 @@ class ProfileHeader: UIView {
 
     
     func calculateChargeUpDays() -> NSAttributedString {
-        let start = "2015-01-01" // 注册日
+        let start = "2017-01-01" // 注册日
 //        let end = "2017-02-14"
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"

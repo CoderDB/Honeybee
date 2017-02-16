@@ -87,7 +87,7 @@ extension MainViewController {
 
 
 // MARK: UITableViewDatasource
-extension MainViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
