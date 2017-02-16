@@ -189,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
+				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				86E5746C1E4C6E1C001255CD /* Mian */,
 				86F6C8651E4F2F11002016DB /* RecordDetail */,
 				86E5746D1E4C6E32001255CD /* Add */,
@@ -224,7 +225,6 @@
 		86D170441E51EBA90004E192 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				86D170451E51EBCE0004E192 /* ProfileViewController.swift */,
 				86D170491E51EDCB0004E192 /* ProfileHeader.swift */,
 			);

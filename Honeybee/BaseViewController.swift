@@ -8,14 +8,12 @@
 
 import UIKit
 
-class BaseViewController: UITableViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-//        automaticallyAdjustsScrollViewInsets = false
-        
-        
+        automaticallyAdjustsScrollViewInsets = false
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,23 +9,53 @@
 import UIKit
 
 class ProfileViewController: BaseViewController {
+    
+    lazy var tableView = UITableView()
 
+    var dataSource = [SetupItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNav(title: "个人信息")
+        addTableView()
+        let item1 = SetupItem(title: "昵称", subTitle: "MaryLee")
+        let item2 = SetupImageItem(title: "头像", subTitle: "")
         
-        tableView.tableHeaderView = ProfileHeader(height: 135)
+        dataSource.append(item1)
+        dataSource.append(item2)
     }
     
     
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 10
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return UITableViewCell()
-//    }
     
-    
+    func addTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(view).offset(64)
+            make.left.right.bottom.equalTo(view)
+        }
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        
+        tableView.rowHeight = 60
+        
+        tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
+        tableView.tableHeaderView = ProfileHeader(height: 135)
+    }
+}
+
+// MARK: UITableViewDataSource
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)") as! SetupCell
+        cell.item = dataSource[indexPath.row]
+        return cell
+    }
 }
