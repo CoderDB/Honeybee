@@ -189,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
-				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				86E5746C1E4C6E1C001255CD /* Mian */,
 				86F6C8651E4F2F11002016DB /* RecordDetail */,
 				86E5746D1E4C6E32001255CD /* Add */,
@@ -234,6 +233,7 @@
 		86E5746C1E4C6E1C001255CD /* Mian */ = {
 			isa = PBXGroup;
 			children = (
+				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
 				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
 				86F6C85F1E4F2791002016DB /* GroupCell.swift */,

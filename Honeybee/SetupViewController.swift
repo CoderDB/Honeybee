@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetupViewController: UIViewController {
+class SetupViewController: BaseViewController {
     
     var tableView: UITableView!
 
@@ -17,25 +17,19 @@ class SetupViewController: UIViewController {
     var dataSource = [SetupItem]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        automaticallyAdjustsScrollViewInsets = false
-        
-        setupNavTitle()
+        setupNav(title: "设置")
         
         addTableView()
-        
         
         let item1 = SetupItem(title: "记账提醒", subTitle: "每天\n10:00")
         let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
         let item3 = SetupImageItem(title: "头像", subTitle: "")
-        
-        
         dataSource.append(item1)
         dataSource.append(item2)
         dataSource.append(item3)
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     deinit {
@@ -45,15 +39,6 @@ class SetupViewController: UIViewController {
 
 // MARK: UI
 extension SetupViewController {
-    
-    func setupNavTitle() {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
-        titleLabel.text = "设置"
-        titleLabel.textAlignment = .center
-        titleLabel.font = HonybeeFont.h4
-        titleLabel.textColor = HonybeeColor.main
-        navigationItem.titleView = titleLabel
-    }
     
     func addTableView() {
         tableView = UITableView()
