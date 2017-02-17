@@ -12,6 +12,7 @@ class CardViewController: UIViewController {
 
     lazy var hb_keyboard: HBKeyboard = {
         let keyboard = HBKeyboard()
+        keyboard.calculateView.delegate = self
         keyboard.delegate = self
         return keyboard
     }()
@@ -121,5 +122,22 @@ extension CardViewController: UIScrollViewDelegate {
 extension CardViewController: HBKeyboardProtocol {
     func callCamera() {
         print("---call camera")
+    }
+}
+
+// MARK: HBKeyboardProtocol
+extension CardViewController: CalculateViewProtocol {
+    func inputing(text: String) {
+        print("inputing------\(text)")
+    }
+    
+    func deleted(text: String) {
+        
+        print("deleted------\(text)")
+    }
+    
+    func completed(text: String) {
+        
+        print("ok------\(text)")
     }
 }

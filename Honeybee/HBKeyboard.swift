@@ -17,6 +17,7 @@ class HBKeyboard: UIView {
 
     
     weak var delegate: HBKeyboardProtocol?
+    var calculateView: CalculateView!
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -79,7 +80,7 @@ class HBKeyboard: UIView {
         scrollView.contentSize = CGSize(width: ScreenW * 2, height: scrollViewH)
         addSubview(scrollView)
         
-        let calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: scrollViewH))
+        calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: scrollViewH))
         scrollView.addSubview(calculateView)
         
         let dateView = DateView(frame: CGRect(x: ScreenW, y: 0, width: ScreenW, height: scrollViewH))
