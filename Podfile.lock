@@ -7,22 +7,19 @@ PODS:
   - Realm/Headers (2.1.2)
   - RealmSwift (2.1.2):
     - Realm (= 2.1.2)
-  - Reveal-SDK (4)
   - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Charts (~> 3.0.1)
   - RealmSwift (~> 2.1.2)
-  - Reveal-SDK (~> 4)
   - SnapKit (~> 3.0.2)
 
 SPEC CHECKSUMS:
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
   RealmSwift: 17d6ee30b6f9df86364408c2197492e33bfea567
-  Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: e6b2324e880728bba2ab71cbb50c568470f0e0fb
+PODFILE CHECKSUM: 4dc8e9563b57e2adf9bb054d02666ac31fb7090a
 
 COCOAPODS: 1.2.0.beta.1
