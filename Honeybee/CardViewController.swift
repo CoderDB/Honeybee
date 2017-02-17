@@ -17,9 +17,16 @@ class CardViewController: UIViewController {
         return keyboard
     }()
     var collectionView: UICollectionView!
-    
-    
     var lastOffsetY: CGFloat = 0
+    
+    lazy var currentSelectedImgView = UIImageView()
+    lazy var resultLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h2_number
+        label.text = "0"
+        label.textAlignment = .right
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,7 @@ class CardViewController: UIViewController {
 
         addSwipeDownGesture()
         
+        addResultView()
         addCollectionView()
         addKeyboard()
     }
@@ -37,6 +45,23 @@ class CardViewController: UIViewController {
 
 // MARK: UI / Event
 extension CardViewController {
+    func addResultView() {
+        let containerView = UIView(frame: CGRect(x: 10, y: 10, width: view.frame.width-20, height: 60))
+        containerView.backgroundColor = UIColor.cyan
+        view.addSubview(containerView)
+        containerView.addSubview(currentSelectedImgView)
+        containerView.addSubview(resultLabel)
+        currentSelectedImgView.snp.makeConstraints { (make) in
+            make.left.centerY.equalTo(containerView)
+            make.width.height.equalTo(45)
+        }
+        resultLabel.snp.makeConstraints { (make) in
+            make.right.centerY.equalTo(containerView)
+            make.left.equalTo(currentSelectedImgView.snp.right)
+        }
+        
+        
+    }
     func addCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = UIColor.white
@@ -81,7 +106,7 @@ extension CardViewController {
 }
 
 // MARK: UICollectionViewDataSource
-extension CardViewController: UICollectionViewDataSource {
+extension CardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -93,12 +118,15 @@ extension CardViewController: UICollectionViewDataSource {
         cell.backgroundColor = UIColor.randomColor()
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentSelectedImgView.image = nil
+        
+        currentSelectedImgView.backgroundColor = UIColor.randomColor()
+    }
+    
 }
 
-// MARK: UICollectionViewDelegate
-extension CardViewController: UICollectionViewDelegate {
-
-}
 
 // MARK: UIScrollViewDelegate
 extension CardViewController: UIScrollViewDelegate {
@@ -128,16 +156,14 @@ extension CardViewController: HBKeyboardProtocol {
 // MARK: HBKeyboardProtocol
 extension CardViewController: CalculateViewProtocol {
     func inputing(text: String) {
-        print("inputing------\(text)")
+        resultLabel.text = text
     }
     
     func deleted(text: String) {
-        
-        print("deleted------\(text)")
+        resultLabel.text = text
     }
     
     func completed(text: String) {
-        
-        print("ok------\(text)")
+        resultLabel.text = text
     }
 }
