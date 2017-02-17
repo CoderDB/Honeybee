@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol CalculateViewProtocol: class {
+    func inputing(text: String)
+    func deleted(text: String)
+    func completed(text: String)
+}
 
 class CalculateView: UIView {
     
-    private let btnTitles = [["7", "8", "9"], ["4", "5", "6"], ["1", "2", "3"], [".", "0", "0"]]
-
-    private let margin: CGFloat = 5
+    fileprivate var result: String = ""
+    fileprivate var inputString = ""
+    weak var delegate: CalculateViewProtocol?
     
+    private let margin: CGFloat = 5
     private let btnH: CGFloat
     private let btnW: CGFloat
     
@@ -22,6 +28,7 @@ class CalculateView: UIView {
         btnH = (frame.height - margin * 5) / 4
         btnW = (frame.width - margin * 4) / 4
         super.init(frame: frame)
+        
         setupButtons()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -47,24 +54,10 @@ class CalculateView: UIView {
         addDeleteBtn()
         addOKBtn()
     }
-    func addDeleteBtn() {
-        let btn = UIButton(type: .custom)
-        btn.backgroundColor = UIColor.black
-        btn.layer.cornerRadius = 5
-        btn.setImage(UIImage(named: "delete"), for: .normal)
-        btn.addTarget(self, action: #selector(deleteClicked(_:)), for: .touchUpInside)
-        btn.frame = CGRect(x: frame.width - btnW, y: margin, width: btnW - margin, height: btnH * 2 + margin)
-        addSubview(btn)
-    }
     
-    func addOKBtn() {
-        let btn = createBtn(title: "OK")
-        btn.frame = CGRect(x: frame.width - btnW, y: margin * 3 + btnH * 2, width: btnW - margin, height: btnH * 2 + margin)
-        addSubview(btn)
-    }
-    
+    private let btnTitles = [["7", "8", "9"], ["4", "5", "6"], ["1", "2", "3"], [".", "0", "0"]]
     func createBtn(title: String) -> UIButton {
-        let btn = UIButton(type: .system)
+        let btn = UIButton()
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.titleLabel?.font = HonybeeFont.h3_number
@@ -73,12 +66,67 @@ class CalculateView: UIView {
         btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
         return btn
     }
-    
-    func deleteClicked(_ btn: UIButton) {
-        print("___backBtnClicked")
+    func addDeleteBtn() {
+        let btn = UIButton(type: .custom)
+        btn.backgroundColor = UIColor.black
+        btn.layer.cornerRadius = 5
+        btn.setImage(UIImage(named: "delete"), for: .normal)
+        btn.addTarget(self, action: #selector(deleteClicked), for: .touchUpInside)
+        btn.frame = CGRect(x: frame.width - btnW, y: margin, width: btnW - margin, height: btnH * 2 + margin)
+        addSubview(btn)
+    }
+    func addOKBtn() {
+        let btn = UIButton()
+        btn.setTitle("OK", for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = HonybeeFont.h3_number
+        btn.backgroundColor = UIColor.black
+        btn.layer.cornerRadius = 5
+        btn.addTarget(self, action: #selector(okBtnClicked), for: .touchUpInside)
+        btn.frame = CGRect(x: frame.width - btnW, y: margin * 3 + btnH * 2, width: btnW - margin, height: btnH * 2 + margin)
+        addSubview(btn)
     }
     
     func btnClicked(_ btn: UIButton) {
-        print("---btnClicked---\(btn.titleLabel?.text)")
+        guard let input = btn.titleLabel!.text else {
+            return
+        }
+        inputString = input
+        configResult(text: inputString)
+    }
+    func okBtnClicked() {
+        if result.characters.last == "." {
+            result.remove(at: result.index(before: result.endIndex))
+        }
+        delegate?.completed(text: result)
+    }
+    func deleteClicked() {
+        if result.characters.count > 0 {
+            result.remove(at: result.index(before: result.endIndex))
+        } else {
+            result = ""
+        }
+        delegate?.deleted(text: result)
+    }
+    
+    func configResult(text: String) {
+        if result == "" && text == "." {
+            result = "0."
+        }
+        if result.contains(".") {
+            if text == "." {
+                // do nothing
+            } else {
+                if result.components(separatedBy: ".").last!.characters.count >= 2 {
+                    // 只计算小数点后两位
+                    
+                } else {
+                    result += text
+                }
+            }
+        } else {
+            result += text
+        }
+        delegate?.inputing(text: result)
     }
 }
