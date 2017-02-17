@@ -30,8 +30,8 @@ class HBKeyboard: UIView {
         return scrollView
     }()
     
-    private let selfHeight: CGFloat = 280
-    private let toolViewHeight: CGFloat = 60
+    private let selfHeight: CGFloat = 260
+    private let toolViewHeight: CGFloat = 45
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,8 +47,14 @@ class HBKeyboard: UIView {
         let toolView = UIView()
         toolView.backgroundColor = UIColor.white
         addSubview(toolView)
+        
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.black
+        toolView.addSubview(lineView)
+        
+        
        
-        let dateBtn = createButton(imageName: "time", sel: #selector(dateBtnClicked))
+        let dateBtn = createButton(imageName: "date", sel: #selector(dateBtnClicked))
         toolView.addSubview(dateBtn)
         let remarkBtn = createButton(imageName: "remark", sel: #selector(remarkBtnClicked))
         toolView.addSubview(remarkBtn)
@@ -59,18 +65,22 @@ class HBKeyboard: UIView {
             make.top.left.width.equalTo(self)
             make.height.equalTo(toolViewHeight)
         }
+        lineView.snp.makeConstraints { (make) in
+            make.left.top.right.equalTo(toolView)
+            make.height.equalTo(2)
+        }
         
         dateBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(20)
-            make.top.equalTo(10)
-            make.width.height.equalTo(40)
+            make.left.equalTo(toolView).offset(10)
+            make.centerY.equalTo(toolView)
+            make.width.height.equalTo(30)
         }
         remarkBtn.snp.makeConstraints { (make) in
             make.left.equalTo(dateBtn.snp.right).offset(10)
             make.top.width.height.equalTo(dateBtn)
         }
         cameraBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-20)
+            make.right.equalTo(toolView).offset(-10)
             make.top.width.height.equalTo(dateBtn)
         }
     }

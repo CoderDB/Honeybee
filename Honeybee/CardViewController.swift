@@ -31,7 +31,6 @@ class CardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
         updatePreferredContentSizeWithTraitCollection(traitCollection)
 
         addSwipeDownGesture()
@@ -42,25 +41,38 @@ class CardViewController: UIViewController {
     }
 }
 
+//MARK: Transition
+extension CardViewController {
+    func updatePreferredContentSizeWithTraitCollection(_ traitCollection: UITraitCollection) {
+        preferredContentSize = CGSize(width: ScreenW, height: ScreenH * 0.95)
+    }
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        updatePreferredContentSizeWithTraitCollection(newCollection)
+    }
+}
+
 
 // MARK: UI / Event
 extension CardViewController {
     func addResultView() {
-        let containerView = UIView(frame: CGRect(x: 10, y: 10, width: view.frame.width-20, height: 60))
-        containerView.backgroundColor = UIColor.cyan
+        let containerView = UIView(frame: CGRect(x: 10, y: 10, width: view.frame.width-20, height: 50))
+        containerView.layer.cornerRadius = 10
+        containerView.layer.borderWidth = 2
+        containerView.layer.borderColor = UIColor.black.cgColor
         view.addSubview(containerView)
         containerView.addSubview(currentSelectedImgView)
         containerView.addSubview(resultLabel)
         currentSelectedImgView.snp.makeConstraints { (make) in
-            make.left.centerY.equalTo(containerView)
-            make.width.height.equalTo(45)
+            make.left.equalTo(containerView).offset(10)
+            make.centerY.equalTo(containerView)
+            make.width.height.equalTo(40)
         }
         resultLabel.snp.makeConstraints { (make) in
-            make.right.centerY.equalTo(containerView)
-            make.left.equalTo(currentSelectedImgView.snp.right)
+            make.right.equalTo(containerView).offset(-10)
+            make.centerY.equalTo(containerView)
+            make.left.equalTo(currentSelectedImgView.snp.right).offset(10)
         }
-        
-        
     }
     func addCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -70,8 +82,10 @@ extension CardViewController {
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(view)
-            make.top.equalTo(view).offset(100)
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+            make.top.equalTo(view).offset(70)
+            make.bottom.equalTo(view)
         }
     }
     
@@ -79,7 +93,7 @@ extension CardViewController {
         view.addSubview(hb_keyboard)
         hb_keyboard.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(view)
-            make.height.equalTo(280)
+            make.height.equalTo(260)
         }
     }
     
@@ -94,16 +108,6 @@ extension CardViewController {
     }
 }
 
-
-extension CardViewController {
-    func updatePreferredContentSizeWithTraitCollection(_ traitCollection: UITraitCollection) {
-        preferredContentSize = CGSize(width: ScreenW, height: ScreenH * 0.95)
-    }
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        updatePreferredContentSizeWithTraitCollection(newCollection)
-    }
-}
 
 // MARK: UICollectionViewDataSource
 extension CardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -120,11 +124,19 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentSelectedImgView.image = nil
-        
         currentSelectedImgView.backgroundColor = UIColor.randomColor()
     }
-    
+}
+
+
+// MARK: UICollectionViewDelegateFlowLayout
+extension CardViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 1000, right: 0)
+    }
 }
 
 
