@@ -86,6 +86,7 @@ class HeaderView: UIView {
     
     func setupUI() {
         usernameBtn.addTarget(self, action: #selector(usernameBtnClicked), for: .touchUpInside)
+        filterBtn.addTarget(self, action: #selector(filterBtnClicked), for: .touchUpInside)
         eyeBtn.addTarget(self, action: #selector(eyeBtnClicked(_:)), for: .touchUpInside)
         
         addSubview(usernameBtn)
@@ -143,6 +144,10 @@ class HeaderView: UIView {
     var usernameAction: (() -> ())?
     func usernameBtnClicked() {
         usernameAction?()
+    }
+    var filterAction: (() -> ())?
+    func filterBtnClicked() {
+        filterAction?()
     }
     func eyeBtnClicked(_ btn: UIButton) {
         btn.isSelected = !btn.isSelected
