@@ -46,7 +46,7 @@ class CalculateView: UIView {
                     btn.frame.size = CGSize(width: 2 * btnW + margin, height: btnH)
                 }
                 if i == 2 && j == 3 {
-                    btn.frame = CGRect.zero
+                    btn.frame = .zero
                 }
                 addSubview(btn)
             }

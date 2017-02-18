@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     lazy var cardVC: CardViewController = CardViewController()
     lazy var customPresentationController: HBPresentationController = HBPresentationController(presentedViewController: self.cardVC, presenting: self)
     
-    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    let tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
@@ -60,6 +60,9 @@ extension MainViewController {
         let header = HeaderView()
         header.usernameAction = { [unowned self] in
             self.navigationController?.pushViewController(SetupViewController(), animated: true)
+        }
+        header.filterAction = { [unowned self] in
+            
         }
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
