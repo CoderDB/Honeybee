@@ -20,6 +20,10 @@ class MainViewController: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     
+    
+    var dest: UIViewController? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -27,6 +31,12 @@ class MainViewController: UIViewController {
         
         cardVC.transitioningDelegate = customPresentationController
 
+        
+        let destVC = UIViewController()
+        destVC.view.backgroundColor = UIColor.brown
+        destVC.modalPresentationStyle = .popover
+        destVC.preferredContentSize = CGSize(width: 100, height: 100)
+        dest = destVC
         
         addTableView()
         addAddBtn()
@@ -37,6 +47,24 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    
+    func popView(btn: UIButton) {
+        guard let popoverVC = dest!.popoverPresentationController else {
+            return
+        }
+        popoverVC.backgroundColor = UIColor.white
+        popoverVC.delegate = self
+        popoverVC.sourceView = btn
+        popoverVC.sourceRect = btn.bounds
+        present(dest!, animated: true, completion: nil)
+    }
+}
+
+extension MainViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
 
@@ -61,8 +89,8 @@ extension MainViewController {
         header.usernameAction = { [unowned self] in
             self.navigationController?.pushViewController(SetupViewController(), animated: true)
         }
-        header.filterAction = { [unowned self] in
-            
+        header.filterAction = { [unowned self] btn in
+            self.popView(btn: btn)
         }
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
