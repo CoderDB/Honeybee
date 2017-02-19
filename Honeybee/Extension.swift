@@ -8,6 +8,30 @@
 
 import UIKit
 
+//******************************************************************************
+// UITableView Extension
+//******************************************************************************
+protocol NibLoadableView: class {}
+extension NibLoadableView where Self: UIView {
+    static var nibName: String {
+        return "\(self)"
+    }
+}
+protocol ReuseableView: class {}
+extension ReuseableView where Self: UIView {
+    static var reuseIdentifier: String { return "\(self)" }
+}
+extension UITableView {
+    func register<T: UITableViewCell>(_: T.Type) where T: ReuseableView, T: NibLoadableView {
+        let nib = UINib(nibName: T.nibName, bundle: nil)
+        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+}
+
+
+//******************************************************************************
+// UIColor Extension
+//******************************************************************************
 extension UIColor {
     
     class func RGB(r: Float, g: Float, b: Float) -> UIColor {
@@ -22,6 +46,10 @@ extension UIColor {
     
 }
 
+
+//******************************************************************************
+// UIView Extension
+//******************************************************************************
 extension UIView {
     
     func rotateY360() {
@@ -33,6 +61,9 @@ extension UIView {
 }
 
 
+//******************************************************************************
+// UIImage Extension
+//******************************************************************************
 extension UIImage {
     
     static func image(color: UIColor,size: CGSize) -> UIImage {
