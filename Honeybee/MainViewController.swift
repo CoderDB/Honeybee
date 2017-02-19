@@ -20,8 +20,22 @@ class MainViewController: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     
-    
     var dest: UIViewController? = nil
+    
+    lazy var topBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("仅支出", for: .normal)
+        btn.setTitleColor(HonybeeColor.main, for: .normal)
+        btn.titleLabel?.font = HonybeeFont.h5
+        return btn
+    }()
+    lazy var botBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("仅收入", for: .normal)
+        btn.setTitleColor(HonybeeColor.main, for: .normal)
+        btn.titleLabel?.font = HonybeeFont.h5
+        return btn
+    }()
     
     
     override func viewDidLoad() {
@@ -31,15 +45,24 @@ class MainViewController: UIViewController {
         
         cardVC.transitioningDelegate = customPresentationController
 
-        
+    
         let destVC = UIViewController()
-        destVC.view.backgroundColor = UIColor.brown
+        topBtn.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+        botBtn.frame = CGRect(x: 0, y: 30, width: 70, height: 30)
+        topBtn.addTarget(self, action: #selector(topBtnClicked), for: .touchUpInside)
+        destVC.view.addSubview(topBtn)
+        destVC.view.addSubview(botBtn)
+        destVC.view.backgroundColor = UIColor.white
         destVC.modalPresentationStyle = .popover
-        destVC.preferredContentSize = CGSize(width: 100, height: 100)
+        destVC.preferredContentSize = CGSize(width: 70, height: 60)
+        
         dest = destVC
         
         addTableView()
         addAddBtn()
+    }
+    func topBtnClicked() {
+        print("___+++++____")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,7 +72,6 @@ class MainViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    
     func popView(btn: UIButton) {
         guard let popoverVC = dest!.popoverPresentationController else {
             return
@@ -58,6 +80,8 @@ class MainViewController: UIViewController {
         popoverVC.delegate = self
         popoverVC.sourceView = btn
         popoverVC.sourceRect = btn.bounds
+        popoverVC.permittedArrowDirections = .up
+        
         present(dest!, animated: true, completion: nil)
     }
 }
