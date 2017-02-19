@@ -11,22 +11,22 @@ import UIKit
 //******************************************************************************
 // UITableView Extension
 //******************************************************************************
-protocol NibLoadableView: class {}
-extension NibLoadableView where Self: UIView {
-    static var nibName: String {
-        return "\(self)"
-    }
-}
-protocol ReuseableView: class {}
-extension ReuseableView where Self: UIView {
-    static var reuseIdentifier: String { return "\(self)" }
-}
-extension UITableView {
-    func register<T: UITableViewCell>(_: T.Type) where T: ReuseableView, T: NibLoadableView {
-        let nib = UINib(nibName: T.nibName, bundle: nil)
-        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
-    }
-}
+//protocol NibLoadableView: class {}
+//extension NibLoadableView where Self: UIView {
+//    static var nibName: String {
+//        return "\(self)"
+//    }
+//}
+//protocol ReuseableView: class {}
+//extension ReuseableView where Self: UIView {
+//    static var reuseIdentifier: String { return "\(self)" }
+//}
+//extension UITableView {
+//    func register<T: UITableViewCell>(_: T.Type) where T: ReuseableView, T: NibLoadableView {
+//        let nib = UINib(nibName: T.nibName, bundle: nil)
+//        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
+//    }
+//}
 
 
 //******************************************************************************
@@ -57,6 +57,35 @@ extension UIView {
         rotationAnimation.toValue = NSNumber(value: M_PI*2)
         rotationAnimation.duration = 0.4
         layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
+    
+    
+    func roundRect(cornerRadius radius: CGFloat) -> UIImage {
+        
+        let size = CGSize(width: bounds.width, height: bounds.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setLineWidth(1.0)
+        context.setStrokeColor(UIColor.black.cgColor)
+        context.setFillColor(UIColor.white.cgColor)
+        
+        let padding: CGFloat = 10
+        let minX = bounds.minX + padding
+        let maxX = bounds.maxX - padding
+        
+        let minY = bounds.minY + padding
+        let maxY = bounds.maxY - padding - radius
+        
+        context.move(to: CGPoint(x: minX+radius, y: minY))
+        context.addArc(tangent1End: CGPoint(x: maxX, y: minY), tangent2End: CGPoint(x: maxX, y: maxY), radius: radius)
+        context.addArc(tangent1End: CGPoint(x: maxX, y: maxY), tangent2End: CGPoint(x: minX, y: maxY), radius: radius)
+        context.addArc(tangent1End: CGPoint(x: minX, y: maxY), tangent2End: CGPoint(x: minX, y: minY), radius: radius)
+        context.addArc(tangent1End: CGPoint(x: minX, y: minY), tangent2End: CGPoint(x: maxX, y: minY), radius: radius)
+        
+        UIGraphicsGetCurrentContext()?.drawPath(using: .fillStroke)
+        let output = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return output!
     }
 }
 
@@ -103,38 +132,4 @@ extension UIImage {
         return image!
     }
     
-}
-
-
-
-
-extension UIView {
-
-    func roundRect(cornerRadius radius: CGFloat) -> UIImage {
-        
-        let size = CGSize(width: bounds.width, height: bounds.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()!
-        context.setLineWidth(1.0)
-        context.setStrokeColor(UIColor.black.cgColor)
-        context.setFillColor(UIColor.white.cgColor)
-        
-        let padding: CGFloat = 10
-        let minX = bounds.minX + padding
-        let maxX = bounds.maxX - padding
-        
-        let minY = bounds.minY + padding
-        let maxY = bounds.maxY - padding - radius
-        
-        context.move(to: CGPoint(x: minX+radius, y: minY))
-        context.addArc(tangent1End: CGPoint(x: maxX, y: minY), tangent2End: CGPoint(x: maxX, y: maxY), radius: radius)
-        context.addArc(tangent1End: CGPoint(x: maxX, y: maxY), tangent2End: CGPoint(x: minX, y: maxY), radius: radius)
-        context.addArc(tangent1End: CGPoint(x: minX, y: maxY), tangent2End: CGPoint(x: minX, y: minY), radius: radius)
-        context.addArc(tangent1End: CGPoint(x: minX, y: minY), tangent2End: CGPoint(x: maxX, y: minY), radius: radius)
-        
-        UIGraphicsGetCurrentContext()?.drawPath(using: .fillStroke)
-        let output = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return output!
-    }
 }
