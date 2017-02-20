@@ -39,6 +39,9 @@ class CardViewController: UIViewController {
         addCollectionView()
         addKeyboard()
     }
+    deinit {
+        print("-----CardViewController--deinit--")
+    }
 }
 
 //MARK: Transition
