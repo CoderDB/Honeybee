@@ -17,7 +17,7 @@ class PieViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNav(title: "设置")
+        setupNav(title: "图表")
         
         addTableView()
         
@@ -55,7 +55,7 @@ extension PieViewController {
         
         tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
         
-        tableView.tableHeaderView = PieHeader(height: 300)
+        tableView.tableHeaderView = PieHeader(height: 250)
     }
 }
 
