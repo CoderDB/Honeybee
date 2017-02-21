@@ -85,6 +85,8 @@ class HeaderView: UIView {
     }
     
     func setupUI() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnContainerView(_:)))
+        containerView.addGestureRecognizer(tap)
         usernameBtn.addTarget(self, action: #selector(usernameBtnClicked), for: .touchUpInside)
         filterBtn.addTarget(self, action: #selector(filterBtnClicked(_:)), for: .touchUpInside)
         eyeBtn.addTarget(self, action: #selector(eyeBtnClicked(_:)), for: .touchUpInside)
@@ -140,7 +142,10 @@ class HeaderView: UIView {
             make.bottom.equalTo(inMoneyLabel.snp.top)
         }
     }
-    
+    var tapContainerViewAction: (() -> ())?
+    func tapOnContainerView(_ tap: UITapGestureRecognizer) {
+        tapContainerViewAction?()
+    }
     var usernameAction: (() -> ())?
     func usernameBtnClicked() {
         usernameAction?()
