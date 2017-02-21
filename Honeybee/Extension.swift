@@ -147,5 +147,20 @@ extension UIImage {
         
         return image!
     }
+}
+
+
+//******************************************************************************
+// CAGradientLayer
+//******************************************************************************
+
+extension CAGradientLayer {
     
+    static func gradient(colors: [UIColor]) -> CAGradientLayer {
+        let layer = CAGradientLayer()
+        let cgColors = colors.map{ $0.cgColor }
+        layer.colors = cgColors
+        layer.locations = [0.0, 1.0]
+        return layer
+    }
 }

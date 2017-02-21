@@ -24,7 +24,10 @@ class PieHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor.orange, HonybeeColor.main])
+        gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: 250)
+        gradientLayer.cornerRadius = 10
+        layer.addSublayer(gradientLayer)
         addPieView()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -35,9 +38,7 @@ class PieHeader: UIView {
     func addPieView() {
         addSubview(pieView)
         pieView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(self)
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(self).offset(-10).priority(HonybeePriority.low)
+            make.edges.equalTo(self)
         }
         
         var dataEntries: [ChartDataEntry] = []
@@ -59,7 +60,7 @@ class PieHeader: UIView {
         dataSet.valueLinePart1OffsetPercentage = 0.8  //线拐角之前距离圆心长度百分比
         dataSet.valueLineColor = UIColor.black      //线颜色
         dataSet.valueLineWidth = 1.5                //线宽
-        dataSet.valueTextColor = HonybeeColor.main  //线末端字体颜色
+        dataSet.valueTextColor = UIColor.black  //线末端字体颜色
         dataSet.valueFont = HonybeeFont.h4_number   // 线末端字体
         
         let data = PieChartData(dataSet: dataSet)
@@ -71,15 +72,15 @@ class PieHeader: UIView {
         //        pieChartView.transparentCircleColor = UIColor.blue //
         //        pieChartView.holeRadiusPercent = 0 //内环
         //        pieChartView.transparentCircleRadiusPercent = 0 //中环
-        pieView.entryLabelColor = UIColor.red
+        pieView.entryLabelColor = UIColor.black
         
         
-        //        pieChartView.rotationEnabled = false //旋转开关
+        pieView.rotationEnabled = false //旋转开关
         //        pieChartView.maxAngle = 270
         //        pieChartView.centerText = "hahah"
         //        pieChartView.dragDecelerationEnabled = false
         
-        pieView.setExtraOffsets(left: 10, top: 10, right: 10, bottom: 10)
+//        pieView.setExtraOffsets(left: 10, top: 10, right: 10, bottom: 10)
         pieView.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
         
         pieView.legend.form = .none
