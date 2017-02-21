@@ -29,10 +29,10 @@ struct HonybeeFont {
     static let h6 = UIFont(descriptor: UIFontDescriptor(fontAttributes: [UIFontDescriptorFamilyAttribute: "PingFang SC", UIFontDescriptorFaceAttribute: "Semibold"]), size: 12)
     
     
-    static let h1_number = UIFont(name: "Silom", size: 70)
-    static let h2_number = UIFont(name: "Silom", size: 36)
-    static let h3_number = UIFont(name: "Silom", size: 30)
-    static let h4_number = UIFont(name: "Silom", size: 18)
+    static let h1_number = UIFont(name: "Silom", size: 70)!
+    static let h2_number = UIFont(name: "Silom", size: 36)!
+    static let h3_number = UIFont(name: "Silom", size: 30)!
+    static let h4_number = UIFont(name: "Silom", size: 18)!
 }
 
 struct HonybeePriority {

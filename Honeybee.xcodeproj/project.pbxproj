@@ -32,6 +32,7 @@
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		86A442831DFBF433006D2A44 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A442811DFBF433006D2A44 /* CollectionViewCell.swift */; };
 		86A442841DFBF433006D2A44 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A442821DFBF433006D2A44 /* CollectionViewCell.xib */; };
+		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
 		86BBC33D1E0FAA0A009A7D5D /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBC33C1E0FAA0A009A7D5D /* BarView.swift */; };
 		86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */; };
 		86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702C1E51BA560004E192 /* SetupHeader.swift */; };
@@ -105,6 +106,7 @@
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		86A442811DFBF433006D2A44 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		86A442821DFBF433006D2A44 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
 		86BBC33C1E0FAA0A009A7D5D /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailFooter.swift; sourceTree = "<group>"; };
 		86D1702C1E51BA560004E192 /* SetupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHeader.swift; sourceTree = "<group>"; };
@@ -260,8 +262,9 @@
 		86E5746E1E4C6E6C001255CD /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				86BBC33C1E0FAA0A009A7D5D /* BarView.swift */,
 				86FC4EC51E1112B10048E183 /* PieViewController.swift */,
+				86BA1BA71E5C4BF700669580 /* PieHeader.swift */,
+				86BBC33C1E0FAA0A009A7D5D /* BarView.swift */,
 				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
 				8627BFB41E0BADFD00C1A257 /* CurveCell.swift */,
 				8627BFB81E0BC83300C1A257 /* LineView.swift */,
@@ -661,6 +664,7 @@
 				86A442831DFBF433006D2A44 /* CollectionViewCell.swift in Sources */,
 				8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */,
 				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
+				86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */,
 				86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
