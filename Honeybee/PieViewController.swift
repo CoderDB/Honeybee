@@ -10,7 +10,7 @@
 import UIKit
 import Charts
 
-class PieViewController: UIViewController {
+class PieViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

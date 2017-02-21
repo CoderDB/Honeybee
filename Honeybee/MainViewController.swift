@@ -111,6 +111,9 @@ extension MainViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let header = HeaderView()
+        header.tapContainerViewAction = { [unowned self] in
+            self.navigationController?.pushViewController(PieViewController(), animated: true)
+        }
         header.usernameAction = { [unowned self] in
             self.navigationController?.pushViewController(SetupViewController(), animated: true)
         }
