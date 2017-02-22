@@ -48,12 +48,12 @@ extension UIColor {
         default:
             (r, g, b, a) = (1, 1, 1, 0)
         }
-        return RGBA(r: Float(r), g: Float(g), b: Float(b), a: Float(a))
+        return rgba(r: Float(r), g: Float(g), b: Float(b), a: Float(a))
     }
-    static func RGB(r: Float, g: Float, b: Float) -> UIColor {
-        return RGBA(r: r, g: g, b: b, a: 1)
+    static func rgb(r: Float, g: Float, b: Float) -> UIColor {
+        return rgba(r: r, g: g, b: b, a: 1)
     }
-    static func RGBA(r: Float, g: Float, b: Float,a: Float) -> UIColor {
+    static func rgba(r: Float, g: Float, b: Float,a: Float) -> UIColor {
         return UIColor(colorLiteralRed: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
     static func randomColor() -> UIColor {

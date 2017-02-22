@@ -9,13 +9,13 @@
 import UIKit
 
 struct Theme {
-    static let main = UIColor.RGB(r: 0, g: 187, b: 156)
+    static let main = UIColor.rgb(r: 0, g: 187, b: 156)
     
     
 }
 
 struct HonybeeColor {
-    static let main = UIColor.RGB(r: 250, g: 45, b: 66)
+    static let main = UIColor.rgb(r: 250, g: 45, b: 66)
 }
 
 struct HonybeeFont {
