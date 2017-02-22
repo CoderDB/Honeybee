@@ -21,12 +21,14 @@ class PieViewController: BaseViewController {
         
         addTableView()
         
-        let item1 = SetupItem(title: "记账提醒", subTitle: "每天\n10:00")
-        let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
-        let item3 = SetupImageItem(title: "头像", subTitle: "")
+        let item1 = SetupArrowItem(title: "衣", subTitle: "10%")
+        let item2 = SetupArrowItem(title: "食", subTitle: "30%")
+        let item3 = SetupArrowItem(title: "住", subTitle: "30%")
+        let item4 = SetupArrowItem(title: "行", subTitle: "30%")
         dataSource.append(item1)
         dataSource.append(item2)
         dataSource.append(item3)
+        dataSource.append(item4)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,7 +55,7 @@ extension PieViewController {
         
         tableView.rowHeight = 60
         
-        tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
+        tableView.register(PieCell.self, forCellReuseIdentifier: "\(PieCell.self)")
         
         tableView.tableHeaderView = PieHeader(height: 250)
     }
@@ -66,8 +68,12 @@ extension PieViewController: UITableViewDataSource, UITableViewDelegate {
         return dataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)") as! SetupCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(PieCell.self)") as! PieCell
         cell.item = dataSource[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(BaseViewController(), animated: true)
     }
 }
