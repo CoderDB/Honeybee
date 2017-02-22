@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BarCell: UITableViewCell {
+class BarCell: BaseCell {
+    
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     lazy var mainTopTitleLabel: UILabel = {
         let label = UILabel()
@@ -28,24 +29,7 @@ class BarCell: UITableViewCell {
     }()
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layer.cornerRadius = 10
-        layer.borderWidth = 1
-        setupUI()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override var frame: CGRect {
-        didSet {
-            var newFrame = frame
-            newFrame.origin.x += 10
-            newFrame.origin.y += 20
-            newFrame.size = CGSize(width: frame.width-20, height: frame.height-10)
-            super.frame = newFrame
-        }
-    }
+  
     var item: SetupItem! {
         didSet {
             mainTopTitleLabel.text = "星期六"
@@ -53,7 +37,7 @@ class BarCell: UITableViewCell {
             subTitleLabel.text = item.subTitle
         }
     }
-    func setupUI() {
+    override func setupUI() {
         contentView.addSubview(imgView)
         contentView.addSubview(mainTopTitleLabel)
         contentView.addSubview(mainBottomTitleLabel)
