@@ -17,6 +17,7 @@ class BaseTableViewController: BaseViewController {
         tv.showsHorizontalScrollIndicator = false
         tv.dataSource = self
         tv.delegate = self
+        tv.rowHeight = 60
         return tv
     }()
     

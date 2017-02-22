@@ -1,5 +1,5 @@
 //
-//  PieCell.swift
+//  BarCell.swift
 //  Honeybee
 //
 //  Created by Dongbing Hou on 22/02/2017.
@@ -8,11 +8,16 @@
 
 import UIKit
 
-class PieCell: UITableViewCell {
-    
-    lazy var mainTitleLabel: UILabel = {
+class BarCell: UITableViewCell {
+    lazy var imgView = UIImageView(image: UIImage(named: "meal"))
+    lazy var mainTopTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h2
+        label.font = HonybeeFont.h4
+        return label
+    }()
+    lazy var mainBottomTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h4_number
         return label
     }()
     lazy var subTitleLabel: UILabel = {
@@ -43,21 +48,34 @@ class PieCell: UITableViewCell {
     }
     var item: SetupItem! {
         didSet {
-            mainTitleLabel.text = item.title
+            mainTopTitleLabel.text = "星期六"
+            mainBottomTitleLabel.text = "02-18"
             subTitleLabel.text = item.subTitle
         }
     }
     func setupUI() {
-        contentView.addSubview(mainTitleLabel)
+        contentView.addSubview(imgView)
+        contentView.addSubview(mainTopTitleLabel)
+        contentView.addSubview(mainBottomTitleLabel)
         contentView.addSubview(subTitleLabel)
-        
-        mainTitleLabel.snp.makeConstraints { (make) in
+        imgView.snp.makeConstraints { (make) in
             make.centerY.equalTo(contentView)
             make.left.equalTo(contentView).offset(10)
+            make.width.height.equalTo(40)
+        }
+        mainTopTitleLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(contentView.snp.centerY)
+            make.left.equalTo(imgView.snp.right).offset(10)
+        }
+        mainBottomTitleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView.snp.centerY)
+            make.left.equalTo(mainTopTitleLabel)
         }
         subTitleLabel.snp.makeConstraints { (make) in
             make.right.centerY.equalTo(contentView)
         }
         accessoryView = arrow
     }
+
+
 }
