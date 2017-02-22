@@ -74,6 +74,6 @@ extension PieViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(BaseViewController(), animated: true)
+        navigationController?.pushViewController(BarViewController(), animated: true)
     }
 }
