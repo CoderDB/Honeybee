@@ -28,6 +28,8 @@
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
 		868915801DF9955B0035CFD3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157F1DF9955B0035CFD3 /* Theme.swift */; };
 		86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86937D281DF2783300F180F6 /* HBKeyboard.swift */; };
+		8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEDD1E5D9E4100993CFE /* PieCell.swift */; };
+		8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEDF1E5DA1D700993CFE /* BarViewController.swift */; };
 		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		86A442831DFBF433006D2A44 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A442811DFBF433006D2A44 /* CollectionViewCell.swift */; };
@@ -102,6 +104,8 @@
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8689157F1DF9955B0035CFD3 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
+		8697CEDD1E5D9E4100993CFE /* PieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieCell.swift; sourceTree = "<group>"; };
+		8697CEDF1E5DA1D700993CFE /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
 		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		86A442811DFBF433006D2A44 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				86FC4EC51E1112B10048E183 /* PieViewController.swift */,
+				8697CEDF1E5DA1D700993CFE /* BarViewController.swift */,
+				8697CEDD1E5D9E4100993CFE /* PieCell.swift */,
 				86BA1BA71E5C4BF700669580 /* PieHeader.swift */,
 				86BBC33C1E0FAA0A009A7D5D /* BarView.swift */,
 				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
@@ -637,6 +643,7 @@
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
 				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
+				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
 				86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
@@ -651,6 +658,7 @@
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
 				8615444B1E4DE50200A6EEBD /* Reocder.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
+				8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,

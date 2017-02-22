@@ -35,16 +35,30 @@ class PieHeader: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor.rgb(r: 248, g: 185, b: 81), UIColor.rgb(r: 252, g: 91, b: 107)])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: frame.height)
         gradientLayer.cornerRadius = 10
         layer.addSublayer(gradientLayer)
+        
+//        backgroundColor = UIColor.white
+//        layer.cornerRadius = 10
+//        layer.borderColor = UIColor.black.cgColor
+//        layer.borderWidth = 1
+        
+        
         addPieView()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+//    override var frame: CGRect {
+//        didSet {
+//            var newFrame = frame
+//            newFrame.origin.x += 10
+//            newFrame.size.width -= 20
+//            super.frame = newFrame
+//        }
+//    }
     
     func createData(numbers: [Double]) -> PieChartData {
         var dataEntries: [ChartDataEntry] = []
@@ -56,6 +70,8 @@ class PieHeader: UIView {
         dataSet.colors = [UIColor.gray,UIColor.cyan, UIColor.green, UIColor.darkGray, UIColor.red]
         dataSet.xValuePosition = .outsideSlice              //坐标值显示位置
         dataSet.yValuePosition = .outsideSlice
+//        dataSet.sliceSpace = 1.0
+        
         
         dataSet.valueLineVariableLength = true              //线长度是否可变
         dataSet.valueLinePart2Length = 1                    //线拐角之后的线长
