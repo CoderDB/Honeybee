@@ -28,6 +28,7 @@ class BarHeader: UIView {
     
     lazy var barView: BarChartView = {
         let barView = BarChartView()
+        barView.fitBars = true
         
         // xAxis
 //        barView.xAxis.enabled = false
@@ -39,18 +40,9 @@ class BarHeader: UIView {
         
         // leftAxis
         barView.leftAxis.enabled = false
-//        barView.leftAxis.labelTextColor = UIColor.white
-//        barView.leftAxis.drawGridLinesEnabled = false  //当leftAxis和rightAxis的drawGridLinesEnabled都为false时，横格线才不会显示
-//        barView.leftAxis.drawAxisLineEnabled = false
-//        barView.leftAxis.valueFormatter = IndexAxisValueFormatter(values: unitsSold)
-//        barView.leftAxis.drawZeroLineEnabled = false // 如果x轴不显示，那么y轴的0线当然不会显示，所以这句可以不要
-//        barView.leftAxis.drawTopYLabelEntryEnabled = false //左侧y轴的最大值label不显示
         
         // rightAxis
         barView.rightAxis.enabled = false
-//        barView.rightAxis.drawGridLinesEnabled = false
-//        barView.rightAxis.drawLabelsEnabled = false //右侧y轴不显示label
-//        barView.rightAxis.drawAxisLineEnabled = false //右侧y轴不显示
         
         // x, y轴双击都不缩放
         barView.scaleXEnabled = false
@@ -61,9 +53,6 @@ class BarHeader: UIView {
         
         // legend
         barView.legend.enabled = false
-        //        barView.legend.drawInside = false //指示块位置
-        //        barView.legend.direction = .rightToLeft
-//        barView.legend.form = .none
         
         barView.isUserInteractionEnabled = false
         return barView
@@ -81,19 +70,14 @@ class BarHeader: UIView {
         
         dataSet.valueTextColor = UIColor.white
         dataSet.valueFont = HonybeeFont.h6_number
-//       dataSet.valueFormatter
         
-        dataSet.drawValuesEnabled = true //不显示条形柱的值
-        //        barChartDataSet.barBorderColor = UIColor.black //条形柱边框颜色
-        //        barChartDataSet.barBorderWidth = 5 //条形柱边框宽度
-//                barChartDataSet.barShadowColor = UIColor.red
+        dataSet.drawValuesEnabled = true //显示条形柱的值
         
-        //        barChartDataSet.label = "每日消费" //条形主下方指示说明
         
         dataSet.colors = [UIColor.rgb(r: 252, g: 231, b: 198)] //条形柱颜色
         
         let data = BarChartData(dataSet: dataSet)
-//        data.barWidth = 1.0
+        data.barWidth = 0.2
         
         return data
     }
@@ -103,8 +87,9 @@ class BarHeader: UIView {
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(20)
-            make.right.equalTo(self).offset(-20)
-            make.top.bottom.equalTo(self)
+            make.right.equalTo(self).offset(-20).priority(HonybeePriority.mid)
+            make.bottom.equalTo(self).offset(-5)
+            make.top.equalTo(self)
         }
         
         let unitsSold = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
