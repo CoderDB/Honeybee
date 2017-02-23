@@ -28,7 +28,6 @@ class BarHeader: UIView {
     
     lazy var barView: BarChartView = {
         let barView = BarChartView()
-        barView.fitBars = true
         
         // xAxis
 //        barView.xAxis.enabled = false
@@ -77,7 +76,8 @@ class BarHeader: UIView {
         dataSet.colors = [UIColor.rgb(r: 252, g: 231, b: 198)] //条形柱颜色
         
         let data = BarChartData(dataSet: dataSet)
-        data.barWidth = 0.2
+        data.barWidth = 0.5
+
         
         return data
     }
