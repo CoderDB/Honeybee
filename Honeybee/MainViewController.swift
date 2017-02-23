@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
     var customPresentationController: HBPresentationController!
     
     let tableView = UITableView(frame: .zero, style: .grouped)
+    var dataSource = [Recorder]()
+    
     
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
@@ -46,6 +48,17 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         automaticallyAdjustsScrollViewInsets = false
+        let r1 = Recorder(date: "2017-02-17", category: "", money: "2567", remark: "", color: UIColor.red)
+        let r2 = Recorder(date: "2017-02-17", category: "", money: "2567", remark: "", color: UIColor.red)
+        let r3 = Recorder(date: "2017-02-17", category: "", money: "2567", remark: "", color: UIColor.red)
+        let r4 = Recorder(date: "2017-02-17", category: "", money: "2567", remark: "", color: UIColor.red)
+        let r5 = Recorder(date: "2017-02-17", category: "", money: "2567", remark: "", color: UIColor.red)
+        
+        dataSource.append(r1)
+        dataSource.append(r2)
+        dataSource.append(r3)
+        dataSource.append(r4)
+        dataSource.append(r5)
         
         cardVC = CardViewController()
         customPresentationController = HBPresentationController(presentedViewController: cardVC, presenting: self)
@@ -151,13 +164,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 20
-        } else if section == 1 {
-            return 40
-        } else {
-            return 30
-        }
+        return dataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
