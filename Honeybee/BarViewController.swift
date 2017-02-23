@@ -26,9 +26,36 @@ class BarViewController: BaseTableViewController {
         
         tableView.register(BarCell.self, forCellReuseIdentifier: "\(BarCell.self)")
         tableView.tableHeaderView = BarHeader(height: 170)
+        
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 25))
+        btn.setImage(UIImage(named: "calendar"), for: .normal)
+//        btn.setTitle("选择", for: .normal)
+//        btn.setTitleColor(HonybeeColor.main, for: .normal)
+//        btn.titleLabel?.font = HonybeeFont.h4
+        btn.addTarget(self, action: #selector(navRightItemAction(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    func navRightItemAction(_ btn: UIButton) {
+        let destVC = BarPopoverViewController()
+        destVC.modalPresentationStyle = .popover
+        let popoverVC = destVC.popoverPresentationController!
+        popoverVC.delegate = self
+        popoverVC.sourceView = btn
+        popoverVC.sourceRect = btn.bounds
+        popoverVC.permittedArrowDirections = .up
+        destVC.didSelectRow = {row in
+            print("----\(row)")
+        }
+        present(destVC, animated: true, completion: nil)
     }
 }
-
+// MARK: UIPopoverPresentationControllerDelegate
+extension BarViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+}
 
 // MARK: UITableViewDataSource
 extension BarViewController {
@@ -39,5 +66,8 @@ extension BarViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(BarCell.self)") as! BarCell
         cell.item = dataSource[indexPath.row]
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(RecordDetailController(), animated: true)
     }
 }

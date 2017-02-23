@@ -165,17 +165,30 @@ extension CAGradientLayer {
     }
 }
 
-import Charts
-extension BarChartRenderer {
-    func drawRoundLine(context: CGContext, rect: CGRect, lineColor: CGColor) {
-        let x = rect.midX
-        let minY = rect.minY + 10
-        let maxY = rect.maxY
-        
-        context.setLineCap(.round)
-        context.setLineWidth(rect.width)
-        context.setStrokeColor(lineColor)
-        context.addLines(between: [CGPoint(x: x, y: maxY), CGPoint(x: x, y: minY)])
-        context.drawPath(using: .fillStroke)
-    }
-}
+
+
+//    override func draw(_ rect: CGRect) {
+//        super.draw(rect)
+//        guard let context = UIGraphicsGetCurrentContext() else {
+//            return
+//        }
+//        context.saveGState()
+//
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//
+//        let startColor = UIColor.red
+//        let startComponents = startColor.cgColor.components!
+//        let endColor = UIColor.orange
+//        let endComponents = endColor.cgColor.components!
+//
+//        let colorComponents = startComponents + endComponents
+//        let location: [CGFloat] = [0, 1]
+//        let gradient = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: location, count: 2)
+//
+//        let startPoint = CGPoint(x: 0, y: rect.height)
+//        let endPoint = CGPoint(x: rect.width, y: 0)
+//
+//        context.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: .drawsBeforeStartLocation)
+//
+//        context.restoreGState()
+//    }
