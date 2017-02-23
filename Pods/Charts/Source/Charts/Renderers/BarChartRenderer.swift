@@ -310,8 +310,8 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 // Set the color for the currently drawn value. If the index is out of bounds, reuse colors.
                 context.setFillColor(dataSet.color(atIndex: j).cgColor)
             }
-            
-            context.fill(barRect)
+            drawRoundLine(context: context, rect: barRect, lineColor: dataSet.color(atIndex: 0).cgColor)
+//            context.fill(barRect)
             
             if drawBorder
             {
@@ -323,7 +323,14 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
         
         context.restoreGState()
     }
-    
+    fileprivate func drawRoundLine(context: CGContext, rect: CGRect, lineColor: CGColor) {
+        let x = rect.midX
+        context.setLineCap(.round)
+        context.setLineWidth(rect.width)
+        context.setStrokeColor(lineColor)
+        context.addLines(between: [CGPoint(x: x, y: rect.maxY), CGPoint(x: x, y: rect.minY)])
+        context.drawPath(using: .fillStroke)
+    }
     open func prepareBarHighlight(
         x: Double,
           y1: Double,

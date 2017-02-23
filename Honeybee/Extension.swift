@@ -164,3 +164,18 @@ extension CAGradientLayer {
         return layer
     }
 }
+
+import Charts
+extension BarChartRenderer {
+    func drawRoundLine(context: CGContext, rect: CGRect, lineColor: CGColor) {
+        let x = rect.midX
+        let minY = rect.minY + 10
+        let maxY = rect.maxY
+        
+        context.setLineCap(.round)
+        context.setLineWidth(rect.width)
+        context.setStrokeColor(lineColor)
+        context.addLines(between: [CGPoint(x: x, y: maxY), CGPoint(x: x, y: minY)])
+        context.drawPath(using: .fillStroke)
+    }
+}
