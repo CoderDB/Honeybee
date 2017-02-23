@@ -12,7 +12,7 @@ class RecordDetailController: BaseViewController {
     
     
     lazy var tableView = UITableView()
-    var model: Reocder!
+    var model: Recorder!
     let cellTitles = ["金额", "记录时间", "分类", "备注"]
     
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class RecordDetailController: BaseViewController {
         
         setupNav(title: "详情")
         addTableView()
-        model = Reocder(date: "", category: "金额", money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n")
+        model = Recorder(date: "", category: "金额", money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n", color: UIColor())
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -70,7 +70,7 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func setSubTitleAttributes(cell: RecordDetailCell, indexPath: IndexPath, model: Reocder) {
+    func setSubTitleAttributes(cell: RecordDetailCell, indexPath: IndexPath, model: Recorder) {
         if indexPath.row == 0 {
             cell.subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.h3_number])
         } else if indexPath.row == 1 {
