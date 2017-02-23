@@ -27,58 +27,44 @@ class BarHeader: UIView {
     }
     
     lazy var barView: BarChartView = {
-        let barView = BarChartView()
+        let barV = BarChartView()
+        
+        barV.noDataText = "暂无数据"
+        barV.chartDescription = nil
         
         // xAxis
-//        barView.xAxis.enabled = false
-        barView.xAxis.labelTextColor = UIColor.white
-        barView.xAxis.valueFormatter = IndexAxisValueFormatter(values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map{"\($0)日"}) //x轴label值的显示样式
-        barView.xAxis.drawAxisLineEnabled = false //不显示x轴
-        barView.xAxis.drawGridLinesEnabled = false // 不显示竖格线
-        barView.xAxis.labelPosition = .bottom
-        
-        // leftAxis
-        barView.leftAxis.enabled = false
-        
-        // rightAxis
-        barView.rightAxis.enabled = false
+        barV.xAxis.drawAxisLineEnabled = false //不显示x轴
+        barV.xAxis.drawGridLinesEnabled = false // 不显示竖格线
+        barV.xAxis.labelPosition = .bottom
+        barV.xAxis.labelTextColor = UIColor.white
+        barV.xAxis.valueFormatter = IndexAxisValueFormatter(values: (1..<31).map{"\($0)日"}) //x轴label值的显示样式
+        barV.xAxis.labelCount = 10
         
         // x, y轴双击都不缩放
-        barView.scaleXEnabled = false
-        barView.scaleYEnabled = false
+        barV.scaleXEnabled = false
+        barV.scaleYEnabled = false
         
-        barView.noDataText = "请稍等"
-        barView.chartDescription = nil
-        
-        // legend
-        barView.legend.enabled = false
-        
-        barView.isUserInteractionEnabled = false
-        return barView
+        barV.leftAxis.enabled = false
+        barV.rightAxis.enabled = false
+        barV.legend.enabled = false
+        barV.isUserInteractionEnabled = false
+        return barV
     }()
     
     func createData(numbers: [Double]) -> BarChartData {
         var dataEntries: [BarChartDataEntry] = []
-        
-        let months: [Int] = Array(1..<20)
-        for i in 0..<months.count {
+        for i in stride(from: 0, to: 30, by: 1) {
             let dataEntry = BarChartDataEntry(x: Double(i), y: numbers[i])
             dataEntries.append(dataEntry)
         }
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
-        
-        dataSet.valueTextColor = UIColor.white
-        dataSet.valueFont = HonybeeFont.h6_number
-        
         dataSet.drawValuesEnabled = true //显示条形柱的值
-        
-        
-        dataSet.colors = [UIColor.rgb(r: 252, g: 231, b: 198)] //条形柱颜色
+        dataSet.valueTextColor = UIColor.black
+        dataSet.valueFont = HonybeeFont.h6_number
+        dataSet.colors = [UIColor.rgb(r: 252, g: 234, b: 203)] //条形柱颜色
         
         let data = BarChartData(dataSet: dataSet)
         data.barWidth = 0.5
-
-        
         return data
     }
     
@@ -95,33 +81,4 @@ class BarHeader: UIView {
         let unitsSold = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
         barView.data = createData(numbers: unitsSold)
     }
-    
-    
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-//        guard let context = UIGraphicsGetCurrentContext() else {
-//            return
-//        }
-//        context.saveGState()
-//        
-//        let colorSpace = CGColorSpaceCreateDeviceRGB()
-//        
-//        let startColor = UIColor.red
-//        let startComponents = startColor.cgColor.components!
-//        let endColor = UIColor.orange
-//        let endComponents = endColor.cgColor.components!
-//        
-//        let colorComponents = startComponents + endComponents
-//        let location: [CGFloat] = [0, 1]
-//        let gradient = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: location, count: 2)
-//        
-//        let startPoint = CGPoint(x: 0, y: rect.height)
-//        let endPoint = CGPoint(x: rect.width, y: 0)
-//        
-//        context.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: .drawsBeforeStartLocation)
-//        
-//        context.restoreGState()
-//    }
-
-
 }
