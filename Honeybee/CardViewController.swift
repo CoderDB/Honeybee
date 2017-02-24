@@ -82,7 +82,8 @@ extension CardViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+//        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(10)
@@ -128,6 +129,7 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentSelectedImgView.backgroundColor = UIColor.randomColor()
+        navigationController?.pushViewController(IconManagerViewController(), animated: true)
     }
 }
 
