@@ -13,32 +13,31 @@ class IconManagerSectionHeader: UICollectionReusableView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "衣食住行"
+        label.text = "Header"
         label.font = HonybeeFont.h2
         return label
     }()
-    
     lazy var line: UIView = {
         let view = UIView()
-        view.backgroundColor = HonybeeColor.main
+        view.backgroundColor = UIColor.rgb(pure: 229)
         return view
     }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.white
         addSubview(titleLabel)
-//        addSubview(line)
+        addSubview(line)
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
-            make.centerY.equalTo(self)
+            make.top.equalTo(self)
         }
-//        line.snp.makeConstraints { (make) in
-//            make.left.equalTo(self).offset(10)
-//            make.right.bottom.equalTo(self)
-//            make.height.equalTo(1)
-//        }
+        line.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self).offset(-10)
+            make.height.equalTo(1)
+            make.top.equalTo(titleLabel.snp.bottom)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
