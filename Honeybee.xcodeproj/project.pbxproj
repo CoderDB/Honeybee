@@ -11,6 +11,7 @@
 		860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */; };
 		860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF5801E60150B009C2D31 /* IconManagerSectionHeader.swift */; };
 		860EF5831E601768009C2D31 /* IconManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF5821E601768009C2D31 /* IconManagerCell.swift */; };
+		860EF5851E6027A0009C2D31 /* IconManagerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF5841E6027A0009C2D31 /* IconManagerLayout.swift */; };
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
 		8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624F61C1E5047C00059788A /* RecordDetailHeader.swift */; };
@@ -87,6 +88,7 @@
 		860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconManagerViewController.swift; sourceTree = "<group>"; };
 		860EF5801E60150B009C2D31 /* IconManagerSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconManagerSectionHeader.swift; sourceTree = "<group>"; };
 		860EF5821E601768009C2D31 /* IconManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconManagerCell.swift; sourceTree = "<group>"; };
+		860EF5841E6027A0009C2D31 /* IconManagerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconManagerLayout.swift; sourceTree = "<group>"; };
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
 		8624F61C1E5047C00059788A /* RecordDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailHeader.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */,
+				860EF5841E6027A0009C2D31 /* IconManagerLayout.swift */,
 				860EF5801E60150B009C2D31 /* IconManagerSectionHeader.swift */,
 				860EF5821E601768009C2D31 /* IconManagerCell.swift */,
 			);
@@ -693,6 +696,7 @@
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
 				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
+				860EF5851E6027A0009C2D31 /* IconManagerLayout.swift in Sources */,
 				86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
