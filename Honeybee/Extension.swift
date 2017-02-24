@@ -50,6 +50,9 @@ extension UIColor {
         }
         return rgba(r: Float(r), g: Float(g), b: Float(b), a: Float(a))
     }
+    static func rgb(pure: Float) -> UIColor {
+        return rgb(r: pure, g: pure, b: pure)
+    }
     static func rgb(r: Float, g: Float, b: Float) -> UIColor {
         return rgba(r: r, g: g, b: b, a: 1)
     }

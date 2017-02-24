@@ -10,22 +10,25 @@ import UIKit
 
 class IconManagerCell: UICollectionViewCell {
     
+    
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = HonybeeFont.h4_number
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        layer.cornerRadius = 10
-//        layer.borderWidth = 1
+        backgroundColor = UIColor.cyan
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView)
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override var frame: CGRect {
-//        didSet {
-//            var newFrame = frame
-//            newFrame.size.width -= 20
-//            newFrame.origin.x += 10
-//            super.frame = newFrame
-//        }
-//    }
 }
