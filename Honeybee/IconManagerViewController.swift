@@ -20,7 +20,7 @@ class IconManagerViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func addCollectionView() {
-        let layout = UICollectionViewFlowLayout()
+        let layout = IconManagerLayout()//UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 45, height: 45)
         layout.minimumLineSpacing = 20      // 行间距
         layout.minimumInteritemSpacing = 10 // 列间距
@@ -47,6 +47,7 @@ class IconManagerViewController: BaseViewController {
 
 
 extension IconManagerViewController: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 10
     }
