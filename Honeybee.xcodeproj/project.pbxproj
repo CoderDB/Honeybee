@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
+		860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */; };
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
 		8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624F61C1E5047C00059788A /* RecordDetailHeader.swift */; };
@@ -36,7 +37,6 @@
 		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		86A442831DFBF433006D2A44 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A442811DFBF433006D2A44 /* CollectionViewCell.swift */; };
-		86A442841DFBF433006D2A44 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A442821DFBF433006D2A44 /* CollectionViewCell.xib */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
 		86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
@@ -82,6 +82,7 @@
 		3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		602B4AA0738D3A5A175F2145 /* Pods-HoneybeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F9F8339673706F2CFC7B4F1 /* Pods-HoneybeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconManagerViewController.swift; sourceTree = "<group>"; };
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
 		8624F61C1E5047C00059788A /* RecordDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailHeader.swift; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		86A442811DFBF433006D2A44 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		86A442821DFBF433006D2A44 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverViewController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
@@ -169,6 +169,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		860EF57D1E600DB8009C2D31 /* IconManager */ = {
+			isa = PBXGroup;
+			children = (
+				860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */,
+			);
+			name = IconManager;
+			sourceTree = "<group>";
+		};
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,9 +212,10 @@
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
 				8697CEE11E5DA28900993CFE /* Base */,
-				86E5746C1E4C6E1C001255CD /* Mian */,
+				86E5746C1E4C6E1C001255CD /* Main */,
 				86F6C8651E4F2F11002016DB /* RecordDetail */,
 				86E5746D1E4C6E32001255CD /* Add */,
+				860EF57D1E600DB8009C2D31 /* IconManager */,
 				86E5746E1E4C6E6C001255CD /* Chart */,
 				86E5746F1E4C6E88001255CD /* Profile */,
 				86E574701E4C6EBC001255CD /* Other */,
@@ -276,7 +285,7 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
-		86E5746C1E4C6E1C001255CD /* Mian */ = {
+		86E5746C1E4C6E1C001255CD /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
@@ -287,17 +296,16 @@
 				86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */,
 				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
 			);
-			name = Mian;
+			name = Main;
 			sourceTree = "<group>";
 		};
 		86E5746D1E4C6E32001255CD /* Add */ = {
 			isa = PBXGroup;
 			children = (
 				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
+				86A442811DFBF433006D2A44 /* CollectionViewCell.swift */,
 				86E574711E4C6ED5001255CD /* Keyboard */,
 				86E574721E4C6EE7001255CD /* PresentTransition */,
-				86A442811DFBF433006D2A44 /* CollectionViewCell.swift */,
-				86A442821DFBF433006D2A44 /* CollectionViewCell.xib */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -511,7 +519,6 @@
 			files = (
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
-				86A442841DFBF433006D2A44 /* CollectionViewCell.xib in Resources */,
 				861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,6 +701,7 @@
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
+				860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */,
 				8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */,
 				8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
