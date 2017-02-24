@@ -21,16 +21,27 @@ class IconManagerViewController: BaseViewController {
     }
     func addCollectionView() {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 45, height: 45)
+        layout.minimumLineSpacing = 20      // 行间距
+        layout.minimumInteritemSpacing = 10 // 列间距
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(64)
             make.left.right.bottom.equalTo(view)
         }
         
-        collectionView.dataSource = self
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(IconManagerCell.self, forCellWithReuseIdentifier: "\(IconManagerCell.self)")
+        collectionView.register(IconManagerSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "\(IconManagerSectionHeader.self)")
     }
 }
 
@@ -43,8 +54,19 @@ extension IconManagerViewController: UICollectionViewDataSource {
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(IconManagerCell.self)", for: indexPath) as! IconManagerCell
         cell.backgroundColor = UIColor.randomColor()
         return cell        
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+extension IconManagerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        if kind == UICollectionElementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath)
+            return header
+            
+//        }
     }
 }

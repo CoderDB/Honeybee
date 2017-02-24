@@ -63,7 +63,7 @@ class RecordLiteCell: UITableViewCell {
             make.centerY.equalTo(category.snp.centerY)
             make.width.equalTo(200)
             make.height.equalTo(40)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-20)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-20).priority(HonybeePriority.low)
         }
         
     }
