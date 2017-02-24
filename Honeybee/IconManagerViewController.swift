@@ -8,23 +8,25 @@
 
 import UIKit
 
-class IconManagerViewController: UIViewController {
+class IconManagerViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.white
-        
+        setupNav(title: "图标管理")
         addCollectionView()
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func addCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.cyan
+        collectionView.backgroundColor = UIColor.white
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.top.equalTo(64)
+            make.left.right.bottom.equalTo(view)
         }
         
         collectionView.dataSource = self

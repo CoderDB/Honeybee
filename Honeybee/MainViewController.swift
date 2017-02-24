@@ -15,8 +15,8 @@ let ScreenH = UIScreen.main.bounds.height
 
 class MainViewController: UIViewController {
 
-    var cardVC: CardViewController!
-    var customPresentationController: HBPresentationController!
+//    var cardVC: CardViewController!
+//    var customPresentationController: HBPresentationController!
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     var dataSource = [Recorder]()
@@ -60,9 +60,9 @@ class MainViewController: UIViewController {
         dataSource.append(r4)
         dataSource.append(r5)
         
-        cardVC = CardViewController()
-        customPresentationController = HBPresentationController(presentedViewController: cardVC, presenting: self)
-        cardVC.transitioningDelegate = customPresentationController
+//        cardVC = CardViewController()
+//        customPresentationController = HBPresentationController(presentedViewController: cardVC, presenting: self)
+//        cardVC.transitioningDelegate = customPresentationController
 
         addTableView()
         addAddBtn()
@@ -153,7 +153,8 @@ extension MainViewController {
 // MARK: UI Event
 extension MainViewController {
     func addBtnClicked() {
-        present(cardVC, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: CardViewController())
+        present(nav, animated: true, completion: nil)
     }
 }
 
