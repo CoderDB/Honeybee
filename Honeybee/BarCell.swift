@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BarCell: BaseCell {
+class BarCell: BaseTableViewCell {
     
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     lazy var mainTopTitleLabel: UILabel = {

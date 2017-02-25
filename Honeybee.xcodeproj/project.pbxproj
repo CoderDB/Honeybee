@@ -13,6 +13,7 @@
 		860EF5831E601768009C2D31 /* IconManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF5821E601768009C2D31 /* IconManagerCell.swift */; };
 		86104A291E61815E00AAEEAC /* IconAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86104A281E61815E00AAEEAC /* IconAddCell.swift */; };
 		86104A2F1E61A8F500AAEEAC /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86104A2E1E61A8F500AAEEAC /* CardCollectionCell.swift */; };
+		86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */; };
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
 		8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624F61C1E5047C00059788A /* RecordDetailHeader.swift */; };
@@ -37,7 +38,6 @@
 		8697CEE31E5DA2AE00993CFE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */; };
 		8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEE81E5DA9D900993CFE /* BarHeader.swift */; };
 		8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEEA1E5DADED00993CFE /* BarCell.swift */; };
-		8697CEED1E5DB25800993CFE /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEEC1E5DB25800993CFE /* BaseCell.swift */; };
 		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
@@ -91,6 +91,7 @@
 		860EF5821E601768009C2D31 /* IconManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconManagerCell.swift; sourceTree = "<group>"; };
 		86104A281E61815E00AAEEAC /* IconAddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconAddCell.swift; sourceTree = "<group>"; };
 		86104A2E1E61A8F500AAEEAC /* CardCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
+		86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
 		8624F61C1E5047C00059788A /* RecordDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailHeader.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8697CEE81E5DA9D900993CFE /* BarHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarHeader.swift; sourceTree = "<group>"; };
 		8697CEEA1E5DADED00993CFE /* BarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
-		8697CEEC1E5DB25800993CFE /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 			children = (
 				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */,
-				8697CEEC1E5DB25800993CFE /* BaseCell.swift */,
+				86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -722,6 +722,7 @@
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
 				860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */,
+				86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */,
 				8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */,
 				8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
@@ -745,7 +746,6 @@
 				86104A2F1E61A8F500AAEEAC /* CardCollectionCell.swift in Sources */,
 				86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */,
 				86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */,
-				8697CEED1E5DB25800993CFE /* BaseCell.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
 			);
