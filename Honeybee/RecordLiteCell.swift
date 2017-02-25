@@ -13,7 +13,7 @@ class RecordLiteCell: UITableViewCell {
     lazy var category: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = HonybeeFont.h4
+        label.font = HonybeeFont.h5
         label.textColor = UIColor.black
         label.text = "购物"
         return label
@@ -29,7 +29,7 @@ class RecordLiteCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layer.cornerRadius = 10
+        layer.cornerRadius = HonybeeConstant.cornerRadius
         backgroundColor = UIColor.brown
         
         setupUI()

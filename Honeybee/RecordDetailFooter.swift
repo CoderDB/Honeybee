@@ -15,9 +15,9 @@ class RecordDetailFooter: UIView {
         let btn = UIButton(type: UIButtonType.system)
         btn.setTitle("删除", for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h1
+        btn.titleLabel?.font = HonybeeFont.h2
         btn.backgroundColor = UIColor.black
-        btn.layer.cornerRadius = 10
+        btn.layer.cornerRadius = HonybeeConstant.cornerRadius
         return btn
     }()
     

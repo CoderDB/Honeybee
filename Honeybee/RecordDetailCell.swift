@@ -14,7 +14,7 @@ class RecordDetailCell: UITableViewCell {
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = HonybeeFont.h2
+        label.font = HonybeeFont.h3
         label.text = "记录时间"
         return label
     }()
@@ -25,7 +25,7 @@ class RecordDetailCell: UITableViewCell {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 200
         label.lineBreakMode = .byWordWrapping
-        label.font = HonybeeFont.h4
+        label.font = HonybeeFont.h5
         
         return label
     }()
@@ -35,7 +35,7 @@ class RecordDetailCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        layer.cornerRadius = 10
+        layer.cornerRadius = HonybeeConstant.cornerRadius
         layer.borderWidth = 1
         setupUI()
         
