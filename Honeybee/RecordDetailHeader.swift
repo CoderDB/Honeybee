@@ -14,21 +14,21 @@ class RecordDetailHeader: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = HonybeeFont.h2
+        label.font = HonybeeFont.h3
         return label
     }()
     lazy var editButton: UIButton = {
         let btn = UIButton(type: UIButtonType.system)
         btn.setTitle("编辑", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h4
+        btn.titleLabel?.font = HonybeeFont.h5
         return btn
     }()
     lazy var imgView = UIImageView()
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = HonybeeConstant.cornerRadius
         view.backgroundColor = UIColor.cyan
         view.isUserInteractionEnabled = false
         return view

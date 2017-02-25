@@ -16,19 +16,19 @@ class SetupHeader: UIView {
         btn.backgroundColor = HonybeeColor.main
         btn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         btn.setImage(UIImage(named: "avatar"), for: .normal)
-        btn.layer.cornerRadius = 10
+        btn.layer.cornerRadius = HonybeeConstant.cornerRadius
         return btn
     }()
     
     lazy var nicknameLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4
+        label.font = HonybeeFont.h5
         label.text = "二狗哥"
         return label
     }()
     lazy var bioLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5
+        label.font = HonybeeFont.h6
         label.textColor = UIColor.gray
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -42,7 +42,7 @@ class SetupHeader: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("编辑", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h4
+        btn.titleLabel?.font = HonybeeFont.h5
         return btn
     }()
     

@@ -13,7 +13,7 @@ class ProfileHeader: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h3
+        label.font = HonybeeFont.h4
         label.textColor = UIColor.white
         label.text = "累计记账"
         return label
@@ -27,7 +27,7 @@ class ProfileHeader: UIView {
     
     lazy var containView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = HonybeeConstant.cornerRadius
         view.isUserInteractionEnabled = false
         view.backgroundColor = HonybeeColor.main
         return view
@@ -37,7 +37,7 @@ class ProfileHeader: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("编辑", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h4
+        btn.titleLabel?.font = HonybeeFont.h5
         return btn
     }()
     
@@ -99,7 +99,7 @@ class ProfileHeader: UIView {
         let dayStr = "\(days)天"
         
         let attr = NSMutableAttributedString(string: dayStr)
-        attr.addAttributes([NSFontAttributeName: HonybeeFont.h3], range: NSRange(location: dayStr.characters.count-1, length: 1))
+        attr.addAttributes([NSFontAttributeName: HonybeeFont.h4], range: NSRange(location: dayStr.characters.count-1, length: 1))
         return attr
     }
 

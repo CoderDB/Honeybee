@@ -37,11 +37,11 @@ class PieHeader: UIView {
         super.init(frame: frame)
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor.rgb(r: 248, g: 185, b: 81), UIColor.rgb(r: 252, g: 91, b: 107)])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: frame.height)
-        gradientLayer.cornerRadius = 10
+        gradientLayer.cornerRadius = HonybeeConstant.cornerRadius
         layer.addSublayer(gradientLayer)
         
 //        backgroundColor = UIColor.white
-//        layer.cornerRadius = 10
+//        layer.cornerRadius = HonybeeConstant.cornerRadius
 //        layer.borderColor = UIColor.black.cgColor
 //        layer.borderWidth = 1
         

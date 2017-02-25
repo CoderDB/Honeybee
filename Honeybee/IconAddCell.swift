@@ -12,7 +12,7 @@ class IconAddCell: UICollectionViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.big
+        label.font = HonybeeFont.h1
         label.textAlignment = .center
         label.textColor = UIColor.white
         return label
@@ -21,7 +21,7 @@ class IconAddCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.randomColor()
-        layer.cornerRadius = 10
+        layer.cornerRadius = HonybeeConstant.cornerRadius
         
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in

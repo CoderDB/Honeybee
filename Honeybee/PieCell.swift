@@ -12,7 +12,7 @@ class PieCell: UITableViewCell {
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h2
+        label.font = HonybeeFont.h3
         return label
     }()
     lazy var subTitleLabel: UILabel = {
@@ -25,7 +25,7 @@ class PieCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layer.cornerRadius = 10
+        layer.cornerRadius = HonybeeConstant.cornerRadius
         layer.borderWidth = 1
         setupUI()
     }

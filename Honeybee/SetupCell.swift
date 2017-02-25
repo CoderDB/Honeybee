@@ -14,7 +14,7 @@ class SetupCell: UITableViewCell {
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h2
+        label.font = HonybeeFont.h3
         return label
     }()
     
@@ -70,7 +70,7 @@ class SetupCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         
-        layer.cornerRadius = 10
+        layer.cornerRadius = HonybeeConstant.cornerRadius
         layer.borderWidth = 1
         
         setupUI()

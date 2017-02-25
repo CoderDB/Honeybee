@@ -31,7 +31,7 @@ class BarViewController: BaseTableViewController {
         btn.setImage(UIImage(named: "calendar"), for: .normal)
 //        btn.setTitle("选择", for: .normal)
 //        btn.setTitleColor(HonybeeColor.main, for: .normal)
-//        btn.titleLabel?.font = HonybeeFont.h4
+//        btn.titleLabel?.font = HonybeeFont.h5
         btn.addTarget(self, action: #selector(navRightItemAction(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }

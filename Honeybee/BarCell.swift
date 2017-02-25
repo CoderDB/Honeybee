@@ -13,7 +13,7 @@ class BarCell: BaseCell {
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     lazy var mainTopTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4
+        label.font = HonybeeFont.h5
         return label
     }()
     lazy var mainBottomTitleLabel: UILabel = {

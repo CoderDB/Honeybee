@@ -33,14 +33,14 @@ class MainViewController: UIViewController {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 30))
         btn.setTitle("仅支出", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.titleLabel?.font = HonybeeFont.h6
         return btn
     }()
     lazy var botBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: 30, width: 70, height: 30))
         btn.setTitle("仅收入", for: .normal)
         btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.titleLabel?.font = HonybeeFont.h6
         return btn
     }()
     

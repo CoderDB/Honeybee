@@ -60,7 +60,7 @@ extension CardViewController {
 extension CardViewController {
     func addResultView() {
         let containerView = UIView(frame: CGRect(x: 10, y: 10, width: view.frame.width-20, height: 50))
-        containerView.layer.cornerRadius = 10
+        containerView.layer.cornerRadius = HonybeeConstant.cornerRadius
         containerView.layer.borderWidth = 2
         containerView.layer.borderColor = UIColor.black.cgColor
         view.addSubview(containerView)

@@ -12,7 +12,7 @@ class BaseCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layer.cornerRadius = 10
+        layer.cornerRadius = HonybeeConstant.cornerRadius
         layer.borderWidth = 1
         setupUI()
     }

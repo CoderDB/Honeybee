@@ -76,7 +76,7 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == 1 {
             cell.subTitleLabel.attributedText = NSAttributedString(string: "2017-02-13" + "\n" + "15:11" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4_number])
         } else if indexPath.row == 2 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4])
+            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h5])
         } else {
             cell.subTitleLabel.text = model.remark
         }
