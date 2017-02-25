@@ -13,7 +13,6 @@ class IconManagerSectionHeader: UICollectionReusableView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Header"
         label.font = HonybeeFont.h3
         return label
     }()

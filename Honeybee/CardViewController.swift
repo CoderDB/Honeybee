@@ -39,6 +39,10 @@ class CardViewController: UIViewController {
         addCollectionView()
         addKeyboard()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     deinit {
         print("-----CardViewController--deinit--")
     }
@@ -78,18 +82,20 @@ extension CardViewController {
         }
     }
     func addCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.itemSize = CGSize(width: 45, height: 45)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 50, right: 10)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-//        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        collectionView.register(CardCollectionCell.self, forCellWithReuseIdentifier: "\(CardCollectionCell.self)")
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(10)
-            make.right.equalTo(view).offset(-10)
             make.top.equalTo(view).offset(70)
-            make.bottom.equalTo(view)
+            make.left.right.bottom.equalTo(view)
         }
     }
     
@@ -122,7 +128,7 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
         return 200
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardCollectionCell.self)", for: indexPath)
         cell.backgroundColor = UIColor.randomColor()
         return cell
     }
@@ -136,12 +142,6 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 // MARK: UICollectionViewDelegateFlowLayout
 extension CardViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 1000, right: 0)
-    }
 }
 
 

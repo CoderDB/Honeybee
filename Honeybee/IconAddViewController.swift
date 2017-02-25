@@ -22,8 +22,8 @@ class IconAddViewController: BaseViewController {
     func addCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 165)
-        layout.minimumLineSpacing = 25      // 行间距
-        layout.minimumInteritemSpacing = 25 // 列间距
+        layout.minimumLineSpacing = 25
+        layout.minimumInteritemSpacing = 25
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -32,8 +32,7 @@ class IconAddViewController: BaseViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(64)
-            make.left.right.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
         collectionView.register(IconAddCell.self, forCellWithReuseIdentifier: "\(IconAddCell.self)")
     }

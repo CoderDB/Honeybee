@@ -13,6 +13,8 @@ class IconManagerViewController: BaseViewController {
     
     var collectionView: UICollectionView!
     var dataSource = [Array(1...20), Array(1...20), Array(5...20), Array(5...20)]
+    var headerTitles = ["生活日常", "每天吃饭", "住", "车"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,7 @@ extension IconManagerViewController {
         layout.itemSize = CGSize(width: 45, height: 45)
         layout.minimumLineSpacing = 10      // 行间距
         layout.minimumInteritemSpacing = 10 // 列间距
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         layout.sectionHeadersPinToVisibleBounds = true
         
@@ -44,8 +45,7 @@ extension IconManagerViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(64)
-            make.left.right.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
@@ -107,11 +107,13 @@ extension IconManagerViewController: UICollectionViewDataSource {
 extension IconManagerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        if kind == UICollectionElementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath)
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath) as! IconManagerSectionHeader
+            header.titleLabel.text = headerTitles[indexPath.section]
             return header
             
 //        }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
     }
