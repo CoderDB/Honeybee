@@ -41,6 +41,7 @@
 		86A442831DFBF433006D2A44 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A442811DFBF433006D2A44 /* CollectionViewCell.swift */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
 		86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */; };
+		86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B984131E61609500CCB450 /* IconAddViewController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
 		86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */; };
 		86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702C1E51BA560004E192 /* SetupHeader.swift */; };
@@ -123,6 +124,7 @@
 		86A442811DFBF433006D2A44 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverViewController.swift; sourceTree = "<group>"; };
+		86B984131E61609500CCB450 /* IconAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconAddViewController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
 		86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailFooter.swift; sourceTree = "<group>"; };
 		86D1702C1E51BA560004E192 /* SetupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHeader.swift; sourceTree = "<group>"; };
@@ -176,9 +178,10 @@
 		860EF57D1E600DB8009C2D31 /* IconManager */ = {
 			isa = PBXGroup;
 			children = (
+				86B984121E61607800CCB450 /* IconAdd */,
 				860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */,
-				860EF5801E60150B009C2D31 /* IconManagerSectionHeader.swift */,
 				860EF5821E601768009C2D31 /* IconManagerCell.swift */,
+				860EF5801E60150B009C2D31 /* IconManagerSectionHeader.swift */,
 			);
 			name = IconManager;
 			sourceTree = "<group>";
@@ -280,6 +283,14 @@
 				8697CEE81E5DA9D900993CFE /* BarHeader.swift */,
 			);
 			name = Bar;
+			sourceTree = "<group>";
+		};
+		86B984121E61607800CCB450 /* IconAdd */ = {
+			isa = PBXGroup;
+			children = (
+				86B984131E61609500CCB450 /* IconAddViewController.swift */,
+			);
+			name = IconAdd;
 			sourceTree = "<group>";
 		};
 		86D170441E51EBA90004E192 /* Detail */ = {
@@ -713,6 +724,7 @@
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
+				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
 				8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */,

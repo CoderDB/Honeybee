@@ -12,19 +12,18 @@ import UIKit
 class IconManagerViewController: BaseViewController {
     
     var collectionView: UICollectionView!
-    var longGesture: UILongPressGestureRecognizer!
+    var dataSource = [Array(1...20), Array(1...20), Array(5...20), Array(5...20)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav(title: "图标管理")
+        addNavRightItem()
         addCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
-    var dataSource = [Array(1...5), Array(1...5), Array(5...20)]
 }
 
 //MARK: UI
@@ -43,16 +42,16 @@ extension IconManagerViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(64)
             make.left.right.bottom.equalTo(view)
         }
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
+        collectionView.addGestureRecognizer(longGesture)
+        
         collectionView.register(IconManagerCell.self, forCellWithReuseIdentifier: "\(IconManagerCell.self)")
         collectionView.register(IconManagerSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "\(IconManagerSectionHeader.self)")
-        longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
-        collectionView.addGestureRecognizer(longGesture)
     }
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
@@ -70,7 +69,18 @@ extension IconManagerViewController {
         default:
             collectionView.cancelInteractiveMovement()
         }
-
+    }
+    
+    func addNavRightItem() {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 25))
+        btn.setTitle("添加", for: .normal)
+        btn.setTitleColor(HonybeeColor.main, for: .normal)
+        btn.titleLabel?.font = HonybeeFont.h4
+        btn.addTarget(self, action: #selector(navRightItemAction), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    func navRightItemAction() {
+        navigationController?.pushViewController(IconAddViewController(), animated: true)
     }
 }
 
@@ -109,5 +119,9 @@ extension IconManagerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let moved = dataSource[sourceIndexPath.section].remove(at: sourceIndexPath.item)
         dataSource[destinationIndexPath.section].insert(moved, at: destinationIndexPath.item)
+        
+        let cell = collectionView.cellForItem(at: destinationIndexPath) as! IconManagerCell
+        cell.titleLabel.text = "哈哈"
+        cell.backgroundColor = UIColor.red
     }
 }
