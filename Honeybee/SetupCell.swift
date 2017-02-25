@@ -31,7 +31,7 @@ class SetupCell: UITableViewCell {
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
     lazy var imgView: UIImageView = {
-        let imgView = UIImageView(image: UIImage.image(color: HonybeeColor.main, size: CGSize(width: 45, height: 45)))
+        let imgView = UIImageView(image: UIImage.image(color: HonybeeColor.main))
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
         return imgView

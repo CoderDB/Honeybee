@@ -17,7 +17,6 @@ class RecordDetailController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNav(title: "详情")
         addTableView()
         model = Recorder(date: "", category: "金额", money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n", color: UIColor())
@@ -41,8 +40,7 @@ class RecordDetailController: BaseViewController {
         tableView.separatorStyle = .none
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(64) // 导航栏本是透明的，假装导航栏是白色
-            make.left.right.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
         let header = RecordDetailHeader(height: 115, title: "吃饭", imageName: "meal")
         tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度

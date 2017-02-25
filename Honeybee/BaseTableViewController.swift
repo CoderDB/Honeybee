@@ -25,8 +25,7 @@ class BaseTableViewController: BaseViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(64)
-            make.left.right.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
     }
 }
