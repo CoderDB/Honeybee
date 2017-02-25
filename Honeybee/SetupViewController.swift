@@ -44,8 +44,7 @@ extension SetupViewController {
         tableView = UITableView()
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(64)
-            make.left.right.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
         
         tableView.dataSource = self

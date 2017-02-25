@@ -114,8 +114,8 @@ extension UIView {
 //******************************************************************************
 extension UIImage {
     
-    static func image(color: UIColor,size: CGSize) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    static func image(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 10, height: 10)
         UIGraphicsBeginImageContext(rect.size);
         let context = UIGraphicsGetCurrentContext();
         context?.setFillColor(color.cgColor);
