@@ -48,25 +48,41 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         automaticallyAdjustsScrollViewInsets = false
-        print(Date())
-        let r1 = Recorder(date: "2017-02-26 09:30:18 +0000", category: ["衣", "鞋子"], money: "2567", color: "green")
-        let r2 = Recorder(date: "2017-02-25 09:30:18 +0000", category: ["食", "早饭"], money: "2567", color: "green")
-        let r3 = Recorder(date: "2017-02-24 09:30:18 +0000", category: ["住", "房租"], money: "2567", color: "green")
-        let r4 = Recorder(date: "2017-02-23 09:30:18 +0000", category: ["出行", "打车"], money: "2567", remark: "公司加班打车", color: "green")
-        let r5 = Recorder(date: "2017-02-23 09:30:18 +0000", category: ["出行", "公交卡"], money: "2567", remark: "这个月第三次冲公交卡", color: "green")
         
-        dataSource.append(r1)
-        dataSource.append(r2)
-        dataSource.append(r3)
-        dataSource.append(r4)
-        dataSource.append(r5)
         
+        
+//        let r1 = Recorder(date: "2017-02-26 09:30:18 +0000", category: ["衣", "鞋子"], money: "2567", color: "green")
+//        let r2 = Recorder(date: "2017-02-25 09:30:18 +0000", category: ["食", "早饭"], money: "2567", color: "green")
+//        let r3 = Recorder(date: "2017-02-24 09:30:18 +0000", category: ["住", "房租"], money: "2567", color: "green")
+//        let r4 = Recorder(date: "2017-02-23 09:30:18 +0000", category: ["出行", "打车"], money: "2567", remark: "公司加班打车", color: "green")
+//        let r5 = Recorder(date: "2017-02-23 09:30:18 +0000", category: ["出行", "公交卡"], money: "2567", remark: "这个月第三次冲公交卡", color: "green")
+//        
+//        dataSource.append(r1)
+//        dataSource.append(r2)
+//        dataSource.append(r3)
+//        dataSource.append(r4)
+//        dataSource.append(r5)
+        dataSource = fetchData()
 //        cardVC = CardViewController()
 //        customPresentationController = HBPresentationController(presentedViewController: cardVC, presenting: self)
 //        cardVC.transitioningDelegate = customPresentationController
 
         addTableView()
         addAddBtn()
+    }
+    
+    func fetchData() -> [Recorder] {
+        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
+        
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
+        var recorders = [Recorder]()
+        for item in jsonDic {
+            let model = Recorder(dict: item)
+            recorders.append(model!)
+        }
+        return recorders
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -29,6 +29,7 @@
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
 		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
 		864D25101E62F4180005894A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250F1E62F4180005894A /* BaseViewModel.swift */; };
+		864D25121E6312240005894A /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorder.json */; };
 		86631B981E4C5BC600C33CA7 /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86631B961E4C5BC600C33CA7 /* SectionCell.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
@@ -115,6 +116,7 @@
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
 		864D250F1E62F4180005894A /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		864D25111E6312240005894A /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
 		86631B961E4C5BC600C33CA7 /* SectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				864D25111E6312240005894A /* recorder.json */,
 				861544481E4DAA1E00A6EEBD /* Silom.ttf */,
 			);
 			name = Source;
@@ -546,6 +549,7 @@
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
 				861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */,
+				864D25121E6312240005894A /* recorder.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
