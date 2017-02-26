@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BaseViewModel: NSObject {
+protocol BaseViewModel {
     
 }

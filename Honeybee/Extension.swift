@@ -202,13 +202,14 @@ extension CAGradientLayer {
 // Date
 //******************************************************************************
 
+
 extension Date {
     
     /// "2017-02-26 09:30:18 +0000" -> 2017-02-26 09:30:18 +0000
-    func date(string: String) -> Date {
+    static func date(str: String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        return formatter.date(from: string)!
+        return formatter.date(from: str)!
     }
     
     /// 2017-02-26 10:48:11 +0000 -> 2017-02-26 18:48:11 +0000
@@ -229,6 +230,14 @@ extension Date {
         let dateStr = formatter.string(from: date)
         let components = dateStr.components(separatedBy: "-")
         return (components[0], components[1], components[2])
+    }
+    /// 2017-02-26 18:35:52 +0000 -> "02月26日")
+    static func monthDay(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM月dd日"
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        let dateStr = formatter.string(from: date)
+        return dateStr
     }
 //    /// 2017-02-26 18:35:52 +0000 -> "2017-2-26"
 //    func getYearMonthDay(date: Date) -> String {

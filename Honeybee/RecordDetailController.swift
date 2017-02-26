@@ -19,7 +19,7 @@ class RecordDetailController: BaseViewController {
         super.viewDidLoad()
         setupNav(title: "详情")
         addTableView()
-        model = Recorder(date: "", category: ["金额"], money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n", color: UIColor())
+        model = Recorder(date: "", category: ["金额"], money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n", color: "green")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

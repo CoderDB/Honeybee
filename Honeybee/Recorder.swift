@@ -40,7 +40,7 @@ struct Recorder {
             else { return nil }
         
         self.id = id
-        self.date = date
+        self.date = Date.monthDay(date: Date.currentTimeZoneDateFrom(aDate: Date.date(str: date)))
         self.category = category
         self.money = money
         self.color = color

@@ -31,7 +31,7 @@ class RecordDetailCell: BaseTableViewCell {
     }()
     
     
-    override func setupUI() {
+    override func initialize() {
         contentView.addSubview(mainTitleLabel)
         contentView.addSubview(subTitleLabel)
         
