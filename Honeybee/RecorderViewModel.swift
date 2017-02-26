@@ -10,9 +10,6 @@ import UIKit
 
 struct RecorderViewModel: BaseViewModel {
     
-//    func fetchData() {
-//        fetchDataSuccess(dict: <#T##[String : AnyObject]#>)
-//    }
     
     let date: String
     let category: String
@@ -24,8 +21,4 @@ struct RecorderViewModel: BaseViewModel {
         self.money = model.money
     }
     
-    
-//    func fetchDataSuccess(dict: [String: AnyObject]) {
-//        let model = Recorder(dict: dict)
-//    }
 }

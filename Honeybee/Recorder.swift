@@ -32,14 +32,13 @@ struct Recorder {
     
     
     init?(dict: [String: Any]) {
-        guard let id = dict["id"] as? String,
-            let date = dict["date"] as? String,
+        guard let date = dict["date"] as? String,
             let category = dict["category"] as? [String],
             let money = dict["money"] as? String,
             let color = dict["color"] as? String
             else { return nil }
         
-        self.id = id
+//        self.id = id
         self.date = Date.monthDay(date: Date.currentTimeZoneDateFrom(aDate: Date.date(str: date)))
         self.category = category
         self.money = money
