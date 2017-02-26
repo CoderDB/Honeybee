@@ -37,7 +37,7 @@ class BarCell: BaseTableViewCell {
             subTitleLabel.text = item.subTitle
         }
     }
-    override func setupUI() {
+    override func initialize() {
         contentView.addSubview(imgView)
         contentView.addSubview(mainTopTitleLabel)
         contentView.addSubview(mainBottomTitleLabel)

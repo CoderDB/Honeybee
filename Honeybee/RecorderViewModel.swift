@@ -8,14 +8,24 @@
 
 import UIKit
 
-class RecorderViewModel: BaseViewModel {
+struct RecorderViewModel: BaseViewModel {
     
 //    func fetchData() {
 //        fetchDataSuccess(dict: <#T##[String : AnyObject]#>)
 //    }
     
-    func fetchDataSuccess(dict: [String: AnyObject]) {
-        let model = Recorder
-        
+    let date: String
+    let category: String
+    let money: String
+    
+    init(model: Recorder) {
+        self.date = model.date
+        self.category = model.category[0]
+        self.money = model.money
     }
+    
+    
+//    func fetchDataSuccess(dict: [String: AnyObject]) {
+//        let model = Recorder(dict: dict)
+//    }
 }

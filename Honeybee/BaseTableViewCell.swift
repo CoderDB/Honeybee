@@ -16,7 +16,7 @@ class BaseTableViewCell: UITableViewCell {
         layer.borderWidth = 1
         selectionStyle = .none
         
-        setupUI()
+        initialize()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,5 +30,5 @@ class BaseTableViewCell: UITableViewCell {
             super.frame = newFrame
         }
     }
-    func setupUI() {}
+    func initialize() {}
 }

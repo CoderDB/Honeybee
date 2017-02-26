@@ -29,7 +29,7 @@ class PieCell: BaseTableViewCell {
             subTitleLabel.text = item.subTitle
         }
     }
-    override func setupUI() {
+    override func initialize() {
         contentView.addSubview(mainTitleLabel)
         contentView.addSubview(subTitleLabel)
         
