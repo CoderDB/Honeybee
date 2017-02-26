@@ -19,7 +19,6 @@ class RecordDetailController: BaseViewController {
         super.viewDidLoad()
         setupNav(title: "详情")
         addTableView()
-        model = Recorder(date: "", category: ["金额"], money: "180.50", remark: "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。\n", color: "green")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,20 +63,8 @@ extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordDetailCell.self)") as! RecordDetailCell
         cell.mainTitleLabel.text = cellTitles[indexPath.row]
-        setSubTitleAttributes(cell: cell, indexPath: indexPath, model: model)
+        cell.setSubTitleAttributes(indexPath: indexPath, model: model)
         return cell
-    }
-    
-    func setSubTitleAttributes(cell: RecordDetailCell, indexPath: IndexPath, model: Recorder) {
-        if indexPath.row == 0 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.h3_number])
-        } else if indexPath.row == 1 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: "2017-02-13" + "\n" + "15:11" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4_number])
-        } else if indexPath.row == 2 {
-            cell.subTitleLabel.attributedText = NSAttributedString(string: "支出" + ">" + "食" + ">" + "吃饭" + "\n", attributes: [NSFontAttributeName: HonybeeFont.h5])
-        } else {
-            cell.subTitleLabel.text = model.remark
-        }
     }
     
 }

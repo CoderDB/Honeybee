@@ -30,6 +30,17 @@ class RecordDetailCell: BaseTableViewCell {
         return label
     }()
     
+    func setSubTitleAttributes(indexPath: IndexPath, model: Recorder) {
+        if indexPath.row == 0 {
+            subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.h3_number])
+        } else if indexPath.row == 1 {
+            subTitleLabel.attributedText = NSAttributedString(string: model.yearMonthDay + "\n" + model.hourMinute + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4_number])
+        } else if indexPath.row == 2 {
+            subTitleLabel.attributedText = NSAttributedString(string: model.category[0] + ">" + model.category[1] + "\n", attributes: [NSFontAttributeName: HonybeeFont.h5])
+        } else {
+            subTitleLabel.text = model.remark
+        }
+    }
     
     override func initialize() {
         contentView.addSubview(mainTitleLabel)

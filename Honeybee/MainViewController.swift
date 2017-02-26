@@ -194,7 +194,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(RecordDetailController(), animated: true)
+        let detailVC = RecordDetailController()
+        detailVC.model = dataSource[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

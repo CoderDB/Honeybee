@@ -221,6 +221,17 @@ extension Date {
         let interval = TimeInterval(destOffset - sourceOffset)
         return Date(timeInterval: interval, since: date)
     }
+    /// 2017-02-26 18:35:52 +0000 -> ("2017-02-26", "18:35")  //("2017", "02", "26")
+    static func yearMonthDayHourMinute(date: Date) -> (String, String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd MM:ss"
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        let dateStr = formatter.string(from: date)
+        let components = dateStr.components(separatedBy: " ")
+        return (components[0], components[1])
+    }
+    
+    
     
     /// 2017-02-26 18:35:52 +0000 -> ("2017", "02", "26")
     static func yearMonthDay(date: Date) -> (year: String, month: String, day: String) {
