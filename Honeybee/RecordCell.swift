@@ -51,7 +51,7 @@ class RecordCell: UITableViewCell {
         selectionStyle = .none
         layer.cornerRadius = 5
         backgroundColor = UIColor.cyan
-        setupUI()
+        initialize()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,7 +67,18 @@ class RecordCell: UITableViewCell {
         }
     }
     
-    func setupUI() {
+    var recorder: Recorder! {
+        didSet {
+            dateLabel.text = recorder.date
+            categoryLabel.text = recorder.category[0] + recorder.category[1]
+            numberLabel.text = recorder.money
+            weekdayLabel.text = recorder.weekday
+            backgroundColor = UIColor.hex(recorder.color)
+        }
+    }
+    
+    
+    func initialize() {
         contentView.addSubview(imgView)
         contentView.addSubview(dateLabel)
         contentView.addSubview(categoryLabel)

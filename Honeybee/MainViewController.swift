@@ -190,10 +190,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
-
-        cell.dateLabel.text = "2月13日"
-        cell.categoryLabel.text = "吃饭"
-        cell.numberLabel.text = "108.95"
+        cell.recorder = dataSource[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
