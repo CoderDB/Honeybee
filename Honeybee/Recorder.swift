@@ -19,6 +19,7 @@ struct Recorder {
     var color: String
     var isPay: Bool = true
     //    var parent:
+    var weekday: String = ""
     
     
     init(date: String, category: [String], money: String, remark: String? = nil, color: String) {
@@ -39,7 +40,9 @@ struct Recorder {
             else { return nil }
         
 //        self.id = id
-        self.date = Date.monthDay(date: Date.currentTimeZoneDateFrom(aDate: Date.date(str: date)))
+        let currentDate = Date.currentTimeZoneDateFrom(aDate: Date.date(str: date))
+        self.date = Date.monthDay(date: currentDate)
+        self.weekday = Date.weekday(date: currentDate)
         self.category = category
         self.money = money
         self.color = color
