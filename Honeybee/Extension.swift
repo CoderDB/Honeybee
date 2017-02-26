@@ -195,3 +195,50 @@ extension CAGradientLayer {
 //
 //        context.restoreGState()
 //    }
+
+
+
+//******************************************************************************
+// Date
+//******************************************************************************
+
+extension Date {
+    
+    /// "2017-02-26 09:30:18 +0000" -> 2017-02-26 09:30:18 +0000
+    func date(string: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return formatter.date(from: string)!
+    }
+    
+    /// 2017-02-26 10:48:11 +0000 -> 2017-02-26 18:48:11 +0000
+    static func currentTimeZoneDateFrom(aDate date: Date) -> Date {
+        let sourceTZ = TimeZone(abbreviation: "GMT")!
+        let destTZ = TimeZone.current
+        let sourceOffset = sourceTZ.secondsFromGMT(for: date)
+        let destOffset = destTZ.secondsFromGMT(for: date)
+        let interval = TimeInterval(destOffset - sourceOffset)
+        return Date(timeInterval: interval, since: date)
+    }
+    
+    /// 2017-02-26 18:35:52 +0000 -> ("2017", "02", "26")
+    static func yearMonthDay(date: Date) -> (year: String, month: String, day: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        let dateStr = formatter.string(from: date)
+        let components = dateStr.components(separatedBy: "-")
+        return (components[0], components[1], components[2])
+    }
+//    /// 2017-02-26 18:35:52 +0000 -> "2017-2-26"
+//    func getYearMonthDay(date: Date) -> String {
+//        var cal = Calendar(identifier: .gregorian)
+//        cal.timeZone = TimeZone(identifier: "GMT")!
+//        let day = cal.component(.day, from: date)
+//        let month = cal.component(.month, from: date)
+//        let year = cal.component(.year, from: date)
+//        //        let ymd = cal.dateComponents([.year, .month, .day], from: date)
+//        let monthDay = "\(year)-\(month)-\(day)"
+//        return monthDay
+//    }
+}

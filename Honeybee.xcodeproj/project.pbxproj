@@ -27,6 +27,8 @@
 		8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */; };
 		8638A9BB1DE56CB9002369F9 /* HoneybeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9BA1DE56CB9002369F9 /* HoneybeeTests.swift */; };
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
+		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
+		864D25101E62F4180005894A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250F1E62F4180005894A /* BaseViewModel.swift */; };
 		86631B981E4C5BC600C33CA7 /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86631B961E4C5BC600C33CA7 /* SectionCell.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
@@ -111,6 +113,8 @@
 		8638A9C11DE56CB9002369F9 /* HoneybeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoneybeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneybeeUITests.swift; sourceTree = "<group>"; };
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
+		864D250F1E62F4180005894A /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		86631B961E4C5BC600C33CA7 /* SectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 		8697CEE11E5DA28900993CFE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				864D250F1E62F4180005894A /* BaseViewModel.swift */,
 				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */,
 				86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */,
@@ -315,6 +320,7 @@
 				86631B961E4C5BC600C33CA7 /* SectionCell.swift */,
 				86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */,
 				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
+				864D250D1E62F1A60005894A /* RecorderViewModel.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -707,6 +713,7 @@
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
 				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
+				864D25101E62F4180005894A /* BaseViewModel.swift in Sources */,
 				86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
@@ -719,6 +726,7 @@
 				86FC4EC61E1112B10048E183 /* PieViewController.swift in Sources */,
 				86D170431E51EAB70004E192 /* SetupFooter.swift in Sources */,
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,
+				864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */,
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
 				860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */,
