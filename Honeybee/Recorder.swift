@@ -31,7 +31,7 @@ struct Recorder {
         self.category = category
         self.money = money
         self.remark = remark
-        self.color = color
+        self.color = "#"+color
     }
     
     

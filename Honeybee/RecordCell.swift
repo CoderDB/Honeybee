@@ -73,7 +73,7 @@ class RecordCell: UITableViewCell {
             categoryLabel.text = recorder.category[0] + recorder.category[1]
             numberLabel.text = recorder.money
             weekdayLabel.text = recorder.weekday
-            backgroundColor = UIColor.hex(recorder.color)
+            backgroundColor = UIColor(hex: recorder.color)
         }
     }
     
