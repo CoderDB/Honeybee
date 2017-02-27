@@ -18,7 +18,7 @@ class IconManagerSectionHeader: UICollectionReusableView {
     }()
     lazy var line: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.rgb(pure: 229)
+        view.backgroundColor = UIColor(pure: 229)
         return view
     }()
     

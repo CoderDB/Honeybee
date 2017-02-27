@@ -29,41 +29,7 @@ import UIKit
 //}
 
 
-//******************************************************************************
-// UIColor Extension
-//******************************************************************************
-extension UIColor {
-    static func hex(_ hex: String) -> UIColor {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt32()
-        Scanner(string: hex).scanHexInt32(&int)
-        let r, g, b, a: UInt32
-        switch hex.characters.count {
-        case 3:
-            (r, g, b, a) = ((int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF), 255)
-        case 6:
-            (r, g, b, a) = (int >> 16, int >> 8 & 0xF, int & 0xF, 255)
-        case 8:
-            (r, g, b, a) = (int >> 24, int >> 16 & 0xF, int >> 8 & 0xF, int & 0xF)
-        default:
-            (r, g, b, a) = (1, 1, 1, 0)
-        }
-        return rgba(r: Float(r), g: Float(g), b: Float(b), a: Float(a))
-    }
-    static func rgb(pure: Float) -> UIColor {
-        return rgb(r: pure, g: pure, b: pure)
-    }
-    static func rgb(r: Float, g: Float, b: Float) -> UIColor {
-        return rgba(r: r, g: g, b: b, a: 1)
-    }
-    static func rgba(r: Float, g: Float, b: Float,a: Float) -> UIColor {
-        return UIColor(colorLiteralRed: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
-    }
-    static func randomColor() -> UIColor {
-        return UIColor(colorLiteralRed: Float(arc4random() % 256) / 255.0, green: Float(arc4random() % 256) / 255.0, blue: Float(arc4random() % 256) / 255.0, alpha: 1)
-    }
-    
-}
+
 
 
 //******************************************************************************

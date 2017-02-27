@@ -16,7 +16,7 @@ class BarHeader: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor.rgb(r: 248, g: 185, b: 81), UIColor.rgb(r: 252, g: 91, b: 107)])
+        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: frame.height)
         gradientLayer.cornerRadius = HonybeeConstant.cornerRadius
         layer.addSublayer(gradientLayer)
@@ -61,7 +61,7 @@ class BarHeader: UIView {
         dataSet.drawValuesEnabled = true //显示条形柱的值
         dataSet.valueTextColor = UIColor.black
         dataSet.valueFont = HonybeeFont.h6_number
-        dataSet.colors = [UIColor.rgb(r: 252, g: 234, b: 203)] //条形柱颜色
+        dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
         
         let data = BarChartData(dataSet: dataSet)
         data.barWidth = 0.5
