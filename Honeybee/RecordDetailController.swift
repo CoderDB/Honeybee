@@ -8,10 +8,9 @@
 
 import UIKit
 
-class RecordDetailController: BaseViewController {
+class RecordDetailController: BaseTableViewController {
     
     
-    lazy var tableView = UITableView()
     var model: Recorder!
     let cellTitles = ["金额", "记录时间", "分类", "备注"]
     
@@ -26,22 +25,11 @@ class RecordDetailController: BaseViewController {
     }
     
     func addTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        view.addSubview(tableView)
-        
-        tableView.estimatedRowHeight = 60
+        tableView.estimatedRowHeight = HonybeeConstant.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.rowHeight = 60
         
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
-        
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        let header = RecordDetailHeader(height: 115, title: "吃饭", imageName: "meal")
+        tableView.contentInset.bottom = 100
+        let header = RecordDetailHeader(height: 115, title: model.category, imageName: "meal", color: model.color)
         tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度
         tableView.tableFooterView = RecordDetailFooter(height: 50)
         
@@ -51,16 +39,14 @@ class RecordDetailController: BaseViewController {
 
 
 // MARK: UITableViewDataSource
-extension RecordDetailController: UITableViewDataSource, UITableViewDelegate {
-
+extension RecordDetailController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellTitles.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordDetailCell.self)") as! RecordDetailCell
         cell.mainTitleLabel.text = cellTitles[indexPath.row]
         cell.setSubTitleAttributes(indexPath: indexPath, model: model)

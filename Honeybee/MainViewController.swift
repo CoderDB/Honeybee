@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
-        vc.preferredContentSize = CGSize(width: 70, height: 60)
+        vc.preferredContentSize = CGSize(width: 70, height: HonybeeConstant.rowHeight)
         vc.view.backgroundColor = UIColor.white
         return vc
     }()
@@ -160,7 +160,7 @@ extension MainViewController {
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
-        addBtn.frame = CGRect(x: (ScreenW - 60) * 0.5, y: ScreenH - 80, width: 60, height: 60)
+        addBtn.frame = CGRect(x: (ScreenW - HonybeeConstant.rowHeight) * 0.5, y: ScreenH - 80, width: HonybeeConstant.rowHeight, height: HonybeeConstant.rowHeight)
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
     }
