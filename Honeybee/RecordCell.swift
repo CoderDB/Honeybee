@@ -15,42 +15,32 @@ class RecordCell: UITableViewCell {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
         label.font = HonybeeFont.h4
-        label.textColor = UIColor.black
-        label.text = "2月10日"
         return label
     }()
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
         label.font = HonybeeFont.h5_medium
-        label.textColor = UIColor.black
-        label.text = "打车"
         return label
     }()
     lazy var weekdayLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.font = HonybeeFont.h7
-        label.textColor = UIColor.black
-        label.text = "星期二"
         return label
     }()
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.font = HonybeeFont.h3_number
-        label.textColor = UIColor.black
-        label.text = "256.80"
         return label
     }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        layer.cornerRadius = 5
-        backgroundColor = UIColor.cyan
+        layer.cornerRadius = HonybeeConstant.cornerRadius
+        
         initialize()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -69,6 +59,7 @@ class RecordCell: UITableViewCell {
     
     var recorder: Recorder! {
         didSet {
+            imgView.image = UIImage(named: recorder.imageName)
             dateLabel.text = recorder.date
             categoryLabel.text = recorder.category
             numberLabel.text = recorder.money

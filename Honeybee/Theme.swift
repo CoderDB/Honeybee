@@ -19,6 +19,7 @@ struct HonybeeColor {
 
 struct HonybeeConstant {
     static let cornerRadius: CGFloat = 10
+    static let rowHeight: CGFloat = 60
 }
 
 struct HonybeeFont {

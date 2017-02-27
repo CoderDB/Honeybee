@@ -16,10 +16,11 @@ struct Recorder {
     var superCategory: String
     var category: String
     var money: String
-    var remark: String?
+    var remark: String = "未填写\n"
     var color: String
     var isPay: Bool = true
-    //    var parent:
+    var imageName: String = "meal"
+    
     
     var weekday: String = ""
     var yearMonthDay: String = ""
@@ -31,7 +32,7 @@ struct Recorder {
         self.superCategory = superCategory
         self.category = category
         self.money = money
-        self.remark = remark
+        self.remark = remark!
         self.color = "#"+color
     }
     
@@ -41,6 +42,8 @@ struct Recorder {
             let superCategory = dict["superCategory"] as? String,
             let category = dict["category"] as? String,
             let money = dict["money"] as? String,
+            let imageName = dict["imageName"] as? String,
+            let remark = dict["remark"] as? String,
             let color = dict["color"] as? String
             else { return nil }
         
@@ -56,7 +59,10 @@ struct Recorder {
         self.category = category
         self.money = money
         self.color = color
-        self.remark = dict["remark"] as? String
+        self.imageName = imageName
+        if remark.characters.count > 0 {
+            self.remark = remark
+        }
         self.isPay = dict["isPay"] as? Bool ?? true
     }
 }

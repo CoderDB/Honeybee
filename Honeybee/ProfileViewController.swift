@@ -39,7 +39,7 @@ class ProfileViewController: BaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         
-        tableView.rowHeight = 60
+        tableView.rowHeight = HonybeeConstant.rowHeight
         
         tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
         tableView.tableHeaderView = ProfileHeader(height: 135)
