@@ -17,7 +17,7 @@ struct RecorderViewModel: BaseViewModel {
     
     init(model: Recorder) {
         self.date = model.date
-        self.category = model.category[0]
+        self.category = model.category
         self.money = model.money
     }
     
