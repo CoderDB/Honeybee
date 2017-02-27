@@ -19,7 +19,7 @@ class CurveViewController: UIViewController {
         title = "月账单"
         addTableView()
         
-        tableView.register(CurveCell.self, forCellReuseIdentifier: "CurveCell")
+        tableView.register(CurveCell.self)
     }
     
     func addTableView() {

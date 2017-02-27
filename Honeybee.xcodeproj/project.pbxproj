@@ -59,6 +59,7 @@
 		86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */; };
 		86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE41E6405AB0054152E /* UIColorExtension.swift */; };
 		86DF8AE71E642CDD0054152E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE61E642CDD0054152E /* DateExtension.swift */; };
+		86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE81E6452600054152E /* UITableViewExtension.swift */; };
 		86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */; };
 		86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85F1E4F2791002016DB /* GroupCell.swift */; };
 		86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */; };
@@ -148,6 +149,7 @@
 		86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		86DF8AE41E6405AB0054152E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		86DF8AE61E642CDD0054152E /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		86DF8AE81E6452600054152E /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordLiteCell.swift; sourceTree = "<group>"; };
 		86F6C85F1E4F2791002016DB /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailController.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				8689157D1DF990D20035CFD3 /* Extension.swift */,
 				86DF8AE61E642CDD0054152E /* DateExtension.swift */,
 				86DF8AE41E6405AB0054152E /* UIColorExtension.swift */,
+				86DF8AE81E6452600054152E /* UITableViewExtension.swift */,
 				8689157F1DF9955B0035CFD3 /* Theme.swift */,
 			);
 			name = Other;
@@ -760,6 +763,7 @@
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
 				86104A291E61815E00AAEEAC /* IconAddCell.swift in Sources */,
 				86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */,
+				86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */,
 				8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */,
 				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
 				86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */,

@@ -41,7 +41,7 @@ class ProfileViewController: BaseViewController {
         
         tableView.rowHeight = HonybeeConstant.rowHeight
         
-        tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
+        tableView.register(SetupCell.self)
         tableView.tableHeaderView = ProfileHeader(height: 135)
     }
     func addRightNavItem() {

@@ -33,7 +33,7 @@ class RecordDetailController: BaseTableViewController {
         tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度
         tableView.tableFooterView = RecordDetailFooter(height: 50)
         
-        tableView.register(RecordDetailCell.self, forCellReuseIdentifier: "\(RecordDetailCell.self)")
+        tableView.register(RecordDetailCell.self)
     }
 }
 

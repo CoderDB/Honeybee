@@ -24,7 +24,7 @@ class BarViewController: BaseTableViewController {
         dataSource.append(item3)
         dataSource.append(item4)
         
-        tableView.register(BarCell.self, forCellReuseIdentifier: "\(BarCell.self)")
+        tableView.register(BarCell.self)
         tableView.tableHeaderView = BarHeader(height: 170)
         
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 25))

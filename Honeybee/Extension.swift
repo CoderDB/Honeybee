@@ -8,29 +8,6 @@
 
 import UIKit
 
-//******************************************************************************
-// UITableView Extension
-//******************************************************************************
-//protocol NibLoadableView: class {}
-//extension NibLoadableView where Self: UIView {
-//    static var nibName: String {
-//        return "\(self)"
-//    }
-//}
-//protocol ReuseableView: class {}
-//extension ReuseableView where Self: UIView {
-//    static var reuseIdentifier: String { return "\(self)" }
-//}
-//extension UITableView {
-//    func register<T: UITableViewCell>(_: T.Type) where T: ReuseableView, T: NibLoadableView {
-//        let nib = UINib(nibName: T.nibName, bundle: nil)
-//        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
-//    }
-//}
-
-
-
-
 
 //******************************************************************************
 // UIView Extension
