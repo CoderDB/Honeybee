@@ -36,7 +36,7 @@ class RecordDetailCell: BaseTableViewCell {
         } else if indexPath.row == 1 {
             subTitleLabel.attributedText = NSAttributedString(string: model.yearMonthDay + "\n" + model.hourMinute + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4_number])
         } else if indexPath.row == 2 {
-            subTitleLabel.attributedText = NSAttributedString(string: model.category[0] + ">" + model.category[1] + "\n", attributes: [NSFontAttributeName: HonybeeFont.h5])
+            subTitleLabel.attributedText = NSAttributedString(string: model.superCategory + ">" + model.category + "\n", attributes: [NSFontAttributeName: HonybeeFont.h5])
         } else {
             subTitleLabel.text = model.remark
         }

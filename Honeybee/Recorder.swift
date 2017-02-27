@@ -13,7 +13,8 @@ struct Recorder {
     var id: String = UUID().uuidString
     
     var date: String
-    var category: [String]
+    var superCategory: String
+    var category: String
     var money: String
     var remark: String?
     var color: String
@@ -25,9 +26,9 @@ struct Recorder {
     var hourMinute:String = ""
     
     
-    init(date: String, category: [String], money: String, remark: String? = nil, color: String) {
-        self.id = date
+    init(date: String, superCategory: String, category: String, money: String, remark: String? = nil, color: String) {
         self.date = date
+        self.superCategory = superCategory
         self.category = category
         self.money = money
         self.remark = remark
@@ -37,7 +38,8 @@ struct Recorder {
     
     init?(dict: [String: Any]) {
         guard let date = dict["date"] as? String,
-            let category = dict["category"] as? [String],
+            let superCategory = dict["superCategory"] as? String,
+            let category = dict["category"] as? String,
             let money = dict["money"] as? String,
             let color = dict["color"] as? String
             else { return nil }
@@ -49,6 +51,8 @@ struct Recorder {
         let ymdhm = Date.yearMonthDayHourMinute(date: currentDate)
         self.yearMonthDay = ymdhm.0
         self.hourMinute = ymdhm.1
+        
+        self.superCategory = superCategory
         self.category = category
         self.money = money
         self.color = color

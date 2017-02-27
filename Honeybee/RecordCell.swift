@@ -70,7 +70,7 @@ class RecordCell: UITableViewCell {
     var recorder: Recorder! {
         didSet {
             dateLabel.text = recorder.date
-            categoryLabel.text = recorder.category[0] + recorder.category[1]
+            categoryLabel.text = recorder.category
             numberLabel.text = recorder.money
             weekdayLabel.text = recorder.weekday
             backgroundColor = UIColor(hex: recorder.color)
