@@ -19,7 +19,7 @@ class PieViewController: BaseTableViewController {
         
         setupNav(title: "图表")
         
-        tableView.register(PieCell.self, forCellReuseIdentifier: "\(PieCell.self)")
+        tableView.register(PieCell.self)
         tableView.tableHeaderView = PieHeader(height: 250)
         
         let item1 = SetupArrowItem(title: "衣", subTitle: "10%")

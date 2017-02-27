@@ -55,7 +55,7 @@ extension SetupViewController {
         
         tableView.rowHeight = HonybeeConstant.rowHeight
         
-        tableView.register(SetupCell.self, forCellReuseIdentifier: "\(SetupCell.self)")
+        tableView.register(SetupCell.self)
         
         tableView.tableHeaderView = SetupHeader(height: 135)
         tableView.tableFooterView = SetupFooter(height: 50)
