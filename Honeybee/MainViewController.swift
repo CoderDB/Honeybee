@@ -15,9 +15,8 @@ let ScreenH = UIScreen.main.bounds.height
 
 class MainViewController: UIViewController {
     
-    let tableView = UITableView(frame: .zero, style: .grouped)
+    var tableView: UITableView!
     var dataSource = [RecorderSuperModel]()
-    
     
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
@@ -109,6 +108,7 @@ extension MainViewController {
 // MARK: UI
 extension MainViewController {
     func addTableView() {
+        tableView = UITableView()
         tableView.backgroundColor = UIColor.white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
