@@ -28,15 +28,28 @@ class SectionCell: UITableViewCell {
         return label
     }()
     
-    lazy var container: RecordLiteCell = RecordLiteCell()
+    
+    
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.dataSource = self
+        tv.delegate = self
+        tv.isScrollEnabled = false
+        tv.rowHeight = 60
+        tv.backgroundColor = UIColor.white
+        tv.separatorStyle = .none
+        tv.register(RecordLiteCell.self)
+        return tv
+    }()
+    
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         layer.cornerRadius = HonybeeConstant.cornerRadius
-        layer.borderWidth = 3
+        layer.borderWidth = 2
         
-        backgroundColor = UIColor.orange
+        backgroundColor = UIColor.white
         
         setupUI()
         
@@ -59,7 +72,7 @@ class SectionCell: UITableViewCell {
     func setupUI() {
         contentView.addSubview(dateLabel)
         contentView.addSubview(weekdayLabel)
-        contentView.addSubview(container)
+        contentView.addSubview(tableView)
         
         dateLabel.snp.makeConstraints { (make) in
             make.left.top.equalTo(contentView).offset(10)
@@ -72,11 +85,27 @@ class SectionCell: UITableViewCell {
             make.width.equalTo(40)
             make.height.equalTo(20)
         }
-        container.snp.makeConstraints { (make) in
-            make.top.equalTo(dateLabel.snp.bottom).offset(10)
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(dateLabel.snp.bottom)
             make.left.equalTo(dateLabel.snp.left)
             make.right.equalTo(weekdayLabel.snp.right)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
+    }
+}
+
+
+extension SectionCell: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordLiteCell.self)") as! RecordLiteCell
+        cell.category.text = "测试"
+        cell.number.text = "-888"
+        return cell
     }
 }

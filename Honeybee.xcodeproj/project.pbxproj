@@ -324,12 +324,12 @@
 			children = (
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
 				86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */,
-				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
-				86F6C85F1E4F2791002016DB /* GroupCell.swift */,
 				86631B961E4C5BC600C33CA7 /* SectionCell.swift */,
 				86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */,
 				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
 				864D250D1E62F1A60005894A /* RecorderViewModel.swift */,
+				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
+				86F6C85F1E4F2791002016DB /* GroupCell.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
