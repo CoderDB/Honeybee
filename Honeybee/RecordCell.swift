@@ -15,7 +15,7 @@ class RecordCell: UITableViewCell {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4
+        label.font = HonybeeFont.h4_number
         return label
     }()
     lazy var categoryLabel: UILabel = {

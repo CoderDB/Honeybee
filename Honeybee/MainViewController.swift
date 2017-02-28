@@ -58,16 +58,10 @@ class MainViewController: UIViewController {
         let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
         let jsonDic = jsonObj["recorders"] as! [[String: Any]]
         
-//        var recorders = [Recorder]()
         var superRecorders = [RecorderSuperModel]()
-        
-        
         for item in jsonDic {
             let model = RecorderSuperModel(dict: item)
             superRecorders.append(model!)
-            
-//            let model = Recorder(dict: item)
-//            recorders.append(model!)
         }
         return superRecorders
     }
@@ -140,8 +134,7 @@ extension MainViewController {
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
         tableView.register(RecordCell.self)
-        tableView.register(SectionCell.self)
-        tableView.register(RecordLiteCell.self)
+        tableView.register(GroupCell.self)
     }
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
@@ -175,8 +168,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         if model.style == "group" {
             let models = dataSource[indexPath.row].recorders
             
-            tableView.rowHeight = CGFloat(models!.count * 100)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
+            tableView.rowHeight = CGFloat(models!.count * 80 + 10)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
             cell.dataSource = models
             
@@ -184,7 +177,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
             cell.recorder = dataSource[indexPath.row].recorders![0]
             return cell
         }
@@ -199,10 +192,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension MainViewController: SectionCellDelegate {
-    func didSelected(row: Int) {
-        print(row)
-        
+extension MainViewController: GroupCellDelegate {
+    func didSelected(model: Recorder) {
+        let detailVC = RecordDetailController()
+        detailVC.model = model
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

@@ -30,9 +30,8 @@ class RecordLiteCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        selectionStyle = .none
+        selectionStyle = .none
         layer.cornerRadius = HonybeeConstant.cornerRadius
-        backgroundColor = UIColor.cyan
         
         setupUI()
     }
@@ -40,6 +39,7 @@ class RecordLiteCell: UITableViewCell {
         didSet {
             category.text = model?.category
             number.text = model?.money
+            backgroundColor = UIColor(hex: model!.color)
         }
     }
     override var frame: CGRect {

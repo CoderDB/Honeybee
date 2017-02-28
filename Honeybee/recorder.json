@@ -22,11 +22,31 @@
                                 "color": "79CDCD",
                                 "imageName": "meal",
                                 "isPay": 1
+                                },
+                                {
+                                "date": "2016-12-26 09:30:18 +0000",
+                                "superCategory": "衣",
+                                "category": "鞋子",
+                                "money": "-2567",
+                                "remark": "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。",
+                                "color": "79CDCD",
+                                "imageName": "meal",
+                                "isPay": 1
+                                },
+                                {
+                                "date": "2016-12-26 09:30:18 +0000",
+                                "superCategory": "衣",
+                                "category": "鞋子",
+                                "money": "-2567",
+                                "remark": "请朋友吃饭。日式拉面，泰式鸡丁+油菜花，麻辣香锅炒面，香喷喷大米饭。",
+                                "color": "79CDCD",
+                                "imageName": "meal",
+                                "isPay": 1
                                 }
                                 ]
                   },
                   {
-                  "style": "plain",
+                  "style": "group",
                   "recorders": [
                                {
                                "date": "2017-02-25 09:30:18 +0000",
@@ -37,7 +57,27 @@
                                "color": "62ABFF",
                                "imageName": "meal",
                                "isPay": 1
-                               }
+                               },
+                                {
+                                "date": "2017-02-25 09:30:18 +0000",
+                                "superCategory": "衣",
+                                "category": "鞋子",
+                                "money": "-27.50",
+                                "remark": "在这个示例中，只有一个名为 people的变量，值是包含三个条目的数组，每个条目是一个人的记录，其中包含名、姓和电子邮件地址。上面的示例演示如何用括号将记录组合成一个值。当然，可以使用相同的语法表示多个值（每个值包含多个记录",
+                                "color": "62ABFF",
+                                "imageName": "meal",
+                                "isPay": 1
+                                },
+                                {
+                                "date": "2017-02-25 09:30:18 +0000",
+                                "superCategory": "衣",
+                                "category": "鞋子",
+                                "money": "-27.50",
+                                "remark": "在这个示例中，只有一个名为 people的变量，值是包含三个条目的数组，每个条目是一个人的记录，其中包含名、姓和电子邮件地址。上面的示例演示如何用括号将记录组合成一个值。当然，可以使用相同的语法表示多个值（每个值包含多个记录",
+                                "color": "62ABFF",
+                                "imageName": "meal",
+                                "isPay": 1
+                                }
                                ]
                   },
                   {
@@ -71,7 +111,7 @@
                                ]
                   },
                   {
-                  "style": "plain",
+                  "style": "group",
                   "recorders": [
                                {
                                "date": "2017-02-22 09:30:18 +0000",
@@ -82,7 +122,47 @@
                                "color": "7ED321",
                                "imageName": "meal",
                                "isPay": 1
-                               }
+                               },
+                                {
+                                "date": "2017-02-22 09:30:18 +0000",
+                                "superCategory": "食",
+                                "category": "早饭",
+                                "money": "-25",
+                                "remark": "",
+                                "color": "7ED321",
+                                "imageName": "meal",
+                                "isPay": 1
+                                },
+                                {
+                                "date": "2017-02-22 09:30:18 +0000",
+                                "superCategory": "食",
+                                "category": "早饭",
+                                "money": "-25",
+                                "remark": "",
+                                "color": "7ED321",
+                                "imageName": "meal",
+                                "isPay": 1
+                                },
+                                {
+                                "date": "2017-02-22 09:30:18 +0000",
+                                "superCategory": "食",
+                                "category": "早饭",
+                                "money": "-25",
+                                "remark": "",
+                                "color": "7ED321",
+                                "imageName": "meal",
+                                "isPay": 1
+                                },
+                                {
+                                "date": "2017-02-22 09:30:18 +0000",
+                                "superCategory": "食",
+                                "category": "早饭",
+                                "money": "-25",
+                                "remark": "",
+                                "color": "7ED321",
+                                "imageName": "meal",
+                                "isPay": 1
+                                }
                                ]
                   },
                   {
@@ -101,7 +181,7 @@
                                ]
                   },
                   {
-                  "style": "plain",
+                  "style": "group",
                   "recorders": [
                                {
                                "date": "2017-02-20 09:30:18 +0000",
@@ -112,7 +192,17 @@
                                "color": "79CDCD",
                                "imageName": "meal",
                                "isPay": 1
-                               }
+                               },
+                                {
+                                "date": "2017-02-20 09:30:18 +0000",
+                                "superCategory": "生活",
+                                "category": "电影票",
+                                "money": "-96",
+                                "remark": "相同的语法表示多个值（每个值包含多个记录",
+                                "color": "79CDCD",
+                                "imageName": "meal",
+                                "isPay": 1
+                                }
                                ]
                   }
                   ]
