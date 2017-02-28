@@ -1,0 +1,31 @@
+//
+//  RecorderSuperModel.swift
+//  Honeybee
+//
+//  Created by Dongbing Hou on 28/02/2017.
+//  Copyright © 2017 Dongbing Hou. All rights reserved.
+//
+
+import UIKit
+
+class RecorderSuperModel: NSObject {
+    var style: String
+    var recorders: [Recorder]? = []
+    
+    init(style: String, recorders: [Recorder]? = []) {
+        self.style = style
+        self.recorders = recorders
+    }
+    
+    init?(dict: [String: Any]) {
+        guard let style = dict["style"] as? String else { return nil }
+        self.style = style
+        if let recorders = dict["recorders"] as? [[String: Any]] {
+            for item in recorders {
+                let model = Recorder(dict: item)
+                self.recorders?.append(model!)
+            }
+        }
+    }
+    
+}

@@ -1,17 +1,15 @@
 //
-//  Reocder.swift
+//  RecorderLite.swift
 //  Honeybee
 //
-//  Created by Dongbing Hou on 10/02/2017.
+//  Created by Dongbing Hou on 28/02/2017.
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
 
-
 import UIKit
 
-struct Recorder {
+struct RecorderLite {
     var id: String = UUID().uuidString
-    
     
     var date: String
     var superCategory: String
@@ -48,7 +46,7 @@ struct Recorder {
             let color = dict["color"] as? String
             else { return nil }
         
-//        self.id = id
+        //        self.id = id
         let currentDate = Date.currentTimeZoneDateFrom(aDate: Date.date(str: date))
         self.date = Date.monthDay(date: currentDate)
         self.weekday = Date.weekday(date: currentDate)
@@ -67,6 +65,4 @@ struct Recorder {
         self.isPay = dict["isPay"] as? Bool ?? true
     }
 }
-
-
 
