@@ -10,6 +10,9 @@ import UIKit
 
 class RecordLiteCell: UITableViewCell {
     
+    
+    lazy var imgView = UIImageView(image: UIImage(named: "meal"))
+    
     lazy var category: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -29,8 +32,9 @@ class RecordLiteCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        selectionStyle = .none
         layer.cornerRadius = HonybeeConstant.cornerRadius
-        backgroundColor = UIColor.brown
+        backgroundColor = UIColor.cyan
         
         setupUI()
     }
@@ -38,9 +42,8 @@ class RecordLiteCell: UITableViewCell {
     override var frame: CGRect {
         didSet {
             var newFrame = frame
-            newFrame.origin.x += 10
             newFrame.origin.y += 10
-            newFrame.size = CGSize(width: frame.width-20, height: frame.height-20)
+            newFrame.size = CGSize(width: frame.width, height: frame.height-10)
             super.frame = newFrame
         }
     }
@@ -48,22 +51,23 @@ class RecordLiteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     func setupUI() {
+        contentView.addSubview(imgView)
         contentView.addSubview(category)
         contentView.addSubview(number)
         
-        category.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView.snp.centerY)
+        imgView.snp.makeConstraints { (make) in
             make.left.equalTo(contentView).offset(10)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
+            make.centerY.equalTo(contentView)
+            make.width.height.equalTo(45)
         }
-        
+        category.snp.makeConstraints { (make) in
+            make.centerY.equalTo(contentView)
+            make.left.equalTo(imgView.snp.right).offset(10)
+        }
         number.snp.makeConstraints { (make) in
+            make.centerY.equalTo(category)
             make.left.equalTo(category.snp.right).offset(20)
-            make.centerY.equalTo(category.snp.centerY)
-            make.width.equalTo(200)
-            make.height.equalTo(40)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-20).priority(HonybeePriority.low)
+            make.right.equalTo(contentView).offset(-10)
         }
         
     }

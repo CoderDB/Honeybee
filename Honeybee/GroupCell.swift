@@ -69,6 +69,4 @@ class GroupCell: UITableViewCell {
             make.height.equalTo(20)
         }
     }
-
-
 }

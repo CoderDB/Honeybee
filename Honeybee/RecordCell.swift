@@ -36,6 +36,7 @@ class RecordCell: UITableViewCell {
         return label
     }()
     
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -105,5 +106,6 @@ class RecordCell: UITableViewCell {
             make.top.equalTo(weekdayLabel.snp.bottom)
             make.bottom.equalTo(categoryLabel.snp.bottom)
         }
+        
     }
 }
