@@ -166,6 +166,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
+            cell.delegate = self
             tableView.rowHeight = 550
             return cell
         } else {
@@ -177,10 +178,18 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = RecordDetailController()
-        detailVC.model = dataSource[indexPath.row]
+        if indexPath.section != 1 {
+            let detailVC = RecordDetailController()
+            detailVC.model = dataSource[indexPath.row]
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+}
+
+extension MainViewController: SectionCellDelegate {
+    func didSelected(row: Int) {
+        print(row)
         
-        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

@@ -9,13 +9,16 @@
 import UIKit
 
 
+protocol SectionCellDelegate: class {
+    func didSelected(row: Int)
+}
+
+
 class SectionCell: UITableViewCell {
 
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
         label.font = HonybeeFont.h4_number
-        label.textColor = UIColor.black
         label.text = "2月10日"
         return label
     }()
@@ -23,13 +26,9 @@ class SectionCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .right
         label.font = HonybeeFont.h7
-        label.textColor = UIColor.black
         label.text = "星期二"
         return label
     }()
-    
-    
-    
     lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.dataSource = self
@@ -41,7 +40,7 @@ class SectionCell: UITableViewCell {
         tv.register(RecordLiteCell.self)
         return tv
     }()
-    
+    weak var delegate: SectionCellDelegate?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,7 +49,6 @@ class SectionCell: UITableViewCell {
         layer.borderWidth = 2
         
         backgroundColor = UIColor.white
-        
         setupUI()
         
     }
@@ -107,5 +105,8 @@ extension SectionCell: UITableViewDataSource, UITableViewDelegate {
         cell.category.text = "测试"
         cell.number.text = "-888"
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelected(row: indexPath.row)
     }
 }
