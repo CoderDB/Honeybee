@@ -44,7 +44,7 @@ struct HonybeeFont {
 
 struct HonybeePriority {
     static let `default` = 1000
-    static let mid = 720
+    static let mid = 750
     static let low = 250
 }
 

@@ -69,22 +69,21 @@ class SetupHeader: UIView {
         editButton.snp.makeConstraints { (make) in
             make.right.bottom.equalTo(self).offset(-10)
             make.width.equalTo(40)
-            make.height.equalTo(25)
         }
         headButton.snp.makeConstraints { (make) in
             make.top.left.equalTo(self).offset(10)
             make.width.height.equalTo(115)
         }
         nicknameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(headButton.snp.right).offset(10)
             make.top.equalTo(headButton)
-            make.width.equalTo(185)
+            make.left.equalTo(headButton.snp.right).offset(10)
+            make.right.equalTo(self).offset(-60).priority(HonybeePriority.mid)
             make.height.equalTo(25)
         }
         bioLabel.snp.makeConstraints { (make) in
             make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
             make.left.equalTo(nicknameLabel)
-            make.right.equalTo(editButton.snp.left).offset(-5).priority(750)
+            make.right.equalTo(editButton.snp.left).offset(-5).priority(HonybeePriority.mid)
             make.bottom.equalTo(headButton).offset(-10)
         } 
     }
