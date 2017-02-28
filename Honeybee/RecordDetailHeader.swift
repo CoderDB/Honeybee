@@ -59,7 +59,8 @@ class RecordDetailHeader: UIView {
         containerView.addSubview(titleLabel)
         
         editButton.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(self).offset(-10)
+            make.right.equalTo(self).offset(-10)
+            make.bottom.equalTo(self)
         }
         containerView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self)

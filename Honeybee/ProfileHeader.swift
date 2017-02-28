@@ -65,7 +65,6 @@ class ProfileHeader: UIView {
         editButton.snp.makeConstraints { (make) in
             make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self)
-            make.width.equalTo(40)
         }
         
         containView.snp.makeConstraints { (make) in
