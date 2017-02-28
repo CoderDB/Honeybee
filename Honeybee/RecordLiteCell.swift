@@ -36,7 +36,12 @@ class RecordLiteCell: UITableViewCell {
         
         setupUI()
     }
-    
+    var model: Recorder? {
+        didSet {
+            category.text = model?.category
+            number.text = model?.money
+        }
+    }
     override var frame: CGRect {
         didSet {
             var newFrame = frame

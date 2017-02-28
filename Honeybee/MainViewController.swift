@@ -16,7 +16,7 @@ let ScreenH = UIScreen.main.bounds.height
 class MainViewController: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .grouped)
-    var dataSource = [Recorder]()
+    var dataSource = [RecorderSuperModel]()
     
     
     lazy var destVC: UIViewController = {
@@ -52,17 +52,24 @@ class MainViewController: UIViewController {
         addAddBtn()
     }
     
-    func fetchData() -> [Recorder] {
+    func fetchData() -> [RecorderSuperModel] {
         let path = Bundle.main.path(forResource: "recorder", ofType: "json")
         let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
         let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
         let jsonDic = jsonObj["recorders"] as! [[String: Any]]
-        var recorders = [Recorder]()
+        
+//        var recorders = [Recorder]()
+        var superRecorders = [RecorderSuperModel]()
+        
+        
         for item in jsonDic {
-            let model = Recorder(dict: item)
-            recorders.append(model!)
+            let model = RecorderSuperModel(dict: item)
+            superRecorders.append(model!)
+            
+//            let model = Recorder(dict: item)
+//            recorders.append(model!)
         }
-        return recorders
+        return superRecorders
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -157,30 +164,36 @@ extension MainViewController {
 
 // MARK: UITableViewDatasource
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        let model = dataSource[indexPath.row]
+        
+        
+        if model.style == "group" {
+            let models = dataSource[indexPath.row].recorders
+            
+            tableView.rowHeight = CGFloat(models!.count * 100)
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell") as! SectionCell
             cell.delegate = self
-            tableView.rowHeight = 550
+            cell.dataSource = models
+            
             return cell
         } else {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell") as! RecordCell
-            cell.recorder = dataSource[indexPath.row]
+            cell.recorder = dataSource[indexPath.row].recorders![0]
             return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section != 1 {
+        let model = dataSource[indexPath.row]
+        if model.style != "group" {
             let detailVC = RecordDetailController()
-            detailVC.model = dataSource[indexPath.row]
+            detailVC.model = dataSource[indexPath.row].recorders![0]
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

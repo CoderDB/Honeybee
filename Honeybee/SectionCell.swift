@@ -35,6 +35,8 @@ class SectionCell: UITableViewCell {
         tv.delegate = self
         tv.isScrollEnabled = false
         tv.rowHeight = 60
+//        tv.estimatedRowHeight = 60
+//        tv.rowHeight = UITableViewAutomaticDimension
         tv.backgroundColor = UIColor.white
         tv.separatorStyle = .none
         tv.register(RecordLiteCell.self)
@@ -67,6 +69,9 @@ class SectionCell: UITableViewCell {
         }
     }
     
+    var dataSource: [Recorder]?
+    
+    
     func setupUI() {
         contentView.addSubview(dateLabel)
         contentView.addSubview(weekdayLabel)
@@ -93,17 +98,15 @@ class SectionCell: UITableViewCell {
 }
 
 
+
+
 extension SectionCell: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dataSource!.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordLiteCell.self)") as! RecordLiteCell
-        cell.category.text = "测试"
-        cell.number.text = "-888"
+        cell.model = dataSource?[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
