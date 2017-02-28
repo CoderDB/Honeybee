@@ -10,9 +10,7 @@ import UIKit
 
 class RecordLiteCell: UITableViewCell {
     
-    
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
-    
     lazy var category: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
