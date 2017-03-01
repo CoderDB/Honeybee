@@ -16,7 +16,11 @@ let ScreenH = UIScreen.main.bounds.height
 class MainViewController: UIViewController {
     
     var tableView: UITableView!
-    var dataSource = [RecorderSuperModel]()
+    var dataSource: [RecorderSuperModel]! = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
@@ -44,11 +48,10 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         automaticallyAdjustsScrollViewInsets = false
-        
-        dataSource = fetchData()
-        
         addTableView()
         addAddBtn()
+        
+        dataSource = fetchData()
     }
     
     func fetchData() -> [RecorderSuperModel] {
@@ -168,10 +171,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         if model.style == "group" {
             let models = dataSource[indexPath.row].recorders
             
-            tableView.rowHeight = CGFloat(models!.count * 80 + 10)
+//            tableView.rowHeight = CGFloat(models!.count * 44 + 10)
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
             cell.dataSource = models
+            
+            tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
             
             return cell
         } else {

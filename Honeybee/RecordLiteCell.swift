@@ -13,18 +13,13 @@ class RecordLiteCell: UITableViewCell {
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     lazy var category: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
         label.font = HonybeeFont.h5
-        label.textColor = UIColor.black
-        label.text = "购物"
         return label
     }()
     lazy var number: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.font = HonybeeFont.h3_number
-        label.textColor = UIColor.black
-        label.text = "98456.87"
         return label
     }()
     
@@ -40,6 +35,7 @@ class RecordLiteCell: UITableViewCell {
             category.text = model?.category
             number.text = model?.money
             backgroundColor = UIColor(hex: model!.color)
+            print("---------\(frame)")
         }
     }
     override var frame: CGRect {
