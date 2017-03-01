@@ -9,17 +9,17 @@
 import UIKit
 
 class RecorderSuperModel: NSObject {
-    var style: String
+    var style: RecorderStyle
     var recorders: [Recorder]? = []
     
     init(style: String, recorders: [Recorder]? = []) {
-        self.style = style
+        self.style = RecorderStyle(rawValue: style)!
         self.recorders = recorders
     }
     
     init?(dict: [String: Any]) {
         guard let style = dict["style"] as? String else { return nil }
-        self.style = style
+        self.style = RecorderStyle(rawValue: style)!
         if let recorders = dict["recorders"] as? [[String: Any]] {
             for item in recorders {
                 let model = Recorder(dict: item)

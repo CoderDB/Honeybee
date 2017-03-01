@@ -35,7 +35,6 @@ class RecordLiteCell: UITableViewCell {
             category.text = model?.category
             number.text = model?.money
             backgroundColor = UIColor(hex: model!.color)
-            print("---------\(frame)")
         }
     }
     override var frame: CGRect {

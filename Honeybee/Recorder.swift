@@ -9,6 +9,11 @@
 
 import UIKit
 
+enum RecorderStyle: String {
+    case `default` = "plain"
+    case group = "group"
+}
+
 struct Recorder {
     var id: String = UUID().uuidString
     
