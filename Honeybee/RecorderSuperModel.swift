@@ -5,10 +5,9 @@
 //  Created by Dongbing Hou on 28/02/2017.
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
+import RealmSwift
 
-import UIKit
-
-class RecorderSuperModel: NSObject {
+struct RecorderSuperModel {
     var style: RecorderStyle
     var recorders: [Recorder]? = []
     
@@ -24,6 +23,22 @@ class RecorderSuperModel: NSObject {
             for item in recorders {
                 let model = Recorder(dict: item)
                 self.recorders?.append(model!)
+                let recor = RecorderModel()
+                recor.category = model!.category
+                recor.color = model!.color
+                recor.date = model!.date
+                recor.imageName = model!.date
+                recor.id = model!.id
+                recor.isPay = model!.isPay
+                recor.money = model!.money
+                recor.remark = model!.remark
+                
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(recor)
+                }
+                
             }
         }
     }
