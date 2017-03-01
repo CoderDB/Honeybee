@@ -166,9 +166,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataSource[indexPath.row]
-        
-        
-        if model.style == "group" {
+        if model.style == .group {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
             cell.dataSource = dataSource[indexPath.row].recorders
@@ -184,7 +182,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource[indexPath.row]
-        if model.style != "group" {
+        if model.style != .group {
             let detailVC = RecordDetailController()
             detailVC.model = dataSource[indexPath.row].recorders![0]
             navigationController?.pushViewController(detailVC, animated: true)
