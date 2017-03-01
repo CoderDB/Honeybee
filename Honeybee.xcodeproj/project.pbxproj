@@ -20,6 +20,7 @@
 		8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627434D1DF2A8F8002597E1 /* DateView.swift */; };
 		8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB41E0BADFD00C1A257 /* CurveCell.swift */; };
 		8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB81E0BC83300C1A257 /* LineView.swift */; };
+		862B3CC51E66D8AB008485DD /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B3CC41E66D8AB008485DD /* DatabaseHelper.swift */; };
 		863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */; };
 		863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703B11DEEDF7900BC1153 /* CardViewController.swift */; };
 		8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9A51DE56CB9002369F9 /* AppDelegate.swift */; };
@@ -104,6 +105,7 @@
 		8627434D1DF2A8F8002597E1 /* DateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		8627BFB41E0BADFD00C1A257 /* CurveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveCell.swift; sourceTree = "<group>"; };
 		8627BFB81E0BC83300C1A257 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		862B3CC41E66D8AB008485DD /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		863703B11DEEDF7900BC1153 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		8638A9A21DE56CB9002369F9 /* Honeybee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honeybee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,14 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		862B3CC31E66D88A008485DD /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				862B3CC41E66D8AB008485DD /* DatabaseHelper.swift */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		8638A9991DE56CB9002369F9 = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +252,7 @@
 				860EF57D1E600DB8009C2D31 /* IconManager */,
 				86E5746E1E4C6E6C001255CD /* Chart */,
 				86E5746F1E4C6E88001255CD /* Profile */,
+				862B3CC31E66D88A008485DD /* Database */,
 				86E574701E4C6EBC001255CD /* Other */,
 				861544471E4DA9D200A6EEBD /* Source */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
@@ -733,6 +744,7 @@
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
 				8697CEE31E5DA2AE00993CFE /* BaseTableViewController.swift in Sources */,
 				86D170461E51EBCE0004E192 /* ProfileViewController.swift in Sources */,
+				862B3CC51E66D8AB008485DD /* DatabaseHelper.swift in Sources */,
 				86DF8AE71E642CDD0054152E /* DateExtension.swift in Sources */,
 				86D1703D1E51DF4A0004E192 /* SetupItem.swift in Sources */,
 				86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */,
