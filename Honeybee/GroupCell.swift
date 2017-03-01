@@ -63,17 +63,17 @@ class GroupCell: UITableViewCell {
         }
     }
     
+    
+    var tvHeight = 60
     var dataSource: [Recorder]? = [] {
         didSet {
             tvHeight = dataSource!.count * 60 + 10
             tableView.snp.updateConstraints { (make) in
-                
                 make.height.equalTo(tvHeight)
             }
             tableView.reloadData()
         }
     }
-    var tvHeight = 60
     
     func setupUI() {
         contentView.addSubview(dateLabel)
@@ -91,8 +91,7 @@ class GroupCell: UITableViewCell {
             make.top.equalTo(dateLabel.snp.bottom)
             make.left.equalTo(dateLabel)
             make.right.equalTo(weekdayLabel)
-//            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
-            make.height.equalTo(60)
+            make.height.equalTo(tvHeight)
         }
     }
 }

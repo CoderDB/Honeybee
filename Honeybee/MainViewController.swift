@@ -169,15 +169,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         
         
         if model.style == "group" {
-            let models = dataSource[indexPath.row].recorders
-            
-//            tableView.rowHeight = CGFloat(models!.count * 44 + 10)
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
-            cell.dataSource = models
-            
+            cell.dataSource = dataSource[indexPath.row].recorders
             tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
-            
             return cell
         } else {
             tableView.estimatedRowHeight = 75
