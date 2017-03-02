@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DatabaseManager: NSObject {
     static let manager = DatabaseManager()
@@ -27,10 +28,19 @@ class DatabaseManager: NSObject {
             realm.add(recorder)
         }
     }
+    
+    func delete(model: Recorder) {
+        let recorder = RecorderModel(model: model)
+        try! realm.write {
+            realm.delete(recorder)
+        }
+    }
+    
+    func deleteAll() {
+        realm.deleteAll()
+    }
 
 }
-
-import RealmSwift
 
 class RecorderModel: Object {
     dynamic var id: String = ""
@@ -43,6 +53,10 @@ class RecorderModel: Object {
     dynamic var isPay: Bool = true
     dynamic var imageName: String = "meal"
     
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
     convenience init(model: Recorder) {
         self.init()
         

@@ -23,6 +23,7 @@ struct RecorderSuperModel {
             for item in recorders {
                 let model = Recorder(dict: item)
                 self.recorders?.append(model!)
+                DatabaseManager.manager.insert(model: model!)
             }
         }
     }
