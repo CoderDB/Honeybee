@@ -50,7 +50,6 @@ class MainViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
-        
         dataSource = fetchData()
     }
     

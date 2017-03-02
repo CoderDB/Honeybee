@@ -8,10 +8,24 @@
 
 import Foundation
 
-class DatabaseHelper: NSObject {
-    private override init() {}
-    static func helper() {
+class DatabaseManager: NSObject {
+    static let manager = DatabaseManager()
+    private var realm: Realm
+    private override init() {
+        var config = Realm.Configuration()
+        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("honeybee.realm")
+        self.realm = try! Realm(configuration: config)
         
+        print(realm.configuration.fileURL!)
+        super.init()
+    }
+    
+    
+    func insert(model: Recorder) {
+        let recorder = RecorderModel(model: model)
+        try! realm.write {
+            realm.add(recorder)
+        }
     }
 
 }
@@ -19,7 +33,7 @@ class DatabaseHelper: NSObject {
 import RealmSwift
 
 class RecorderModel: Object {
-    dynamic var id = NSUUID().uuidString
+    dynamic var id: String = ""
     dynamic var date: String = ""
     dynamic var superCategory: String = ""
     dynamic var category: String = ""
@@ -28,4 +42,18 @@ class RecorderModel: Object {
     dynamic var color: String = ""
     dynamic var isPay: Bool = true
     dynamic var imageName: String = "meal"
+    
+    convenience init(model: Recorder) {
+        self.init()
+        
+        self.id = model.id
+        self.category = model.category
+        self.superCategory = model.superCategory
+        self.color = model.color
+        self.date = model.date
+        self.imageName = model.date
+        self.isPay = model.isPay
+        self.money = model.money
+        self.remark = model.remark
+    }
 }
