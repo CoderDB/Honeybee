@@ -13,6 +13,7 @@ class CardViewController: UIViewController {
     lazy var hb_keyboard: HBKeyboard = {
         let keyboard = HBKeyboard()
         keyboard.calculateView.delegate = self
+        keyboard.dateView.delegate = self
         keyboard.delegate = self
         return keyboard
     }()
@@ -27,7 +28,7 @@ class CardViewController: UIViewController {
         label.textAlignment = .right
         return label
     }()
-    
+    var selectedDate: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -165,13 +166,7 @@ extension CardViewController: UIScrollViewDelegate {
 
 // MARK: HBKeyboardProtocol
 extension CardViewController: HBKeyboardProtocol {
-    func callCamera() {
-        print("---call camera")
-    }
-}
-
-// MARK: HBKeyboardProtocol
-extension CardViewController: CalculateViewProtocol {
+    // result
     func inputing(text: String) {
         resultLabel.text = text
     }
@@ -182,5 +177,22 @@ extension CardViewController: CalculateViewProtocol {
     
     func completed(text: String) {
         resultLabel.text = text
+        
+        guard let date = selectedDate else {
+            return
+        }
+        let model = Recorder(date: date, superCategory: "TESTSUPER", category: "TEST", money: text, color: "888888")
+        DatabaseManager.manager.add(model: model)
+        
     }
+    // Date
+    func selected(date: String) {
+        selectedDate = date
+    }
+    
+    
+    func callCamera() {
+        print("---call camera")
+    }
+    
 }

@@ -33,7 +33,7 @@ struct Recorder {
     var hourMinute:String = ""
     
     
-    init(date: String, superCategory: String, category: String, money: String, remark: String? = nil, color: String) {
+    init(date: String, superCategory: String, category: String, money: String, remark: String? = "", color: String) {
         self.date = date
         self.superCategory = superCategory
         self.category = category

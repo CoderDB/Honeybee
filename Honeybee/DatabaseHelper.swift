@@ -40,7 +40,22 @@ class DatabaseManager: NSObject {
     func query(id: String) -> RLMRecorder? {
         return realm.object(ofType: RLMRecorder.self, forPrimaryKey: id)
     }
-
+    func query() -> [RecorderSuperModel] {
+        let objects = realm.objects(RLMRecorder.self)
+        var recorders = [Recorder]()
+        
+        for obj in objects {
+            let recorder = Recorder(
+                date: obj.date,
+                superCategory: obj.superCategory,
+                category: obj.category,
+                money: obj.money,
+                remark: obj.remark,
+                color: obj.color)
+            recorders.append(recorder)
+        }
+        return [RecorderSuperModel(style: "plain", recorders: recorders)]
+    }
 }
 
 class RLMRecorder: Object {

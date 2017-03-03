@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
-        vc.preferredContentSize = CGSize(width: 70, height: HonybeeConstant.rowHeight)
+        vc.preferredContentSize = CGSize(width: 70, height: 60)
         vc.view.backgroundColor = UIColor.white
         return vc
     }()
@@ -50,7 +50,7 @@ class MainViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
-        dataSource = fetchData()
+        dataSource = DatabaseManager.manager.query()//fetchData()
     }
     
     func fetchData() -> [RecorderSuperModel] {
@@ -141,7 +141,7 @@ extension MainViewController {
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
-        addBtn.frame = CGRect(x: (ScreenW - HonybeeConstant.rowHeight) * 0.5, y: ScreenH - 80, width: HonybeeConstant.rowHeight, height: HonybeeConstant.rowHeight)
+        addBtn.frame = CGRect(x: (ScreenW - 60) * 0.5, y: ScreenH - 80, width: 60, height: 60)
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
     }
