@@ -33,5 +33,14 @@ extension UITableView: ReuseableView {
     }
 }
 
+//extension UITableViewCell {
+//    static var className: String {
+//        return String(describing: self)
+//    }
+//    static func className(obj: Any) -> String {
+//        return String(describing: type(of: obj)).components(separatedBy: "__").last!
+//    }
+//}
+
 
 
