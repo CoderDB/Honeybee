@@ -22,27 +22,28 @@ class DatabaseManager: NSObject {
     }
     
     
-    func insert(model: Recorder) {
-        let recorder = RecorderModel(model: model)
+    func add(model: Recorder, update: Bool? = false) {
+        let recorder = RLMRecorder(model: model)
         try! realm.write {
-            realm.add(recorder)
+            realm.add(recorder, update: update!)
         }
     }
-    
     func delete(model: Recorder) {
-        let recorder = RecorderModel(model: model)
+        let recorder = RLMRecorder(model: model)
         try! realm.write {
             realm.delete(recorder)
         }
     }
-    
     func deleteAll() {
         realm.deleteAll()
+    }
+    func query(id: String) -> RLMRecorder? {
+        return realm.object(ofType: RLMRecorder.self, forPrimaryKey: id)
     }
 
 }
 
-class RecorderModel: Object {
+class RLMRecorder: Object {
     dynamic var id: String = ""
     dynamic var date: String = ""
     dynamic var superCategory: String = ""
