@@ -40,21 +40,35 @@ class DatabaseManager: NSObject {
     func query(id: String) -> RLMRecorder? {
         return realm.object(ofType: RLMRecorder.self, forPrimaryKey: id)
     }
-    func query() -> [RecorderSuperModel] {
-        let objects = realm.objects(RLMRecorder.self)
-        var recorders = [Recorder]()
+    func query() -> Results<RLMRecorderSuper> {
+        return realm.objects(RLMRecorderSuper.self)
         
-        for obj in objects {
-            let recorder = Recorder(
-                date: obj.date,
-                superCategory: obj.superCategory,
-                category: obj.category,
-                money: obj.money,
-                remark: obj.remark,
-                color: obj.color)
-            recorders.append(recorder)
-        }
-        return [RecorderSuperModel(style: "plain", recorders: recorders)]
+//        var recorders = [Recorder]()
+//        
+//        for obj in objects {
+//            let recorder = Recorder(
+//                date: obj.date,
+//                superCategory: obj.superCategory,
+//                category: obj.category,
+//                money: obj.money,
+//                remark: obj.remark,
+//                color: obj.color)
+//            recorders.append(recorder)
+//        }
+//        return [RecorderSuper(style: "plain", recorders: recorders)]
+    }
+}
+
+
+class RLMRecorderSuper: Object {
+    dynamic var style: String = "plain"
+    var recorders = List<RLMRecorder>()
+    
+    convenience init(style: String, recorders: List<RLMRecorder>) {
+        self.init()
+        
+        self.style = style
+        self.recorders = recorders
     }
 }
 
