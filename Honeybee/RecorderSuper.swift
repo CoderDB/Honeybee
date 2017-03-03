@@ -1,13 +1,13 @@
 //
-//  RecorderSuperModel.swift
+//  RecorderSuper.swift
 //  Honeybee
 //
-//  Created by Dongbing Hou on 28/02/2017.
+//  Created by Dongbing Hou on 03/03/2017.
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
-import RealmSwift
 
-struct RecorderSuperModel {
+struct RecorderSuper {
+    
     var style: RecorderStyle
     var recorders: [Recorder]? = []
     
@@ -23,9 +23,8 @@ struct RecorderSuperModel {
             for item in recorders {
                 let model = Recorder(dict: item)
                 self.recorders?.append(model!)
-                DatabaseManager.manager.add(model: model!)
+//                DatabaseManager.manager.add(model: model!)
             }
         }
     }
-    
 }

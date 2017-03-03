@@ -16,7 +16,7 @@ let ScreenH = UIScreen.main.bounds.height
 class MainViewController: UIViewController {
     
     var tableView: UITableView!
-    var dataSource: [RecorderSuperModel]! = [] {
+    var dataSource: [RecorderSuper] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -50,18 +50,18 @@ class MainViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
-        dataSource = DatabaseManager.manager.query()//fetchData()
+        dataSource = fetchData()
     }
     
-    func fetchData() -> [RecorderSuperModel] {
+    func fetchData() -> [RecorderSuper] {
         let path = Bundle.main.path(forResource: "recorder", ofType: "json")
         let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
         let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
         let jsonDic = jsonObj["recorders"] as! [[String: Any]]
         
-        var superRecorders = [RecorderSuperModel]()
+        var superRecorders = [RecorderSuper]()
         for item in jsonDic {
-            let model = RecorderSuperModel(dict: item)
+            let model = RecorderSuper(dict: item)
             superRecorders.append(model!)
         }
         return superRecorders

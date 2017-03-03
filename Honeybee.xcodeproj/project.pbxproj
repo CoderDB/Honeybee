@@ -31,6 +31,7 @@
 		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
 		864D25101E62F4180005894A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250F1E62F4180005894A /* BaseViewModel.swift */; };
 		864D25121E6312240005894A /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorder.json */; };
+		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
@@ -47,7 +48,6 @@
 		86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */; };
 		86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B984131E61609500CCB450 /* IconAddViewController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
-		86D0CEB71E6583BB00FDB183 /* RecorderSuperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0CEB61E6583BB00FDB183 /* RecorderSuperModel.swift */; };
 		86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */; };
 		86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702C1E51BA560004E192 /* SetupHeader.swift */; };
 		86D170311E51C4790004E192 /* SetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170301E51C4790004E192 /* SetupCell.swift */; };
@@ -122,6 +122,7 @@
 		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
 		864D250F1E62F4180005894A /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		864D25111E6312240005894A /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
+		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -138,7 +139,6 @@
 		86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverViewController.swift; sourceTree = "<group>"; };
 		86B984131E61609500CCB450 /* IconAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconAddViewController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
-		86D0CEB61E6583BB00FDB183 /* RecorderSuperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuperModel.swift; sourceTree = "<group>"; };
 		86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailFooter.swift; sourceTree = "<group>"; };
 		86D1702C1E51BA560004E192 /* SetupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHeader.swift; sourceTree = "<group>"; };
 		86D170301E51C4790004E192 /* SetupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCell.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		8669A0BF1E6965A40079E53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86D0CEB61E6583BB00FDB183 /* RecorderSuperModel.swift */,
+				8669A0C01E697EEC0079E53A /* RecorderSuper.swift */,
 				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
 			);
 			name = Model;
@@ -741,7 +741,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
-				86D0CEB71E6583BB00FDB183 /* RecorderSuperModel.swift in Sources */,
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
 				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
@@ -781,6 +780,7 @@
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
+				8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */,
 				86104A291E61815E00AAEEAC /* IconAddCell.swift in Sources */,
 				86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */,
 				86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */,
