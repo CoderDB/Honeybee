@@ -245,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
+				8669A0BF1E6965A40079E53A /* Model */,
 				8697CEE11E5DA28900993CFE /* Base */,
 				86E5746C1E4C6E1C001255CD /* Main */,
 				86F6C8651E4F2F11002016DB /* RecordDetail */,
@@ -278,6 +279,15 @@
 				8638A9C71DE56CB9002369F9 /* Info.plist */,
 			);
 			path = HoneybeeUITests;
+			sourceTree = "<group>";
+		};
+		8669A0BF1E6965A40079E53A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86D0CEB61E6583BB00FDB183 /* RecorderSuperModel.swift */,
+				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		8697CEE11E5DA28900993CFE /* Base */ = {
@@ -337,8 +347,6 @@
 				86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */,
 				86F6C85F1E4F2791002016DB /* GroupCell.swift */,
 				86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */,
-				86D0CEB61E6583BB00FDB183 /* RecorderSuperModel.swift */,
-				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
 				864D250D1E62F1A60005894A /* RecorderViewModel.swift */,
 				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
 			);

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-protocol HBKeyboardProtocol: class {
+protocol HBKeyboardProtocol: CalculateViewProtocol, DateViewProtocol {
     func callCamera()
 }
 
@@ -18,6 +18,7 @@ class HBKeyboard: UIView {
     
     weak var delegate: HBKeyboardProtocol?
     var calculateView: CalculateView!
+    var dateView: DateView!
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -93,7 +94,7 @@ class HBKeyboard: UIView {
         calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: scrollViewH))
         scrollView.addSubview(calculateView)
         
-        let dateView = DateView(frame: CGRect(x: ScreenW, y: 0, width: ScreenW, height: scrollViewH))
+        dateView = DateView(frame: CGRect(x: ScreenW, y: 0, width: ScreenW, height: scrollViewH))
         scrollView.addSubview(dateView)
     }
     

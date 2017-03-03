@@ -9,9 +9,12 @@
 import UIKit
 import SnapKit
 
+
+protocol DateViewProtocol: class {
+    func selected(date: String)
+}
+
 class DateView: UIView {
-    
-    
     private lazy var datePicker: UIDatePicker = {
         let dp = UIDatePicker()
         dp.backgroundColor = UIColor.white
@@ -23,7 +26,7 @@ class DateView: UIView {
         dp.translatesAutoresizingMaskIntoConstraints = false
         return dp
     }()
-    
+    weak var delegate: DateViewProtocol?
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -43,7 +46,7 @@ class DateView: UIView {
     }
     
     @objc private func datePickerValueChanged(_ picker: UIDatePicker) {
-        print("-----\(picker.date)")
+        delegate?.selected(date: "\(picker.date)")
     }
     
 
