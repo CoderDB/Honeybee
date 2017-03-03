@@ -17,7 +17,6 @@ enum RecorderStyle: String {
 struct Recorder {
     var id: String = UUID().uuidString
     
-    
     var date: String
     var superCategory: String
     var category: String
@@ -26,7 +25,6 @@ struct Recorder {
     var color: String
     var isPay: Bool = true
     var imageName: String = "meal"
-    
     
     var weekday: String = ""
     var yearMonthDay: String = ""
@@ -41,8 +39,6 @@ struct Recorder {
         self.remark = remark!
         self.color = "#"+color
     }
-    
-    
     init?(dict: [String: Any]) {
         guard let date = dict["date"] as? String,
             let superCategory = dict["superCategory"] as? String,

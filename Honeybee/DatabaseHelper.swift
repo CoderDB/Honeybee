@@ -60,44 +60,4 @@ class DatabaseManager: NSObject {
 }
 
 
-class RLMRecorderSuper: Object {
-    dynamic var style: String = "plain"
-    var recorders = List<RLMRecorder>()
-    
-    convenience init(style: String, recorders: List<RLMRecorder>) {
-        self.init()
-        
-        self.style = style
-        self.recorders = recorders
-    }
-}
 
-class RLMRecorder: Object {
-    dynamic var id: String = ""
-    dynamic var date: String = ""
-    dynamic var superCategory: String = ""
-    dynamic var category: String = ""
-    dynamic var money: String = ""
-    dynamic var remark: String = "未填写\n"
-    dynamic var color: String = ""
-    dynamic var isPay: Bool = true
-    dynamic var imageName: String = "meal"
-    
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-
-    convenience init(model: Recorder) {
-        self.init()
-        
-        self.id = model.id
-        self.category = model.category
-        self.superCategory = model.superCategory
-        self.color = model.color
-        self.date = model.date
-        self.imageName = model.date
-        self.isPay = model.isPay
-        self.money = model.money
-        self.remark = model.remark
-    }
-}
