@@ -6,19 +6,81 @@
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
 
-import UIKit
+import Foundation
+
+extension String {
+    
+}
 
 extension Date {
     
+    
+    /// 2017-02-26 10:48:11 +0000 -> 2017-02-26 18:48:11 +0000
+    var currentTimeZoneDate: Date {
+        let sourceTZ = TimeZone(abbreviation: "GMT")!
+        let destTZ = TimeZone.current
+        let sourceOffset = sourceTZ.secondsFromGMT(for: self)
+        let destOffset = destTZ.secondsFromGMT(for: self)
+        let interval = TimeInterval(destOffset - sourceOffset)
+        return Date(timeInterval: interval, since: self)
+    }
+    ///  2017-02-26 18:35:52 +0000 -> "2月"
+    var month: String {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "GMT")!
+        let month = cal.component(.month, from: self)
+        return "\(month)月"
+    }
+    ///  2017-02-26 18:35:52 +0000 -> "26日"
+    var day: String {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "GMT")!
+        let day = cal.component(.day, from: self)
+        return "\(day)日"
+    }
+    /// "2月-26"
+    var monthDay: String {
+        return "\(month)月\(day)日"
+    }
+    /// 2017-03-04 -> "星期六"
+    var weekday: String {
+        // "EEEE, MMMM, dd, yyyy"
+        let weekdays = ["", "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "GMT")!
+        let weekday = cal.component(.weekday, from: self)
+        return weekdays[weekday]
+    }
+    
+    /// 2017-02-26 18:35:52 +0000 -> "2017-02-26"
+    var yearMonthDay: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd MM:ss"
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        let dateStr = formatter.string(from: self)
+        let components = dateStr.components(separatedBy: " ")
+        return components[0]
+    }
+    /// 2017-02-26 18:35:52 +0000 -> "18:35"
+    var hourMinute: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd MM:ss"
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        let dateStr = formatter.string(from: self)
+        let components = dateStr.components(separatedBy: " ")
+        return components[1]
+    }
+    
+    
     /// "2017-02-26 09:30:18 +0000" -> 2017-02-26 09:30:18 +0000
-    static func date(str: String) -> Date {
+    static func date(from str: String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return formatter.date(from: str)!
     }
     
     /// 2017-02-26 10:48:11 +0000 -> 2017-02-26 18:48:11 +0000
-    static func currentTimeZoneDateFrom(aDate date: Date) -> Date {
+    static func currentTimeZoneDate(fromDate date: Date) -> Date {
         let sourceTZ = TimeZone(abbreviation: "GMT")!
         let destTZ = TimeZone.current
         let sourceOffset = sourceTZ.secondsFromGMT(for: date)
