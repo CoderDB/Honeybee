@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import ObjectMapper
 
 let ScreenW = UIScreen.main.bounds.width
 let ScreenH = UIScreen.main.bounds.height
@@ -53,6 +54,21 @@ class MainViewController: UIViewController {
         addAddBtn()
         dataSource = fetchData()
     }
+    
+    func resuest() -> List<RLMRecorderSuper> {
+        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
+
+        let superRecorders = List<RLMRecorderSuper>()
+        for json in jsonDic {
+            let recorder = Mapper<RLMRecorderSuper>().map(JSON: json)
+            superRecorders.append(recorder!)
+        }
+        return superRecorders
+    }
+    
     
     func fetchData() -> Results<RLMRecorderSuper> {
         
@@ -183,7 +199,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            cell.recorder = dataSource[indexPath.row].recorders[0]
+            cell.recorder = dataSource[indexPath.row].recorders?[0]
             return cell
         }
     }
@@ -191,7 +207,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let model = dataSource[indexPath.row]
         if model.style != "group" {
             let detailVC = RecordDetailController()
-            detailVC.model = dataSource[indexPath.row].recorders[0]
+            detailVC.model = dataSource[indexPath.row].recorders?[0]
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
