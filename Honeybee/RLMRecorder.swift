@@ -16,7 +16,7 @@ class RLMRecorder: RLMModel {
     dynamic var money: String = ""
     dynamic var remark: String = "未填写\n"
     dynamic var color: String = ""
-    dynamic var isPayOut: Bool = true
+    dynamic var isPay: Bool = true
     dynamic var imageName: String = "meal"
     
     var weekday: String = ""
@@ -33,7 +33,7 @@ class RLMRecorder: RLMModel {
         self.money <- map["money"]
         self.remark <- map["remark"]
         self.color <- map["color"]
-        self.isPayOut <- map["isPayOut"]
+        self.isPay <- map["isPay"]
 //        self.isPayOut <- (map[isPayOut], TransformOf<String, Int>(fromJSON: {Int($0)}, toJSON: {$0.map{String($0)}}))
         self.imageName <- map["imageName"]
         

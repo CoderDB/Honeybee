@@ -52,6 +52,7 @@ class MainViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
+        resuest()
         dataSource = fetchData()
     }
     
@@ -65,25 +66,15 @@ class MainViewController: UIViewController {
         for json in jsonDic {
             let recorder = Mapper<RLMRecorderSuper>().map(JSON: json)
             superRecorders.append(recorder!)
+            
+            DatabaseManager.manager.add(model: recorder!)
         }
         return superRecorders
     }
     
     
     func fetchData() -> Results<RLMRecorderSuper> {
-        
         return DatabaseManager.manager.query()
-//        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
-//        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
-//        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-//        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
-//        
-//        var superRecorders = [RecorderSuper]()
-//        for item in jsonDic {
-//            let model = RecorderSuper(dict: item)
-//            superRecorders.append(model!)
-//        }
-//        return superRecorders
     }
     
     
@@ -199,7 +190,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            cell.recorder = dataSource[indexPath.row].recorders?[0]
+            cell.recorder = dataSource[indexPath.row].recorders[0]
             return cell
         }
     }
@@ -207,7 +198,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let model = dataSource[indexPath.row]
         if model.style != "group" {
             let detailVC = RecordDetailController()
-            detailVC.model = dataSource[indexPath.row].recorders?[0]
+            detailVC.model = dataSource[indexPath.row].recorders[0]
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
