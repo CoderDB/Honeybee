@@ -35,7 +35,7 @@ extension Date {
     }
     /// "2月-26"
     var monthDay: String {
-        return "\(month)月\(day)日"
+        return "\(month)\(day)"
     }
     /// 2017-03-04 -> "星期六"
     var weekday: String {

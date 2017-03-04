@@ -11,11 +11,17 @@ import ObjectMapper
 
 class RLMRecorderSuper: RLMModel {
     dynamic var style: String = "plain"
-    var recorders: [RLMRecorder]?
+    var recorders = List<RLMRecorder>()
     
     override func mapping(map: Map) {
         style <- map["style"]
-        recorders <- map["recorders"]
+        
+        let json = map["recorders"].currentValue as! [[String: Any]]
+        for item in json {
+            let model = Mapper<RLMRecorder>().map(JSON: item)
+            recorders.append(model!)
+            DatabaseManager.manager.add(model: model!)
+        }
     }
     
 //    convenience init(style: String, recorders: List<RLMRecorder>) {
