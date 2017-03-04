@@ -10,7 +10,6 @@ import RealmSwift
 import ObjectMapper
 
 class RLMRecorder: RLMModel {
-    dynamic var id: String = ""
     dynamic var date: String = ""
     dynamic var superCategory: String = ""
     dynamic var category: String = ""
@@ -43,25 +42,10 @@ class RLMRecorder: RLMModel {
 //            Int(value)
 //        }
         
-        let currentDate = Date.date(from: date).currentTimeZoneDate
+        let currentDate = Date.date(from: date).localDate
         self.date = currentDate.monthDay
         self.weekday = currentDate.weekday
         self.yearMonthDay = currentDate.yearMonthDay
         self.hourMinute = currentDate.hourMinute
     }
-    
-    
-//    convenience init(model: Recorder) {
-//        self.init()
-//        
-//        self.id = model.id
-//        self.category = model.category
-//        self.superCategory = model.superCategory
-//        self.color = model.color
-//        self.date = model.date
-//        self.imageName = model.date
-//        self.isPayOut = model.isPay
-//        self.money = model.money
-//        self.remark = model.remark
-//    }
 }

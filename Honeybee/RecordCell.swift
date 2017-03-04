@@ -58,7 +58,7 @@ class RecordCell: UITableViewCell {
         }
     }
     
-    var recorder: Recorder! {
+    var recorder: RLMRecorder! {
         didSet {
             imgView.image = UIImage(named: recorder.imageName)
             dateLabel.text = recorder.date

@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol GroupCellDelegate: class {
-    func didSelected(model: Recorder)
+    func didSelected(model: RLMRecorder)
 }
 
 
@@ -65,7 +66,7 @@ class GroupCell: UITableViewCell {
     
     
     var tvHeight = 60
-    var dataSource: [Recorder]? = [] {
+    var dataSource: List<RLMRecorder>? {
         didSet {
             tvHeight = dataSource!.count * 60 + 10
             tableView.snp.updateConstraints { (make) in
@@ -99,7 +100,10 @@ class GroupCell: UITableViewCell {
 // MARK: UITableViewDataSource
 extension GroupCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource!.count
+        guard let dataSource = dataSource else {
+            return 0
+        }
+        return dataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordLiteCell.self)") as! RecordLiteCell

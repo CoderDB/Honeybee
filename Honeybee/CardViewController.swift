@@ -181,8 +181,8 @@ extension CardViewController: HBKeyboardProtocol {
         guard let date = selectedDate else {
             return
         }
-        let model = Recorder(date: date, superCategory: "TESTSUPER", category: "TEST", money: text, color: "888888")
-        DatabaseManager.manager.add(model: model)
+//        let model = Recorder(date: date, superCategory: "TESTSUPER", category: "TEST", money: text, color: "888888")
+//        DatabaseManager.manager.add(model: model)
         
     }
     // Date

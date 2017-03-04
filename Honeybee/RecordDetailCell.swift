@@ -30,7 +30,7 @@ class RecordDetailCell: BaseTableViewCell {
         return label
     }()
     
-    func setSubTitleAttributes(indexPath: IndexPath, model: Recorder) {
+    func setSubTitleAttributes(indexPath: IndexPath, model: RLMRecorder) {
         if indexPath.row == 0 {
             subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.h3_number])
         } else if indexPath.row == 1 {

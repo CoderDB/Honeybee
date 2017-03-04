@@ -22,16 +22,14 @@ class DatabaseManager: NSObject {
     }
     
     
-    func add(model: Recorder, update: Bool? = false) {
-        let recorder = RLMRecorder(model: model)
+    func add<T: RLMModel>(model: T, update: Bool? = false) {
         try! realm.write {
-            realm.add(recorder, update: update!)
+            realm.add(model, update: update!)
         }
     }
-    func delete(model: Recorder) {
-        let recorder = RLMRecorder(model: model)
+    func delete<T: RLMModel>(model: T) {
         try! realm.write {
-            realm.delete(recorder)
+            realm.delete(model)
         }
     }
     func deleteAll() {
