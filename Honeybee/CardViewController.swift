@@ -186,11 +186,12 @@ extension CardViewController: HBKeyboardProtocol {
         dataToWrite["superCategory"] = "superCategory"
         dataToWrite["category"] = "category"
         dataToWrite["money"] = text
-        dataToWrite["color"] = "EEE"
+        dataToWrite["color"] = "768925"
         dataToWrite["remark"] = "remark"
         
-        let model = RLMRecorderSuper(JSON: ["style": "group", "recorders": [dataToWrite]])
+        let model = RLMRecorderSuper(JSON: ["style": "plain", "recorders": [dataToWrite]])
         DatabaseManager.manager.add(model: model!)
+        resultLabel.text?.removeAll()
         
     }
     // Date
