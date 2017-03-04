@@ -99,6 +99,7 @@ class CalculateView: UIView {
             result.remove(at: result.index(before: result.endIndex))
         }
         delegate?.completed(text: result)
+        result.removeAll()
     }
     func deleteClicked() {
         if result.characters.count > 0 {
