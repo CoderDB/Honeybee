@@ -16,7 +16,16 @@ class RLMModel: Object, Mappable {
     override class func primaryKey() -> String? {
         return "id"
     }
-    func mapping(map: Map) {}
+    func mapping(map: Map) {
+//        id <- map["id"]
+    }
+    
+    func map<T: RLMModel>(type: T.Type, value: Any) -> T? {
+        if let value = value as? [String: Any] {
+           return Mapper<T>().map(JSON: value)
+        }
+        return nil
+    }
     
     required init?(map: Map) {
         super.init()

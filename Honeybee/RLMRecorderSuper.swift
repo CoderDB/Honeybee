@@ -7,15 +7,20 @@
 //
 
 import RealmSwift
+import ObjectMapper
 
 class RLMRecorderSuper: RLMModel {
     dynamic var style: String = "plain"
-    var recorders = List<RLMRecorder>()
+    var recorders: [RLMRecorder]?
     
-    convenience init(style: String, recorders: List<RLMRecorder>) {
-        self.init()
-        
-        self.style = style
-        self.recorders = recorders
+    override func mapping(map: Map) {
+        style <- map["style"]
+        recorders <- map["recorders"]
     }
+    
+//    convenience init(style: String, recorders: List<RLMRecorder>) {
+//        self.init()
+//        self.style = style
+//        self.recorders = recorders
+//    }
 }

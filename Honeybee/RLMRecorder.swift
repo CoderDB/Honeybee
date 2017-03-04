@@ -26,15 +26,16 @@ class RLMRecorder: RLMModel {
     override func mapping(map: Map) {
         super.mapping(map: map)
         
-        self.id <- map[id]
-        self.date <- map[date]
-        self.category <- map[category]
-        self.superCategory <- map[superCategory]
-        self.money <- map[money]
-        self.remark <- map[remark]
-        self.color <- map[color]
+//        self.id <- map[id]
+        self.date <- map["date"]
+        self.category <- map["category"]
+        self.superCategory <- map["superCategory"]
+        self.money <- map["money"]
+        self.remark <- map["remark"]
+        self.color <- map["color"]
+        self.isPayOut <- map["isPayOut"]
 //        self.isPayOut <- (map[isPayOut], TransformOf<String, Int>(fromJSON: {Int($0)}, toJSON: {$0.map{String($0)}}))
-        self.imageName <- map[imageName]
+        self.imageName <- map["imageName"]
         
 //        let transform = TransformOf(fromJSON: { (value: Int) -> Bool in
 //            return Bool(value)
