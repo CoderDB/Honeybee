@@ -11,7 +11,7 @@ import UIKit
 class RecordDetailController: BaseTableViewController {
     
     
-    var model: Recorder!
+    var model: RLMRecorder!
     let cellTitles = ["金额", "记录时间", "分类", "备注"]
     
     override func viewDidLoad() {

@@ -12,6 +12,7 @@ import ObjectMapper
 
 
 class RLMModel: Object, Mappable {
+    dynamic var id: String = NSUUID().uuidString
     override class func primaryKey() -> String? {
         return "id"
     }
@@ -21,12 +22,12 @@ class RLMModel: Object, Mappable {
         super.init()
     }
     required init() {
-        fatalError("init() has not been implemented")
+        super.init()
     }
     required init(value: Any, schema: RLMSchema) {
-        fatalError("init(value:schema:) has not been implemented")
+        super.init(value: value, schema: schema)
     }
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
-        fatalError("init(realm:schema:) has not been implemented")
+        super.init(realm: realm, schema: schema)
     }
 }

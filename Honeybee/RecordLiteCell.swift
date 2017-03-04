@@ -30,7 +30,7 @@ class RecordLiteCell: UITableViewCell {
         
         setupUI()
     }
-    var model: Recorder? {
+    var model: RLMRecorder? {
         didSet {
             category.text = model?.category
             number.text = model?.money

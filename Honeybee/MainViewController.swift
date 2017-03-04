@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 let ScreenW = UIScreen.main.bounds.width
 let ScreenH = UIScreen.main.bounds.height
@@ -16,7 +17,7 @@ let ScreenH = UIScreen.main.bounds.height
 class MainViewController: UIViewController {
     
     var tableView: UITableView!
-    var dataSource: [RecorderSuper] = [] {
+    var dataSource: Results<RLMRecorderSuper>! {
         didSet {
             tableView.reloadData()
         }
@@ -53,19 +54,23 @@ class MainViewController: UIViewController {
         dataSource = fetchData()
     }
     
-    func fetchData() -> [RecorderSuper] {
-        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
-        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
+    func fetchData() -> Results<RLMRecorderSuper> {
         
-        var superRecorders = [RecorderSuper]()
-        for item in jsonDic {
-            let model = RecorderSuper(dict: item)
-            superRecorders.append(model!)
-        }
-        return superRecorders
+        return DatabaseManager.manager.query()
+//        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
+//        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+//        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+//        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
+//        
+//        var superRecorders = [RecorderSuper]()
+//        for item in jsonDic {
+//            let model = RecorderSuper(dict: item)
+//            superRecorders.append(model!)
+//        }
+//        return superRecorders
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -161,11 +166,14 @@ extension MainViewController {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let dataSource = dataSource else {
+            return 0
+        }
         return dataSource.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataSource[indexPath.row]
-        if model.style == .group {
+        if model.style == "group" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
             cell.dataSource = dataSource[indexPath.row].recorders
@@ -175,22 +183,22 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            cell.recorder = dataSource[indexPath.row].recorders![0]
+            cell.recorder = dataSource[indexPath.row].recorders[0]
             return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource[indexPath.row]
-        if model.style != .group {
+        if model.style != "group" {
             let detailVC = RecordDetailController()
-            detailVC.model = dataSource[indexPath.row].recorders![0]
+            detailVC.model = dataSource[indexPath.row].recorders[0]
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 }
 
 extension MainViewController: GroupCellDelegate {
-    func didSelected(model: Recorder) {
+    func didSelected(model: RLMRecorder) {
         let detailVC = RecordDetailController()
         detailVC.model = model
         navigationController?.pushViewController(detailVC, animated: true)

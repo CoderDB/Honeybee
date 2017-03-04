@@ -8,15 +8,10 @@
 
 import Foundation
 
-extension String {
-    
-}
-
 extension Date {
     
-    
     /// 2017-02-26 10:48:11 +0000 -> 2017-02-26 18:48:11 +0000
-    var currentTimeZoneDate: Date {
+    var localDate: Date {
         let sourceTZ = TimeZone(abbreviation: "GMT")!
         let destTZ = TimeZone.current
         let sourceOffset = sourceTZ.secondsFromGMT(for: self)
@@ -71,6 +66,8 @@ extension Date {
         return components[1]
     }
     
+//*****************************************************************************
+//*****************************************************************************
     
     /// "2017-02-26 09:30:18 +0000" -> 2017-02-26 09:30:18 +0000
     static func date(from str: String) -> Date {
