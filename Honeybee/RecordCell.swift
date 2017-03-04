@@ -61,7 +61,7 @@ class RecordCell: UITableViewCell {
     var recorder: RLMRecorder! {
         didSet {
             imgView.image = UIImage(named: recorder.imageName)
-            dateLabel.text = recorder.date
+            dateLabel.text = recorder.monthDay
             categoryLabel.text = recorder.category
             numberLabel.text = recorder.money
             weekdayLabel.text = recorder.weekday

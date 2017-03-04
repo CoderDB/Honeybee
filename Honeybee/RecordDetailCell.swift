@@ -13,9 +13,7 @@ class RecordDetailCell: BaseTableViewCell {
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
         label.font = HonybeeFont.h3
-        label.text = "记录时间"
         return label
     }()
     

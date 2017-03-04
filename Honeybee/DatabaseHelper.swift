@@ -10,8 +10,9 @@ import Foundation
 import RealmSwift
 
 class DatabaseManager: NSObject {
-    static let manager = DatabaseManager()
+    
     private var realm: Realm
+    static let manager = DatabaseManager()
     private override init() {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("honeybee.realm")
@@ -20,7 +21,6 @@ class DatabaseManager: NSObject {
         print(realm.configuration.fileURL!)
         super.init()
     }
-    
     
     func add<T: RLMModel>(model: T, update: Bool? = false) {
         try! realm.write {
@@ -38,22 +38,8 @@ class DatabaseManager: NSObject {
     func query(id: String) -> RLMRecorder? {
         return realm.object(ofType: RLMRecorder.self, forPrimaryKey: id)
     }
-    func query() -> Results<RLMRecorderSuper> {
+    func allData() -> Results<RLMRecorderSuper> {
         return realm.objects(RLMRecorderSuper.self)
-        
-//        var recorders = [Recorder]()
-//        
-//        for obj in objects {
-//            let recorder = Recorder(
-//                date: obj.date,
-//                superCategory: obj.superCategory,
-//                category: obj.category,
-//                money: obj.money,
-//                remark: obj.remark,
-//                color: obj.color)
-//            recorders.append(recorder)
-//        }
-//        return [RecorderSuper(style: "plain", recorders: recorders)]
     }
 }
 

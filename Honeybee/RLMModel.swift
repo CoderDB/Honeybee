@@ -13,6 +13,7 @@ import ObjectMapper
 
 class RLMModel: Object, Mappable {
     dynamic var id: String = NSUUID().uuidString
+    
     override class func primaryKey() -> String? {
         return "id"
     }

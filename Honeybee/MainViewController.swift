@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
-        resuest()
+//        resuest()
         dataSource = fetchData()
     }
     
@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
     
     
     func fetchData() -> Results<RLMRecorderSuper> {
-        return DatabaseManager.manager.query()
+        return DatabaseManager.manager.allData()
     }
     
     

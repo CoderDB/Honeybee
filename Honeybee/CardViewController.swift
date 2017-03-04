@@ -10,6 +10,11 @@ import UIKit
 
 class CardViewController: UIViewController {
 
+    
+    ///
+    var dataToWrite: [String: Any] = [:]
+    
+    
     lazy var hb_keyboard: HBKeyboard = {
         let keyboard = HBKeyboard()
         keyboard.calculateView.delegate = self
@@ -178,16 +183,19 @@ extension CardViewController: HBKeyboardProtocol {
     func completed(text: String) {
         resultLabel.text = text
         
-        guard let date = selectedDate else {
-            return
-        }
-//        let model = Recorder(date: date, superCategory: "TESTSUPER", category: "TEST", money: text, color: "888888")
-//        DatabaseManager.manager.add(model: model)
+        dataToWrite["superCategory"] = "superCategory"
+        dataToWrite["category"] = "category"
+        dataToWrite["money"] = text
+        dataToWrite["color"] = "EEE"
+        dataToWrite["remark"] = "remark"
+        
+        let model = RLMRecorderSuper(JSON: ["style": "group", "recorders": [dataToWrite]])
+        DatabaseManager.manager.add(model: model!)
         
     }
     // Date
     func selected(date: String) {
-        selectedDate = date
+        dataToWrite["date"] = date
     }
     
     
