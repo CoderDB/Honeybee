@@ -17,37 +17,51 @@ class RLMRecorder: RLMModel {
     dynamic var money: String = ""
     dynamic var remark: String = "未填写\n"
     dynamic var color: String = ""
-    dynamic var isPay: Bool = true
+    dynamic var isPayOut: Bool = true
     dynamic var imageName: String = "meal"
     
-    dynamic var weekday: String = ""
-    dynamic var yearMonthDay: String = ""
-    dynamic var hourMinute:String = ""
+    var weekday: String = ""
+    var yearMonthDay: String = ""
+    var hourMinute:String = ""
     
     override func mapping(map: Map) {
         super.mapping(map: map)
         
         self.id <- map[id]
-        self.date <- map[category]
+        self.date <- map[date]
+        self.category <- map[category]
         self.superCategory <- map[superCategory]
         self.money <- map[money]
         self.remark <- map[remark]
         self.color <- map[color]
-        //        self.isPay <- map[isPay]
+//        self.isPayOut <- (map[isPayOut], TransformOf<String, Int>(fromJSON: {Int($0)}, toJSON: {$0.map{String($0)}}))
         self.imageName <- map[imageName]
+        
+//        let transform = TransformOf(fromJSON: { (value: Int) -> Bool in
+//            return Bool(value)
+//        }) { (value: Bool) -> Int in
+//            Int(value)
+//        }
+        
+        let currentDate = Date.date(from: date).currentTimeZoneDate
+        self.date = currentDate.monthDay
+        self.weekday = currentDate.weekday
+        self.yearMonthDay = currentDate.yearMonthDay
+        self.hourMinute = currentDate.hourMinute
     }
     
-    convenience init(model: Recorder) {
-        self.init()
-        
-        self.id = model.id
-        self.category = model.category
-        self.superCategory = model.superCategory
-        self.color = model.color
-        self.date = model.date
-        self.imageName = model.date
-        self.isPay = model.isPay
-        self.money = model.money
-        self.remark = model.remark
-    }
+    
+//    convenience init(model: Recorder) {
+//        self.init()
+//        
+//        self.id = model.id
+//        self.category = model.category
+//        self.superCategory = model.superCategory
+//        self.color = model.color
+//        self.date = model.date
+//        self.imageName = model.date
+//        self.isPayOut = model.isPay
+//        self.money = model.money
+//        self.remark = model.remark
+//    }
 }

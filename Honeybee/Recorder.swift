@@ -50,7 +50,7 @@ struct Recorder {
             else { return nil }
         
 //        self.id = id
-        let currentDate = Date.currentTimeZoneDateFrom(aDate: Date.date(str: date))
+        let currentDate = Date.currentTimeZoneDate(fromDate: Date.date(from: date))
         self.date = Date.monthDay(date: currentDate)
         self.weekday = Date.weekday(date: currentDate)
         let ymdhm = Date.yearMonthDayHourMinute(date: currentDate)
