@@ -110,7 +110,7 @@ extension GroupCell: UITableViewDataSource, UITableViewDelegate {
         let model = dataSource?[indexPath.row]
         cell.model = model
         
-        dateLabel.text = model?.date
+        dateLabel.text = model?.monthDay
         weekdayLabel.text = model?.weekday
         return cell
     }

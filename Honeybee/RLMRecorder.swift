@@ -19,9 +19,26 @@ class RLMRecorder: RLMModel {
     dynamic var isPay: Bool = true
     dynamic var imageName: String = "meal"
     
-    var weekday: String = ""
-    var yearMonthDay: String = ""
-    var hourMinute:String = ""
+    var monthDay: String {
+        get {
+            return Date.date(from: date).localDate.monthDay
+        }
+    }
+    var weekday: String {
+        return Date.date(from: date).localDate.weekday
+    }
+    var yearMonthDay: String {
+        return Date.date(from: date).localDate.yearMonthDay
+    }
+    var hourMinute:String {
+        return Date.date(from: date).localDate.hourMinute
+    }
+    
+    
+    override static func ignoredProperties() -> [String] {
+        return ["weekday", "yearMonthDay", "hourMinute", "monthDay"]
+    }
+    
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -34,19 +51,12 @@ class RLMRecorder: RLMModel {
         self.remark <- map["remark"]
         self.color <- map["color"]
         self.isPay <- map["isPay"]
-//        self.isPayOut <- (map[isPayOut], TransformOf<String, Int>(fromJSON: {Int($0)}, toJSON: {$0.map{String($0)}}))
         self.imageName <- map["imageName"]
         
-//        let transform = TransformOf(fromJSON: { (value: Int) -> Bool in
-//            return Bool(value)
-//        }) { (value: Bool) -> Int in
-//            Int(value)
-//        }
-        
-        let currentDate = Date.date(from: date).localDate
-        self.date = currentDate.monthDay
-        self.weekday = currentDate.weekday
-        self.yearMonthDay = currentDate.yearMonthDay
-        self.hourMinute = currentDate.hourMinute
+//        let currentDate = Date.date(from: date).localDate
+//        self.monthDay = currentDate.monthDay
+//        self.weekday = currentDate.weekday
+//        self.yearMonthDay = currentDate.yearMonthDay
+//        self.hourMinute = currentDate.hourMinute
     }
 }

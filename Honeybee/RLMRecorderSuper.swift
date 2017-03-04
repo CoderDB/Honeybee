@@ -16,11 +16,16 @@ class RLMRecorderSuper: RLMModel {
     override func mapping(map: Map) {
         style <- map["style"]
         
-        let json = map["recorders"].currentValue as! [[String: Any]]
-        for item in json {
-            let model = Mapper<RLMRecorder>().map(JSON: item)
-            recorders.append(model!)
-            DatabaseManager.manager.add(model: model!)
+        if let json = map["recorders"].currentValue as? [[String: Any]] {
+            for item in json {
+    //            if let model = self.map(type: RLMRecorder.self, value: item) {
+    //                recorders.append(model)
+    //            }
+                if let model = Mapper<RLMRecorder>().map(JSON: item) {
+                    recorders.append(model)
+                    DatabaseManager.manager.add(model: model)
+                }
+            }
         }
     }
     
