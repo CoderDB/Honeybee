@@ -14,7 +14,6 @@ protocol HBKeyboardProtocol: CalculateViewProtocol, DateViewProtocol {
 }
 
 class HBKeyboard: UIView {
-
     
     weak var delegate: HBKeyboardProtocol?
     var calculateView: CalculateView!
@@ -23,19 +22,26 @@ class HBKeyboard: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
-        scrollView.backgroundColor = UIColor.white
+        scrollView.backgroundColor = UIColor.clear
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
+    private lazy var toolView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }()
     
     private let selfHeight: CGFloat = 260
-    private let toolViewHeight: CGFloat = 45
+    private let toolViewHeight: CGFloat = 40
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layer.cornerRadius = HonybeeConstant.cornerRadius
+        backgroundColor = UIColor(hex: "#FF955A")
         
         addToolView()
         addScrollView()
@@ -45,16 +51,6 @@ class HBKeyboard: UIView {
     }
 
     private func addToolView() {
-        let toolView = UIView()
-        toolView.backgroundColor = UIColor.white
-        addSubview(toolView)
-        
-        let lineView = UIView()
-        lineView.backgroundColor = UIColor.black
-        toolView.addSubview(lineView)
-        
-        
-       
         let dateBtn = createButton(imageName: "date", sel: #selector(dateBtnClicked))
         toolView.addSubview(dateBtn)
         let remarkBtn = createButton(imageName: "remark", sel: #selector(remarkBtnClicked))
@@ -62,18 +58,14 @@ class HBKeyboard: UIView {
         let cameraBtn = createButton(imageName: "camera", sel: #selector(cameraBtnClicked))
         toolView.addSubview(cameraBtn)
         
+        addSubview(toolView)
         toolView.snp.makeConstraints { (make) in
-            make.top.left.width.equalTo(self)
+            make.left.top.equalTo(self).offset(10)
+            make.right.equalTo(self).offset(-10)
             make.height.equalTo(toolViewHeight)
         }
-        lineView.snp.makeConstraints { (make) in
-            make.left.top.right.equalTo(toolView)
-            make.height.equalTo(2)
-        }
-        
         dateBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(toolView).offset(10)
-            make.centerY.equalTo(toolView)
+            make.left.centerY.equalTo(toolView)
             make.width.height.equalTo(30)
         }
         remarkBtn.snp.makeConstraints { (make) in
@@ -81,20 +73,24 @@ class HBKeyboard: UIView {
             make.top.width.height.equalTo(dateBtn)
         }
         cameraBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(toolView).offset(-10)
+            make.right.equalTo(toolView)
             make.top.width.height.equalTo(dateBtn)
         }
     }
     private func addScrollView() {
-        let scrollViewH = selfHeight - toolViewHeight
-        scrollView.frame = CGRect(x: 0, y: toolViewHeight, width: ScreenW, height: scrollViewH)
-        scrollView.contentSize = CGSize(width: ScreenW * 2, height: scrollViewH)
+        let scrollViewH = selfHeight - toolViewHeight - 10
+        scrollView.contentSize = CGSize(width: (ScreenW - 20) * 2, height: scrollViewH)
         addSubview(scrollView)
-        
-        calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: scrollViewH))
+        scrollView.snp.makeConstraints { (make) in
+            make.top.equalTo(toolView.snp.bottom)
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self).offset(-10)
+            make.bottom.equalTo(self).offset(-20)
+        }
+        calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW-20, height: scrollViewH))
         scrollView.addSubview(calculateView)
         
-        dateView = DateView(frame: CGRect(x: ScreenW, y: 0, width: ScreenW, height: scrollViewH))
+        dateView = DateView(frame: CGRect(x: ScreenW-20, y: 0, width: ScreenW-20, height: scrollViewH))
         scrollView.addSubview(dateView)
     }
     

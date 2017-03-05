@@ -47,6 +47,9 @@ extension CardViewController {
     func addResultView() {
         header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
+        header.editButtonAction = {[unowned self] in
+            self.navigationController?.pushViewController(IconManagerViewController(), animated: true)
+        }
     }
     func addCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -72,8 +75,9 @@ extension CardViewController {
     func addKeyboard() {
         view.addSubview(hb_keyboard)
         hb_keyboard.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(view)
-            make.height.equalTo(260)
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(view).offset(10)
+            make.height.equalTo(280)
         }
     }
 }
@@ -105,7 +109,6 @@ extension CardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         header.containView.backgroundColor = UIColor.randomColor()
         header.categoryLabel.text = "电影票"
-//        navigationController?.pushViewController(IconManagerViewController(), animated: true)
     }
 }
 
@@ -158,10 +161,7 @@ extension CardViewController: HBKeyboardProtocol {
     func selected(date: String) {
         dataToWrite["date"] = date
     }
-    
-    
     func callCamera() {
         print("---call camera")
     }
-    
 }

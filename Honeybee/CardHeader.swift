@@ -57,7 +57,7 @@ class CardHeader: UIView {
         containView.addSubview(categoryLabel)
         containView.addSubview(numberLabel)
         
-        
+        editButton.addTarget(self, action: #selector(editButtonClicked), for: .touchUpInside)
         editButton.snp.makeConstraints { (make) in
             make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self)
@@ -67,7 +67,6 @@ class CardHeader: UIView {
             make.left.equalTo(self).offset(10)
             make.right.equalTo(editButton.snp.left).offset(-10).priority(HonybeePriority.mid)
         }
-        
         imgView.snp.makeConstraints { (make) in
             make.left.top.equalTo(10)
             make.width.height.equalTo(50)
@@ -77,8 +76,13 @@ class CardHeader: UIView {
             make.centerY.equalTo(imgView)
         }
         numberLabel.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(containView)
+            make.bottom.equalTo(containView)
+            make.right.equalTo(containView).offset(-5)
         }
+    }
+    var editButtonAction: (() -> ())?
+    func editButtonClicked() {
+        editButtonAction?()
     }
 
 }
