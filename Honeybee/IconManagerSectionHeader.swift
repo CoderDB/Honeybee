@@ -28,12 +28,12 @@ class IconManagerSectionHeader: UICollectionReusableView {
         addSubview(titleLabel)
         addSubview(line)
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(10)
+            make.left.equalTo(self)
             make.top.equalTo(self)
         }
         line.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(self).offset(-10)
+            make.left.equalTo(self)
+            make.right.equalTo(self)
             make.height.equalTo(1)
             make.top.equalTo(titleLabel.snp.bottom)
         }
