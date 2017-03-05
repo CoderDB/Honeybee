@@ -38,6 +38,7 @@
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
+		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
 		868915801DF9955B0035CFD3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157F1DF9955B0035CFD3 /* Theme.swift */; };
 		86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86937D281DF2783300F180F6 /* HBKeyboard.swift */; };
@@ -133,6 +134,7 @@
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
+		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8689157F1DF9955B0035CFD3 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				863703B11DEEDF7900BC1153 /* CardViewController.swift */,
+				86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */,
 				86104A2E1E61A8F500AAEEAC /* CardCollectionCell.swift */,
 				86E574711E4C6ED5001255CD /* Keyboard */,
 				86E574721E4C6EE7001255CD /* PresentTransition */,
@@ -786,6 +789,7 @@
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,
 				864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */,
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
+				86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
 				860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */,
 				86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */,
