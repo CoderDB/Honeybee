@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardViewController: UIViewController {
+class CardViewController: BaseViewController {
 
     
     ///
@@ -33,35 +33,16 @@ class CardViewController: UIViewController {
         label.textAlignment = .right
         return label
     }()
-    var selectedDate: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        updatePreferredContentSizeWithTraitCollection(traitCollection)
-
-        addSwipeDownGesture()
-        
+        automaticallyAdjustsScrollViewInsets = false
+        setupNav(title: "记账")
         addResultView()
         addCollectionView()
         addKeyboard()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
     deinit {
         print("-----CardViewController--deinit--")
-    }
-}
-
-//MARK: Transition
-extension CardViewController {
-    func updatePreferredContentSizeWithTraitCollection(_ traitCollection: UITraitCollection) {
-        preferredContentSize = CGSize(width: ScreenW, height: ScreenH * 0.95)
-    }
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        updatePreferredContentSizeWithTraitCollection(newCollection)
     }
 }
 
@@ -69,7 +50,7 @@ extension CardViewController {
 // MARK: UI / Event
 extension CardViewController {
     func addResultView() {
-        let containerView = UIView(frame: CGRect(x: 10, y: 10, width: view.frame.width-20, height: 50))
+        let containerView = UIView(frame: CGRect(x: 10, y: 64, width: view.frame.width-20, height: 70))
         containerView.layer.cornerRadius = HonybeeConstant.cornerRadius
         containerView.layer.borderWidth = 2
         containerView.layer.borderColor = UIColor.black.cgColor
@@ -91,6 +72,9 @@ extension CardViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
+        layout.sectionHeadersPinToVisibleBounds = true
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         layout.itemSize = CGSize(width: 45, height: 45)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 50, right: 10)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -100,7 +84,7 @@ extension CardViewController {
         collectionView.register(CardCollectionCell.self, forCellWithReuseIdentifier: "\(CardCollectionCell.self)")
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(70)
+            make.top.equalTo(view).offset(64+70)
             make.left.right.bottom.equalTo(view)
         }
     }
@@ -112,21 +96,11 @@ extension CardViewController {
             make.height.equalTo(260)
         }
     }
-    
-    func addSwipeDownGesture() {
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
-        swipe.direction = .down
-        view.addGestureRecognizer(swipe)
-    }
-    
-    func swipeDownGestureAction() {
-        dismiss(animated: true, completion: nil)
-    }
 }
 
 
 // MARK: UICollectionViewDataSource
-extension CardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CardViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

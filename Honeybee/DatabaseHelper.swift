@@ -32,6 +32,11 @@ class DatabaseManager: NSObject {
             realm.delete(model)
         }
     }
+    func update() {
+        // 1. 直接更新 model.name = "new name"
+        // 2. 通过primaryKey更新
+        // 3. KVO
+    }
     func deleteAll() {
         realm.deleteAll()
     }
