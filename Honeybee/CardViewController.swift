@@ -14,7 +14,6 @@ class CardViewController: BaseViewController {
     ///
     var dataToWrite: [String: Any] = [:]
     
-    
     lazy var hb_keyboard: HBKeyboard = {
         let keyboard = HBKeyboard()
         keyboard.calculateView.delegate = self
@@ -23,15 +22,15 @@ class CardViewController: BaseViewController {
         return keyboard
     }()
     var collectionView: UICollectionView!
+    var header: CardHeader!
     var dataSource = [Array(1...20), Array(1...20), Array(5...20), Array(5...20)]
     var headerTitles = ["生活日常", "每天吃饭", "住", "车"]
     var lastOffsetY: CGFloat = 0
     
-    var header: CardHeader!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav(title: "记账")
+        addLeftNavItem()
         addResultView()
         addCollectionView()
         addKeyboard()
@@ -44,6 +43,15 @@ class CardViewController: BaseViewController {
 
 // MARK: UI / Event
 extension CardViewController {
+    func addLeftNavItem() {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
+        btn.setImage(UIImage(named: "left_arrow"), for: .normal)
+        btn.addTarget(self, action: #selector(navLeftItemAction), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    func navLeftItemAction() {
+        dismiss(animated: true, completion: nil)
+    }
     func addResultView() {
         header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
@@ -71,7 +79,6 @@ extension CardViewController {
             make.left.right.bottom.equalTo(view)
         }
     }
-    
     func addKeyboard() {
         view.addSubview(hb_keyboard)
         hb_keyboard.snp.makeConstraints { (make) in
@@ -128,6 +135,23 @@ extension CardViewController: UIScrollViewDelegate {
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastOffsetY = scrollView.contentOffset.y
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > lastOffsetY {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.navigationController!.navigationBar.transform = CGAffineTransform(translationX: 0, y: -44)
+                self.header.frame.origin.y = 20
+                self.collectionView.frame.origin.y = 20 + 115
+                self.setupNav(title: "")
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.navigationController!.navigationBar.transform = CGAffineTransform.identity
+                self.header.frame.origin.y = 64
+                self.collectionView.frame.origin.y = 64 + 115
+                self.setupNav(title: "记账")
+            })
+        }
     }
 }
 
