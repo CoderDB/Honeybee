@@ -35,7 +35,6 @@ extension IconManagerViewController {
         layout.itemSize = CGSize(width: 45, height: 45)
         layout.minimumLineSpacing = 10      // 行间距
         layout.minimumInteritemSpacing = 10 // 列间距
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         layout.sectionHeadersPinToVisibleBounds = true
         
@@ -43,6 +42,7 @@ extension IconManagerViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)

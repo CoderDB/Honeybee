@@ -59,16 +59,16 @@ class CalculateView: UIView {
     func createBtn(title: String) -> UIButton {
         let btn = UIButton()
         btn.setTitle(title, for: .normal)
-        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = HonybeeFont.h3_number
-        btn.backgroundColor = UIColor.black
+        btn.backgroundColor = UIColor.white
         btn.layer.cornerRadius = 5
         btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
         return btn
     }
     func addDeleteBtn() {
         let btn = UIButton(type: .custom)
-        btn.backgroundColor = UIColor.black
+        btn.backgroundColor = UIColor.white
         btn.layer.cornerRadius = 5
         btn.setImage(UIImage(named: "delete"), for: .normal)
         btn.addTarget(self, action: #selector(deleteClicked), for: .touchUpInside)
@@ -78,9 +78,9 @@ class CalculateView: UIView {
     func addOKBtn() {
         let btn = UIButton()
         btn.setTitle("OK", for: .normal)
-        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = HonybeeFont.h3_number
-        btn.backgroundColor = UIColor.black
+        btn.backgroundColor = UIColor.white
         btn.layer.cornerRadius = 5
         btn.addTarget(self, action: #selector(okBtnClicked), for: .touchUpInside)
         btn.frame = CGRect(x: frame.width - btnW, y: margin * 3 + btnH * 2, width: btnW - margin, height: btnH * 2 + margin)
