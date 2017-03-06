@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardViewController: BaseViewController {
+class CardViewController: BaseCollectionViewController {
 
     
     ///
@@ -21,7 +21,6 @@ class CardViewController: BaseViewController {
         keyboard.delegate = self
         return keyboard
     }()
-    var collectionView: UICollectionView!
     var header: CardHeader!
     var dataSource = [Array(1...20), Array(1...20), Array(5...20), Array(5...20)]
     var headerTitles = ["生活日常", "每天吃饭", "住", "车"]
@@ -29,6 +28,7 @@ class CardViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
         setupNav(title: "记账")
         addLeftNavItem()
         addResultView()
@@ -60,20 +60,8 @@ extension CardViewController {
         }
     }
     func addCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.itemSize = CGSize(width: 45, height: 45)
-        layout.sectionHeadersPinToVisibleBounds = true
-        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
-        collectionView.register(CardCollectionCell.self, forCellWithReuseIdentifier: "\(CardCollectionCell.self)")
-        collectionView.register(IconManagerSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "\(IconManagerSectionHeader.self)")
-        view.addSubview(collectionView)
+        collectionView.register(CardCollectionCell.self)
+        collectionView.register(IconManagerSectionHeader.self)
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(64+115)
             make.left.right.bottom.equalTo(view)
@@ -91,14 +79,14 @@ extension CardViewController {
 
 
 // MARK: UICollectionViewDataSource
-extension CardViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension CardViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.count
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource[section].count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardCollectionCell.self)", for: indexPath)
         cell.backgroundColor = UIColor.randomColor()
         return cell
@@ -107,7 +95,7 @@ extension CardViewController: UICollectionViewDataSource {
 
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension CardViewController: UICollectionViewDelegateFlowLayout {
+extension CardViewController {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath) as! IconManagerSectionHeader
         header.titleLabel.text = headerTitles[indexPath.section]
@@ -121,7 +109,10 @@ extension CardViewController: UICollectionViewDelegateFlowLayout {
 
 
 // MARK: UIScrollViewDelegate
-extension CardViewController: UIScrollViewDelegate {
+extension CardViewController {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastOffsetY = scrollView.contentOffset.y
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > lastOffsetY {
             UIView.animate(withDuration: 0.3, animations: {
@@ -133,20 +124,6 @@ extension CardViewController: UIScrollViewDelegate {
             })
         }
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        lastOffsetY = scrollView.contentOffset.y
-    }
-    
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        if velocity.y > 0 {
-//            navigationController?.setNavigationBarHidden(true, animated: true)
-//            view.bounds.origin.y = 0
-//        } else {
-//            navigationController?.setNavigationBarHidden(false, animated: true)
-//            view.bounds.origin.y = 44
-//            
-//        }
-//    }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.contentOffset.y > lastOffsetY {
             navigationController?.setNavigationBarHidden(true, animated: true)
