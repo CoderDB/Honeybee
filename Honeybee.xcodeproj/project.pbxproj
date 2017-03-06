@@ -37,6 +37,7 @@
 		864D25121E6312240005894A /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorder.json */; };
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
 		866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */; };
+		866C562E1E6D78DB00010D3F /* category_color.json in Resources */ = {isa = PBXBuildFile; fileRef = 866C562D1E6D78DB00010D3F /* category_color.json */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
@@ -134,6 +135,7 @@
 		864D25111E6312240005894A /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
 		866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		866C562D1E6D78DB00010D3F /* category_color.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category_color.json; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				866C562D1E6D78DB00010D3F /* category_color.json */,
 				864D25111E6312240005894A /* recorder.json */,
 				861544481E4DAA1E00A6EEBD /* Silom.ttf */,
 			);
@@ -600,6 +603,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866C562E1E6D78DB00010D3F /* category_color.json in Resources */,
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
 				861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */,
