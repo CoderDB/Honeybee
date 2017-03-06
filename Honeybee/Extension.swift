@@ -9,6 +9,15 @@
 import UIKit
 
 
+extension UIButton {
+    convenience init(imgName: String, sel: Selector) {
+        self.init()
+        setImage(UIImage(named: imgName), for: .normal)
+        addTarget(self, action: sel, for: .touchUpInside)
+    }
+}
+
+
 //******************************************************************************
 // UIView Extension
 //******************************************************************************

@@ -49,7 +49,15 @@ class HBKeyboard: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
+    
+    private func createButton(imageName: String, sel: Selector) -> UIButton {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: imageName), for: .normal)
+        btn.addTarget(self, action: sel, for: .touchUpInside)
+        return btn
+    }
     private func addToolView() {
         let dateBtn = createButton(imageName: "date", sel: #selector(dateBtnClicked))
         toolView.addSubview(dateBtn)
@@ -78,8 +86,10 @@ class HBKeyboard: UIView {
         }
     }
     private func addScrollView() {
-        let scrollViewH = selfHeight - toolViewHeight - 10
-        scrollView.contentSize = CGSize(width: (ScreenW - 20) * 2, height: scrollViewH)
+        let H = selfHeight - toolViewHeight - 10
+        let W = ScreenW - 20
+        
+        scrollView.contentSize = CGSize(width: W * 2, height: H)
         addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
             make.top.equalTo(toolView.snp.bottom)
@@ -87,18 +97,11 @@ class HBKeyboard: UIView {
             make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self).offset(-20)
         }
-        calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: ScreenW-20, height: scrollViewH))
+        calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: W, height: H))
         scrollView.addSubview(calculateView)
         
-        dateView = DateView(frame: CGRect(x: ScreenW-20, y: 0, width: ScreenW-20, height: scrollViewH))
+        dateView = DateView(frame: CGRect(x: W, y: 0, width: W, height: H))
         scrollView.addSubview(dateView)
-    }
-    
-    private func createButton(imageName: String, sel: Selector) -> UIButton {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: imageName), for: .normal)
-        btn.addTarget(self, action: sel, for: .touchUpInside)
-        return btn
     }
     
     
@@ -106,7 +109,7 @@ class HBKeyboard: UIView {
         print("--remark")
     }
     @objc private func dateBtnClicked() {
-        scrollView.setContentOffset(CGPoint(x: ScreenW, y: 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: ScreenW-20, y: 0), animated: true)
     }
     @objc private func cameraBtnClicked() {
         print("cameraBtnClick")
