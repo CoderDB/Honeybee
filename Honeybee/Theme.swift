@@ -14,7 +14,7 @@ struct Theme {
 }
 
 struct HonybeeColor {
-    static let main = UIColor(rgb: [250, 45, 66])
+    static let main = UIColor(hex: "#00BEAD")//UIColor(rgb: [250, 45, 66])
 }
 
 struct HonybeeConstant {

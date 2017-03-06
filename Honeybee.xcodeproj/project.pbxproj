@@ -38,6 +38,7 @@
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
 		866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */; };
 		866C562E1E6D78DB00010D3F /* category_color.json in Resources */ = {isa = PBXBuildFile; fileRef = 866C562D1E6D78DB00010D3F /* category_color.json */; };
+		866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C56301E6DA35300010D3F /* HoneybeeCategory.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
@@ -136,6 +137,7 @@
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
 		866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		866C562D1E6D78DB00010D3F /* category_color.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category_color.json; sourceTree = "<group>"; };
+		866C56301E6DA35300010D3F /* HoneybeeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeCategory.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				86E5746F1E4C6E88001255CD /* Profile */,
 				862B3CC31E66D88A008485DD /* Database */,
 				8629962F1E6ACD3B00494C74 /* Network */,
+				866C562F1E6DA2FB00010D3F /* ItemModel */,
 				86E574701E4C6EBC001255CD /* Other */,
 				861544471E4DA9D200A6EEBD /* Source */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
@@ -315,6 +318,14 @@
 				86A7B5A21E5F248B0061E49C /* Recorder.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		866C562F1E6DA2FB00010D3F /* ItemModel */ = {
+			isa = PBXGroup;
+			children = (
+				866C56301E6DA35300010D3F /* HoneybeeCategory.swift */,
+			);
+			name = ItemModel;
 			sourceTree = "<group>";
 		};
 		8697CEE11E5DA28900993CFE /* Base */ = {
@@ -806,6 +817,7 @@
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
+				866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */,
 				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
