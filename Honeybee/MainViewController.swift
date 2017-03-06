@@ -54,6 +54,7 @@ class MainViewController: UIViewController {
         addAddBtn()
 //        resuest()
         dataSource = fetchData()
+        print(HBCategoryManager.manager.allCategory()[0].category)
     }
     
     func resuest() -> List<RLMRecorderSuper> {
@@ -157,11 +158,6 @@ extension MainViewController {
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
     }
-}
-
-
-// MARK: UI Event
-extension MainViewController {
     func addBtnClicked() {
         let nav = UINavigationController(rootViewController: CardViewController())
         present(nav, animated: true, completion: nil)
