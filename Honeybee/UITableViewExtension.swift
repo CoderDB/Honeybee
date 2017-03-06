@@ -42,5 +42,13 @@ extension UITableView: ReuseableView {
 //    }
 //}
 
-
+extension UICollectionView: ReuseableView {
+    
+    func register<T: UICollectionViewCell>(_: T.Type) {
+        register(T.self, forCellWithReuseIdentifier: "\(T.self)")
+    }
+    func register<T: UIView>(_: T.Type, kind: String? = UICollectionElementKindSectionHeader) {
+        register(T.self, forSupplementaryViewOfKind: kind!, withReuseIdentifier: "\(T.self)")
+    }
+}
 

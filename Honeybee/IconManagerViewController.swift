@@ -9,9 +9,8 @@
 import UIKit
 
 
-class IconManagerViewController: BaseViewController {
+class IconManagerViewController: BaseCollectionViewController {
     
-    var collectionView: UICollectionView!
     var dataSource = [Array(1...20), Array(1...20), Array(5...20), Array(5...20)]
     var headerTitles = ["生活日常", "每天吃饭", "住", "车"]
     
@@ -31,31 +30,17 @@ class IconManagerViewController: BaseViewController {
 //MARK: UI
 extension IconManagerViewController {
     func addCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 45, height: 45)
-        layout.minimumLineSpacing = 10      // 行间距
-        layout.minimumInteritemSpacing = 10 // 列间距
-        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
-        layout.sectionHeadersPinToVisibleBounds = true
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
-        view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
+        collectionView.register(IconManagerCell.self)
+        collectionView.register(IconManagerSectionHeader.self)
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
         
-        collectionView.register(IconManagerCell.self, forCellWithReuseIdentifier: "\(IconManagerCell.self)")
-        collectionView.register(IconManagerSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "\(IconManagerSectionHeader.self)")
     }
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
-        
         switch gesture.state {
         case .began:
             guard let selectedIdx = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
@@ -86,15 +71,15 @@ extension IconManagerViewController {
 
 
 // MARK: UICollectionViewDataSource
-extension IconManagerViewController: UICollectionViewDataSource {
+extension IconManagerViewController {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.count
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource[section].count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(IconManagerCell.self)", for: indexPath) as! IconManagerCell
         
         cell.titleLabel.text = "\(dataSource[indexPath.section][indexPath.item])"
@@ -104,7 +89,7 @@ extension IconManagerViewController: UICollectionViewDataSource {
 
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension IconManagerViewController: UICollectionViewDelegateFlowLayout {
+extension IconManagerViewController {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        if kind == UICollectionElementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath) as! IconManagerSectionHeader
