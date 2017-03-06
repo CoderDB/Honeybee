@@ -136,20 +136,29 @@ extension CardViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastOffsetY = scrollView.contentOffset.y
     }
+    
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        if velocity.y > 0 {
+//            navigationController?.setNavigationBarHidden(true, animated: true)
+//            view.bounds.origin.y = 0
+//        } else {
+//            navigationController?.setNavigationBarHidden(false, animated: true)
+//            view.bounds.origin.y = 44
+//            
+//        }
+//    }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.contentOffset.y > lastOffsetY {
+            navigationController?.setNavigationBarHidden(true, animated: true)
             UIView.animate(withDuration: 0.3, animations: {
-                self.navigationController!.navigationBar.transform = CGAffineTransform(translationX: 0, y: -44)
                 self.header.frame.origin.y = 20
                 self.collectionView.frame.origin.y = 20 + 115
-                self.setupNav(title: "")
             })
         } else {
+            navigationController?.setNavigationBarHidden(false, animated: true)
             UIView.animate(withDuration: 0.3, animations: {
-                self.navigationController!.navigationBar.transform = CGAffineTransform.identity
                 self.header.frame.origin.y = 64
                 self.collectionView.frame.origin.y = 64 + 115
-                self.setupNav(title: "记账")
             })
         }
     }
