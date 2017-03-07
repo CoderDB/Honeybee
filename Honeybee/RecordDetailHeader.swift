@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordDetailHeader: UIView {
+class RecordDetailHeader: BaseHeader {
     
     
     lazy var titleLabel: UILabel = {
@@ -17,22 +17,7 @@ class RecordDetailHeader: UIView {
         label.font = HB.Font.h3
         return label
     }()
-    lazy var editButton: UIButton = {
-        let btn = UIButton(type: UIButtonType.system)
-        btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        return btn
-    }()
     lazy var imgView = UIImageView()
-    
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = HB.Constant.cornerRadius
-        view.isUserInteractionEnabled = false
-        return view
-    }()
-    
     
 
     convenience init(height: CGFloat, title: String?, imageName: String, color: String) {
@@ -52,21 +37,15 @@ class RecordDetailHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupUI() {
-        addSubview(editButton)
-        addSubview(containerView)
+    override func setupUI() {
+        super.setupUI()
+        
+        rightBtn.setTitle("编辑", for: .normal)
+        containerView.isUserInteractionEnabled = false
+
         containerView.addSubview(imgView)
         containerView.addSubview(titleLabel)
         
-        editButton.snp.makeConstraints { (make) in
-            make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self)
-        }
-        containerView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(self)
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10).priority(HB.Priority.mid)
-        }
         titleLabel.snp.makeConstraints { (make) in
             make.left.top.equalTo(containerView).offset(10)
         }
