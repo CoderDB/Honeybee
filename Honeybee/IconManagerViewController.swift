@@ -63,14 +63,11 @@ extension IconManagerViewController {
     }
     
     func addNavRightItem() {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 25))
-        btn.setTitle("添加", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        btn.addTarget(self, action: #selector(navRightItemAction), for: .touchUpInside)
+        let btn = UIButton(target: self, title: "添加", sel: #selector(navRightItemClicked))
+        btn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }
-    func navRightItemAction() {
+    func navRightItemClicked() {
         navigationController?.pushViewController(IconAddViewController(), animated: true)
     }
 }
