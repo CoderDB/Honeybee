@@ -13,6 +13,7 @@ class KindAddViewController: BaseCollectionViewController {
 
     
     var dataSource = ["衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("添加种类")
@@ -30,7 +31,8 @@ class KindAddViewController: BaseCollectionViewController {
             make.top.equalTo(115)
             make.bottom.right.left.equalTo(view)
         }
-        collectionView.register(KindCell.self)
+        collectionView.register(KindAddCell.self)
+        collectionView.register(IconManagerSectionHeader.self)
     }
     func addHeader() {
         let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: 115))
@@ -44,8 +46,8 @@ extension KindAddViewController {
         return dataSource.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindCell.self)", for: indexPath) as! KindCell
-        cell.titleLabel.text = dataSource[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
+        cell.backgroundColor = UIColor.randomColor()
         return cell
     }
 }
@@ -53,6 +55,11 @@ extension KindAddViewController {
 
 // MARK: UICollectionViewDelegateFlowLayout
 extension KindAddViewController {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath) as! IconManagerSectionHeader
+        header.titleLabel.text = "选择一种颜色"
+        return header
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
     }

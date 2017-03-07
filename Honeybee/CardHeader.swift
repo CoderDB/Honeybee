@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardHeader: UIView {
+class CardHeader: BaseHeader {
     
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     
@@ -28,47 +28,17 @@ class CardHeader: UIView {
         return label
     }()
     
-    lazy var containView: UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = false
-        view.layer.cornerRadius = HB.Constant.cornerRadius
-        view.backgroundColor = HB.Color.main
-        return view
-    }()
-    
-    lazy var editButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        return btn
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupUI() {
-        addSubview(editButton)
-        addSubview(containView)
-        containView.addSubview(imgView)
-        containView.addSubview(categoryLabel)
-        containView.addSubview(numberLabel)
+    override func setupUI() {
+        super.setupUI()
         
-        editButton.addTarget(self, action: #selector(editButtonClicked), for: .touchUpInside)
-        editButton.snp.makeConstraints { (make) in
-            make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self)
-        }
-        containView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(self)
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10).priority(HB.Priority.mid)
-        }
+        rightBtn.setTitle("编辑", for: .normal)
+        rightBtn.addTarget(self, action: #selector(editButtonClicked), for: .touchUpInside)
+        containerView.backgroundColor = HB.Color.main
+        
+        containerView.addSubview(imgView)
+        containerView.addSubview(categoryLabel)
+        containerView.addSubview(numberLabel)
+        
         imgView.snp.makeConstraints { (make) in
             make.left.top.equalTo(10)
             make.width.height.equalTo(50)
@@ -78,8 +48,8 @@ class CardHeader: UIView {
             make.centerY.equalTo(imgView)
         }
         numberLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(containView)
-            make.right.equalTo(containView).offset(-5)
+            make.bottom.equalTo(containerView)
+            make.right.equalTo(containerView).offset(-5)
         }
     }
     var editButtonAction: (() -> ())?
