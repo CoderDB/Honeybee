@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func setupNav(title: String) {
+    func setNavTitle(_ title: String) {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
         titleLabel.text = title
         titleLabel.textAlignment = .center

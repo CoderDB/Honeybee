@@ -29,7 +29,7 @@ class CardViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        setupNav(title: "记账")
+        setNavTitle("记账")
         addLeftNavItem()
         addResultView()
         addCollectionView()
@@ -60,6 +60,12 @@ extension CardViewController {
         }
     }
     func addCollectionView() {
+        layout.itemSize = CGSize(width: 45, height: 45)
+        layout.minimumLineSpacing = 10      // 行间距
+        layout.minimumInteritemSpacing = 10 // 列间距
+        layout.sectionHeadersPinToVisibleBounds = true
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.register(CardCollectionCell.self)
         collectionView.register(IconManagerSectionHeader.self)
         collectionView.snp.makeConstraints { (make) in

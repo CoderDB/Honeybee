@@ -17,7 +17,7 @@ class SetupViewController: BaseViewController {
     var dataSource = [SetupItem]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNav(title: "设置")
+        setNavTitle("设置")
         
         addTableView()
         

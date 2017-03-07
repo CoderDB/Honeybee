@@ -17,7 +17,7 @@ class PieViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNav(title: "图表")
+        setNavTitle("图表")
         
         tableView.register(PieCell.self)
         tableView.tableHeaderView = PieHeader(height: 250)
@@ -51,7 +51,7 @@ extension PieViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let barVC = BarViewController()
-        barVC.setupNav(title: dataSource[indexPath.row].title)
+        barVC.setNavTitle(dataSource[indexPath.row].title)
         navigationController?.pushViewController(barVC, animated: true)
     }
 }

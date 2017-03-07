@@ -16,7 +16,7 @@ class RecordDetailController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNav(title: "详情")
+        setNavTitle("详情")
         addTableView()
     }
     override func viewWillAppear(_ animated: Bool) {

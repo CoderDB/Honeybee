@@ -16,7 +16,7 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNav(title: "个人信息")
+        setNavTitle("个人信息")
         addTableView()
         addRightNavItem()
         
