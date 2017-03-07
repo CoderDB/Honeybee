@@ -53,7 +53,7 @@ extension SetupViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         
-        tableView.rowHeight = HonybeeConstant.rowHeight
+        tableView.rowHeight = HB.Constant.rowHeight
         
         tableView.register(SetupCell.self)
         

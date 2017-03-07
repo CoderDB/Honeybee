@@ -15,24 +15,24 @@ class RecordCell: UITableViewCell {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4_number
+        label.font = HB.Font.h4_number
         return label
     }()
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5_medium
+        label.font = HB.Font.h5_medium
         return label
     }()
     lazy var weekdayLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h7
+        label.font = HB.Font.h7
         return label
     }()
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h3_number
+        label.font = HB.Font.h3_number
         return label
     }()
     
@@ -40,7 +40,7 @@ class RecordCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        layer.cornerRadius = HonybeeConstant.cornerRadius
+        layer.cornerRadius = HB.Constant.cornerRadius
         
         initialize()
     }

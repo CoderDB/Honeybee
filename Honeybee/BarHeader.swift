@@ -18,7 +18,7 @@ class BarHeader: UIView {
         super.init(frame: frame)
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: frame.height)
-        gradientLayer.cornerRadius = HonybeeConstant.cornerRadius
+        gradientLayer.cornerRadius = HB.Constant.cornerRadius
         layer.addSublayer(gradientLayer)
         setupUI()
     }
@@ -60,7 +60,7 @@ class BarHeader: UIView {
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
         dataSet.drawValuesEnabled = true //显示条形柱的值
         dataSet.valueTextColor = UIColor.black
-        dataSet.valueFont = HonybeeFont.h6_number
+        dataSet.valueFont = HB.Font.h6_number
         dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
         
         let data = BarChartData(dataSet: dataSet)
@@ -73,7 +73,7 @@ class BarHeader: UIView {
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(20)
-            make.right.equalTo(self).offset(-20).priority(HonybeePriority.mid)
+            make.right.equalTo(self).offset(-20).priority(HB.Priority.mid)
             make.bottom.equalTo(self).offset(-5)
             make.top.equalTo(self)
         }

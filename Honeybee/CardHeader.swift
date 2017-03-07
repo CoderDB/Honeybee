@@ -14,31 +14,31 @@ class CardHeader: UIView {
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h3
+        label.font = HB.Font.h3
         label.text = "未填写"
         return label
     }()
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h2_number
+        label.font = HB.Font.h2_number
         label.text = "98765.39"
         return label
     }()
     
     lazy var containView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = HonybeeConstant.cornerRadius
+        view.layer.cornerRadius = HB.Constant.cornerRadius
         view.isUserInteractionEnabled = false
-        view.backgroundColor = HonybeeColor.main
+        view.backgroundColor = HB.Color.main
         return view
     }()
     
     lazy var editButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         return btn
     }()
     
@@ -65,7 +65,7 @@ class CardHeader: UIView {
         containView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self)
             make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10).priority(HonybeePriority.mid)
+            make.right.equalTo(editButton.snp.left).offset(-10).priority(HB.Priority.mid)
         }
         imgView.snp.makeConstraints { (make) in
             make.left.top.equalTo(10)

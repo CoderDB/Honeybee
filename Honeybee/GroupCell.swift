@@ -19,13 +19,13 @@ class GroupCell: UITableViewCell {
         
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4_number
+        label.font = HB.Font.h4_number
         return label
     }()
     lazy var weekdayLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h7
+        label.font = HB.Font.h7
         return label
     }()
     lazy var tableView: UITableView = {
@@ -44,7 +44,7 @@ class GroupCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        layer.cornerRadius = HonybeeConstant.cornerRadius
+        layer.cornerRadius = HB.Constant.cornerRadius
         layer.borderWidth = 2
         
         backgroundColor = UIColor.white

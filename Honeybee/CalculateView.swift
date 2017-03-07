@@ -60,7 +60,7 @@ class CalculateView: UIView {
         let btn = UIButton()
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h3_number
+        btn.titleLabel?.font = HB.Font.h3_number
         btn.backgroundColor = UIColor.white
         btn.layer.cornerRadius = 5
         btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
@@ -79,7 +79,7 @@ class CalculateView: UIView {
         let btn = UIButton()
         btn.setTitle("OK", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h3_number
+        btn.titleLabel?.font = HB.Font.h3_number
         btn.backgroundColor = UIColor.white
         btn.layer.cornerRadius = 5
         btn.addTarget(self, action: #selector(okBtnClicked), for: .touchUpInside)

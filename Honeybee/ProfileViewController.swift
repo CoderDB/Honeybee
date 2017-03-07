@@ -39,7 +39,7 @@ class ProfileViewController: BaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         
-        tableView.rowHeight = HonybeeConstant.rowHeight
+        tableView.rowHeight = HB.Constant.rowHeight
         
         tableView.register(SetupCell.self)
         tableView.tableHeaderView = ProfileHeader(height: 135)
@@ -47,8 +47,8 @@ class ProfileViewController: BaseViewController {
     func addRightNavItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 25))
         btn.setTitle("分享", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         btn.addTarget(self, action: #selector(rightBarButtonItemClicked), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         

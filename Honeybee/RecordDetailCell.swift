@@ -13,7 +13,7 @@ class RecordDetailCell: BaseTableViewCell {
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h3
+        label.font = HB.Font.h3
         return label
     }()
     
@@ -23,18 +23,18 @@ class RecordDetailCell: BaseTableViewCell {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 200
         label.lineBreakMode = .byWordWrapping
-        label.font = HonybeeFont.h5
+        label.font = HB.Font.h5
         
         return label
     }()
     
     func setSubTitleAttributes(indexPath: IndexPath, model: RLMRecorder) {
         if indexPath.row == 0 {
-            subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HonybeeFont.h3_number])
+            subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HB.Font.h3_number])
         } else if indexPath.row == 1 {
-            subTitleLabel.attributedText = NSAttributedString(string: model.yearMonthDay + "\n" + model.hourMinute + "\n", attributes: [NSFontAttributeName: HonybeeFont.h4_number])
+            subTitleLabel.attributedText = NSAttributedString(string: model.yearMonthDay + "\n" + model.hourMinute + "\n", attributes: [NSFontAttributeName: HB.Font.h4_number])
         } else if indexPath.row == 2 {
-            subTitleLabel.attributedText = NSAttributedString(string: model.superCategory + ">" + model.category + "\n", attributes: [NSFontAttributeName: HonybeeFont.h5])
+            subTitleLabel.attributedText = NSAttributedString(string: model.superCategory + ">" + model.category + "\n", attributes: [NSFontAttributeName: HB.Font.h5])
         } else {
             subTitleLabel.text = model.remark
         }

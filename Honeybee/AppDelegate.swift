@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barAppearence.setBackgroundImage(UIImage.image(color: UIColor.white), for: .any, barMetrics: .default)
         barAppearence.shadowImage = UIImage()
         // 设置导航栏返回按钮，文字颜色
-        barAppearence.tintColor = HonybeeColor.main
+        barAppearence.tintColor = HB.Color.nav
         
         let buttonItem = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonItem.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)

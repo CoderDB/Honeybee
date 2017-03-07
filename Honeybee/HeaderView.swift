@@ -15,13 +15,13 @@ class HeaderView: UIView {
         let btn = UIButton(type: .custom)
         btn.setTitle("二狗哥", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h2
+        btn.titleLabel?.font = HB.Font.h2
         btn.contentHorizontalAlignment = .left
         return btn
     }()
     lazy var userImgView: UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "avatar"))
-        imgView.backgroundColor = HonybeeColor.main
+        imgView.backgroundColor = HB.Color.nav
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
         return imgView
@@ -29,15 +29,15 @@ class HeaderView: UIView {
     lazy var filterBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitle("分类", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         btn.contentHorizontalAlignment = .left
         return btn
     }()
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = HonybeeColor.main
-        view.layer.cornerRadius = HonybeeConstant.cornerRadius
+        view.backgroundColor = HB.Color.main
+        view.layer.cornerRadius = HB.Constant.cornerRadius
         return view
     }()
     lazy var eyeBtn: UIButton = {
@@ -48,28 +48,28 @@ class HeaderView: UIView {
     }()
     lazy var outLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5
+        label.font = HB.Font.h5
         label.textColor = UIColor.white
         label.text = "本月支出"
         return label
     }()
     lazy var inLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5
+        label.font = HB.Font.h5
         label.textColor = UIColor.white
         label.text = "本月收入"
         return label
     }()
     lazy var outMoneyLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h2_number
+        label.font = HB.Font.h2_number
         label.textColor = UIColor.white
         label.text = "34567"
         return label
     }()
     lazy var inMoneyLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h2_number
+        label.font = HB.Font.h2_number
         label.textColor = UIColor.white
         label.text = "76853"
         return label
@@ -119,7 +119,7 @@ class HeaderView: UIView {
             make.left.equalTo(usernameBtn)
             make.top.equalTo(usernameBtn.snp.bottom)
             make.bottom.equalTo(self).offset(-10)
-            make.right.equalTo(filterBtn.snp.left).offset(-10).priority(HonybeePriority.low)
+            make.right.equalTo(filterBtn.snp.left).offset(-10).priority(HB.Priority.low)
         }
         eyeBtn.snp.makeConstraints { (make) in
             make.top.equalTo(containerView).offset(10)
