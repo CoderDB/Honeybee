@@ -17,6 +17,7 @@ struct HB {
     struct Constant {
         static let cornerRadius: CGFloat = 10
         static let rowHeight: CGFloat = 60
+        static let padding: CGFloat = 10
     }
     
     struct Font {
@@ -48,6 +49,7 @@ struct HB {
         
         static let h6_number = UIFont(name: "Silom", size: 8)!
     }
+    
     struct Priority {
         static let high = 1000
         static let mid = 750
