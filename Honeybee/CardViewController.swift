@@ -72,7 +72,7 @@ extension CardViewController {
         hb_keyboard.snp.makeConstraints { (make) in
             make.left.right.equalTo(view)
             make.bottom.equalTo(view).offset(10)
-            make.height.equalTo(280)
+            make.height.equalTo(250)
         }
     }
 }

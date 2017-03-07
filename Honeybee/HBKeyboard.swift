@@ -35,13 +35,17 @@ class HBKeyboard: UIView {
         return view
     }()
     
-    private let selfHeight: CGFloat = 260
-    private let toolViewHeight: CGFloat = 40
+    private let selfHeight: CGFloat = 240
+    private let toolViewHeight: CGFloat = 35
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = HB.Constant.cornerRadius
         backgroundColor = HB.Color.main
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: -3)
+        
         
         addToolView()
         addScrollView()
@@ -68,7 +72,8 @@ class HBKeyboard: UIView {
         
         addSubview(toolView)
         toolView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(self).offset(10)
+            make.top.equalTo(self).offset(5)
+            make.left.equalTo(self).offset(10)
             make.right.equalTo(self).offset(-10)
             make.height.equalTo(toolViewHeight)
         }
@@ -95,12 +100,12 @@ class HBKeyboard: UIView {
             make.top.equalTo(toolView.snp.bottom)
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self).offset(-20)
+            make.bottom.equalTo(self).offset(-10)
         }
         calculateView = CalculateView(frame: CGRect(x: 0, y: 0, width: W, height: H))
         scrollView.addSubview(calculateView)
         
-        dateView = DateView(frame: CGRect(x: W, y: 0, width: W, height: H))
+        dateView = DateView(frame: CGRect(x: W, y: 5, width: W, height: H-10))
         scrollView.addSubview(dateView)
     }
     

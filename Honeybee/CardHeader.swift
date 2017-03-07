@@ -14,12 +14,14 @@ class CardHeader: UIView {
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor.white
         label.font = HB.Font.h3
         label.text = "未填写"
         return label
     }()
     lazy var numberLabel: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor.white
         label.textAlignment = .right
         label.font = HB.Font.h2_number
         label.text = "98765.39"
@@ -28,8 +30,8 @@ class CardHeader: UIView {
     
     lazy var containView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = HB.Constant.cornerRadius
         view.isUserInteractionEnabled = false
+        view.layer.cornerRadius = HB.Constant.cornerRadius
         view.backgroundColor = HB.Color.main
         return view
     }()
