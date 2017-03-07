@@ -56,7 +56,7 @@ extension CardViewController {
         header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
         header.editButtonAction = {[unowned self] in
-            self.navigationController?.pushViewController(IconManagerViewController(), animated: true)
+            self.navigationController?.pushViewController(KindViewController(), animated: true)
         }
     }
     func addCollectionView() {
