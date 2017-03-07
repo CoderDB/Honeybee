@@ -39,6 +39,9 @@
 		866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */; };
 		866C562E1E6D78DB00010D3F /* category_color.json in Resources */ = {isa = PBXBuildFile; fileRef = 866C562D1E6D78DB00010D3F /* category_color.json */; };
 		866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C56301E6DA35300010D3F /* HoneybeeCategory.swift */; };
+		866C91321E6E80D3003026DD /* KindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91311E6E80D3003026DD /* KindViewController.swift */; };
+		866C91341E6E84F5003026DD /* KindCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91331E6E84F5003026DD /* KindCell.swift */; };
+		866C91361E6E8A33003026DD /* KindAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91351E6E8A33003026DD /* KindAddViewController.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
@@ -138,6 +141,9 @@
 		866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		866C562D1E6D78DB00010D3F /* category_color.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category_color.json; sourceTree = "<group>"; };
 		866C56301E6DA35300010D3F /* HoneybeeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeCategory.swift; sourceTree = "<group>"; };
+		866C91311E6E80D3003026DD /* KindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindViewController.swift; sourceTree = "<group>"; };
+		866C91331E6E84F5003026DD /* KindCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindCell.swift; sourceTree = "<group>"; };
+		866C91351E6E8A33003026DD /* KindAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddViewController.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 				86E5746C1E4C6E1C001255CD /* Main */,
 				86F6C8651E4F2F11002016DB /* RecordDetail */,
 				86E5746D1E4C6E32001255CD /* Add */,
+				866C91301E6E803F003026DD /* KindManager */,
 				860EF57D1E600DB8009C2D31 /* IconManager */,
 				86E5746E1E4C6E6C001255CD /* Chart */,
 				86E5746F1E4C6E88001255CD /* Profile */,
@@ -326,6 +333,16 @@
 				866C56301E6DA35300010D3F /* HoneybeeCategory.swift */,
 			);
 			name = ItemModel;
+			sourceTree = "<group>";
+		};
+		866C91301E6E803F003026DD /* KindManager */ = {
+			isa = PBXGroup;
+			children = (
+				866C91311E6E80D3003026DD /* KindViewController.swift */,
+				866C91331E6E84F5003026DD /* KindCell.swift */,
+				866C91351E6E8A33003026DD /* KindAddViewController.swift */,
+			);
+			name = KindManager;
 			sourceTree = "<group>";
 		};
 		8697CEE11E5DA28900993CFE /* Base */ = {
@@ -816,7 +833,9 @@
 				8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
+				866C91341E6E84F5003026DD /* KindCell.swift in Sources */,
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
+				866C91321E6E80D3003026DD /* KindViewController.swift in Sources */,
 				866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */,
 				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
@@ -837,6 +856,7 @@
 				86104A2F1E61A8F500AAEEAC /* CardCollectionCell.swift in Sources */,
 				86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */,
 				862996311E6ACD5800494C74 /* NetworkManager.swift in Sources */,
+				866C91361E6E8A33003026DD /* KindAddViewController.swift in Sources */,
 				86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
