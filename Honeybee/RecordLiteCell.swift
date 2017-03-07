@@ -13,20 +13,20 @@ class RecordLiteCell: UITableViewCell {
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     lazy var category: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5
+        label.font = HB.Font.h5
         return label
     }()
     lazy var number: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h3_number
+        label.font = HB.Font.h3_number
         return label
     }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        layer.cornerRadius = HonybeeConstant.cornerRadius
+        layer.cornerRadius = HB.Constant.cornerRadius
         
         setupUI()
     }

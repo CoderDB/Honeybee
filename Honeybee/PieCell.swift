@@ -12,13 +12,13 @@ class PieCell: BaseTableViewCell {
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h3
+        label.font = HB.Font.h3
         return label
     }()
     lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h3_number
+        label.font = HB.Font.h3_number
         return label
     }()
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))

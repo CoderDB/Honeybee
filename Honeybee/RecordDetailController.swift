@@ -25,7 +25,7 @@ class RecordDetailController: BaseTableViewController {
     }
     
     func addTableView() {
-        tableView.estimatedRowHeight = HonybeeConstant.rowHeight
+        tableView.estimatedRowHeight = HB.Constant.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.contentInset.bottom = 100

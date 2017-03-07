@@ -14,7 +14,7 @@ class SetupCell: BaseTableViewCell {
     
     lazy var mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h3
+        label.font = HB.Font.h3
         return label
     }()
     
@@ -24,14 +24,14 @@ class SetupCell: BaseTableViewCell {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 200
         label.lineBreakMode = .byWordWrapping
-        label.font = HonybeeFont.h4_number
+        label.font = HB.Font.h4_number
         return label
     }()
     
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
     lazy var imgView: UIImageView = {
-        let imgView = UIImageView(image: UIImage.image(color: HonybeeColor.main))
+        let imgView = UIImageView(image: UIImage.image(color: HB.Color.nav))
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
         return imgView

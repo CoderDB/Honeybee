@@ -17,7 +17,7 @@ class BaseTableViewController: BaseViewController {
         tv.showsHorizontalScrollIndicator = false
         tv.dataSource = self
         tv.delegate = self
-        tv.rowHeight = HonybeeConstant.rowHeight
+        tv.rowHeight = HB.Constant.rowHeight
         return tv
     }()
     

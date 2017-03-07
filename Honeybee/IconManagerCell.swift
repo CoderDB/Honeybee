@@ -13,7 +13,7 @@ class IconManagerCell: UICollectionViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4_number
+        label.font = HB.Font.h4_number
         label.textAlignment = .center
         label.textColor = UIColor.white
         return label

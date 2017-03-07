@@ -40,8 +40,8 @@ class HBKeyboard: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = HonybeeConstant.cornerRadius
-        backgroundColor = UIColor(hex: "#FF955A")
+        layer.cornerRadius = HB.Constant.cornerRadius
+        backgroundColor = HB.Color.main
         
         addToolView()
         addScrollView()

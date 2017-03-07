@@ -13,31 +13,31 @@ class ProfileHeader: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4
+        label.font = HB.Font.h4
         label.textColor = UIColor.white
         label.text = "累计记账"
         return label
     }()
     lazy var countLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h1_number
+        label.font = HB.Font.h1_number
         label.textColor = UIColor.white
         return label
     }()
     
     lazy var containView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = HonybeeConstant.cornerRadius
+        view.layer.cornerRadius = HB.Constant.cornerRadius
         view.isUserInteractionEnabled = false
-        view.backgroundColor = HonybeeColor.main
+        view.backgroundColor = HB.Color.main
         return view
     }()
     
     lazy var editButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         return btn
     }()
     
@@ -70,7 +70,7 @@ class ProfileHeader: UIView {
         containView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self)
             make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10).priority(HonybeePriority.mid)
+            make.right.equalTo(editButton.snp.left).offset(-10).priority(HB.Priority.mid)
         }
         
         titleLabel.snp.makeConstraints { (make) in
@@ -98,7 +98,7 @@ class ProfileHeader: UIView {
         let dayStr = "\(days)天"
         
         let attr = NSMutableAttributedString(string: dayStr)
-        attr.addAttributes([NSFontAttributeName: HonybeeFont.h4], range: NSRange(location: dayStr.characters.count-1, length: 1))
+        attr.addAttributes([NSFontAttributeName: HB.Font.h4], range: NSRange(location: dayStr.characters.count-1, length: 1))
         return attr
     }
 

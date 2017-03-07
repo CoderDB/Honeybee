@@ -37,11 +37,11 @@ class PieHeader: UIView {
         super.init(frame: frame)
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: frame.height)
-        gradientLayer.cornerRadius = HonybeeConstant.cornerRadius
+        gradientLayer.cornerRadius = HB.Constant.cornerRadius
         layer.addSublayer(gradientLayer)
         
 //        backgroundColor = UIColor.white
-//        layer.cornerRadius = HonybeeConstant.cornerRadius
+//        layer.cornerRadius = HB.Constant.cornerRadius
 //        layer.borderColor = UIColor.black.cgColor
 //        layer.borderWidth = 1
         
@@ -79,7 +79,7 @@ class PieHeader: UIView {
         dataSet.valueLineColor = UIColor.black              //线颜色
         dataSet.valueLineWidth = 1.5                        //线宽
         dataSet.valueTextColor = UIColor.black              //线末端字体颜色
-        dataSet.valueFont = HonybeeFont.h4_number           // 线末端字体
+        dataSet.valueFont = HB.Font.h4_number           // 线末端字体
         
         return PieChartData(dataSet: dataSet)
     }

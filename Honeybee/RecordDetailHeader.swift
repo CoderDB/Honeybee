@@ -14,21 +14,21 @@ class RecordDetailHeader: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = HonybeeFont.h3
+        label.font = HB.Font.h3
         return label
     }()
     lazy var editButton: UIButton = {
         let btn = UIButton(type: UIButtonType.system)
         btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         return btn
     }()
     lazy var imgView = UIImageView()
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = HonybeeConstant.cornerRadius
+        view.layer.cornerRadius = HB.Constant.cornerRadius
         view.isUserInteractionEnabled = false
         return view
     }()
@@ -65,7 +65,7 @@ class RecordDetailHeader: UIView {
         containerView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self)
             make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10).priority(HonybeePriority.mid)
+            make.right.equalTo(editButton.snp.left).offset(-10).priority(HB.Priority.mid)
         }
         titleLabel.snp.makeConstraints { (make) in
             make.left.top.equalTo(containerView).offset(10)

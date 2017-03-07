@@ -59,8 +59,8 @@ extension IconManagerViewController {
     func addNavRightItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 25))
         btn.setTitle("添加", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         btn.addTarget(self, action: #selector(navRightItemAction), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }

@@ -13,22 +13,22 @@ class SetupHeader: UIView {
     
     lazy var headButton: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.backgroundColor = HonybeeColor.main
+        btn.backgroundColor = HB.Color.nav
         btn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         btn.setImage(UIImage(named: "avatar"), for: .normal)
-        btn.layer.cornerRadius = HonybeeConstant.cornerRadius
+        btn.layer.cornerRadius = HB.Constant.cornerRadius
         return btn
     }()
     
     lazy var nicknameLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5
+        label.font = HB.Font.h5
         label.text = "二狗哥"
         return label
     }()
     lazy var bioLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h6
+        label.font = HB.Font.h6_medium
         label.textColor = UIColor.gray
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -41,8 +41,8 @@ class SetupHeader: UIView {
     lazy var editButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HonybeeColor.main, for: .normal)
-        btn.titleLabel?.font = HonybeeFont.h5
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
         return btn
     }()
     
@@ -77,13 +77,13 @@ class SetupHeader: UIView {
         nicknameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(headButton)
             make.left.equalTo(headButton.snp.right).offset(10)
-            make.right.equalTo(self).offset(-60).priority(HonybeePriority.mid)
+            make.right.equalTo(self).offset(-60).priority(HB.Priority.mid)
             make.height.equalTo(25)
         }
         bioLabel.snp.makeConstraints { (make) in
             make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
             make.left.equalTo(nicknameLabel)
-            make.right.equalTo(editButton.snp.left).offset(-5).priority(HonybeePriority.mid)
+            make.right.equalTo(editButton.snp.left).offset(-5).priority(HB.Priority.mid)
             make.bottom.equalTo(headButton).offset(-10)
         } 
     }

@@ -13,18 +13,18 @@ class BarCell: BaseTableViewCell {
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     lazy var mainTopTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h5
+        label.font = HB.Font.h5
         return label
     }()
     lazy var mainBottomTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = HonybeeFont.h4_number
+        label.font = HB.Font.h4_number
         return label
     }()
     lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = HonybeeFont.h3_number
+        label.font = HB.Font.h3_number
         return label
     }()
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
