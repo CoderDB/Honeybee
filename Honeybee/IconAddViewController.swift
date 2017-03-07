@@ -15,7 +15,7 @@ class IconAddViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNav(title: "添加图标")
+        setNavTitle("添加图标")
         addCollectionView()
     }
     

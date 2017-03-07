@@ -17,7 +17,7 @@ class IconManagerViewController: BaseCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNav(title: "图标管理")
+        setNavTitle("图标管理")
         addNavRightItem()
         addCollectionView()
     }
@@ -30,6 +30,12 @@ class IconManagerViewController: BaseCollectionViewController {
 //MARK: UI
 extension IconManagerViewController {
     func addCollectionView() {
+        layout.itemSize = CGSize(width: 45, height: 45)
+        layout.minimumLineSpacing = 10      // 行间距
+        layout.minimumInteritemSpacing = 10 // 列间距
+        layout.sectionHeadersPinToVisibleBounds = true
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
