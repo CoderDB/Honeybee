@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ProfileViewController: BaseViewController {
+class ProfileViewController: BaseTableViewController {
     
-    lazy var tableView = UITableView()
     var dataSource = [SetupItem]()
     
     override func viewDidLoad() {
@@ -28,19 +27,7 @@ class ProfileViewController: BaseViewController {
     }
     
     func addTableView() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        
         tableView.rowHeight = HB.Constant.rowHeight
-        
         tableView.register(SetupCell.self)
         tableView.tableHeaderView = ProfileHeader(height: 135)
     }
@@ -60,11 +47,11 @@ class ProfileViewController: BaseViewController {
 
 
 // MARK: UITableViewDataSource
-extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ProfileViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)") as! SetupCell
         cell.item = dataSource[indexPath.row]
         return cell

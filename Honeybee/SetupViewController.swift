@@ -8,11 +8,7 @@
 
 import UIKit
 
-class SetupViewController: BaseViewController {
-    
-    var tableView: UITableView!
-
-    
+class SetupViewController: BaseTableViewController {
     
     var dataSource = [SetupItem]()
     override func viewDidLoad() {
@@ -41,40 +37,23 @@ class SetupViewController: BaseViewController {
 extension SetupViewController {
     
     func addTableView() {
-        tableView = UITableView()
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        
         tableView.rowHeight = HB.Constant.rowHeight
-        
         tableView.register(SetupCell.self)
-        
         tableView.tableHeaderView = SetupHeader(height: 135)
         tableView.tableFooterView = SetupFooter(height: 50)
     }
 }
 
-
-
 // MARK: UITableViewDataSource
-extension SetupViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension SetupViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)") as! SetupCell
         cell.item = dataSource[indexPath.row]
         return cell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("----\(indexPath.row)")
         
