@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileHeader: UIView {
+class ProfileHeader: BaseHeader {
 
     
     lazy var titleLabel: UILabel = {
@@ -25,61 +25,27 @@ class ProfileHeader: UIView {
         return label
     }()
     
-    lazy var containView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = HB.Constant.cornerRadius
-        view.isUserInteractionEnabled = false
-        view.backgroundColor = HB.Color.main
-        return view
-    }()
-    
-    lazy var editButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        return btn
-    }()
-    
-    
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
         
         countLabel.attributedText = calculateChargeUpDays()
     }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupUI() {
-        addSubview(editButton)
-        addSubview(containView)
-        containView.addSubview(titleLabel)
-        containView.addSubview(countLabel)
+    override func setupUI() {
+        super.setupUI()
         
-        editButton.snp.makeConstraints { (make) in
-            make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self)
-        }
+        rightBtn.setTitle("编辑", for: .normal)
+        containerView.backgroundColor = HB.Color.main
         
-        containView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(self)
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(editButton.snp.left).offset(-10).priority(HB.Priority.mid)
-        }
-        
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(countLabel)
+
         titleLabel.snp.makeConstraints { (make) in
-            make.left.top.equalTo(containView).offset(10)
+            make.left.top.equalTo(containerView).offset(10)
         }
         
         countLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(containView).offset(-10)
-            make.centerX.equalTo(containView)
+            make.bottom.equalTo(containerView).offset(-10)
+            make.centerX.equalTo(containerView)
         }
     }
 
