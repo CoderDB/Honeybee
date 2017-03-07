@@ -38,6 +38,24 @@ class KindAddViewController: BaseCollectionViewController {
         let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: 115))
         view.addSubview(header)
     }
+    
+    func randomHSVColor() -> UIColor {
+        let golden = 0.618033988749895
+        var h = Double(arc4random())
+        h *= golden
+        h *= golden
+        h.formTruncatingRemainder(dividingBy: 1)
+        var s = Double(arc4random())
+        s += golden
+        s *= golden
+        s.formTruncatingRemainder(dividingBy: 1)
+        var v = Double(arc4random())
+        v += golden
+        v.formTruncatingRemainder(dividingBy: 1)
+        
+        
+        return UIColor(hue: CGFloat(h), saturation: 0.3, brightness: 0.99, alpha: 1)
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -47,7 +65,7 @@ extension KindAddViewController {
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
-        cell.backgroundColor = UIColor.randomColor()
+        cell.backgroundColor = randomHSVColor()
         return cell
     }
 }

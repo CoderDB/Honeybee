@@ -34,11 +34,8 @@ class KindViewController: BaseCollectionViewController {
         collectionView.register(KindCell.self)
     }
     func addNavRightItem() {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 25))
-        btn.setTitle("添加种类", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        btn.addTarget(self, action: #selector(navRightItemClicked), for: .touchUpInside)
+        let btn = UIButton(target: self, title: "添加种类", sel: #selector(navRightItemClicked))
+        btn.frame = CGRect(x: 0, y: 0, width: 80, height: 25)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }
     func navRightItemClicked() {

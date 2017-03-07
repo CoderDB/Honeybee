@@ -32,11 +32,11 @@ class BarViewController: BaseTableViewController {
 //        btn.setTitle("选择", for: .normal)
 //        btn.setTitleColor(HB.Color.nav, for: .normal)
 //        btn.titleLabel?.font = HB.Font.h5
-        btn.addTarget(self, action: #selector(navRightItemAction(_:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(navRightItemClicked(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }
     
-    func navRightItemAction(_ btn: UIButton) {
+    func navRightItemClicked(_ btn: UIButton) {
         let destVC = BarPopoverViewController()
         destVC.modalPresentationStyle = .popover
         let popoverVC = destVC.popoverPresentationController!

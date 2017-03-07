@@ -11,10 +11,13 @@ import UIKit
 
 
 extension UIButton {
-    convenience init(imgName: String, sel: Selector) {
+    
+    convenience init(target: Any?, title: String, sel: Selector) {
         self.init()
-        setImage(UIImage(named: imgName), for: .normal)
-        addTarget(self, action: sel, for: .touchUpInside)
+        setTitle(title, for: .normal)
+        setTitleColor(HB.Color.nav, for: .normal)
+        titleLabel?.font = HB.Font.h5
+        addTarget(target, action: sel, for: .touchUpInside)
     }
 }
 
