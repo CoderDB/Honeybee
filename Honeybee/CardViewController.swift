@@ -55,7 +55,7 @@ extension CardViewController {
     func addResultView() {
         header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
-        header.editButtonAction = {[unowned self] in
+        header.rightButtonAction = {[unowned self] _ in
             self.navigationController?.pushViewController(KindViewController(), animated: true)
         }
     }

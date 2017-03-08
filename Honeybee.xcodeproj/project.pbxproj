@@ -19,6 +19,7 @@
 		8614E4191E6999E400836FC9 /* RLMRecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614E4181E6999E400836FC9 /* RLMRecorderSuper.swift */; };
 		8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614E41A1E699A0E00836FC9 /* RLMModel.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
+		861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B1EC01E7007D9009BBF48 /* MainHeader.swift */; };
 		8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624F61C1E5047C00059788A /* RecordDetailHeader.swift */; };
 		8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627434D1DF2A8F8002597E1 /* DateView.swift */; };
 		8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB41E0BADFD00C1A257 /* CurveCell.swift */; };
@@ -70,7 +71,6 @@
 		86D170461E51EBCE0004E192 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170451E51EBCE0004E192 /* ProfileViewController.swift */; };
 		86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170471E51EBE70004E192 /* BaseViewController.swift */; };
 		86D1704A1E51EDCB0004E192 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170491E51EDCB0004E192 /* ProfileHeader.swift */; };
-		86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */; };
 		86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */; };
 		86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE41E6405AB0054152E /* UIColorExtension.swift */; };
 		86DF8AE71E642CDD0054152E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE61E642CDD0054152E /* DateExtension.swift */; };
@@ -118,6 +118,7 @@
 		8614E4181E6999E400836FC9 /* RLMRecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMRecorderSuper.swift; sourceTree = "<group>"; };
 		8614E41A1E699A0E00836FC9 /* RLMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMModel.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
+		861B1EC01E7007D9009BBF48 /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
 		8624F61C1E5047C00059788A /* RecordDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailHeader.swift; sourceTree = "<group>"; };
 		8627434D1DF2A8F8002597E1 /* DateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		8627BFB41E0BADFD00C1A257 /* CurveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveCell.swift; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		86D170451E51EBCE0004E192 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86D170471E51EBE70004E192 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		86D170491E51EDCB0004E192 /* ProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
-		86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		86DF8AE41E6405AB0054152E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		86DF8AE61E642CDD0054152E /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 				86F6C85F1E4F2791002016DB /* GroupCell.swift */,
 				86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */,
 				864D250D1E62F1A60005894A /* RecorderViewModel.swift */,
-				86DEBC9C1E4B0B35003F8FCF /* HeaderView.swift */,
+				861B1EC01E7007D9009BBF48 /* MainHeader.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -817,7 +817,6 @@
 				866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */,
 				866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */,
 				864D25101E62F4180005894A /* BaseViewModel.swift in Sources */,
-				86DEBC9D1E4B0B35003F8FCF /* HeaderView.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
@@ -870,6 +869,7 @@
 				866C913A1E6E9EA1003026DD /* KindAddCell.swift in Sources */,
 				866C91361E6E8A33003026DD /* KindAddViewController.swift in Sources */,
 				86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */,
+				861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
 			);

@@ -15,14 +15,16 @@ class BaseHeader: UIView {
         view.isUserInteractionEnabled = false
         return view
     }()
-    
     lazy var rightBtn: UIButton = {
         let btn = UIButton()
         btn.setTitleColor(HB.Color.nav, for: .normal)
         btn.titleLabel?.font = HB.Font.h5
+        btn.contentHorizontalAlignment = .right
         return btn
     }()
-    
+    convenience init(height: CGFloat) {
+        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -34,6 +36,7 @@ class BaseHeader: UIView {
         addSubview(rightBtn)
         addSubview(containerView)
         
+        rightBtn.addTarget(self, action: #selector(rightBtnClicked(_:)), for: .touchUpInside)
         rightBtn.snp.makeConstraints { (make) in
             make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self)
@@ -43,5 +46,9 @@ class BaseHeader: UIView {
             make.left.equalTo(self).offset(10)
             make.right.equalTo(rightBtn.snp.left).offset(-10).priority(HB.Priority.mid)
         }
+    }
+    var rightButtonAction: ((UIButton) -> ())?
+    func rightBtnClicked(_ btn: UIButton) {
+        rightButtonAction?(btn)
     }
 }

@@ -32,7 +32,6 @@ class CardHeader: BaseHeader {
         super.setupUI()
         
         rightBtn.setTitle("编辑", for: .normal)
-        rightBtn.addTarget(self, action: #selector(editButtonClicked), for: .touchUpInside)
         containerView.backgroundColor = HB.Color.main
         
         containerView.addSubview(imgView)
@@ -51,10 +50,6 @@ class CardHeader: BaseHeader {
             make.bottom.equalTo(containerView)
             make.right.equalTo(containerView).offset(-5)
         }
-    }
-    var editButtonAction: (() -> ())?
-    func editButtonClicked() {
-        editButtonAction?()
     }
 
 }
