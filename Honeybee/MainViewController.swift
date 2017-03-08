@@ -125,7 +125,7 @@ extension MainViewController {
         tableView.estimatedRowHeight = 75
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        let header = MainHeader(height: 200)
+        let header = MainHeader(height: 205)
         header.tapContainerViewAction = { [unowned self] in
             self.navigationController?.pushViewController(PieViewController(), animated: true)
         }

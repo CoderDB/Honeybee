@@ -36,9 +36,6 @@ extension IconManagerViewController {
         layout.sectionHeadersPinToVisibleBounds = true
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
-        collectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
         collectionView.register(IconManagerCell.self)
         collectionView.register(IconManagerSectionHeader.self)
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))

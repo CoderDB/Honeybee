@@ -105,7 +105,8 @@ class MainHeader: BaseHeader {
         summaryView.snp.makeConstraints { (make) in
             make.left.equalTo(usernameBtn)
             make.top.equalTo(usernameBtn.snp.bottom)
-            make.right.bottom.equalTo(containerView)
+            make.right.equalTo(containerView)
+            make.bottom.equalTo(containerView).offset(-5)
         }
         eyeBtn.snp.makeConstraints { (make) in
             make.top.equalTo(summaryView).offset(10)
