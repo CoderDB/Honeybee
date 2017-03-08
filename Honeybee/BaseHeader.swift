@@ -23,7 +23,7 @@ class BaseHeader: UIView {
         return btn
     }()
     convenience init(height: CGFloat) {
-        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
+        self.init(frame: CGRect(x: 0, y: 0, width: HB.Screen.w, height: height))
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

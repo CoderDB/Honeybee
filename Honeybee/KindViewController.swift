@@ -28,9 +28,6 @@ class KindViewController: BaseCollectionViewController {
         layout.minimumLineSpacing = 25
         layout.minimumInteritemSpacing = 25
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
-        collectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
         collectionView.register(KindCell.self)
     }
     override func navRightItemClicked() {
@@ -56,5 +53,6 @@ extension KindViewController {
 extension KindViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
+        navigationController?.pushViewController(KindDetailController(), animated: true)
     }
 }

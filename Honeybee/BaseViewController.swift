@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
     }
     
     func setNavTitle(_ title: String) {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
         titleLabel.text = title
         titleLabel.textAlignment = .center
         titleLabel.font = HB.Font.h5
@@ -29,14 +29,18 @@ class BaseViewController: UIViewController {
     }
     
     func setNavRightItem(_ title: String) {
+        
         let btn = UIButton(type: .custom)
-        btn.snp.makeConstraints { (make) in
-            make.width.lessThanOrEqualTo(100)
-            make.height.equalTo(25)
-        }
+//        btn.snp.makeConstraints { (make) in
+//            make.width.lessThanOrEqualTo(100)
+//            make.height.equalTo(25)
+//        }
+        btn.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(HB.Color.nav, for: .normal)
         btn.titleLabel?.font = HB.Font.h5
+//        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+//        btn.titleLabel?.minimumScaleFactor = 0.8
         btn.contentHorizontalAlignment = .right
         btn.addTarget(self, action: #selector(navRightItemClicked), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)

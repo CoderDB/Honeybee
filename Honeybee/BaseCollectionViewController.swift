@@ -24,6 +24,9 @@ class BaseCollectionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
     }
 }
 extension BaseCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

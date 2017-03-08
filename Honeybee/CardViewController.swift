@@ -68,9 +68,8 @@ extension CardViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.register(CardCollectionCell.self)
         collectionView.register(IconManagerSectionHeader.self)
-        collectionView.snp.makeConstraints { (make) in
+        collectionView.snp.updateConstraints { (make) in
             make.top.equalTo(view).offset(64+115)
-            make.left.right.bottom.equalTo(view)
         }
     }
     func addKeyboard() {

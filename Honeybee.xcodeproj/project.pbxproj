@@ -20,6 +20,8 @@
 		8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614E41A1E699A0E00836FC9 /* RLMModel.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
 		861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B1EC01E7007D9009BBF48 /* MainHeader.swift */; };
+		861B1EC31E703A8D009BBF48 /* KindDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B1EC21E703A8D009BBF48 /* KindDetailController.swift */; };
+		861B1EC51E703AAA009BBF48 /* KindDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B1EC41E703AAA009BBF48 /* KindDetailHeader.swift */; };
 		8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624F61C1E5047C00059788A /* RecordDetailHeader.swift */; };
 		8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627434D1DF2A8F8002597E1 /* DateView.swift */; };
 		8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB41E0BADFD00C1A257 /* CurveCell.swift */; };
@@ -119,6 +121,8 @@
 		8614E41A1E699A0E00836FC9 /* RLMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMModel.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
 		861B1EC01E7007D9009BBF48 /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
+		861B1EC21E703A8D009BBF48 /* KindDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailController.swift; sourceTree = "<group>"; };
+		861B1EC41E703AAA009BBF48 /* KindDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailHeader.swift; sourceTree = "<group>"; };
 		8624F61C1E5047C00059788A /* RecordDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailHeader.swift; sourceTree = "<group>"; };
 		8627434D1DF2A8F8002597E1 /* DateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		8627BFB41E0BADFD00C1A257 /* CurveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveCell.swift; sourceTree = "<group>"; };
@@ -349,6 +353,8 @@
 				866C91351E6E8A33003026DD /* KindAddViewController.swift */,
 				866C91391E6E9EA1003026DD /* KindAddCell.swift */,
 				866C91371E6E956A003026DD /* KindAddHeader.swift */,
+				861B1EC21E703A8D009BBF48 /* KindDetailController.swift */,
+				861B1EC41E703AAA009BBF48 /* KindDetailHeader.swift */,
 			);
 			name = KindManager;
 			sourceTree = "<group>";
@@ -853,6 +859,8 @@
 				8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */,
 				860EF5831E601768009C2D31 /* IconManagerCell.swift in Sources */,
 				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
+				861B1EC51E703AAA009BBF48 /* KindDetailHeader.swift in Sources */,
+				861B1EC31E703A8D009BBF48 /* KindDetailController.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,

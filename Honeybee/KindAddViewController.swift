@@ -27,9 +27,8 @@ class KindAddViewController: BaseCollectionViewController {
         layout.sectionHeadersPinToVisibleBounds = true
         layout.headerReferenceSize = CGSize(width: view.bounds.width, height: 50)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
-        collectionView.snp.makeConstraints { (make) in
+        collectionView.snp.updateConstraints { (make) in
             make.top.equalTo(115)
-            make.bottom.right.left.equalTo(view)
         }
         collectionView.register(KindAddCell.self)
         collectionView.register(IconManagerSectionHeader.self)
