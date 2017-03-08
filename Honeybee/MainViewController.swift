@@ -11,9 +11,6 @@ import SnapKit
 import RealmSwift
 import ObjectMapper
 
-let ScreenW = UIScreen.main.bounds.width
-let ScreenH = UIScreen.main.bounds.height
-
 
 class MainViewController: UIViewController {
     
@@ -154,7 +151,7 @@ extension MainViewController {
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
         addBtn.setImage(UIImage(named: "add"), for: .normal)
-        addBtn.frame = CGRect(x: (ScreenW - 60) * 0.5, y: ScreenH - 80, width: 60, height: 60)
+        addBtn.frame = CGRect(x: (HB.Screen.w - 60) * 0.5, y: HB.Screen.h - 80, width: 60, height: 60)
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
     }

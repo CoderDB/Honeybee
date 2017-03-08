@@ -26,7 +26,7 @@ class CurveCell: UITableViewCell {
     var testView: UIView!
     
     func setupUI() {
-//        testView = BarView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 200))//LineView(frame: CGRect.zero)
+//        testView = BarView(frame: CGRect(x: 0, y: 0, width: HB.Screen.w, height: 200))//LineView(frame: CGRect.zero)
 //        
 //        contentView.addSubview(testView)
        
