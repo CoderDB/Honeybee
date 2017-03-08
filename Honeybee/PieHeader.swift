@@ -36,7 +36,7 @@ class PieHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
-        gradientLayer.frame = CGRect(x: 10, y: 0, width: ScreenW-20, height: frame.height)
+        gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
         gradientLayer.cornerRadius = HB.Constant.cornerRadius
         layer.addSublayer(gradientLayer)
         

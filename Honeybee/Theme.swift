@@ -9,6 +9,11 @@
 import UIKit
 
 struct HB {
+    struct Screen {
+        static let w = UIScreen.main.bounds.width
+        static let h = UIScreen.main.bounds.width
+    }
+    
     struct Color {
         static let nav = UIColor(rgb: [250, 45, 66])
         static let main = UIColor(hex: "#00BEAD")//UIColor(rgb: [250, 45, 66])

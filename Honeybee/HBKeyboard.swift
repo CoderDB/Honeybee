@@ -92,7 +92,7 @@ class HBKeyboard: UIView {
     }
     private func addScrollView() {
         let H = selfHeight - toolViewHeight - 10
-        let W = ScreenW - 20
+        let W = HB.Screen.w - 20
         
         scrollView.contentSize = CGSize(width: W * 2, height: H)
         addSubview(scrollView)
@@ -114,7 +114,7 @@ class HBKeyboard: UIView {
         print("--remark")
     }
     @objc private func dateBtnClicked() {
-        scrollView.setContentOffset(CGPoint(x: ScreenW-20, y: 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: HB.Screen.w-20, y: 0), animated: true)
     }
     @objc private func cameraBtnClicked() {
         print("cameraBtnClick")

@@ -21,7 +21,7 @@ class LineView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        lineChartView = LineChartView(frame: CGRect(x: 10, y: 10, width: ScreenW-20, height: 200))
+        lineChartView = LineChartView(frame: CGRect(x: 10, y: 10, width: HB.Screen.w-20, height: 200))
         addSubview(lineChartView)
         lineChartView.backgroundColor = UIColor.yellow
         setChart(dataPoints: months, values: unitsSold)
@@ -65,7 +65,7 @@ class LineView: UIView {
         lineChartView.xAxis.labelPosition = .bottom
         
         lineChartView.xAxis.drawAxisLineEnabled = false
-        lineChartView.xAxis.labelWidth = (ScreenW-20)/5
+        lineChartView.xAxis.labelWidth = (HB.Screen.w-20)/5
         lineChartView.xAxis.labelCount = 5
         lineChartView.xAxis.spaceMax = 5
         
