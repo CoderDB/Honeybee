@@ -12,9 +12,8 @@ import RealmSwift
 import ObjectMapper
 
 
-class MainViewController: UIViewController {
+class MainViewController: BaseTableViewController {
     
-    var tableView: UITableView!
     var dataSource: Results<RLMRecorderSuper>! {
         didSet {
             tableView.reloadData()
@@ -120,16 +119,9 @@ extension MainViewController {
 // MARK: UI
 extension MainViewController {
     func addTableView() {
-        tableView = UITableView()
-        tableView.backgroundColor = UIColor.white
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
+        tableView.snp.updateConstraints { (make) in
             make.top.equalTo(view).offset(20)
-            make.left.right.bottom.equalTo(view)
         }
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 75
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -163,15 +155,15 @@ extension MainViewController {
 
 
 // MARK: UITableViewDatasource
-extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+extension MainViewController {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let dataSource = dataSource else {
             return 0
         }
         return dataSource.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataSource[indexPath.row]
         if model.style == "group" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell

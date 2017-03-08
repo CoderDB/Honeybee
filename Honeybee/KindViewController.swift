@@ -16,7 +16,7 @@ class KindViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("添加图标")
-        addNavRightItem()
+        setNavRightItem("添加种类")
         addCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -33,12 +33,7 @@ class KindViewController: BaseCollectionViewController {
         }
         collectionView.register(KindCell.self)
     }
-    func addNavRightItem() {
-        let btn = UIButton(target: self, title: "添加种类", sel: #selector(navRightItemClicked))
-        btn.frame = CGRect(x: 0, y: 0, width: 80, height: 25)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
-    }
-    func navRightItemClicked() {
+    override func navRightItemClicked() {
         navigationController?.pushViewController(KindAddViewController(), animated: true)
     }
 }
