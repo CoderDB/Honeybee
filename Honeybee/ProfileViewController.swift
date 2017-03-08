@@ -16,8 +16,8 @@ class ProfileViewController: BaseTableViewController {
         super.viewDidLoad()
         
         setNavTitle("个人信息")
+        setNavRightItem("分享")
         addTableView()
-        addRightNavItem()
         
         let item1 = SetupItem(title: "昵称", subTitle: "MaryLee")
         let item2 = SetupImageItem(title: "头像", subTitle: "")
@@ -25,24 +25,16 @@ class ProfileViewController: BaseTableViewController {
         dataSource.append(item1)
         dataSource.append(item2)
     }
-    
     func addTableView() {
         tableView.rowHeight = HB.Constant.rowHeight
         tableView.register(SetupCell.self)
         tableView.tableHeaderView = ProfileHeader(height: 135)
     }
-    func addRightNavItem() {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 25))
-        btn.setTitle("分享", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        btn.addTarget(self, action: #selector(rightBarButtonItemClicked), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+    
+    override func navRightItemClicked() {
         
     }
-    func rightBarButtonItemClicked() {
-        
-    }
+    
 }
 
 

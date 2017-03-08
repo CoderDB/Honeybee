@@ -18,7 +18,7 @@ class IconManagerViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("图标管理")
-        addNavRightItem()
+        setNavRightItem("添加")
         addCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -62,12 +62,7 @@ extension IconManagerViewController {
         }
     }
     
-    func addNavRightItem() {
-        let btn = UIButton(target: self, title: "添加", sel: #selector(navRightItemClicked))
-        btn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
-    }
-    func navRightItemClicked() {
+    override func navRightItemClicked() {
         navigationController?.pushViewController(IconAddViewController(), animated: true)
     }
 }

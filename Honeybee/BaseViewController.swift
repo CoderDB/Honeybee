@@ -27,5 +27,26 @@ class BaseViewController: UIViewController {
         titleLabel.textColor = HB.Color.nav
         navigationItem.titleView = titleLabel
     }
+    
+    func setNavRightItem(_ title: String) {
+        let btn = UIButton(type: .custom)
+        btn.snp.makeConstraints { (make) in
+            make.width.lessThanOrEqualTo(100)
+            make.height.equalTo(25)
+        }
+        btn.setTitle(title, for: .normal)
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
+        btn.contentHorizontalAlignment = .right
+        btn.addTarget(self, action: #selector(navRightItemClicked), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+//        navRightItemAction = action
+    }
+//    private var navRightItemAction: (() -> ())?
+//    @objc private func navRightItemClicked() {
+//        navRightItemAction?()
+//    }
+    func navRightItemClicked() {
+    }
 
 }

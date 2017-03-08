@@ -11,7 +11,7 @@ import UIKit
 struct HB {
     struct Screen {
         static let w = UIScreen.main.bounds.width
-        static let h = UIScreen.main.bounds.width
+        static let h = UIScreen.main.bounds.height
     }
     
     struct Color {
