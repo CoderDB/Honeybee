@@ -38,6 +38,7 @@
 		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
 		864D25101E62F4180005894A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250F1E62F4180005894A /* BaseViewModel.swift */; };
 		864D25121E6312240005894A /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorder.json */; };
+		865B2F651E71632300719008 /* KindDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F641E71632300719008 /* KindDataSource.swift */; };
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
 		866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */; };
 		866C562E1E6D78DB00010D3F /* category_color.json in Resources */ = {isa = PBXBuildFile; fileRef = 866C562D1E6D78DB00010D3F /* category_color.json */; };
@@ -68,7 +69,7 @@
 		86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */; };
 		86BDA6A81E7140EC00AEFBC4 /* CardSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A71E7140EC00AEFBC4 /* CardSectionHeader.swift */; };
 		86BDA6AA1E71479700AEFBC4 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A91E71479700AEFBC4 /* BaseCollectionViewCell.swift */; };
-		86BDA6AE1E714B3F00AEFBC4 /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6AD1E714B3F00AEFBC4 /* ArrayDataSource.swift */; };
+		86BDA6AE1E714B3F00AEFBC4 /* KindDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6AD1E714B3F00AEFBC4 /* KindDetailDataSource.swift */; };
 		86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */; };
 		86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702C1E51BA560004E192 /* SetupHeader.swift */; };
 		86D170311E51C4790004E192 /* SetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170301E51C4790004E192 /* SetupCell.swift */; };
@@ -149,6 +150,7 @@
 		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
 		864D250F1E62F4180005894A /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		864D25111E6312240005894A /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
+		865B2F641E71632300719008 /* KindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDataSource.swift; sourceTree = "<group>"; };
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
 		866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		866C562D1E6D78DB00010D3F /* category_color.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category_color.json; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailCell.swift; sourceTree = "<group>"; };
 		86BDA6A71E7140EC00AEFBC4 /* CardSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSectionHeader.swift; sourceTree = "<group>"; };
 		86BDA6A91E71479700AEFBC4 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		86BDA6AD1E714B3F00AEFBC4 /* ArrayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDataSource.swift; sourceTree = "<group>"; };
+		86BDA6AD1E714B3F00AEFBC4 /* KindDetailDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailDataSource.swift; sourceTree = "<group>"; };
 		86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailFooter.swift; sourceTree = "<group>"; };
 		86D1702C1E51BA560004E192 /* SetupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHeader.swift; sourceTree = "<group>"; };
 		86D170301E51C4790004E192 /* SetupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCell.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				866C91311E6E80D3003026DD /* KindViewController.swift */,
+				865B2F641E71632300719008 /* KindDataSource.swift */,
 				866C91331E6E84F5003026DD /* KindCell.swift */,
 				86BDA6AC1E714AEB00AEFBC4 /* AddKind */,
 				86BDA6AB1E714AC600AEFBC4 /* Detail */,
@@ -413,7 +416,7 @@
 			children = (
 				861B1EC21E703A8D009BBF48 /* KindDetailController.swift */,
 				86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */,
-				86BDA6AD1E714B3F00AEFBC4 /* ArrayDataSource.swift */,
+				86BDA6AD1E714B3F00AEFBC4 /* KindDetailDataSource.swift */,
 				861B1EC41E703AAA009BBF48 /* KindDetailHeader.swift */,
 			);
 			name = Detail;
@@ -841,6 +844,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				865B2F651E71632300719008 /* KindDataSource.swift in Sources */,
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
 				8614E4191E6999E400836FC9 /* RLMRecorderSuper.swift in Sources */,
 				8614E4171E6999A400836FC9 /* RLMRecorder.swift in Sources */,
@@ -882,7 +886,7 @@
 				866C91341E6E84F5003026DD /* KindCell.swift in Sources */,
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
 				866C91321E6E80D3003026DD /* KindViewController.swift in Sources */,
-				86BDA6AE1E714B3F00AEFBC4 /* ArrayDataSource.swift in Sources */,
+				86BDA6AE1E714B3F00AEFBC4 /* KindDetailDataSource.swift in Sources */,
 				866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */,
 				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,

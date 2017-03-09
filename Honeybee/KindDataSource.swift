@@ -1,5 +1,5 @@
 //
-//  ArrayDataSource.swift
+//  KindDataSource.swift
 //  Honeybee
 //
 //  Created by Dongbing Hou on 09/03/2017.
@@ -8,25 +8,25 @@
 
 import UIKit
 
-
-class ArrayDataSource: NSObject {
+class KindDataSource: NSObject {
+    
     var identifier: String
     var items: [Any] = []
     var config: (UICollectionViewCell, Any) -> Void
     
-    init(identifier: String, items: [Any], config: @escaping (UICollectionViewCell, Any) -> Void) {
-        self.identifier = identifier
+    init(id: String, items: [Any], config: @escaping (UICollectionViewCell, Any) -> Void) {
+        self.identifier = id
         self.items = items
         self.config = config
     }
     
-    
-    func item(at index: IndexPath) -> Any {
-        return items[index.row]
+    func item(at idx: IndexPath) -> Any {
+        return items[idx.item]
     }
 }
 
-extension ArrayDataSource: UICollectionViewDataSource {
+extension KindDataSource: UICollectionViewDataSource {
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -35,8 +35,7 @@ extension ArrayDataSource: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        
-        config(cell, items[indexPath.row])
+        config(cell, items[indexPath.item])
         return cell
     }
 }
