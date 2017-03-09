@@ -35,11 +35,7 @@ class KindViewController: BaseCollectionViewController {
     }
     func fetchData() {
         let kinds = HBKindManager.manager.allKinds()
-        dataSource = KindDataSource(id: "\(KindCell.self)", items: kinds, config: { (cell, model) in
-            if let cell = cell as? KindCell, let model = model as? HoneybeeKind {
-                cell.config(model: model)
-            }
-        })
+        dataSource = KindDataSource(id: "\(KindCell.self)", items: kinds)
         collectionView.dataSource = dataSource
     }
 }

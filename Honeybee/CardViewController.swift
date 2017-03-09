@@ -22,11 +22,8 @@ class CardViewController: BaseCollectionViewController {
         return keyboard
     }()
     var header: CardHeader!
-    var dataSource: [HoneybeeKind] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var dataSource: CardDataSource!
+    
     var headerTitles = ["生活日常", "每天吃饭", "住", "车"]
     var lastOffsetY: CGFloat = 0
     
@@ -41,7 +38,9 @@ class CardViewController: BaseCollectionViewController {
         fetchData()
     }
     func fetchData() {
-        dataSource = HBKindManager.manager.allKinds()
+        let kinds = HBKindManager.manager.allKinds()
+        dataSource = CardDataSource(items: kinds)
+        collectionView.dataSource = dataSource
     }
     deinit {
         print("-----CardViewController--deinit--")
@@ -50,6 +49,7 @@ class CardViewController: BaseCollectionViewController {
 
 
 // MARK: UI / Event
+
 extension CardViewController {
     func addLeftNavItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
@@ -89,29 +89,9 @@ extension CardViewController {
 }
 
 
-// MARK: UICollectionViewDataSource
-extension CardViewController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return dataSource.count
-    }
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource[section].items!.count
-    }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardCollectionCell.self)", for: indexPath) as! CardCollectionCell
-        cell.model = dataSource[indexPath.section].items![indexPath.item]
-        return cell
-    }
-}
-
-
 // MARK: UICollectionViewDelegateFlowLayout
+
 extension CardViewController {
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CardSectionHeader.self)", for: indexPath) as! CardSectionHeader
-        header.titleLabel.text = dataSource[indexPath.section].name
-        return header
-    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         header.containerView.backgroundColor = UIColor.randomColor()
         header.categoryLabel.text = "电影票"
@@ -120,6 +100,7 @@ extension CardViewController {
 
 
 // MARK: UIScrollViewDelegate
+
 extension CardViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastOffsetY = scrollView.contentOffset.y
@@ -153,6 +134,7 @@ extension CardViewController {
 }
 
 // MARK: HBKeyboardProtocol
+
 extension CardViewController: HBKeyboardProtocol {
     // result
     func inputing(text: String) {
