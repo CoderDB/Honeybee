@@ -15,13 +15,14 @@ class KindDetailHeader: BaseHeader {
         label.font = HB.Font.h1
         label.textAlignment = .center
         label.textColor = UIColor.white
+        label.text = "衣"
         return label
     }()
     
     override func setupUI() {
         super.setupUI()
         
-        rightBtn.setTitle("保存", for: .normal)
+        rightBtn.setTitle("编辑", for: .normal)
         containerView.addSubview(titleLabel)
         
         containerView.backgroundColor = HB.Color.main
