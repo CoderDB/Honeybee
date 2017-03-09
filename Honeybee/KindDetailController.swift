@@ -10,7 +10,7 @@ import UIKit
 
 class KindDetailController: BaseCollectionViewController {
     
-    var dataSource = Array(1...100)
+    var dataSource = Array(1...150)
     
 
     override func viewDidLoad() {
@@ -22,16 +22,59 @@ class KindDetailController: BaseCollectionViewController {
         addCollectionView()
     }
     func addCollectionView() {
-        layout.itemSize = CGSize(width: 45, height: 45)
-        layout.minimumLineSpacing = 10      // 行间距
-        layout.minimumInteritemSpacing = 10 // 列间距
+        layout.itemSize = CGSize(width: 60, height: 60)
+//        layout.minimumLineSpacing = 10      // 行间距
+//        layout.minimumInteritemSpacing = 10 // 列间距
         collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 50, right: 0)
         collectionView.snp.updateConstraints { (make) in
             make.top.equalTo(115+64-2)
             make.right.equalTo(view).offset(-58)
         }
-        collectionView.register(KindCell.self)
+        collectionView.register(KindDetailCell.self)
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
+        collectionView.addGestureRecognizer(longGesture)
+        
     }
+//    func allCells<T: UICollectionViewCell>(_: T.Type) -> [T] {
+//        if collectionView.visibleCells.count >= dataSource.count {
+//            return collectionView.visibleCells as! [T]
+//        }
+//        var cells = [UICollectionViewCell]()
+//        for i in 0..<dataSource.count {
+//            let idx = IndexPath(item: i, section: 0)
+//            let cell = collectionView.cellForItem(at: idx)
+//            cells.append(cell!)
+//        }
+//        return cells as! [T]
+//    }
+    
+    func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            guard let selectedIdx = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
+                break
+            }
+            let cell = collectionView.cellForItem(at: selectedIdx) as! KindDetailCell
+            cell.deleteBtn.isHidden = false
+            cell.layer.borderWidth = 1.0
+            
+//            let cells = allCells(KindDetailCell.self)
+//            for cell in cells {
+//                cell.deleteBtn.isHidden = false
+//            }
+            
+            
+//            dataSource.remove(at: selectedIdx.item)
+//            collectionView.deleteItems(at: [selectedIdx])
+//        case .changed:
+//            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view))
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
+    
     func addHeader() {
         let header = KindDetailHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: 115))
         view.addSubview(header)
@@ -42,19 +85,10 @@ class KindDetailController: BaseCollectionViewController {
         label.text = "长 按 可 删 除"
         label.font = HB.Font.h5_light
         label.textColor = UIColor.gray
-        let tsf = CGAffineTransform()
-        tsf.scaledBy(x: 1, y: -1)
-        tsf.rotated(by: -90 * CGFloat.pi/180)
-        
-//        label.transform = CGAffineTransform(scaleX: -1, y: 1)
-//        label.transform = CGAffineTransform(rotationAngle: -(CGFloat)(M_PI_2))
-//        label.transform = label.transform.scaledBy(x: 1, y: -1)
         let t1 = CGAffineTransform(scaleX: -1, y: 1)//.rotated(by: -(CGFloat)(M_PI_2))
-        let t2 = CGAffineTransform(rotationAngle: -(CGFloat)(M_PI_2))
-        
+        let t2 = CGAffineTransform(rotationAngle: -90 * CGFloat.pi/180)
         label.transform = t1.concatenating(t2)
         view.addSubview(label)
-        
     }
 }
 
@@ -67,8 +101,7 @@ extension KindDetailController {
         return dataSource.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindCell.self)", for: indexPath) as! KindCell
-        cell.titleLabel.text = "\(dataSource[indexPath.item])"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath) as! KindDetailCell
         return cell
     }
 }
