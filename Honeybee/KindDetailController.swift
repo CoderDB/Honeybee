@@ -26,7 +26,6 @@ class KindDetailController: BaseCollectionViewController {
     }
     
     func fetchData() {
-//        var items = [HoneybeeItem]()
         dataSource = HBKindManager.manager.allKinds()[0].items!
         
     }
@@ -35,13 +34,11 @@ class KindDetailController: BaseCollectionViewController {
 extension KindDetailController {
     
     func addCollectionView() {
-        layout.itemSize = CGSize(width: 60, height: 90)
-        //        layout.minimumLineSpacing = 10      // 行间距
-        //        layout.minimumInteritemSpacing = 10 // 列间距
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 50, right: 0)
+        layout.itemSize = CGSize(width: 65, height: 65)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
         collectionView.snp.updateConstraints { (make) in
-            make.top.equalTo(115+64-2)
-            make.right.equalTo(view).offset(-58)
+            make.top.equalTo(115+64)
+            make.right.equalTo(view).offset(-60)
         }
         collectionView.register(KindDetailCell.self)
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))

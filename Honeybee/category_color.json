@@ -140,12 +140,68 @@
   "editable": 0,
   "items": [
             {
-            "name": "裙子",
-            "icon": "qunzi"
+            "name": "水果",
+            "icon": "meal"
             },
             {
-            "name": "球鞋",
-            "icon": "qiuxie"
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
+            },
+            {
+            "name": "水果",
+            "icon": "meal"
+            },
+            {
+            "name": "早餐",
+            "icon": "meal"
             }
             ]
   },
@@ -155,12 +211,68 @@
   "editable": 0,
   "items": [
             {
-            "name": "裙子",
-            "icon": "qunzi"
+            "name": "水电煤气",
+            "icon": "meal"
             },
             {
-            "name": "球鞋",
-            "icon": "qiuxie"
+            "name": "房租",
+            "icon": "meal"
+            },
+            {
+            "name": "网费",
+            "icon": "meal"
+            },
+            {
+            "name": "电视机",
+            "icon": "meal"
+            },
+            {
+            "name": "水电煤气",
+            "icon": "meal"
+            },
+            {
+            "name": "房租",
+            "icon": "meal"
+            },
+            {
+            "name": "网费",
+            "icon": "meal"
+            },
+            {
+            "name": "电视机",
+            "icon": "meal"
+            },
+            {
+            "name": "水电煤气",
+            "icon": "meal"
+            },
+            {
+            "name": "房租",
+            "icon": "meal"
+            },
+            {
+            "name": "网费",
+            "icon": "meal"
+            },
+            {
+            "name": "电视机",
+            "icon": "meal"
+            },
+            {
+            "name": "水电煤气",
+            "icon": "meal"
+            },
+            {
+            "name": "房租",
+            "icon": "meal"
+            },
+            {
+            "name": "网费",
+            "icon": "meal"
+            },
+            {
+            "name": "电视机",
+            "icon": "meal"
             }
             ]
   },
@@ -170,27 +282,228 @@
   "editable": 0,
   "items": [
             {
-            "name": "裙子",
-            "icon": "qunzi"
+            "name": "出租车",
+            "icon": "meal"
             },
             {
-            "name": "球鞋",
-            "icon": "qiuxie"
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "加油",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "加油",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "自行车",
+            "icon": "meal"
+            },
+            {
+            "name": "出租车",
+            "icon": "meal"
+            },
+            {
+            "name": "加油",
+            "icon": "meal"
             }
             ]
   },
   {
-  "category": "行",
+  "category": "生活",
   "color": "62ABFF",
   "editable": 0,
   "items": [
             {
-            "name": "裙子",
-            "icon": "qunzi"
+            "name": "逛超市",
+            "icon": "meal"
             },
             {
-            "name": "球鞋",
-            "icon": "qiuxie"
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },{
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
             }
             ]
   }
