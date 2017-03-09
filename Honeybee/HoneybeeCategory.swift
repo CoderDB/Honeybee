@@ -21,14 +21,15 @@ import Foundation
  ]
  },
  */
-struct HoneybeeCategory {
-    var category: String
+
+struct HoneybeeKind {
+    var name: String
     var color: String
     var isEditable: Bool = true
     var items: [HoneybeeItem]?
     
     init(category: String, color: String, items: [HoneybeeItem]?) {
-        self.category = category
+        self.name = category
         self.color = color
         self.items = items
     }
@@ -37,7 +38,7 @@ struct HoneybeeCategory {
             let color = dict["color"] as? String,
             let items = dict["items"] as? [[String: Any]]
             else { return nil }
-        self.category = category
+        self.name = category
         self.color = color
         var results = [HoneybeeItem]()
         for item in items {
@@ -47,6 +48,7 @@ struct HoneybeeCategory {
         self.items = results
     }
 }
+
 struct HoneybeeItem {
     var name: String
     var icon: String
@@ -65,16 +67,16 @@ struct HoneybeeItem {
     }
 }
 
-class HBCategoryManager: NSObject {
-    static let manager = HBCategoryManager()
+class HBKindManager: NSObject {
+    static let manager = HBKindManager()
     private override init() {}
-    func allCategory() -> [HoneybeeCategory] {
+    func allKinds() -> [HoneybeeKind] {
         let path = Bundle.main.path(forResource: "category_color", ofType: "json")
         let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
         let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String: Any]]
-        var result = [HoneybeeCategory]()
+        var result = [HoneybeeKind]()
         for item in json {
-            let model = HoneybeeCategory(dict: item)
+            let model = HoneybeeKind(dict: item)
             result.append(model!)
         }
         return result

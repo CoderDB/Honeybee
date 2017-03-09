@@ -50,7 +50,6 @@ class MainViewController: BaseTableViewController {
         addAddBtn()
 //        resuest()
         dataSource = fetchData()
-        print(HBCategoryManager.manager.allCategory()[0].category)
     }
     
     func resuest() -> List<RLMRecorderSuper> {

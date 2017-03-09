@@ -12,12 +12,27 @@ class KindDetailCell: UICollectionViewCell {
     
     
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = HB.Font.h7
+        label.textAlignment = .center
+        return label
+    }()
     lazy var deleteBtn: UIButton = {
         let btn = UIButton()
         btn.isHidden = true
         btn.setImage(UIImage(named: "delete_collv"), for: .normal)
         return btn
     }()
+    
+    var model: HoneybeeItem? {
+        didSet {
+            if let model = model {
+                titleLabel.text = model.name
+                imgView.image = UIImage(named: model.icon)
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,16 +47,20 @@ class KindDetailCell: UICollectionViewCell {
     }
     
     func initialized() {
-        addSubview(imgView)
-        addSubview(deleteBtn)
+        contentView.addSubview(deleteBtn)
+        contentView.addSubview(imgView)
+        contentView.addSubview(titleLabel)
         deleteBtn.snp.makeConstraints { (make) in
             make.top.equalTo(5)
             make.right.equalTo(-5)
             make.width.height.equalTo(10)
         }
         imgView.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
+            make.center.equalTo(contentView)
             make.width.height.equalTo(45)
+        }
+        titleLabel.snp.makeConstraints { (make) in
+            make.bottom.centerX.equalTo(contentView)
         }
     }
 }
