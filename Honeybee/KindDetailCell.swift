@@ -17,16 +17,6 @@ class KindDetailCell: BaseCollectionViewCell {
         btn.setImage(UIImage(named: "delete_collv"), for: .normal)
         return btn
     }()
-    
-    var model: HoneybeeItem? {
-        didSet {
-            if let model = model {
-                titleLabel.text = model.name
-                imgView.image = UIImage(named: model.icon)
-            }
-        }
-    }
-    
     override func initialized() {
         layer.cornerRadius = 5.0
         layer.borderColor = UIColor.lightGray.cgColor
@@ -40,4 +30,10 @@ class KindDetailCell: BaseCollectionViewCell {
             make.width.height.equalTo(10)
         }
     }
+    
+    func configWith(model: HoneybeeItem) {
+        titleLabel.text = model.name
+        imgView.image = UIImage(named: model.icon)
+    }
 }
+

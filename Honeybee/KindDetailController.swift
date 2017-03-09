@@ -10,11 +10,9 @@ import UIKit
 
 class KindDetailController: BaseCollectionViewController {
     
-    var dataSource: [HoneybeeItem] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+  
+    var dataSource: ArrayDataSource!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -23,11 +21,17 @@ class KindDetailController: BaseCollectionViewController {
         addTipView()
         addCollectionView()
         fetchData()
+        
     }
     
     func fetchData() {
-        dataSource = HBKindManager.manager.allKinds()[0].items!
-        
+        let items = HBKindManager.manager.allKinds()[0].items!
+        dataSource = ArrayDataSource(identifier: "\(KindDetailCell.self)", items: items) { (cell, model) in
+            if let cell = cell as? KindDetailCell, let model = model as? HoneybeeItem {
+                cell.configWith(model: model)
+            }
+        }
+        collectionView.dataSource = dataSource
     }
 }
 
@@ -66,7 +70,6 @@ extension KindDetailController {
             }
             let cell = collectionView.cellForItem(at: selectedIdx) as! KindDetailCell
             cell.deleteBtn.isHidden = false
-            cell.layer.borderWidth = 1.0
             
             //            let cells = allCells(KindDetailCell.self)
             //            for cell in cells {
@@ -101,21 +104,6 @@ extension KindDetailController {
         view.addSubview(label)
     }
 }
-
-
-
-// MARK: UICollectionViewDataSource
-extension KindDetailController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath) as! KindDetailCell
-        cell.model = dataSource[indexPath.item]
-        return cell
-    }
-}
-
 
 // MARK: UICollectionViewDelegateFlowLayout
 extension KindDetailController {

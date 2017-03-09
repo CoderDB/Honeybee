@@ -68,6 +68,7 @@
 		86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */; };
 		86BDA6A81E7140EC00AEFBC4 /* CardSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A71E7140EC00AEFBC4 /* CardSectionHeader.swift */; };
 		86BDA6AA1E71479700AEFBC4 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A91E71479700AEFBC4 /* BaseCollectionViewCell.swift */; };
+		86BDA6AE1E714B3F00AEFBC4 /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6AD1E714B3F00AEFBC4 /* ArrayDataSource.swift */; };
 		86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */; };
 		86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D1702C1E51BA560004E192 /* SetupHeader.swift */; };
 		86D170311E51C4790004E192 /* SetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170301E51C4790004E192 /* SetupCell.swift */; };
@@ -178,6 +179,7 @@
 		86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailCell.swift; sourceTree = "<group>"; };
 		86BDA6A71E7140EC00AEFBC4 /* CardSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSectionHeader.swift; sourceTree = "<group>"; };
 		86BDA6A91E71479700AEFBC4 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		86BDA6AD1E714B3F00AEFBC4 /* ArrayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDataSource.swift; sourceTree = "<group>"; };
 		86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailFooter.swift; sourceTree = "<group>"; };
 		86D1702C1E51BA560004E192 /* SetupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHeader.swift; sourceTree = "<group>"; };
 		86D170301E51C4790004E192 /* SetupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCell.swift; sourceTree = "<group>"; };
@@ -356,12 +358,8 @@
 			children = (
 				866C91311E6E80D3003026DD /* KindViewController.swift */,
 				866C91331E6E84F5003026DD /* KindCell.swift */,
-				866C91351E6E8A33003026DD /* KindAddViewController.swift */,
-				866C91391E6E9EA1003026DD /* KindAddCell.swift */,
-				866C91371E6E956A003026DD /* KindAddHeader.swift */,
-				861B1EC21E703A8D009BBF48 /* KindDetailController.swift */,
-				86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */,
-				861B1EC41E703AAA009BBF48 /* KindDetailHeader.swift */,
+				86BDA6AC1E714AEB00AEFBC4 /* AddKind */,
+				86BDA6AB1E714AC600AEFBC4 /* Detail */,
 			);
 			name = KindManager;
 			sourceTree = "<group>";
@@ -408,6 +406,27 @@
 				86104A281E61815E00AAEEAC /* IconAddCell.swift */,
 			);
 			name = IconAdd;
+			sourceTree = "<group>";
+		};
+		86BDA6AB1E714AC600AEFBC4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				861B1EC21E703A8D009BBF48 /* KindDetailController.swift */,
+				86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */,
+				86BDA6AD1E714B3F00AEFBC4 /* ArrayDataSource.swift */,
+				861B1EC41E703AAA009BBF48 /* KindDetailHeader.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		86BDA6AC1E714AEB00AEFBC4 /* AddKind */ = {
+			isa = PBXGroup;
+			children = (
+				866C91351E6E8A33003026DD /* KindAddViewController.swift */,
+				866C91391E6E9EA1003026DD /* KindAddCell.swift */,
+				866C91371E6E956A003026DD /* KindAddHeader.swift */,
+			);
+			name = AddKind;
 			sourceTree = "<group>";
 		};
 		86D170441E51EBA90004E192 /* Detail */ = {
@@ -863,6 +882,7 @@
 				866C91341E6E84F5003026DD /* KindCell.swift in Sources */,
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
 				866C91321E6E80D3003026DD /* KindViewController.swift in Sources */,
+				86BDA6AE1E714B3F00AEFBC4 /* ArrayDataSource.swift in Sources */,
 				866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */,
 				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
