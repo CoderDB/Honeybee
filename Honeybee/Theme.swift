@@ -29,7 +29,6 @@ struct HB {
             UIFontDescriptorFamilyAttribute: "PingFang SC",
             UIFontDescriptorFaceAttribute: "Semibold"
         ]
-        
         static let h1 = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_semibold), size: 48)
         static let h2 = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_semibold), size: 36)
         static let h3 = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_semibold), size: 30)
@@ -44,6 +43,12 @@ struct HB {
         ]
         static let h5_medium = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_medium), size: 18)
         static let h6_medium = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_medium), size: 16)
+        
+        private static let attr_light = [
+            UIFontDescriptorFamilyAttribute: "PingFang SC",
+            UIFontDescriptorFaceAttribute: "Light"
+        ]
+        static let h5_light = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_light), size: 18)
         
         
         static let h1_number = UIFont(name: "Silom", size: 70)!
