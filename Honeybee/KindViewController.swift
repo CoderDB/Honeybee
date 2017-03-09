@@ -11,13 +11,15 @@ import UIKit
 class KindViewController: BaseCollectionViewController {
 
     
-    var dataSource = ["衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物"]
+    var dataSource: KindDataSource!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("添加图标")
         setNavRightItem("添加种类")
         addCollectionView()
+        fetchData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,26 +27,20 @@ class KindViewController: BaseCollectionViewController {
     }
     func addCollectionView() {
         layout.itemSize = CGSize(width: 150, height: 165)
-        layout.minimumLineSpacing = 25
-        layout.minimumInteritemSpacing = 25
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
         collectionView.register(KindCell.self)
     }
     override func navRightItemClicked() {
         navigationController?.pushViewController(KindAddViewController(), animated: true)
     }
-}
-
-
-// MARK: UICollectionViewDataSource
-extension KindViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindCell.self)", for: indexPath) as! KindCell
-        cell.titleLabel.text = dataSource[indexPath.item]
-        return cell
+    func fetchData() {
+        let kinds = HBKindManager.manager.allKinds()
+        dataSource = KindDataSource(id: "\(KindCell.self)", items: kinds, config: { (cell, model) in
+            if let cell = cell as? KindCell, let model = model as? HoneybeeKind {
+                cell.config(model: model)
+            }
+        })
+        collectionView.dataSource = dataSource
     }
 }
 
@@ -53,6 +49,8 @@ extension KindViewController {
 extension KindViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
-        navigationController?.pushViewController(KindDetailController(), animated: true)
+        let vc = KindDetailController()
+        vc.kind = dataSource.item(at: indexPath) as! HoneybeeKind
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

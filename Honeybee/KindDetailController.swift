@@ -10,8 +10,8 @@ import UIKit
 
 class KindDetailController: BaseCollectionViewController {
     
-  
-    var dataSource: ArrayDataSource!
+    var kind: HoneybeeKind!
+    private var dataSource: KindDetailDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,14 @@ class KindDetailController: BaseCollectionViewController {
     }
     
     func fetchData() {
-        let items = HBKindManager.manager.allKinds()[0].items!
-        dataSource = ArrayDataSource(identifier: "\(KindDetailCell.self)", items: items) { (cell, model) in
-            if let cell = cell as? KindDetailCell, let model = model as? HoneybeeItem {
-                cell.configWith(model: model)
+        dataSource = KindDetailDataSource(
+            identifier: "\(KindDetailCell.self)",
+            items:kind.items!)
+            { (cell, model) in
+                if let cell = cell as? KindDetailCell, let model = model as? HoneybeeItem {
+                    cell.configWith(model: model)
+                }
             }
-        }
         collectionView.dataSource = dataSource
     }
 }
@@ -90,6 +92,7 @@ extension KindDetailController {
     
     func addHeader() {
         let header = KindDetailHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: 115))
+        header.titleLabel.text = kind.name
         view.addSubview(header)
     }
     
