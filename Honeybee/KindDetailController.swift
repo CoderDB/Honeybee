@@ -10,9 +10,11 @@ import UIKit
 
 class KindDetailController: BaseCollectionViewController {
     
-    var dataSource = Array(1...150)
-    
-
+    var dataSource: [HoneybeeItem] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -20,12 +22,23 @@ class KindDetailController: BaseCollectionViewController {
         addHeader()
         addTipView()
         addCollectionView()
+        fetchData()
     }
+    
+    func fetchData() {
+//        var items = [HoneybeeItem]()
+        dataSource = HBKindManager.manager.allKinds()[0].items!
+        
+    }
+}
+
+extension KindDetailController {
+    
     func addCollectionView() {
-        layout.itemSize = CGSize(width: 60, height: 60)
-//        layout.minimumLineSpacing = 10      // 行间距
-//        layout.minimumInteritemSpacing = 10 // 列间距
-        collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 50, right: 0)
+        layout.itemSize = CGSize(width: 60, height: 90)
+        //        layout.minimumLineSpacing = 10      // 行间距
+        //        layout.minimumInteritemSpacing = 10 // 列间距
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 50, right: 0)
         collectionView.snp.updateConstraints { (make) in
             make.top.equalTo(115+64-2)
             make.right.equalTo(view).offset(-58)
@@ -35,18 +48,18 @@ class KindDetailController: BaseCollectionViewController {
         collectionView.addGestureRecognizer(longGesture)
         
     }
-//    func allCells<T: UICollectionViewCell>(_: T.Type) -> [T] {
-//        if collectionView.visibleCells.count >= dataSource.count {
-//            return collectionView.visibleCells as! [T]
-//        }
-//        var cells = [UICollectionViewCell]()
-//        for i in 0..<dataSource.count {
-//            let idx = IndexPath(item: i, section: 0)
-//            let cell = collectionView.cellForItem(at: idx)
-//            cells.append(cell!)
-//        }
-//        return cells as! [T]
-//    }
+    //    func allCells<T: UICollectionViewCell>(_: T.Type) -> [T] {
+    //        if collectionView.visibleCells.count >= dataSource.count {
+    //            return collectionView.visibleCells as! [T]
+    //        }
+    //        var cells = [UICollectionViewCell]()
+    //        for i in 0..<dataSource.count {
+    //            let idx = IndexPath(item: i, section: 0)
+    //            let cell = collectionView.cellForItem(at: idx)
+    //            cells.append(cell!)
+    //        }
+    //        return cells as! [T]
+    //    }
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
@@ -58,16 +71,16 @@ class KindDetailController: BaseCollectionViewController {
             cell.deleteBtn.isHidden = false
             cell.layer.borderWidth = 1.0
             
-//            let cells = allCells(KindDetailCell.self)
-//            for cell in cells {
-//                cell.deleteBtn.isHidden = false
-//            }
+            //            let cells = allCells(KindDetailCell.self)
+            //            for cell in cells {
+            //                cell.deleteBtn.isHidden = false
+            //            }
             
             
-//            dataSource.remove(at: selectedIdx.item)
-//            collectionView.deleteItems(at: [selectedIdx])
-//        case .changed:
-//            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view))
+            //            dataSource.remove(at: selectedIdx.item)
+            //            collectionView.deleteItems(at: [selectedIdx])
+            //        case .changed:
+        //            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view))
         case .ended:
             collectionView.endInteractiveMovement()
         default:
@@ -94,7 +107,6 @@ class KindDetailController: BaseCollectionViewController {
 
 
 
-
 // MARK: UICollectionViewDataSource
 extension KindDetailController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -102,6 +114,7 @@ extension KindDetailController {
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath) as! KindDetailCell
+        cell.model = dataSource[indexPath.item]
         return cell
     }
 }
