@@ -37,7 +37,7 @@ class KindDetailController: BaseCollectionViewController {
     }
 }
 
-extension KindDetailController {
+extension KindDetailController: HoneybeeViewsProtocol {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -86,14 +86,8 @@ extension KindDetailController {
         }
     }
     func addTipView() {
-        let label = UILabel()
-        label.text = "长 按 可 删 除"
-        label.font = HB.Font.h5_light
-        label.textColor = UIColor.gray
-        let t1 = CGAffineTransform(scaleX: -1, y: 1)//.rotated(by: -(CGFloat)(M_PI_2))
-        let t2 = CGAffineTransform(rotationAngle: -90 * CGFloat.pi/180)
-        label.transform = t1.concatenating(t2)
-        label.frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
+        let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
+        let label = tipLabel(text: "长 按 可 删 除", frame: frame)
         view.addSubview(label)
     }
 }
