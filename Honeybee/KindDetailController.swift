@@ -94,6 +94,9 @@ extension KindDetailController {
         let header = KindDetailHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: 115))
         header.titleLabel.text = kind.name
         view.addSubview(header)
+        header.addNewItemAction = { [unowned self] in
+            self.navigationController?.pushViewController(KindAddItemController(), animated: true)
+        }
     }
     
     func addTipView() {
