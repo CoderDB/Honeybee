@@ -64,6 +64,8 @@
 		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
+		86AAAE691E727A10000669B4 /* KindAddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE681E727A10000669B4 /* KindAddItemController.swift */; };
+		86AAAE6B1E727A3A000669B4 /* KindAddItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */; };
 		86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */; };
 		86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B984131E61609500CCB450 /* IconAddViewController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
@@ -177,6 +179,8 @@
 		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		86AAAE681E727A10000669B4 /* KindAddItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemController.swift; sourceTree = "<group>"; };
+		86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemHeader.swift; sourceTree = "<group>"; };
 		86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverViewController.swift; sourceTree = "<group>"; };
 		86B984131E61609500CCB450 /* IconAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconAddViewController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 				866C91311E6E80D3003026DD /* KindViewController.swift */,
 				865B2F641E71632300719008 /* KindDataSource.swift */,
 				866C91331E6E84F5003026DD /* KindCell.swift */,
+				86AAAE6C1E727A7B000669B4 /* AddItem */,
 				86BDA6AC1E714AEB00AEFBC4 /* AddKind */,
 				86BDA6AB1E714AC600AEFBC4 /* Detail */,
 			);
@@ -402,6 +407,15 @@
 				8697CEE81E5DA9D900993CFE /* BarHeader.swift */,
 			);
 			name = Bar;
+			sourceTree = "<group>";
+		};
+		86AAAE6C1E727A7B000669B4 /* AddItem */ = {
+			isa = PBXGroup;
+			children = (
+				86AAAE681E727A10000669B4 /* KindAddItemController.swift */,
+				86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */,
+			);
+			name = AddItem;
 			sourceTree = "<group>";
 		};
 		86B984121E61607800CCB450 /* IconAdd */ = {
@@ -853,6 +867,7 @@
 				8614E4171E6999A400836FC9 /* RLMRecorder.swift in Sources */,
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
+				86AAAE691E727A10000669B4 /* KindAddItemController.swift in Sources */,
 				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
 				866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */,
@@ -870,6 +885,7 @@
 				86D1703D1E51DF4A0004E192 /* SetupItem.swift in Sources */,
 				86D1702B1E51A4190004E192 /* RecordDetailFooter.swift in Sources */,
 				86D1704A1E51EDCB0004E192 /* ProfileHeader.swift in Sources */,
+				86AAAE6B1E727A3A000669B4 /* KindAddItemHeader.swift in Sources */,
 				863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */,
 				86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */,
 				86FC4EC61E1112B10048E183 /* PieViewController.swift in Sources */,
