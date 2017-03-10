@@ -22,7 +22,7 @@ class HBKeyboard: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
-        scrollView.backgroundColor = UIColor.clear
+        scrollView.backgroundColor = .clear
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -31,7 +31,7 @@ class HBKeyboard: UIView {
     }()
     private lazy var toolView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = .clear
         return view
     }()
     

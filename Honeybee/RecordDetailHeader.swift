@@ -13,7 +13,7 @@ class RecordDetailHeader: BaseHeader {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.font = HB.Font.h3
         return label
     }()

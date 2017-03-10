@@ -14,7 +14,7 @@ extension HoneybeeViewsProtocol {
         let label = UILabel()
         label.text = text
         label.font = HB.Font.h5_light
-        label.textColor = UIColor.gray
+        label.textColor = .gray
         let t1 = CGAffineTransform(scaleX: -1, y: 1)//.rotated(by: -(CGFloat)(M_PI_2))
         let t2 = CGAffineTransform(rotationAngle: -90 * CGFloat.pi/180)
         label.transform = t1.concatenating(t2)

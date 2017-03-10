@@ -15,7 +15,7 @@ class MainHeader: BaseHeader {
     lazy var usernameBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitle("二狗哥", for: .normal)
-        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font = HB.Font.h2
         btn.contentHorizontalAlignment = .left
         return btn
@@ -42,28 +42,28 @@ class MainHeader: BaseHeader {
     lazy var outLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h5
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.text = "本月支出"
         return label
     }()
     lazy var inLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h5
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.text = "本月收入"
         return label
     }()
     lazy var outMoneyLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h2_number
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.text = "34567"
         return label
     }()
     lazy var inMoneyLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h2_number
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.text = "76853"
         return label
     }()

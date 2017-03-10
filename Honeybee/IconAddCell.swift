@@ -14,13 +14,13 @@ class IconAddCell: UICollectionViewCell {
         let label = UILabel()
         label.font = HB.Font.h1
         label.textAlignment = .center
-        label.textColor = UIColor.white
+        label.textColor = .white
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.randomColor()
+        backgroundColor = .randomColor()
         layer.cornerRadius = HB.Constant.cornerRadius
         
         contentView.addSubview(titleLabel)

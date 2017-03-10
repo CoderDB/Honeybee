@@ -104,6 +104,6 @@ extension IconManagerViewController {
         
         let cell = collectionView.cellForItem(at: destinationIndexPath) as! IconManagerCell
         cell.titleLabel.text = "哈哈"
-        cell.backgroundColor = UIColor.red
+        cell.backgroundColor = .red
     }
 }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let barAppearence = UINavigationBar.appearance()
         barAppearence.isTranslucent = true
-        barAppearence.setBackgroundImage(UIImage.image(color: UIColor.white), for: .any, barMetrics: .default)
+        barAppearence.setBackgroundImage(UIImage.image(color: .white), for: .any, barMetrics: .default)
         barAppearence.shadowImage = UIImage()
         // 设置导航栏返回按钮，文字颜色
         barAppearence.tintColor = HB.Color.nav

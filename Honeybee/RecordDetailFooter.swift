@@ -14,9 +14,9 @@ class RecordDetailFooter: UIView {
     lazy var button: UIButton = {
         let btn = UIButton(type: UIButtonType.system)
         btn.setTitle("删除", for: .normal)
-        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.setTitleColor(.white, for: .normal)
         btn.titleLabel?.font = HB.Font.h2
-        btn.backgroundColor = UIColor.black
+        btn.backgroundColor = .black
         btn.layer.cornerRadius = HB.Constant.cornerRadius
         return btn
     }()

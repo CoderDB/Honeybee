@@ -13,7 +13,7 @@ class KindAddItemHeader: BaseHeader {
     
     lazy var titleLabel = UILabel().then {
         $0.font = HB.Font.h3
-        $0.textColor = UIColor.white
+        $0.textColor = .white
         $0.text = "衣食住行"
     }
     

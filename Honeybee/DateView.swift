@@ -17,7 +17,7 @@ protocol DateViewProtocol: class {
 class DateView: UIView {
     private lazy var datePicker: UIDatePicker = {
         let dp = UIDatePicker()
-        dp.backgroundColor = UIColor.white
+        dp.backgroundColor = .white
         dp.datePickerMode = .dateAndTime
         dp.timeZone = TimeZone.current
         dp.locale = Locale(identifier: "zh_CN")

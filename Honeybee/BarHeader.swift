@@ -36,7 +36,7 @@ class BarHeader: UIView {
         barV.xAxis.drawAxisLineEnabled = false //不显示x轴
         barV.xAxis.drawGridLinesEnabled = false // 不显示竖格线
         barV.xAxis.labelPosition = .bottom
-        barV.xAxis.labelTextColor = UIColor.white
+        barV.xAxis.labelTextColor = .white
         barV.xAxis.valueFormatter = IndexAxisValueFormatter(values: (1..<31).map{"\($0)日"}) //x轴label值的显示样式
         barV.xAxis.labelCount = 10
         
@@ -59,7 +59,7 @@ class BarHeader: UIView {
         }
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
         dataSet.drawValuesEnabled = true //显示条形柱的值
-        dataSet.valueTextColor = UIColor.black
+        dataSet.valueTextColor = .black
         dataSet.valueFont = HB.Font.h6_number
         dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
         

@@ -134,9 +134,9 @@ extension CAGradientLayer {
 //
 //        let colorSpace = CGColorSpaceCreateDeviceRGB()
 //
-//        let startColor = UIColor.red
+//        let startColor = .red
 //        let startComponents = startColor.cgColor.components!
-//        let endColor = UIColor.orange
+//        let endColor = .orange
 //        let endComponents = endColor.cgColor.components!
 //
 //        let colorComponents = startComponents + endComponents

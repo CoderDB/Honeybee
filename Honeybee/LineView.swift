@@ -23,7 +23,7 @@ class LineView: UIView {
         
         lineChartView = LineChartView(frame: CGRect(x: 10, y: 10, width: HB.Screen.w-20, height: 200))
         addSubview(lineChartView)
-        lineChartView.backgroundColor = UIColor.yellow
+        lineChartView.backgroundColor = .yellow
         setChart(dataPoints: months, values: unitsSold)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -50,8 +50,8 @@ class LineView: UIView {
         
         lineChartDataSet.drawValuesEnabled = true
         lineChartDataSet.valueFont = UIFont.boldSystemFont(ofSize: 15)
-        lineChartDataSet.valueColors = [UIColor.red, UIColor.blue]
-        lineChartDataSet.valueTextColor = UIColor.brown
+        lineChartDataSet.valueColors = [.red, .blue]
+        lineChartDataSet.valueTextColor = .brown
         
         
         

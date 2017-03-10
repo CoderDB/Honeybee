@@ -14,14 +14,14 @@ class ProfileHeader: BaseHeader {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h4
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.text = "累计记账"
         return label
     }()
     lazy var countLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h1_number
-        label.textColor = UIColor.white
+        label.textColor = .white
         return label
     }()
     
