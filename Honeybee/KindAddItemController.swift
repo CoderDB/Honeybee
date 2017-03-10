@@ -7,9 +7,23 @@
 //
 
 import UIKit
-import Then
 
-class KindAddItemController: BaseCollectionViewController {
+protocol HoneybeeViewsProtocol {}
+extension HoneybeeViewsProtocol {
+    func tipLabel(text: String, frame: CGRect) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.font = HB.Font.h5_light
+        label.textColor = UIColor.gray
+        let t1 = CGAffineTransform(scaleX: -1, y: 1)//.rotated(by: -(CGFloat)(M_PI_2))
+        let t2 = CGAffineTransform(rotationAngle: -90 * CGFloat.pi/180)
+        label.transform = t1.concatenating(t2)
+        label.frame = frame
+        return label
+    }
+}
+
+class KindAddItemController: BaseCollectionViewController, HoneybeeViewsProtocol {
 
     var kind: HoneybeeKind!
     var dataSource: KindAddItemDataSource!
@@ -42,14 +56,8 @@ class KindAddItemController: BaseCollectionViewController {
         collectionView.register(KindAddItemCell.self)
     }
     func addTipView() {
-        let label = UILabel()
-        label.text = "名 字 最 长 不 能 超 过 四 个 字"
-        label.font = HB.Font.h5_light
-        label.textColor = UIColor.gray
-        let t1 = CGAffineTransform(scaleX: -1, y: 1)//.rotated(by: -(CGFloat)(M_PI_2))
-        let t2 = CGAffineTransform(rotationAngle: -90 * CGFloat.pi/180)
-        label.transform = t1.concatenating(t2)
-        label.frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 260)
+        let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 260)
+        let label = tipLabel(text: "名 字 最 长 不 能 超 过 四 个 字", frame: frame)
         view.addSubview(label)
     }
     func fetchData() {
