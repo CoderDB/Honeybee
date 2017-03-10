@@ -48,6 +48,8 @@ class KindDetailHeader: BaseHeader {
         containerView.addSubview(deleteBtn)
         containerView.addSubview(titleLabel)
         
+        addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
+        
         addBtn.snp.makeConstraints { (make) in
             make.top.right.equalTo(containerView)
             make.width.equalTo(100)
@@ -65,7 +67,11 @@ class KindDetailHeader: BaseHeader {
         }
     }
 
+    var addNewItemAction: (() -> ())?
     
+    func addBtnClicked() {
+        addNewItemAction?()
+    }
     
     
 }

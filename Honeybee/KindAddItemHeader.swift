@@ -7,31 +7,33 @@
 //
 
 import UIKit
+import Then
 
 class KindAddItemHeader: BaseHeader {
-
-    lazy var titleBtn: UIButton = {
-        $0.setTitle("衣食住行", for: .normal)
-        $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = HB.Font.h1
-        return $0
-    }(UIButton())
     
-    lazy var imgView = UIImageView()
+    lazy var titleLabel = UILabel().then {
+        $0.font = HB.Font.h3
+        $0.textColor = UIColor.white
+        $0.text = "衣食住行"
+    }
+    
+    lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     
     
     override func setupUI() {
         super.setupUI()
-        
+        rightBtn.setTitle("编辑", for: .normal)
         containerView.backgroundColor = HB.Color.main
-        containerView.addSubview(titleBtn)
+        
+        containerView.addSubview(titleLabel)
         containerView.addSubview(imgView)
         
-        titleBtn.snp.makeConstraints { (make) in
-            make.center.equalTo(containerView)
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.top.equalTo(containerView).offset(10)
         }
+        // TODO: priority
         imgView.snp.makeConstraints { (make) in
-            make.left.equalTo(titleBtn.snp.right)
+            make.left.equalTo(titleLabel.snp.right).offset(10).priority(HB.Priority.low)
             make.centerY.equalTo(containerView)
             make.width.height.equalTo(90)
         }

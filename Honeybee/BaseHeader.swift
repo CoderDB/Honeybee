@@ -12,7 +12,7 @@ class BaseHeader: UIView {
     lazy var containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = HB.Constant.cornerRadius
-        view.isUserInteractionEnabled = false
+//        view.isUserInteractionEnabled = false
         return view
     }()
     lazy var rightBtn: UIButton = {

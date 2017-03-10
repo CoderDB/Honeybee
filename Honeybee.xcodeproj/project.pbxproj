@@ -55,6 +55,8 @@
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
 		868915801DF9955B0035CFD3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157F1DF9955B0035CFD3 /* Theme.swift */; };
+		868C3F6E1E72925400D5443D /* KindAddItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */; };
+		868C3F701E72928300D5443D /* KindAddItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C3F6F1E72928300D5443D /* KindAddItemCell.swift */; };
 		86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86937D281DF2783300F180F6 /* HBKeyboard.swift */; };
 		8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEDD1E5D9E4100993CFE /* PieCell.swift */; };
 		8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEDF1E5DA1D700993CFE /* BarViewController.swift */; };
@@ -170,6 +172,8 @@
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8689157F1DF9955B0035CFD3 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemDataSource.swift; sourceTree = "<group>"; };
+		868C3F6F1E72928300D5443D /* KindAddItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemCell.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
 		8697CEDD1E5D9E4100993CFE /* PieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieCell.swift; sourceTree = "<group>"; };
 		8697CEDF1E5DA1D700993CFE /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 			isa = PBXGroup;
 			children = (
 				86AAAE681E727A10000669B4 /* KindAddItemController.swift */,
+				868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */,
+				868C3F6F1E72928300D5443D /* KindAddItemCell.swift */,
 				86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */,
 			);
 			name = AddItem;
@@ -864,6 +870,7 @@
 				865B2F651E71632300719008 /* KindDataSource.swift in Sources */,
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
 				8614E4191E6999E400836FC9 /* RLMRecorderSuper.swift in Sources */,
+				868C3F6E1E72925400D5443D /* KindAddItemDataSource.swift in Sources */,
 				8614E4171E6999A400836FC9 /* RLMRecorder.swift in Sources */,
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
@@ -875,6 +882,7 @@
 				864D25101E62F4180005894A /* BaseViewModel.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */,
+				868C3F701E72928300D5443D /* KindAddItemCell.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
 				8697CEE31E5DA2AE00993CFE /* BaseTableViewController.swift in Sources */,
 				86D170461E51EBCE0004E192 /* ProfileViewController.swift in Sources */,
