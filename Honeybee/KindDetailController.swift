@@ -26,13 +26,12 @@ class KindDetailController: BaseCollectionViewController {
     
     func fetchData() {
         dataSource = KindDetailDataSource(
-            identifier: "\(KindDetailCell.self)",
-            items:kind.items!)
-            { (cell, model) in
-                if let cell = cell as? KindDetailCell, let model = model as? HoneybeeItem {
-                    cell.configWith(model: model)
-                }
+        items:kind.items!)
+        { (cell, model) in
+            if let cell = cell as? KindDetailCell, let model = model as? HoneybeeItem {
+                cell.configWith(model: model)
             }
+        }
         collectionView.dataSource = dataSource
     }
 }

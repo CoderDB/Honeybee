@@ -35,7 +35,7 @@ class KindViewController: BaseCollectionViewController {
     }
     func fetchData() {
         let kinds = HBKindManager.manager.allKinds()
-        dataSource = KindDataSource(id: "\(KindCell.self)", items: kinds)
+        dataSource = KindDataSource(items: kinds)
         collectionView.dataSource = dataSource
     }
 }

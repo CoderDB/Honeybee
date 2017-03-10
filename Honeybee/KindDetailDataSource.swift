@@ -9,33 +9,18 @@
 import UIKit
 
 
-class KindDetailDataSource: NSObject {
-    var identifier: String
-    var items: [Any] = []
+class KindDetailDataSource: DataSource {
     var config: (UICollectionViewCell, Any) -> Void
     
-    init(identifier: String, items: [Any], config: @escaping (UICollectionViewCell, Any) -> Void) {
-        self.identifier = identifier
-        self.items = items
+    init(items: [Any], config: @escaping (UICollectionViewCell, Any) -> Void) {
         self.config = config
-    }
-    
-    
-    func item(at index: IndexPath) -> Any {
-        return items[index.row]
+        super.init(items: items)
     }
 }
 
-extension KindDetailDataSource: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        
+extension KindDetailDataSource {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath)
         config(cell, items[indexPath.row])
         return cell
     }

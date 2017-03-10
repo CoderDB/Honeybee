@@ -58,6 +58,7 @@
 		868C3F6E1E72925400D5443D /* KindAddItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */; };
 		868C3F701E72928300D5443D /* KindAddItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C3F6F1E72928300D5443D /* KindAddItemCell.swift */; };
 		868C3F721E72A09D00D5443D /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = 868C3F711E72A09D00D5443D /* icons.json */; };
+		868C3F741E72B5DD00D5443D /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C3F731E72B5DD00D5443D /* DataSource.swift */; };
 		86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86937D281DF2783300F180F6 /* HBKeyboard.swift */; };
 		8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEDD1E5D9E4100993CFE /* PieCell.swift */; };
 		8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEDF1E5DA1D700993CFE /* BarViewController.swift */; };
@@ -176,6 +177,7 @@
 		868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemDataSource.swift; sourceTree = "<group>"; };
 		868C3F6F1E72928300D5443D /* KindAddItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemCell.swift; sourceTree = "<group>"; };
 		868C3F711E72A09D00D5443D /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
+		868C3F731E72B5DD00D5443D /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
 		8697CEDD1E5D9E4100993CFE /* PieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieCell.swift; sourceTree = "<group>"; };
 		8697CEDF1E5DA1D700993CFE /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 		866C91301E6E803F003026DD /* KindManager */ = {
 			isa = PBXGroup;
 			children = (
+				868C3F731E72B5DD00D5443D /* DataSource.swift */,
 				866C91311E6E80D3003026DD /* KindViewController.swift */,
 				865B2F641E71632300719008 /* KindDataSource.swift */,
 				866C91331E6E84F5003026DD /* KindCell.swift */,
@@ -913,6 +916,7 @@
 				8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */,
 				8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
+				868C3F741E72B5DD00D5443D /* DataSource.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
 				866C91341E6E84F5003026DD /* KindCell.swift in Sources */,
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
