@@ -22,6 +22,7 @@ struct HB {
     struct Constant {
         static let cornerRadius: CGFloat = 10
         static let rowHeight: CGFloat = 60
+        static let headerH: CGFloat = 115
     }
     
     struct Font {

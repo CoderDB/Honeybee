@@ -28,13 +28,13 @@ class KindAddViewController: BaseCollectionViewController {
         layout.headerReferenceSize = CGSize(width: view.bounds.width, height: 50)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.snp.updateConstraints { (make) in
-            make.top.equalTo(115)
+            make.top.equalTo(HB.Constant.headerH)
         }
         collectionView.register(KindAddCell.self)
         collectionView.register(IconManagerSectionHeader.self)
     }
     func addHeader() {
-        let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: 115))
+        let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
         view.addSubview(header)
     }
     

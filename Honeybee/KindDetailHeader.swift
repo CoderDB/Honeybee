@@ -11,25 +11,61 @@ import UIKit
 class KindDetailHeader: BaseHeader {
 
     lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = HB.Font.h1
-        label.textAlignment = .center
-        label.textColor = UIColor.white
-        label.text = "衣"
-        return label
-    }()
+        $0.font = HB.Font.h1
+        $0.textAlignment = .center
+        $0.textColor = UIColor.white
+        $0.layer.cornerRadius = HB.Constant.cornerRadius
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = HB.Color.main
+        $0.text = "衣"
+        return $0
+    }(UILabel())
+    
+    lazy var deleteBtn: UIButton = {
+        $0.setTitle("删除", for: .normal)
+        $0.setTitle("完成", for: .selected)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = HB.Font.h5
+        $0.backgroundColor = HB.Color.main
+        $0.layer.cornerRadius = HB.Constant.cornerRadius
+        return $0
+    }(UIButton())
+    
+    lazy var addBtn: UIButton = {
+        $0.setTitle("添加", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = HB.Font.h5
+        $0.backgroundColor = HB.Color.nav
+        $0.layer.cornerRadius = HB.Constant.cornerRadius
+        return $0
+    }(UIButton())
     
     override func setupUI() {
         super.setupUI()
         
         rightBtn.setTitle("编辑", for: .normal)
+        containerView.addSubview(addBtn)
+        containerView.addSubview(deleteBtn)
         containerView.addSubview(titleLabel)
         
-        containerView.backgroundColor = HB.Color.main
+        addBtn.snp.makeConstraints { (make) in
+            make.top.right.equalTo(containerView)
+            make.width.equalTo(100)
+            make.height.equalTo(55)
+        }
+        
+        deleteBtn.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(containerView)
+            make.width.height.equalTo(addBtn)
+        }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(containerView)
+            make.left.top.bottom.equalTo(containerView)
+            make.right.equalTo(addBtn.snp.left).offset(-10)
         }
     }
 
+    
+    
+    
 }
