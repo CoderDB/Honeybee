@@ -15,7 +15,7 @@ class PieHeader: UIView {
         let pie = PieChartView()
         
         pie.drawHoleEnabled = true                  //中环，圆心环是否显示
-        pie.holeColor = UIColor.white               //圆心环颜色
+        pie.holeColor = .white               //圆心环颜色
         pie.holeRadiusPercent = 0.4                 //圆心环半径 默认50%
         pie.transparentCircleRadiusPercent = 0      //中环半径
         
@@ -40,9 +40,9 @@ class PieHeader: UIView {
         gradientLayer.cornerRadius = HB.Constant.cornerRadius
         layer.addSublayer(gradientLayer)
         
-//        backgroundColor = UIColor.white
+//        backgroundColor = .white
 //        layer.cornerRadius = HB.Constant.cornerRadius
-//        layer.borderColor = UIColor.black.cgColor
+//        layer.borderColor = .black.cgColor
 //        layer.borderWidth = 1
         
         
@@ -67,7 +67,7 @@ class PieHeader: UIView {
             dataEntries.append(dataEntry)
         }
         let dataSet = PieChartDataSet(values: dataEntries, label: nil)
-        dataSet.colors = [UIColor.gray,UIColor.cyan, UIColor.green, UIColor.darkGray, UIColor.red]
+        dataSet.colors = [.gray,.cyan, .green, .darkGray, .red]
         dataSet.xValuePosition = .outsideSlice              //坐标值显示位置
         dataSet.yValuePosition = .outsideSlice
 //        dataSet.sliceSpace = 1.0
@@ -76,9 +76,9 @@ class PieHeader: UIView {
         dataSet.valueLineVariableLength = true              //线长度是否可变
         dataSet.valueLinePart2Length = 1                    //线拐角之后的线长
         dataSet.valueLinePart1OffsetPercentage = 0.7        //线拐角之前距离圆心长度百分比
-        dataSet.valueLineColor = UIColor.black              //线颜色
+        dataSet.valueLineColor = .black              //线颜色
         dataSet.valueLineWidth = 1.5                        //线宽
-        dataSet.valueTextColor = UIColor.black              //线末端字体颜色
+        dataSet.valueTextColor = .black              //线末端字体颜色
         dataSet.valueFont = HB.Font.h4_number           // 线末端字体
         
         return PieChartData(dataSet: dataSet)

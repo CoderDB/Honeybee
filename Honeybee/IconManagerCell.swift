@@ -15,14 +15,14 @@ class IconManagerCell: UICollectionViewCell {
         let label = UILabel()
         label.font = HB.Font.h4_number
         label.textAlignment = .center
-        label.textColor = UIColor.white
+        label.textColor = .white
         return label
     }()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.cyan
+        backgroundColor = .cyan
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)

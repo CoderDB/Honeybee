@@ -13,7 +13,7 @@ class KindDetailHeader: BaseHeader {
     lazy var titleLabel: UILabel = {
         $0.font = HB.Font.h1
         $0.textAlignment = .center
-        $0.textColor = UIColor.white
+        $0.textColor = .white
         $0.layer.cornerRadius = HB.Constant.cornerRadius
         $0.layer.masksToBounds = true
         $0.backgroundColor = HB.Color.main
@@ -24,7 +24,7 @@ class KindDetailHeader: BaseHeader {
     lazy var deleteBtn: UIButton = {
         $0.setTitle("删除", for: .normal)
         $0.setTitle("完成", for: .selected)
-        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = HB.Font.h5
         $0.backgroundColor = HB.Color.main
         $0.layer.cornerRadius = HB.Constant.cornerRadius
@@ -33,7 +33,7 @@ class KindDetailHeader: BaseHeader {
     
     lazy var addBtn: UIButton = {
         $0.setTitle("添加", for: .normal)
-        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = HB.Font.h5
         $0.backgroundColor = HB.Color.nav
         $0.layer.cornerRadius = HB.Constant.cornerRadius

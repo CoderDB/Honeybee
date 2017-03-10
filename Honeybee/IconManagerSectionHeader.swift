@@ -24,7 +24,7 @@ class IconManagerSectionHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = .white
         addSubview(titleLabel)
         addSubview(line)
         titleLabel.snp.makeConstraints { (make) in

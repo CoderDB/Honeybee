@@ -14,14 +14,14 @@ class CardHeader: BaseHeader {
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.font = HB.Font.h3
         label.text = "未填写"
         return label
     }()
     lazy var numberLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.textAlignment = .right
         label.font = HB.Font.h2_number
         label.text = "98765.39"

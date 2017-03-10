@@ -24,7 +24,7 @@ class MainViewController: BaseTableViewController {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
         vc.preferredContentSize = CGSize(width: 70, height: 60)
-        vc.view.backgroundColor = UIColor.white
+        vc.view.backgroundColor = .white
         return vc
     }()
     lazy var topBtn: UIButton = {
@@ -44,7 +44,7 @@ class MainViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
@@ -99,7 +99,7 @@ extension MainViewController {
         destVC.view.addSubview(botBtn)
         topBtn.addTarget(self, action: #selector(topBtnClicked), for: .touchUpInside)
         botBtn.addTarget(self, action: #selector(botBtnClicked), for: .touchUpInside)
-        popoverVC.backgroundColor = UIColor.white
+        popoverVC.backgroundColor = .white
         popoverVC.delegate = self
         popoverVC.sourceView = btn
         popoverVC.sourceRect = btn.bounds

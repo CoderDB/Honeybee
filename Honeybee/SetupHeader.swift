@@ -29,7 +29,7 @@ class SetupHeader: UIView {
     lazy var bioLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h6_medium
-        label.textColor = UIColor.gray
+        label.textColor = .gray
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.preferredMaxLayoutWidth = 200

@@ -83,7 +83,7 @@ extension HBPresentationController {
         shadowView.addSubview(roundCornerView)
         
         dimmingView = UIView(frame: (containerView?.bounds)!)
-        dimmingView.backgroundColor = UIColor.black
+        dimmingView.backgroundColor = .black
         dimmingView.isOpaque = false
         dimmingView.autoresizingMask = masks
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapOnDimmingView(_:))))

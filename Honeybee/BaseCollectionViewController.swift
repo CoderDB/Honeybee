@@ -13,7 +13,7 @@ class BaseCollectionViewController: BaseViewController {
     lazy var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         view.dataSource = self

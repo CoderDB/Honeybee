@@ -27,7 +27,7 @@ class IconAddViewController: BaseViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)

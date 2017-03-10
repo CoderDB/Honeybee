@@ -34,7 +34,7 @@ class GroupCell: UITableViewCell {
         tv.delegate = self
         tv.isScrollEnabled = false
         tv.rowHeight = 60
-        tv.backgroundColor = UIColor.white
+        tv.backgroundColor = .white
         tv.separatorStyle = .none
         tv.register(RecordLiteCell.self)
         return tv
@@ -47,7 +47,7 @@ class GroupCell: UITableViewCell {
         layer.cornerRadius = HB.Constant.cornerRadius
         layer.borderWidth = 2
         
-        backgroundColor = UIColor.white
+        backgroundColor = .white
         setupUI()
         
     }

@@ -40,7 +40,7 @@ class BarViewController: BaseTableViewController {
         let destVC = BarPopoverViewController()
         destVC.modalPresentationStyle = .popover
         let popoverVC = destVC.popoverPresentationController!
-        popoverVC.backgroundColor = UIColor.white
+        popoverVC.backgroundColor = .white
         popoverVC.delegate = self
         popoverVC.sourceView = btn
         popoverVC.sourceRect = btn.bounds
