@@ -30,10 +30,10 @@ extension KindAddItemDataSource: UICollectionViewDataSource {
         return items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! KindAddItemCell
-//        if let cell = cell as? KindCell, let model = items[indexPath.item] as? HoneybeeKind {
-//            cell.config(model: model)
-//        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        if let cell = cell as? KindAddItemCell, let model = items[indexPath.item] as? HoneyBeeIcon {
+            cell.imgView.image = UIImage(named: model.name)
+        }
         return cell
     }
 }

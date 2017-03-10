@@ -67,6 +67,16 @@ struct HoneybeeItem {
     }
 }
 
+struct HoneyBeeIcon {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    init(dict: [String: Any]) {
+        self.name = dict["name"] as! String
+    }
+}
+
 class HBKindManager: NSObject {
     static let manager = HBKindManager()
     private override init() {}
@@ -80,5 +90,22 @@ class HBKindManager: NSObject {
             result.append(model!)
         }
         return result
+    }
+    
+    func allIcons() -> [HoneyBeeIcon] {
+        var result = [HoneyBeeIcon]()
+        if let json = json(at: "icons") as? [[String: Any]] {
+            for item in json {
+                let model = HoneyBeeIcon(dict: item)
+                result.append(model)
+            }
+        }
+        return result
+    }
+    func json(at path: String) -> Any {
+        let path = Bundle.main.path(forResource: path, ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+        return json
     }
 }
