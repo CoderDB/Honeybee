@@ -12,11 +12,10 @@ class RecordDetailHeader: BaseHeader {
     
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = HB.Font.h3
-        return label
-    }()
+        $0.textColor = .white
+        $0.font = HB.Font.h3
+        return $0
+    }(UILabel())
     lazy var imgView = UIImageView()
     
 
@@ -31,7 +30,6 @@ class RecordDetailHeader: BaseHeader {
     override func setupUI() {
         super.setupUI()
         
-        rightBtn.setTitle("编辑", for: .normal)
         containerView.isUserInteractionEnabled = false
 
         containerView.addSubview(imgView)
@@ -41,7 +39,9 @@ class RecordDetailHeader: BaseHeader {
             make.left.top.equalTo(containerView).offset(10)
         }
         imgView.snp.makeConstraints { (make) in
-            make.center.equalTo(containerView)
+            make.left.equalTo(titleLabel.snp.right).offset(10).priority(HB.Priority.low)
+            make.centerX.greaterThanOrEqualTo(containerView)
+            make.centerY.equalTo(containerView)
             make.width.height.equalTo(containerView.snp.height).offset(-20)
         }
         

@@ -24,7 +24,6 @@ class KindAddHeader: BaseHeader {
     override func setupUI() {
         super.setupUI()
         
-        rightBtn.setTitle("编辑", for: .normal)
         containerView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { (make) in

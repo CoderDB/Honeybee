@@ -8,20 +8,32 @@
 
 import UIKit
 
-class BaseHeader: UIView {
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = HB.Constant.cornerRadius
-//        view.isUserInteractionEnabled = false
-        return view
-    }()
-    lazy var rightBtn: UIButton = {
+protocol BaseHeaderProtocol {}
+extension BaseHeaderProtocol where Self: UIView {
+    func rightBt(title: String = "编辑") -> UIButton {
         let btn = UIButton()
         btn.setTitleColor(HB.Color.nav, for: .normal)
         btn.titleLabel?.font = HB.Font.h5
         btn.contentHorizontalAlignment = .right
+        btn.setTitle(title, for: .normal)
         return btn
-    }()
+    }
+}
+
+class BaseHeader: UIView, BaseHeaderProtocol {
+    
+    lazy var containerView: UIView = {
+        $0.layer.cornerRadius = HB.Constant.cornerRadius
+        return $0
+    }(UIView())
+//    lazy var rightBtn: UIButton = {
+//        let btn = UIButton()
+//        btn.setTitleColor(HB.Color.nav, for: .normal)
+//        btn.titleLabel?.font = HB.Font.h5
+//        btn.contentHorizontalAlignment = .right
+//        btn.setTitle("编辑", for: .normal)
+//        return btn
+//    }()
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: HB.Screen.w, height: height))
     }
@@ -33,6 +45,8 @@ class BaseHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setupUI() {
+        let rightBtn = rightBt()
+        
         addSubview(rightBtn)
         addSubview(containerView)
         
