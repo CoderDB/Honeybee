@@ -13,16 +13,22 @@ class RecordDetailController: BaseTableViewController {
     
     
     var model: RLMRecorder!
-    let cellTitles = ["金额", "记录时间", "分类", "备注"]
+    
+    var dataSource: RecorderDetailDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("详情")
         addTableView()
+        fetchData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    func fetchData() {
+        dataSource = RecorderDetailDataSource(model: model)
+        tableView.dataSource = dataSource
     }
     
     func addTableView() {
@@ -38,17 +44,3 @@ class RecordDetailController: BaseTableViewController {
     }
 }
 
-
-// MARK: UITableViewDataSource
-extension RecordDetailController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellTitles.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordDetailCell.self)") as! RecordDetailCell
-        cell.mainTitleLabel.text = cellTitles[indexPath.row]
-        cell.setSubTitleAttributes(indexPath: indexPath, model: model)
-        return cell
-    }
-    
-}

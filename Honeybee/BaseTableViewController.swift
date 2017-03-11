@@ -11,15 +11,14 @@ import UIKit
 class BaseTableViewController: BaseViewController {
 
     lazy var tableView: UITableView = {
-        let tv = UITableView()
-        tv.separatorStyle = .none
-        tv.showsVerticalScrollIndicator = false
-        tv.showsHorizontalScrollIndicator = false
-        tv.dataSource = self
-        tv.delegate = self
-        tv.rowHeight = HB.Constant.rowHeight
-        return tv
-    }()
+        $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.dataSource = self
+        $0.delegate = self
+        $0.rowHeight = HB.Constant.rowHeight
+        return $0
+    }(UITableView())
     
     override func viewDidLoad() {
         super.viewDidLoad()
