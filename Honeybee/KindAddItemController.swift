@@ -61,8 +61,8 @@ class KindAddItemController: BaseCollectionViewController, HoneybeeViewsProtocol
         view.addSubview(label)
     }
     func fetchData() {
-        let items = HBKindManager.manager.allIcons()
-        dataSource = KindAddItemDataSource(items: items)
+//        let items = HBKindManager.manager.allIcons()
+        dataSource = KindAddItemDataSource()
         collectionView.dataSource = dataSource
     }
 }
