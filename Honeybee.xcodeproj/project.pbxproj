@@ -36,7 +36,6 @@
 		8638A9BB1DE56CB9002369F9 /* HoneybeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9BA1DE56CB9002369F9 /* HoneybeeTests.swift */; };
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
 		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
-		864D25101E62F4180005894A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250F1E62F4180005894A /* BaseViewModel.swift */; };
 		864D25121E6312240005894A /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorder.json */; };
 		865B2F651E71632300719008 /* KindDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F641E71632300719008 /* KindDataSource.swift */; };
 		865B2F671E7171AF00719008 /* CardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F661E7171AF00719008 /* CardDataSource.swift */; };
@@ -53,6 +52,8 @@
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
+		868905991E7432350033C14C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868905981E7432350033C14C /* BaseViewModel.swift */; };
+		8689059B1E7432CD0033C14C /* RecorderDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */; };
 		8689157E1DF990D20035CFD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157D1DF990D20035CFD3 /* Extension.swift */; };
 		868915801DF9955B0035CFD3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689157F1DF9955B0035CFD3 /* Theme.swift */; };
 		868C3F6E1E72925400D5443D /* KindAddItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */; };
@@ -155,7 +156,6 @@
 		8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneybeeUITests.swift; sourceTree = "<group>"; };
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
-		864D250F1E62F4180005894A /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		864D25111E6312240005894A /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
 		865B2F641E71632300719008 /* KindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDataSource.swift; sourceTree = "<group>"; };
 		865B2F661E7171AF00719008 /* CardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDataSource.swift; sourceTree = "<group>"; };
@@ -172,6 +172,8 @@
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
+		868905981E7432350033C14C /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderDetailDataSource.swift; sourceTree = "<group>"; };
 		8689157D1DF990D20035CFD3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8689157F1DF9955B0035CFD3 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemDataSource.swift; sourceTree = "<group>"; };
@@ -388,12 +390,12 @@
 			isa = PBXGroup;
 			children = (
 				866C913B1E6EA09F003026DD /* BaseHeader.swift */,
-				864D250F1E62F4180005894A /* BaseViewModel.swift */,
 				86D170471E51EBE70004E192 /* BaseViewController.swift */,
 				8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */,
 				86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */,
 				866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */,
 				86BDA6A91E71479700AEFBC4 /* BaseCollectionViewCell.swift */,
+				868905981E7432350033C14C /* BaseViewModel.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -556,9 +558,10 @@
 			isa = PBXGroup;
 			children = (
 				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
+				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
+				8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */,
 				8624F61C1E5047C00059788A /* RecordDetailHeader.swift */,
 				86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */,
-				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
 			);
 			name = RecordDetail;
 			sourceTree = "<group>";
@@ -886,7 +889,6 @@
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
 				866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */,
 				866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */,
-				864D25101E62F4180005894A /* BaseViewModel.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */,
 				868C3F701E72928300D5443D /* KindAddItemCell.swift in Sources */,
@@ -934,6 +936,7 @@
 				861B1EC51E703AAA009BBF48 /* KindDetailHeader.swift in Sources */,
 				861B1EC31E703A8D009BBF48 /* KindDetailController.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
+				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
 				8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */,
@@ -944,6 +947,7 @@
 				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
 				86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */,
 				86104A2F1E61A8F500AAEEAC /* CardCollectionCell.swift in Sources */,
+				8689059B1E7432CD0033C14C /* RecorderDetailDataSource.swift in Sources */,
 				86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */,
 				862996311E6ACD5800494C74 /* NetworkManager.swift in Sources */,
 				866C913A1E6E9EA1003026DD /* KindAddCell.swift in Sources */,
