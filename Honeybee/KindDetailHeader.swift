@@ -43,7 +43,6 @@ class KindDetailHeader: BaseHeader {
     override func setupUI() {
         super.setupUI()
         
-        rightBtn.setTitle("编辑", for: .normal)
         containerView.addSubview(addBtn)
         containerView.addSubview(deleteBtn)
         containerView.addSubview(titleLabel)

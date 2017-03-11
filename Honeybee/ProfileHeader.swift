@@ -33,7 +33,6 @@ class ProfileHeader: BaseHeader {
     override func setupUI() {
         super.setupUI()
         
-        rightBtn.setTitle("编辑", for: .normal)
         containerView.backgroundColor = HB.Color.main
         
         containerView.addSubview(titleLabel)

@@ -71,7 +71,7 @@ class MainHeader: BaseHeader {
     override func setupUI() {
         super.setupUI()
         
-        rightBtn.setTitle("分类", for: .normal)
+//        rightBtn.setTitle("分类", for: .normal)
         containerView.isUserInteractionEnabled = true
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnContainerView(_:)))
