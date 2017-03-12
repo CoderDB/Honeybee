@@ -1,7 +1,10 @@
  [
   {
   "category": "衣",
-  "color": "FF7256",
+  "color": {
+  "name": "79CDCD",
+  "isUsed": 1
+  },
   "editable": 0,
   "items": [
             {
@@ -131,12 +134,15 @@
             {
             "name": "球鞋",
             "icon": "meal"
-            },
+            }
             ]
   },
   {
   "category": "食",
-  "color": "79CDCD",
+  "color": {
+  "name": "79CDCD",
+  "isUsed": 1
+  },
   "editable": 0,
   "items": [
             {
@@ -207,7 +213,10 @@
   },
   {
   "category": "住",
-  "color": "F6A623",
+  "color": {
+  "name": "F6A623",
+  "isUsed": 1
+  },
   "editable": 0,
   "items": [
             {
@@ -278,7 +287,10 @@
   },
   {
   "category": "行",
-  "color": "7ED321",
+  "color": {
+  "name": "7ED321",
+  "isUsed": 1
+  },
   "editable": 0,
   "items": [
             {
@@ -381,7 +393,10 @@
   },
   {
   "category": "生活",
-  "color": "62ABFF",
+  "color": {
+  "name": "62ABFF",
+  "isUsed": 1
+  },
   "editable": 0,
   "items": [
             {
@@ -399,7 +414,16 @@
             {
             "name": "看电影",
             "icon": "meal"
-            },{
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
             "name": "逛超市",
             "icon": "meal"
             },
@@ -414,7 +438,16 @@
             {
             "name": "看电影",
             "icon": "meal"
-            },{
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
             "name": "逛超市",
             "icon": "meal"
             },
@@ -429,7 +462,16 @@
             {
             "name": "看电影",
             "icon": "meal"
-            },{
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
             "name": "逛超市",
             "icon": "meal"
             },
@@ -444,7 +486,16 @@
             {
             "name": "看电影",
             "icon": "meal"
-            },{
+            },
+            {
+            "name": "逛超市",
+            "icon": "meal"
+            },
+            {
+            "name": "看电影",
+            "icon": "meal"
+            },
+            {
             "name": "逛超市",
             "icon": "meal"
             },
@@ -459,37 +510,8 @@
             {
             "name": "看电影",
             "icon": "meal"
-            },{
-            "name": "逛超市",
-            "icon": "meal"
             },
             {
-            "name": "看电影",
-            "icon": "meal"
-            },
-            {
-            "name": "逛超市",
-            "icon": "meal"
-            },
-            {
-            "name": "看电影",
-            "icon": "meal"
-            },{
-            "name": "逛超市",
-            "icon": "meal"
-            },
-            {
-            "name": "看电影",
-            "icon": "meal"
-            },
-            {
-            "name": "逛超市",
-            "icon": "meal"
-            },
-            {
-            "name": "看电影",
-            "icon": "meal"
-            },{
             "name": "逛超市",
             "icon": "meal"
             },
@@ -507,4 +529,4 @@
             }
             ]
   }
-]
+  ]

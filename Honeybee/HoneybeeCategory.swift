@@ -24,22 +24,22 @@ import Foundation
 
 struct HoneybeeKind {
     var name: String
-    var color: String
+    var color: HoneyBeeColor
     var isEditable: Bool = true
     var items: [HoneybeeItem]?
     
-    init(category: String, color: String, items: [HoneybeeItem]?) {
+    init(category: String, color: HoneyBeeColor, items: [HoneybeeItem]?) {
         self.name = category
         self.color = color
         self.items = items
     }
     init?(dict: [String: Any]) {
         guard let category = dict["category"] as? String,
-            let color = dict["color"] as? String,
+            let color = dict["color"] as? [String: Any],
             let items = dict["items"] as? [[String: Any]]
             else { return nil }
         self.name = category
-        self.color = color
+        self.color = HoneyBeeColor(dict: color)!
         var results = [HoneybeeItem]()
         for item in items {
             let model = HoneybeeItem(dict: item)
@@ -77,6 +77,21 @@ struct HoneyBeeIcon {
     }
 }
 
+struct HoneyBeeColor {
+    var name: String
+    var isUsed: Bool = false
+    
+    
+    init?(dict: [String: Any]) {
+        guard let name = dict["name"] as? String,
+            let isUsed = dict["isUsed"] as? Bool
+            else { return nil }
+        self.name = name
+        self.isUsed = isUsed
+    }
+    
+}
+
 class HBKindManager: NSObject {
     static let manager = HBKindManager()
     private override init() {}
@@ -102,10 +117,22 @@ class HBKindManager: NSObject {
         }
         return result
     }
+    
     func json(at path: String) -> Any {
         let path = Bundle.main.path(forResource: path, ofType: "json")
         let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
         let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
         return json
+    }
+    
+    func allColors() -> [HoneyBeeColor] {
+        var result = [HoneyBeeColor]()
+        if let json = json(at: "colors") as? [[String: Any]] {
+            for item in json {
+                let model = HoneyBeeColor(dict: item)!
+                result.append(model)
+            }
+        }
+        return result
     }
 }
