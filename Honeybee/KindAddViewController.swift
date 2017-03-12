@@ -12,7 +12,7 @@ import UIKit
 class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol {
 
     
-    var dataSource = ["衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物"]
+    var dataSource: KindAddDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,7 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol
         let label = tipLabel(text: "选 择 一 种 颜 色", frame: frame)
         view.addSubview(label)
         
+        fetchData()
     }
     func addCollectionView() {
         layout.itemSize = CGSize(width: 45, height: 45)
@@ -38,37 +39,11 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol
         let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
         view.addSubview(header)
     }
-    
-    func randomHSVColor() -> UIColor {
-        let golden = 0.618033988749895
-        var h = Double(arc4random())
-        h *= golden
-        h *= golden
-        h.formTruncatingRemainder(dividingBy: 1)
-        var s = Double(arc4random())
-        s += golden
-        s *= golden
-        s.formTruncatingRemainder(dividingBy: 1)
-        var v = Double(arc4random())
-        v += golden
-        v.formTruncatingRemainder(dividingBy: 1)
-        
-        
-        return UIColor(hue: CGFloat(h), saturation: 0.3, brightness: 0.99, alpha: 1)
+    func fetchData() {
+        dataSource = KindAddDataSource(items: [])
     }
 }
 
-// MARK: UICollectionViewDataSource
-extension KindAddViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
-        cell.backgroundColor = randomHSVColor()
-        return cell
-    }
-}
 
 
 // MARK: UICollectionViewDelegateFlowLayout

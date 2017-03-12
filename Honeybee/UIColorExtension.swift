@@ -40,7 +40,23 @@ extension UIColor {
         self.init(rgba: [CGFloat(r), CGFloat(g), CGFloat(b), CGFloat(a)])
     }
     
-    static func randomColor() -> UIColor {
+    static var randomColor: UIColor {
         return UIColor(colorLiteralRed: Float(arc4random() % 256) / 255.0, green: Float(arc4random() % 256) / 255.0, blue: Float(arc4random() % 256) / 255.0, alpha: 1)
+    }
+    static var randomHSVColor: UIColor {
+        let golden = 0.618033988749895
+        var h = Double(arc4random())
+        h *= golden
+        h *= golden
+        h.formTruncatingRemainder(dividingBy: 1)
+        var s = Double(arc4random())
+        s += golden
+        s *= golden
+        s.formTruncatingRemainder(dividingBy: 1)
+        var v = Double(arc4random())
+        v += golden
+        v.formTruncatingRemainder(dividingBy: 1)
+        
+        return UIColor(hue: CGFloat(h), saturation: 0.3, brightness: 0.99, alpha: 1)
     }
 }
