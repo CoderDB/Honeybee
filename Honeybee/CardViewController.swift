@@ -93,7 +93,7 @@ extension CardViewController {
 
 extension CardViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        header.containerView.backgroundColor = .randomColor()
+        header.containerView.backgroundColor = .randomColor
         header.categoryLabel.text = "电影票"
     }
 }

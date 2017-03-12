@@ -20,7 +20,7 @@ class IconAddCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .randomColor()
+        backgroundColor = .randomColor
         layer.cornerRadius = HB.Constant.cornerRadius
         
         contentView.addSubview(titleLabel)
