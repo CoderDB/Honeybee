@@ -9,29 +9,30 @@
 import UIKit
 
 
-class KindAddViewController: BaseCollectionViewController {
+class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol {
 
     
-    var dataSource = ["衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物"]
+    var dataSource = ["衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物", "衣", "食", "住", "行", "购物"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
         setNavTitle("添加种类")
         addHeader()
         addCollectionView()
+        let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 200)
+        let label = tipLabel(text: "选 择 一 种 颜 色", frame: frame)
+        view.addSubview(label)
+        
     }
     func addCollectionView() {
         layout.itemSize = CGSize(width: 45, height: 45)
-        layout.minimumLineSpacing = 10      // 行间距
-        layout.minimumInteritemSpacing = 10 // 列间距
-        layout.sectionHeadersPinToVisibleBounds = true
-        layout.headerReferenceSize = CGSize(width: view.bounds.width, height: 50)
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
         collectionView.snp.updateConstraints { (make) in
-            make.top.equalTo(HB.Constant.headerH)
+            make.top.equalTo(115+64)
+            make.right.equalTo(view).offset(-60)
         }
         collectionView.register(KindAddCell.self)
-        collectionView.register(IconManagerSectionHeader.self)
     }
     func addHeader() {
         let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
@@ -72,11 +73,6 @@ extension KindAddViewController {
 
 // MARK: UICollectionViewDelegateFlowLayout
 extension KindAddViewController {
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(IconManagerSectionHeader.self)", for: indexPath) as! IconManagerSectionHeader
-        header.titleLabel.text = "选择一种颜色"
-        return header
-    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
     }
