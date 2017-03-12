@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */; };
+		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
 		860EF57F1E600DF0009C2D31 /* IconManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF57E1E600DF0009C2D31 /* IconManagerViewController.swift */; };
 		860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EF5801E60150B009C2D31 /* IconManagerSectionHeader.swift */; };
@@ -119,6 +120,7 @@
 
 /* Begin PBXFileReference section */
 		1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddDataSource.swift; sourceTree = "<group>"; };
+		1EA5F0611E754DD300E90E7A /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.release.xcconfig"; sourceTree = "<group>"; };
 		3B5692E3AB3757B76FF611A5 /* Pods_Honeybee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Honeybee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +267,7 @@
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1EA5F0611E754DD300E90E7A /* colors.json */,
 				868C3F711E72A09D00D5443D /* icons.json */,
 				866C562D1E6D78DB00010D3F /* category_color.json */,
 				864D25111E6312240005894A /* recorder.json */,
@@ -712,6 +715,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EA5F0621E754DD300E90E7A /* colors.json in Resources */,
 				868C3F721E72A09D00D5443D /* icons.json in Resources */,
 				866C562E1E6D78DB00010D3F /* category_color.json in Resources */,
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
