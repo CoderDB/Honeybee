@@ -14,16 +14,13 @@ class KindAddHeader: BaseHeader {
         $0.font = HB.Font.h1
         $0.textAlignment = .center
         $0.textColor = .white
-        $0.layer.cornerRadius = HB.Constant.cornerRadius
-        $0.layer.masksToBounds = true
-        $0.backgroundColor = HB.Color.main
         $0.text = "衣"
         return $0
     }(UILabel())
     
     override func setupUI() {
         super.setupUI()
-        
+        containerView.backgroundColor = HB.Color.main
         containerView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { (make) in

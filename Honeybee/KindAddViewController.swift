@@ -13,6 +13,7 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol
 
     
     var dataSource: KindAddDataSource!
+    var header: KindAddHeader!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,12 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol
         collectionView.register(KindAddCell.self)
     }
     func addHeader() {
-        let header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
+        header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
         view.addSubview(header)
     }
     func fetchData() {
-        dataSource = KindAddDataSource(items: [])
+        dataSource = KindAddDataSource()
+        collectionView.dataSource = dataSource
     }
 }
 
@@ -49,6 +51,9 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol
 // MARK: UICollectionViewDelegateFlowLayout
 extension KindAddViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let color = dataSource.item(at: indexPath) as? UIColor {
+            header.containerView.backgroundColor = color
+        }
         print("-------\(indexPath.section)----\(indexPath.row)")
     }
 }

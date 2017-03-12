@@ -29,6 +29,7 @@ class BaseHeader: UIView {
     
     lazy var containerView: UIView = {
         $0.layer.cornerRadius = HB.Constant.cornerRadius
+//        $0.backgroundColor = HB.Color.main
         return $0
     }(UIView())
     

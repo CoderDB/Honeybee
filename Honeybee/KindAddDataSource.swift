@@ -10,9 +10,17 @@ import UIKit
 
 class KindAddDataSource: DataSource {
     
+    var colors: [UIColor]
+    init() {
+        self.colors = HBKindManager.manager.allColors()
+            .filter { !$0.isUsed }
+            .map { UIColor(hex: $0.name) }
+        super.init(items: colors)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
-        cell.backgroundColor = UIColor.randomHSVColor
+        cell.backgroundColor = colors[indexPath.item]
         return cell
     }
     
