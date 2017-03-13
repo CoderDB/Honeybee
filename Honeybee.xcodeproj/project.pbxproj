@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E1C0C811E76E5D800AF940E /* SetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */; };
+		1E1C0C831E76E88B00AF940E /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */; };
 		1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */; };
 		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
@@ -121,6 +122,7 @@
 
 /* Begin PBXFileReference section */
 		1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupDataSource.swift; sourceTree = "<group>"; };
+		1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
 		1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddDataSource.swift; sourceTree = "<group>"; };
 		1EA5F0611E754DD300E90E7A /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.release.xcconfig"; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				86D170451E51EBCE0004E192 /* ProfileViewController.swift */,
+				1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */,
 				86D170491E51EDCB0004E192 /* ProfileHeader.swift */,
 			);
 			name = Detail;
@@ -895,6 +898,7 @@
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
 				86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */,
 				86AAAE691E727A10000669B4 /* KindAddItemController.swift in Sources */,
+				1E1C0C831E76E88B00AF940E /* ProfileDataSource.swift in Sources */,
 				86D1702D1E51BA560004E192 /* SetupHeader.swift in Sources */,
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
 				866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */,

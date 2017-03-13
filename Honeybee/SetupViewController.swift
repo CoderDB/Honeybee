@@ -16,7 +16,9 @@ class SetupViewController: BaseTableViewController {
         setNavTitle("设置")
         
         addTableView()
-        
+        fetchData()
+    }
+    func fetchData() {
         let item1 = SetupItem(title: "记账提醒", subTitle: "每天\n10:00")
         let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
         let item3 = SetupImageItem(title: "头像", subTitle: "")
