@@ -8,22 +8,22 @@
 
 import UIKit
 
-//protocol BaseHeaderProtocol {}
-//extension BaseHeaderProtocol where Self: UIView {
-//    func rightBt(title: String = "编辑") -> UIButton {
-//        let btn = UIButton()
-//        btn.setTitleColor(HB.Color.nav, for: .normal)
-//        btn.titleLabel?.font = HB.Font.h5
-//        btn.contentHorizontalAlignment = .right
-//        btn.setTitle(title, for: .normal)
-//        return btn
-//    }
-//    func container() -> UIView {
-//        let view = UIView()
-//        view.layer.cornerRadius = HB.Constant.cornerRadius
-//        return view
-//    }
-//}
+protocol HeaderProvider {}
+extension HeaderProvider where Self: UIView {
+    func rightBt(title: String = "编辑") -> UIButton {
+        let btn = UIButton()
+        btn.setTitleColor(HB.Color.nav, for: .normal)
+        btn.titleLabel?.font = HB.Font.h5
+        btn.contentHorizontalAlignment = .right
+        btn.setTitle(title, for: .normal)
+        return btn
+    }
+    func container() -> UIView {
+        let view = UIView()
+        view.layer.cornerRadius = HB.Constant.cornerRadius
+        return view
+    }
+}
 
 class BaseHeader: UIView {
     
