@@ -14,11 +14,11 @@ import ObjectMapper
 
 class MainViewController: BaseTableViewController {
     
-    var dataSource: Results<RLMRecorderSuper>! {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var dataSource: MainDataSource!//Results<RLMRecorderSuper>! {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
     
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
@@ -49,7 +49,8 @@ class MainViewController: BaseTableViewController {
         addTableView()
         addAddBtn()
 //        resuest()
-        dataSource = fetchData()
+//        dataSource = fetchData()
+        fetchData()
     }
     
     func resuest() -> List<RLMRecorderSuper> {
@@ -69,8 +70,10 @@ class MainViewController: BaseTableViewController {
     }
     
     
-    func fetchData() -> Results<RLMRecorderSuper> {
-        return DatabaseManager.manager.allData()
+    func fetchData()  {
+        dataSource = MainDataSource(items: DatabaseManager.manager.allData())
+        tableView.dataSource = dataSource
+//        return DatabaseManager.manager.allData()
     }
     
     
@@ -156,33 +159,33 @@ extension MainViewController {
 // MARK: UITableViewDatasource
 extension MainViewController {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let dataSource = dataSource else {
-            return 0
-        }
-        return dataSource.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = dataSource[indexPath.row]
-        if model.style == "group" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
-            cell.delegate = self
-            cell.dataSource = dataSource[indexPath.row].recorders
-            tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
-            return cell
-        } else {
-            tableView.estimatedRowHeight = 75
-            tableView.rowHeight = UITableViewAutomaticDimension
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            cell.recorder = dataSource[indexPath.row].recorders[0]
-            return cell
-        }
-    }
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        guard let dataSource = dataSource else {
+//            return 0
+//        }
+//        return dataSource.count
+//    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let model = dataSource[indexPath.row]
+//        if model.style == "group" {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
+//            cell.delegate = self
+//            cell.dataSource = dataSource[indexPath.row].recorders
+//            tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
+//            return cell
+//        } else {
+//            tableView.estimatedRowHeight = 75
+//            tableView.rowHeight = UITableViewAutomaticDimension
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
+//            cell.recorder = dataSource[indexPath.row].recorders[0]
+//            return cell
+//        }
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = dataSource[indexPath.row]
+        let model = dataSource.items[indexPath.row] 
         if model.style != "group" {
             let detailVC = RecordDetailController()
-            detailVC.model = dataSource[indexPath.row].recorders[0]
+            detailVC.model = model.recorders[0]
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

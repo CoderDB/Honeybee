@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E1C0C811E76E5D800AF940E /* SetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */; };
 		1E1C0C831E76E88B00AF940E /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */; };
+		1E1C0C851E76FC8200AF940E /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C841E76FC8200AF940E /* MainDataSource.swift */; };
 		1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */; };
 		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
@@ -123,6 +124,7 @@
 /* Begin PBXFileReference section */
 		1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupDataSource.swift; sourceTree = "<group>"; };
 		1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
+		1E1C0C841E76FC8200AF940E /* MainDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddDataSource.swift; sourceTree = "<group>"; };
 		1EA5F0611E754DD300E90E7A /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.release.xcconfig"; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
+				1E1C0C841E76FC8200AF940E /* MainDataSource.swift */,
 				86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */,
 				86F6C85F1E4F2791002016DB /* GroupCell.swift */,
 				86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */,
@@ -942,6 +945,7 @@
 				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
+				1E1C0C851E76FC8200AF940E /* MainDataSource.swift in Sources */,
 				86BDA6A81E7140EC00AEFBC4 /* CardSectionHeader.swift in Sources */,
 				8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */,
 				860EF5831E601768009C2D31 /* IconManagerCell.swift in Sources */,
