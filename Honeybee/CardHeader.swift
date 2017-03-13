@@ -16,7 +16,6 @@ class CardHeader: BaseHeader {
         let label = UILabel()
         label.textColor = .white
         label.font = HB.Font.h3
-        label.text = "未填写"
         return label
     }()
     lazy var numberLabel: UILabel = {
@@ -24,7 +23,7 @@ class CardHeader: BaseHeader {
         label.textColor = .white
         label.textAlignment = .right
         label.font = HB.Font.h2_number
-        label.text = "98765.39"
+        label.text = "0"
         return label
     }()
     
