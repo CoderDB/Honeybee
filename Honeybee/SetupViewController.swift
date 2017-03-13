@@ -10,7 +10,7 @@ import UIKit
 
 class SetupViewController: BaseTableViewController {
     
-    var dataSource = [SetupItem]()
+    var dataSource: SetupDataSource!
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("设置")
@@ -20,9 +20,8 @@ class SetupViewController: BaseTableViewController {
         let item1 = SetupItem(title: "记账提醒", subTitle: "每天\n10:00")
         let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
         let item3 = SetupImageItem(title: "头像", subTitle: "")
-        dataSource.append(item1)
-        dataSource.append(item2)
-        dataSource.append(item3)
+        dataSource = SetupDataSource(items: [item1, item2, item3])
+        tableView.dataSource = dataSource
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,14 +45,6 @@ extension SetupViewController {
 
 // MARK: UITableViewDataSource
 extension SetupViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)") as! SetupCell
-        cell.item = dataSource[indexPath.row]
-        return cell
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("----\(indexPath.row)")
         

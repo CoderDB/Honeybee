@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1C0C811E76E5D800AF940E /* SetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */; };
 		1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */; };
 		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
@@ -119,6 +120,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupDataSource.swift; sourceTree = "<group>"; };
 		1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddDataSource.swift; sourceTree = "<group>"; };
 		1EA5F0611E754DD300E90E7A /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.release.xcconfig"; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
+				1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */,
 				86D1702C1E51BA560004E192 /* SetupHeader.swift */,
 				86D170421E51EAB70004E192 /* SetupFooter.swift */,
 				86D170301E51C4790004E192 /* SetupCell.swift */,
@@ -939,6 +942,7 @@
 				8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */,
 				860EF5831E601768009C2D31 /* IconManagerCell.swift in Sources */,
 				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
+				1E1C0C811E76E5D800AF940E /* SetupDataSource.swift in Sources */,
 				865B2F671E7171AF00719008 /* CardDataSource.swift in Sources */,
 				861B1EC51E703AAA009BBF48 /* KindDetailHeader.swift in Sources */,
 				861B1EC31E703A8D009BBF48 /* KindDetailController.swift in Sources */,
