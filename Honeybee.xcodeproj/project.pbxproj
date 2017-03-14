@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1BA4981E781F5500CD2ABF /* PieDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BA4971E781F5500CD2ABF /* PieDataSource.swift */; };
 		1E1C0C811E76E5D800AF940E /* SetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */; };
 		1E1C0C831E76E88B00AF940E /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */; };
 		1E1C0C851E76FC8200AF940E /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C841E76FC8200AF940E /* MainDataSource.swift */; };
@@ -124,6 +125,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E1BA4971E781F5500CD2ABF /* PieDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieDataSource.swift; sourceTree = "<group>"; };
 		1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupDataSource.swift; sourceTree = "<group>"; };
 		1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
 		1E1C0C841E76FC8200AF940E /* MainDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				86FC4EC51E1112B10048E183 /* PieViewController.swift */,
+				1E1BA4971E781F5500CD2ABF /* PieDataSource.swift */,
 				8697CEDD1E5D9E4100993CFE /* PieCell.swift */,
 				86BA1BA71E5C4BF700669580 /* PieHeader.swift */,
 			);
@@ -964,6 +967,7 @@
 				1E4219191E78110900274D59 /* BarDataSource.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
+				1E1BA4981E781F5500CD2ABF /* PieDataSource.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
 				8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */,
