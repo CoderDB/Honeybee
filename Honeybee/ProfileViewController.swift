@@ -33,7 +33,7 @@ class ProfileViewController: BaseTableViewController {
         tableView.tableHeaderView = ProfileHeader(height: 135)
     }
     
-    override func navRightItemClicked() {
+    override func navRightItemClicked(_ btn: UIButton) {
         
     }
     

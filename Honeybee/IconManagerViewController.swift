@@ -59,7 +59,7 @@ extension IconManagerViewController {
         }
     }
     
-    override func navRightItemClicked() {
+    override func navRightItemClicked(_ btn: UIButton) {
         navigationController?.pushViewController(IconAddViewController(), animated: true)
     }
 }

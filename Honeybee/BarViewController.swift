@@ -10,33 +10,27 @@ import UIKit
 
 class BarViewController: BaseTableViewController {
     
-    var dataSource = [SetupItem]()
+    var dataSource: BarDataSource! //= [SetupItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let item1 = SetupArrowItem(title: "衣", subTitle: "-28510")
-        let item2 = SetupArrowItem(title: "食", subTitle: "-30")
-        let item3 = SetupArrowItem(title: "住", subTitle: "-1096.56")
-        let item4 = SetupArrowItem(title: "行", subTitle: "-7782.30")
-        dataSource.append(item1)
-        dataSource.append(item2)
-        dataSource.append(item3)
-        dataSource.append(item4)
-        
         tableView.register(BarCell.self)
         tableView.tableHeaderView = BarHeader(height: 170)
         
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 25))
-        btn.setImage(UIImage(named: "calendar"), for: .normal)
-//        btn.setTitle("选择", for: .normal)
-//        btn.setTitleColor(HB.Color.nav, for: .normal)
-//        btn.titleLabel?.font = HB.Font.h5
-        btn.addTarget(self, action: #selector(navRightItemClicked(_:)), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        setNavRightItem("筛选")
+        fetchData()
+        
+//        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 25))
+//        btn.setImage(UIImage(named: "calendar"), for: .normal)
+////        btn.setTitle("选择", for: .normal)
+////        btn.setTitleColor(HB.Color.nav, for: .normal)
+////        btn.titleLabel?.font = HB.Font.h5
+//        btn.addTarget(self, action: #selector(navRightItemClicked(_:)), for: .touchUpInside)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }
     
-    func navRightItemClicked(_ btn: UIButton) {
+    override func navRightItemClicked(_ btn: UIButton) {
         let destVC = BarPopoverViewController()
         destVC.modalPresentationStyle = .popover
         let popoverVC = destVC.popoverPresentationController!
@@ -50,6 +44,15 @@ class BarViewController: BaseTableViewController {
         }
         present(destVC, animated: true, completion: nil)
     }
+    
+    func fetchData() {
+        let item1 = SetupArrowItem(title: "衣", subTitle: "-28510")
+        let item2 = SetupArrowItem(title: "食", subTitle: "-30")
+        let item3 = SetupArrowItem(title: "住", subTitle: "-1096.56")
+        let item4 = SetupArrowItem(title: "行", subTitle: "-7782.30")
+        dataSource = BarDataSource(items: [item1, item2, item3, item4])
+        tableView.dataSource = dataSource
+    }
 }
 // MARK: UIPopoverPresentationControllerDelegate
 extension BarViewController: UIPopoverPresentationControllerDelegate {
@@ -58,16 +61,8 @@ extension BarViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: UITableViewDelegate
 extension BarViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(BarCell.self)") as! BarCell
-        cell.item = dataSource[indexPath.row]
-        return cell
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(RecordDetailController(), animated: true)
     }
