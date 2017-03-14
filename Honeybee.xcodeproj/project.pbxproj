@@ -11,6 +11,7 @@
 		1E1C0C831E76E88B00AF940E /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */; };
 		1E1C0C851E76FC8200AF940E /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C841E76FC8200AF940E /* MainDataSource.swift */; };
 		1E1C0C871E77018400AF940E /* GroupCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C0C861E77018400AF940E /* GroupCellDataSource.swift */; };
+		1E4219191E78110900274D59 /* BarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4219181E78110900274D59 /* BarDataSource.swift */; };
 		1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */; };
 		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
@@ -127,6 +128,7 @@
 		1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
 		1E1C0C841E76FC8200AF940E /* MainDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		1E1C0C861E77018400AF940E /* GroupCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCellDataSource.swift; sourceTree = "<group>"; };
+		1E4219181E78110900274D59 /* BarDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarDataSource.swift; sourceTree = "<group>"; };
 		1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddDataSource.swift; sourceTree = "<group>"; };
 		1EA5F0611E754DD300E90E7A /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		243904903840541E18B9742B /* Pods-Honeybee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.release.xcconfig"; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				8697CEDF1E5DA1D700993CFE /* BarViewController.swift */,
+				1E4219181E78110900274D59 /* BarDataSource.swift */,
 				86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */,
 				8697CEEA1E5DADED00993CFE /* BarCell.swift */,
 				8697CEE81E5DA9D900993CFE /* BarHeader.swift */,
@@ -958,6 +961,7 @@
 				865B2F671E7171AF00719008 /* CardDataSource.swift in Sources */,
 				861B1EC51E703AAA009BBF48 /* KindDetailHeader.swift in Sources */,
 				861B1EC31E703A8D009BBF48 /* KindDetailController.swift in Sources */,
+				1E4219191E78110900274D59 /* BarDataSource.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,

@@ -30,7 +30,7 @@ class KindViewController: BaseCollectionViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
         collectionView.register(KindCell.self)
     }
-    override func navRightItemClicked() {
+    override func navRightItemClicked(_ btn: UIButton) {
         navigationController?.pushViewController(KindAddViewController(), animated: true)
     }
     func fetchData() {

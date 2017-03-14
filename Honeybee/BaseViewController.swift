@@ -42,7 +42,7 @@ class BaseViewController: UIViewController {
 //        btn.titleLabel?.adjustsFontSizeToFitWidth = true
 //        btn.titleLabel?.minimumScaleFactor = 0.8
         btn.contentHorizontalAlignment = .right
-        btn.addTarget(self, action: #selector(navRightItemClicked), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(navRightItemClicked(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
 //        navRightItemAction = action
     }
@@ -50,7 +50,7 @@ class BaseViewController: UIViewController {
 //    @objc private func navRightItemClicked() {
 //        navRightItemAction?()
 //    }
-    func navRightItemClicked() {
+    func navRightItemClicked(_ btn: UIButton) {
     }
 
 }
