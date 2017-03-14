@@ -35,7 +35,7 @@ extension MainDataSource: UITableViewDataSource {
         if model.style == "group" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             //            cell.delegate = self
-            //            cell.dataSource = dataSource[indexPath.row].recorders
+                        cell.dataSource = items[indexPath.row].recorders
             tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
             return cell
         } else {
