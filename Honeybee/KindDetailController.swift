@@ -86,8 +86,7 @@ extension KindDetailController: HoneybeeViewsProtocol {
     }
     func addTipView() {
         let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
-        let label = tipLabel(text: "长 按 可 删 除", frame: frame)
-        view.addSubview(label)
+        tipLabel(text: "长 按 可 删 除", frame: frame)
     }
 }
 
