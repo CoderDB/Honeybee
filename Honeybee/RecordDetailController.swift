@@ -87,35 +87,5 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
 //    var cancel: (() -> ())?
 //}
 
-protocol AlertProvider {}
-extension AlertProvider where Self: UIViewController {
-    
-//    func showAlert(msg: AlertMessage = AlertMessage(title: "", message: "", okText: "", cancelText: "", ok: {}, cancel: {})) {
-//        let alert = UIAlertController(title: msg.title!, message: msg.message, preferredStyle: .alert)
-//        
-//        let okAction = UIAlertAction(title: msg.okText, style: .default) { (_) in
-//            msg.ok()
-//        }
-//        let cancelAction = UIAlertAction(title: msg.cancelText, style: .cancel) { (_) in
-//            msg.cancel?()
-//        }
-//        alert.addAction(okAction)
-//        alert.addAction(cancelAction)
-//        present(alert, animated: true, completion: nil)
-//    }
-    
-    func showAlert(title: String? = "确定?", message: String, ok: @escaping () -> (), cancel: (() -> ())? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
-            ok()
-        }
-        let cancelAction = UIAlertAction(title: "算了！", style: .cancel) { (_) in
-            cancel?()
-        }
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-    }
-}
 
 

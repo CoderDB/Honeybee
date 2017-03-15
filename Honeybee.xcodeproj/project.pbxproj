@@ -99,6 +99,7 @@
 		86DF8AE71E642CDD0054152E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE61E642CDD0054152E /* DateExtension.swift */; };
 		86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE81E6452600054152E /* UITableViewExtension.swift */; };
 		86E694FF1E7974B700CBD894 /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 86E694FE1E7974B700CBD894 /* recorder.json */; };
+		86E695011E797CB800CBD894 /* UI-Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E695001E797CB800CBD894 /* UI-Protocol.swift */; };
 		86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */; };
 		86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85F1E4F2791002016DB /* GroupCell.swift */; };
 		86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */; };
@@ -228,6 +229,7 @@
 		86DF8AE61E642CDD0054152E /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		86DF8AE81E6452600054152E /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		86E694FE1E7974B700CBD894 /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
+		86E695001E797CB800CBD894 /* UI-Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UI-Protocol.swift"; sourceTree = "<group>"; };
 		86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordLiteCell.swift; sourceTree = "<group>"; };
 		86F6C85F1E4F2791002016DB /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailController.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 		86E574701E4C6EBC001255CD /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				86E695001E797CB800CBD894 /* UI-Protocol.swift */,
 				8689157D1DF990D20035CFD3 /* Extension.swift */,
 				86DF8AE61E642CDD0054152E /* DateExtension.swift */,
 				86DF8AE41E6405AB0054152E /* UIColorExtension.swift */,
@@ -921,6 +924,7 @@
 				866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */,
+				86E695011E797CB800CBD894 /* UI-Protocol.swift in Sources */,
 				868C3F701E72928300D5443D /* KindAddItemCell.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
 				8697CEE31E5DA2AE00993CFE /* BaseTableViewController.swift in Sources */,

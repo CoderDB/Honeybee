@@ -22,8 +22,7 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol
         addHeader()
         addCollectionView()
         let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 200)
-        let label = tipLabel(text: "选 择 一 种 颜 色", frame: frame)
-        view.addSubview(label)
+        tipLabel(text: "选 择 一 种 颜 色", frame: frame)
         
         fetchData()
     }
