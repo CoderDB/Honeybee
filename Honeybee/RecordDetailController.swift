@@ -9,7 +9,7 @@
 import UIKit
 
 
-class RecordDetailController: BaseTableViewController {
+class RecordDetailController: BaseTableViewController, AlertProvider {
     
     
     var model: RLMRecorder!
@@ -38,9 +38,51 @@ class RecordDetailController: BaseTableViewController {
         tableView.contentInset.bottom = 100
         let header = RecordDetailHeader(height: 115, title: model.category, imageName: "meal", color: model.color)
         tableView.tableHeaderView = header // 这样设置的 header 宽度一定是tableview 的宽度
-        tableView.tableFooterView = RecordDetailFooter(height: 50)
+        let footer = RecordDetailFooter(height: 50)
+        tableView.tableFooterView = footer
+        footer.deleteAction = { [unowned self] in
+            self.showAlert(message: "你牛！你要删我能拦得住你嘛。", ok: {
+                print("ok")
+            }, cancel: { 
+                 print("cancel")
+            })
+
+//            self.showAlert(message: "你牛！你要删我能拦得住你嘛。")
+//            DatabaseManager.manager.delete(model: self.model)
+//            _ = self.navigationController?.popViewController(animated: true)
+        }
         
         tableView.register(RecordDetailCell.self)
     }
+    
+//    func showAlert(title: String? = "确定?", message: String) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+//            
+//        }
+//        let cancelAction = UIAlertAction(title: "算了！", style: .cancel) { (_) in
+//        }
+//        alert.addAction(okAction)
+//        alert.addAction(cancelAction)
+//        present(alert, animated: true, completion: nil)
+//    }
 }
+
+protocol AlertProvider {}
+extension AlertProvider where Self: UIViewController {
+    func showAlert(title: String? = "确定?", message: String, ok: @escaping () -> (), cancel: @escaping () -> ()) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+            ok()
+        }
+        let cancelAction = UIAlertAction(title: "算了！", style: .cancel) { (_) in
+            cancel()
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
 
