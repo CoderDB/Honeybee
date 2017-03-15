@@ -46,6 +46,11 @@ class DatabaseManager: NSObject {
     func allData() -> Results<RLMRecorderSuper> {
         return realm.objects(RLMRecorderSuper.self)
     }
+    func notification(_ block: @escaping () -> ()) {
+        let _ = realm.addNotificationBlock { (noti, realm) in
+            block()
+        }
+    }
 }
 
 

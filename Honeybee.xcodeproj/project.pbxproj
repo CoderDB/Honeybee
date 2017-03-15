@@ -44,7 +44,7 @@
 		8638A9BB1DE56CB9002369F9 /* HoneybeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9BA1DE56CB9002369F9 /* HoneybeeTests.swift */; };
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
 		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
-		864D25121E6312240005894A /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorder.json */; };
+		864D25121E6312240005894A /* recorders_new.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorders_new.json */; };
 		865B2F651E71632300719008 /* KindDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F641E71632300719008 /* KindDataSource.swift */; };
 		865B2F671E7171AF00719008 /* CardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F661E7171AF00719008 /* CardDataSource.swift */; };
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
@@ -98,6 +98,7 @@
 		86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE41E6405AB0054152E /* UIColorExtension.swift */; };
 		86DF8AE71E642CDD0054152E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE61E642CDD0054152E /* DateExtension.swift */; };
 		86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE81E6452600054152E /* UITableViewExtension.swift */; };
+		86E694FF1E7974B700CBD894 /* recorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 86E694FE1E7974B700CBD894 /* recorder.json */; };
 		86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */; };
 		86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C85F1E4F2791002016DB /* GroupCell.swift */; };
 		86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */; };
@@ -172,7 +173,7 @@
 		8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneybeeUITests.swift; sourceTree = "<group>"; };
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
-		864D25111E6312240005894A /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
+		864D25111E6312240005894A /* recorders_new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorders_new.json; sourceTree = "<group>"; };
 		865B2F641E71632300719008 /* KindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDataSource.swift; sourceTree = "<group>"; };
 		865B2F661E7171AF00719008 /* CardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDataSource.swift; sourceTree = "<group>"; };
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 		86DF8AE41E6405AB0054152E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		86DF8AE61E642CDD0054152E /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		86DF8AE81E6452600054152E /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		86E694FE1E7974B700CBD894 /* recorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorder.json; sourceTree = "<group>"; };
 		86F6C85D1E4F1C63002016DB /* RecordLiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordLiteCell.swift; sourceTree = "<group>"; };
 		86F6C85F1E4F2791002016DB /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailController.swift; sourceTree = "<group>"; };
@@ -282,7 +284,8 @@
 				1EA5F0611E754DD300E90E7A /* colors.json */,
 				868C3F711E72A09D00D5443D /* icons.json */,
 				866C562D1E6D78DB00010D3F /* category_color.json */,
-				864D25111E6312240005894A /* recorder.json */,
+				864D25111E6312240005894A /* recorders_new.json */,
+				86E694FE1E7974B700CBD894 /* recorder.json */,
 				861544481E4DAA1E00A6EEBD /* Silom.ttf */,
 			);
 			name = Source;
@@ -737,9 +740,10 @@
 				868C3F721E72A09D00D5443D /* icons.json in Resources */,
 				866C562E1E6D78DB00010D3F /* category_color.json in Resources */,
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
+				86E694FF1E7974B700CBD894 /* recorder.json in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
 				861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */,
-				864D25121E6312240005894A /* recorder.json in Resources */,
+				864D25121E6312240005894A /* recorders_new.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
