@@ -49,9 +49,10 @@ class RecordDetailFooter: UIView {
             make.top.bottom.equalTo(self)
         }
     }
-    
+    var deleteAction: (() -> ())?
     func buttonClicked() {
         print("----buttonClicked")
+        deleteAction?()
     }
         
 

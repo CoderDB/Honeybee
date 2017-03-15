@@ -44,7 +44,6 @@ class MainViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
@@ -174,7 +173,9 @@ extension MainViewController {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            cell.recorder = dataSource[indexPath.row].recorders[0]
+            if !dataSource[indexPath.row].recorders.isEmpty {
+                cell.recorder = dataSource[indexPath.row].recorders[0]
+            }
             return cell
         }
     }
