@@ -19,13 +19,7 @@ class MainViewController: BaseTableViewController {
             tableView.reloadData()
         }
     }
-        
-//        : Results<RLMRecorderSuper>! {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-    
+
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
@@ -56,26 +50,25 @@ class MainViewController: BaseTableViewController {
         fetchData()
     }
     
-    func resuest() -> List<RLMRecorderSuper> {
-        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
-        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
-
-        let superRecorders = List<RLMRecorderSuper>()
-        for json in jsonDic {
-            let recorder = Mapper<RLMRecorderSuper>().map(JSON: json)
-            superRecorders.append(recorder!)
-            
-            DatabaseManager.manager.add(model: recorder!)
-        }
-        return superRecorders
-    }
-    
+//    func resuest() -> List<RLMRecorderSuper> {
+//        let path = Bundle.main.path(forResource: "recorder", ofType: "json")
+//        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+//        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+//        let jsonDic = jsonObj["recorders"] as! [[String: Any]]
+//
+//        let superRecorders = List<RLMRecorderSuper>()
+//        for json in jsonDic {
+//            let recorder = Mapper<RLMRecorderSuper>().map(JSON: json)
+//            superRecorders.append(recorder!)
+//            
+//            DatabaseManager.manager.add(model: recorder!)
+//        }
+//        return superRecorders
+//    }
     
     func fetchData() {
         let data = DatabaseManager.manager.allData()
-        dataSource = MainDataSource(items: data)
+        dataSource = MainDataSource(items: data, vc: self)
         tableView.dataSource = dataSource
     }
     
@@ -162,7 +155,6 @@ extension MainViewController {
 
 // MARK: UITableViewDelegate
 extension MainViewController {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource.items[indexPath.row]
         
@@ -174,11 +166,4 @@ extension MainViewController {
     }
 }
 
-extension MainViewController: GroupCellDelegate {
-    func didSelected(model: RLMRecorder) {
-        let detailVC = RecordDetailController()
-        detailVC.model = model
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
-}
 
