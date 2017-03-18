@@ -45,6 +45,7 @@
 		8638A9C61DE56CB9002369F9 /* HoneybeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9C51DE56CB9002369F9 /* HoneybeeUITests.swift */; };
 		864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D250D1E62F1A60005894A /* RecorderViewModel.swift */; };
 		864D25121E6312240005894A /* recorders_new.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorders_new.json */; };
+		865184D51E7D6D3600EE940E /* MianPopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865184D41E7D6D3600EE940E /* MianPopController.swift */; };
 		865B2F651E71632300719008 /* KindDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F641E71632300719008 /* KindDataSource.swift */; };
 		865B2F671E7171AF00719008 /* CardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F661E7171AF00719008 /* CardDataSource.swift */; };
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
@@ -175,6 +176,7 @@
 		8638A9C71DE56CB9002369F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864D250D1E62F1A60005894A /* RecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
 		864D25111E6312240005894A /* recorders_new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorders_new.json; sourceTree = "<group>"; };
+		865184D41E7D6D3600EE940E /* MianPopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MianPopController.swift; sourceTree = "<group>"; };
 		865B2F641E71632300719008 /* KindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDataSource.swift; sourceTree = "<group>"; };
 		865B2F661E7171AF00719008 /* CardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDataSource.swift; sourceTree = "<group>"; };
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
+				865184D41E7D6D3600EE940E /* MianPopController.swift */,
 				1E1C0C841E76FC8200AF940E /* MainDataSource.swift */,
 				86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */,
 				86F6C85F1E4F2791002016DB /* GroupCell.swift */,
@@ -959,6 +962,7 @@
 				860EF5811E60150B009C2D31 /* IconManagerSectionHeader.swift in Sources */,
 				866C91321E6E80D3003026DD /* KindViewController.swift in Sources */,
 				86BDA6AE1E714B3F00AEFBC4 /* KindDetailDataSource.swift in Sources */,
+				865184D51E7D6D3600EE940E /* MianPopController.swift in Sources */,
 				866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */,
 				86B984141E61609500CCB450 /* IconAddViewController.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
