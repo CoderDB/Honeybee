@@ -51,6 +51,11 @@ class DatabaseManager: NSObject {
             block()
         }
     }
+    
+    
+    func isContain(date: String) -> Bool {
+        return allData().contains { $0.yearMonthDay == date }
+    }
 }
 
 

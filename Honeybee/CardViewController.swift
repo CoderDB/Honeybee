@@ -155,6 +155,9 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         dataToWrite["remark"] = "remark"
         
         let model = RLMRecorderSuper(JSON: ["style": "plain", "recorders": [dataToWrite]])
+        if DatabaseManager.manager.isContain(date: "2017-03-16") {
+            model?.style = "group"
+        }
         DatabaseManager.manager.add(model: model!)
         
         header.numberLabel.text = "0"
