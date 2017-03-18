@@ -10,6 +10,7 @@ import UIKit
 
 class CardViewController: BaseCollectionViewController {
 
+    var shouldReloadData: (() -> Void)?
     
     ///
     var dataToWrite: [String: Any] = [:]
@@ -58,7 +59,9 @@ extension CardViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }
     func navLeftItemAction() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) { [weak self] in
+            self?.shouldReloadData?()
+        }
     }
     func addResultView() {
         header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
