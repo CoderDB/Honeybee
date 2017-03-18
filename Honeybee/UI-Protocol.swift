@@ -38,8 +38,8 @@ extension AlertProvider where Self: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showTextField(title: String, message: String, textField: @escaping (UITextField) -> Void, ok: @escaping () -> (), cancel: (() -> ())? = nil) {
-        let alert = UIAlertController(title: "设置标题", message: "不能超过四个字", preferredStyle: .alert)
+    func showTextField(title: String? = nil, message: String? = nil, textField: @escaping (UITextField) -> Void, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addTextField { (tf) in
             textField(tf)
         }

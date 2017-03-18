@@ -111,13 +111,9 @@ extension CardViewController {
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > lastOffsetY {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.hb_keyboard.transform = CGAffineTransform(translationX: 0, y: 220)
-            })
+            self.hb_keyboard.down()
         } else {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.hb_keyboard.transform = CGAffineTransform.identity
-            })
+            self.hb_keyboard.up()
         }
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -139,7 +135,7 @@ extension CardViewController {
 
 // MARK: HBKeyboardProtocol
 
-extension CardViewController: HBKeyboardProtocol {
+extension CardViewController: HBKeyboardProtocol, AlertProvider {
     // result
     func inputing(text: String) {
         header.numberLabel.text = text
@@ -170,5 +166,17 @@ extension CardViewController: HBKeyboardProtocol {
     }
     func callCamera() {
         print("---call camera")
+    }
+    func remarkBtnAction() {
+        hb_keyboard.down()
+        
+        showTextField(title: "备注", textField: { (tf) in
+            
+        }, ok: { [unowned self] in
+            self.hb_keyboard.up()
+            
+        }, cancel: { [unowned self] in
+            self.hb_keyboard.up()
+        })
     }
 }
