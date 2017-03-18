@@ -11,6 +11,7 @@ import SnapKit
 
 protocol HBKeyboardProtocol: CalculateViewProtocol, DateViewProtocol {
     func callCamera()
+    func remarkBtnAction()
 }
 
 class HBKeyboard: UIView {
@@ -54,7 +55,20 @@ class HBKeyboard: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    func down() {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            if let strongSelf = self {
+                strongSelf.transform = CGAffineTransform(translationX: 0, y: 220)
+            }
+        })
+    }
+    func up() {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            if let strongSelf = self {
+                strongSelf.transform = .identity
+            }
+        })
+    }
     
     private func createButton(imageName: String, sel: Selector) -> UIButton {
         let btn = UIButton()
@@ -111,13 +125,12 @@ class HBKeyboard: UIView {
     
     
     @objc private func remarkBtnClicked() {
-        print("--remark")
+        delegate?.remarkBtnAction()
     }
     @objc private func dateBtnClicked() {
         scrollView.setContentOffset(CGPoint(x: HB.Screen.w-20, y: 0), animated: true)
     }
     @objc private func cameraBtnClicked() {
-        print("cameraBtnClick")
         delegate?.callCamera()
     }
     
