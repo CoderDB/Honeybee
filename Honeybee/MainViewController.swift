@@ -14,11 +14,17 @@ import ObjectMapper
 
 class MainViewController: BaseTableViewController {
     
-    var dataSource: Results<RLMRecorderSuper>! {
+    var dataSource: MainDataSource! {
         didSet {
             tableView.reloadData()
         }
     }
+        
+//        : Results<RLMRecorderSuper>! {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
     
     lazy var destVC: UIViewController = {
         let vc = UIViewController()
@@ -68,13 +74,11 @@ class MainViewController: BaseTableViewController {
     
     
     func fetchData() {
-        dataSource = DatabaseManager.manager.allData()
+        let data = DatabaseManager.manager.allData()
+        dataSource = MainDataSource(items: data)
+        tableView.dataSource = dataSource
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -156,38 +160,15 @@ extension MainViewController {
 }
 
 
-// MARK: UITableViewDatasource
+// MARK: UITableViewDelegate
 extension MainViewController {
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let dataSource = dataSource else {
-            return 0
-        }
-        return dataSource.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = dataSource[indexPath.row]
-        if model.style == "group" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
-            cell.delegate = self
-            cell.dataSource = dataSource[indexPath.row].recorders
-            tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
-            return cell
-        } else {
-            tableView.estimatedRowHeight = 75
-            tableView.rowHeight = UITableViewAutomaticDimension
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            if !dataSource[indexPath.row].recorders.isEmpty {
-                cell.recorder = dataSource[indexPath.row].recorders[0]
-            }
-            return cell
-        }
-    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = dataSource[indexPath.row]
+        let model = dataSource.items[indexPath.row]
+        
         if model.style != "group" {
             let detailVC = RecordDetailController()
-            detailVC.model = dataSource[indexPath.row].recorders[0]
+            detailVC.model = model.recorders[0]
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

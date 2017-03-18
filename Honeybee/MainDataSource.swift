@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class MainDataSource: NSObject {
+    
     var items: Results<RLMRecorderSuper>
     
     init(items: Results<RLMRecorderSuper>) {
@@ -34,8 +35,8 @@ extension MainDataSource: UITableViewDataSource {
         let model = items[indexPath.row]
         if model.style == "group" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
-            //            cell.delegate = self
-                        cell.dataSource = items[indexPath.row].recorders
+//            cell.delegate = self
+            cell.dataSource = items[indexPath.row].recorders
             tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
             return cell
         } else {
