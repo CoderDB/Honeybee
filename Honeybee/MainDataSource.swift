@@ -12,9 +12,10 @@ import RealmSwift
 class MainDataSource: NSObject {
     
     var items: Results<RLMRecorderSuper>
-    
-    init(items: Results<RLMRecorderSuper>) {
+    fileprivate var vc: UIViewController
+    init(items: Results<RLMRecorderSuper>, vc: UIViewController) {
         self.items = items
+        self.vc = vc
     }
     func item(at indexPath: IndexPath) -> RLMRecorderSuper {
         return items[indexPath.row]
@@ -35,7 +36,7 @@ extension MainDataSource: UITableViewDataSource {
         let model = items[indexPath.row]
         if model.style == "group" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
-//            cell.delegate = self
+            cell.delegate = self
             cell.dataSource = items[indexPath.row].recorders
             tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
             return cell
@@ -47,5 +48,12 @@ extension MainDataSource: UITableViewDataSource {
             return cell
         }
     }
-    
+}
+
+extension MainDataSource: GroupCellDelegate {
+    func didSelected(model: RLMRecorder) {
+        let detailVC = RecordDetailController()
+        detailVC.model = model
+        vc.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
