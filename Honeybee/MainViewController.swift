@@ -47,8 +47,7 @@ class MainViewController: BaseTableViewController {
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
         addAddBtn()
-//        resuest()
-        dataSource = fetchData()
+        fetchData()
     }
     
     func resuest() -> List<RLMRecorderSuper> {
@@ -68,8 +67,8 @@ class MainViewController: BaseTableViewController {
     }
     
     
-    func fetchData() -> Results<RLMRecorderSuper> {
-        return DatabaseManager.manager.allData()
+    func fetchData() {
+        dataSource = DatabaseManager.manager.allData()
     }
     
     
@@ -146,7 +145,12 @@ extension MainViewController {
         view.addSubview(addBtn)
     }
     func addBtnClicked() {
-        let nav = UINavigationController(rootViewController: CardViewController())
+        let vc = CardViewController()
+        vc.shouldReloadData = { [unowned self] in
+            self.fetchData()
+        }
+        
+        let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true, completion: nil)
     }
 }
