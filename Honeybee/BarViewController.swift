@@ -24,7 +24,7 @@ class BarViewController: BaseTableViewController {
     }
     
     override func navRightItemClicked(_ btn: UIButton) {
-        let destVC = BarPopoverViewController()
+        let destVC = BarPopoverController()
         destVC.modalPresentationStyle = .popover
         let popoverVC = destVC.popoverPresentationController!
         popoverVC.backgroundColor = .white

@@ -42,26 +42,9 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
         let footer = RecordDetailFooter(height: 50)
         tableView.tableFooterView = footer
         footer.deleteAction = { [unowned self] in
-//            self.showAlert(msg: AlertMessage(title: "确定", message: "哈哈哈", okText: "OK", cancelText: "Can", ok: {
-//                
-//            }, cancel: nil))
-//            self.showAlert(msg:
-//                AlertMessage(
-//                    title: "",
-//                    message: "",
-//                    okText: "",
-//                    cancelText: "",
-//                    ok: { },
-//                    cancel: {})
-//            )
             self.showAlert(message: "你牛！你要删我能拦得住你嘛。", ok: { [unowned self] in
                 self.delete()
             }, cancel: nil)
-//            self.showAlert(message: "你牛！你要删我能拦得住你嘛。", ok: { [unowned self] in
-//                self.delete()
-//            }, cancel: {
-//                 print("cancel")
-//            })
         }
         
         tableView.register(RecordDetailCell.self)
