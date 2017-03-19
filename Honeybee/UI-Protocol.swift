@@ -25,7 +25,7 @@ extension AlertProvider where Self: UIViewController {
     //        present(alert, animated: true, completion: nil)
     //    }
     
-    func showAlert(title: String? = "确定?", message: String, ok: @escaping () -> (), cancel: (() -> ())? = nil) {
+    func showAlert(title: String? = "确定?", message: String, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
             ok()
@@ -39,7 +39,7 @@ extension AlertProvider where Self: UIViewController {
     }
     
     func showTextField(title: String? = nil, message: String? = nil, textField: @escaping (UITextField) -> Void, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { (tf) in
             textField(tf)
         }

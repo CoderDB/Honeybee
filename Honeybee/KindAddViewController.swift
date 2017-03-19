@@ -9,7 +9,7 @@
 import UIKit
 
 
-class KindAddViewController: BaseCollectionViewController, HoneybeeViewProvider {
+class KindAddViewController: BaseCollectionViewController, HoneybeeViewProvider, AlertProvider {
 
     
     var dataSource: KindAddDataSource!
@@ -38,6 +38,13 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewProvider 
     func addHeader() {
         header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
         view.addSubview(header)
+        header.rightButtonAction = { [unowned self] _ in
+            self.showTextField(title: "设置类名", message: "不能超过四个字", textField: { (tf) in
+                
+            }, ok: {
+                
+            })
+        }
     }
     func fetchData() {
         dataSource = KindAddDataSource()
