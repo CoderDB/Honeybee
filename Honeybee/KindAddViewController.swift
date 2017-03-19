@@ -9,7 +9,7 @@
 import UIKit
 
 
-class KindAddViewController: BaseCollectionViewController, HoneybeeViewsProtocol {
+class KindAddViewController: BaseCollectionViewController, HoneybeeViewProvider {
 
     
     var dataSource: KindAddDataSource!
