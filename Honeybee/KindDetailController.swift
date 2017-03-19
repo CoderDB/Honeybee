@@ -37,7 +37,7 @@ class KindDetailController: BaseCollectionViewController {
 }
 
 // MARK: UI
-extension KindDetailController {
+extension KindDetailController: AlertProvider {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -83,6 +83,13 @@ extension KindDetailController {
         vc.kind = kind
         header.addNewItemAction = { [unowned self] in
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+        header.rightButtonAction = { [unowned self] _ in
+            self.showTextField(title: "设置类名", message: "不能超过四个字", textField: { (tf) in
+                
+            }, ok: {
+                
+            })
         }
     }
 }
