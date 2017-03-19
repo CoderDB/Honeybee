@@ -46,6 +46,36 @@ class DatabaseManager: NSObject {
     func allData() -> Results<RLMRecorderSuper> {
         return realm.objects(RLMRecorderSuper.self)
     }
+    
+    
+    func allPayout() -> [RLMRecorderSuper] {
+        var results: [RLMRecorderSuper] = []
+        let all = allData()
+        
+        for data in all {
+            for model in data.recorders {
+                if !model.isPay {
+                    results.append(data)
+                }
+            }
+        }
+        
+//        for model in all {
+//            let m = model.recorders.filter("isPay == true")
+//            
+//        }
+        
+
+        
+//        let allPay = all.map { $0.recorders.filter { $0.isPay == true } }
+        
+        
+        return results
+        
+    }
+    
+    
+    
     func notification(_ block: @escaping () -> ()) {
         let _ = realm.addNotificationBlock { (noti, realm) in
             block()

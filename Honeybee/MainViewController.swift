@@ -62,6 +62,10 @@ extension MainViewController {
         
         destVC.incomeBtnAction = {
             print("income")
+            let data = DatabaseManager.manager.allPayout()
+            print(data)
+            self.dataSource = MainDataSource(items: data, vc: self)
+            
         }
         destVC.expendBtnAction = {
             print("expend")
