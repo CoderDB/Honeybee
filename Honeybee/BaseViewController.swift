@@ -35,7 +35,7 @@ class BaseViewController: UIViewController {
 //            make.width.lessThanOrEqualTo(100)
 //            make.height.equalTo(25)
 //        }
-        btn.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
+        btn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(HB.Color.nav, for: .normal)
         btn.titleLabel?.font = HB.Font.h5

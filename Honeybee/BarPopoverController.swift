@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BarPopoverViewController: UITableViewController {
+class BarPopoverController: UITableViewController {
 
     var dataSource = [String]()
     

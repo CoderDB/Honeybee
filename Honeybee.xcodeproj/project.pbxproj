@@ -76,7 +76,7 @@
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
 		86AAAE691E727A10000669B4 /* KindAddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE681E727A10000669B4 /* KindAddItemController.swift */; };
 		86AAAE6B1E727A3A000669B4 /* KindAddItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */; };
-		86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */; };
+		86B685171E5F14B5003F6EDC /* BarPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
 		86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */; };
 		86BDA6A81E7140EC00AEFBC4 /* CardSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A71E7140EC00AEFBC4 /* CardSectionHeader.swift */; };
@@ -202,7 +202,7 @@
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		86AAAE681E727A10000669B4 /* KindAddItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemController.swift; sourceTree = "<group>"; };
 		86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemHeader.swift; sourceTree = "<group>"; };
-		86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverViewController.swift; sourceTree = "<group>"; };
+		86B685161E5F14B5003F6EDC /* BarPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
 		86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailCell.swift; sourceTree = "<group>"; };
 		86BDA6A71E7140EC00AEFBC4 /* CardSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSectionHeader.swift; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 			children = (
 				8697CEDF1E5DA1D700993CFE /* BarViewController.swift */,
 				1E4219181E78110900274D59 /* BarDataSource.swift */,
-				86B685161E5F14B5003F6EDC /* BarPopoverViewController.swift */,
+				86B685161E5F14B5003F6EDC /* BarPopoverController.swift */,
 				8697CEEA1E5DADED00993CFE /* BarCell.swift */,
 				8697CEE81E5DA9D900993CFE /* BarHeader.swift */,
 			);
@@ -959,7 +959,7 @@
 				862996311E6ACD5800494C74 /* NetworkManager.swift in Sources */,
 				866C913A1E6E9EA1003026DD /* KindAddCell.swift in Sources */,
 				866C91361E6E8A33003026DD /* KindAddViewController.swift in Sources */,
-				86B685171E5F14B5003F6EDC /* BarPopoverViewController.swift in Sources */,
+				86B685171E5F14B5003F6EDC /* BarPopoverController.swift in Sources */,
 				1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */,
 				861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
