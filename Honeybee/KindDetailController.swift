@@ -36,7 +36,8 @@ class KindDetailController: BaseCollectionViewController {
     }
 }
 
-extension KindDetailController: HoneybeeViewsProtocol {
+// MARK: UI
+extension KindDetailController {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -84,6 +85,11 @@ extension KindDetailController: HoneybeeViewsProtocol {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+}
+
+
+
+extension KindDetailController: HoneybeeViewProvider {
     func addTipView() {
         let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
         tipLabel(text: "长 按 可 删 除", frame: frame)

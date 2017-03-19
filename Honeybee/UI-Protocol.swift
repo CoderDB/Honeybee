@@ -56,8 +56,8 @@ extension AlertProvider where Self: UIViewController {
 }
 
 
-protocol HoneybeeViewsProtocol {}
-extension HoneybeeViewsProtocol where Self: UIViewController {
+protocol HoneybeeViewProvider {}
+extension HoneybeeViewProvider where Self: UIViewController {
     func tipLabel(text: String, frame: CGRect) {
         let label = UILabel()
         label.text = text

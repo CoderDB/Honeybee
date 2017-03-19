@@ -63,11 +63,10 @@ extension KindAddItemController: AlertProvider {
 
 // MARK: HoneybeeViewsProtocol
 
-extension KindAddItemController: HoneybeeViewsProtocol {
+extension KindAddItemController: HoneybeeViewProvider {
     func addTipView() {
         let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 260)
         tipLabel(text: "名 字 最 长 不 能 超 过 四 个 字", frame: frame)
-
     }
 }
 
