@@ -21,13 +21,6 @@ class BarViewController: BaseTableViewController {
         setNavRightItem("筛选")
         fetchData()
         
-//        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 25))
-//        btn.setImage(UIImage(named: "calendar"), for: .normal)
-////        btn.setTitle("选择", for: .normal)
-////        btn.setTitleColor(HB.Color.nav, for: .normal)
-////        btn.titleLabel?.font = HB.Font.h5
-//        btn.addTarget(self, action: #selector(navRightItemClicked(_:)), for: .touchUpInside)
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
     }
     
     override func navRightItemClicked(_ btn: UIButton) {
