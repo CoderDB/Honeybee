@@ -25,7 +25,7 @@ extension AlertProvider where Self: UIViewController {
     //        present(alert, animated: true, completion: nil)
     //    }
     
-    func showAlert(title: String? = "确定?", message: String, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
+    func showAlert(title: String? = "确定?", message: String?, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
             ok()
@@ -52,6 +52,10 @@ extension AlertProvider where Self: UIViewController {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func showWarning(message: String, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
+        showAlert(message: message, ok: ok, cancel: cancel)
     }
 }
 

@@ -29,15 +29,16 @@ class KindDetailController: BaseCollectionViewController {
         fetchData()
         
     }
-    
     func fetchData() {
         dataSource = KindDetailDataSource(items:kind.items!)
         collectionView.dataSource = dataSource
     }
 }
 
+
 // MARK: UI
-extension KindDetailController: AlertProvider {
+
+extension KindDetailController: AlertProvider, HoneybeeViewProvider {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -49,28 +50,6 @@ extension KindDetailController: AlertProvider {
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
     }
-    
-    func allCellEditing() {
-        dataSource = KindDetailDataSource(items: kind.items!, isEditing: true)
-        collectionView.dataSource = dataSource
-    }
-    func allCellEndEdit() {
-        dataSource = KindDetailDataSource(items: kind.items!, isEditing: false)
-        collectionView.dataSource = dataSource
-    }
-    
-    func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
-        switch gesture.state {
-        case .began:
-            allCellEditing()
-            header.deleteBtn.isSelected = true
-        case .ended:
-            collectionView.endInteractiveMovement()
-        default:
-            collectionView.cancelInteractiveMovement()
-        }
-    }
-    
     func addHeader() {
         header = KindDetailHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: 115))
         header.titleLabel.text = kind.name
@@ -96,18 +75,44 @@ extension KindDetailController: AlertProvider {
             })
         }
     }
-}
-
-
-
-extension KindDetailController: HoneybeeViewProvider {
     func addTipView() {
         let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
         tipLabel(text: "长 按 可 删 除", frame: frame)
     }
 }
 
+
+
+// MARK: long press to delete
+
+extension KindDetailController {
+    
+    func allCellEditing() {
+        dataSource = KindDetailDataSource(items: kind.items!, isEditing: true)
+        collectionView.dataSource = dataSource
+    }
+    func allCellEndEdit() {
+        dataSource = KindDetailDataSource(items: kind.items!, isEditing: false)
+        collectionView.dataSource = dataSource
+    }
+    func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            allCellEditing()
+            header.deleteBtn.isSelected = true
+            
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
+}
+
+
+
 // MARK: UICollectionViewDelegateFlowLayout
+
 extension KindDetailController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
