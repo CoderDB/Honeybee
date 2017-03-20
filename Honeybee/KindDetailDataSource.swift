@@ -10,10 +10,8 @@ import UIKit
 
 
 class KindDetailDataSource: DataSource {
-    var config: (UICollectionViewCell, Any) -> Void
     
-    init(items: [Any], config: @escaping (UICollectionViewCell, Any) -> Void) {
-        self.config = config
+    override init(items: [Any]) {
         super.init(items: items)
     }
 }
@@ -21,7 +19,9 @@ class KindDetailDataSource: DataSource {
 extension KindDetailDataSource {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath)
-        config(cell, items[indexPath.row])
+        if let cell = cell as? KindDetailCell, let model = items[indexPath.row] as? HoneybeeItem {
+            cell.configWith(model: model)
+        }
         return cell
     }
 }

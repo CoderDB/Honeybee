@@ -52,13 +52,13 @@ class DatabaseManager: NSObject {
         var results: [RLMRecorderSuper] = []
         let all = allData()
         
-        for data in all {
-            for model in data.recorders {
-                if !model.isPay {
-                    results.append(data)
-                }
-            }
-        }
+//        for data in all {
+//            for model in data.recorders {
+//                if !model.isPay {
+//                    results.append(data)
+//                }
+//            }
+//        }
         
 //        for model in all {
 //            let m = model.recorders.filter("isPay == true")
