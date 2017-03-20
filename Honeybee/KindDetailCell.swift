@@ -21,11 +21,18 @@ class KindDetailCell: BaseCollectionViewCell {
         super.initialized()
         
         contentView.addSubview(deleteBtn)
+        deleteBtn.addTarget(self, action: #selector(deleteBtnClicked), for: .touchUpInside)
         deleteBtn.snp.makeConstraints { (make) in
             make.top.equalTo(5)
             make.right.equalTo(-5)
             make.width.height.equalTo(10)
         }
+    }
+    var deleteBtnAction: (() -> Void)?
+    
+    @objc private func deleteBtnClicked() {
+
+        deleteBtnAction?()
     }
     
     func configWith(model: HoneybeeItem, isEditing: Bool) {
@@ -37,8 +44,8 @@ class KindDetailCell: BaseCollectionViewCell {
             layer.borderWidth = 1.0
             deleteBtn.isHidden = false
         } else {
-//            layer.cornerRadius = 0
-//            layer.borderWidth = 0
+            layer.cornerRadius = 0
+            layer.borderWidth = 0
             deleteBtn.isHidden = true
         }
     }

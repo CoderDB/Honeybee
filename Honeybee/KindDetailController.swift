@@ -11,6 +11,8 @@ import UIKit
 class KindDetailController: BaseCollectionViewController {
     
     var kind: HoneybeeKind!
+    var header: KindDetailHeader!
+    
     fileprivate var dataSource: KindDetailDataSource! {
         didSet {
             collectionView.reloadData()
@@ -46,11 +48,14 @@ extension KindDetailController: AlertProvider {
         collectionView.register(KindDetailCell.self)
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
-        
     }
     
     func allCellEditing() {
         dataSource = KindDetailDataSource(items: kind.items!, isEditing: true)
+        collectionView.dataSource = dataSource
+    }
+    func allCellEndEdit() {
+        dataSource = KindDetailDataSource(items: kind.items!, isEditing: false)
         collectionView.dataSource = dataSource
     }
     
@@ -58,24 +63,30 @@ extension KindDetailController: AlertProvider {
         switch gesture.state {
         case .began:
             allCellEditing()
-            
+            header.deleteBtn.isSelected = true
         case .ended:
-            break
-//            collectionView.endInteractiveMovement()
+            collectionView.endInteractiveMovement()
         default:
-            break
-//            collectionView.cancelInteractiveMovement()
+            collectionView.cancelInteractiveMovement()
         }
     }
     
     func addHeader() {
-        let header = KindDetailHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: 115))
+        header = KindDetailHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: 115))
         header.titleLabel.text = kind.name
         view.addSubview(header)
-        let vc = KindAddItemController()
-        vc.kind = kind
+        
         header.addNewItemAction = { [unowned self] in
+            let vc = KindAddItemController()
+            vc.kind = self.kind
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+        header.deleteBtnAction = { btn in
+            if btn.isSelected {
+                self.allCellEditing()
+            } else {
+                self.allCellEndEdit()
+            }
         }
         header.rightButtonAction = { [unowned self] _ in
             self.showTextField(title: "设置类名", message: "不能超过四个字", textField: { (tf) in
