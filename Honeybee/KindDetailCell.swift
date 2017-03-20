@@ -29,9 +29,7 @@ class KindDetailCell: BaseCollectionViewCell {
         }
     }
     var deleteBtnAction: (() -> Void)?
-    
     @objc private func deleteBtnClicked() {
-
         deleteBtnAction?()
     }
     
