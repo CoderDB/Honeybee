@@ -48,7 +48,7 @@ class KindDetailHeader: BaseHeader {
         containerView.addSubview(titleLabel)
         
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
-        
+        deleteBtn.addTarget(self, action: #selector(deleteBtnClicked(_:)), for: .touchUpInside)
         addBtn.snp.makeConstraints { (make) in
             make.top.right.equalTo(containerView)
             make.width.equalTo(100)
@@ -66,10 +66,14 @@ class KindDetailHeader: BaseHeader {
         }
     }
 
-    var addNewItemAction: (() -> ())?
-    
-    func addBtnClicked() {
+    var addNewItemAction: (() -> Void)?
+    @objc private func addBtnClicked() {
         addNewItemAction?()
+    }
+    var deleteBtnAction: ((UIButton) -> Void)?
+    @objc private func deleteBtnClicked(_ btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        deleteBtnAction?(btn)
     }
     
     

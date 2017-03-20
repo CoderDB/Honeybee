@@ -24,8 +24,17 @@ class KindDetailDataSource: DataSource {
 extension KindDetailDataSource {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath)
-        if let cell = cell as? KindDetailCell, let model = items[indexPath.row] as? HoneybeeItem {
+        if let cell = cell as? KindDetailCell, let model = items[indexPath.item] as? HoneybeeItem {
             cell.configWith(model: model, isEditing: isEditing)
+            
+            cell.deleteBtnAction = { [unowned self] in
+                
+                if let idx = collectionView.indexPath(for: cell) {
+                    self.items.remove(at: idx.item)
+                    collectionView.deselectItem(at: idx, animated: true)
+                    collectionView.reloadData()
+                }
+            }
         }
         return cell
     }
