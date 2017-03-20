@@ -18,9 +18,6 @@ class KindDetailCell: BaseCollectionViewCell {
         return btn
     }()
     override func initialized() {
-        layer.cornerRadius = 5.0
-        layer.borderColor = UIColor.lightGray.cgColor
-        layer.borderWidth = 1.0
         super.initialized()
         
         contentView.addSubview(deleteBtn)
@@ -31,9 +28,19 @@ class KindDetailCell: BaseCollectionViewCell {
         }
     }
     
-    func configWith(model: HoneybeeItem) {
+    func configWith(model: HoneybeeItem, isEditing: Bool) {
         titleLabel.text = model.name
         imgView.image = UIImage(named: model.icon)
+        if isEditing {
+            layer.cornerRadius = 5.0
+            layer.borderColor = UIColor.lightGray.cgColor
+            layer.borderWidth = 1.0
+            deleteBtn.isHidden = false
+        } else {
+//            layer.cornerRadius = 0
+//            layer.borderWidth = 0
+            deleteBtn.isHidden = true
+        }
     }
 }
 

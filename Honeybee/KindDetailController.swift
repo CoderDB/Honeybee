@@ -11,7 +11,11 @@ import UIKit
 class KindDetailController: BaseCollectionViewController {
     
     var kind: HoneybeeKind!
-    fileprivate var dataSource: KindDetailDataSource!
+    fileprivate var dataSource: KindDetailDataSource! {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,29 +48,23 @@ extension KindDetailController: AlertProvider {
         collectionView.addGestureRecognizer(longGesture)
         
     }
+    
+    func allCellEditing() {
+        dataSource = KindDetailDataSource(items: kind.items!, isEditing: true)
+        collectionView.dataSource = dataSource
+    }
+    
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            guard let selectedIdx = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
-                break
-            }
-            let cell = collectionView.cellForItem(at: selectedIdx) as! KindDetailCell
-            cell.deleteBtn.isHidden = false
+            allCellEditing()
             
-            //            let cells = allCells(KindDetailCell.self)
-            //            for cell in cells {
-            //                cell.deleteBtn.isHidden = false
-            //            }
-            
-            
-            //            dataSource.remove(at: selectedIdx.item)
-            //            collectionView.deleteItems(at: [selectedIdx])
-            //        case .changed:
-        //            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view))
         case .ended:
-            collectionView.endInteractiveMovement()
+            break
+//            collectionView.endInteractiveMovement()
         default:
-            collectionView.cancelInteractiveMovement()
+            break
+//            collectionView.cancelInteractiveMovement()
         }
     }
     
