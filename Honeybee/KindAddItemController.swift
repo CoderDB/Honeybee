@@ -51,7 +51,7 @@ extension KindAddItemController: AlertProvider {
         header.titleLabel.text = kind.name
         view.addSubview(header)
         header.rightButtonAction = { [unowned self] _ in
-            self.showTextField(title: "设置类名", message: "不能超过四个字", textField: { (tf) in
+            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", textField: { (tf) in
                 
             }, ok: {
                 

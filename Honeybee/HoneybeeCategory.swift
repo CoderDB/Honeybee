@@ -77,10 +77,14 @@ struct HoneyBeeIcon {
     }
 }
 
+
+
+//import ObjectMapper
+//class HoneyBeeColor: RLMModel {
 struct HoneyBeeColor {
-    var name: String
+    var name: String = ""
     var isUsed: Bool = false
-    
+    var link: String? = ""
     
     init?(dict: [String: Any]) {
         guard let name = dict["name"] as? String,
@@ -90,6 +94,14 @@ struct HoneyBeeColor {
         self.isUsed = isUsed
     }
     
+//    dynamic var name: String = ""
+//    dynamic var isUsed: Bool = false
+//    dynamic var link: String? = ""
+//    override func mapping(map: Map) {
+//        super.mapping(map: map)
+//        self.name <- map["name"]
+//        self.isUsed <- map["isUsed"]
+//    }
 }
 
 class HBKindManager: NSObject {
@@ -129,6 +141,7 @@ class HBKindManager: NSObject {
         var result = [HoneyBeeColor]()
         if let json = json(at: "colors") as? [[String: Any]] {
             for item in json {
+//                let model = Mapper<HoneyBeeColor>().map(JSON: item)
                 let model = HoneyBeeColor(dict: item)!
                 result.append(model)
             }

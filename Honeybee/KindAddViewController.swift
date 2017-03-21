@@ -39,7 +39,7 @@ class KindAddViewController: BaseCollectionViewController, HoneybeeViewProvider,
         header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
         view.addSubview(header)
         header.rightButtonAction = { [unowned self] _ in
-            self.showTextField(title: "设置类名", message: "不能超过四个字", textField: { (tf) in
+            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", textField: { (tf) in
                 
             }, ok: {
                 

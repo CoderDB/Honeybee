@@ -38,21 +38,57 @@ extension AlertProvider where Self: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showTextField(title: String? = nil, message: String? = nil, textField: @escaping (UITextField) -> Void, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func showTextField(title: String? = nil, placeholder: String? = "", textField:  @escaping (UITextField) -> Void, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addTextField { (tf) in
+            tf.placeholder = placeholder
+//            NotificationCenter.default.addObserver(self, selector: #selector(alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
             textField(tf)
         }
+        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
             cancel?()
         }
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+//            NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: alert.textFields)
             ok()
         }
+        okAction.isEnabled = false
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    
+    
+    
+    func showTextField(title: String? = nil, placeholder: String? = "", sel:  Selector, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addTextField { (tf) in
+            tf.placeholder = placeholder
+            NotificationCenter.default.addObserver(self, selector: sel, name: .UITextFieldTextDidChange, object: tf)
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
+            cancel?()
+        }
+        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+            NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: alert.textFields)
+            ok()
+        }
+        okAction.isEnabled = false
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+
+    
+    
+    
+    
+//    func alertTextFieldTextDidChange(_ noti: Notification) {
+//        
+//    }
     
     func showWarning(message: String, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
         showAlert(message: message, ok: ok, cancel: cancel)
