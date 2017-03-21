@@ -13,6 +13,9 @@ class KindDetailController: BaseCollectionViewController {
     var kind: HoneybeeKind!
     var header: KindDetailHeader!
     
+    
+    var alertController: UIAlertController!
+    
     fileprivate var dataSource: KindDetailDataSource! {
         didSet {
             collectionView.reloadData()
@@ -38,7 +41,7 @@ class KindDetailController: BaseCollectionViewController {
 
 // MARK: UI
 
-extension KindDetailController: AlertProvider, HoneybeeViewProvider {
+extension KindDetailController: HoneybeeViewProvider {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -68,50 +71,41 @@ extension KindDetailController: AlertProvider, HoneybeeViewProvider {
             }
         }
         header.rightButtonAction = { [unowned self] _ in
-//            self.alertcc()
-            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", sel: #selector(self.alertTextFieldTextDidChange(_:)), ok: {
-                
-            })
-//            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", textField: { (tf) in
-////                print(tf.text)
-//            }, ok: {
-//                
-//            })
+            self.showTextFieldAlert()
         }
     }
-    func alertTextFieldTextDidChange(_ noti: Notification) {
-        if let textField = noti.object as? UITextField {
-            print(textField.text)
-            
-        }
-        
-    }
     
-    
-    func alertcc() {
-        
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        
-        alert.addTextField { (tf) in
-            //            textField(tf)
-            
-//            NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
+    func showTextFieldAlert() {
+        alertController = UIAlertController(title: "设置类名", message: nil, preferredStyle: .alert)
+        alertController.addTextField { (tf) in
+            NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
         }
-        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
+            
         }
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
             NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
         }
         okAction.isEnabled = false
-
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
-//    func alertTextFieldDidChange(_ noti: Notification) {
-//        print(noti)
-//    }
+    func alertTextFieldTextDidChange(_ noti: Notification) {
+        if let textField = noti.object as? UITextField {
+            if let text = textField.text, let okAction = alertController.actions.last {
+                okAction.isEnabled = text.characters.count > 0
+                var targetText = ""
+                if text.characters.count > 4 {
+                    let offset = text.index(text.startIndex, offsetBy: 4)
+                    targetText = text.substring(to: offset)
+                } else {
+                    targetText = text
+                }
+                print(targetText)
+            }
+        }
+    }
     
     func addTipView() {
     let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
@@ -126,7 +120,6 @@ extension KindDetailController: AlertProvider, HoneybeeViewProvider {
 // MARK: long press to delete
 
 extension KindDetailController {
-    
     func allCellEditing() {
         dataSource = KindDetailDataSource(items: kind.items!, isEditing: true)
         collectionView.dataSource = dataSource

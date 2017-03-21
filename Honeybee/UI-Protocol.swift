@@ -42,7 +42,6 @@ extension AlertProvider where Self: UIViewController {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addTextField { (tf) in
             tf.placeholder = placeholder
-//            NotificationCenter.default.addObserver(self, selector: #selector(alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
             textField(tf)
         }
         
@@ -50,7 +49,6 @@ extension AlertProvider where Self: UIViewController {
             cancel?()
         }
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
-//            NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: alert.textFields)
             ok()
         }
         okAction.isEnabled = false
