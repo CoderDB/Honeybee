@@ -68,17 +68,57 @@ extension KindDetailController: AlertProvider, HoneybeeViewProvider {
             }
         }
         header.rightButtonAction = { [unowned self] _ in
-            self.showTextField(title: "设置类名", message: "不能超过四个字", textField: { (tf) in
-                
-            }, ok: {
+//            self.alertcc()
+            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", sel: #selector(self.alertTextFieldTextDidChange(_:)), ok: {
                 
             })
+//            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", textField: { (tf) in
+////                print(tf.text)
+//            }, ok: {
+//                
+//            })
         }
     }
+    func alertTextFieldTextDidChange(_ noti: Notification) {
+        if let textField = noti.object as? UITextField {
+            print(textField.text)
+            
+        }
+        
+    }
+    
+    
+    func alertcc() {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { (tf) in
+            //            textField(tf)
+            
+//            NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
+        }
+        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+            NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
+        }
+        okAction.isEnabled = false
+
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+//    func alertTextFieldDidChange(_ noti: Notification) {
+//        print(noti)
+//    }
+    
     func addTipView() {
-        let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
+    let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
         tipLabel(text: "长 按 可 删 除", frame: frame)
     }
+    
+    
 }
 
 
