@@ -15,6 +15,7 @@ class KindDetailController: BaseCollectionViewController {
     
     
     var alertController: UIAlertController!
+    var kindName = "类名"
     
     fileprivate var dataSource: KindDetailDataSource! {
         didSet {
@@ -41,7 +42,7 @@ class KindDetailController: BaseCollectionViewController {
 
 // MARK: UI
 
-extension KindDetailController: HoneybeeViewProvider {
+extension KindDetailController: HoneybeeViewProvider, AlertProvider {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -71,8 +72,16 @@ extension KindDetailController: HoneybeeViewProvider {
             }
         }
         header.rightButtonAction = { [unowned self] _ in
+//            self.showTextField(title: "设置类名", placeholder: "最多4个字", completion: { (alert, ok, cancel) in
+//                if let tf = alert.textFields?.first {
+//                    NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
+////                    print(tf.text)
+//                }
+//                
+//            })
             self.showTextFieldAlert()
         }
+        
     }
     
     func showTextFieldAlert() {
@@ -85,6 +94,7 @@ extension KindDetailController: HoneybeeViewProvider {
         }
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
             NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
+            self.header.titleLabel.text = self.kindName
         }
         okAction.isEnabled = false
         alertController.addAction(cancelAction)
@@ -103,6 +113,7 @@ extension KindDetailController: HoneybeeViewProvider {
                     targetText = text
                 }
                 print(targetText)
+                kindName = targetText
             }
         }
     }
@@ -111,10 +122,7 @@ extension KindDetailController: HoneybeeViewProvider {
     let frame = CGRect(x: HB.Screen.w - 50, y: 200, width: 50, height: 130)
         tipLabel(text: "长 按 可 删 除", frame: frame)
     }
-    
-    
 }
-
 
 
 // MARK: long press to delete

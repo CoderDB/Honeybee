@@ -60,25 +60,27 @@ extension AlertProvider where Self: UIViewController {
     
     
     
-    func showTextField(title: String? = nil, placeholder: String? = "", sel:  Selector, ok: @escaping () -> Void, cancel: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alert.addTextField { (tf) in
-            tf.placeholder = placeholder
-            NotificationCenter.default.addObserver(self, selector: sel, name: .UITextFieldTextDidChange, object: tf)
-        }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
-            cancel?()
-        }
-        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
-            NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: alert.textFields)
-            ok()
-        }
-        okAction.isEnabled = false
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
+//    func showTextField(title: String? = nil, placeholder: String? = "", completion: (_ controller: UIAlertController, _ ok: () -> Void, _ cancel: () -> Void) -> Void) {
+//        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+//        alert.addTextField { (tf) in
+//            tf.placeholder = placeholder
+//        }
+//        let okA: () -> Void = {}
+//        let cancelA: () -> Void = {}
+//        
+//        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
+//            cancelA()
+//        }
+//        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+//            okA()
+//        }
+//        
+//        completion(alert, okA, cancelA)
+//        okAction.isEnabled = false
+//        alert.addAction(cancelAction)
+//        alert.addAction(okAction)
+//        present(alert, animated: true, completion: nil)
+//    }
 
     
     
