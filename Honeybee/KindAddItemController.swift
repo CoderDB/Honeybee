@@ -13,8 +13,11 @@ import UIKit
 class KindAddItemController: BaseCollectionViewController {
 
     var kind: HoneybeeKind!
-    var dataSource: KindAddItemDataSource!
-    var header: KindAddItemHeader!
+    fileprivate var dataSource: KindAddItemDataSource!
+    fileprivate var header: KindAddItemHeader!
+    
+    fileprivate var alertController: UIAlertController!
+    fileprivate var kindName = "类名"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class KindAddItemController: BaseCollectionViewController {
         addTipView()
         fetchData()
     }
-    func addCollectionView() {
+    private func addCollectionView() {
         
         layout.itemSize = CGSize(width: 45, height: 45)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
@@ -36,26 +39,56 @@ class KindAddItemController: BaseCollectionViewController {
         }
         collectionView.register(KindAddItemCell.self)
     }
-    func fetchData() {
+    private func fetchData() {
 //        let items = HBKindManager.manager.allIcons()
         dataSource = KindAddItemDataSource()
         collectionView.dataSource = dataSource
     }
 }
 
-// MARK: AlertProvider
+// MARK: Alert
 
-extension KindAddItemController: AlertProvider {
+extension KindAddItemController {
     func addHeader() {
         header = KindAddItemHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: HB.Constant.headerH))
         header.titleLabel.text = kind.name
         view.addSubview(header)
         header.rightButtonAction = { [unowned self] _ in
-            self.showTextField(title: "设置类名", placeholder: "不能超过四个字", textField: { (tf) in
-                
-            }, ok: {
-                
+            self.showTextFieldAlert(completion: { 
+                self.header.titleLabel.text = self.kindName
             })
+        }
+    }
+    func showTextFieldAlert(completion: @escaping () -> Void) {
+        alertController = UIAlertController(title: "设置项目名", message: nil, preferredStyle: .alert)
+        alertController.addTextField { (tf) in
+            tf.placeholder = "不超过4个字哦"
+            NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
+        let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
+            NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
+            completion()
+        }
+        okAction.isEnabled = false
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    func alertTextFieldTextDidChange(_ noti: Notification) {
+        if let textField = noti.object as? UITextField {
+            if let text = textField.text, let okAction = alertController.actions.last {
+                okAction.isEnabled = text.characters.count > 0
+                var targetText = ""
+                if text.characters.count > 4 {
+                    let offset = text.index(text.startIndex, offsetBy: 4)
+                    targetText = text.substring(to: offset)
+                } else {
+                    targetText = text
+                }
+                print(targetText)
+                kindName = targetText
+            }
         }
     }
 }

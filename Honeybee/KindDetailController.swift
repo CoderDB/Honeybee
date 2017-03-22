@@ -72,29 +72,23 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
             }
         }
         header.rightButtonAction = { [unowned self] _ in
-//            self.showTextField(title: "设置类名", placeholder: "最多4个字", completion: { (alert, ok, cancel) in
-//                if let tf = alert.textFields?.first {
-//                    NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
-////                    print(tf.text)
-//                }
-//                
-//            })
-            self.showTextFieldAlert()
+            self.showTextFieldAlert(completion: { [unowned self] in
+                self.header.titleLabel.text = self.kindName
+            })
         }
         
     }
     
-    func showTextFieldAlert() {
+    func showTextFieldAlert(completion: @escaping () -> Void) {
         alertController = UIAlertController(title: "设置类名", message: nil, preferredStyle: .alert)
         alertController.addTextField { (tf) in
+            tf.placeholder = "不超过4个字"
             NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)
         }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
-            
-        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
             NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
-            self.header.titleLabel.text = self.kindName
+            completion()
         }
         okAction.isEnabled = false
         alertController.addAction(cancelAction)
