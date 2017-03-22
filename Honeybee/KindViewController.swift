@@ -16,7 +16,7 @@ class KindViewController: BaseCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavTitle("添加图标")
+        setNavTitle("类别管理")
         setNavRightItem("添加种类")
         addCollectionView()
         fetchData()

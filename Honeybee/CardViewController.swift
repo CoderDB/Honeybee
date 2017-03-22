@@ -97,8 +97,8 @@ extension CardViewController {
 extension CardViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        header.containerView.backgroundColor = UIColor(hex: dataSource.item(at: indexPath).color.name)
-        let item = dataSource.item(at: indexPath).items![indexPath.row]
+        header.containerView.backgroundColor = UIColor(hex: dataSource.item(at: indexPath).color)
+        let item = dataSource.item(at: indexPath).items[indexPath.row]
         
         header.categoryLabel.text = item.name
         header.imgView.image = UIImage(named: item.icon)

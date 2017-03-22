@@ -21,50 +21,74 @@ import Foundation
  ]
  },
  */
+import ObjectMapper
+import RealmSwift
 
-struct HoneybeeKind {
-    var name: String
-    var color: HoneyBeeColor
-    var isEditable: Bool = true
-    var items: [HoneybeeItem]?
+class HoneybeeKind: RLMModel {
     
-    init(category: String, color: HoneyBeeColor, items: [HoneybeeItem]?) {
-        self.name = category
-        self.color = color
-        self.items = items
-    }
-    init?(dict: [String: Any]) {
-        guard let category = dict["category"] as? String,
-            let color = dict["color"] as? [String: Any],
-            let items = dict["items"] as? [[String: Any]]
-            else { return nil }
-        self.name = category
-        self.color = HoneyBeeColor(dict: color)!
-        var results = [HoneybeeItem]()
-        for item in items {
-            let model = HoneybeeItem(dict: item)
-            results.append(model!)
+    dynamic var name: String = ""
+    dynamic var color: String = ""
+//    var color: HoneyBeeColor
+//    var isEditable: Bool = true
+    var items = List<HoneybeeItem>()
+    
+    
+    override func mapping(map: Map) {
+        name <- map["category"]
+        color <- map["color"]
+        if let json = map["items"].currentValue as? [[String: Any]] {
+            for item in json {
+                if let model = Mapper<HoneybeeItem>().map(JSON: item) {
+                    items.append(model)
+                    DatabaseManager.manager.add(model: model)
+                }
+            }
         }
-        self.items = results
     }
+
+    
+//    init(category: String, color: HoneyBeeColor, items: [HoneybeeItem]?) {
+//        self.name = category
+//        self.color = color
+//        self.items = items
+//    }
+//    init?(dict: [String: Any]) {
+//        guard let category = dict["category"] as? String,
+//            let color = dict["color"] as? [String: Any],
+//            let items = dict["items"] as? [[String: Any]]
+//            else { return nil }
+//        self.name = category
+//        self.color = HoneyBeeColor(dict: color)!
+//        var results = [HoneybeeItem]()
+//        for item in items {
+//            let model = HoneybeeItem(dict: item)
+//            results.append(model!)
+//        }
+//        self.items = results
+//    }
 }
 
-struct HoneybeeItem {
-    var name: String
-    var icon: String
+class HoneybeeItem: RLMModel {
+    dynamic var name: String = ""
+    dynamic var icon: String = ""
     
-    init(name: String, icon: String) {
-        self.name = name
-        self.icon = icon
+    override func mapping(map: Map) {
+        name <- map["name"]
+        icon <- map["icon"]
     }
     
-    init?(dict: [String: Any]) {
-        guard let name = dict["name"] as? String,
-            let icon = dict["icon"] as? String
-            else { return nil }
-        self.name = name
-        self.icon = icon
-    }
+//    init(name: String, icon: String) {
+//        self.name = name
+//        self.icon = icon
+//    }
+//    
+//    init?(dict: [String: Any]) {
+//        guard let name = dict["name"] as? String,
+//            let icon = dict["icon"] as? String
+//            else { return nil }
+//        self.name = name
+//        self.icon = icon
+//    }
 }
 
 struct HoneyBeeIcon {
@@ -108,13 +132,12 @@ class HBKindManager: NSObject {
     static let manager = HBKindManager()
     private override init() {}
     func allKinds() -> [HoneybeeKind] {
-        let path = Bundle.main.path(forResource: "category_color", ofType: "json")
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
-        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String: Any]]
         var result = [HoneybeeKind]()
-        for item in json {
-            let model = HoneybeeKind(dict: item)
-            result.append(model!)
+        if let json = json(at: "category_color") as? [[String: Any]] {
+            for item in json {
+                let model = HoneybeeKind(JSON: item)
+                result.append(model!)
+            }
         }
         return result
     }
