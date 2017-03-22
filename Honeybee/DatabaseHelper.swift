@@ -33,17 +33,23 @@ class DatabaseManager: NSObject {
         }
     }
     
-    func delete<T: RLMModel>(model: T) {
+    func delete<T: RLMModel>(item: T) {
         do {
             try realm.write {
-                realm.delete(model)
+                realm.delete(item)
             }
         } catch let error {
             print(error.localizedDescription)
         }
     }
     func deleteAll() {
-        realm.deleteAll()
+        do {
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch let err {
+            print(err.localizedDescription)
+        }
     }
     
     func update() {

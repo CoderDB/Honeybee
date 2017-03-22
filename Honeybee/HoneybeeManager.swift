@@ -7,19 +7,13 @@
 //
 
 import Foundation
-import ObjectMapper
 import RealmSwift
 
 
-
-
-
-
-
-
-class HoneybeeManager: NSObject {
+class HoneybeeManager {
+    
     static let manager = HoneybeeManager()
-    private override init() {}
+    private init() {}
     
     func allKinds() -> Results<HoneybeeKind> {
         return DatabaseManager.manager.all(HoneybeeKind.self)

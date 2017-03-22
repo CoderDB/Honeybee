@@ -46,7 +46,7 @@ extension KindViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("-------\(indexPath.section)----\(indexPath.row)")
         let vc = KindDetailController()
-        vc.kind = dataSource.item(at: indexPath) as! HoneybeeKind
+        vc.kind = dataSource.item(at: indexPath)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

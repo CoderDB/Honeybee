@@ -16,7 +16,7 @@ class KindDataSource: NSObject {
     init(items: Results<HoneybeeKind>) {
         self.items = items
     }
-    func item(at indexPath: IndexPath) -> Any {
+    func item(at indexPath: IndexPath) -> HoneybeeKind {
         return items[indexPath.item]
     }
     
