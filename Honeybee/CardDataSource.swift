@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CardDataSource: NSObject {
     
-    var items: [HoneybeeKind]
+    var items: Results<HoneybeeKind>
+    
     fileprivate var identifier: String = "\(CardCollectionCell.self)"
     
-    init(items: [HoneybeeKind]) {
+    init(items: Results<HoneybeeKind>) {
         self.items = items
     }
     

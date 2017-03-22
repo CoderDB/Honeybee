@@ -45,7 +45,21 @@ class HoneybeeKind: RLMModel {
             }
         }
     }
-
+    private func json(at path: String) -> Any {
+        let path = Bundle.main.path(forResource: path, ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+        return json
+    }
+    func fetchAllKinds() {
+        if let json = json(at: "category_color") as? [[String: Any]] {
+            _ = json.map {
+                if let model = Mapper<HoneybeeKind>().map(JSON: $0) {
+                    DatabaseManager.manager.add(model: model)
+                }
+            }
+        }
+    }
     
 //    init(category: String, color: HoneyBeeColor, items: [HoneybeeItem]?) {
 //        self.name = category
@@ -91,13 +105,16 @@ class HoneybeeItem: RLMModel {
 //    }
 }
 
-struct HoneyBeeIcon {
-    var name: String
-    init(name: String) {
-        self.name = name
-    }
-    init(dict: [String: Any]) {
-        self.name = dict["name"] as! String
+class HoneyBeeIcon: RLMModel {
+    dynamic var name: String = ""
+//    init(name: String) {
+//        self.name = name
+//    }
+//    init(dict: [String: Any]) {
+//        self.name = dict["name"] as! String
+//    }
+    override func mapping(map: Map) {
+        name <- map["name"]
     }
 }
 
@@ -131,23 +148,19 @@ struct HoneyBeeColor {
 class HBKindManager: NSObject {
     static let manager = HBKindManager()
     private override init() {}
-    func allKinds() -> [HoneybeeKind] {
-        var result = [HoneybeeKind]()
-        if let json = json(at: "category_color") as? [[String: Any]] {
-            for item in json {
-                let model = HoneybeeKind(JSON: item)
-                result.append(model!)
-            }
-        }
-        return result
+    
+    func allKinds() -> Results<HoneybeeKind> {
+        return DatabaseManager.manager.all(HoneybeeKind.self)
     }
     
     func allIcons() -> [HoneyBeeIcon] {
         var result = [HoneyBeeIcon]()
         if let json = json(at: "icons") as? [[String: Any]] {
-            for item in json {
-                let model = HoneyBeeIcon(dict: item)
-                result.append(model)
+            _ = json.map {
+                if let model = Mapper<HoneyBeeIcon>().map(JSON: $0) {
+                    result.append(model)
+                    DatabaseManager.manager.add(model: model)
+                }
             }
         }
         return result

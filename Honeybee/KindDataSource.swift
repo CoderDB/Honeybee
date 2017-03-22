@@ -7,13 +7,34 @@
 //
 
 import UIKit
+import RealmSwift
 
-class KindDataSource: DataSource {
+class KindDataSource: NSObject {
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    var items: Results<HoneybeeKind>
+    
+    init(items: Results<HoneybeeKind>) {
+        self.items = items
+    }
+    func item(at indexPath: IndexPath) -> Any {
+        return items[indexPath.item]
+    }
+    
+   
+}
+
+
+extension KindDataSource: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindCell.self)", for: indexPath)
-        if let cell = cell as? KindCell, let model = items[indexPath.item] as? HoneybeeKind {
-            cell.config(model: model)
+        if let cell = cell as? KindCell {
+            cell.config(model: items[indexPath.item])
         }
         return cell
     }

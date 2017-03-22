@@ -9,6 +9,11 @@
 import Foundation
 import RealmSwift
 
+protocol DatabaseManagerProtocol {
+    
+}
+
+
 class DatabaseManager: NSObject {
     
     private var realm: Realm
@@ -45,6 +50,10 @@ class DatabaseManager: NSObject {
     }
     func allData() -> Results<RLMRecorderSuper> {
         return realm.objects(RLMRecorderSuper.self)
+    }
+    
+    func all<T: RLMModel>(_: T.Type) -> Results<T> {
+        return realm.objects(T.self)
     }
     
     
