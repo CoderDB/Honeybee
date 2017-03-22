@@ -48,40 +48,40 @@ class DatabaseManager: NSObject {
     func query(id: String) -> RLMRecorder? {
         return realm.object(ofType: RLMRecorder.self, forPrimaryKey: id)
     }
-    func allData() -> Results<RLMRecorderSuper> {
-        return realm.objects(RLMRecorderSuper.self)
-    }
+//    func allData() -> Results<RLMRecorderSuper> {
+//        return realm.objects(RLMRecorderSuper.self)
+//    }
     
     func all<T: RLMModel>(_: T.Type) -> Results<T> {
         return realm.objects(T.self)
     }
     
     
-    func allPayout() -> [RLMRecorderSuper] {
-        var results: [RLMRecorderSuper] = []
-        let all = allData()
-        
-//        for data in all {
-//            for model in data.recorders {
-//                if !model.isPay {
-//                    results.append(data)
-//                }
-//            }
-//        }
-        
-//        for model in all {
-//            let m = model.recorders.filter("isPay == true")
-//            
-//        }
-        
-
-        
-//        let allPay = all.map { $0.recorders.filter { $0.isPay == true } }
-        
-        
-        return results
-        
-    }
+//    func allPayout() -> [RLMRecorderSuper] {
+//        var results: [RLMRecorderSuper] = []
+////        let all = allData()
+//        
+////        for data in all {
+////            for model in data.recorders {
+////                if !model.isPay {
+////                    results.append(data)
+////                }
+////            }
+////        }
+//        
+////        for model in all {
+////            let m = model.recorders.filter("isPay == true")
+////            
+////        }
+//        
+//
+//        
+////        let allPay = all.map { $0.recorders.filter { $0.isPay == true } }
+//        
+//        
+//        return results
+//        
+//    }
     
     
     
@@ -93,7 +93,7 @@ class DatabaseManager: NSObject {
     
     
     func isContain(date: String) -> Bool {
-        return allData().contains { $0.yearMonthDay == date }
+        return all(RLMRecorderSuper.self).contains { $0.yearMonthDay == date }
     }
 }
 
