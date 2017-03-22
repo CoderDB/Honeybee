@@ -7,22 +7,9 @@
 //
 
 import Foundation
-
-/*
- {
- "category": "衣",
- "color": "FF7256",
- "editable": 0,
- "items": [
- {
- "name": "裙子",
- "icon": "qunzi"
- }
- ]
- },
- */
 import ObjectMapper
 import RealmSwift
+
 
 class HoneybeeKind: RLMModel {
     
@@ -60,29 +47,10 @@ class HoneybeeKind: RLMModel {
             }
         }
     }
-    
-//    init(category: String, color: HoneyBeeColor, items: [HoneybeeItem]?) {
-//        self.name = category
-//        self.color = color
-//        self.items = items
-//    }
-//    init?(dict: [String: Any]) {
-//        guard let category = dict["category"] as? String,
-//            let color = dict["color"] as? [String: Any],
-//            let items = dict["items"] as? [[String: Any]]
-//            else { return nil }
-//        self.name = category
-//        self.color = HoneyBeeColor(dict: color)!
-//        var results = [HoneybeeItem]()
-//        for item in items {
-//            let model = HoneybeeItem(dict: item)
-//            results.append(model!)
-//        }
-//        self.items = results
-//    }
 }
 
 class HoneybeeItem: RLMModel {
+    
     dynamic var name: String = ""
     dynamic var icon: String = ""
     
@@ -90,38 +58,33 @@ class HoneybeeItem: RLMModel {
         name <- map["name"]
         icon <- map["icon"]
     }
-    
-//    init(name: String, icon: String) {
-//        self.name = name
-//        self.icon = icon
-//    }
-//    
-//    init?(dict: [String: Any]) {
-//        guard let name = dict["name"] as? String,
-//            let icon = dict["icon"] as? String
-//            else { return nil }
-//        self.name = name
-//        self.icon = icon
-//    }
 }
 
 class HoneyBeeIcon: RLMModel {
+    
     dynamic var name: String = ""
-//    init(name: String) {
-//        self.name = name
-//    }
-//    init(dict: [String: Any]) {
-//        self.name = dict["name"] as! String
-//    }
+    
     override func mapping(map: Map) {
         name <- map["name"]
+    }
+    func json(at path: String) -> Any {
+        let path = Bundle.main.path(forResource: path, ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+        return json
+    }
+    func fetchAllIcons() {
+        if let json = json(at: "icons") as? [[String: Any]] {
+            _ = json.map {
+                if let model = Mapper<HoneyBeeIcon>().map(JSON: $0) {
+                    DatabaseManager.manager.add(model: model)
+                }
+            }
+        }
     }
 }
 
 
-
-//import ObjectMapper
-//class HoneyBeeColor: RLMModel {
 struct HoneyBeeColor {
     var name: String = ""
     var isUsed: Bool = false
@@ -134,15 +97,6 @@ struct HoneyBeeColor {
         self.name = name
         self.isUsed = isUsed
     }
-    
-//    dynamic var name: String = ""
-//    dynamic var isUsed: Bool = false
-//    dynamic var link: String? = ""
-//    override func mapping(map: Map) {
-//        super.mapping(map: map)
-//        self.name <- map["name"]
-//        self.isUsed <- map["isUsed"]
-//    }
 }
 
 class HBKindManager: NSObject {
@@ -153,17 +107,8 @@ class HBKindManager: NSObject {
         return DatabaseManager.manager.all(HoneybeeKind.self)
     }
     
-    func allIcons() -> [HoneyBeeIcon] {
-        var result = [HoneyBeeIcon]()
-        if let json = json(at: "icons") as? [[String: Any]] {
-            _ = json.map {
-                if let model = Mapper<HoneyBeeIcon>().map(JSON: $0) {
-                    result.append(model)
-                    DatabaseManager.manager.add(model: model)
-                }
-            }
-        }
-        return result
+    func allIcons() -> Results<HoneyBeeIcon> {
+        return DatabaseManager.manager.all(HoneyBeeIcon.self)
     }
     
     func json(at path: String) -> Any {
