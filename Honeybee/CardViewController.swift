@@ -40,6 +40,7 @@ class CardViewController: BaseCollectionViewController {
     }
     func fetchData() {
         let kinds = HBKindManager.manager.allKinds()
+        
         dataSource = CardDataSource(items: kinds)
         collectionView.dataSource = dataSource
     }
