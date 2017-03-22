@@ -1,10 +1,7 @@
  [
   {
   "category": "衣",
-  "color": {
-  "name": "79CDCD",
-  "isUsed": 1
-  },
+  "color": "79CDCD",
   "editable": 0,
   "items": [
             {
@@ -139,10 +136,7 @@
   },
   {
   "category": "食",
-  "color": {
-  "name": "79CDCD",
-  "isUsed": 1
-  },
+  "color": "79CDCD",
   "editable": 0,
   "items": [
             {
@@ -213,10 +207,7 @@
   },
   {
   "category": "住",
-  "color": {
-  "name": "F6A623",
-  "isUsed": 1
-  },
+  "color": "F6A623",
   "editable": 0,
   "items": [
             {
@@ -287,10 +278,7 @@
   },
   {
   "category": "行",
-  "color": {
-  "name": "7ED321",
-  "isUsed": 1
-  },
+  "color": "7ED321",
   "editable": 0,
   "items": [
             {
@@ -393,10 +381,7 @@
   },
   {
   "category": "生活",
-  "color": {
-  "name": "62ABFF",
-  "isUsed": 1
-  },
+  "color": "62ABFF",
   "editable": 0,
   "items": [
             {
