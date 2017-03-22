@@ -7,17 +7,35 @@
 //
 
 import UIKit
+import RealmSwift
 
-class KindAddItemDataSource: DataSource {
+class KindAddItemDataSource: NSObject {
     
-    init() {
-        super.init(items:  HBKindManager.manager.allIcons())
+    
+    let items: Results<HoneyBeeIcon>
+    
+    override init() {
+        self.items = HBKindManager.manager.allIcons()
+        super.init()
+    }
+    func item(at indexPath: IndexPath) -> Any {
+        return items[indexPath.item]
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+}
+
+
+extension KindAddItemDataSource: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddItemCell.self)", for: indexPath)
-        if let cell = cell as? KindAddItemCell, let model = items[indexPath.item] as? HoneyBeeIcon {
-            cell.imgView.image = UIImage(named: model.name)
+        if let cell = cell as? KindAddItemCell {
+            cell.imgView.image = UIImage(named: items[indexPath.item].name)
         }
         return cell
     }
