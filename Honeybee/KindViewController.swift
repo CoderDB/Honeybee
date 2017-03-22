@@ -34,7 +34,7 @@ class KindViewController: BaseCollectionViewController {
         navigationController?.pushViewController(KindAddViewController(), animated: true)
     }
     func fetchData() {
-        let kinds = HBKindManager.manager.allKinds()
+        let kinds = HoneybeeManager.manager.allKinds()
         dataSource = KindDataSource(items: kinds)
         collectionView.dataSource = dataSource
     }

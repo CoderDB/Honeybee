@@ -9,10 +9,6 @@
 import Foundation
 import RealmSwift
 
-protocol DatabaseManagerProtocol {
-    
-}
-
 
 class DatabaseManager: NSObject {
     
@@ -28,34 +24,54 @@ class DatabaseManager: NSObject {
     }
     
     func add<T: RLMModel>(model: T, update: Bool? = false) {
-        try! realm.write {
-            realm.add(model, update: update!)
+        do {
+            try realm.write {
+                realm.add(model, update: update!)
+            }
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
+    
     func delete<T: RLMModel>(model: T) {
-        try! realm.write {
-            realm.delete(model)
+        do {
+            try realm.write {
+                realm.delete(model)
+            }
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
+    func deleteAll() {
+        realm.deleteAll()
+    }
+    
     func update() {
         // 1. 直接更新 model.name = "new name"
         // 2. 通过primaryKey更新
         // 3. KVO
     }
-    func deleteAll() {
-        realm.deleteAll()
-    }
-    func query(id: String) -> RLMRecorder? {
-        return realm.object(ofType: RLMRecorder.self, forPrimaryKey: id)
-    }
-//    func allData() -> Results<RLMRecorderSuper> {
-//        return realm.objects(RLMRecorderSuper.self)
-//    }
     
+    func query<T: RLMModel>(_ type: T.Type, id: String) -> T? {
+        return realm.object(ofType: T.self, forPrimaryKey: id)
+    }
     func all<T: RLMModel>(_: T.Type) -> Results<T> {
         return realm.objects(T.self)
     }
     
+    func notification(_ block: @escaping () -> ()) {
+        let _ = realm.addNotificationBlock { (noti, realm) in
+            block()
+        }
+    }
+    
+    func isContain(date: String) -> Bool {
+        return all(RLMRecorderSuper.self).contains { $0.yearMonthDay == date }
+    }
+    
+//    func allData() -> Results<RLMRecorderSuper> {
+//        return realm.objects(RLMRecorderSuper.self)
+//    }
     
 //    func allPayout() -> [RLMRecorderSuper] {
 //        var results: [RLMRecorderSuper] = []
@@ -82,19 +98,6 @@ class DatabaseManager: NSObject {
 //        return results
 //        
 //    }
-    
-    
-    
-    func notification(_ block: @escaping () -> ()) {
-        let _ = realm.addNotificationBlock { (noti, realm) in
-            block()
-        }
-    }
-    
-    
-    func isContain(date: String) -> Bool {
-        return all(RLMRecorderSuper.self).contains { $0.yearMonthDay == date }
-    }
 }
 
 

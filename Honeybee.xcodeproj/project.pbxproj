@@ -16,6 +16,9 @@
 		1EA5F0601E75429C00E90E7A /* KindAddDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */; };
 		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
+		860593B01E8275F5008B6157 /* HoneybeeKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593AF1E8275F5008B6157 /* HoneybeeKind.swift */; };
+		860593B21E827654008B6157 /* HoneybeeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593B11E827654008B6157 /* HoneybeeIcon.swift */; };
+		860593B41E827698008B6157 /* HoneybeeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593B31E827698008B6157 /* HoneybeeColor.swift */; };
 		86104A2F1E61A8F500AAEEAC /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86104A2E1E61A8F500AAEEAC /* CardCollectionCell.swift */; };
 		86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */; };
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
@@ -47,7 +50,7 @@
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
 		866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */; };
 		866C562E1E6D78DB00010D3F /* category_color.json in Resources */ = {isa = PBXBuildFile; fileRef = 866C562D1E6D78DB00010D3F /* category_color.json */; };
-		866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C56301E6DA35300010D3F /* HoneybeeCategory.swift */; };
+		866C56311E6DA35300010D3F /* HoneybeeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C56301E6DA35300010D3F /* HoneybeeManager.swift */; };
 		866C91321E6E80D3003026DD /* KindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91311E6E80D3003026DD /* KindViewController.swift */; };
 		866C91341E6E84F5003026DD /* KindCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91331E6E84F5003026DD /* KindCell.swift */; };
 		866C91361E6E8A33003026DD /* KindAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91351E6E8A33003026DD /* KindAddViewController.swift */; };
@@ -136,6 +139,9 @@
 		3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		602B4AA0738D3A5A175F2145 /* Pods-HoneybeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F9F8339673706F2CFC7B4F1 /* Pods-HoneybeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		860593AF1E8275F5008B6157 /* HoneybeeKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeKind.swift; sourceTree = "<group>"; };
+		860593B11E827654008B6157 /* HoneybeeIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeIcon.swift; sourceTree = "<group>"; };
+		860593B31E827698008B6157 /* HoneybeeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeColor.swift; sourceTree = "<group>"; };
 		86104A2E1E61A8F500AAEEAC /* CardCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
 		86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
@@ -173,7 +179,7 @@
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
 		866C562B1E6D585900010D3F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		866C562D1E6D78DB00010D3F /* category_color.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category_color.json; sourceTree = "<group>"; };
-		866C56301E6DA35300010D3F /* HoneybeeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeCategory.swift; sourceTree = "<group>"; };
+		866C56301E6DA35300010D3F /* HoneybeeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeManager.swift; sourceTree = "<group>"; };
 		866C91311E6E80D3003026DD /* KindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindViewController.swift; sourceTree = "<group>"; };
 		866C91331E6E84F5003026DD /* KindCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindCell.swift; sourceTree = "<group>"; };
 		866C91351E6E8A33003026DD /* KindAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddViewController.swift; sourceTree = "<group>"; };
@@ -369,7 +375,10 @@
 		866C562F1E6DA2FB00010D3F /* ItemModel */ = {
 			isa = PBXGroup;
 			children = (
-				866C56301E6DA35300010D3F /* HoneybeeCategory.swift */,
+				866C56301E6DA35300010D3F /* HoneybeeManager.swift */,
+				860593AF1E8275F5008B6157 /* HoneybeeKind.swift */,
+				860593B11E827654008B6157 /* HoneybeeIcon.swift */,
+				860593B31E827698008B6157 /* HoneybeeColor.swift */,
 			);
 			name = ItemModel;
 			sourceTree = "<group>";
@@ -894,6 +903,7 @@
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
 				866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */,
 				866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */,
+				860593B21E827654008B6157 /* HoneybeeIcon.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,
 				8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */,
 				86E695011E797CB800CBD894 /* UI-Protocol.swift in Sources */,
@@ -919,6 +929,7 @@
 				864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */,
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
 				86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */,
+				860593B01E8275F5008B6157 /* HoneybeeKind.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,
 				86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */,
 				8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */,
@@ -930,7 +941,7 @@
 				866C91321E6E80D3003026DD /* KindViewController.swift in Sources */,
 				86BDA6AE1E714B3F00AEFBC4 /* KindDetailDataSource.swift in Sources */,
 				865184D51E7D6D3600EE940E /* MianPopController.swift in Sources */,
-				866C56311E6DA35300010D3F /* HoneybeeCategory.swift in Sources */,
+				866C56311E6DA35300010D3F /* HoneybeeManager.swift in Sources */,
 				8624F61D1E5047C00059788A /* RecordDetailHeader.swift in Sources */,
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
 				1E1C0C851E76FC8200AF940E /* MainDataSource.swift in Sources */,
@@ -945,6 +956,7 @@
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
 				1E1BA4981E781F5500CD2ABF /* PieDataSource.swift in Sources */,
+				860593B41E827698008B6157 /* HoneybeeColor.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
 				8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */,

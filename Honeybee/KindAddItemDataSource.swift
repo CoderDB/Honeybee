@@ -12,10 +12,10 @@ import RealmSwift
 class KindAddItemDataSource: NSObject {
     
     
-    let items: Results<HoneyBeeIcon>
+    let items: Results<HoneybeeIcon>
     
     override init() {
-        self.items = HBKindManager.manager.allIcons()
+        self.items = HoneybeeManager.manager.allIcons()
         super.init()
     }
     func item(at indexPath: IndexPath) -> Any {

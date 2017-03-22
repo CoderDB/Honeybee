@@ -25,6 +25,7 @@ class MainViewController: BaseTableViewController {
         addTableView()
         addTableViewHeader()
         addAddBtn()
+        fetchDataFromServe()
         fetchData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +37,16 @@ class MainViewController: BaseTableViewController {
         let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
         dataSource = MainDataSource(items: data, vc: self)
         tableView.dataSource = dataSource
+    }
+    
+    func fetchDataFromServe() {
+        let serveIsChanged = false
+        
+        if serveIsChanged {
+            HoneybeeKind.fetchAllKinds()
+            HoneybeeColor.fetchAllColors()
+            HoneybeeIcon.fetchAllIcons()
+        }
     }
 }
 
