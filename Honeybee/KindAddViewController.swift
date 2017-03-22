@@ -106,9 +106,7 @@ extension KindAddViewController: HoneybeeViewProvider {
 
 extension KindAddViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let color = dataSource.item(at: indexPath) as? UIColor {
-            header.containerView.backgroundColor = color
-        }
+        header.containerView.backgroundColor = UIColor(hex: dataSource.item(at: indexPath).name)
         print("-------\(indexPath.section)----\(indexPath.row)")
     }
 }

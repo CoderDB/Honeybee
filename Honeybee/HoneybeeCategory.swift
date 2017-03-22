@@ -85,18 +85,40 @@ class HoneyBeeIcon: RLMModel {
 }
 
 
-struct HoneyBeeColor {
-    var name: String = ""
-    var isUsed: Bool = false
-    var link: String? = ""
+class HoneyBeeColor: RLMModel {
+    dynamic var name: String = ""
+    dynamic var isUsed: Bool = false
+    dynamic var linkTo: String = ""
     
-    init?(dict: [String: Any]) {
-        guard let name = dict["name"] as? String,
-            let isUsed = dict["isUsed"] as? Bool
-            else { return nil }
-        self.name = name
-        self.isUsed = isUsed
+    override func mapping(map: Map) {
+        name <- map["name"]
+        isUsed <- map["isUsed"]
     }
+    
+    class func json(at path: String) -> Any {
+        let path = Bundle.main.path(forResource: path, ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+        return json
+    }
+    
+    class func fetchAllColors() {
+        if let json = json(at: "colors") as? [[String: Any]] {
+            _ = json.map {
+                if let model = Mapper<HoneyBeeColor>().map(JSON: $0) {
+                    DatabaseManager.manager.add(model: model)
+                }
+            }
+        }
+    }
+    
+//    init?(dict: [String: Any]) {
+//        guard let name = dict["name"] as? String,
+//            let isUsed = dict["isUsed"] as? Bool
+//            else { return nil }
+//        self.name = name
+//        self.isUsed = isUsed
+//    }
 }
 
 class HBKindManager: NSObject {
@@ -110,23 +132,8 @@ class HBKindManager: NSObject {
     func allIcons() -> Results<HoneyBeeIcon> {
         return DatabaseManager.manager.all(HoneyBeeIcon.self)
     }
-    
-    func json(at path: String) -> Any {
-        let path = Bundle.main.path(forResource: path, ofType: "json")
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
-        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-        return json
-    }
-    
-    func allColors() -> [HoneyBeeColor] {
-        var result = [HoneyBeeColor]()
-        if let json = json(at: "colors") as? [[String: Any]] {
-            for item in json {
-//                let model = Mapper<HoneyBeeColor>().map(JSON: item)
-                let model = HoneyBeeColor(dict: item)!
-                result.append(model)
-            }
-        }
-        return result
+
+    func allColors() -> Results<HoneyBeeColor> {
+        return DatabaseManager.manager.all(HoneyBeeColor.self)
     }
 }
