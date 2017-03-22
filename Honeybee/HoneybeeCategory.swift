@@ -32,13 +32,13 @@ class HoneybeeKind: RLMModel {
             }
         }
     }
-    private func json(at path: String) -> Any {
+    class private func json(at path: String) -> Any {
         let path = Bundle.main.path(forResource: path, ofType: "json")
         let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
         let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
         return json
     }
-    func fetchAllKinds() {
+    class func fetchAllKinds() {
         if let json = json(at: "category_color") as? [[String: Any]] {
             _ = json.map {
                 if let model = Mapper<HoneybeeKind>().map(JSON: $0) {
