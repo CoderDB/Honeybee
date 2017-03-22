@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CardViewController: BaseCollectionViewController {
 
     var shouldReloadData: (() -> Void)?
+    var notiToken: NotificationToken? = nil
     
     ///
     var dataToWrite: [String: Any] = [:]
@@ -43,8 +45,30 @@ class CardViewController: BaseCollectionViewController {
         
         dataSource = CardDataSource(items: kinds)
         collectionView.dataSource = dataSource
+        
+        
+        
+        notiToken = DatabaseManager.manager.realm.addNotificationBlock({ (_, realm) in
+            self.dataSource = CardDataSource(items: realm.objects(HoneybeeKind.self))
+            self.collectionView.dataSource = self.dataSource
+        })
+//            .addNotificationBlock({ [weak self] (changes) in
+//            switch changes {
+//            case .initial:
+//                self?.collectionView.reloadData()
+//            case .update(_, let deletions, let insertions, let modifications):
+//                
+//                self?.collectionView.deleteItems(at: deletions.map { IndexPath(item: $0, section: 0) })
+//                self?.collectionView.insertItems(at: insertions.map { IndexPath(item: $0, section: 0) })
+//                self?.collectionView.reloadItems(at: modifications.map { IndexPath(item: $0, section: 0) })
+//            
+//            case .error(let err):
+//                print(err.localizedDescription)
+//            }
+//        })
     }
     deinit {
+        notiToken?.stop()
         print("-----CardViewController--deinit--")
     }
 }

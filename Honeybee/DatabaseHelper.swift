@@ -12,7 +12,7 @@ import RealmSwift
 
 class DatabaseManager: NSObject {
     
-    private var realm: Realm
+    var realm: Realm
     static let manager = DatabaseManager()
     private override init() {
         var config = Realm.Configuration()

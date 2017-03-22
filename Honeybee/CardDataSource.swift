@@ -13,12 +13,9 @@ class CardDataSource: NSObject {
     
     var items: Results<HoneybeeKind>
     
-    fileprivate var identifier: String = "\(CardCollectionCell.self)"
-    
     init(items: Results<HoneybeeKind>) {
         self.items = items
     }
-    
     func item(at indexPath: IndexPath) -> HoneybeeKind {
         return items[indexPath.section]
     }
@@ -34,7 +31,7 @@ extension CardDataSource: UICollectionViewDataSource {
         return items[section].items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardCollectionCell.self)", for: indexPath)
         if let cell = cell as? CardCollectionCell {
             cell.model = items[indexPath.section].items[indexPath.item]
         }
