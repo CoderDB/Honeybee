@@ -23,30 +23,30 @@ class MainViewController: BaseTableViewController {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
         addTableView()
+        addTableViewHeader()
         addAddBtn()
         fetchData()
     }
-    
-    func fetchData() {
-        let data = DatabaseManager.manager.allData()
-        dataSource = MainDataSource(items: data, vc: self)
-        tableView.dataSource = dataSource
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    func fetchData() {
+        let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
+        dataSource = MainDataSource(items: data, vc: self)
+        tableView.dataSource = dataSource
+    }
 }
 
-// MARK: UIPopoverPresentationControllerDelegate
+
+
+// MARK: Popover
+
 extension MainViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-}
-// MARK: Popover
-extension MainViewController {
     func popView(btn: UIButton) {
         let destVC = MainPopController()
         destVC.modalPresentationStyle = .popover
@@ -62,9 +62,9 @@ extension MainViewController {
         
         destVC.incomeBtnAction = {
             print("income")
-//            let data = DatabaseManager.manager.allPayout()
-//            print(data)
-//            self.dataSource = MainDataSource(items: data, vc: self)
+            //            let data = DatabaseManager.manager.allPayout()
+            //            print(data)
+            //            self.dataSource = MainDataSource(items: data, vc: self)
             
         }
         destVC.expendBtnAction = {
@@ -74,7 +74,9 @@ extension MainViewController {
 }
 
 
+
 // MARK: UI
+
 extension MainViewController {
     func addTableView() {
         tableView.snp.updateConstraints { (make) in
@@ -82,7 +84,11 @@ extension MainViewController {
         }
         tableView.estimatedRowHeight = 75
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        tableView.tableFooterView = UIView()
+        tableView.register(RecordCell.self)
+        tableView.register(GroupCell.self)
+    }
+    func addTableViewHeader() {
         let header = MainHeader(height: 205)
         header.tapContainerViewAction = { [unowned self] in
             self.navigationController?.pushViewController(PieViewController(), animated: true)
@@ -94,9 +100,6 @@ extension MainViewController {
             self.popView(btn: btn)
         }
         tableView.tableHeaderView = header
-        tableView.tableFooterView = UIView()
-        tableView.register(RecordCell.self)
-        tableView.register(GroupCell.self)
     }
     func addAddBtn() {
         let addBtn = UIButton(type: .custom)
@@ -110,7 +113,6 @@ extension MainViewController {
         vc.shouldReloadData = { [unowned self] in
             self.fetchData()
         }
-        
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true, completion: nil)
     }
@@ -118,6 +120,7 @@ extension MainViewController {
 
 
 // MARK: UITableViewDelegate
+
 extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource.items[indexPath.row]
