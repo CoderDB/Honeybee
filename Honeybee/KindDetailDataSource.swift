@@ -18,13 +18,10 @@ class KindDetailDataSource: NSObject {
     init(items: List<HoneybeeItem>, isEditing: Bool = false) {
         self.items = items
         self.isEditing = isEditing
-        
-//        super.init(items: items)
     }
     func item(at indexPath: IndexPath) -> HoneybeeItem {
         return items[indexPath.item]
     }
-    
 }
 
 extension KindDetailDataSource: UICollectionViewDataSource {
@@ -43,7 +40,10 @@ extension KindDetailDataSource: UICollectionViewDataSource {
             cell.deleteBtnAction = { [unowned self] in
                 
                 if let idx = collectionView.indexPath(for: cell) {
-                    self.items.remove(at: idx.item)
+                    
+                    //self.items.remove(at: idx.item)
+                    DatabaseManager.manager.delete(item: self.items[idx.item])
+                    
                     collectionView.deselectItem(at: idx, animated: true)
                     collectionView.reloadData()
                 }

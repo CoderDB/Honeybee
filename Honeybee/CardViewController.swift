@@ -33,7 +33,7 @@ class CardViewController: BaseCollectionViewController {
         automaticallyAdjustsScrollViewInsets = false
         setNavTitle("记账")
         addLeftNavItem()
-        addResultView()
+        addHeader()
         addCollectionView()
         addKeyboard()
         fetchData()
@@ -64,7 +64,7 @@ extension CardViewController {
             self?.shouldReloadData?()
         }
     }
-    func addResultView() {
+    func addHeader() {
         header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
         header.rightButtonAction = {[unowned self] _ in
@@ -136,6 +136,7 @@ extension CardViewController {
         }
     }
 }
+
 
 // MARK: HBKeyboardProtocol
 

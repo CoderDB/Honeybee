@@ -52,7 +52,7 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     
     func delete() {
         
-        DatabaseManager.manager.delete(model: model)
+        DatabaseManager.manager.delete(item: model)
         DatabaseManager.manager.notification {
             
         }

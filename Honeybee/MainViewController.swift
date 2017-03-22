@@ -41,7 +41,6 @@ class MainViewController: BaseTableViewController {
     
     func fetchDataFromServe() {
         let serveIsChanged = false
-        
         if serveIsChanged {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()

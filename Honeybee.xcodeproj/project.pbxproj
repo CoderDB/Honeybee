@@ -196,7 +196,7 @@
 		868C3F6D1E72925400D5443D /* KindAddItemDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemDataSource.swift; sourceTree = "<group>"; };
 		868C3F6F1E72928300D5443D /* KindAddItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemCell.swift; sourceTree = "<group>"; };
 		868C3F711E72A09D00D5443D /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
-		868C3F731E72B5DD00D5443D /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		868C3F731E72B5DD00D5443D /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = Honeybee/DataSource.swift; sourceTree = "<group>"; };
 		86937D281DF2783300F180F6 /* HBKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBKeyboard.swift; sourceTree = "<group>"; };
 		8697CEDD1E5D9E4100993CFE /* PieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieCell.swift; sourceTree = "<group>"; };
 		8697CEDF1E5DA1D700993CFE /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +267,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		860593B51E827A41008B6157 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				868C3F731E72B5DD00D5443D /* DataSource.swift */,
+			);
+			name = DataSource;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		860593B61E827A6D008B6157 /* Kind */ = {
+			isa = PBXGroup;
+			children = (
+				866C91311E6E80D3003026DD /* KindViewController.swift */,
+				865B2F641E71632300719008 /* KindDataSource.swift */,
+				866C91331E6E84F5003026DD /* KindCell.swift */,
+			);
+			name = Kind;
+			sourceTree = "<group>";
+		};
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +346,7 @@
 				8638A9A51DE56CB9002369F9 /* AppDelegate.swift */,
 				8669A0BF1E6965A40079E53A /* Model */,
 				8697CEE11E5DA28900993CFE /* Base */,
+				860593B51E827A41008B6157 /* DataSource */,
 				86E5746C1E4C6E1C001255CD /* Main */,
 				86F6C8651E4F2F11002016DB /* RecordDetail */,
 				86E5746D1E4C6E32001255CD /* Add */,
@@ -386,13 +406,10 @@
 		866C91301E6E803F003026DD /* KindManager */ = {
 			isa = PBXGroup;
 			children = (
-				868C3F731E72B5DD00D5443D /* DataSource.swift */,
-				866C91311E6E80D3003026DD /* KindViewController.swift */,
-				865B2F641E71632300719008 /* KindDataSource.swift */,
-				866C91331E6E84F5003026DD /* KindCell.swift */,
+				860593B61E827A6D008B6157 /* Kind */,
+				86BDA6AB1E714AC600AEFBC4 /* Detail */,
 				86AAAE6C1E727A7B000669B4 /* AddItem */,
 				86BDA6AC1E714AEB00AEFBC4 /* AddKind */,
-				86BDA6AB1E714AC600AEFBC4 /* Detail */,
 			);
 			name = KindManager;
 			sourceTree = "<group>";

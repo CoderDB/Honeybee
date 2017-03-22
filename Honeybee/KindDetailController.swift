@@ -11,11 +11,10 @@ import UIKit
 class KindDetailController: BaseCollectionViewController {
     
     var kind: HoneybeeKind!
-    var header: KindDetailHeader!
+    fileprivate var header: KindDetailHeader!
     
-    
-    var alertController: UIAlertController!
-    var kindName = "类名"
+    fileprivate var alertController: UIAlertController!
+    fileprivate var kindName = "类名"
     
     fileprivate var dataSource: KindDetailDataSource! {
         didSet {
@@ -33,8 +32,7 @@ class KindDetailController: BaseCollectionViewController {
         fetchData()
         
     }
-    func fetchData() {
-        
+    fileprivate func fetchData() {
         dataSource = KindDetailDataSource(items:kind.items)
         collectionView.dataSource = dataSource
     }
