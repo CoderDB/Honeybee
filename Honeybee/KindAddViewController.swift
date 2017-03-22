@@ -46,6 +46,7 @@ extension KindAddViewController {
             make.right.equalTo(view).offset(-60)
         }
         collectionView.register(KindAddCell.self)
+        
     }
     func addHeader() {
         header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
@@ -57,7 +58,7 @@ extension KindAddViewController {
         }
     }
     func showTextFieldAlert(completion: @escaping () -> Void) {
-        alertController = UIAlertController(title: "设置类名", message: nil, preferredStyle: .alert)
+        alertController = UIAlertController(title: "设置类名", message: "", preferredStyle: .alert)
         alertController.addTextField { (tf) in
             tf.placeholder = "不能超过四个字"
             NotificationCenter.default.addObserver(self, selector: #selector(self.alertTextFieldTextDidChange(_:)), name: .UITextFieldTextDidChange, object: tf)

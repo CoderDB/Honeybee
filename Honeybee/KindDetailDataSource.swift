@@ -8,24 +8,37 @@
 
 import UIKit
 
+import RealmSwift
 
-class KindDetailDataSource: DataSource {
+class KindDetailDataSource: NSObject {
     
+    var items: List<HoneybeeItem>
     var isEditing: Bool
     
-    init(items: [Any], isEditing: Bool = false) {
-        
+    init(items: List<HoneybeeItem>, isEditing: Bool = false) {
+        self.items = items
         self.isEditing = isEditing
-        super.init(items: items)
+        
+//        super.init(items: items)
+    }
+    func item(at indexPath: IndexPath) -> HoneybeeItem {
+        return items[indexPath.item]
     }
     
 }
 
-extension KindDetailDataSource {
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+extension KindDetailDataSource: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindDetailCell.self)", for: indexPath)
-        if let cell = cell as? KindDetailCell, let model = items[indexPath.item] as? HoneybeeItem {
-            cell.configWith(model: model, isEditing: isEditing)
+        if let cell = cell as? KindDetailCell {
+            cell.configWith(model: items[indexPath.item], isEditing: isEditing)
             
             cell.deleteBtnAction = { [unowned self] in
                 
@@ -39,3 +52,6 @@ extension KindDetailDataSource {
         return cell
     }
 }
+
+
+

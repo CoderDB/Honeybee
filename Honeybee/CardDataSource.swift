@@ -29,15 +29,12 @@ extension CardDataSource: UICollectionViewDataSource {
         return items.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let items = items[section].items else {
-            return 0
-        }
-        return items.count
+        return items[section].items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        if let cell = cell as? CardCollectionCell, let items = items[indexPath.section].items {
-            cell.model = items[indexPath.item]
+        if let cell = cell as? CardCollectionCell {
+            cell.model = items[indexPath.section].items[indexPath.item]
         }
         return cell
     }

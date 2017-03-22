@@ -34,7 +34,8 @@ class KindDetailController: BaseCollectionViewController {
         
     }
     func fetchData() {
-        dataSource = KindDetailDataSource(items:kind.items!)
+        
+        dataSource = KindDetailDataSource(items:kind.items)
         collectionView.dataSource = dataSource
     }
 }
@@ -123,11 +124,11 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
 
 extension KindDetailController {
     func allCellEditing() {
-        dataSource = KindDetailDataSource(items: kind.items!, isEditing: true)
+        dataSource = KindDetailDataSource(items: kind.items, isEditing: true)
         collectionView.dataSource = dataSource
     }
     func allCellEndEdit() {
-        dataSource = KindDetailDataSource(items: kind.items!, isEditing: false)
+        dataSource = KindDetailDataSource(items: kind.items, isEditing: false)
         collectionView.dataSource = dataSource
     }
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
