@@ -13,15 +13,15 @@ class KindAddDataSource: NSObject {
     
     
     fileprivate let colors: [UIColor]
-    fileprivate let items: Results<HoneyBeeColor>
+    fileprivate let items: Results<HoneybeeColor>
     
     override init() {
-        self.items = HBKindManager.manager.allColors()
+        self.items = HoneybeeManager.manager.allColors()
         self.colors = items.map { UIColor(hex: $0.name) }
         super.init()
     }
     
-    func item(at indexPath: IndexPath) -> HoneyBeeColor {
+    func item(at indexPath: IndexPath) -> HoneybeeColor {
         return items[indexPath.item]
     }
 }
