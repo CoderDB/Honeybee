@@ -23,18 +23,18 @@ class HoneybeeItem: RLMModel {
 }
 
 
-protocol HoneybeeKindProtocol: class {
-    func insert(item: HoneybeeItem, to: List<HoneybeeItem>)
-}
-extension HoneybeeKindProtocol {
-    func insert(item: HoneybeeItem, to: List<HoneybeeItem>) {
-        do {
-            try DatabaseManager.manager.insert(item: item, to: to)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-}
+//protocol HoneybeeKindProtocol: class {
+//    func insert(item: HoneybeeItem, to: List<HoneybeeItem>)
+//}
+//extension HoneybeeKindProtocol {
+//    func insert(item: HoneybeeItem, to: List<HoneybeeItem>) {
+//        do {
+//            try DatabaseManager.manager.insert(item: item, to: to)
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+//}
 
 class HoneybeeKind: RLMModel {
     dynamic var name: String = ""
@@ -43,7 +43,7 @@ class HoneybeeKind: RLMModel {
     //    var isEditable: Bool = true
     var items = List<HoneybeeItem>()
     
-    weak var delegate: HoneybeeKindProtocol?
+//    weak var delegate: HoneybeeKindProtocol?
     
     override func mapping(map: Map) {
         name <- map["category"]
@@ -58,9 +58,9 @@ class HoneybeeKind: RLMModel {
         }
     }
     
-    func insert(item: HoneybeeItem) {
-        delegate?.insert(item: item, to: items)
-    }
+//    func insert(item: HoneybeeItem) {
+//        delegate?.insert(item: item, to: items)
+//    }
     
     
     class private func json(at path: String) -> Any {
