@@ -25,7 +25,7 @@ class KindAddItemController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        kind.delegate = self
+//        kind.delegate = self
         setNavTitle(kind.name)
         addHeader()
         addCollectionView()
@@ -50,8 +50,9 @@ class KindAddItemController: BaseCollectionViewController {
 }
 
 // MARK: Alert
-import RealmSwift
-extension KindAddItemController: HoneybeeKindProtocol {
+//import RealmSwift
+//: HoneybeeKindProtocol
+extension KindAddItemController {
     
     func addHeader() {
         header = KindAddItemHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: HB.Constant.headerH))
@@ -70,14 +71,16 @@ extension KindAddItemController: HoneybeeKindProtocol {
             model.icon = icon
             model.name = name
             
-            self.kind.insert(item: model)
-//            do {
-//                try DatabaseManager.manager.insert(item: model, to: self.kind.items)
-//            } catch let error {
-//                print(error.localizedDescription)
-//            }
+//            self.kind.insert(item: model)
+            
+            do {
+                try DatabaseManager.manager.insert(item: model, to: kind.items)
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
     }
+    
     func showTextFieldAlert(completion: @escaping () -> Void) {
         alertController = UIAlertController(title: "设置项目名", message: nil, preferredStyle: .alert)
         alertController.addTextField { (tf) in
