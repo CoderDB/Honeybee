@@ -22,7 +22,26 @@ class DatabaseManager: NSObject {
         print(realm.configuration.fileURL!)
         super.init()
     }
+//    func insertHead<T: RLMModel>(item: T, to: List<T>) throws {
+//        do {
+//            try insert(item: item, to: to, at: 0)
+//        } catch let error {
+//            throw error
+//        }
+//    }
     
+    
+    /// default insert to head
+    
+    func insert<T: RLMModel>(item: T, to: List<T>, at: Int? = 0) throws {
+        do {
+            try realm.write {
+                to.insert(item, at: at!)
+            }
+        } catch let error {
+            throw error
+        }
+    }
     func append<T: RLMModel>(item: T, to: List<T>) throws {
         do {
             try realm.write {
