@@ -14,9 +14,8 @@ class KindAddItemDataSource: NSObject {
     
     let items: Results<HoneybeeIcon>
     
-    override init() {
-        self.items = HoneybeeManager.manager.allIcons()
-        super.init()
+    init(items: Results<HoneybeeIcon>) {
+        self.items = items
     }
     func item(at indexPath: IndexPath) -> Any {
         return items[indexPath.item]
