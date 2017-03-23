@@ -111,5 +111,17 @@ extension HoneybeeViewProvider where Self: UIViewController {
     }
 }
 
-
+protocol Shakeable {}
+extension Shakeable where Self: UIView {
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.duration = 0.06
+        animation.repeatCount = MAXFLOAT
+        animation.autoreverses = true
+        animation.fromValue = -M_1_PI / 10
+        animation.toValue = M_1_PI / 10
+        animation.autoreverses = true
+        layer.add(animation, forKey: "rotation")
+    }
+}
 
