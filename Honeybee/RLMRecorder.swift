@@ -10,6 +10,9 @@ import RealmSwift
 import ObjectMapper
 
 class RLMRecorder: RLMModel {
+    
+    dynamic var id: String = ""
+    
     dynamic var date: String = ""
     dynamic var superCategory: String = ""
     dynamic var category: String = ""
