@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 class KindViewController: BaseCollectionViewController {
 
     
@@ -26,14 +27,33 @@ class KindViewController: BaseCollectionViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
     func addCollectionView() {
         layout.itemSize = CGSize(width: 150, height: 165)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
         collectionView.register(KindCell.self)
+        
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
+        collectionView.addGestureRecognizer(longGesture)
     }
     override func navRightItemClicked(_ btn: UIButton) {
         navigationController?.pushViewController(KindAddViewController(), animated: true)
     }
+    
+    func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            if let cells = collectionView.visibleCells as? [KindCell] {
+                _ = cells.map { $0.shake() }
+            }
+            
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
+    
     func fetchData() {
         let kinds = HoneybeeManager.manager.allKinds()
         dataSource = KindDataSource(items: kinds)

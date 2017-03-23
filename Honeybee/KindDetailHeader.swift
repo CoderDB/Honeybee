@@ -16,7 +16,7 @@ class KindDetailHeader: BaseHeader {
         $0.textColor = .white
         $0.layer.cornerRadius = HB.Constant.cornerRadius
         $0.layer.masksToBounds = true
-        $0.backgroundColor = HB.Color.main
+//        $0.backgroundColor = HB.Color.main
         $0.text = "衣"
         return $0
     }(UILabel())

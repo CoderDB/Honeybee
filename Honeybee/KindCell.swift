@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KindCell: UICollectionViewCell {
+class KindCell: UICollectionViewCell, Shakeable {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h1
@@ -22,7 +22,7 @@ class KindCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .randomColor
+//        backgroundColor = .randomColor
         layer.cornerRadius = HB.Constant.cornerRadius
         
         contentView.addSubview(titleLabel)
@@ -37,5 +37,6 @@ class KindCell: UICollectionViewCell {
     }
     func config(model: HoneybeeKind) {
         titleLabel.text = model.name
+        backgroundColor = UIColor(hex: model.color)
     }
 }
