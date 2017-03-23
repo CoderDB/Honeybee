@@ -15,7 +15,10 @@ class KindAddViewController: BaseCollectionViewController {
     fileprivate var header: KindAddHeader!
     
     fileprivate var alertController: UIAlertController!
-    fileprivate var kindName = "类名"
+    
+    // add new kind
+    fileprivate var kindName: String?
+    fileprivate var kindColor: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,7 @@ class KindAddViewController: BaseCollectionViewController {
 
 
 // MARK: UI
-
+import RealmSwift
 extension KindAddViewController {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 45, height: 45)
@@ -46,15 +49,23 @@ extension KindAddViewController {
             make.right.equalTo(view).offset(-60)
         }
         collectionView.register(KindAddCell.self)
-        
     }
     func addHeader() {
         header = KindAddHeader(frame: CGRect(x: 0, y: 64, width: view.bounds.width, height: HB.Constant.headerH))
         view.addSubview(header)
         header.rightButtonAction = { [unowned self] _ in
             self.showTextFieldAlert(completion: { [unowned self] in
-                self.header.titleLabel.text = self.kindName
+                self.createNewKind()
             })
+        }
+    }
+    func createNewKind() {
+        if let name = kindName, let color = kindColor {
+            let kind = HoneybeeKind()
+            kind.color = color
+            kind.name = name
+            kind.items = List<HoneybeeItem>()
+            DatabaseManager.manager.create(HoneybeeKind.self, value: kind)
         }
     }
     func showTextFieldAlert(completion: @escaping () -> Void) {
@@ -106,7 +117,9 @@ extension KindAddViewController: HoneybeeViewProvider {
 
 extension KindAddViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        header.containerView.backgroundColor = UIColor(hex: dataSource.item(at: indexPath).name)
+        let name = dataSource.item(at: indexPath).name
+        header.containerView.backgroundColor = UIColor(hex: name)
+        kindColor = name
         print("-------\(indexPath.section)----\(indexPath.row)")
     }
 }
