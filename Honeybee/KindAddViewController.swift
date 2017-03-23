@@ -61,6 +61,7 @@ extension KindAddViewController {
     }
     func createNewKind() {
         if let name = kindName, let color = kindColor {
+            header.titleLabel.text = name
             let kind = HoneybeeKind()
             kind.color = color
             kind.name = name

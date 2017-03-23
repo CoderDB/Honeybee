@@ -123,5 +123,9 @@ extension Shakeable where Self: UIView {
         animation.autoreverses = true
         layer.add(animation, forKey: "rotation")
     }
+    func stop() {
+        layer.removeAllAnimations()
+//        layer.removeAnimation(forKey: "rotation")
+    }
 }
 

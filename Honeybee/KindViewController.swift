@@ -16,16 +16,41 @@ class KindViewController: BaseCollectionViewController {
     var dataSource: KindDataSource!
     var notiToken: NotificationToken? = nil
     
+    var managerKindBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("类别管理")
-        setNavRightItem("添加种类")
+//        setNavRightItem("添加种类")
+        setNavRightItems()
         addCollectionView()
         fetchData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    func setNavRightItems() {
+        let addNewKindBtn = UIButton(type: .custom)
+        addNewKindBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
+        addNewKindBtn.setTitle("添加", for: .normal)
+        addNewKindBtn.setTitleColor(HB.Color.nav, for: .normal)
+        addNewKindBtn.titleLabel?.font = HB.Font.h5
+        addNewKindBtn.contentHorizontalAlignment = .right
+        addNewKindBtn.addTarget(self, action: #selector(addNewKindBtnClicked), for: .touchUpInside)
+        
+        managerKindBtn = UIButton(type: .custom)
+        managerKindBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
+        managerKindBtn.setTitle("编辑", for: .normal)
+        managerKindBtn.setTitle("完成", for: .selected)
+        managerKindBtn.setTitleColor(HB.Color.nav, for: .normal)
+        managerKindBtn.titleLabel?.font = HB.Font.h5
+        managerKindBtn.contentHorizontalAlignment = .right
+        managerKindBtn.addTarget(self, action: #selector(managerKindBtnClicked(_:)), for: .touchUpInside)
+        
+        let items = [UIBarButtonItem(customView: addNewKindBtn), UIBarButtonItem(customView: managerKindBtn)]
+        navigationItem.setRightBarButtonItems(items, animated: true)
     }
     
     func addCollectionView() {
@@ -36,21 +61,38 @@ class KindViewController: BaseCollectionViewController {
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
     }
-    override func navRightItemClicked(_ btn: UIButton) {
+    func addNewKindBtnClicked() {
         navigationController?.pushViewController(KindAddViewController(), animated: true)
     }
+    func managerKindBtnClicked(_ btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        
+        if let cells = collectionView.visibleCells as? [KindCell] {
+            if btn.isSelected {
+                _ = cells.map { $0.shake() }
+            } else {
+                _ = cells.map { $0.stop() }
+            }
+        }
+        
+    }
+    
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
             if let cells = collectionView.visibleCells as? [KindCell] {
                 _ = cells.map { $0.shake() }
+                managerKindBtn.isSelected = true
             }
+            
             
         case .ended:
             collectionView.endInteractiveMovement()
+//            managerKindBtn.isSelected = false
         default:
             collectionView.cancelInteractiveMovement()
+//            managerKindBtn.isSelected = false
         }
     }
     
