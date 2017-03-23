@@ -60,15 +60,11 @@ extension KindAddItemController {
                 let model = HoneybeeItem()
                 model.icon = "meal"
                 model.name = self.kindName
-                
-//                if let model = HoneybeeItem() {
-                
-                    do {
-                        try DatabaseManager.manager.append(item: model, to: self.kind.items)
-                    } catch let error {
-                        print(error.localizedDescription)
-                    }
-//                }
+                do {
+                    try DatabaseManager.manager.append(item: model, to: self.kind.items)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
             })
         }
     }

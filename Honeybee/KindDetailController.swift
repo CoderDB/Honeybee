@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class KindDetailController: BaseCollectionViewController {
     
@@ -22,6 +23,8 @@ class KindDetailController: BaseCollectionViewController {
         }
     }
     
+    var notiToken: NotificationToken? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -35,6 +38,11 @@ class KindDetailController: BaseCollectionViewController {
     fileprivate func fetchData() {
         dataSource = KindDetailDataSource(items:kind.items)
         collectionView.dataSource = dataSource
+        
+        notiToken = DatabaseManager.manager.notification({ (_, realm) in
+            self.dataSource = KindDetailDataSource(items:self.kind.items)
+            self.collectionView.dataSource = self.dataSource
+        })
     }
 }
 

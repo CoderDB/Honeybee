@@ -11,6 +11,12 @@ import ObjectMapper
 
 class RLMRecorderSuper: RLMModel {
     
+    dynamic var id: String = NSUUID().uuidString
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
     dynamic var style: String = "plain"
     
     var recorders = List<RLMRecorder>()
@@ -22,6 +28,7 @@ class RLMRecorderSuper: RLMModel {
         if let json = map["recorders"].currentValue as? [[String: Any]] {
             for item in json {
                 if let model = Mapper<RLMRecorder>().map(JSON: item) {
+                    model.id = id
                     recorders.append(model)
                     DatabaseManager.manager.add(model: model)
                 }
