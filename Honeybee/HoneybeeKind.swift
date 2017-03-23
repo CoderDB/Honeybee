@@ -10,8 +10,9 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
+
+
 class HoneybeeItem: RLMModel {
-//    dynamic var id: String = ""
     dynamic var name: String = ""
     dynamic var icon: String = ""
     
@@ -21,14 +22,28 @@ class HoneybeeItem: RLMModel {
     }
 }
 
+
+protocol HoneybeeKindProtocol: class {
+    func insert(item: HoneybeeItem, to: List<HoneybeeItem>)
+}
+extension HoneybeeKindProtocol {
+    func insert(item: HoneybeeItem, to: List<HoneybeeItem>) {
+        do {
+            try DatabaseManager.manager.insert(item: item, to: to)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+}
+
 class HoneybeeKind: RLMModel {
-//    dynamic var id: String = NSUUID().uuidString
     dynamic var name: String = ""
     dynamic var color: String = ""
     //    var color: HoneyBeeColor
     //    var isEditable: Bool = true
     var items = List<HoneybeeItem>()
     
+    weak var delegate: HoneybeeKindProtocol?
     
     override func mapping(map: Map) {
         name <- map["category"]
@@ -36,13 +51,18 @@ class HoneybeeKind: RLMModel {
         if let json = map["items"].currentValue as? [[String: Any]] {
             for item in json {
                 if let model = Mapper<HoneybeeItem>().map(JSON: item) {
-//                    model.id = id
                     items.append(model)
                     DatabaseManager.manager.add(model: model)
                 }
             }
         }
     }
+    
+    func insert(item: HoneybeeItem) {
+        delegate?.insert(item: item, to: items)
+    }
+    
+    
     class private func json(at path: String) -> Any {
         let path = Bundle.main.path(forResource: path, ofType: "json")
         let data = try! Data(contentsOf: URL(fileURLWithPath: path!))

@@ -17,12 +17,15 @@ class KindAddItemController: BaseCollectionViewController {
     fileprivate var header: KindAddItemHeader!
     
     fileprivate var alertController: UIAlertController!
-    fileprivate var kindName = "类名"
+    
+    // add item (HoneybeeItem)
+    fileprivate var kindName: String?
+    fileprivate var iconName: String? = "meal" // default image
     
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        
+        kind.delegate = self
         setNavTitle(kind.name)
         addHeader()
         addCollectionView()
@@ -47,8 +50,9 @@ class KindAddItemController: BaseCollectionViewController {
 }
 
 // MARK: Alert
-
-extension KindAddItemController {
+import RealmSwift
+extension KindAddItemController: HoneybeeKindProtocol {
+    
     func addHeader() {
         header = KindAddItemHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: HB.Constant.headerH))
         header.titleLabel.text = kind.name
@@ -56,16 +60,22 @@ extension KindAddItemController {
         header.rightButtonAction = { [unowned self] _ in
             self.showTextFieldAlert(completion: { 
                 self.header.titleLabel.text = self.kindName
-                
-                let model = HoneybeeItem()
-                model.icon = "meal"
-                model.name = self.kindName
-                do {
-                    try DatabaseManager.manager.insert(item: model, to: self.kind.items)
-                } catch let error {
-                    print(error.localizedDescription)
-                }
+                self.insertItem()
             })
+        }
+    }
+    func insertItem() {
+        if let name = kindName, let icon = iconName {
+            let model = HoneybeeItem()
+            model.icon = icon
+            model.name = name
+            
+            self.kind.insert(item: model)
+//            do {
+//                try DatabaseManager.manager.insert(item: model, to: self.kind.items)
+//            } catch let error {
+//                print(error.localizedDescription)
+//            }
         }
     }
     func showTextFieldAlert(completion: @escaping () -> Void) {
@@ -117,7 +127,9 @@ extension KindAddItemController: HoneybeeViewProvider {
 
 extension KindAddItemController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        header.imgView.image = nil
+        let name = dataSource.items[indexPath.item].name
+        header.imgView.image = UIImage(named: name)
+        iconName = name
     }
 }
 
