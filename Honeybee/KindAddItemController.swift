@@ -40,8 +40,8 @@ class KindAddItemController: BaseCollectionViewController {
         collectionView.register(KindAddItemCell.self)
     }
     private func fetchData() {
-//        let items = HBKindManager.manager.allIcons()
-        dataSource = KindAddItemDataSource()
+        let items = HoneybeeManager.manager.allIcons()
+        dataSource = KindAddItemDataSource(items: items)
         collectionView.dataSource = dataSource
     }
 }
@@ -56,6 +56,19 @@ extension KindAddItemController {
         header.rightButtonAction = { [unowned self] _ in
             self.showTextFieldAlert(completion: { 
                 self.header.titleLabel.text = self.kindName
+                
+                let model = HoneybeeItem()
+                model.icon = "meal"
+                model.name = self.kindName
+                
+//                if let model = HoneybeeItem() {
+                
+                    do {
+                        try DatabaseManager.manager.append(item: model, to: self.kind.items)
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+//                }
             })
         }
     }

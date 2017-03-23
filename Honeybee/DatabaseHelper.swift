@@ -23,6 +23,16 @@ class DatabaseManager: NSObject {
         super.init()
     }
     
+    func append<T: RLMModel>(item: T, to: List<T>) throws {
+        do {
+            try realm.write {
+                to.append(item)
+            }
+        } catch let error {
+            throw(error)
+        }
+    }
+    
     func add<T: RLMModel>(model: T, update: Bool? = false) {
         do {
             try realm.write {
