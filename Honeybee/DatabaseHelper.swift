@@ -32,7 +32,6 @@ class DatabaseManager: NSObject {
     
     
     /// default insert to head
-    
     func insert<T: RLMModel>(item: T, to: List<T>, at: Int? = 0) throws {
         do {
             try realm.write {
@@ -80,12 +79,23 @@ class DatabaseManager: NSObject {
             print(err.localizedDescription)
         }
     }
-    
-    func update() {
-        // 1. 直接更新 model.name = "new name"
-        // 2. 通过primaryKey更新
-        // 3. KVO
+    func update<T: HoneybeeKind>(item: T, name: String) throws {
+        do {
+            try realm.write {
+                item.name = name
+            }
+        } catch let error {
+            throw error
+        }
     }
+    
+//    func update<T: RLMModel>(item: T, properties: Any...) {
+//        // 1. 直接更新 model.name = "new name"
+//        // 2. 通过primaryKey更新
+//        // 3. KVO
+//        
+//        add(model: item, update: true)
+//    }
     
     func query<T: RLMModel>(_ type: T.Type, id: String) -> T? {
         return realm.object(ofType: T.self, forPrimaryKey: id)

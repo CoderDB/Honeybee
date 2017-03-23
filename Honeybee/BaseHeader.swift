@@ -8,87 +8,52 @@
 
 import UIKit
 
-//protocol HeaderProvider {}
-//extension HeaderProvider where Self: UIView {
-//    func rightBt(title: String = "编辑") -> UIButton {
-//        let btn = UIButton()
-//        btn.setTitleColor(HB.Color.nav, for: .normal)
-//        btn.titleLabel?.font = HB.Font.h5
-//        btn.contentHorizontalAlignment = .right
-//        btn.setTitle(title, for: .normal)
-//        return btn
-//    }
-//    func container() -> UIView {
-//        let view = UIView()
-//        view.layer.cornerRadius = HB.Constant.cornerRadius
-//        return view
-//    }
-//}
-
-
-
-protocol BaseHeaderProvider {
+protocol BaseHeaderProvider: class {
     var containerView: UIView { get }
     var rightBtn: UIButton { get }
 }
 
-extension BaseHeaderProvider {
-    var containerView: UIView  {
-        let view = UIView()
-        view.layer.cornerRadius = HB.Constant.cornerRadius
-        //        $0.backgroundColor = HB.Color.main
-        return view
-    }
+//extension BaseHeaderProvider where Self: UIView {
+//    var containerView: UIView  {
+//        let view = UIView()
+////        view.backgroundColor = containerBgColor
+//        view.layer.cornerRadius = HB.Constant.cornerRadius
+//        return view
+//    }
+//   var rightBtn: UIButton {
+//        let btn = UIButton()
+//        btn.setTitleColor(HB.Color.nav, for: .normal)
+//        btn.titleLabel?.font = HB.Font.h5
+//        btn.contentHorizontalAlignment = .right
+//        btn.setTitle("编辑", for: .normal)
+//        return btn
+//    }
+//}
+//
+//extension BaseHeaderProvider {
+//    var containerBgColor: UIColor {
+//        return HB.Color.main
+//    }
+//}
+
+
+class BaseHeader: UIView, BaseHeaderProvider {
     
-   var rightBtn: UIButton {
+    
+    lazy var containerView: UIView = {
+        $0.layer.cornerRadius = HB.Constant.cornerRadius
+//        $0.backgroundColor = HB.Color.main
+        return $0
+    }(UIView())
+
+    lazy var rightBtn: UIButton = {
         let btn = UIButton()
         btn.setTitleColor(HB.Color.nav, for: .normal)
         btn.titleLabel?.font = HB.Font.h5
         btn.contentHorizontalAlignment = .right
         btn.setTitle("编辑", for: .normal)
         return btn
-    }
-}
-
-extension BaseHeaderProvider {
-    var containerBgColor: UIColor {
-        return HB.Color.main
-    }
-}
-
-class BaseHeader: UIView, BaseHeaderProvider {
-//    internal var rightBtn: UIButton = {
-//        let btn = UIButton()
-//        btn.setTitleColor(HB.Color.nav, for: .normal)
-//        btn.titleLabel?.font = HB.Font.h5
-//        btn.contentHorizontalAlignment = .right
-//        btn.setTitle("编辑", for: .normal)
-//        return btn
-//    }()
-//
-//    internal var containerView: UIView = {
-//        $0.layer.cornerRadius = HB.Constant.cornerRadius
-//        $0.backgroundColor = HB.Color.main
-//        return $0
-//    }(UIView())
-
-    
-    
-    
-//    lazy var containerView: UIView = {
-//        $0.layer.cornerRadius = HB.Constant.cornerRadius
-////        $0.backgroundColor = HB.Color.main
-//        return $0
-//    }(UIView())
-//    
-//    lazy var rightBtn: UIButton = {
-//        let btn = UIButton()
-//        btn.setTitleColor(HB.Color.nav, for: .normal)
-//        btn.titleLabel?.font = HB.Font.h5
-//        btn.contentHorizontalAlignment = .right
-//        btn.setTitle("编辑", for: .normal)
-//        return btn
-//    }()
+    }()
     
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: HB.Screen.w, height: height))

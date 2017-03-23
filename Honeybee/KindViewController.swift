@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class KindViewController: BaseCollectionViewController {
 
     
     var dataSource: KindDataSource!
-    
+    var notiToken: NotificationToken? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,12 @@ class KindViewController: BaseCollectionViewController {
         let kinds = HoneybeeManager.manager.allKinds()
         dataSource = KindDataSource(items: kinds)
         collectionView.dataSource = dataSource
+        notiToken = kinds.addNotificationBlock { (change) in
+            self.collectionView.reloadData()
+        }
+    }
+    deinit {
+        notiToken?.stop()
     }
 }
 

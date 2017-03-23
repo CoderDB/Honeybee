@@ -15,7 +15,7 @@ class KindDetailController: BaseCollectionViewController {
     fileprivate var header: KindDetailHeader!
     
     fileprivate var alertController: UIAlertController!
-    fileprivate var kindName = "类名"
+    fileprivate var kindName: String?
     
     fileprivate var dataSource: KindDetailDataSource! {
         didSet {
@@ -82,10 +82,20 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
         }
         header.rightButtonAction = { [unowned self] _ in
             self.showTextFieldAlert(completion: { [unowned self] in
-                self.header.titleLabel.text = self.kindName
+                self.updateItem()
             })
         }
-        
+    }
+    func updateItem() {
+        if let name = kindName {
+            header.titleLabel.text = name
+            
+            do {
+                try DatabaseManager.manager.update(item: kind, name: name)
+            } catch let error {
+                print(error)
+            }
+        }
     }
     
     func showTextFieldAlert(completion: @escaping () -> Void) {
