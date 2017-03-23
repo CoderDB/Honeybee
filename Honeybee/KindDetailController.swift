@@ -39,10 +39,12 @@ class KindDetailController: BaseCollectionViewController {
         dataSource = KindDetailDataSource(items:kind.items)
         collectionView.dataSource = dataSource
         
-        notiToken = DatabaseManager.manager.notification({ (_, realm) in
-            self.dataSource = KindDetailDataSource(items:self.kind.items)
-            self.collectionView.dataSource = self.dataSource
-        })
+        notiToken = kind.items._addNotificationBlock { (changege) in
+            self.collectionView.reloadData()
+        }
+    }
+    deinit {
+        notiToken?.stop()
     }
 }
 
