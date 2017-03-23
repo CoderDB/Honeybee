@@ -12,7 +12,7 @@ import RealmSwift
 
 class DatabaseManager: NSObject {
     
-    var realm: Realm
+    private var realm: Realm
     static let manager = DatabaseManager()
     private override init() {
         var config = Realm.Configuration()
@@ -29,7 +29,15 @@ class DatabaseManager: NSObject {
 //            throw error
 //        }
 //    }
-    
+    func create<T: RLMModel>(_: T.Type, value: Any) {
+        do {
+            try realm.write {
+                realm.create(T.self, value: value, update: false)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
     
     /// default insert to head
     func insert<T: RLMModel>(item: T, to: List<T>, at: Int? = 0) throws {
@@ -110,9 +118,9 @@ class DatabaseManager: NSObject {
         }
     }
     
-    func isContain(date: String) -> Bool {
-        return all(RLMRecorderSuper.self).contains { $0.yearMonthDay == date }
-    }
+//    func isContain(date: String) -> Bool {
+//        return all(RLMRecorderSuper.self).contains { $0.yearMonthDay == date }
+//    }
     
 //    func allData() -> Results<RLMRecorderSuper> {
 //        return realm.objects(RLMRecorderSuper.self)

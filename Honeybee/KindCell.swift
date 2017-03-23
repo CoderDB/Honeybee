@@ -12,8 +12,11 @@ class KindCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h1
+        label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = .white
+        label.lineBreakMode = .byWordWrapping
+//        label.preferredMaxLayoutWidth = 100
         return label
     }()
     
@@ -24,7 +27,9 @@ class KindCell: UICollectionViewCell {
         
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
+            make.width.lessThanOrEqualTo(100)
+            make.center.equalTo(contentView)
+//            make.edges.equalTo(contentView)
         }
     }
     required init?(coder aDecoder: NSCoder) {
