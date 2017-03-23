@@ -61,7 +61,7 @@ extension KindAddItemController {
                 model.icon = "meal"
                 model.name = self.kindName
                 do {
-                    try DatabaseManager.manager.append(item: model, to: self.kind.items)
+                    try DatabaseManager.manager.insert(item: model, to: self.kind.items)
                 } catch let error {
                     print(error.localizedDescription)
                 }

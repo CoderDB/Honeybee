@@ -46,6 +46,12 @@ class CardViewController: BaseCollectionViewController {
         dataSource = CardDataSource(items: kinds)
         collectionView.dataSource = dataSource
         
+//        notiToken = dataSource.items._addNotificationBlock { (change) in
+//            
+//            
+//            self.collectionView.reloadData()
+//        }
+        
         notiToken = DatabaseManager.manager.notification { [unowned self] (_, realm) in
             self.dataSource = CardDataSource(items: realm.objects(HoneybeeKind.self))
             self.collectionView.dataSource = self.dataSource
