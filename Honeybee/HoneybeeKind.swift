@@ -11,7 +11,7 @@ import ObjectMapper
 import RealmSwift
 
 class HoneybeeItem: RLMModel {
-    dynamic var id: String = ""
+//    dynamic var id: String = ""
     dynamic var name: String = ""
     dynamic var icon: String = ""
     
@@ -19,13 +19,10 @@ class HoneybeeItem: RLMModel {
         name <- map["name"]
         icon <- map["icon"]
     }
-    let owners = LinkingObjects(fromType: HoneybeeKind.self, property: "items")
-    
-    
 }
 
 class HoneybeeKind: RLMModel {
-    dynamic var id: String = NSUUID().uuidString
+//    dynamic var id: String = NSUUID().uuidString
     dynamic var name: String = ""
     dynamic var color: String = ""
     //    var color: HoneyBeeColor
@@ -39,7 +36,7 @@ class HoneybeeKind: RLMModel {
         if let json = map["items"].currentValue as? [[String: Any]] {
             for item in json {
                 if let model = Mapper<HoneybeeItem>().map(JSON: item) {
-                    model.id = id
+//                    model.id = id
                     items.append(model)
                     DatabaseManager.manager.add(model: model)
                 }
