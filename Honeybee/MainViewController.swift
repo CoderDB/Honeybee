@@ -19,6 +19,9 @@ class MainViewController: BaseTableViewController {
         }
     }
     
+    var notiToken: NotificationToken? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -37,8 +40,15 @@ class MainViewController: BaseTableViewController {
         let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
         dataSource = MainDataSource(items: data, vc: self)
         tableView.dataSource = dataSource
+        
+        notiToken = DatabaseManager.manager.notification({ [unowned self] (_, realm) in
+            self.dataSource = MainDataSource(items: realm.objects(RLMRecorderSuper.self), vc: self)
+            self.tableView.dataSource = self.dataSource
+        })
     }
-    
+    deinit {
+        notiToken?.stop()
+    }
     func fetchDataFromServe() {
         let serveIsChanged = false
         if serveIsChanged {

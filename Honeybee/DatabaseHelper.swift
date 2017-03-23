@@ -65,9 +65,9 @@ class DatabaseManager: NSObject {
         return realm.objects(T.self)
     }
     
-    func notification(_ block: @escaping () -> ()) {
-        let _ = realm.addNotificationBlock { (noti, realm) in
-            block()
+    func notification(_ block: @escaping (Realm.Notification, Realm) -> Void) -> NotificationToken {
+        return realm.addNotificationBlock { (noti, realm) in
+            block(noti, realm)
         }
     }
     

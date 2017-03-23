@@ -46,12 +46,10 @@ class CardViewController: BaseCollectionViewController {
         dataSource = CardDataSource(items: kinds)
         collectionView.dataSource = dataSource
         
-        
-        
-        notiToken = DatabaseManager.manager.realm.addNotificationBlock({ (_, realm) in
+        notiToken = DatabaseManager.manager.notification { [unowned self] (_, realm) in
             self.dataSource = CardDataSource(items: realm.objects(HoneybeeKind.self))
             self.collectionView.dataSource = self.dataSource
-        })
+        }
 //            .addNotificationBlock({ [weak self] (changes) in
 //            switch changes {
 //            case .initial:

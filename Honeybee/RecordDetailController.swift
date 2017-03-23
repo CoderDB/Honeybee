@@ -13,7 +13,6 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     
     
     var model: RLMRecorder!
-    var superModel: RLMRecorderSuper!
     
     var dataSource: RecorderDetailDataSource!
     
@@ -53,9 +52,9 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     func delete() {
         
         DatabaseManager.manager.delete(item: model)
-        DatabaseManager.manager.notification {
-            
-        }
+//        DatabaseManager.manager.notification {
+//            
+//        }
         _ = navigationController?.popViewController(animated: true)
     }
 }
