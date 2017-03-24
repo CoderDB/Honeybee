@@ -13,7 +13,7 @@ class RLMRecorder: RLMModel {
     
 //    dynamic var id: String = ""
     
-    dynamic var date: String = ""
+    dynamic var date: String = "\(Date())"
     dynamic var superCategory: String = ""
     dynamic var category: String = ""
     dynamic var money: String = ""

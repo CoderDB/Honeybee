@@ -34,9 +34,7 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if managerKindBtn.isSelected {
-            managerKindBtnClicked(managerKindBtn)
-        }
+        stopShake()
     }
     func setNavRightItems() {
         let addNewKindBtn = UIButton(type: .custom)
@@ -84,10 +82,16 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
             }
         }
     }
+    func stopShake() {
+        if self.managerKindBtn.isSelected {
+            self.managerKindBtnClicked(self.managerKindBtn)
+        }
+    }
     func deleteWith(cell: KindCell) {
         cell.deleteBtnAction = { [unowned self] in
+            
             self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
-                cell.stopShake()
+                
                 if let idx = self.collectionView.indexPath(for: cell) {
                     let kind = self.dataSource.items[idx.item]
                     self.deleteFromDatabase(kind)
