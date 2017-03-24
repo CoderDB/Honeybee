@@ -105,6 +105,17 @@ class DatabaseManager: NSObject {
             print(error.localizedDescription)
         }
     }
+    func delete<T: RLMModel>(item: T, in list: List<T>) {
+        do {
+            try realm.write {
+                if let idx = list.index(of: item) {
+                    list.remove(objectAtIndex: idx)
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     func deleteAll() {
         do {
             try realm.write {
