@@ -35,6 +35,17 @@ extension KindDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindCell.self)", for: indexPath)
         if let cell = cell as? KindCell {
             cell.config(model: items[indexPath.item])
+            
+//            cell.deleteBtnAction = { [unowned self] in
+//                if let idx = collectionView.indexPath(for: cell) {
+//                    
+//                    DatabaseManager.manager.delete(item: self.items[idx.item])
+//                    
+//                    collectionView.deselectItem(at: idx, animated: true)
+//                    collectionView.reloadData()
+//                }
+//            }
+
         }
         return cell
     }
