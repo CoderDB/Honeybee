@@ -68,7 +68,17 @@ class DatabaseManager: NSObject {
             print(error.localizedDescription)
         }
     }
-    
+
+    func delete<T: RLMModel, U: RLMModel>(item: T, children: List<U>) {
+        do {
+            try realm.write {
+                realm.delete(children)
+                realm.delete(item)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     func delete<T: RLMModel>(item: T) {
         do {
             try realm.write {

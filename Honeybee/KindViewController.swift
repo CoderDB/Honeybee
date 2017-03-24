@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 
-class KindViewController: BaseCollectionViewController {
+class KindViewController: BaseCollectionViewController, AlertProvider {
 
     
     var dataSource: KindDataSource!
@@ -68,21 +68,39 @@ class KindViewController: BaseCollectionViewController {
         btn.isSelected = !btn.isSelected
         if let cells = collectionView.visibleCells as? [KindCell] {
             if btn.isSelected {
-                _ = cells.map { $0.deleteBtn.isHidden = false; $0.shake() }
+                _ = cells.map({ (cell) in
+                    cell.deleteBtn.isHidden = false; cell.shake()
+                    deleteWith(cell: cell)
+                })
             } else {
-                _ = cells.map { $0.deleteBtn.isHidden = true; $0.stop() }
+                _ = cells.map { $0.deleteBtn.isHidden = true; $0.stopShake() }
             }
         }
     }
-    
+    func deleteWith(cell: KindCell) {
+        cell.deleteBtnAction = { [unowned self] in
+            self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
+                cell.stopShake()
+                if let idx = self.collectionView.indexPath(for: cell) {
+                    let kind = self.dataSource.items[idx.item]
+                    self.deleteFromDatabase(kind)
+                    self.collectionView.deselectItem(at: idx, animated: true)
+                }
+            })
+        }
+    }
+    func deleteFromDatabase(_ kind: HoneybeeKind) {
+        DatabaseManager.manager.delete(item: kind, children: kind.items)
+    }
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            if let cells = collectionView.visibleCells as? [KindCell] {
-                _ = cells.map { $0.deleteBtn.isHidden = false; $0.shake() }
-                managerKindBtn.isSelected = true
-            }
+            managerKindBtnClicked(managerKindBtn)
+//            if let cells = collectionView.visibleCells as? [KindCell] {
+//                _ = cells.map { $0.deleteBtn.isHidden = false; $0.shake() }
+//                managerKindBtn.isSelected = true
+//            }
         case .ended:
             collectionView.endInteractiveMovement()
 //            managerKindBtn.isSelected = false
