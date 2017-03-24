@@ -29,6 +29,23 @@ class DatabaseManager: NSObject {
 //            throw error
 //        }
 //    }
+    
+//    func move<T: RLMModel>(_: T.Type, from: Int, to: Int) {
+//        
+//        do {
+//            try realm.write {
+//                let objs = all(T.self)
+//                let list = List<T>()
+//                _ = objs.map({ (obj) in
+//                    list.append(obj)
+//                })
+//                list.move(from: from, to: to)
+//            }
+//        } catch let error {
+//            print(error)
+//        }
+//    }
+    
     func create<T: RLMModel>(_: T.Type, value: Any) {
         do {
             try realm.write {

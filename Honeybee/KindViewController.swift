@@ -31,6 +31,13 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if managerKindBtn.isSelected {
+            managerKindBtnClicked(managerKindBtn)
+        }
+    }
     func setNavRightItems() {
         let addNewKindBtn = UIButton(type: .custom)
         addNewKindBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
@@ -96,17 +103,30 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
+            
             managerKindBtnClicked(managerKindBtn)
-//            if let cells = collectionView.visibleCells as? [KindCell] {
-//                _ = cells.map { $0.deleteBtn.isHidden = false; $0.shake() }
-//                managerKindBtn.isSelected = true
+//            guard let selectedIdx = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
+//                break
 //            }
-        case .ended:
-            collectionView.endInteractiveMovement()
-//            managerKindBtn.isSelected = false
+//            collectionView.beginInteractiveMovementForItem(at: selectedIdx)
+            
+//        case .changed:
+//            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: collectionView))
+            
+//        case .ended:
+//            collectionView.endInteractiveMovement()
+//            break
+//            collectionView.endInteractiveMovement()
+//            managerKindBtnClicked(managerKindBtn)
+//        case .cancelled:
+//            collectionView.cancelInteractiveMovement()
+//        case .failed:
+//            collectionView.cancelInteractiveMovement()
+//        case .possible:
+//            collectionView.cancelInteractiveMovement()
         default:
-            collectionView.cancelInteractiveMovement()
-//            managerKindBtn.isSelected = false
+//            collectionView.cancelInteractiveMovement()
+            break
         }
     }
     
@@ -132,4 +152,12 @@ extension KindViewController {
         vc.kind = dataSource.item(at: indexPath)
         navigationController?.pushViewController(vc, animated: true)
     }
+//    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let moved = dataSource.items[sourceIndexPath.item]
+////        DatabaseManager.manager.move(HoneybeeKind.self, from: sourceIndexPath.item, to: destinationIndexPath.item)
+//        dataSource.items.realm?.beginWrite()
+//        dataSource.items.realm?.delete(moved)
+//        dataSource.items.realm?.add(moved)
+//        try? dataSource.items.realm?.commitWrite(withoutNotifying: [notiToken!])
+//    }
 }
