@@ -145,7 +145,7 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource.items[indexPath.row]
         
-        if model.style != "group" {
+        if model.recorders.count <= 1 {
             let detailVC = RecordDetailController()
             detailVC.model = model.recorders[0]
             navigationController?.pushViewController(detailVC, animated: true)

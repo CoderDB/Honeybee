@@ -34,7 +34,7 @@ extension MainDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let model = items[indexPath.row]
-        if model.style == "group" {
+        if model.recorders.count > 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
             cell.dataSource = items[indexPath.row].recorders

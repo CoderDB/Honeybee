@@ -15,7 +15,7 @@ class CardViewController: BaseCollectionViewController {
     var notiToken: NotificationToken? = nil
     
     ///
-//    var dataToWrite: [String: Any] = [:]
+    var dataToWrite: [String: Any] = [:]
     
     lazy var hb_keyboard: HBKeyboard = {
         let keyboard = HBKeyboard()
@@ -27,20 +27,7 @@ class CardViewController: BaseCollectionViewController {
     var header: CardHeader!
     var dataSource: CardDataSource!
     
-    var headerTitles = ["生活日常", "每天吃饭", "住", "车"]
     var lastOffsetY: CGFloat = 0
-    
-    /*
-     var date: String = ""
-     var superCategory: String = ""
-     var category: String = ""
-     var money: String = ""
-     var remark: String = "未填写\n"
-     var color: String = ""
-     var isPay: Bool = true
-     var imageName: String = "meal"
-     */
-    fileprivate let itemToWrite = RLMRecorder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,10 +131,10 @@ extension CardViewController {
         header.categoryLabel.text = item.name
         header.imgView.image = UIImage(named: item.icon)
         
-        itemToWrite.category = item.name
-        itemToWrite.imageName = item.icon
-        itemToWrite.superCategory = kind.name
-        itemToWrite.color = kind.color
+        dataToWrite["category"] = item.name
+        dataToWrite["superCategory"] = kind.name
+        dataToWrite["imageName"] = item.icon
+        dataToWrite["color"] = kind.color
     }
 }
 
@@ -184,13 +171,12 @@ extension CardViewController {
 
 
 // MARK: HBKeyboardProtocol
-
+import ObjectMapper
 extension CardViewController: HBKeyboardProtocol, AlertProvider {
     // result
     func inputing(text: String) {
         header.numberLabel.text = text
     }
-    
     func deleted(text: String) {
         header.numberLabel.text = text
     }
@@ -198,21 +184,19 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     func completed(text: String) {
         header.numberLabel.text = text
         
-        itemToWrite.money = text
-        itemToWrite.isPay = true
+        dataToWrite["money"] = text
+        dataToWrite["isPay"] = 1
         
-        let model = RLMRecorderSuper()
-//        model.style = "plain"
-        model.recorders.append(itemToWrite)
-        
-        DatabaseManager.manager.add(model: model)
+        if let model = Mapper<RLMRecorderSuper>().map(JSON: ["style": "plain", "recorders": [dataToWrite]]) {
+            DatabaseManager.manager.add(model: model)
+        }
         
         header.numberLabel.text = "0"
-        
     }
+    
     // Date
     func selected(date: String) {
-        itemToWrite.date = date
+        dataToWrite["date"] = date
     }
     func callCamera() {
         print("---call camera")
@@ -221,7 +205,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         hb_keyboard.down()
         
         showTextField(title: "备注", textField: { (tf) in
-            self.itemToWrite.remark = tf.text ?? "\n"
+            self.dataToWrite["remark"] = tf.text ?? "\n\n"
             
         }, ok: { [unowned self] in
             self.hb_keyboard.up()
