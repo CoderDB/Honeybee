@@ -19,24 +19,48 @@ class KindCell: UICollectionViewCell, Shakeable {
 //        label.preferredMaxLayoutWidth = 100
         return label
     }()
+    lazy var deleteBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "kind_delete"), for: .normal)
+        btn.isHidden = true
+        return btn
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
 //        backgroundColor = .randomColor
         layer.cornerRadius = HB.Constant.cornerRadius
-        
-        contentView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.width.lessThanOrEqualTo(100)
-            make.center.equalTo(contentView)
-//            make.edges.equalTo(contentView)
-        }
+        setupUI()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func config(model: HoneybeeKind) {
         titleLabel.text = model.name
         backgroundColor = UIColor(hex: model.color)
     }
+    
+    
+    func setupUI() {
+        deleteBtn.addTarget(self, action: #selector(deleteBtnClicked), for: .touchUpInside)
+        
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(deleteBtn)
+        titleLabel.snp.makeConstraints { (make) in
+            make.width.lessThanOrEqualTo(100)
+            make.center.equalTo(contentView)
+            //            make.edges.equalTo(contentView)
+        }
+        deleteBtn.snp.makeConstraints { (make) in
+            make.center.equalTo(contentView)
+        }
+    }
+    var deleteBtnAction: (() -> Void)?
+    @objc private func deleteBtnClicked() {
+        deleteBtnAction?()
+    }
+    
+    
+    
 }

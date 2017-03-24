@@ -66,15 +66,13 @@ class KindViewController: BaseCollectionViewController {
     }
     func managerKindBtnClicked(_ btn: UIButton) {
         btn.isSelected = !btn.isSelected
-        
         if let cells = collectionView.visibleCells as? [KindCell] {
             if btn.isSelected {
-                _ = cells.map { $0.shake() }
+                _ = cells.map { $0.deleteBtn.isHidden = false; $0.shake() }
             } else {
-                _ = cells.map { $0.stop() }
+                _ = cells.map { $0.deleteBtn.isHidden = true; $0.stop() }
             }
         }
-        
     }
     
     
@@ -82,11 +80,9 @@ class KindViewController: BaseCollectionViewController {
         switch gesture.state {
         case .began:
             if let cells = collectionView.visibleCells as? [KindCell] {
-                _ = cells.map { $0.shake() }
+                _ = cells.map { $0.deleteBtn.isHidden = false; $0.shake() }
                 managerKindBtn.isSelected = true
             }
-            
-            
         case .ended:
             collectionView.endInteractiveMovement()
 //            managerKindBtn.isSelected = false
