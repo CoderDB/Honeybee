@@ -188,6 +188,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         dataToWrite["isPay"] = 1
         
         if let model = Mapper<RLMRecorderSuper>().map(JSON: ["style": "plain", "recorders": [dataToWrite]]) {
+            Reminder.waiting()
             DatabaseManager.manager.add(model: model)
         }
         

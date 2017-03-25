@@ -93,6 +93,7 @@
 		86D170461E51EBCE0004E192 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170451E51EBCE0004E192 /* ProfileViewController.swift */; };
 		86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170471E51EBE70004E192 /* BaseViewController.swift */; };
 		86D1704A1E51EDCB0004E192 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170491E51EDCB0004E192 /* ProfileHeader.swift */; };
+		86DAD5911E865218004A7AD7 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DAD5901E865218004A7AD7 /* HUD.swift */; };
 		86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */; };
 		86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE41E6405AB0054152E /* UIColorExtension.swift */; };
 		86DF8AE71E642CDD0054152E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF8AE61E642CDD0054152E /* DateExtension.swift */; };
@@ -222,6 +223,7 @@
 		86D170451E51EBCE0004E192 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86D170471E51EBE70004E192 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		86D170491E51EDCB0004E192 /* ProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		86DAD5901E865218004A7AD7 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		86DF8AE41E6405AB0054152E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		86DF8AE61E642CDD0054152E /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				862B3CC31E66D88A008485DD /* Database */,
 				866C562F1E6DA2FB00010D3F /* ItemModel */,
 				86E574701E4C6EBC001255CD /* Other */,
+				86DAD58F1E8651FA004A7AD7 /* HUD */,
 				861544471E4DA9D200A6EEBD /* Source */,
 				8638A9AC1DE56CB9002369F9 /* Assets.xcassets */,
 				8638A9AE1DE56CB9002369F9 /* LaunchScreen.storyboard */,
@@ -492,6 +495,14 @@
 				86D170491E51EDCB0004E192 /* ProfileHeader.swift */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		86DAD58F1E8651FA004A7AD7 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				86DAD5901E865218004A7AD7 /* HUD.swift */,
+			);
+			name = HUD;
 			sourceTree = "<group>";
 		};
 		86E5746C1E4C6E1C001255CD /* Main */ = {
@@ -979,6 +990,7 @@
 				8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */,
 				86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */,
 				86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */,
+				86DAD5911E865218004A7AD7 /* HUD.swift in Sources */,
 				8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */,
 				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
 				86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */,
