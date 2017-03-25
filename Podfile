@@ -9,6 +9,8 @@ def pods
     pod 'ObjectMapper', '~> 2.2.5'
     #pod 'PNChart', '~> 0.8.9'
     pod 'Then', '~> 2.1.0'    
+    #pod 'ARSLineProgress', '~> 2.1.0'
+    pod 'PKHUD', '~> 4.2.0'
 end
 
 target 'Honeybee' do
