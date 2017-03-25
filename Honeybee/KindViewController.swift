@@ -91,7 +91,7 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
         cell.deleteBtnAction = { [unowned self] in
             
             self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
-                
+                self.stopShake()
                 if let idx = self.collectionView.indexPath(for: cell) {
                     let kind = self.dataSource.items[idx.item]
                     self.deleteFromDatabase(kind)
@@ -156,12 +156,4 @@ extension KindViewController {
         vc.kind = dataSource.item(at: indexPath)
         navigationController?.pushViewController(vc, animated: true)
     }
-//    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let moved = dataSource.items[sourceIndexPath.item]
-////        DatabaseManager.manager.move(HoneybeeKind.self, from: sourceIndexPath.item, to: destinationIndexPath.item)
-//        dataSource.items.realm?.beginWrite()
-//        dataSource.items.realm?.delete(moved)
-//        dataSource.items.realm?.add(moved)
-//        try? dataSource.items.realm?.commitWrite(withoutNotifying: [notiToken!])
-//    }
 }
