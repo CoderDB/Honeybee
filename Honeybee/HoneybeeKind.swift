@@ -52,7 +52,7 @@ class HoneybeeKind: RLMModel {
             for item in json {
                 if let model = Mapper<HoneybeeItem>().map(JSON: item) {
                     items.append(model)
-                    DatabaseManager.manager.add(model: model)
+                    try! DatabaseManager.manager.add(model: model)
                 }
             }
         }
@@ -73,7 +73,7 @@ class HoneybeeKind: RLMModel {
         if let json = json(at: "category_color") as? [[String: Any]] {
             _ = json.map {
                 if let model = Mapper<HoneybeeKind>().map(JSON: $0) {
-                    DatabaseManager.manager.add(model: model)
+                    try! DatabaseManager.manager.add(model: model)
                 }
             }
         }

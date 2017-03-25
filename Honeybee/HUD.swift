@@ -9,11 +9,20 @@
 
 import PKHUD
 
-class Reminder {
-    static let delay: TimeInterval = 1.0
+struct Reminder {
     
-    class func waiting() {
+    private static let delay: TimeInterval = 1.0
+    
+    static func waiting() {
         HUD.flash(.systemActivity, delay: delay)
+    }
+    
+    static func error() {
+        HUD.flash(.error, delay: delay)
+        
+    }
+    static func success() {
+        HUD.flash(.success, delay: delay)
     }
 
 }

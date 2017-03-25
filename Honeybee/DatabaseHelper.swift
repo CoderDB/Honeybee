@@ -76,13 +76,13 @@ class DatabaseManager: NSObject {
         }
     }
     
-    func add<T: RLMModel>(model: T, update: Bool? = false) {
+    func add<T: RLMModel>(model: T, update: Bool? = false) throws {
         do {
             try realm.write {
                 realm.add(model, update: update!)
             }
         } catch let error {
-            print(error.localizedDescription)
+            throw error
         }
     }
 

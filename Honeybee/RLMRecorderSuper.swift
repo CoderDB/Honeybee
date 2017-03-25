@@ -30,7 +30,7 @@ class RLMRecorderSuper: RLMModel {
                 if let model = Mapper<RLMRecorder>().map(JSON: item) {
 //                    model.id = id
                     recorders.append(model)
-                    DatabaseManager.manager.add(model: model)
+                    try! DatabaseManager.manager.add(model: model)
                 }
             }
             yearMonthDay = recorders[0].yearMonthDay
