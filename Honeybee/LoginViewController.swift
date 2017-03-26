@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
         view.backgroundColor = HB.Color.main
         view.addSubview(usernameTF)
         view.addSubview(passwordTF)
+        view.addSubview(loginBtn)
+        view.addSubview(registerBtn)
         
         
         
@@ -33,6 +35,17 @@ class LoginViewController: UIViewController {
         usernameTF.addTarget(self, action: #selector(usernameTFValueChanged(_:)), for: .editingChanged)
         passwordTF.addTarget(self, action: #selector(passwordTFValueChanged(_:)), for: .editingChanged)
 //        usernameTF.applyRoundCorners(corners: [.topLeft, .topRight], radius: 10)
+        
+        loginBtn.snp.makeConstraints { (make) in
+            make.left.height.equalTo(passwordTF)
+            make.top.equalTo(passwordTF.snp.bottom).offset(10)
+            make.right.equalTo(view.snp.centerX).offset(-5)
+        }
+        registerBtn.snp.makeConstraints { (make) in
+            make.right.height.equalTo(passwordTF)
+            make.top.equalTo(loginBtn)
+            make.left.equalTo(view.snp.centerX).offset(5)
+        }
     }
     func usernameTFValueChanged(_ textField: UITextField) {
         print(textField.text)
@@ -59,6 +72,25 @@ class LoginViewController: UIViewController {
         tf.borderStyle = .roundedRect
         tf.clearButtonMode = .always
         return tf
+    }()
+    
+    lazy var loginBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("登录", for: .normal)
+        btn.titleLabel?.font = HB.Font.h4
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.backgroundColor = UIColor.cyan
+        btn.layer.cornerRadius = 5
+        return btn
+    }()
+    lazy var registerBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("注册", for: .normal)
+        btn.titleLabel?.font = HB.Font.h4
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.backgroundColor = UIColor.cyan
+        btn.layer.cornerRadius = 5
+        return btn
     }()
 }
 

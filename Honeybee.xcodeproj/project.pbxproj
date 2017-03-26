@@ -35,6 +35,7 @@
 		8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627BFB81E0BC83300C1A257 /* LineView.swift */; };
 		862996311E6ACD5800494C74 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862996301E6ACD5800494C74 /* NetworkManager.swift */; };
 		862B3CC51E66D8AB008485DD /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B3CC41E66D8AB008485DD /* DatabaseHelper.swift */; };
+		862D90011E881AB4003801BA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D90001E881AB4003801BA /* RegisterViewController.swift */; };
 		863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */; };
 		863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863703B11DEEDF7900BC1153 /* CardViewController.swift */; };
 		8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A9A51DE56CB9002369F9 /* AppDelegate.swift */; };
@@ -160,6 +161,7 @@
 		8627BFB81E0BC83300C1A257 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		862996301E6ACD5800494C74 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		862B3CC41E66D8AB008485DD /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		862D90001E881AB4003801BA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		863703B11DEEDF7900BC1153 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		8638A9A21DE56CB9002369F9 /* Honeybee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honeybee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -512,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				86DAD5951E86B288004A7AD7 /* LoginViewController.swift */,
+				862D90001E881AB4003801BA /* RegisterViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -994,6 +997,7 @@
 				1E4219191E78110900274D59 /* BarDataSource.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
+				862D90011E881AB4003801BA /* RegisterViewController.swift in Sources */,
 				1E1BA4981E781F5500CD2ABF /* PieDataSource.swift in Sources */,
 				860593B41E827698008B6157 /* HoneybeeColor.swift in Sources */,
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
