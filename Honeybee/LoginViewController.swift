@@ -67,6 +67,7 @@ class LoginViewController: UIViewController {
     
     lazy var usernameTF: HBTextField = {
         let tf = HBTextField()
+        tf.delegate = self
         tf.leftViewMode = .always
         tf.leftView = UIImageView(image: UIImage(named: "username_tf"))
         tf.rightViewMode = .whileEditing
@@ -76,6 +77,7 @@ class LoginViewController: UIViewController {
     }()
     lazy var passwordTF: HBTextField = {
         let tf = HBTextField()
+        tf.delegate = self
         tf.leftViewMode = .always
         tf.leftView = UIImageView(image: UIImage(named: "password_tf"))
         tf.rightViewMode = .always
@@ -145,8 +147,34 @@ extension LoginViewController {
 }
 
 
+// ------------------------------------------------------------------------
+// MARK: UI Event
+// ------------------------------------------------------------------------
 
-
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animate(isUp: true)
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        animate(isUp: false)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if !textField.isExclusiveTouch {
+            return textField.resignFirstResponder()
+        }
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    func animate(isUp: Bool) {
+        let offset: CGFloat = isUp ? -150 : 150
+        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
+            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: offset)
+        }, completion: nil)
+    }
+}
 
 
 
