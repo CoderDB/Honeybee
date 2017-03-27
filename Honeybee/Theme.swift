@@ -51,7 +51,7 @@ struct HB {
         ]
         static let h4_light = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_light), size: 20)
         static let h5_light = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_light), size: 18)
-        static let h6_light = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_light), size: 16)
+        static let h7_light = UIFont(descriptor: UIFontDescriptor(fontAttributes: attr_light), size: 12)
         
         
         static let h1_number = UIFont(name: "Silom", size: 70)!
