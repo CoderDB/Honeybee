@@ -19,7 +19,7 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     typealias Model = RecorderDetailViewModel
     typealias Cell = RecordDetailCell
     var viewModel: Model!
-    var dataSource: TVDataSource<Model, Cell>!
+    var dataSource: ConfigurableDataSourceTableViewDataSource<Model, Cell>!
     
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
 //        tableView.dataSource = dataSource
         
         viewModel = RecorderDetailViewModel(model: model)
-        dataSource = TVDataSource<Model, Cell>(model: viewModel)
+        dataSource = ConfigurableDataSourceTableViewDataSource<Model, Cell>(model: viewModel)
         tableView.dataSource = dataSource
     }
     
