@@ -12,21 +12,23 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         view.backgroundColor = HB.Color.main
+        
+        setupUI()
+    }
+    func setupUI() {
         view.addSubview(usernameTF)
         view.addSubview(passwordTF)
         view.addSubview(loginBtn)
+        view.addSubview(forgetPasswordBtn)
         view.addSubview(registerBtn)
-        
-        
         
         usernameTF.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.snp.centerY)
             make.left.equalTo(view).offset(20)
             make.right.equalTo(view).offset(-20)
-            make.height.equalTo(60)
+            make.height.equalTo(50)
         }
         passwordTF.snp.makeConstraints { (make) in
             make.top.equalTo(usernameTF.snp.bottom).offset(5)
@@ -34,50 +36,51 @@ class LoginViewController: UIViewController {
         }
         usernameTF.addTarget(self, action: #selector(usernameTFValueChanged(_:)), for: .editingChanged)
         passwordTF.addTarget(self, action: #selector(passwordTFValueChanged(_:)), for: .editingChanged)
-//        usernameTF.applyRoundCorners(corners: [.topLeft, .topRight], radius: 10)
+        //        usernameTF.applyRoundCorners(corners: [.topLeft, .topRight], radius: 10)
         
         loginBtn.snp.makeConstraints { (make) in
-            make.left.height.equalTo(passwordTF)
-            make.top.equalTo(passwordTF.snp.bottom).offset(10)
-            make.right.equalTo(view.snp.centerX).offset(-5)
+            make.left.right.equalTo(passwordTF)
+            make.height.equalTo(40)
+            make.top.equalTo(passwordTF.snp.bottom).offset(40)
+        }
+        loginBtn.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
+        
+        forgetPasswordBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(loginBtn)
+            make.top.equalTo(loginBtn.snp.bottom).offset(20)
         }
         registerBtn.snp.makeConstraints { (make) in
-            make.right.height.equalTo(passwordTF)
-            make.top.equalTo(loginBtn)
-            make.left.equalTo(view.snp.centerX).offset(5)
+            make.right.equalTo(loginBtn.snp.right)
+            make.top.equalTo(forgetPasswordBtn)
         }
+        forgetPasswordBtn.addTarget(self, action: #selector(forgetPassworfBtnClicked), for: .touchUpInside)
+        registerBtn.addTarget(self, action: #selector(registerBtnClicked), for: .touchUpInside)
     }
-    func usernameTFValueChanged(_ textField: UITextField) {
-        print(textField.text)
-    }
-    func passwordTFValueChanged(_ textField: UITextField) {
-        print(textField.text)
-    }
+    
     
     lazy var usernameTF: HBTextField = {
         let tf = HBTextField()
         tf.leftViewMode = .always
         tf.leftView = UIImageView(image: UIImage(named: "username_tf"))
+        tf.rightViewMode = .whileEditing
+        tf.clearButtonMode = .whileEditing
         tf.borderStyle = .roundedRect
-        tf.clearButtonMode = .always
-    
         return tf
     }()
     lazy var passwordTF: HBTextField = {
         let tf = HBTextField()
         tf.leftViewMode = .always
         tf.leftView = UIImageView(image: UIImage(named: "password_tf"))
-        tf.rightViewMode = .whileEditing
-        tf.rightView = UIImageView(image: UIImage(named: "password_tf"))
+        tf.rightViewMode = .always
+        tf.rightView = UIImageView(image: UIImage(named: "hidden_pwd_tf"))
         tf.borderStyle = .roundedRect
-        tf.clearButtonMode = .always
         return tf
     }()
     
     lazy var loginBtn: UIButton = {
         let btn = UIButton()
         btn.setTitle("登录", for: .normal)
-        btn.titleLabel?.font = HB.Font.h4
+        btn.titleLabel?.font = HB.Font.h4_light
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.cyan
         btn.layer.cornerRadius = 5
@@ -86,13 +89,40 @@ class LoginViewController: UIViewController {
     lazy var registerBtn: UIButton = {
         let btn = UIButton()
         btn.setTitle("注册", for: .normal)
-        btn.titleLabel?.font = HB.Font.h4
+        btn.titleLabel?.font = HB.Font.h6_light
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.backgroundColor = UIColor.cyan
-        btn.layer.cornerRadius = 5
+        return btn
+    }()
+    lazy var forgetPasswordBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("忘记密码", for: .normal)
+        btn.titleLabel?.font = HB.Font.h6_light
+        btn.setTitleColor(UIColor.white, for: .normal)
         return btn
     }()
 }
+
+// ------------------------------------------------------------------------
+// MARK: UI Event
+// ------------------------------------------------------------------------
+extension LoginViewController {
+    func usernameTFValueChanged(_ textField: UITextField) {
+        print(textField.text!)
+    }
+    func passwordTFValueChanged(_ textField: UITextField) {
+        print(textField.text!)
+    }
+    func loginBtnClicked() {
+        
+    }
+    func forgetPassworfBtnClicked() {
+    }
+    func registerBtnClicked() {
+    }
+}
+
+
+
 
 class HBTextField: UITextField {
     
@@ -114,6 +144,4 @@ class HBTextField: UITextField {
         iconFrame.origin.x -= 10
         return iconFrame
     }
-    
-
 }
