@@ -14,7 +14,13 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     
     var model: RLMRecorder!
     
-    var dataSource: RecorderDetailDataSource!
+//    var dataSource: RecorderDetailDataSource!
+    
+    typealias Model = RecorderDetailViewModel
+    typealias Cell = RecordDetailCell
+    var viewModel: Model!
+    var dataSource: TVDataSource<Model, Cell>!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +33,12 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func fetchData() {
-        dataSource = RecorderDetailDataSource(model: model)
+        
+//        dataSource = RecorderDetailDataSource(model: model)
+//        tableView.dataSource = dataSource
+        
+        viewModel = RecorderDetailViewModel(model: model)
+        dataSource = TVDataSource<Model, Cell>(model: viewModel)
         tableView.dataSource = dataSource
     }
     

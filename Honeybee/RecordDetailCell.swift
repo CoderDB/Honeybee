@@ -59,3 +59,10 @@ class RecordDetailCell: BaseTableViewCell {
         }
     }
 }
+
+extension RecordDetailCell: DDDCell {
+    typealias ItemType = String
+    func config(item: String) {
+        mainTitleLabel.text = item
+    }
+}
