@@ -26,20 +26,72 @@ import UIKit
 //}
 
 
-
 protocol DataProvider: class {
     associatedtype ItemType
+    associatedtype AnotherItemType
     
     func numberOfSections() -> Int
     func numberOfItems(in section: Int) -> Int
     func item(at indexPath: IndexPath) -> ItemType
     func identifier(at indexPath: IndexPath) -> String
+    
+//    var any: [Any] { get }
+    
+    func additions() -> AnotherItemType
+    
 }
 
+protocol ConfigurableCell: class {
+    associatedtype ItemType
+    func config(item: ItemType)
+    
+    func configAdditional(at index: IndexPath, model: RLMRecorder)
+}
+
+class ConfigurableDataSource<DataProvider>: NSObject {
+    let model: DataProvider
+    required init(model: DataProvider) {
+        self.model = model
+    }
+}
+
+
+// ----------------------------------------------------------------------
+// MARK: ConfigurableDataSourceTableViewDataSource
+// ----------------------------------------------------------------------
+class ConfigurableDataSourceTableViewDataSource<Model: DataProvider, Cell: ConfigurableCell>: ConfigurableDataSource<Model>, UITableViewDataSource where Model.ItemType == Cell.ItemType, Cell: UITableViewCell {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return model.numberOfSections()
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.numberOfItems(in: section)
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier(at: indexPath), for: indexPath) as? Cell else {
+            fatalError("Cell should be config")
+        }
+        cell.config(item: model.item(at: indexPath))
+        if let recorder = model.additions() as? RLMRecorder {
+            cell.configAdditional(at: indexPath, model: recorder)
+        }
+        return cell
+    }
+}
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------
+// MARK: RecorderDetailViewModel
+// ----------------------------------------------------------------------
 class RecorderDetailViewModel: NSObject {
     let titles = ["金额", "记录时间", "分类", "备注"]
     
-    var model: RLMRecorder?
+    let model: RLMRecorder
     
     init(model: RLMRecorder) {
         self.model = model
@@ -47,13 +99,17 @@ class RecorderDetailViewModel: NSObject {
 }
 
 
-
 // ----------------------------------------------------------------------
 // MARK: DataProvider
 // ----------------------------------------------------------------------
-
 extension RecorderDetailViewModel: DataProvider {
+
     typealias ItemType = String
+    
+    typealias AnotherItemType = RLMRecorder
+    internal func additions() -> RLMRecorder {
+        return model
+    }
     
     func identifier(at indexPath: IndexPath) -> String {
         return "\(RecordDetailCell.self)"
@@ -70,11 +126,9 @@ extension RecorderDetailViewModel: DataProvider {
 }
 
 
-
 // ----------------------------------------------------------------------
 // MARK: UITableViewDataSource
 // ----------------------------------------------------------------------
-
 extension RecorderDetailViewModel: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,44 +136,13 @@ extension RecorderDetailViewModel: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier(at: indexPath), for: indexPath) as! RecordDetailCell
+        
         cell.config(item: titles[indexPath.row])
-//        if (model != nil) {
-            cell.setSubTitleAttributes(indexPath: indexPath, model: model!)
-//        }
+        cell.configAdditional(at: indexPath, model: model)
         return cell
     }
 }
 
-
-
-
-class ConfigurableDataSource<Model: DataProvider>: NSObject {
-    let model: Model
-    required init(model: Model) {
-        self.model = model
-    }
-}
-
-protocol ConfigurableCell: class {
-    associatedtype ItemType
-    func config(item: ItemType)
-}
-
-class TVDataSource<Model: DataProvider, Cell: ConfigurableCell>: ConfigurableDataSource<Model>, UITableViewDataSource where Model.ItemType == Cell.ItemType, Cell: UITableViewCell {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return model.numberOfSections()
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.numberOfItems(in: section)
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier(at: indexPath), for: indexPath) as? Cell else {
-            fatalError("Cell should be config")
-        }
-        cell.config(item: model.item(at: indexPath))
-        return cell
-    }
-}
 
 
 

@@ -60,9 +60,19 @@ class RecordDetailCell: BaseTableViewCell {
     }
 }
 
-extension RecordDetailCell: DDDCell {
+
+// ----------------------------------------------------------------------
+// MARK: ConfigurableCell
+// ----------------------------------------------------------------------
+
+extension RecordDetailCell: ConfigurableCell {
     typealias ItemType = String
+    
     func config(item: String) {
         mainTitleLabel.text = item
     }
+    func configAdditional(at index: IndexPath, model: RLMRecorder) {
+        setSubTitleAttributes(indexPath: index, model: model)
+    }
+    
 }
