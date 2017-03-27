@@ -17,6 +17,10 @@ class LoginViewController: UIViewController {
         
         setupUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     func setupUI() {
         view.addSubview(usernameTF)
         view.addSubview(passwordTF)
@@ -34,6 +38,9 @@ class LoginViewController: UIViewController {
             make.top.equalTo(usernameTF.snp.bottom).offset(5)
             make.left.right.height.equalTo(usernameTF)
         }
+        showPasswordBtn.addTarget(self, action: #selector(showPasswordBtnClicked(_:)), for: .touchUpInside)
+        passwordTF.rightView = showPasswordBtn
+        
         usernameTF.addTarget(self, action: #selector(usernameTFValueChanged(_:)), for: .editingChanged)
         passwordTF.addTarget(self, action: #selector(passwordTFValueChanged(_:)), for: .editingChanged)
         //        usernameTF.applyRoundCorners(corners: [.topLeft, .topRight], radius: 10)
@@ -41,13 +48,13 @@ class LoginViewController: UIViewController {
         loginBtn.snp.makeConstraints { (make) in
             make.left.right.equalTo(passwordTF)
             make.height.equalTo(40)
-            make.top.equalTo(passwordTF.snp.bottom).offset(40)
+            make.top.equalTo(passwordTF.snp.bottom).offset(30)
         }
         loginBtn.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
         
         forgetPasswordBtn.snp.makeConstraints { (make) in
             make.left.equalTo(loginBtn)
-            make.top.equalTo(loginBtn.snp.bottom).offset(20)
+            make.top.equalTo(loginBtn.snp.bottom).offset(5)
         }
         registerBtn.snp.makeConstraints { (make) in
             make.right.equalTo(loginBtn.snp.right)
@@ -72,9 +79,17 @@ class LoginViewController: UIViewController {
         tf.leftViewMode = .always
         tf.leftView = UIImageView(image: UIImage(named: "password_tf"))
         tf.rightViewMode = .always
-        tf.rightView = UIImageView(image: UIImage(named: "hidden_pwd_tf"))
+        tf.isSecureTextEntry = true
         tf.borderStyle = .roundedRect
         return tf
+    }()
+    
+    lazy var showPasswordBtn: UIButton = {
+        let btn = UIButton()
+        btn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        btn.setImage(UIImage(named: "show_pwd_tf"), for: .normal)
+        btn.setImage(UIImage(named: "hidden_pwd_tf"), for: .selected)
+        return btn
     }()
     
     lazy var loginBtn: UIButton = {
@@ -88,16 +103,19 @@ class LoginViewController: UIViewController {
     }()
     lazy var registerBtn: UIButton = {
         let btn = UIButton()
-        btn.setTitle("注册", for: .normal)
-        btn.titleLabel?.font = HB.Font.h6_light
+        btn.setTitle("现在注册", for: .normal)
+        btn.titleLabel?.font = HB.Font.h7_light
         btn.setTitleColor(UIColor.white, for: .normal)
         return btn
     }()
     lazy var forgetPasswordBtn: UIButton = {
         let btn = UIButton()
-        btn.setTitle("忘记密码", for: .normal)
-        btn.titleLabel?.font = HB.Font.h6_light
-        btn.setTitleColor(UIColor.white, for: .normal)
+        let attrText = NSMutableAttributedString(string: "忘记密码？")
+        let attrs: [String: Any] = [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
+                                   NSForegroundColorAttributeName: UIColor.white]
+        attrText.addAttributes(attrs, range: NSRange(location: 0, length: attrText.length))
+        btn.setAttributedTitle(attrText, for: .normal)
+        btn.titleLabel?.font = HB.Font.h7_light
         return btn
     }()
 }
@@ -112,14 +130,24 @@ extension LoginViewController {
     func passwordTFValueChanged(_ textField: UITextField) {
         print(textField.text!)
     }
+    func showPasswordBtnClicked(_ btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
+    }
     func loginBtnClicked() {
         
     }
     func forgetPassworfBtnClicked() {
     }
     func registerBtnClicked() {
+        navigationController?.pushViewController(RegisterViewController(), animated: true)
     }
 }
+
+
+
+
+
 
 
 
