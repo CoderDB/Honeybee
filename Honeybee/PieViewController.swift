@@ -28,6 +28,22 @@ class PieViewController: BaseTableViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func fetchData() {
+        
+        let currentYear = Date().year
+        let currentMonth = Date().month
+        
+        let recorders = DatabaseManager.manager.all(RLMRecorder.self)
+        let matched = recorders
+            .filter { $0.year == currentYear }
+            .filter { $0.month == currentMonth }
+        print(matched)
+        for recorder in matched {
+            print(recorder.superCategory)
+        }
+        
+        
+        
+        
         let item1 = SetupArrowItem(title: "衣", subTitle: "10%")
         let item2 = SetupArrowItem(title: "食", subTitle: "30%")
         let item3 = SetupArrowItem(title: "住", subTitle: "30%")

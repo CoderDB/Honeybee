@@ -23,9 +23,7 @@ class RLMRecorder: RLMModel {
     dynamic var imageName: String = "meal"
     
     var monthDay: String {
-        get {
-            return Date.date(from: date).localDate.monthDay
-        }
+        return Date.date(from: date).localDate.monthDay
     }
     var weekday: String {
         return Date.date(from: date).localDate.weekday
@@ -37,9 +35,16 @@ class RLMRecorder: RLMModel {
         return Date.date(from: date).localDate.hourMinute
     }
     
+    var year: String {
+        return Date.date(from: date).localDate.year
+    }
+    var month: String {
+        return Date.date(from: date).localDate.month
+    }
+    
     
     override static func ignoredProperties() -> [String] {
-        return ["weekday", "yearMonthDay", "hourMinute", "monthDay"]
+        return ["weekday", "yearMonthDay", "hourMinute", "monthDay", "year", "month"]
     }
     
     
@@ -63,3 +68,63 @@ class RLMRecorder: RLMModel {
 //        self.hourMinute = currentDate.hourMinute
     }
 }
+
+
+// ----------------------------------------------------------------------
+// TODO: Sequence
+// ----------------------------------------------------------------------
+
+func group<T: Equatable>(source: [T]) -> [[T]] {
+    guard let head = source.first else { return [] }
+    let tail = Array(source.dropFirst())
+    var take = takeWhile(condition: { $0 == head }, source: tail)
+    take.insert(head, at: 0)
+    
+    let drop = dropWhile(condition: { $0 == head }, source: tail)
+    var temp = group(source: drop)
+    temp.insert(take, at: 0)
+    return temp
+}
+
+func takeWhile<T: Any>(condition: (T) -> Bool, source: [T]) -> [T] {
+    var result = [T]()
+    for element in source {
+        if condition(element) {
+            result.append(element)
+        } else {
+            break
+        }
+    }
+    return result
+}
+
+func dropWhile<T: Any>(condition: (T) -> Bool, source: [T]) -> [T] {
+    var matched = [T]()
+    for element in source {
+        if condition(element) {
+            matched.append(element)
+        } else {
+            break
+        }
+    }
+    return Array(source.dropFirst(matched.count))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

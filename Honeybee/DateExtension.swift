@@ -19,24 +19,32 @@ extension Date {
         let interval = TimeInterval(destOffset - sourceOffset)
         return Date(timeInterval: interval, since: self)
     }
+    ///  2017-02-26 18:35:52 +0000 -> "2017"
+    var year: String {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "GMT")!
+        let year = cal.component(.year, from: self)
+        return "\(year)"
+    }
     ///  2017-02-26 18:35:52 +0000 -> "2月"
     var month: String {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: "GMT")!
         let month = cal.component(.month, from: self)
-        return "\(month)月"
+        return "\(month)"
     }
     ///  2017-02-26 18:35:52 +0000 -> "26日"
     var day: String {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: "GMT")!
         let day = cal.component(.day, from: self)
-        return "\(day)日"
+        return "\(day)"
     }
     /// "2月-26"
     var monthDay: String {
-        return "\(month)\(day)"
+        return "\(month)月\(day)日"
     }
+    
     /// 2017-03-04 -> "星期六"
     var weekday: String {
         // "EEEE, MMMM, dd, yyyy"
@@ -50,16 +58,14 @@ extension Date {
     /// 2017-02-26 18:35:52 +0000 -> "2017-02-26"
     var yearMonthDay: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd MM:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone(abbreviation: "GMT")
-        let dateStr = formatter.string(from: self)
-        let components = dateStr.components(separatedBy: " ")
-        return components[0]
+        return formatter.string(from: self)
     }
     /// 2017-02-26 18:35:52 +0000 -> "18:35"
     var hourMinute: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd MM:ss"
+        formatter.dateFormat = "yyyy-MM-dd hh:MM:ss"
         formatter.timeZone = TimeZone(abbreviation: "GMT")
         let dateStr = formatter.string(from: self)
         let components = dateStr.components(separatedBy: " ")

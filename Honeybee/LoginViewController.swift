@@ -137,7 +137,9 @@ extension LoginViewController {
         passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
     }
     func loginBtnClicked() {
-        
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+        }
     }
     func forgetPassworfBtnClicked() {
     }
@@ -170,7 +172,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     func animate(isUp: Bool) {
         let offset: CGFloat = isUp ? -150 : 150
-        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {[unowned self] in
             self.view.frame = self.view.frame.offsetBy(dx: 0, dy: offset)
         }, completion: nil)
     }
