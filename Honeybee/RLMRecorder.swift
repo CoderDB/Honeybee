@@ -47,6 +47,9 @@ class RLMRecorder: RLMModel {
         return ["weekday", "yearMonthDay", "hourMinute", "monthDay", "year", "month"]
     }
     
+    override static func indexedProperties() -> [String] {
+        return ["superCategory"]
+    }
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -85,6 +88,20 @@ func group<T: Equatable>(source: [T]) -> [[T]] {
     temp.insert(take, at: 0)
     return temp
 }
+
+//func groupWith<T: Equatable>(condition: (T) -> (T) -> Bool, source: [T]) -> [[T]] {
+//    guard let head = source.first else { return [] }
+//    
+//    let tail = Array(source.dropFirst())
+//    var take = takeWhile(condition: { $0 == head }, source: tail)
+//    take.insert(head, at: 0)
+//    
+//    let drop = dropWhile(condition: { $0 == head }, source: tail)
+//    var temp = group(source: drop)
+//    temp.insert(take, at: 0)
+//    return temp
+//}
+
 
 func takeWhile<T: Any>(condition: (T) -> Bool, source: [T]) -> [T] {
     var result = [T]()
