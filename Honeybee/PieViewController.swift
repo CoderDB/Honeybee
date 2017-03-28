@@ -33,23 +33,30 @@ class PieViewController: BaseTableViewController {
         let currentMonth = Date().month
         
         let recorders = DatabaseManager.manager.all(RLMRecorder.self)
+        
         let matched = recorders
             .filter { $0.year == currentYear }
             .filter { $0.month == currentMonth }
         print(matched)
+        var kinds = [String]()
         for recorder in matched {
-            print(recorder.superCategory)
+            kinds.append(recorder.superCategory)
+        }
+//        let kinds = matched.map { $0.superCategory }
+        
+        let groupedKinds = group(source: kinds)
+        print(groupedKinds)
+        
+        var items = [SetupArrowItem]()
+        for groupedKind in groupedKinds {
+            if let name = groupedKind.first {
+                let item = SetupArrowItem(title: name, subTitle: "10%")
+                items.append(item)
+            }
         }
         
         
-        
-        
-        let item1 = SetupArrowItem(title: "衣", subTitle: "10%")
-        let item2 = SetupArrowItem(title: "食", subTitle: "30%")
-        let item3 = SetupArrowItem(title: "住", subTitle: "30%")
-        let item4 = SetupArrowItem(title: "行", subTitle: "30%")
-        
-        dataSource = PieDataSource(items: [item1, item2, item3, item4])
+        dataSource = PieDataSource(items: items)
         tableView.dataSource = dataSource
     }
 }
