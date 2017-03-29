@@ -63,7 +63,7 @@ class RecordCell: UITableViewCell {
             imgView.image = UIImage(named: recorder.imageName)
             dateLabel.text = recorder.monthDay
             categoryLabel.text = recorder.category
-            numberLabel.text = recorder.money
+            numberLabel.text = "\(recorder.money)"
             weekdayLabel.text = recorder.weekday
             backgroundColor = UIColor(hex: recorder.color)
         }

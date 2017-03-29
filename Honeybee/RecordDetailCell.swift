@@ -30,7 +30,7 @@ class RecordDetailCell: BaseTableViewCell {
     
     func setSubTitleAttributes(indexPath: IndexPath, model: RLMRecorder) {
         if indexPath.row == 0 {
-            subTitleLabel.attributedText = NSAttributedString(string: model.money, attributes: [NSFontAttributeName: HB.Font.h3_number])
+            subTitleLabel.attributedText = NSAttributedString(string: "\(model.money)", attributes: [NSFontAttributeName: HB.Font.h3_number])
         } else if indexPath.row == 1 {
             subTitleLabel.attributedText = NSAttributedString(string: model.yearMonthDay + "\n" + model.hourMinute + "\n", attributes: [NSFontAttributeName: HB.Font.h4_number])
         } else if indexPath.row == 2 {
