@@ -34,6 +34,7 @@ class RLMRecorderSuper: RLMModel {
         if let json = map["recorders"].currentValue as? [[String: Any]] {
             for item in json {
                 if let model = Mapper<RLMRecorder>().map(JSON: item) {
+//                    totalPay += model.money
                     recorders.append(model)
                     try! DatabaseManager.manager.add(model: model)
                 }
