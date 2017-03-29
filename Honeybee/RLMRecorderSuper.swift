@@ -43,4 +43,11 @@ class RLMRecorderSuper: RLMModel {
         }
         
     }
+    
+    func append(_ model: RLMRecorder) {
+        try! self.realm?.write {
+            recorders.append(model)
+        }
+        try! DatabaseManager.manager.add(model: model)
+    }
 }

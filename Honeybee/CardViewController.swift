@@ -185,16 +185,32 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         header.numberLabel.text = text
         dataToWrite["money"] = Int(text)
         dataToWrite["isPay"] = 1
+        let name = dataToWrite["superCategory"] as! String
         
-        if let model = Mapper<RLMRecorderSuper>().map(JSON: ["style": "plain", "recorders": [dataToWrite]]) {
-            
-            do {
-                try DatabaseManager.manager.add(model: model)
-                Reminder.success()
-            } catch {
-                Reminder.error()
+    
+        let isCont = DatabaseManager.manager.all(RLMRecorderSuper.self).filter("name == %@", name)
+        if isCont.count > 0 {
+            let superModel = isCont.first!
+            if let model = Mapper<RLMRecorder>().map(JSON: dataToWrite) {
+                superModel.append(model)
             }
-            
+        } else {
+            if let superModel = Mapper<RLMRecorderSuper>()
+                .map(JSON: [
+                    "style": "plain",
+                    "name": dataToWrite["superCategory"],
+                    "color": dataToWrite["color"],
+                    "totalPay": dataToWrite["money"],
+                    "recorders": [dataToWrite]
+                    ]
+                ) {
+                    do {
+                        try DatabaseManager.manager.add(model: superModel)
+                        Reminder.success()
+                    } catch {
+                        Reminder.error()
+                    }
+            }
         }
         
         header.numberLabel.text = "0"
