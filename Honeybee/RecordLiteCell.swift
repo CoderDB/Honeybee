@@ -33,7 +33,7 @@ class RecordLiteCell: UITableViewCell {
     var model: RLMRecorder? {
         didSet {
             category.text = model?.category
-            number.text = model?.money
+            number.text = "\(model?.money)"
             backgroundColor = UIColor(hex: model!.color)
         }
     }

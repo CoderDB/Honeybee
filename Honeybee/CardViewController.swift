@@ -183,8 +183,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     
     func completed(text: String) {
         header.numberLabel.text = text
-        
-        dataToWrite["money"] = text
+        dataToWrite["money"] = Int(text)
         dataToWrite["isPay"] = 1
         
         if let model = Mapper<RLMRecorderSuper>().map(JSON: ["style": "plain", "recorders": [dataToWrite]]) {

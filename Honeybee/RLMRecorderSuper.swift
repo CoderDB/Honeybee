@@ -18,22 +18,28 @@ class RLMRecorderSuper: RLMModel {
 //    }
     
     dynamic var style: String = "plain"
+    dynamic var color: String = ""
+    dynamic var name: String = ""
+    dynamic var totalPay: Int = 0
     
     var recorders = List<RLMRecorder>()
     var yearMonthDay: String = ""
     
     override func mapping(map: Map) {
         style <- map["style"]
+        color <- map["color"]
+        name <- map["name"]
+        totalPay <- map["totalPay"]
         
         if let json = map["recorders"].currentValue as? [[String: Any]] {
             for item in json {
                 if let model = Mapper<RLMRecorder>().map(JSON: item) {
-//                    model.id = id
                     recorders.append(model)
                     try! DatabaseManager.manager.add(model: model)
                 }
             }
             yearMonthDay = recorders[0].yearMonthDay
+            
         }
         
     }
