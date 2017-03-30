@@ -35,16 +35,37 @@ class MainViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    func fetch60Items() {
+        let data = DatabaseManager.manager.all(RLMRecorder.self)
+        var recorders = [RLMRecorder]()
+        for recorder in data {
+            recorders.append(recorder)
+        }
+        let grouped = group(recorders: recorders)
+        print(grouped)
+    }
     
     func fetchData() {
-        let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
-        dataSource = MainDataSource(items: data, vc: self)
+        let data = DatabaseManager.manager.all(RLMRecorder.self)
+        var recorders = [RLMRecorder]()
+        for recorder in data {
+            recorders.append(recorder)
+        }
+        let grouped = group(recorders: recorders)
+        var showing = [ShowRecorder]()
+        for group in grouped {
+            let show = ShowRecorder(recorders: group)
+            showing.append(show)
+        }
+        
+//        let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
+        dataSource = MainDataSource(items: showing, vc: self)
         tableView.dataSource = dataSource
         
-        notiToken = DatabaseManager.manager.notification({ [unowned self] (_, realm) in
-            self.dataSource = MainDataSource(items: realm.objects(RLMRecorderSuper.self), vc: self)
-            self.tableView.dataSource = self.dataSource
-        })
+//        notiToken = DatabaseManager.manager.notification({ [unowned self] (_, realm) in
+//            self.dataSource = MainDataSource(items: realm.objects(RLMRecorderSuper.self), vc: self)
+//            self.tableView.dataSource = self.dataSource
+//        })
     }
     deinit {
         notiToken?.stop()
@@ -145,7 +166,7 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource.items[indexPath.row]
         
-        if model.recorders.count <= 1 {
+        if model.recorders.count == 1 {
             let detailVC = RecordDetailController()
             detailVC.model = model.recorders[0]
             navigationController?.pushViewController(detailVC, animated: true)

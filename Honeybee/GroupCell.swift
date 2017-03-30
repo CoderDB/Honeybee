@@ -66,7 +66,7 @@ class GroupCell: UITableViewCell {
     
     
     var tvHeight = 60
-    var dataSource: List<RLMRecorder>? {
+    var dataSource: [RLMRecorder]? {
         didSet {
             tvHeight = dataSource!.count * 60 + 10
             tableView.snp.updateConstraints { (make) in
