@@ -76,7 +76,17 @@ class RLMRecorder: RLMModel {
 func == (lhs: RLMRecorder, rhs: RLMRecorder) -> Bool {
     return lhs.yearMonthDay == rhs.yearMonthDay
 }
-
+func group<T: Equatable>(recorders: [T]) -> [[T]] where T: RLMRecorder {
+    guard let head = recorders.first else { return [] }
+    let tail = Array(recorders.dropFirst())
+    var take = takeWhile(condition: { $0 == head }, source: tail)
+    take.insert(head, at: 0)
+    
+    let drop = dropWhile(condition: { $0 == head }, source: tail)
+    var temp = group(source: drop)
+    temp.insert(take, at: 0)
+    return temp
+}
 
 // ----------------------------------------------------------------------
 // TODO: Sequence
@@ -94,17 +104,7 @@ func group<T: Equatable>(source: [T]) -> [[T]] {
     return temp
 }
 
-func group(recorders: [RLMRecorder]) -> [[RLMRecorder]] {
-    guard let head = recorders.first else { return [] }
-    let tail = Array(recorders.dropFirst())
-    var take = takeWhile(condition: { $0 == head }, source: tail)
-    take.insert(head, at: 0)
-    
-    let drop = dropWhile(condition: { $0 == head }, source: tail)
-    var temp = group(source: drop)
-    temp.insert(take, at: 0)
-    return temp
-}
+
 
 //func groupWith<T: Equatable>(condition: (T) -> (T) -> Bool, source: [T]) -> [[T]] {
 //    guard let head = source.first else { return [] }
