@@ -12,14 +12,15 @@ import UIKit
 class PieViewController: BaseTableViewController {
 
     var dataSource: PieDataSource!
-    
+    var header: PieHeader!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavTitle("图表")
         
         tableView.register(PieCell.self)
-        tableView.tableHeaderView = PieHeader(height: 250)
+        header = PieHeader(height: 250)
+        tableView.tableHeaderView = header
         
         fetchData()
     }
@@ -27,10 +28,19 @@ class PieViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    func percent(part: Int, all: Int) -> String {
-        let part = Float(part), all = Float(all)
+    func percent(part: Int, all: Int) -> (String, Double) {
+        let part = Double(part), all = Double(all)
         let frac = (part / all) * 100
-        return String(format: "%.2f%%", frac)
+        let formatter = NumberFormatter()
+        formatter.positiveFormat = "00.00"
+        let fracStr = formatter.string(from: NSNumber(value: frac)) ?? "0"
+        print(fracStr)
+        
+        let fracNum = formatter.number(from: fracStr)?.doubleValue ?? 0
+        
+//        let fracStr = String(format: "%.2f%%", frac)
+//        let fracNum = (fracStr as NSString).doubleValue
+        return (fracStr, fracNum)
     }
     
     func fetchData() {
@@ -40,63 +50,24 @@ class PieViewController: BaseTableViewController {
         let superRecorders = DatabaseManager.manager.all(RLMRecorderSuper.self)
         let currentMonthRecorders = superRecorders
             .filter { $0.yearMonth == currentDate }
-        let kindAndTotalPays = currentMonthRecorders.map { ($0.name, $0.totalPay) }//.map { SetupArrowItem(title: $0, subTitle: "20%") }
-        let allPay = kindAndTotalPays.reduce(0) { (resu, test) -> Int in
-            return resu + test.1
-        }
-//        let appPay = parts.reduce(0, +)
-//        let items = kindAndTotalPays.map { (kind, pay) -> SetupArrowItem in
-//            let per = self.percent(part: pay, all: allPay)
-//            return SetupArrowItem(title: kind, subTitle: per)
-//        }
+        let kindPayColor = currentMonthRecorders.map { (kind: $0.name, totalPay: $0.totalPay, color: $0.color) }//.map { SetupArrowItem(title: $0, subTitle: "20%") }
+
+        let allPay = kindPayColor.reduce(0, { $0.0 + $0.1.totalPay })
         
+        var colors: [UIColor] = []
+        var numbers: [Double] = []
         var items = [SetupArrowItem]()
-        for temp in kindAndTotalPays {
-            let per = self.percent(part: temp.1, all: allPay)
-            let item = SetupArrowItem(title: temp.0, subTitle: per)
+        for kpc in kindPayColor {
+            let per = self.percent(part: kpc.totalPay, all: allPay)
+            let item = SetupArrowItem(title: kpc.kind, subTitle: per.0)
             items.append(item)
+            
+            colors.append(UIColor(hex: kpc.color))
+            numbers.append(per.1)
         }
-//        let items = kindAndTotalPays.map {
-//            let per = self.percent(part: $0.1, all: allPay)
-//            SetupArrowItem(title: $0.0, subTitle: per)
-//        }
-        
-    
-//        var items = [SetupArrowItem]()
-//        for (idx, ele) in kinds.enumerated() {
-//            
-//            let <#name#> = parts[idx]
-//            
-//            let item = SetupArrowItem(title: ele, subTitle: "20%")
-//            items.append(item)
-//        }
-        
-        
-        
-//        let recorders = DatabaseManager.manager.all(RLMRecorder.self)
-//        
-//        let matched = recorders
-//            .filter { $0.year == currentYear }
-//            .filter { $0.month == currentMonth }
-//        print(matched)
-//        var kinds = [String]()
-//        for recorder in matched {
-//            kinds.append(recorder.superCategory)
-//        }
-////        let kinds = matched.map { $0.superCategory }
-//        
-//        let groupedKinds = group(source: kinds)
-//        print(groupedKinds)
-//        
-//        var items = [SetupArrowItem]()
-//        for groupedKind in groupedKinds {
-//            if let name = groupedKind.first {
-//                let item = SetupArrowItem(title: name, subTitle: "10%")
-//                items.append(item)
-//            }
-//        }
-        
-        
+//        header.pieViewColor = colors
+//        header.pieViewData = numbers
+        tableView.tableHeaderView = PieHeader(height: 250, colors: colors, numbers: numbers)
         dataSource = PieDataSource(items: items)
         tableView.dataSource = dataSource
     }

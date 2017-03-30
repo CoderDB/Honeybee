@@ -29,7 +29,14 @@ class PieHeader: UIView {
         pie.highlightPerTapEnabled = false
         return pie
     }()
+    var pieViewData: [Double] = [0]
+    var pieViewColor: [UIColor] = [HB.Color.main]
     
+    convenience init(height: CGFloat, colors: [UIColor], numbers: [Double]) {
+        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
+        addPieView()
+        pieView.data = createData(numbers: numbers, colors: colors)
+    }
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
     }
@@ -60,14 +67,14 @@ class PieHeader: UIView {
 //        }
 //    }
     
-    func createData(numbers: [Double]) -> PieChartData {
+    func createData(numbers: [Double], colors: [UIColor]) -> PieChartData {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<numbers.count {
             let dataEntry = ChartDataEntry(x: Double(i), y: numbers[i])
             dataEntries.append(dataEntry)
         }
         let dataSet = PieChartDataSet(values: dataEntries, label: nil)
-        dataSet.colors = [.gray,.cyan, .green, .darkGray, .red]
+        dataSet.colors = colors//[.gray, .cyan, .green, .darkGray, .red]
         dataSet.xValuePosition = .outsideSlice              //坐标值显示位置
         dataSet.yValuePosition = .outsideSlice
 //        dataSet.sliceSpace = 1.0
@@ -88,6 +95,6 @@ class PieHeader: UIView {
         pieView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
-        pieView.data = createData(numbers: [10, 20.58, 30, 8.90, 15.52, 10])
+        pieView.data = createData(numbers: pieViewData, colors: pieViewColor)
     }
 }
