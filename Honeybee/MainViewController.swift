@@ -50,7 +50,7 @@ class MainViewController: BaseTableViewController {
         notiToken?.stop()
     }
     func fetchDataFromServe() {
-        let serveIsChanged = true
+        let serveIsChanged = false
         if serveIsChanged {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()

@@ -17,7 +17,7 @@ class CardViewController: BaseCollectionViewController {
     ///
 //    var dataToWrite: [String: Any] = [:]
     ///
-    var recorderToWrite = RLMRecorder()
+    var recorderToWrite: RLMRecorder!
     
     lazy var hb_keyboard: HBKeyboard = {
         let keyboard = HBKeyboard()
@@ -133,7 +133,7 @@ extension CardViewController {
         header.categoryLabel.text = item.name
         header.imgView.image = UIImage(named: item.icon)
         
-        
+        recorderToWrite = RLMRecorder()
         recorderToWrite.category = item.name
         recorderToWrite.superCategory = kind.name
         recorderToWrite.imageName = item.icon
@@ -188,28 +188,20 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     func deleted(text: String) {
         header.numberLabel.text = text
     }
-    
-    func completed(text: String) {
-        header.numberLabel.text = text
-        
-        recorderToWrite.money = Int(text) ?? 0
-        recorderToWrite.isPay = true
-//        dataToWrite["money"] = Int(text)
-//        dataToWrite["isPay"] = 1
-    
-    
-        let isCont = DatabaseManager.manager.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
-        if isCont.count > 0 {
-            let superModel = isCont.first!
-            superModel.append(recorderToWrite)
+    func writeToDataBase() {
+        let isExisted = DatabaseManager.manager.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
+        if isExisted.count > 0 {
+            if let superModel = isExisted.first {
+                do {
+                    try superModel.realm?.write {
+                        superModel.recorders.append(recorderToWrite)
+                    }
+                    Reminder.success()
+                } catch {
+                    Reminder.error()
+                }
+            }
         } else {
-            
-//            let superModel = RLMRecorderSuper()
-//            superModel.name = recorderToWrite.superCategory
-//            superModel.color = recorderToWrite.color
-//            superModel.totalPay = recorderToWrite.money
-//            superModel.append(recorderToWrite)
-            
             if let superModel = Mapper<RLMRecorderSuper>()
                 .map(JSON: [
                     "style": "plain",
@@ -219,15 +211,24 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
                     "recorders": [recorderToWrite.toJSON()]
                     ]
                 ) {
-                    do {
-                        try DatabaseManager.manager.add(model: superModel)
-                        Reminder.success()
-                    } catch {
-                        Reminder.error()
-                    }
+                do {
+                    try DatabaseManager.manager.add(model: superModel)
+                    Reminder.success()
+                } catch {
+                    Reminder.error()
+                }
             }
         }
+    }
+    func completed(text: String) {
+        header.numberLabel.text = text
         
+        recorderToWrite.money = Int(text) ?? 0
+        recorderToWrite.isPay = true
+    
+        writeToDataBase()
+        
+        recorderToWrite = nil
         header.numberLabel.text = "0"
     }
     
