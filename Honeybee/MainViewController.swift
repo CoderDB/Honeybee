@@ -35,17 +35,7 @@ class MainViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    func fetch60Items() {
-        let data = DatabaseManager.manager.all(RLMRecorder.self)
-        var recorders = [RLMRecorder]()
-        for recorder in data {
-            recorders.append(recorder)
-        }
-        let grouped = group(recorders: recorders)
-        print(grouped)
-    }
-    
-    func fetchData() {
+    func sameRecorderBeGrouped() {
         let data = DatabaseManager.manager.all(RLMRecorder.self)
         var recorders = [RLMRecorder]()
         for recorder in data {
@@ -57,9 +47,12 @@ class MainViewController: BaseTableViewController {
             let show = ShowRecorder(recorders: group)
             showing.append(show)
         }
-        
-//        let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
-        dataSource = MainDataSource(items: showing, vc: self)
+    }
+    
+    func fetchData() {
+        sameRecorderBeGrouped()
+        let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
+        dataSource = MainDataSource(items: data, vc: self)
         tableView.dataSource = dataSource
         
 //        notiToken = DatabaseManager.manager.notification({ [unowned self] (_, realm) in

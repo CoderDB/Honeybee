@@ -11,13 +11,13 @@ import RealmSwift
 
 class MainDataSource: NSObject {
     
-    var items: [ShowRecorder]
+    var items: Results<RLMRecorderSuper>
     fileprivate var vc: UIViewController
-    init(items: [ShowRecorder], vc: UIViewController) {
+    init(items: Results<RLMRecorderSuper>, vc: UIViewController) {
         self.items = items
         self.vc = vc
     }
-    func item(at indexPath: IndexPath) -> ShowRecorder {
+    func item(at indexPath: IndexPath) -> RLMRecorderSuper {
         return items[indexPath.row]
     }
 }
