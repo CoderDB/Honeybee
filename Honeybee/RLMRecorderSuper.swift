@@ -6,6 +6,17 @@
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
 
+
+class ShowRecorder {
+    let recorders: [RLMRecorder]
+    init(recorders: [RLMRecorder]) {
+        self.recorders = recorders
+    }
+    
+}
+
+
+
 import RealmSwift
 import ObjectMapper
 

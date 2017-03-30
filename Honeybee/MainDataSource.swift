@@ -11,22 +11,20 @@ import RealmSwift
 
 class MainDataSource: NSObject {
     
-    var items: Results<RLMRecorderSuper>
+    var items: [ShowRecorder]
     fileprivate var vc: UIViewController
-    init(items: Results<RLMRecorderSuper>, vc: UIViewController) {
+    init(items: [ShowRecorder], vc: UIViewController) {
         self.items = items
         self.vc = vc
     }
-    func item(at indexPath: IndexPath) -> RLMRecorderSuper {
+    func item(at indexPath: IndexPath) -> ShowRecorder {
         return items[indexPath.row]
     }
 }
 
 
 extension MainDataSource: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
