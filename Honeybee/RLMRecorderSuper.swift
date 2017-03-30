@@ -7,13 +7,13 @@
 //
 
 
-class ShowRecorder {
-    let recorders: [RLMRecorder]
-    init(recorders: [RLMRecorder]) {
-        self.recorders = recorders
-    }
-    
-}
+//class ShowRecorder {
+//    let recorders: [RLMRecorder]
+//    init(recorders: [RLMRecorder]) {
+//        self.recorders = recorders
+//    }
+//    
+//}
 
 
 
@@ -33,8 +33,19 @@ class RLMRecorderSuper: RLMModel {
     dynamic var name: String = ""
     dynamic var totalPay: Int = 0
     
+    dynamic var yearMonthDay: String = ""
+    
     var recorders = List<RLMRecorder>()
-    var yearMonthDay: String = ""
+    var year: String {
+        return yearMonthDay.components(separatedBy: "-")[0]
+    }
+    var month: String {
+        return yearMonthDay.components(separatedBy: "-")[1]
+    }
+    var yearMonth: String {
+        return year + "-" + month
+    }
+    
     
     override func mapping(map: Map) {
         style <- map["style"]
@@ -51,11 +62,12 @@ class RLMRecorderSuper: RLMModel {
                 }
             }
             yearMonthDay = recorders[0].yearMonthDay
-            
         }
         
     }
-    
+    override static func ignoredProperties() -> [String] {
+        return ["year", "month"]
+    }
 //    func append(_ model: RLMRecorder) {
 //        try! self.realm?.write {
 //            recorders.append(model)
