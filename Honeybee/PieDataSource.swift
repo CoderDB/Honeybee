@@ -14,13 +14,26 @@ protocol PieDataSourceProtocol {
     func item(at indexPath: IndexPath) -> ItemType
 }
 
-
-class PieDataSource: NSObject, PieDataSourceProtocol {
-    typealias ItemType = SetupItem
-    var items: [ItemType]
+extension PieDataSourceProtocol {
     func item(at indexPath: IndexPath) -> ItemType {
         return items[indexPath.row]
     }
+}
+
+
+class PieDataModel {
+    var category: RLMRecorderSuper
+    var percent: String
+    
+    init(category: RLMRecorderSuper, percent: String) {
+        self.category = category
+        self.percent = percent
+    }
+}
+
+class PieDataSource: NSObject, PieDataSourceProtocol {
+    typealias ItemType = PieDataModel
+    var items: [ItemType]
     
     init(items: [ItemType]) {
         self.items = items
@@ -34,7 +47,9 @@ extension PieDataSource: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(PieCell.self)") as! PieCell
-        cell.item = item(at: indexPath)
+//        cell.item = item(at: indexPath)
+        cell.mainTitleLabel.text = item(at: indexPath).category.name
+        cell.subTitleLabel.text = item(at: indexPath).percent
         return cell
     }
 }

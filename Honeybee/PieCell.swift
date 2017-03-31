@@ -23,10 +23,16 @@ class PieCell: BaseTableViewCell {
     }()
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
-    var item: SetupItem! {
+//    var item: SetupItem! {
+//        didSet {
+//            mainTitleLabel.text = item.title
+//            subTitleLabel.text = item.subTitle
+//        }
+//    }
+    var item: RLMRecorderSuper! {
         didSet {
-            mainTitleLabel.text = item.title
-            subTitleLabel.text = item.subTitle
+            mainTitleLabel.text = item.name
+            subTitleLabel.text = item.month
         }
     }
     override func initialize() {
@@ -38,7 +44,8 @@ class PieCell: BaseTableViewCell {
             make.left.equalTo(contentView).offset(10)
         }
         subTitleLabel.snp.makeConstraints { (make) in
-            make.right.centerY.equalTo(contentView)
+            make.centerY.equalTo(contentView)
+            make.right.equalTo(contentView).offset(-5)
         }
         accessoryView = arrow
     }
