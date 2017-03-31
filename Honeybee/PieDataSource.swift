@@ -12,6 +12,7 @@ protocol PieDataSourceProtocol {
     associatedtype ItemType
     var items: [ItemType] { get }
     func item(at indexPath: IndexPath) -> ItemType
+    init(items: [ItemType])
 }
 
 extension PieDataSourceProtocol {
@@ -35,9 +36,8 @@ class PieDataSource: NSObject, PieDataSourceProtocol {
     typealias ItemType = PieDataModel
     var items: [ItemType]
     
-    init(items: [ItemType]) {
+    required init(items: [ItemType]) {
         self.items = items
-        super.init()
     }
 }
 
