@@ -40,10 +40,15 @@ extension Date {
         let day = cal.component(.day, from: self)
         return "\(day)"
     }
-    /// "2月-26"
+    /// "2月26日"
     var monthDay: String {
         return "\(month)月\(day)日"
     }
+    /// "2-26"
+    var month_day: String {
+        return "\(month)-\(day)"
+    }
+    
     
     /// 2017-03-04 -> "星期六"
     var weekday: String {

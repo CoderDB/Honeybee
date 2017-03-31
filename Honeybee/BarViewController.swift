@@ -8,8 +8,28 @@
 
 import UIKit
 
+
+
+protocol TableViewProvider {
+    var delegate: UITableViewDelegate! { set get }
+    var dataSource: UITableViewDataSource! { set get }
+    var tableView: UITableView { get }
+}
+extension TableViewProvider {
+    var tableView: UITableView {
+        let tv = UITableView()
+        tv.delegate = delegate
+        tv.dataSource = dataSource
+        tv.separatorStyle = .none
+        tv.showsVerticalScrollIndicator = false
+        tv.showsHorizontalScrollIndicator = false
+        return tv
+    }
+}
+
+
 class BarViewController: BaseTableViewController {
-    
+
     var dataSource: BarDataSource!
     
     var category: RLMRecorderSuper!
@@ -17,7 +37,7 @@ class BarViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addSubview(tableView)
         tableView.register(BarCell.self)
         tableView.tableHeaderView = BarHeader(height: 170)
         
@@ -42,17 +62,7 @@ class BarViewController: BaseTableViewController {
     }
     
     func fetchData() {
-//        let item1 = SetupArrowItem(title: "衣", subTitle: "-28510")
-//        let item2 = SetupArrowItem(title: "食", subTitle: "-30")
-//        let item3 = SetupArrowItem(title: "住", subTitle: "-1096.56")
-//        let item4 = SetupArrowItem(title: "行", subTitle: "-7782.30")
-        
-        var recorders = [RLMRecorder]()
-        for ele in category.recorders {
-            recorders.append(ele)
-        }
-        
-        dataSource = BarDataSource(items: recorders)
+        dataSource = BarDataSource(items: category.recorders.toArray)
         tableView.dataSource = dataSource
     }
 }
