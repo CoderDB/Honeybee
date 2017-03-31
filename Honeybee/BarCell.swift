@@ -11,17 +11,24 @@ import UIKit
 class BarCell: BaseTableViewCell {
     
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
-    lazy var mainTopTitleLabel: UILabel = {
+    
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = HB.Font.h5_number
+        return label
+    }()
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h5
         return label
     }()
-    lazy var mainBottomTitleLabel: UILabel = {
+    lazy var weekdayLabel: UILabel = {
         let label = UILabel()
-        label.font = HB.Font.h4_number
+        label.textAlignment = .right
+        label.font = HB.Font.h7
         return label
     }()
-    lazy var subTitleLabel: UILabel = {
+    lazy var moneyLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.font = HB.Font.h3_number
@@ -40,33 +47,41 @@ class BarCell: BaseTableViewCell {
     
     var item: RLMRecorder! {
         didSet {
-            mainTopTitleLabel.text = item.monthDay
-            mainBottomTitleLabel.text = item.category
-            subTitleLabel.text = "\(item.money)"
+            dateLabel.text = item.monthDay
+            nameLabel.text = item.category
+            weekdayLabel.text = item.weekday
+            moneyLabel.text = "\(item.money)"
         }
     }
     override func initialize() {
         contentView.addSubview(imgView)
-        contentView.addSubview(mainTopTitleLabel)
-        contentView.addSubview(mainBottomTitleLabel)
-        contentView.addSubview(subTitleLabel)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(weekdayLabel)
+        contentView.addSubview(moneyLabel)
         imgView.snp.makeConstraints { (make) in
             make.centerY.equalTo(contentView)
             make.left.equalTo(contentView).offset(10)
             make.width.height.equalTo(40)
         }
-        mainTopTitleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(contentView.snp.centerY)
+        
+        dateLabel.snp.makeConstraints { (make) in
             make.left.equalTo(imgView.snp.right).offset(10)
+            make.top.equalTo(contentView).offset(5)
         }
-        mainBottomTitleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.centerY)
-            make.left.equalTo(mainTopTitleLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(dateLabel)
+            make.top.equalTo(dateLabel.snp.bottom)
         }
-        subTitleLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView)
+        weekdayLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(contentView).offset(-10)
+            make.top.equalTo(contentView)
+        }
+        moneyLabel.snp.makeConstraints { (make) in
             make.right.equalTo(contentView).offset(-5)
+            make.bottom.equalTo(contentView)
         }
+        
         accessoryView = arrow
     }
 

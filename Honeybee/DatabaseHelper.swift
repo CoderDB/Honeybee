@@ -192,4 +192,30 @@ class DatabaseManager: NSObject {
 }
 
 
+extension Results {
+    var toArray: [T] {
+        var rs: [T] = []
+        for r in self {
+            rs.append(r)
+        }
+        return rs
+    }
+}
+
+extension List {
+    var toArray: [T] {
+        var ls: [T] = []
+        for l in self {
+            ls.append(l)
+        }
+        return ls
+    }
+//    func toArray() -> [T] {
+//        var ls: [T] = []
+//        for l in self {
+//            ls.append(l)
+//        }
+//        return ls
+//    }
+}
 
