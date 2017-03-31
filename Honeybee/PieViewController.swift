@@ -68,7 +68,9 @@ class PieViewController: BaseTableViewController {
 //        header.pieViewColor = colors
 //        header.pieViewData = numbers
         tableView.tableHeaderView = PieHeader(height: 250, colors: colors, numbers: numbers)
+        
         dataSource = PieDataSource(items: items)
+    
         tableView.dataSource = dataSource
     }
 }
@@ -79,6 +81,7 @@ class PieViewController: BaseTableViewController {
 extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = dataSource.item(at: indexPath) as? SetupItem {
+            
             let barVC = BarViewController()
             barVC.setNavTitle(item.title)
             navigationController?.pushViewController(barVC, animated: true)
