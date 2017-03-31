@@ -48,6 +48,7 @@ class PieViewController: BaseTableViewController {
         let currentDate = dateString.substring(to: dateString.index(dateString.startIndex, offsetBy: 7))
         
         let superRecorders = DatabaseManager.manager.all(RLMRecorderSuper.self)
+        
         let currentMonthRecorders = superRecorders
             .filter { $0.yearMonth == currentDate }
         let kindPayColor = currentMonthRecorders.map { (kind: $0.name, totalPay: $0.totalPay, color: $0.color) }//.map { SetupArrowItem(title: $0, subTitle: "20%") }
@@ -56,6 +57,7 @@ class PieViewController: BaseTableViewController {
         
         var colors: [UIColor] = []
         var numbers: [Double] = []
+        var perStrs: [String] = []
         var items = [SetupArrowItem]()
         for kpc in kindPayColor {
             let per = self.percent(part: kpc.totalPay, all: allPay)
@@ -63,14 +65,18 @@ class PieViewController: BaseTableViewController {
             items.append(item)
             
             colors.append(UIColor(hex: kpc.color))
+            perStrs.append(per.0)
             numbers.append(per.1)
         }
-//        header.pieViewColor = colors
-//        header.pieViewData = numbers
+        
         tableView.tableHeaderView = PieHeader(height: 250, colors: colors, numbers: numbers)
         
-        dataSource = PieDataSource(items: items)
-    
+        var models: [PieDataModel] = []
+        for (idx, category) in superRecorders.enumerated() {
+            let dataModel = PieDataModel(category: category, percent: perStrs[idx])
+            models.append(dataModel)
+        }
+        dataSource = PieDataSource(items: models)
         tableView.dataSource = dataSource
     }
 }
@@ -80,6 +86,7 @@ class PieViewController: BaseTableViewController {
 
 extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let item = dataSource.item(at: indexPath) as? SetupItem {
             
             let barVC = BarViewController()
