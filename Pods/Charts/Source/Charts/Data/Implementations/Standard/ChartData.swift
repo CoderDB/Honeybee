@@ -13,13 +13,13 @@ import Foundation
 
 open class ChartData: NSObject
 {
-    internal var _yMax: Double = -DBL_MAX
-    internal var _yMin: Double = DBL_MAX
-    internal var _xMax: Double = -DBL_MAX
-    internal var _xMin: Double = DBL_MAX
-    internal var _leftAxisMax: Double = -DBL_MAX
-    internal var _leftAxisMin: Double = DBL_MAX
-    internal var _rightAxisMax: Double = -DBL_MAX
+    internal var _yMax: Double = -.greatestFiniteMagnitude
+    internal var _yMin: Double = Double.greatestFiniteMagnitude
+    internal var _xMax: Double = -.greatestFiniteMagnitude
+    internal var _xMin: Double = .greatestFiniteMagnitude
+    internal var _leftAxisMax: Double = -.greatestFiniteMagnitude
+    internal var _leftAxisMin: Double = .greatestFiniteMagnitude
+    internal var _rightAxisMax: Double = -.greatestFiniteMagnitude
     internal var _rightAxisMin: Double = DBL_MAX
     
     internal var _dataSets = [IChartDataSet]()
