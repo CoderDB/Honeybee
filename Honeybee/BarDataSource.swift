@@ -8,11 +8,22 @@
 
 import UIKit
 
-class BarDataSource: DataSource {
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+class BarDataSource: NSObject, PieDataSourceProtocol {
+    typealias ItemType = RLMRecorder
+    var items: [ItemType]
+    required init(items: [ItemType]) {
+        self.items = items
+    }
+}
+
+
+extension BarDataSource: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(BarCell.self)") as! BarCell
-        cell.item = items[indexPath.row] as! SetupItem
+        cell.item = items[indexPath.row]
         return cell
     }
 }

@@ -86,12 +86,10 @@ class PieViewController: BaseTableViewController {
 
 extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let item = dataSource.item(at: indexPath) as? SetupItem {
-            
-            let barVC = BarViewController()
-            barVC.setNavTitle(item.title)
-            navigationController?.pushViewController(barVC, animated: true)
-        }
+
+        let barVC = BarViewController()
+        barVC.category = dataSource.item(at: indexPath).category
+        barVC.setNavTitle(dataSource.item(at: indexPath).category.name)
+        navigationController?.pushViewController(barVC, animated: true)
     }
 }

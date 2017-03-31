@@ -10,7 +10,10 @@ import UIKit
 
 class BarViewController: BaseTableViewController {
     
-    var dataSource: BarDataSource! //= [SetupItem]()
+    var dataSource: BarDataSource!
+    
+    var category: RLMRecorderSuper!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +42,17 @@ class BarViewController: BaseTableViewController {
     }
     
     func fetchData() {
-        let item1 = SetupArrowItem(title: "衣", subTitle: "-28510")
-        let item2 = SetupArrowItem(title: "食", subTitle: "-30")
-        let item3 = SetupArrowItem(title: "住", subTitle: "-1096.56")
-        let item4 = SetupArrowItem(title: "行", subTitle: "-7782.30")
-        dataSource = BarDataSource(items: [item1, item2, item3, item4])
+//        let item1 = SetupArrowItem(title: "衣", subTitle: "-28510")
+//        let item2 = SetupArrowItem(title: "食", subTitle: "-30")
+//        let item3 = SetupArrowItem(title: "住", subTitle: "-1096.56")
+//        let item4 = SetupArrowItem(title: "行", subTitle: "-7782.30")
+        
+        var recorders = [RLMRecorder]()
+        for ele in category.recorders {
+            recorders.append(ele)
+        }
+        
+        dataSource = BarDataSource(items: recorders)
         tableView.dataSource = dataSource
     }
 }

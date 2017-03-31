@@ -30,11 +30,19 @@ class BarCell: BaseTableViewCell {
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
   
-    var item: SetupItem! {
+//    var item: SetupItem! {
+//        didSet {
+//            mainTopTitleLabel.text = "星期六"
+//            mainBottomTitleLabel.text = "02-18"
+//            subTitleLabel.text = item.subTitle
+//        }
+//    }
+    
+    var item: RLMRecorder! {
         didSet {
-            mainTopTitleLabel.text = "星期六"
-            mainBottomTitleLabel.text = "02-18"
-            subTitleLabel.text = item.subTitle
+            mainTopTitleLabel.text = item.monthDay
+            mainBottomTitleLabel.text = item.category
+            subTitleLabel.text = "\(item.money)"
         }
     }
     override func initialize() {
@@ -56,7 +64,8 @@ class BarCell: BaseTableViewCell {
             make.left.equalTo(mainTopTitleLabel)
         }
         subTitleLabel.snp.makeConstraints { (make) in
-            make.right.centerY.equalTo(contentView)
+            make.centerY.equalTo(contentView)
+            make.right.equalTo(contentView).offset(-5)
         }
         accessoryView = arrow
     }
