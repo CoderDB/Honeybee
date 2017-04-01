@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PieViewController: BaseTableViewController {
 
@@ -32,7 +33,7 @@ class PieViewController: BaseTableViewController {
         let part = Double(part), all = Double(all)
         let frac = (part / all) * 100
         let formatter = NumberFormatter()
-        formatter.positiveFormat = "00.00"
+        formatter.positiveFormat = "00.0"
         let fracStr = formatter.string(from: NSNumber(value: frac)) ?? "0"
         print(fracStr)
         
@@ -42,38 +43,41 @@ class PieViewController: BaseTableViewController {
 //        let fracNum = (fracStr as NSString).doubleValue
         return (fracStr, fracNum)
     }
+    func fetchData(yearMonth: String) -> [RLMRecorderSuper] {
+        let models = DatabaseManager.manager.all(RLMRecorderSuper.self)
+            .filter { $0.yearMonth == yearMonth }
+        return Array(models)
+    }
     
-    func fetchData() {
-        let dateString = Date().description
-        let currentDate = dateString.substring(to: dateString.index(dateString.startIndex, offsetBy: 7))
+    func colors_numbers_percents(models: [RLMRecorderSuper]) -> ([UIColor], [Double], [String]) {
+        let kind_pay_color = models.map { (kind: $0.name, totalPay: $0.totalPay, color: $0.color) }
+        let allPay = kind_pay_color.reduce(0, { $0.0 + $0.1.totalPay })
         
-        let superRecorders = DatabaseManager.manager.all(RLMRecorderSuper.self)
+        var colors: [UIColor] = [],
+            numbers: [Double] = [],
+            percents: [String] = []
         
-        let currentMonthRecorders = superRecorders
-            .filter { $0.yearMonth == currentDate }
-        let kindPayColor = currentMonthRecorders.map { (kind: $0.name, totalPay: $0.totalPay, color: $0.color) }//.map { SetupArrowItem(title: $0, subTitle: "20%") }
-
-        let allPay = kindPayColor.reduce(0, { $0.0 + $0.1.totalPay })
-        
-        var colors: [UIColor] = []
-        var numbers: [Double] = []
-        var perStrs: [String] = []
-        var items = [SetupArrowItem]()
-        for kpc in kindPayColor {
-            let per = self.percent(part: kpc.totalPay, all: allPay)
-            let item = SetupArrowItem(title: kpc.kind, subTitle: per.0)
-            items.append(item)
+        for kpc in kind_pay_color {
+            let per = percent(part: kpc.totalPay, all: allPay)
             
             colors.append(UIColor(hex: kpc.color))
-            perStrs.append(per.0)
+            percents.append(per.0)
             numbers.append(per.1)
         }
+        return (colors, numbers, percents)
+    }
+    
+    func fetchData() {
+        let date = Date().description
+        let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
+        let superRecorders = fetchData(yearMonth: yearMonth)
+        let cnp = colors_numbers_percents(models: superRecorders)
         
-        tableView.tableHeaderView = PieHeader(height: 250, colors: colors, numbers: numbers)
+        tableView.tableHeaderView = PieHeader(height: 250, colors: cnp.0, numbers: cnp.1)
         
         var models: [PieDataModel] = []
         for (idx, category) in superRecorders.enumerated() {
-            let dataModel = PieDataModel(category: category, percent: perStrs[idx])
+            let dataModel = PieDataModel(category: category, percent: cnp.2[idx])
             models.append(dataModel)
         }
         dataSource = PieDataSource(items: models)
