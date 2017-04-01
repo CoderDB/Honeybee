@@ -67,7 +67,7 @@ open class ChartUtils
         }
         else
         {
-            return number + DBL_EPSILON
+            return number + .ulpOfOne
         }
     }
     
