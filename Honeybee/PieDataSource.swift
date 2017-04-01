@@ -49,7 +49,7 @@ extension PieDataSource: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(PieCell.self)") as! PieCell
 //        cell.item = item(at: indexPath)
         cell.mainTitleLabel.text = item(at: indexPath).category.name
-        cell.subTitleLabel.text = item(at: indexPath).percent
+        cell.subTitleLabel.text = item(at: indexPath).percent + "%"
         return cell
     }
 }
