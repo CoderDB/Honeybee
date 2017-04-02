@@ -16,14 +16,14 @@ class HoneybeeManager {
     private init() {}
     
     func allKinds() -> Results<HoneybeeKind> {
-        return DatabaseManager.manager.all(HoneybeeKind.self)
+        return Database.default.all(HoneybeeKind.self)
     }
     
     func allIcons() -> Results<HoneybeeIcon> {
-        return DatabaseManager.manager.all(HoneybeeIcon.self)
+        return Database.default.all(HoneybeeIcon.self)
     }
 
     func allColors() -> Results<HoneybeeColor> {
-        return DatabaseManager.manager.all(HoneybeeColor.self)
+        return Database.default.all(HoneybeeColor.self)
     }
 }

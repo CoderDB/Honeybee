@@ -31,7 +31,7 @@ class HoneybeeColor: RLMModel {
         if let json = json(at: "colors") as? [[String: Any]] {
             _ = json.map {
                 if let model = Mapper<HoneybeeColor>().map(JSON: $0) {
-                    try! DatabaseManager.manager.add(model: model)
+                    try! Database.default.add(model: model)
                 }
             }
         }

@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 
-class DatabaseManager: NSObject {
+class Database: NSObject {
     
     private var realm: Realm
-    static let manager = DatabaseManager()
+    static let `default` = Database()
     private override init() {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("honeybee.realm")

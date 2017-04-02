@@ -39,7 +39,7 @@ extension KindDataSource: UICollectionViewDataSource {
 //            cell.deleteBtnAction = { [unowned self] in
 //                if let idx = collectionView.indexPath(for: cell) {
 //                    
-//                    DatabaseManager.manager.delete(item: self.items[idx.item])
+//                    Database.manager.delete(item: self.items[idx.item])
 //                    
 //                    collectionView.deselectItem(at: idx, animated: true)
 //                    collectionView.reloadData()

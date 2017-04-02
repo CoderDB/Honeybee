@@ -92,7 +92,7 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
             header.titleLabel.text = name
             
             do {
-                try DatabaseManager.manager.update(item: kind, name: name)
+                try Database.default.update(item: kind, name: name)
             } catch let error {
                 print(error)
             }

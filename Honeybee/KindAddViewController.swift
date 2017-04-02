@@ -66,7 +66,7 @@ extension KindAddViewController {
             kind.color = color
             kind.name = name
             kind.items = List<HoneybeeItem>()
-            DatabaseManager.manager.create(HoneybeeKind.self, value: kind)
+            Database.default.create(HoneybeeKind.self, value: kind)
         }
     }
     func showTextFieldAlert(completion: @escaping () -> Void) {

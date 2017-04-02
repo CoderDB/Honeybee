@@ -53,7 +53,7 @@ class CardViewController: BaseCollectionViewController {
 //            self.collectionView.reloadData()
 //        }
         
-        notiToken = DatabaseManager.manager.notification { [unowned self] (_, realm) in
+        notiToken = Database.default.notification { [unowned self] (_, realm) in
             self.dataSource = CardDataSource(items: Array(realm.objects(HoneybeeKind.self)))
             self.collectionView.dataSource = self.dataSource
         }
@@ -189,7 +189,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         header.numberLabel.text = text
     }
     func writeToDataBase() {
-        let isExisted = DatabaseManager.manager.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
+        let isExisted = Database.default.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
         if isExisted.count > 0 {
             if let superModel = isExisted.first {
                 do {
@@ -212,7 +212,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
                     ]
                 ) {
                 do {
-                    try DatabaseManager.manager.add(model: superModel)
+                    try Database.default.add(model: superModel)
                     Reminder.success()
                 } catch {
                     Reminder.error()

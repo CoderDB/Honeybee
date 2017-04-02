@@ -27,7 +27,7 @@ class HoneybeeIcon: RLMModel {
         if let json = json(at: "icons") as? [[String: Any]] {
             _ = json.map {
                 if let model = Mapper<HoneybeeIcon>().map(JSON: $0) {
-                    try! DatabaseManager.manager.add(model: model)
+                    try! Database.default.add(model: model)
                 }
             }
         }
