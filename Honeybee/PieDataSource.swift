@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol PieDataSourceProtocol {
+protocol DataSourceProvider {
     associatedtype ItemType
     var items: [ItemType] { get }
     func item(at indexPath: IndexPath) -> ItemType
     init(items: [ItemType])
 }
 
-extension PieDataSourceProtocol {
+extension DataSourceProvider {
     func item(at indexPath: IndexPath) -> ItemType {
         return items[indexPath.row]
     }
@@ -32,7 +32,7 @@ class PieDataModel {
     }
 }
 
-class PieDataSource: NSObject, PieDataSourceProtocol {
+class PieDataSource: NSObject, DataSourceProvider {
     typealias ItemType = PieDataModel
     var items: [ItemType]
     

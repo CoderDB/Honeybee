@@ -44,7 +44,7 @@ class CardViewController: BaseCollectionViewController {
     func fetchData() {
         let kinds = HoneybeeManager.manager.allKinds()
         
-        dataSource = CardDataSource(items: kinds)
+        dataSource = CardDataSource(items: Array(kinds))
         collectionView.dataSource = dataSource
         
 //        notiToken = dataSource.items._addNotificationBlock { (change) in
@@ -54,7 +54,7 @@ class CardViewController: BaseCollectionViewController {
 //        }
         
         notiToken = DatabaseManager.manager.notification { [unowned self] (_, realm) in
-            self.dataSource = CardDataSource(items: realm.objects(HoneybeeKind.self))
+            self.dataSource = CardDataSource(items: Array(realm.objects(HoneybeeKind.self)))
             self.collectionView.dataSource = self.dataSource
         }
 //            .addNotificationBlock({ [weak self] (changes) in
