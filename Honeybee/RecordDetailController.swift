@@ -12,9 +12,16 @@ import UIKit
 class RecordDetailController: BaseTableViewController, AlertProvider {
     
     
-    var model: RLMRecorder!
+    private var model: RLMRecorder
     
 //    var dataSource: RecorderDetailDataSource!
+    init(model: RLMRecorder) {
+        self.model = model
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     typealias Model = RecorderDetailViewModel
     typealias Cell = RecordDetailCell

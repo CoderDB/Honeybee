@@ -50,8 +50,7 @@ extension MainDataSource: UITableViewDataSource {
 
 extension MainDataSource: GroupCellDelegate {
     func didSelected(model: RLMRecorder) {
-        let detailVC = RecordDetailController()
-        detailVC.model = model
+        let detailVC = RecordDetailController(model: model)
         vc.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

@@ -63,7 +63,7 @@ class MainViewController: BaseTableViewController {
         notiToken?.stop()
     }
     func fetchDataFromServe() {
-        let serveIsChanged = true
+        let serveIsChanged = false
         if serveIsChanged {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()
@@ -159,8 +159,7 @@ extension MainViewController {
         let model = dataSource.items[indexPath.row]
         
         if model.recorders.count == 1 {
-            let detailVC = RecordDetailController()
-            detailVC.model = model.recorders[0]
+            let detailVC = RecordDetailController(model: model.recorders[0])
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
