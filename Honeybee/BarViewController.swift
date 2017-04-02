@@ -76,6 +76,7 @@ extension BarViewController: UIPopoverPresentationControllerDelegate {
 // MARK: UITableViewDelegate
 extension BarViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(RecordDetailController(), animated: true)
+        let vc = RecordDetailController(model: dataSource.item(at: indexPath))
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
