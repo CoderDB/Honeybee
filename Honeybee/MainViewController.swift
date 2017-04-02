@@ -51,7 +51,7 @@ class MainViewController: BaseTableViewController {
     
     func fetchData() {
         let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
-        dataSource = MainDataSource(items: data, vc: self)
+        dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
         
 //        notiToken = DatabaseManager.manager.notification({ [unowned self] (_, realm) in

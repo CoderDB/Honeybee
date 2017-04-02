@@ -11,9 +11,9 @@ import RealmSwift
 
 class MainDataSource: NSObject {
     
-    var items: Results<RLMRecorderSuper>
+    var items: [RLMRecorderSuper]
     fileprivate var vc: UIViewController
-    init(items: Results<RLMRecorderSuper>, vc: UIViewController) {
+    init(items: [RLMRecorderSuper], vc: UIViewController) {
         self.items = items
         self.vc = vc
     }
@@ -35,7 +35,7 @@ extension MainDataSource: UITableViewDataSource {
         if model.recorders.count > 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
             cell.delegate = self
-            cell.dataSource = items[indexPath.row].recorders
+            cell.dataSource = item(at: indexPath).recorders
             tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
             return cell
         } else {

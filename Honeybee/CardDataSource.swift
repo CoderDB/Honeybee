@@ -7,17 +7,12 @@
 //
 
 import UIKit
-import RealmSwift
 
-class CardDataSource: NSObject {
-    
-    var items: Results<HoneybeeKind>
-    
-    init(items: Results<HoneybeeKind>) {
+class CardDataSource: NSObject, DataSourceProvider {
+    typealias ItemType = HoneybeeKind
+    var items: [ItemType]
+    required init(items: [ItemType]) {
         self.items = items
-    }
-    func item(at indexPath: IndexPath) -> HoneybeeKind {
-        return items[indexPath.section]
     }
 }
 

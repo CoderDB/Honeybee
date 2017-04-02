@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BarDataSource: NSObject, PieDataSourceProtocol {
+class BarDataSource: NSObject, DataSourceProvider {
     typealias ItemType = RLMRecorder
     var items: [ItemType]
     required init(items: [ItemType]) {
@@ -23,7 +23,7 @@ extension BarDataSource: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(BarCell.self)") as! BarCell
-        cell.item = items[indexPath.row]
+        cell.item = item(at: indexPath)
         return cell
     }
 }
