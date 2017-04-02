@@ -43,7 +43,7 @@ class KindAddItemController: BaseCollectionViewController {
         collectionView.register(KindAddItemCell.self)
     }
     private func fetchData() {
-        let items = HoneybeeManager.manager.allIcons()
+        let items = Honeybee.default.allIcons()
         dataSource = KindAddItemDataSource(items: items)
         collectionView.dataSource = dataSource
     }
