@@ -74,7 +74,7 @@ extension KindAddItemController {
 //            self.kind.insert(item: model)
             
             do {
-                try DatabaseManager.manager.insert(item: model, to: kind.items)
+                try Database.default.insert(item: model, to: kind.items)
             } catch let error {
                 print(error.localizedDescription)
             }

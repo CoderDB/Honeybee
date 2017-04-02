@@ -36,7 +36,7 @@ class MainViewController: BaseTableViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 //    func sameRecorderBeGrouped() {
-//        let data = DatabaseManager.manager.all(RLMRecorder.self)
+//        let data = Database.manager.all(RLMRecorder.self)
 //        var recorders = [RLMRecorder]()
 //        for recorder in data {
 //            recorders.append(recorder)
@@ -50,11 +50,11 @@ class MainViewController: BaseTableViewController {
 //    }
     
     func fetchData() {
-        let data = DatabaseManager.manager.all(RLMRecorderSuper.self)
+        let data = Database.default.all(RLMRecorderSuper.self)
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
         
-//        notiToken = DatabaseManager.manager.notification({ [unowned self] (_, realm) in
+//        notiToken = Database.manager.notification({ [unowned self] (_, realm) in
 //            self.dataSource = MainDataSource(items: realm.objects(RLMRecorderSuper.self), vc: self)
 //            self.tableView.dataSource = self.dataSource
 //        })
@@ -95,7 +95,7 @@ extension MainViewController: UIPopoverPresentationControllerDelegate {
         
         destVC.incomeBtnAction = {
             print("income")
-            //            let data = DatabaseManager.manager.allPayout()
+            //            let data = Database.manager.allPayout()
             //            print(data)
             //            self.dataSource = MainDataSource(items: data, vc: self)
             

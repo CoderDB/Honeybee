@@ -58,7 +58,7 @@ class RLMRecorderSuper: RLMModel {
                 if let model = Mapper<RLMRecorder>().map(JSON: item) {
 //                    totalPay += model.money
                     recorders.append(model)
-                    try! DatabaseManager.manager.add(model: model)
+                    try! Database.default.add(model: model)
                 }
             }
             yearMonthDay = recorders[0].yearMonthDay
@@ -72,6 +72,6 @@ class RLMRecorderSuper: RLMModel {
 //        try! self.realm?.write {
 //            recorders.append(model)
 //        }
-//        try! DatabaseManager.manager.add(model: model)
+//        try! Database.manager.add(model: model)
 //    }
 }

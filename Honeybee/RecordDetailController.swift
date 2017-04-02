@@ -68,7 +68,7 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     }
     
     func delete() {
-        DatabaseManager.manager.delete(item: model)
+        Database.default.delete(item: model)
 
         _ = navigationController?.popViewController(animated: true)
     }

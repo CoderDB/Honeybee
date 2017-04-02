@@ -23,7 +23,7 @@ struct RecorderSuper {
             for item in recorders {
                 let model = Recorder(dict: item)
                 self.recorders?.append(model!)
-//                DatabaseManager.manager.add(model: model!)
+//                Database.manager.add(model: model!)
             }
         }
     }

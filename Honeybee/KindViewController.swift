@@ -101,7 +101,7 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
         }
     }
     func deleteFromDatabase(_ kind: HoneybeeKind) {
-        DatabaseManager.manager.delete(item: kind, children: kind.items)
+        Database.default.delete(item: kind, children: kind.items)
     }
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {

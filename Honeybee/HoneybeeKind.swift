@@ -29,7 +29,7 @@ class HoneybeeItem: RLMModel {
 //extension HoneybeeKindProtocol {
 //    func insert(item: HoneybeeItem, to: List<HoneybeeItem>) {
 //        do {
-//            try DatabaseManager.manager.insert(item: item, to: to)
+//            try Database.manager.insert(item: item, to: to)
 //        } catch let error {
 //            print(error.localizedDescription)
 //        }
@@ -52,7 +52,7 @@ class HoneybeeKind: RLMModel {
             for item in json {
                 if let model = Mapper<HoneybeeItem>().map(JSON: item) {
                     items.append(model)
-                    try! DatabaseManager.manager.add(model: model)
+                    try! Database.default.add(model: model)
                 }
             }
         }
@@ -73,7 +73,7 @@ class HoneybeeKind: RLMModel {
         if let json = json(at: "category_color") as? [[String: Any]] {
             _ = json.map {
                 if let model = Mapper<HoneybeeKind>().map(JSON: $0) {
-                    try! DatabaseManager.manager.add(model: model)
+                    try! Database.default.add(model: model)
                 }
             }
         }
