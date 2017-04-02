@@ -135,7 +135,7 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
     }
     
     func fetchData() {
-        let kinds = HoneybeeManager.manager.allKinds()
+        let kinds = Honeybee.default.allKinds()
         dataSource = KindDataSource(items: kinds)
         collectionView.dataSource = dataSource
         notiToken = kinds.addNotificationBlock { (change) in

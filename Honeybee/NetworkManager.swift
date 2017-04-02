@@ -8,6 +8,6 @@
 
 import Foundation
 
-class NetworkManager: NSObject {
+class Network: NSObject {
 
 }

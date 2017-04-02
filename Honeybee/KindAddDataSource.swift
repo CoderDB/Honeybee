@@ -16,7 +16,7 @@ class KindAddDataSource: NSObject {
     fileprivate let items: Results<HoneybeeColor>
     
     override init() {
-        self.items = HoneybeeManager.manager.allColors()
+        self.items = Honeybee.default.allColors()
         self.colors = items.map { UIColor(hex: $0.name) }
         super.init()
     }

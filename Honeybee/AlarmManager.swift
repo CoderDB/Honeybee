@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AlarmManager {
+class Alarm {
     
-    static let `default` = AlarmManager()
+    static let `default` = Alarm()
     private init() {}
     
 

@@ -10,9 +10,9 @@ import Foundation
 import RealmSwift
 
 
-class HoneybeeManager {
+class Honeybee {
     
-    static let manager = HoneybeeManager()
+    static let `default` = Honeybee()
     private init() {}
     
     func allKinds() -> Results<HoneybeeKind> {
