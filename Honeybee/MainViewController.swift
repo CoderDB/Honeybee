@@ -54,11 +54,12 @@ class MainViewController: BaseTableViewController {
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
         
-//        notiToken = Database.manager.notification({ [unowned self] (_, realm) in
-//            self.dataSource = MainDataSource(items: realm.objects(RLMRecorderSuper.self), vc: self)
-//            self.tableView.dataSource = self.dataSource
-//        })
+        notiToken = Database.default.notification({ [unowned self] (_, realm) in
+            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorderSuper.self)), vc: self)
+            self.tableView.dataSource = self.dataSource
+        })
     }
+
     deinit {
         notiToken?.stop()
     }
@@ -156,7 +157,7 @@ extension MainViewController {
 
 extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = dataSource.items[indexPath.row]
+        let model = dataSource.item(at: indexPath)
         
         if model.recorders.count == 1 {
             let detailVC = RecordDetailController(model: model.recorders[0])

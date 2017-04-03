@@ -42,10 +42,15 @@ extension KindDetailDataSource: UICollectionViewDataSource {
                 if let idx = collectionView.indexPath(for: cell) {
                     
                     //self.items.remove(at: idx.item)
-                    Database.default.delete(item: self.items[idx.item])
+                    do {
+                        try Database.default.delete(item: self.items[idx.item])
+                        
+                        collectionView.deselectItem(at: idx, animated: true)
+                        collectionView.reloadData()
+                    } catch let err {
+                        Reminder.error(msg: err.localizedDescription)
+                    }
                     
-                    collectionView.deselectItem(at: idx, animated: true)
-                    collectionView.reloadData()
                 }
             }
         }

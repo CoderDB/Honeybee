@@ -19,7 +19,9 @@ struct Reminder {
     
     static func error() {
         HUD.flash(.error, delay: delay)
-        
+    }
+    static func error(msg: String) {
+        HUD.flash(.labeledError(title: msg, subtitle: nil), delay: delay)
     }
     static func success() {
         HUD.flash(.success, delay: delay)
