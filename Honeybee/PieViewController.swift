@@ -33,8 +33,13 @@ class PieViewController: BaseTableViewController {
         let part = Double(part), all = Double(all)
         let frac = (part / all) * 100
         let formatter = NumberFormatter()
-        formatter.positiveFormat = "00.0"
-        let fracStr = formatter.string(from: NSNumber(value: frac)) ?? "0"
+//        formatter.positiveFormat = "00.0"
+        formatter.numberStyle = .decimal // 默认小数点后保留三位，第三位取四舍五入值
+        formatter.maximumFractionDigits = 1 // 小数点后最大位数
+//        formatter.minimumFractionDigits = 1 // 小数点后最小位数
+//        formatter.maximumIntegerDigits = 2 // 最大整数位数
+//        formatter.minimumIntegerDigits = 1 // 最小整数位数
+        let fracStr = formatter.string(for: frac) ?? "0"//formatter.string(from: NSNumber(value: frac)) ?? "0"
         print(fracStr)
         
         let fracNum = formatter.number(from: fracStr)?.doubleValue ?? 0

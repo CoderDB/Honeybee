@@ -11,6 +11,10 @@ import Charts
 
 class BarHeader: UIView {
 
+    convenience init(height: CGFloat, numbers: [Double]) {
+        self.init(height: height)
+        barView.data = createData(numbers: numbers)
+    }
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
     }
@@ -37,7 +41,7 @@ class BarHeader: UIView {
         barV.xAxis.drawGridLinesEnabled = false // 不显示竖格线
         barV.xAxis.labelPosition = .bottom
         barV.xAxis.labelTextColor = .white
-        barV.xAxis.valueFormatter = IndexAxisValueFormatter(values: (1..<31).map{"\($0)日"}) //x轴label值的显示样式
+        barV.xAxis.valueFormatter = IndexAxisValueFormatter(values: (1..<(Date.days(year: 2017, month: 3))).map{"\($0)日"}) //x轴label值的显示样式
         barV.xAxis.labelCount = 10
         
         // x, y轴双击都不缩放
@@ -53,7 +57,9 @@ class BarHeader: UIView {
     
     func createData(numbers: [Double]) -> BarChartData {
         var dataEntries: [BarChartDataEntry] = []
-        for i in stride(from: 0, to: 30, by: 1) {
+        let limit = min(30, numbers.count)
+        
+        for i in stride(from: 0, to: limit, by: 1) {
             let dataEntry = BarChartDataEntry(x: Double(i), y: numbers[i])
             dataEntries.append(dataEntry)
         }
@@ -78,7 +84,7 @@ class BarHeader: UIView {
             make.top.equalTo(self)
         }
         
-        let unitsSold = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
-        barView.data = createData(numbers: unitsSold)
+//        let unitsSold = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
+//        barView.data = createData(numbers: unitsSold)
     }
 }

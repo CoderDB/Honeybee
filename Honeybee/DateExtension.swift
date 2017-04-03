@@ -160,4 +160,20 @@ extension Date {
             return ""
         }
     }
+    
+    static func days(year: Int, month: Int) -> Int {
+        let calendar = Calendar.current
+        var start = DateComponents()
+        start.day = 1
+        start.month = month
+        start.year = year
+        
+        var end = DateComponents()
+        end.day = 1
+        end.month = month == 12 ? 1 : month + 1
+        end.year = month == 12 ? year + 1 : year
+        
+        let diff = calendar.dateComponents([.day], from: start, to: end)
+        return diff.day!
+    }
 }
