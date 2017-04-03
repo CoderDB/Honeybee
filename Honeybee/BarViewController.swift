@@ -62,7 +62,12 @@ class BarViewController: BaseTableViewController {
     }
     
     func fetchData() {
-        dataSource = BarDataSource(items: category.recorders.toArray)
+        let recorders = Array(category.recorders)
+        
+        let pays = recorders.map { Double($0.money) }
+        tableView.tableHeaderView = BarHeader(height: 170, numbers: pays)
+        
+        dataSource = BarDataSource(items: recorders)
         tableView.dataSource = dataSource
     }
 }
