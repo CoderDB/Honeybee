@@ -44,6 +44,12 @@ class PieViewController: BaseTableViewController {
         return (fracStr, fracNum)
     }
     func fetchData(yearMonth: String) -> [RLMRecorderSuper] {
+        
+//        let recorders = Database.default.all(RLMRecorder.self)
+//        let owners = recorders.map { $0.owner}
+//        print(owners)
+//        owners.count
+        
         let models = Database.default.all(RLMRecorderSuper.self)
             .filter { $0.yearMonth == yearMonth }
         return Array(models)
