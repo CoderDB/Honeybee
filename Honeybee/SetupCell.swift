@@ -62,11 +62,32 @@ class SetupCell: BaseTableViewCell {
             subTitleLabel.snp.makeConstraints({ (make) in
                 make.right.equalTo(imgView.snp.left).offset(-5)
             })
+        } else if item.isKind(of: SetupSwitchItem.self) {
+            let switchOn = UISwitch()
+            subTitleLabel.isHidden = true
+            switchOn.addTarget(self, action: #selector(switchOnChanhed(_:)), for: .valueChanged)
+            accessoryView = switchOn
         } else {
-            accessoryView = arrow
+            accessoryView = nil
         }
     }
-    
+    func switchOnChanhed(_ switchOn: UISwitch) {
+        
+        if isNotificationAllowed() {
+            subTitleLabel.isHidden = !switchOn.isOn
+        } else {
+            print("打开alert")
+//            switchOn.setOn(false, animated: true)
+        }
+    }
+    func isNotificationAllowed() -> Bool {
+        if let settings = UIApplication.shared.currentUserNotificationSettings {
+            if settings.types.rawValue != 0 {
+                return true
+            }
+        }
+        return false
+    }
     override func initialize() {
         contentView.addSubview(mainTitleLabel)
         contentView.addSubview(subTitleLabel)

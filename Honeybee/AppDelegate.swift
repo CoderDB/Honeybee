@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        Alarm.default.application(application, didFinishLaunchingWithOptions: launchOptions)
+        Alarm.default.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         setupNavAppearance()
