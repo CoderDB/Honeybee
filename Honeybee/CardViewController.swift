@@ -204,24 +204,51 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
                 }
             }
         } else {
-            if let superModel = Mapper<RLMRecorderSuper>()
-                .map(JSON: [
-                    "style": "plain",
-                    "name": recorderToWrite.superCategory,
-                    "color": recorderToWrite.color,
-                    "totalPay": recorderToWrite.money,
-                    "recorders": [recorderToWrite.toJSON()]
-                    ]
-                ) {
-                
-                recorderToWrite.owner = superModel
+            let superModel = RLMRecorderSuper()
+            superModel.name = recorderToWrite.superCategory
+            superModel.color = recorderToWrite.color
+            recorderToWrite.owner = superModel
+            
+            do {
+                try Database.default.add(model: superModel)
                 do {
-                    try Database.default.add(model: superModel)
+                    try Database.default.append(item: recorderToWrite, to: superModel.recorders)
                     Reminder.success()
                 } catch {
                     Reminder.error()
                 }
+            } catch {
+                Reminder.error()
             }
+//            try! Database.default.append(item: recorderToWrite, to: superModel.recorders)
+//            try! superModel.realm?.write {
+//                superModel.recorders.append(recorderToWrite)
+//            }
+//            do {
+//                try Database.default.add(model: superModel)
+//                Reminder.success()
+//            } catch {
+//                Reminder.error()
+//            }
+            
+//            if let superModel = Mapper<RLMRecorderSuper>()
+//                .map(JSON: [
+//                    "style": "plain",
+//                    "name": recorderToWrite.superCategory,
+//                    "color": recorderToWrite.color,
+//                    "totalPay": recorderToWrite.money,
+//                    "recorders": [recorderToWrite.toJSON()]
+//                    ]
+//                ) {
+//                
+//                recorderToWrite.owner = superModel
+//                do {
+//                    try Database.default.add(model: superModel)
+//                    Reminder.success()
+//                } catch {
+//                    Reminder.error()
+//                }
+//            }
         }
     }
     func completed(text: String) {
