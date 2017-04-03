@@ -45,18 +45,22 @@ class PieViewController: BaseTableViewController {
     }
     func fetchData(yearMonth: String) -> [RLMRecorderSuper] {
         
-//        let recorders = Database.default.all(RLMRecorder.self)
-//        let owners = recorders.map { $0.owner}
-//        print(owners)
-//        owners.count
+        let recorders = Database.default.all(RLMRecorder.self)
         
-        let models = Database.default.all(RLMRecorderSuper.self)
-            .filter { $0.yearMonth == yearMonth }
-        return Array(models)
+        var set = Set<RLMRecorderSuper>()
+        for ele in recorders {
+            if let owner = ele.owner {
+                set.insert(owner)
+            }
+        }
+        return Array(set)
+//        let models = Database.default.all(RLMRecorderSuper.self)
+//            .filter { $0.yearMonth == yearMonth }
+//        return Array(models)
     }
     
     func colors_numbers_percents(models: [RLMRecorderSuper]) -> ([UIColor], [Double], [String]) {
-        let kind_pay_color = models.map { (kind: $0.name, totalPay: $0.totalPay, color: $0.color) }
+        let kind_pay_color = models.map { (kind: $0.name, totalPay: 0, color: $0.color) }
         let allPay = kind_pay_color.reduce(0, { $0.0 + $0.1.totalPay })
         
         var colors: [UIColor] = [],

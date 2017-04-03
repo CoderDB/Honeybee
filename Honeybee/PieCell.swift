@@ -29,12 +29,12 @@ class PieCell: BaseTableViewCell {
 //            subTitleLabel.text = item.subTitle
 //        }
 //    }
-    var item: RLMRecorderSuper! {
-        didSet {
-            mainTitleLabel.text = item.name
-            subTitleLabel.text = item.month
-        }
-    }
+//    var item: RLMRecorderSuper! {
+//        didSet {
+//            mainTitleLabel.text = item.name
+//            subTitleLabel.text = "9"//item.month
+//        }
+//    }
     override func initialize() {
         contentView.addSubview(mainTitleLabel)
         contentView.addSubview(subTitleLabel)
