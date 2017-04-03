@@ -190,8 +190,10 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     }
     func writeToDataBase() {
         let isExisted = Database.default.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
+    
         if isExisted.count > 0 {
             if let superModel = isExisted.first {
+                recorderToWrite.owner = superModel
                 do {
                     try superModel.realm?.write {
                         superModel.recorders.append(recorderToWrite)
@@ -211,6 +213,8 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
                     "recorders": [recorderToWrite.toJSON()]
                     ]
                 ) {
+                
+                recorderToWrite.owner = superModel
                 do {
                     try Database.default.add(model: superModel)
                     Reminder.success()

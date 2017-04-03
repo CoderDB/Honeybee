@@ -22,6 +22,8 @@ class RLMRecorder: RLMModel {
     dynamic var isPay: Bool = true
     dynamic var imageName: String = "meal"
     
+    dynamic var owner: RLMRecorderSuper?
+    
     var month_day: String {
         return Date.date(from: date).localDate.month_day
     }
