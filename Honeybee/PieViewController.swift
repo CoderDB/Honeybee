@@ -44,9 +44,7 @@ class PieViewController: BaseTableViewController {
         return (fracStr, fracNum)
     }
     func fetchData(yearMonth: String) -> [RLMRecorderSuper] {
-        
-        let recorders = Database.default.all(RLMRecorder.self)
-        
+        let recorders = fetchRecorders(limit: 30)//Database.default.all(RLMRecorder.self)
         var set = Set<RLMRecorderSuper>()
         for ele in recorders {
             if let owner = ele.owner {
@@ -54,23 +52,36 @@ class PieViewController: BaseTableViewController {
             }
         }
         return Array(set)
-//        let models = Database.default.all(RLMRecorderSuper.self)
-//            .filter { $0.yearMonth == yearMonth }
-//        return Array(models)
+    }
+    
+    func fetchRecorders(limit: Int) -> [RLMRecorder] {
+        let recorders = Database.default.all(RLMRecorder.self)
+        let limit = min(recorders.count, limit)
+        var result: [RLMRecorder] = []
+        for i in 0..<limit {
+            result.append(recorders[i])
+        }
+        return result
+    }
+    
+    func totalPay(of model: RLMRecorderSuper) -> Int {
+        return model.recorders.reduce(0, { $0.0 + $0.1.money })
+    }
+    func totalPay(_ all: [RLMRecorderSuper]) -> Int {
+        return all.map { totalPay(of: $0) }.reduce(0, {$0.0 + $0.1})
     }
     
     func colors_numbers_percents(models: [RLMRecorderSuper]) -> ([UIColor], [Double], [String]) {
-        let kind_pay_color = models.map { (kind: $0.name, totalPay: 0, color: $0.color) }
-        let allPay = kind_pay_color.reduce(0, { $0.0 + $0.1.totalPay })
+        let allPay = totalPay(models)
         
         var colors: [UIColor] = [],
             numbers: [Double] = [],
             percents: [String] = []
         
-        for kpc in kind_pay_color {
-            let per = percent(part: kpc.totalPay, all: allPay)
-            
-            colors.append(UIColor(hex: kpc.color))
+        for m in models {
+            let totalPayOf = totalPay(of: m)
+            let per = percent(part: totalPayOf, all: allPay)
+            colors.append(UIColor(hex: m.color))
             percents.append(per.0)
             numbers.append(per.1)
         }
