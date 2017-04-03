@@ -14,6 +14,9 @@ class CardDataSource: NSObject, DataSourceProvider {
     required init(items: [ItemType]) {
         self.items = items
     }
+    func item(at indexPath: IndexPath) -> HoneybeeKind {
+        return items[indexPath.section]
+    }
 }
 
 // MARK: UICollectionViewDataSource
