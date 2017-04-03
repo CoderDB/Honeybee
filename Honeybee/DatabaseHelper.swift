@@ -96,24 +96,29 @@ class Database: NSObject {
             print(error.localizedDescription)
         }
     }
-    func delete<T: RLMModel>(item: T) {
+    func delete<T: RLMModel>(item: T) throws {
         do {
             try realm.write {
                 realm.delete(item)
             }
         } catch let error {
             print(error.localizedDescription)
+            throw(error)
         }
     }
-    func delete<T: RLMModel>(item: T, in list: List<T>) {
+    func delete<T: RLMModel>(item: T, in list: List<T>) throws {
+        
         do {
             try realm.write {
                 if let idx = list.index(of: item) {
                     list.remove(objectAtIndex: idx)
+                    
+                    realm.delete(item)
                 }
             }
         } catch let error {
             print(error.localizedDescription)
+            throw(error)
         }
     }
     func deleteAll() {
