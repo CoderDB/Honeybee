@@ -22,6 +22,10 @@ class SetupArrowItem: SetupItem {
     
 }
 
+class SetupSwitchItem: SetupItem {
+    
+}
+
 class SetupImageItem: SetupItem {
     
 }
