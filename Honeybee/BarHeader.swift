@@ -11,7 +11,6 @@ import Charts
 
 class BarHeader: UIView {
 
-    weak var axisFormatDelegate: IAxisValueFormatter?
     
     convenience init(height: CGFloat, numbers: [Double]) {
         self.init(height: height)
@@ -20,8 +19,11 @@ class BarHeader: UIView {
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
     }
+    
+    weak var axisFormatDelegate: IAxisValueFormatter?
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         axisFormatDelegate = self
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
@@ -72,32 +74,17 @@ class BarHeader: UIView {
     func createData(numbers: [Double]) -> BarChartData {
 //        let days = Date.days(year: 2017, month: 4)
 //        print(days)
-//        for i in <#items#> {
-//            <#code#>
+//        for i in 0..<days {
+//            
 //        }
         
         let numbers = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
         var dataEntries: [BarChartDataEntry] = []
-        
-//        let dataEntry1 = BarChartDataEntry(x: 1, y: 135)
-//        let dataEntry2 = BarChartDataEntry(x: 2, y: 235)
-//        let dataEntry3 = BarChartDataEntry(x: 3, y: 335)
-//        let dataEntry4 = BarChartDataEntry(x: 4, y: 435)
-//        let dataEntry5 = BarChartDataEntry(x: 5, y: 535)
-//        dataEntries.append(dataEntry1)
-//        dataEntries.append(dataEntry2)
-//        dataEntries.append(dataEntry3)
-//        dataEntries.append(dataEntry4)
-//        dataEntries.append(dataEntry5)
-//        for i in stride(from: 0, to: limit, by: 1) {
-//            let dataEntry = BarChartDataEntry(x: Double(i), y: numbers[i])
-//            dataEntries.append(dataEntry)
-//        }
+
         
         for i in 0..<numbers.count {
             let x = Double(i)
             let entry = BarChartDataEntry(x: x, y: numbers[i])
-            
             dataEntries.append(entry)
         }
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
@@ -108,7 +95,7 @@ class BarHeader: UIView {
         
         let data = BarChartData(dataSet: dataSet)
         data.barWidth = 0.3
-    
+        //
         barView.xAxis.valueFormatter = axisFormatDelegate
         return data
     }

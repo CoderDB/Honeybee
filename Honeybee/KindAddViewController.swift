@@ -61,13 +61,27 @@ extension KindAddViewController {
     }
     func createNewKind() {
         if let name = kindName, let color = kindColor {
-            header.titleLabel.text = name
-            let kind = HoneybeeKind()
-            kind.color = color
-            kind.name = name
-            kind.items = List<HoneybeeItem>()
-            Database.default.create(HoneybeeKind.self, value: kind)
+            if !isExisted(name: name) {
+                header.titleLabel.text = name
+                let kind = HoneybeeKind()
+                kind.color = color
+                kind.name = name
+                kind.items = List<HoneybeeItem>()
+                do {
+                    try Database.default.create(HoneybeeKind.self, value: kind)
+                    Reminder.success()
+                } catch let error {
+                    Reminder.error(msg: error.localizedDescription)
+                }
+                
+            } else {
+                Reminder.error(msg: "重名啦", description: "叫这个名儿的已经有了", delay: 2)
+            }
         }
+    }
+    func isExisted(name: String) -> Bool {
+        let allKinds = Database.default.all(HoneybeeKind.self)
+        return allKinds.contains(where: { $0.name == name })
     }
     func showTextFieldAlert(completion: @escaping () -> Void) {
         alertController = UIAlertController(title: "设置类名", message: "", preferredStyle: .alert)

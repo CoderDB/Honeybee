@@ -14,7 +14,7 @@ class KindAddHeader: BaseHeader {
         $0.font = HB.Font.h1
         $0.textAlignment = .center
         $0.textColor = .white
-        $0.text = "衣"
+        $0.text = "--"
         return $0
     }(UILabel())
     
