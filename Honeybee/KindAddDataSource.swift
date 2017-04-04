@@ -28,15 +28,27 @@ class KindAddDataSource: NSObject {
 
 extension KindAddDataSource: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return items.count
+        if section == 0 {
+            return items.toArray.filter { !$0.isUsed } .count
+        }
+        return items.toArray.filter { $0.isUsed } .count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
         cell.backgroundColor = colors[indexPath.item]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(KindAddSectionHeader.self)", for: indexPath) as! KindAddSectionHeader
+        if indexPath.section == 0 {
+            header.titleLabel.text = "未使用"
+        } else {
+            header.titleLabel.text = "已使用"
+        }
+        return header
     }
 }

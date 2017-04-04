@@ -61,6 +61,7 @@
 		866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C913B1E6EA09F003026DD /* BaseHeader.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
+		86840BE01E93D00C008BB303 /* KindAddSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */; };
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
 		868905991E7432350033C14C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868905981E7432350033C14C /* BaseViewModel.swift */; };
 		8689059B1E7432CD0033C14C /* RecorderDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */; };
@@ -194,6 +195,7 @@
 		866C913B1E6EA09F003026DD /* BaseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeader.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
+		86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddSectionHeader.swift; sourceTree = "<group>"; };
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
 		868905981E7432350033C14C /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderDetailDataSource.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				866C91391E6E9EA1003026DD /* KindAddCell.swift */,
 				866C91371E6E956A003026DD /* KindAddHeader.swift */,
 				1EA5F05F1E75429C00E90E7A /* KindAddDataSource.swift */,
+				86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */,
 			);
 			name = AddKind;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				86DAD5911E865218004A7AD7 /* HUD.swift in Sources */,
 				8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */,
 				863703B21DEEDF7900BC1153 /* CardViewController.swift in Sources */,
+				86840BE01E93D00C008BB303 /* KindAddSectionHeader.swift in Sources */,
 				86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */,
 				86DAD5961E86B288004A7AD7 /* LoginViewController.swift in Sources */,
 				86104A2F1E61A8F500AAEEAC /* CardCollectionCell.swift in Sources */,
