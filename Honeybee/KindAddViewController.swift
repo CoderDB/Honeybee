@@ -148,4 +148,5 @@ extension KindAddViewController {
         kindColor = name
         print("-------\(indexPath.section)----\(indexPath.row)")
     }
+    
 }

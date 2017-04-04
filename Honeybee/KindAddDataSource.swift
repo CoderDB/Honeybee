@@ -12,33 +12,48 @@ import RealmSwift
 class KindAddDataSource: NSObject {
     
     
-    fileprivate let colors: [UIColor]
-    fileprivate let items: Results<HoneybeeColor>
+//    fileprivate let colors: [[UIColor]]
+    fileprivate let items: [[HoneybeeColor]]
     
     override init() {
-        self.items = Honeybee.default.allColors()
-        self.colors = items.map { UIColor(hex: $0.name) }
+        let all = Honeybee.default.allColors().toArray
+        let used = all.filter { $0.isUsed }
+        let unused = all.filter { !$0.isUsed }
+        self.items = [unused, used]
+//        self.colors = items.map { $0.map { UIColor(hex: $0.name) } }
+        
         super.init()
     }
     
     func item(at indexPath: IndexPath) -> HoneybeeColor {
-        return items[indexPath.item]
+        return items[indexPath.section][indexPath.item]
     }
+//    func color(at indexPath: IndexPath) -> UIColor {
+//        return colors[indexPath.section][indexPath.item]
+//    }
 }
 
 extension KindAddDataSource: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return items.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return items.toArray.filter { !$0.isUsed } .count
-        }
-        return items.toArray.filter { $0.isUsed } .count
+        return items[section].count
+//        if section == 0 {
+//            return items.toArray.filter { !$0.isUsed } .count
+//        }
+//        return items.toArray.filter { $0.isUsed } .count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
-        cell.backgroundColor = colors[indexPath.item]
+        cell.backgroundColor = UIColor(hex: item(at: indexPath).name)//colors[indexPath.item]
+        if indexPath.section == 1 {
+            cell.selectedImg.isHidden = false
+            cell.isUserInteractionEnabled = false
+        } else {
+            cell.selectedImg.isHidden = true
+            cell.isUserInteractionEnabled = true
+        }
         return cell
     }
     
