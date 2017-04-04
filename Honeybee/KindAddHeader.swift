@@ -20,7 +20,7 @@ class KindAddHeader: BaseHeader {
     
     override func setupUI() {
         super.setupUI()
-        containerView.backgroundColor = HB.Color.main
+//        containerView.backgroundColor = HB.Color.main
         containerView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { (make) in
