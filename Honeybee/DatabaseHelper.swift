@@ -46,13 +46,14 @@ class Database: NSObject {
 //        }
 //    }
     
-    func create<T: RLMModel>(_: T.Type, value: Any) {
+    func create<T: RLMModel>(_: T.Type, value: Any) throws {
         do {
             try realm.write {
                 realm.create(T.self, value: value, update: false)
             }
         } catch let error {
             print(error)
+            throw error
         }
     }
     

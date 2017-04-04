@@ -21,10 +21,16 @@ struct Reminder {
         HUD.flash(.error, delay: delay)
     }
     static func error(msg: String) {
-        HUD.flash(.labeledError(title: msg, subtitle: nil), delay: delay)
+        error(msg: msg, description: nil)
+    }
+    static func error(msg: String?, description: String?, delay: TimeInterval = delay) {
+        HUD.flash(.labeledError(title: msg, subtitle: description), delay: delay)
     }
     static func success() {
         HUD.flash(.success, delay: delay)
+    }
+    static func success(msg: String?, description: String? = nil, delay: TimeInterval = delay) {
+        HUD.flash(.labeledSuccess(title: msg, subtitle: description), delay: delay)
     }
 
 }
