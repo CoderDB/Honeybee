@@ -131,7 +131,19 @@ class Database: NSObject {
             print(err.localizedDescription)
         }
     }
-    func update<T: HoneybeeKind>(item: T, name: String) throws {
+    
+    
+    func update(item: HoneybeeColor, isUsed: Bool) throws {
+        do {
+            try realm.write {
+                item.isUsed = isUsed
+            }
+        } catch let error {
+            throw error
+        }
+    }
+    
+    func update(item: HoneybeeKind, name: String) throws {
         do {
             try realm.write {
                 item.name = name
@@ -200,21 +212,13 @@ class Database: NSObject {
 
 extension Results {
     var toArray: [T] {
-        var rs: [T] = []
-        for r in self {
-            rs.append(r)
-        }
-        return rs
+        return Array(self)
     }
 }
 
 extension List {
     var toArray: [T] {
-        var ls: [T] = []
-        for l in self {
-            ls.append(l)
-        }
-        return ls
+        return Array(self)
     }
 //    func toArray() -> [T] {
 //        var ls: [T] = []
