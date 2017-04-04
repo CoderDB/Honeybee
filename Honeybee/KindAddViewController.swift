@@ -45,11 +45,14 @@ import RealmSwift
 extension KindAddViewController {
     func addCollectionView() {
         layout.itemSize = CGSize(width: 45, height: 45)
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
+        layout.sectionHeadersPinToVisibleBounds = true
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 50, right: 0)
         collectionView.snp.updateConstraints { (make) in
             make.top.equalTo(115+64)
             make.right.equalTo(view).offset(-60)
         }
+        collectionView.register(KindAddSectionHeader.self)
         collectionView.register(KindAddCell.self)
     }
     func addHeader() {
@@ -75,9 +78,6 @@ extension KindAddViewController {
                 do {
                     try Database.default.create(HoneybeeKind.self, value: kind)
                     try! Database.default.update(item: colorModel, isUsed: true)
-//                    try! colorModel.realm?.write {
-//                        colorModel.isUsed = true
-//                    }
                     Reminder.success()
                     
                 } catch let error {
