@@ -11,26 +11,18 @@ import RealmSwift
 
 class KindAddDataSource: NSObject {
     
-    
-//    fileprivate let colors: [[UIColor]]
     fileprivate let items: [[HoneybeeColor]]
-    
     override init() {
         let all = Honeybee.default.allColors().toArray
         let used = all.filter { $0.isUsed }
         let unused = all.filter { !$0.isUsed }
         self.items = [unused, used]
-//        self.colors = items.map { $0.map { UIColor(hex: $0.name) } }
         
         super.init()
     }
-    
     func item(at indexPath: IndexPath) -> HoneybeeColor {
         return items[indexPath.section][indexPath.item]
     }
-//    func color(at indexPath: IndexPath) -> UIColor {
-//        return colors[indexPath.section][indexPath.item]
-//    }
 }
 
 extension KindAddDataSource: UICollectionViewDataSource {
@@ -39,14 +31,10 @@ extension KindAddDataSource: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items[section].count
-//        if section == 0 {
-//            return items.toArray.filter { !$0.isUsed } .count
-//        }
-//        return items.toArray.filter { $0.isUsed } .count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(KindAddCell.self)", for: indexPath) as! KindAddCell
-        cell.backgroundColor = UIColor(hex: item(at: indexPath).name)//colors[indexPath.item]
+        cell.backgroundColor = UIColor(hex: item(at: indexPath).name)
         if indexPath.section == 1 {
             cell.selectedImg.isHidden = false
             cell.isUserInteractionEnabled = false

@@ -36,6 +36,8 @@ class KindAddViewController: BaseCollectionViewController {
     func fetchData() {
         dataSource = KindAddDataSource()
         collectionView.dataSource = dataSource
+        
+        header.containerView.backgroundColor = UIColor(hex: dataSource.item(at: selectedIdx).name)
     }
 }
 
@@ -78,6 +80,9 @@ extension KindAddViewController {
                 do {
                     try Database.default.create(HoneybeeKind.self, value: kind)
                     try! Database.default.update(item: colorModel, isUsed: true)
+                    
+                    refreshState()
+                    
                     Reminder.success()
                     
                 } catch let error {
@@ -88,6 +93,11 @@ extension KindAddViewController {
                 Reminder.error(msg: "重名啦", description: "叫这个名儿的已经有了", delay: 2)
             }
         }
+    }
+    func refreshState() {
+        selectedIdx = IndexPath(item: 0, section: 0)
+        header.titleLabel.text = "--"
+        fetchData()
     }
     func isExisted(name: String) -> Bool {
         let allKinds = Database.default.all(HoneybeeKind.self)
