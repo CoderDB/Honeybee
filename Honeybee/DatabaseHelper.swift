@@ -87,7 +87,7 @@ class Database: NSObject {
         }
     }
 
-    func delete<T: RLMModel, U: RLMModel>(item: T, children: List<U>) {
+    func delete<T: RLMModel, U: RLMModel>(item: T, children: List<U>) throws {
         do {
             try realm.write {
                 realm.delete(children)
@@ -95,6 +95,7 @@ class Database: NSObject {
             }
         } catch let error {
             print(error.localizedDescription)
+            throw error
         }
     }
     func delete<T: RLMModel>(item: T) throws {
@@ -140,6 +141,19 @@ class Database: NSObject {
             }
         } catch let error {
             throw error
+        }
+    }
+    func update<T: HoneybeeColor>(_: T.Type, name: String, isUsed: Bool) throws {
+        let colors = all(T.self).toArray
+        let matched = colors.filter { $0.name == name }
+        if let model = matched.first {
+            do {
+                try model.realm?.write {
+                    model.isUsed = false
+                }
+            } catch let err {
+                throw err
+            }
         }
     }
     
