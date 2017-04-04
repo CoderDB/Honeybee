@@ -20,6 +20,8 @@ class KindAddViewController: BaseCollectionViewController {
     fileprivate var kindName: String?
     fileprivate var kindColor: String?
     
+    fileprivate var selectedIdx: IndexPath = IndexPath(item: 0, section: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -60,16 +62,24 @@ extension KindAddViewController {
         }
     }
     func createNewKind() {
-        if let name = kindName, let color = kindColor {
+        
+        if let name = kindName {
             if !isExisted(name: name) {
+                
                 header.titleLabel.text = name
                 let kind = HoneybeeKind()
-                kind.color = color
+                let colorModel = dataSource.item(at: selectedIdx)
+                kind.color = colorModel.name
                 kind.name = name
                 kind.items = List<HoneybeeItem>()
                 do {
                     try Database.default.create(HoneybeeKind.self, value: kind)
+                    try! Database.default.update(item: colorModel, isUsed: true)
+//                    try! colorModel.realm?.write {
+//                        colorModel.isUsed = true
+//                    }
                     Reminder.success()
+                    
                 } catch let error {
                     Reminder.error(msg: error.localizedDescription)
                 }
@@ -132,6 +142,7 @@ extension KindAddViewController: HoneybeeViewProvider {
 
 extension KindAddViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIdx = indexPath
         let name = dataSource.item(at: indexPath).name
         header.containerView.backgroundColor = UIColor(hex: name)
         kindColor = name
