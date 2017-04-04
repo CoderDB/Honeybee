@@ -93,7 +93,7 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
             self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
                 self.stopShake()
                 if let idx = self.collectionView.indexPath(for: cell) {
-                    let kind = self.dataSource.items[idx.item]
+                    let kind = self.dataSource.item(at: idx)
                     self.deleteFromDatabase(kind)
                     self.collectionView.deselectItem(at: idx, animated: true)
                 }
@@ -101,7 +101,20 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
         }
     }
     func deleteFromDatabase(_ kind: HoneybeeKind) {
-        Database.default.delete(item: kind, children: kind.items)
+        do {
+            let color = kind.color
+            
+            try Database.default.delete(item: kind, children: kind.items)
+            do {
+                try Database.default.update(HoneybeeColor.self, name: color, isUsed: false)
+            } catch let error {
+                print(error.localizedDescription)
+                Reminder.error(msg: error.localizedDescription)
+            }
+        } catch {
+            Reminder.error()
+        }
+        
     }
     
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {

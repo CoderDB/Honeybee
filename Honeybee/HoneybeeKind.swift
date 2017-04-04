@@ -49,12 +49,18 @@ class HoneybeeKind: RLMModel {
         name <- map["category"]
         color <- map["color"]
         if let json = map["items"].currentValue as? [[String: Any]] {
-            for item in json {
-                if let model = Mapper<HoneybeeItem>().map(JSON: item) {
+            _ = json.map {
+                if let model = Mapper<HoneybeeItem>().map(JSON: $0) {
                     items.append(model)
                     try! Database.default.add(model: model)
                 }
             }
+//            for item in json {
+//                if let model = Mapper<HoneybeeItem>().map(JSON: item) {
+//                    items.append(model)
+//                    try! Database.default.add(model: model)
+//                }
+//            }
         }
     }
     
