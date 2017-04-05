@@ -76,30 +76,30 @@ class PieViewController: BaseTableViewController {
         return all.map { totalPay(of: $0) }.reduce(0, {$0.0 + $0.1})
     }
     
-    func colors_numbers_percents(models: [RLMRecorderSuper]) -> ([UIColor], [Double], [String]) {
+    func names_colors_numbers(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
         let allPay = totalPay(models)
         
         var colors: [UIColor] = [],
             numbers: [Double] = [],
-            percents: [String] = []
+            names: [String] = []
         
         for m in models {
             let totalPayOf = totalPay(of: m)
             let per = percent(part: totalPayOf, all: allPay)
             colors.append(UIColor(hex: m.color))
-            percents.append(per.0)
+            names.append(m.name)
             numbers.append(per.1)
         }
-        return (colors, numbers, percents)
+        return (names, colors, numbers)
     }
     
     func fetchData() {
         let date = Date().description
         let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
         let superRecorders = fetchData(yearMonth: yearMonth)
-        let cnp = colors_numbers_percents(models: superRecorders)
+        let cnp = names_colors_numbers(models: superRecorders)
         
-        tableView.tableHeaderView = PieHeader(height: 250, colors: cnp.0, numbers: cnp.1)
+        tableView.tableHeaderView = PieHeader(height: 250, names: cnp.0, colors: cnp.1, numbers: cnp.2)
         
         var models: [PieDataModel] = []
 //        for (idx, category) in superRecorders.enumerated() {
