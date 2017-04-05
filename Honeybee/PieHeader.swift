@@ -42,6 +42,7 @@ class PieHeader: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        ivalueFormatterDelegate = self
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
         gradientLayer.cornerRadius = HB.Constant.cornerRadius
@@ -67,28 +68,32 @@ class PieHeader: UIView {
 //        }
 //    }
     
+    weak var ivalueFormatterDelegate: IValueFormatter?
     func createData(numbers: [Double], colors: [UIColor]) -> PieChartData {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<numbers.count {
             let dataEntry = ChartDataEntry(x: Double(i), y: numbers[i])
             dataEntries.append(dataEntry)
         }
-        let dataSet = PieChartDataSet(values: dataEntries, label: nil)
+        let dataSet = PieChartDataSet(values: dataEntries, label: "衣食住行")
         dataSet.colors = colors//[.gray, .cyan, .green, .darkGray, .red]
         dataSet.xValuePosition = .outsideSlice              //坐标值显示位置
         dataSet.yValuePosition = .outsideSlice
-//        dataSet.sliceSpace = 1.0
+        dataSet.sliceSpace = 1.0
+//        dataSet
         
         
         dataSet.valueLineVariableLength = true              //线长度是否可变
-        dataSet.valueLinePart2Length = 1                    //线拐角之后的线长
+        dataSet.valueLinePart2Length = 0.8                    //线拐角之后的线长
         dataSet.valueLinePart1OffsetPercentage = 0.7        //线拐角之前距离圆心长度百分比
         dataSet.valueLineColor = .black              //线颜色
         dataSet.valueLineWidth = 1.5                        //线宽
         dataSet.valueTextColor = .black              //线末端字体颜色
         dataSet.valueFont = HB.Font.h4_number           // 线末端字体
         
-        return PieChartData(dataSet: dataSet)
+        let data = PieChartData(dataSet: dataSet)
+        data.setValueFormatter(ivalueFormatterDelegate)
+        return data
     }
     func addPieView() {
         addSubview(pieView)
@@ -96,5 +101,11 @@ class PieHeader: UIView {
             make.edges.equalTo(self)
         }
         pieView.data = createData(numbers: pieViewData, colors: pieViewColor)
+    }
+}
+
+extension PieHeader: IValueFormatter {
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return "\(value)%"
     }
 }
