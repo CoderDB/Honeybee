@@ -56,7 +56,6 @@ extension KindAddItemController {
     
     func addHeader() {
         header = KindAddItemHeader(frame: CGRect(x: 0, y: 64, width: HB.Screen.w, height: HB.Constant.headerH))
-        header.titleLabel.text = kind.name
         view.addSubview(header)
         header.rightButtonAction = { [unowned self] _ in
             self.showTextFieldAlert(completion: { 

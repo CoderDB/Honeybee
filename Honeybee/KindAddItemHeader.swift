@@ -15,6 +15,7 @@ class KindAddItemHeader: BaseHeader {
         $0.font = HB.Font.h3
         $0.textColor = .white
         $0.numberOfLines = 2
+        $0.text = "--"
     }
     
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
