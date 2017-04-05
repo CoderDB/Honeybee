@@ -14,10 +14,11 @@ class PieHeader: UIView {
     lazy var pieView: PieChartView = {
         let pie = PieChartView()
         
-        pie.drawHoleEnabled = true                  //中环，圆心环是否显示
-        pie.holeColor = .white               //圆心环颜色
-        pie.holeRadiusPercent = 0.4                 //圆心环半径 默认50%
-        pie.transparentCircleRadiusPercent = 0      //中环半径
+        pie.drawHoleEnabled = true                      //中环，圆心环是否显示
+        pie.holeColor = .white                          //圆心环颜色
+        pie.holeRadiusPercent = 0.4                     //圆心环半径 默认50%
+        pie.transparentCircleRadiusPercent = 0.5        //中环半径
+        
         pie.drawEntryLabelsEnabled = true
         
         
@@ -25,6 +26,12 @@ class PieHeader: UIView {
         pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
         
         pie.legend.enabled = false
+//        pie.legend.drawInside = true
+//        pie.legend.verticalAlignment = .top         // legend显示在上方
+//        pie.legend.horizontalAlignment = .right
+//        pie.legend.direction = .leftToRight         // legend与描述文字排列方式
+//        pie.legend.form = .circle
+        
         
         pie.chartDescription = nil
         
@@ -81,22 +88,24 @@ class PieHeader: UIView {
         }
         let dataSet = PieChartDataSet(values: dataEntries, label: nil)
         dataSet.colors = colors
-        dataSet.xValuePosition = .outsideSlice              //坐标值显示位置
-        dataSet.yValuePosition = .outsideSlice
-        dataSet.sliceSpace = 1.0
+//        dataSet.xValuePosition = .outsideSlice              //坐标值显示位置 默认inside
+//        dataSet.yValuePosition = .insideSlice
+        dataSet.sliceSpace = 5.0
         
         
-        dataSet.valueLineVariableLength = true              //线长度是否可变
-        dataSet.valueLinePart2Length = 0.8                    //线拐角之后的线长
-        dataSet.valueLinePart1OffsetPercentage = 0.7        //线拐角之前距离圆心长度百分比
-        dataSet.valueLineColor = .black              //线颜色
-        dataSet.valueLineWidth = 1.5                        //线宽
-        dataSet.valueTextColor = .black              //线末端字体颜色
-        dataSet.valueFont = HB.Font.h4_number           // 线末端字体
+//        dataSet.valueLineVariableLength = true              //线长度是否可变
+//        dataSet.valueLinePart2Length = 0.8                    //线拐角之后的线长
+//        dataSet.valueLinePart1OffsetPercentage = 0.7        //线拐角之前距离圆心长度百分比
+//        dataSet.valueLineColor = .black              //线颜色
+//        dataSet.valueLineWidth = 1.5                        //线宽
+        dataSet.valueTextColor = .white              //线末端字体颜色
+        dataSet.valueFont = HB.Font.h5_number           // 线末端字体
+        dataSet.valueFormatter = ivalueFormatterDelegate
+        
+        dataSet.entryLabelFont = HB.Font.h4         // title字体
         
         
         let data = PieChartData(dataSet: dataSet)
-        data.setValueFormatter(ivalueFormatterDelegate)
         return data
     }
     
