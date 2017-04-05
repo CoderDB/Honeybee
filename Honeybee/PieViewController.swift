@@ -102,8 +102,13 @@ class PieViewController: BaseTableViewController {
         tableView.tableHeaderView = PieHeader(height: 250, colors: cnp.0, numbers: cnp.1)
         
         var models: [PieDataModel] = []
-        for (idx, category) in superRecorders.enumerated() {
-            let dataModel = PieDataModel(category: category, percent: cnp.2[idx])
+//        for (idx, category) in superRecorders.enumerated() {
+//            let dataModel = PieDataModel(category: category, percent: cnp.2[idx])
+//            models.append(dataModel)
+//        }
+        
+        _ = superRecorders.map {
+            let dataModel = PieDataModel(category: $0, money: "\(totalPay(of: $0))")
             models.append(dataModel)
         }
         dataSource = PieDataSource(items: models)

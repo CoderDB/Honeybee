@@ -23,18 +23,21 @@ class PieCell: BaseTableViewCell {
     }()
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
-//    var item: SetupItem! {
-//        didSet {
-//            mainTitleLabel.text = item.title
-//            subTitleLabel.text = item.subTitle
-//        }
-//    }
-//    var item: RLMRecorderSuper! {
-//        didSet {
-//            mainTitleLabel.text = item.name
-//            subTitleLabel.text = "9"//item.month
-//        }
-//    }
+
+    var item: PieDataModel? {
+        didSet {
+            if let item = item {
+                mainTitleLabel.text = item.category.name
+                subTitleLabel.attributedText = attributeString(text: item.money)
+            }
+        }
+    }
+    func attributeString(text: String) -> NSMutableAttributedString {
+        let dayStr = "\(text)¥"
+        let attr = NSMutableAttributedString(string: dayStr)
+        attr.addAttributes([NSFontAttributeName: HB.Font.h4], range: NSRange(location: dayStr.characters.count-1, length: 1))
+        return attr
+    }
     override func initialize() {
         contentView.addSubview(mainTitleLabel)
         contentView.addSubview(subTitleLabel)

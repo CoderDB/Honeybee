@@ -22,13 +22,16 @@ extension DataSourceProvider {
 }
 
 
+
+
+
 class PieDataModel {
     var category: RLMRecorderSuper
-    var percent: String
+    var money: String
     
-    init(category: RLMRecorderSuper, percent: String) {
+    init(category: RLMRecorderSuper, money: String) {
         self.category = category
-        self.percent = percent
+        self.money = money
     }
 }
 
@@ -47,9 +50,7 @@ extension PieDataSource: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(PieCell.self)") as! PieCell
-//        cell.item = item(at: indexPath)
-        cell.mainTitleLabel.text = item(at: indexPath).category.name
-        cell.subTitleLabel.text = item(at: indexPath).percent + "%"
+        cell.item = item(at: indexPath)
         return cell
     }
 }
