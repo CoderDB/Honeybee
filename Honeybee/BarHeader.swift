@@ -12,9 +12,9 @@ import Charts
 class BarHeader: UIView {
 
     
-    convenience init(height: CGFloat, numbers: [Double]) {
+    convenience init(height: CGFloat, data: [Int: Double]) {
         self.init(height: height)
-        barView.data = createData(numbers: numbers)
+        barView.data = createData(data: data)
     }
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
@@ -47,7 +47,11 @@ class BarHeader: UIView {
 //        
 //        
 //        // xAxis
-        barV.xAxis.drawAxisLineEnabled = false      //不显示x轴
+        barV.xAxis.drawAxisLineEnabled = true      //不显示x轴
+        barV.xAxis.axisLineColor = .white
+//        barV.xAxis.axisLineDashPhase = 5
+//        barV.xAxis.yOffset = -50
+        
         barV.xAxis.drawGridLinesEnabled = false     // 不显示竖格线
         barV.xAxis.labelPosition = .bottom
         barV.xAxis.labelTextColor = .white
@@ -86,33 +90,17 @@ class BarHeader: UIView {
 
         barV.legend.enabled = false
         
-//        barV.isUserInteractionEnabled = false
+        barV.isUserInteractionEnabled = false
         return barV
     }()
     
-    func createData(numbers: [Double]) -> BarChartData {
-        
-//        var numbers = numbers
-//        numbers.insert(0, at: 0)
-//        let days = Date.days(year: 2017, month: 4)
-//        print(days)
-//        if numbers.count < days {
-//            numbers.append(contentsOf: repeatElement(0, count: days - numbers.count))
-//        }
-//        let limit = min(numbers.count, days)
-        
-        
-        
+    func createData(data: [Int: Double]) -> BarChartData {
         
         var dataEntries: [BarChartDataEntry] = []
-//        for i in 1..<days {
-//            
-//            let x = Double(i)
-//            let entry = BarChartDataEntry(x: x, y: numbers[i])
-//            dataEntries.append(entry)
-//        }
-        let dict = [1: 180, 2: 280, 5: 380]
-        for d in dict {
+
+//        let dict = [1: 180, 2: 280, 3: 30, 4: 600, 5: 380, 28: 1080]
+        
+        for d in data {
             let entry = BarChartDataEntry(x: Double(d.key), y: Double(d.value))
             dataEntries.append(entry)
         }
@@ -121,16 +109,16 @@ class BarHeader: UIView {
         
         dataSet.valueTextColor = .black
         dataSet.valueFont = HB.Font.h6_number
-        dataSet.valueFormatter = barDataSetValueFormatterDelegate
+//        dataSet.valueFormatter = barDataSetValueFormatterDelegate
         dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
         
         
-        let data = BarChartData(dataSet: dataSet)
-        data.barWidth = 0.5
+        let barData = BarChartData(dataSet: dataSet)
+        barData.barWidth = 0.5
         
         //
         barView.xAxis.valueFormatter = axisFormatDelegate
-        return data
+        return barData
     }
     
     
@@ -151,8 +139,8 @@ extension BarHeader: IAxisValueFormatter {
     }
 }
 
-extension BarHeader: IValueFormatter {
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return value.isZero ? "" : "\(value)"
-    }
-}
+//extension BarHeader: IValueFormatter {
+//    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+//        return value.isZero ? "" : "\(value)"
+//    }
+//}

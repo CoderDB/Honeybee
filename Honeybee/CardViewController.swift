@@ -260,6 +260,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         writeToDataBase()
         
         recorderToWrite = nil
+//        recorderToWrite = RLMRecorder()
         header.numberLabel.text = "0"
     }
     
