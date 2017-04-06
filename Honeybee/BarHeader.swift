@@ -41,31 +41,46 @@ class BarHeader: UIView {
         barV.noDataText = "暂无数据"
         barV.chartDescription = nil
         
-        // xAxis
-        barV.xAxis.drawAxisLineEnabled = false //不显示x轴
-        barV.xAxis.drawGridLinesEnabled = false // 不显示竖格线
+//        barV.leftAxis.drawZeroLineEnabled = false
+//        
+//        
+//        // xAxis
+        barV.xAxis.drawAxisLineEnabled = false      //不显示x轴
+        barV.xAxis.drawGridLinesEnabled = false     // 不显示竖格线
         barV.xAxis.labelPosition = .bottom
         barV.xAxis.labelTextColor = .white
+//        barV.xAxis.drawLabelsEnabled = true        // x轴坐标值是否绘制 default true
+        
+        
+//        barV.leftAxis.axisMinimum = 0
         
 //        barV.xAxis.labelCount = 30
-        barV.xAxis.axisMinimum = 0
+//        barV.xAxis.axisMinimum = 0
+//        barV.xAxis.
 //        barV.xAxis.axisMaximum = 30
 //        barV.xAxis.axisRange = 10
 //        barV.xAxis.spaceMin = 1
 //        barV.xAxis.spaceMax = 30
 //        barV.xAxis.axisLineColor = .black
-        barV.xAxis.labelTextColor = .black
+//        barV.xAxis.labelTextColor = .black
 
         
-        barV.fitBars = false
+//        barV.fitBars = false
         
         // x, y轴双击都不缩放
-        barV.scaleXEnabled = false
-        barV.scaleYEnabled = false
+//        barV.scaleXEnabled = false
+//        barV.scaleYEnabled = false
 //        barV.extraLeftOffset = 30
 //        barV.setExtraOffsets(left: 100, top: 0, right: 0, bottom: 0)
-        barV.leftAxis.enabled = false
         barV.rightAxis.enabled = false
+        
+        barV.leftAxis.enabled = false
+        barV.leftAxis.drawGridLinesEnabled = false // leftAxis 横线
+        barV.leftAxis.drawLabelsEnabled = false  // leftAxis 坐标值
+        barV.leftAxis.drawZeroLineEnabled = false
+        
+        barV.drawValueAboveBarEnabled = true // 条形柱的值显示在条形柱上发
+
         barV.legend.enabled = false
 //        barV.isUserInteractionEnabled = false
         return barV
@@ -89,6 +104,7 @@ class BarHeader: UIView {
         }
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
         dataSet.drawValuesEnabled = true //显示条形柱的值
+        
         dataSet.valueTextColor = .black
         dataSet.valueFont = HB.Font.h6_number
         dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
