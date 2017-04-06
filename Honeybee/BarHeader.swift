@@ -21,10 +21,12 @@ class BarHeader: UIView {
     }
     
     weak var axisFormatDelegate: IAxisValueFormatter?
+    weak var barDataSetValueFormatterDelegate: IValueFormatter?
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         axisFormatDelegate = self
+//        barDataSetValueFormatterDelegate = self
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
         gradientLayer.cornerRadius = HB.Constant.cornerRadius
@@ -56,7 +58,6 @@ class BarHeader: UIView {
         
 //        barV.xAxis.labelCount = 30
 //        barV.xAxis.axisMinimum = 0
-//        barV.xAxis.
 //        barV.xAxis.axisMaximum = 30
 //        barV.xAxis.axisRange = 10
 //        barV.xAxis.spaceMin = 1
@@ -65,13 +66,15 @@ class BarHeader: UIView {
 //        barV.xAxis.labelTextColor = .black
 
         
-//        barV.fitBars = false
+//        barV.fitBars = true
+        
         
         // x, y轴双击都不缩放
-//        barV.scaleXEnabled = false
-//        barV.scaleYEnabled = false
-//        barV.extraLeftOffset = 30
-//        barV.setExtraOffsets(left: 100, top: 0, right: 0, bottom: 0)
+        barV.scaleXEnabled = false
+        barV.scaleYEnabled = false
+        
+        
+        
         barV.rightAxis.enabled = false
         
         barV.leftAxis.enabled = false
@@ -82,24 +85,35 @@ class BarHeader: UIView {
         barV.drawValueAboveBarEnabled = true // 条形柱的值显示在条形柱上发
 
         barV.legend.enabled = false
+        
 //        barV.isUserInteractionEnabled = false
         return barV
     }()
     
     func createData(numbers: [Double]) -> BarChartData {
+        
+//        var numbers = numbers
+//        numbers.insert(0, at: 0)
 //        let days = Date.days(year: 2017, month: 4)
 //        print(days)
-//        for i in 0..<days {
-//            
+//        if numbers.count < days {
+//            numbers.append(contentsOf: repeatElement(0, count: days - numbers.count))
 //        }
+//        let limit = min(numbers.count, days)
         
-        let numbers = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
+        
+        
+        
         var dataEntries: [BarChartDataEntry] = []
-
-        
-        for i in 0..<numbers.count {
-            let x = Double(i)
-            let entry = BarChartDataEntry(x: x, y: numbers[i])
+//        for i in 1..<days {
+//            
+//            let x = Double(i)
+//            let entry = BarChartDataEntry(x: x, y: numbers[i])
+//            dataEntries.append(entry)
+//        }
+        let dict = [1: 180, 2: 280, 5: 380]
+        for d in dict {
+            let entry = BarChartDataEntry(x: Double(d.key), y: Double(d.value))
             dataEntries.append(entry)
         }
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
@@ -107,10 +121,13 @@ class BarHeader: UIView {
         
         dataSet.valueTextColor = .black
         dataSet.valueFont = HB.Font.h6_number
+        dataSet.valueFormatter = barDataSetValueFormatterDelegate
         dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
         
+        
         let data = BarChartData(dataSet: dataSet)
-        data.barWidth = 0.3
+        data.barWidth = 0.5
+        
         //
         barView.xAxis.valueFormatter = axisFormatDelegate
         return data
@@ -125,18 +142,17 @@ class BarHeader: UIView {
             make.bottom.equalTo(self).offset(-5)
             make.top.equalTo(self)
         }
-        
-//        let unitsSold = [4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 4000.0, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879, 8090.0, 4756.45, 8923.0, 1879]
-//        barView.data = createData(numbers: unitsSold)
     }
 }
 
 extension BarHeader: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        var value = value
-        if value.isZero {
-            value = 1.0
-        }
         return "\(Int(value))日"
+    }
+}
+
+extension BarHeader: IValueFormatter {
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return value.isZero ? "" : "\(value)"
     }
 }
