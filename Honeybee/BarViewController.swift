@@ -64,11 +64,36 @@ class BarViewController: BaseTableViewController {
     func fetchData() {
         let recorders = Array(category.recorders)
         var data: [Int: Double] = [:]
-        _ = recorders.map { data[$0.day] = Double($0.money) }
+        
+        _ = recorders.map {
+            if data.keys.contains($0.day) {
+                data[$0.day]?.add(Double($0.money))
+//                data.updateValue(data[$0.day]!.adding(Double($0.money)), forKey: $0.day)
+            } else {
+                data[$0.day] = Double($0.money)
+            }
+        }
+//        _ = recorders.map {
+//            if data.keys.contains($0.day) {
+//                data.updateValue(data[$0.day]!.adding(Double($0.money)), forKey: $0.day)
+//            } else {
+//                data[$0.day] = Double($0.money)
+//            }
+//        }
         tableView.tableHeaderView = BarHeader(height: 170, data: data)
         
         dataSource = BarDataSource(items: recorders)
         tableView.dataSource = dataSource
+    }
+    
+    
+    func flatSum(source: [(Int, Double)]) -> [Int: Double] {
+        var result = [Int: Double]()
+        _ = source.map { (ele) in
+            result[ele.0] = ele.1
+        }
+        
+        return [0: 0]
     }
 }
 // MARK: UIPopoverPresentationControllerDelegate

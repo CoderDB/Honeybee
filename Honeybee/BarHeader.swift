@@ -98,7 +98,7 @@ class BarHeader: UIView {
         
         var dataEntries: [BarChartDataEntry] = []
 
-//        let dict = [1: 180, 2: 280, 3: 30, 4: 600, 5: 380, 28: 1080]
+//        var dict = [1: 180, 2: 280, 3: 30, 4: 600, 5: 380, 28: 1080]
         
         for d in data {
             let entry = BarChartDataEntry(x: Double(d.key), y: Double(d.value))
