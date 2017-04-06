@@ -11,9 +11,21 @@ import ObjectMapper
 
 class RLMRecorder: RLMModel {
     
-//    dynamic var id: String = ""
+    
     
     dynamic var date: String = "\(Date())"
+//        {
+//        didSet {
+//            let currentDate = Date.date(from: date).localDate
+//            self.year = currentDate.year
+//            self.month = currentDate.month
+//            self.day = currentDate.day
+//        }
+//    }
+    
+
+    
+    
     dynamic var superCategory: String = ""
     dynamic var category: String = ""
     dynamic var money: Int = 0
@@ -21,6 +33,7 @@ class RLMRecorder: RLMModel {
     dynamic var color: String = ""
     dynamic var isPay: Bool = true
     dynamic var imageName: String = "meal"
+    
     
     dynamic var owner: RLMRecorderSuper?
     
@@ -40,16 +53,29 @@ class RLMRecorder: RLMModel {
         return Date.date(from: date).localDate.hourMinute
     }
     
-    var year: String {
+    
+    
+    
+    var year: Int {
         return Date.date(from: date).localDate.year
     }
-    var month: String {
+    var month: Int {
+        return Date.date(from: date).localDate.month
+    }
+    var day: Int {
         return Date.date(from: date).localDate.month
     }
     
+//    var year: String {
+//        return Date.date(from: date).localDate.year
+//    }
+//    var month: String {
+//        return Date.date(from: date).localDate.month
+//    }
+    
     
     override static func ignoredProperties() -> [String] {
-        return ["weekday", "yearMonthDay", "hourMinute", "monthDay", "year", "month"]
+        return ["weekday", "yearMonthDay", "hourMinute", "monthDay"]
     }
     
     override static func indexedProperties() -> [String] {
@@ -68,6 +94,7 @@ class RLMRecorder: RLMModel {
         self.color <- map["color"]
         self.isPay <- map["isPay"]
         self.imageName <- map["imageName"]
+        
         
 //        let currentDate = Date.date(from: date).localDate
 //        self.monthDay = currentDate.monthDay

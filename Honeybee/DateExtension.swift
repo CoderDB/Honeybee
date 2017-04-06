@@ -20,25 +20,25 @@ extension Date {
         return Date(timeInterval: interval, since: self)
     }
     ///  2017-02-26 18:35:52 +0000 -> "2017"
-    var year: String {
+    var year: Int {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: "GMT")!
         let year = cal.component(.year, from: self)
-        return "\(year)"
+        return year
     }
     ///  2017-02-26 18:35:52 +0000 -> "2月"
-    var month: String {
+    var month: Int {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: "GMT")!
         let month = cal.component(.month, from: self)
-        return "\(month)"
+        return month
     }
     ///  2017-02-26 18:35:52 +0000 -> "26日"
-    var day: String {
+    var day: Int {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: "GMT")!
         let day = cal.component(.day, from: self)
-        return "\(day)"
+        return day
     }
     /// "2月26日"
     var monthDay: String {
