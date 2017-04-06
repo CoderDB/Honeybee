@@ -63,7 +63,7 @@ class RLMRecorder: RLMModel {
         return Date.date(from: date).localDate.month
     }
     var day: Int {
-        return Date.date(from: date).localDate.month
+        return Date.date(from: date).localDate.day
     }
     
 //    var year: String {
@@ -136,6 +136,17 @@ func group<T: Equatable>(source: [T]) -> [[T]] {
     return temp
 }
 
+func group<T: Equatable>(source: [T], condition: (T) -> (T) -> Bool)  -> [[T]] {
+    guard let head = source.first else { return [] }
+    let tail = Array(source.dropFirst())
+    var take = takeWhile(condition: condition(head), source: tail)
+    take.insert(head, at: 0)
+    
+    let drop = dropWhile(condition: condition(head), source: tail)
+    var temp = group(source: drop)
+    temp.insert(take, at: 0)
+    return temp
+}
 
 
 //func groupWith<T: Equatable>(condition: (T) -> (T) -> Bool, source: [T]) -> [[T]] {
