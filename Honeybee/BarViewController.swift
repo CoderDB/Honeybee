@@ -72,7 +72,8 @@ class BarViewController: BaseTableViewController {
                 data[$0.day] = Double($0.money)
             }
         }
-        let days = Date.days(year: 2017, month: 4)
+        let date = Date()
+        let days = Date.days(year: date.year, month: date.month)
         var tempDict = [Int: Double]()
         for i in 1...days {
             tempDict[i] = 0

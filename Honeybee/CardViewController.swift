@@ -254,7 +254,7 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     func completed(text: String) {
         header.numberLabel.text = text
         
-        recorderToWrite.money = Int(text) ?? 0
+        recorderToWrite.money = Double(text) ?? 0
         recorderToWrite.isPay = true
     
         writeToDataBase()
