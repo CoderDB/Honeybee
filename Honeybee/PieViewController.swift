@@ -70,7 +70,7 @@ class PieViewController: BaseTableViewController {
     }
     
     func totalPay(of model: RLMRecorderSuper) -> Int {
-        return model.recorders.reduce(0, { $0.0 + $0.1.money })
+        return model.recorders.reduce(0, { $0.0 + Int($0.1.money) })
     }
     func totalPay(_ all: [RLMRecorderSuper]) -> Int {
         return all.map { totalPay(of: $0) }.reduce(0, {$0.0 + $0.1})

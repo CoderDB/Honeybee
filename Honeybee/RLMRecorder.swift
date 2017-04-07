@@ -28,7 +28,7 @@ class RLMRecorder: RLMModel {
     
     dynamic var superCategory: String = ""
     dynamic var category: String = ""
-    dynamic var money: Int = 0
+    dynamic var money: Double = 0
     dynamic var remark: String = "未填写\n"
     dynamic var color: String = ""
     dynamic var isPay: Bool = true

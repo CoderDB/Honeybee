@@ -50,6 +50,18 @@ class MainViewController: BaseTableViewController {
 //    }
     
     func fetchData() {
+        
+        
+        // TODO: 收入模型
+        let month = Date().month
+        let recorders = Database.default.all(RLMRecorder.self)
+        let matched = Array(recorders.filter { $0.month == month })
+//        let payout = Array(matched.filter { $0.isPay })
+        
+        
+        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
+        
+        
         let data = Database.default.all(RLMRecorderSuper.self)
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
@@ -64,7 +76,7 @@ class MainViewController: BaseTableViewController {
         notiToken?.stop()
     }
     func fetchDataFromServe() {
-        let serveIsChanged = false
+        let serveIsChanged = true
         if serveIsChanged {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()
