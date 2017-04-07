@@ -26,7 +26,8 @@ class BarHeader: UIView {
         super.init(frame: frame)
         
         axisFormatDelegate = self
-//        barDataSetValueFormatterDelegate = self
+        barDataSetValueFormatterDelegate = self
+        
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
         gradientLayer.cornerRadius = HB.Constant.cornerRadius
@@ -97,11 +98,8 @@ class BarHeader: UIView {
     func createData(data: [Int: Double]) -> BarChartData {
         
         var dataEntries: [BarChartDataEntry] = []
-
-//        var dict = [1: 180, 2: 280, 3: 30, 4: 600, 5: 380, 28: 1080]
-        
-        for d in data {
-            let entry = BarChartDataEntry(x: Double(d.key), y: Double(d.value))
+        _ = data.map {
+            let entry = BarChartDataEntry(x: Double($0.key), y: Double($0.value))
             dataEntries.append(entry)
         }
         let dataSet = BarChartDataSet(values: dataEntries, label: nil)
@@ -109,7 +107,7 @@ class BarHeader: UIView {
         
         dataSet.valueTextColor = .black
         dataSet.valueFont = HB.Font.h6_number
-//        dataSet.valueFormatter = barDataSetValueFormatterDelegate
+        dataSet.valueFormatter = barDataSetValueFormatterDelegate
         dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
         
         
@@ -139,8 +137,8 @@ extension BarHeader: IAxisValueFormatter {
     }
 }
 
-//extension BarHeader: IValueFormatter {
-//    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-//        return value.isZero ? "" : "\(value)"
-//    }
-//}
+extension BarHeader: IValueFormatter {
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return value.isZero ? "" : "\(value)"
+    }
+}
