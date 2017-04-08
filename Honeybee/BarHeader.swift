@@ -139,6 +139,6 @@ extension BarHeader: IAxisValueFormatter {
 
 extension BarHeader: IValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return value.isZero ? "" : "\(value)"
+        return value.isZero ? "" : "\(Int(value))"
     }
 }

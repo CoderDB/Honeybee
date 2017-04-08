@@ -102,7 +102,7 @@ extension CardViewController {
     }
     func addCollectionView() {
         layout.itemSize = CGSize(width: 60, height: 70)
-        layout.sectionHeadersPinToVisibleBounds = true
+        layout.sectionHeadersPinToVisibleBounds = false
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.register(CardCollectionCell.self)
@@ -139,10 +139,6 @@ extension CardViewController {
         recorderToWrite.imageName = item.icon
         recorderToWrite.color = kind.color
         
-//        dataToWrite["category"] = item.name
-//        dataToWrite["superCategory"] = kind.name
-//        dataToWrite["imageName"] = item.icon
-//        dataToWrite["color"] = kind.color
     }
 }
 
@@ -221,35 +217,6 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
             } catch {
                 Reminder.error()
             }
-//            try! Database.default.append(item: recorderToWrite, to: superModel.recorders)
-//            try! superModel.realm?.write {
-//                superModel.recorders.append(recorderToWrite)
-//            }
-//            do {
-//                try Database.default.add(model: superModel)
-//                Reminder.success()
-//            } catch {
-//                Reminder.error()
-//            }
-            
-//            if let superModel = Mapper<RLMRecorderSuper>()
-//                .map(JSON: [
-//                    "style": "plain",
-//                    "name": recorderToWrite.superCategory,
-//                    "color": recorderToWrite.color,
-//                    "totalPay": recorderToWrite.money,
-//                    "recorders": [recorderToWrite.toJSON()]
-//                    ]
-//                ) {
-//                
-//                recorderToWrite.owner = superModel
-//                do {
-//                    try Database.default.add(model: superModel)
-//                    Reminder.success()
-//                } catch {
-//                    Reminder.error()
-//                }
-//            }
         }
     }
     func completed(text: Double) {
@@ -268,7 +235,6 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     // Date
     func selected(date: String) {
         recorderToWrite.date = date
-//        dataToWrite["date"] = date
     }
     func callCamera() {
         print("---call camera")
@@ -278,7 +244,6 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         
         showTextField(title: "备注", textField: { (tf) in
             self.recorderToWrite.remark = tf.text ?? "\n\n"
-//            self.dataToWrite["remark"] = tf.text ?? "\n\n"
             
         }, ok: { [unowned self] in
             self.hb_keyboard.up()
