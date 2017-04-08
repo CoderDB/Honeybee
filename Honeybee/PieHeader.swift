@@ -11,43 +11,12 @@ import Charts
 
 class PieHeader: UIView {
     
-    lazy var pieView: PieChartView = {
-        let pie = PieChartView()
-        
-        pie.drawHoleEnabled = true                      //中环，圆心环是否显示
-        pie.holeColor = .white                          //圆心环颜色
-        pie.holeRadiusPercent = 0.4                     //圆心环半径 默认50%
-        pie.transparentCircleRadiusPercent = 0.5        //中环半径
-        
-        pie.drawEntryLabelsEnabled = true
-        
-        
-        pie.rotationEnabled = false //旋转开关
-        pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
-        
-        pie.legend.enabled = false
-//        pie.legend.drawInside = true
-//        pie.legend.verticalAlignment = .top         // legend显示在上方
-//        pie.legend.horizontalAlignment = .right
-//        pie.legend.direction = .leftToRight         // legend与描述文字排列方式
-//        pie.legend.form = .circle
-        
-        
-        pie.chartDescription = nil
-        
-        pie.highlightPerTapEnabled = false
-        return pie
-    }()
-    var pieViewData: [Double] = [0]
-    var pieViewColor: [UIColor] = [HB.Color.main]
-    
-    
     // ------------------------------
     // MARK: init
     // ------------------------------
     convenience init(height: CGFloat, names: [String], colors: [UIColor], percents: [Double]) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
-        pieView.data = PieChartViewData(names: names, colors: colors, percents: percents).data
+        pieView.data = PieHeaderData(names: names, colors: colors, percents: percents).data
     }
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
@@ -68,6 +37,28 @@ class PieHeader: UIView {
     
     
     
+    lazy var pieView: PieChartView = {
+        let pie = PieChartView()
+        
+        pie.drawHoleEnabled = true                      //中环，圆心环是否显示
+        pie.holeColor = .white                          //圆心环颜色
+        pie.holeRadiusPercent = 0.4                     //圆心环半径 默认50%
+        pie.transparentCircleRadiusPercent = 0.5        //中环半径
+        
+        pie.drawEntryLabelsEnabled = true
+        
+        
+        pie.rotationEnabled = false
+        pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
+        
+        pie.legend.enabled = false
+        
+        pie.chartDescription = nil
+        
+        pie.highlightPerTapEnabled = false
+        return pie
+    }()
+    
     // ------------------------------
     // MARK: create PieView
     // ------------------------------
@@ -76,62 +67,5 @@ class PieHeader: UIView {
         pieView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
-    }
-}
-
-
-class PieChartViewData: NSObject {
-    
-    var data: PieChartData?
-    
-    private weak var ivalueFormatterDelegate: IValueFormatter?
-    
-    init(names: [String], colors: [UIColor], percents: [Double]) {
-        super.init()
-
-        ivalueFormatterDelegate = self
-        data = createData(names: names, colors: colors, percents: percents)
-    }
-    
-    func createData(names: [String], colors: [UIColor], percents: [Double]) -> PieChartData {
-        var dataEntries: [ChartDataEntry] = []
-        for i in 0..<names.count {
-            
-            let dataEntry = PieChartDataEntry(value: percents[i], label: names[i])
-            dataEntries.append(dataEntry)
-        }
-        let dataSet = PieChartDataSet(values: dataEntries, label: nil)
-        dataSet.colors = colors
-        //        dataSet.xValuePosition = .outsideSlice              //坐标值显示位置 默认inside
-        //        dataSet.yValuePosition = .insideSlice
-        dataSet.sliceSpace = 5.0
-        
-        
-        //        dataSet.valueLineVariableLength = true              //线长度是否可变
-        //        dataSet.valueLinePart2Length = 0.8                    //线拐角之后的线长
-        //        dataSet.valueLinePart1OffsetPercentage = 0.7        //线拐角之前距离圆心长度百分比
-        //        dataSet.valueLineColor = .black              //线颜色
-        //        dataSet.valueLineWidth = 1.5                        //线宽
-        dataSet.valueTextColor = .white              //线末端字体颜色
-        dataSet.valueFont = HB.Font.h5_number           // 线末端字体
-        
-        dataSet.entryLabelFont = HB.Font.h4         // title字体
-        
-        // IValueFormatter
-        dataSet.valueFormatter = ivalueFormatterDelegate
-        
-        return PieChartData(dataSet: dataSet)
-    }
-
-}
-
-
-// ------------------------------
-// MARK: IValueFormatter delegate
-// ------------------------------
-
-extension PieChartViewData: IValueFormatter {
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return "\(value)%"
     }
 }

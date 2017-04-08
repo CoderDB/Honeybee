@@ -82,6 +82,8 @@
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
 		86AAAE691E727A10000669B4 /* KindAddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE681E727A10000669B4 /* KindAddItemController.swift */; };
 		86AAAE6B1E727A3A000669B4 /* KindAddItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */; };
+		86AF07421E98E69A0077F733 /* PieHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07411E98E69A0077F733 /* PieHeaderData.swift */; };
+		86AF07441E98E8CE0077F733 /* BarHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07431E98E8CE0077F733 /* BarHeaderData.swift */; };
 		86B685171E5F14B5003F6EDC /* BarPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
 		86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */; };
@@ -216,6 +218,8 @@
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		86AAAE681E727A10000669B4 /* KindAddItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemController.swift; sourceTree = "<group>"; };
 		86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemHeader.swift; sourceTree = "<group>"; };
+		86AF07411E98E69A0077F733 /* PieHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeaderData.swift; sourceTree = "<group>"; };
+		86AF07431E98E8CE0077F733 /* BarHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarHeaderData.swift; sourceTree = "<group>"; };
 		86B685161E5F14B5003F6EDC /* BarPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
 		86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailCell.swift; sourceTree = "<group>"; };
@@ -456,6 +460,7 @@
 				1E1BA4971E781F5500CD2ABF /* PieDataSource.swift */,
 				8697CEDD1E5D9E4100993CFE /* PieCell.swift */,
 				86BA1BA71E5C4BF700669580 /* PieHeader.swift */,
+				86AF07411E98E69A0077F733 /* PieHeaderData.swift */,
 			);
 			name = Pie;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				86B685161E5F14B5003F6EDC /* BarPopoverController.swift */,
 				8697CEEA1E5DADED00993CFE /* BarCell.swift */,
 				8697CEE81E5DA9D900993CFE /* BarHeader.swift */,
+				86AF07431E98E8CE0077F733 /* BarHeaderData.swift */,
 			);
 			name = Bar;
 			sourceTree = "<group>";
@@ -964,8 +970,10 @@
 				8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */,
 				86E695011E797CB800CBD894 /* UI-Protocol.swift in Sources */,
 				868C3F701E72928300D5443D /* KindAddItemCell.swift in Sources */,
+				86AF07421E98E69A0077F733 /* PieHeaderData.swift in Sources */,
 				8627BFB51E0BADFD00C1A257 /* CurveCell.swift in Sources */,
 				8697CEE31E5DA2AE00993CFE /* BaseTableViewController.swift in Sources */,
+				86AF07441E98E8CE0077F733 /* BarHeaderData.swift in Sources */,
 				86D170461E51EBCE0004E192 /* ProfileViewController.swift in Sources */,
 				86BDA6AA1E71479700AEFBC4 /* BaseCollectionViewCell.swift in Sources */,
 				1E1C0C871E77018400AF940E /* GroupCellDataSource.swift in Sources */,
