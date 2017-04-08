@@ -63,13 +63,18 @@ class RecordCell: UITableViewCell {
             imgView.image = UIImage(named: recorder.imageName)
             dateLabel.text = recorder.monthDay
             categoryLabel.text = recorder.category
-            numberLabel.text = "\(recorder.money)"
+            numberLabel.text = formatter(num: recorder.money)//"\(recorder.money)"
             weekdayLabel.text = recorder.weekday
             backgroundColor = UIColor(hex: recorder.color)
         }
     }
     
-    
+    func formatter(num: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(value: num)) ?? "0"
+    }
     func initialize() {
         contentView.addSubview(imgView)
         contentView.addSubview(dateLabel)

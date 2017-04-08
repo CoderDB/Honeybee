@@ -34,10 +34,16 @@ class RecordLiteCell: UITableViewCell {
         didSet {
             if let model = model {
                 category.text = model.category
-                number.text = "\(model.money)"
+                number.text = formatter(num: model.money)//"\(model.money)"
                 backgroundColor = UIColor(hex: model.color)
             }
         }
+    }
+    func formatter(num: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(value: num)) ?? "0"
     }
     override var frame: CGRect {
         didSet {
