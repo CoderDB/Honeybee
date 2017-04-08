@@ -84,6 +84,7 @@
 		86AAAE6B1E727A3A000669B4 /* KindAddItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */; };
 		86AF07421E98E69A0077F733 /* PieHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07411E98E69A0077F733 /* PieHeaderData.swift */; };
 		86AF07441E98E8CE0077F733 /* BarHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07431E98E8CE0077F733 /* BarHeaderData.swift */; };
+		86AF07461E992A7F0077F733 /* PiePopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07451E992A7F0077F733 /* PiePopoverController.swift */; };
 		86B685171E5F14B5003F6EDC /* BarPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
 		86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */; };
@@ -220,6 +221,7 @@
 		86AAAE6A1E727A3A000669B4 /* KindAddItemHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddItemHeader.swift; sourceTree = "<group>"; };
 		86AF07411E98E69A0077F733 /* PieHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeaderData.swift; sourceTree = "<group>"; };
 		86AF07431E98E8CE0077F733 /* BarHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarHeaderData.swift; sourceTree = "<group>"; };
+		86AF07451E992A7F0077F733 /* PiePopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiePopoverController.swift; sourceTree = "<group>"; };
 		86B685161E5F14B5003F6EDC /* BarPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
 		86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailCell.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				86FC4EC51E1112B10048E183 /* PieViewController.swift */,
+				86AF07451E992A7F0077F733 /* PiePopoverController.swift */,
 				1E1BA4971E781F5500CD2ABF /* PieDataSource.swift */,
 				8697CEDD1E5D9E4100993CFE /* PieCell.swift */,
 				86BA1BA71E5C4BF700669580 /* PieHeader.swift */,
@@ -1025,6 +1028,7 @@
 				8627BFB91E0BC83300C1A257 /* LineView.swift in Sources */,
 				8638A9A61DE56CB9002369F9 /* AppDelegate.swift in Sources */,
 				8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */,
+				86AF07461E992A7F0077F733 /* PiePopoverController.swift in Sources */,
 				86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */,
 				86DF8AE91E6452600054152E /* UITableViewExtension.swift in Sources */,
 				86DAD5911E865218004A7AD7 /* HUD.swift in Sources */,

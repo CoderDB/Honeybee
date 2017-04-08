@@ -17,6 +17,7 @@ class PieViewController: BaseTableViewController {
         super.viewDidLoad()
         
         setNavTitle("图表")
+        setNavRightItem("筛选")
         
         tableView.register(PieCell.self)
         header = PieHeader(height: 250)
@@ -28,7 +29,20 @@ class PieViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+    override func navRightItemClicked(_ btn: UIButton) {
+        let destVC = PiePopoverController()
+        destVC.modalPresentationStyle = .popover
+        let popoverVC = destVC.popoverPresentationController!
+        popoverVC.backgroundColor = .white
+        popoverVC.delegate = self
+        popoverVC.sourceView = btn
+        popoverVC.sourceRect = btn.bounds
+        popoverVC.permittedArrowDirections = .up
+        destVC.didSelectRow = {row in
+            print("----\(row)")
+        }
+        present(destVC, animated: true, completion: nil)
+    }
     func fetchData() {
         PieDataSource(items: []).fetch { [weak self] (items, ncp) in
             self?.dataSource = PieDataSource(items: items)
@@ -38,6 +52,13 @@ class PieViewController: BaseTableViewController {
     }
 }
 
+
+// MARK: UIPopoverPresentationControllerDelegate
+extension PieViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+}
 
 // MARK: UITableViewDelegate
 
