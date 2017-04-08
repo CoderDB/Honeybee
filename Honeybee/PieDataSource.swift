@@ -107,6 +107,11 @@ class PieDataModel {
     }
 }
 
+
+// -----------------------------------------------------------------------------
+// MARK: DataSourceProvider
+// -----------------------------------------------------------------------------
+
 class PieDataSource: NSObject, DataSourceProvider {
     typealias ItemType = PieDataModel
     var items: [ItemType]
@@ -115,6 +120,11 @@ class PieDataSource: NSObject, DataSourceProvider {
         self.items = items
     }
 }
+
+
+// -----------------------------------------------------------------------------
+// MARK: fetch data from db
+// -----------------------------------------------------------------------------
 
 extension PieDataSource {
     func fetch(result: ([PieDataModel], _ ncn: ([String], [UIColor], [Double])) -> Void) {
@@ -132,7 +142,7 @@ extension PieDataSource {
     }
     
     func fetchData(yearMonth: String) -> [RLMRecorderSuper] {
-        let recorders = fetch(top: 30)
+        let recorders = Database.default.fetch(RLMRecorder.self, top: 30)
         var set = Set<RLMRecorderSuper>()
         for ele in recorders {
             if let owner = ele.owner {
@@ -142,15 +152,6 @@ extension PieDataSource {
         return Array(set)
     }
     
-    func fetch(top limit: Int) -> [RLMRecorder] {
-        let recorders = Database.default.all(RLMRecorder.self)
-        let limit = min(recorders.count, limit)
-        var result: [RLMRecorder] = []
-        for i in 0..<limit {
-            result.append(recorders[i])
-        }
-        return result
-    }
     func totalPay(of model: RLMRecorderSuper) -> Int {
         return model.recorders.reduce(0, { $0.0 + Int($0.1.money) })
     }
@@ -164,11 +165,12 @@ extension PieDataSource {
         numbers: [Double] = [],
         names: [String] = []
 
-        for m in models {
-            let totalPayOf = totalPay(of: m)
+        _ = models.map {
+            names.append($0.name)
+            colors.append(UIColor(hex: $0.color))
+            
+            let totalPayOf = totalPay(of: $0)
             let per = percent(part: totalPayOf, all: allPay)
-            colors.append(UIColor(hex: m.color))
-            names.append(m.name)
             numbers.append(per.1)
         }
         return (names, colors, numbers)
@@ -177,22 +179,21 @@ extension PieDataSource {
         let part = Double(part), all = Double(all)
         let frac = (part / all) * 100
         let formatter = NumberFormatter()
-        //        formatter.positiveFormat = "00.0"
-        formatter.numberStyle = .decimal // 默认小数点后保留三位，第三位取四舍五入值
-        formatter.maximumFractionDigits = 1 // 小数点后最大位数
-        //        formatter.minimumFractionDigits = 1 // 小数点后最小位数
-        //        formatter.maximumIntegerDigits = 2 // 最大整数位数
-        //        formatter.minimumIntegerDigits = 1 // 最小整数位数
-        let fracStr = formatter.string(for: frac) ?? "0"//formatter.string(from: NSNumber(value: frac)) ?? "0"
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 1
+        let fracStr = formatter.string(for: frac) ?? "0"
         print(fracStr)
         
         let fracNum = formatter.number(from: fracStr)?.doubleValue ?? 0
-        
-        //        let fracStr = String(format: "%.2f%%", frac)
-        //        let fracNum = (fracStr as NSString).doubleValue
         return (fracStr, fracNum)
     }
 }
+
+
+
+// -----------------------------------------------------------------------------
+// MARK: UITableViewDataSource
+// -----------------------------------------------------------------------------
 
 extension PieDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

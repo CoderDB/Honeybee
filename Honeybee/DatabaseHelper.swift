@@ -182,6 +182,20 @@ class Database: NSObject {
         return realm.objects(T.self)
     }
     
+    func fetch<T: RLMModel>(_ type: T.Type, top limit: Int) -> [T] {
+        let all = Database.default.all(T.self)
+        let limit = min(all.count, limit)
+        var result: [T] = []
+        for i in 0..<limit {
+            result.append(all[i])
+        }
+        return result
+    }
+    
+    
+    
+    
+    
     func notification(_ block: @escaping (Realm.Notification, Realm) -> Void) -> NotificationToken {
         return realm.addNotificationBlock { (noti, realm) in
             block(noti, realm)
