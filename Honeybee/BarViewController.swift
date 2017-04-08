@@ -63,46 +63,16 @@ class BarViewController: BaseTableViewController {
     
     func fetchData() {
         let recorders = Array(category.recorders)
-        var data: [Int: Double] = [:]
-        
-        _ = recorders.map {
-            if data.keys.contains($0.day) {
-                data[$0.day]?.add(Double($0.money))
-            } else {
-                data[$0.day] = Double($0.money)
-            }
-        }
-        let date = Date()
-        let days = Date.days(year: date.year, month: date.month)
-        var tempDict = [Int: Double]()
-        for i in 1...days {
-            tempDict[i] = 0
-        }
-        data = flatDict(lhs: tempDict, rhs: data)
-        
-        tableView.tableHeaderView = BarHeader(height: 170, data: data)
         
         dataSource = BarDataSource(items: recorders)
         tableView.dataSource = dataSource
-    }
-    // TODO: 合并字典
-    func flatDict(lhs: [Int: Double], rhs: [Int: Double]) -> [Int: Double] {
-        var lhs = lhs, rhs = rhs
-        for (k, v) in rhs {
-            lhs.updateValue(v, forKey: k)
+        dataSource.fetch { (data) in
+            tableView.tableHeaderView = BarHeader(height: 170, data: data)
         }
-        return lhs
-    }
-    // TODO: 合并字典，对相同k的value相加或其他
-    func flatSum(source: [(Int, Double)]) -> [Int: Double] {
-        var result = [Int: Double]()
-        _ = source.map { (ele) in
-            result[ele.0] = ele.1
-        }
-        
-        return [0: 0]
     }
 }
+
+
 // MARK: UIPopoverPresentationControllerDelegate
 extension BarViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
