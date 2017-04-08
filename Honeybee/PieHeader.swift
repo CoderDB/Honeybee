@@ -49,17 +49,23 @@ class PieHeader: UIView {
         pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
         
         pie.legend.enabled = true
-        pie.legend.drawInside = true
+        pie.legend.drawInside = false
         pie.legend.horizontalAlignment = .right
         pie.legend.verticalAlignment = .top
         pie.legend.orientation = .vertical
         pie.legend.form = .circle
         pie.legend.formSize = 10
+//        pie.legend.xEntrySpace = 100
+        pie.legend.yOffset = 10
+        pie.legend.xOffset = 10
 //        pie.legend.yEntrySpace = 10
         pie.legend.font = HB.Font.h4
         pie.legend.textColor = .white
 //        pie.legend.textWidthMax = 50
         
+        
+        pie.extraRightOffset = 50
+
         pie.chartDescription = nil
         
         pie.highlightPerTapEnabled = false
