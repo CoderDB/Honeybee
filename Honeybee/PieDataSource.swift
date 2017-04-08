@@ -135,7 +135,7 @@ extension PieDataSource {
         let ncn = names_colors_numbers(models: superRecorders)
         var models: [PieDataModel] = []
         _ = superRecorders.map {
-            let dataModel = PieDataModel(category: $0, money: "\(totalPay(of: $0))")
+            let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
             models.append(dataModel)
         }
         result(models, ncn)
@@ -152,11 +152,11 @@ extension PieDataSource {
         return Array(set)
     }
     
-    func totalPay(of model: RLMRecorderSuper) -> Int {
-        return model.recorders.reduce(0, { $0.0 + Int($0.1.money) })
-    }
+//    func totalPay(of model: RLMRecorderSuper) -> Int {
+//        return model.recorders.reduce(0, { $0.0 + Int($0.1.money) })
+//    }
     func totalPay(_ all: [RLMRecorderSuper]) -> Int {
-        return all.map { totalPay(of: $0) }.reduce(0, {$0.0 + $0.1})
+        return all.map {  $0.totalPay }.reduce(0, {$0.0 + $0.1})
     }
     func names_colors_numbers(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
         let allPay = totalPay(models)
@@ -169,12 +169,13 @@ extension PieDataSource {
             names.append($0.name)
             colors.append(UIColor(hex: $0.color))
             
-            let totalPayOf = totalPay(of: $0)
+            let totalPayOf = $0.totalPay
             let per = percent(part: totalPayOf, all: allPay)
             numbers.append(per.1)
         }
         return (names, colors, numbers)
     }
+    
     func percent(part: Int, all: Int) -> (String, Double) {
         let part = Double(part), all = Double(all)
         let frac = (part / all) * 100
@@ -182,8 +183,6 @@ extension PieDataSource {
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
         let fracStr = formatter.string(for: frac) ?? "0"
-        print(fracStr)
-        
         let fracNum = formatter.number(from: fracStr)?.doubleValue ?? 0
         return (fracStr, fracNum)
     }
