@@ -136,14 +136,14 @@ extension MainViewController {
     }
     func addTableViewHeader() {
         let header = MainHeader(height: 205)
-        header.tapContainerViewAction = { [unowned self] in
-            self.navigationController?.pushViewController(PieViewController(), animated: true)
+        header.tapContainerViewAction = { [weak self] in
+            self?.navigationController?.pushViewController(PieViewController(), animated: true)
         }
-        header.usernameAction = { [unowned self] in
-            self.navigationController?.pushViewController(SetupViewController(), animated: true)
+        header.usernameAction = { [weak self] in
+            self?.navigationController?.pushViewController(SetupViewController(), animated: true)
         }
-        header.rightButtonAction = { [unowned self] btn in
-            self.popView(btn: btn)
+        header.rightButtonAction = { [weak self] btn in
+            self?.popView(btn: btn)
         }
         tableView.tableHeaderView = header
     }
