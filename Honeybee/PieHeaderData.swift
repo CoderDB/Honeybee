@@ -7,6 +7,7 @@
 //
 
 import Charts
+import Foundation
 
 class PieHeaderData: NSObject {
     

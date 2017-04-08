@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class PieViewController: BaseTableViewController {
 
@@ -31,10 +30,10 @@ class PieViewController: BaseTableViewController {
     }
     
     func fetchData() {
-        PieDataSource(items: []).fetch { (items, ncp) in
-            dataSource = PieDataSource(items: items)
-            tableView.dataSource = dataSource
-            tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
+        PieDataSource(items: []).fetch { [weak self] (items, ncp) in
+            self?.dataSource = PieDataSource(items: items)
+            self?.tableView.dataSource = self?.dataSource
+            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
         }
     }
 }

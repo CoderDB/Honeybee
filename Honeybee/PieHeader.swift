@@ -14,12 +14,9 @@ class PieHeader: UIView {
     // ------------------------------
     // MARK: init
     // ------------------------------
-    convenience init(height: CGFloat, names: [String], colors: [UIColor], percents: [Double]) {
+    convenience init(height: CGFloat, names: [String] = [], colors: [UIColor] = [], percents: [Double] = []) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
         pieView.data = PieHeaderData(names: names, colors: colors, percents: percents).data
-    }
-    convenience init(height: CGFloat) {
-        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,17 +38,27 @@ class PieHeader: UIView {
         let pie = PieChartView()
         
         pie.drawHoleEnabled = true                      //中环，圆心环是否显示
-        pie.holeColor = .white                          //圆心环颜色
+        pie.holeColor = .clear                          //圆心环颜色
         pie.holeRadiusPercent = 0.4                     //圆心环半径 默认50%
         pie.transparentCircleRadiusPercent = 0.5        //中环半径
         
-        pie.drawEntryLabelsEnabled = true
-        
+//        pie.drawEntryLabelsEnabled = true
+        pie.drawEntryLabelsEnabled = false
         
         pie.rotationEnabled = false
         pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
         
-        pie.legend.enabled = false
+        pie.legend.enabled = true
+        pie.legend.drawInside = true
+        pie.legend.horizontalAlignment = .right
+        pie.legend.verticalAlignment = .top
+        pie.legend.orientation = .vertical
+        pie.legend.form = .circle
+        pie.legend.formSize = 10
+//        pie.legend.yEntrySpace = 10
+        pie.legend.font = HB.Font.h4
+        pie.legend.textColor = .white
+//        pie.legend.textWidthMax = 50
         
         pie.chartDescription = nil
         
