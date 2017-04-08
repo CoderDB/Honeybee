@@ -45,9 +45,9 @@ class PieHeader: UIView {
     // ------------------------------
     // MARK: init
     // ------------------------------
-    convenience init(height: CGFloat, names: [String], colors: [UIColor], numbers: [Double]) {
+    convenience init(height: CGFloat, names: [String], colors: [UIColor], percents: [Double]) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
-        pieView.data = createData(names: names, numbers: numbers, colors: colors)
+        pieView.data = createData(names: names, colors: colors, percents: percents)
     }
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
@@ -79,11 +79,11 @@ class PieHeader: UIView {
     // ------------------------------
     // MARK: create PieChartData
     // ------------------------------
-    func createData(names: [String], numbers: [Double], colors: [UIColor]) -> PieChartData {
+    func createData(names: [String], colors: [UIColor], percents: [Double]) -> PieChartData {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<names.count {
             
-            let dataEntry = PieChartDataEntry(value: numbers[i], label: names[i])
+            let dataEntry = PieChartDataEntry(value: percents[i], label: names[i])
             dataEntries.append(dataEntry)
         }
         let dataSet = PieChartDataSet(values: dataEntries, label: nil)

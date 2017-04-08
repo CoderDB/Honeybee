@@ -31,10 +31,10 @@ class PieViewController: BaseTableViewController {
     }
     
     func fetchData() {
-        PieDataSource(items: []).fetch { (items, ncn) in
+        PieDataSource(items: []).fetch { (items, ncp) in
             dataSource = PieDataSource(items: items)
             tableView.dataSource = dataSource
-            tableView.tableHeaderView = PieHeader(height: 250, names: ncn.0, colors: ncn.1, numbers: ncn.2)
+            tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
         }
     }
 }
