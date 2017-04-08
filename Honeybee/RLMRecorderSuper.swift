@@ -57,13 +57,18 @@ class RLMRecorderSuper: RLMModel {
         }
         
     }
-//    override static func ignoredProperties() -> [String] {
-//        return ["year", "month"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["totalPay"]
+    }
 //    func append(_ model: RLMRecorder) {
 //        try! self.realm?.write {
 //            recorders.append(model)
 //        }
 //        try! Database.manager.add(model: model)
 //    }
+    
+    var totalPay: Int {
+        return self.recorders.reduce(0, { $0.0 + Int($0.1.money) })
+    }
+    
 }
