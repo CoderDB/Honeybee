@@ -11,7 +11,7 @@ import UIKit
 protocol CalculateViewProtocol: class {
     func inputing(text: String)
     func deleted(text: String)
-    func completed(text: String)
+    func completed(text: Double)
 }
 
 class CalculateView: UIView {
@@ -98,7 +98,8 @@ class CalculateView: UIView {
         if result.characters.last == "." {
             result.remove(at: result.index(before: result.endIndex))
         }
-        delegate?.completed(text: result)
+        
+        delegate?.completed(text: formatter(text: result))
         result.removeAll()
     }
     func deleteClicked() {
@@ -129,5 +130,14 @@ class CalculateView: UIView {
             result += text
         }
         delegate?.inputing(text: result)
+    }
+    
+    func formatter(text: String) -> Double {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal // 默认小数点后保留三位，第三位取四舍五入值
+        formatter.maximumFractionDigits = 2 // 小数点后最大位数
+        let fracNum = formatter.number(from: text)?.doubleValue ?? 0
+        print(fracNum)
+        return fracNum
     }
 }

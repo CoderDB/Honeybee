@@ -181,6 +181,7 @@ extension CardViewController {
 // MARK: HBKeyboardProtocol
 import ObjectMapper
 extension CardViewController: HBKeyboardProtocol, AlertProvider {
+    
     // result
     func inputing(text: String) {
         header.numberLabel.text = text
@@ -251,10 +252,10 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
 //            }
         }
     }
-    func completed(text: String) {
-        header.numberLabel.text = text
+    func completed(text: Double) {
+        header.numberLabel.text = "\(text)"
         
-        recorderToWrite.money = Double(text) ?? 0
+        recorderToWrite.money = text
         recorderToWrite.isPay = true
     
         writeToDataBase()
