@@ -12,21 +12,23 @@ import Charts
 class BarHeader: UIView {
 
     
+    private weak var axisFormatDelegate: IAxisValueFormatter?
+    
+    // ------------------------------
+    // MARK: init
+    // ------------------------------
     convenience init(height: CGFloat, data: [Int: Double]) {
         self.init(height: height)
-        barView.data = createData(data: data)
+        barView.data = BarHeaderData(data).data
     }
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
     }
     
-    weak var axisFormatDelegate: IAxisValueFormatter?
-    weak var barDataSetValueFormatterDelegate: IValueFormatter?
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         super.init(frame: frame)
         
         axisFormatDelegate = self
-        barDataSetValueFormatterDelegate = self
         
         let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
         gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
@@ -37,6 +39,11 @@ class BarHeader: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    // ------------------------------
+    // MARK: bar view
+    // ------------------------------
     
     lazy var barView: BarChartView = {
         let barV = BarChartView()
@@ -95,32 +102,8 @@ class BarHeader: UIView {
         return barV
     }()
     
-    func createData(data: [Int: Double]) -> BarChartData {
-        
-        var dataEntries: [BarChartDataEntry] = []
-        _ = data.map {
-            let entry = BarChartDataEntry(x: Double($0.key), y: Double($0.value))
-            dataEntries.append(entry)
-        }
-        let dataSet = BarChartDataSet(values: dataEntries, label: nil)
-        dataSet.drawValuesEnabled = true //显示条形柱的值
-        
-        dataSet.valueTextColor = .black
-        dataSet.valueFont = HB.Font.h6_number
-        dataSet.valueFormatter = barDataSetValueFormatterDelegate
-        dataSet.colors = [UIColor(rgb: [252, 234, 203])] //条形柱颜色
-        
-        
-        let barData = BarChartData(dataSet: dataSet)
-        barData.barWidth = 0.5
-        
-        //
-        barView.xAxis.valueFormatter = axisFormatDelegate
-        return barData
-    }
-    
-    
     func setupUI() {
+        barView.xAxis.valueFormatter = axisFormatDelegate
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(20)
@@ -131,14 +114,15 @@ class BarHeader: UIView {
     }
 }
 
+
+
+// ------------------------------
+// MARK: IAxisValueFormatter
+// ------------------------------
+
 extension BarHeader: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return "\(Int(value))日"
     }
 }
 
-extension BarHeader: IValueFormatter {
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return value.isZero ? "" : "\(Int(value))"
-    }
-}
