@@ -127,12 +127,13 @@ class PieDataSource: NSObject, DataSourceProvider {
 // -----------------------------------------------------------------------------
 
 extension PieDataSource {
-    func fetch(result: ([PieDataModel], _ ncn: ([String], [UIColor], [Double])) -> Void) {
-        let date = Date().description
-        let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
-        let superRecorders = fetchData(yearMonth: yearMonth)
+    func fetch(result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
+//        let date = Date().description
+//        let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
+//        let superRecorders = fetchData(yearMonth: yearMonth)
         
-        let ncn = names_colors_numbers(models: superRecorders)
+        let superRecorders = fetch(top: 30)
+        let ncn = names_colors_percents(models: superRecorders)
         var models: [PieDataModel] = []
         _ = superRecorders.map {
             let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
@@ -141,8 +142,8 @@ extension PieDataSource {
         result(models, ncn)
     }
     
-    func fetchData(yearMonth: String) -> [RLMRecorderSuper] {
-        let recorders = Database.default.fetch(RLMRecorder.self, top: 30)
+    private func fetch(top: Int) -> [RLMRecorderSuper] {
+        let recorders = Database.default.fetch(RLMRecorder.self, top: top)
         var set = Set<RLMRecorderSuper>()
         for ele in recorders {
             if let owner = ele.owner {
@@ -151,18 +152,11 @@ extension PieDataSource {
         }
         return Array(set)
     }
-    
-//    func totalPay(of model: RLMRecorderSuper) -> Int {
-//        return model.recorders.reduce(0, { $0.0 + Int($0.1.money) })
-//    }
-    func totalPay(_ all: [RLMRecorderSuper]) -> Int {
-        return all.map {  $0.totalPay }.reduce(0, {$0.0 + $0.1})
-    }
-    func names_colors_numbers(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
-        let allPay = totalPay(models)
+    private func names_colors_percents(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
+        let allPay = models.map { $0.totalPay }.reduce(0, {$0.0 + $0.1})
 
         var colors: [UIColor] = [],
-        numbers: [Double] = [],
+        percents: [Double] = [],
         names: [String] = []
 
         _ = models.map {
@@ -171,12 +165,12 @@ extension PieDataSource {
             
             let totalPayOf = $0.totalPay
             let per = percent(part: totalPayOf, all: allPay)
-            numbers.append(per.1)
+            percents.append(per.1)
         }
-        return (names, colors, numbers)
+        return (names, colors, percents)
     }
     
-    func percent(part: Int, all: Int) -> (String, Double) {
+    private func percent(part: Int, all: Int) -> (String, Double) {
         let part = Double(part), all = Double(all)
         let frac = (part / all) * 100
         let formatter = NumberFormatter()
