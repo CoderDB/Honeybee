@@ -62,21 +62,25 @@ class MainViewController: BaseTableViewController {
         let allPay = matched.reduce(0) { $0.0 + $0.1.money }
         
         
-        let data = Database.default.all(RLMRecorderSuper.self)
+//        RLMRecorderSuper.fetchRecorders()
+        
+        let data = Database.default.all(RLMRecorder.self)
+        
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
         
         notiToken = Database.default.notification({ [unowned self] (_, realm) in
-            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorderSuper.self)), vc: self)
+            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorder.self)), vc: self)
             self.tableView.dataSource = self.dataSource
         })
     }
+    
 
     deinit {
         notiToken?.stop()
     }
     func fetchDataFromServe() {
-        let serveIsChanged = true
+        let serveIsChanged = false
         if serveIsChanged {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()
@@ -170,11 +174,13 @@ extension MainViewController {
 extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource.item(at: indexPath)
+//        let detailVC = RecordDetailController(model: model)
+//        navigationController?.pushViewController(detailVC, animated: true)
         
-        if model.recorders.count == 1 {
-            let detailVC = RecordDetailController(model: model.recorders[0])
-            navigationController?.pushViewController(detailVC, animated: true)
-        }
+//        if model.recorders.count == 1 {
+//            let detailVC = RecordDetailController(model: model.recorders[0])
+//            navigationController?.pushViewController(detailVC, animated: true)
+//        }
     }
 }
 

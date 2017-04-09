@@ -185,39 +185,47 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     func deleted(text: String) {
         header.numberLabel.text = text
     }
+    
+    func insert(item: RLMRecorder) {
+        let year = String(item.year)
+        let month = String(item.month)
+        
+        
+        
+    }
     func writeToDataBase() {
         let isExisted = Database.default.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
     
-        if isExisted.count > 0 {
-            if let superModel = isExisted.first {
-                recorderToWrite.owner = superModel
-                do {
-                    try superModel.realm?.write {
-                        superModel.recorders.append(recorderToWrite)
-                    }
-                    Reminder.success()
-                } catch {
-                    Reminder.error()
-                }
-            }
-        } else {
-            let superModel = RLMRecorderSuper()
-            superModel.name = recorderToWrite.superCategory
-            superModel.color = recorderToWrite.color
-            recorderToWrite.owner = superModel
-            
-            do {
-                try Database.default.add(model: superModel)
-                do {
-                    try Database.default.append(item: recorderToWrite, to: superModel.recorders)
-                    Reminder.success()
-                } catch {
-                    Reminder.error()
-                }
-            } catch {
-                Reminder.error()
-            }
-        }
+//        if isExisted.count > 0 {
+//            if let superModel = isExisted.first {
+//                recorderToWrite.owner = superModel
+//                do {
+//                    try superModel.realm?.write {
+//                        superModel.recorders.append(recorderToWrite)
+//                    }
+//                    Reminder.success()
+//                } catch {
+//                    Reminder.error()
+//                }
+//            }
+//        } else {
+//            let superModel = RLMRecorderSuper()
+//            superModel.name = recorderToWrite.superCategory
+//            superModel.color = recorderToWrite.color
+//            recorderToWrite.owner = superModel
+//            
+//            do {
+//                try Database.default.add(model: superModel)
+//                do {
+//                    try Database.default.append(item: recorderToWrite, to: superModel.recorders)
+//                    Reminder.success()
+//                } catch {
+//                    Reminder.error()
+//                }
+//            } catch {
+//                Reminder.error()
+//            }
+//        }
     }
     func completed(text: Double) {
         header.numberLabel.text = "\(text)"
