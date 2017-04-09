@@ -112,6 +112,7 @@
 		86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */; };
 		86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */; };
 		86FC4EC61E1112B10048E183 /* PieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC4EC51E1112B10048E183 /* PieViewController.swift */; };
+		86FD35871E9A33B0008B43F0 /* recorders_year_month.json in Resources */ = {isa = PBXBuildFile; fileRef = 86FD35861E9A33B0008B43F0 /* recorders_year_month.json */; };
 		951AFDF0EF2C81C80129CFEA /* Pods_HoneybeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6CDE7042CCB2904732E52E /* Pods_HoneybeeTests.framework */; };
 		DEBACD03F2F9F4F098685DAD /* Pods_Honeybee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5692E3AB3757B76FF611A5 /* Pods_Honeybee.framework */; };
 /* End PBXBuildFile section */
@@ -249,6 +250,7 @@
 		86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailController.swift; sourceTree = "<group>"; };
 		86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailCell.swift; sourceTree = "<group>"; };
 		86FC4EC51E1112B10048E183 /* PieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieViewController.swift; sourceTree = "<group>"; };
+		86FD35861E9A33B0008B43F0 /* recorders_year_month.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorders_year_month.json; sourceTree = "<group>"; };
 		92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoneybeeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE21B7DC4D76AD098C5311D /* Pods-HoneybeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F982BFEEE7A582773E068CF7 /* Pods-Honeybee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honeybee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Honeybee/Pods-Honeybee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				86FD35861E9A33B0008B43F0 /* recorders_year_month.json */,
 				1EA5F0611E754DD300E90E7A /* colors.json */,
 				868C3F711E72A09D00D5443D /* icons.json */,
 				866C562D1E6D78DB00010D3F /* category_color.json */,
@@ -791,6 +794,7 @@
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
 				86E694FF1E7974B700CBD894 /* recorder.json in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
+				86FD35871E9A33B0008B43F0 /* recorders_year_month.json in Resources */,
 				861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */,
 				864D25121E6312240005894A /* recorders_new.json in Resources */,
 			);
