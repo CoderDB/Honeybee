@@ -193,6 +193,8 @@ class Database: NSObject {
     }
     
     
+    func insert(item: RLMRecorder, to: RLMRecorderSuper, year: String, month: String) {
+    }
     
     
     

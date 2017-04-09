@@ -25,7 +25,10 @@ class RLMRecorderSuper: RLMModel {
     
     dynamic var color: String = ""
     dynamic var name: String = ""
-    var recorders = List<RLMRecorder>()
+    var recorders = List<YearRecorder>()
+    
+//    dynamic var year: UInt = 2017
+//    dynamic var month: UInt8 = 12
     
 //    dynamic var totalPay: Int = 0
     
@@ -47,10 +50,20 @@ class RLMRecorderSuper: RLMModel {
         name <- map["name"]
 //        totalPay <- map["totalPay"]
         
+//        if let json = map["recorders"].currentValue as? [[String: Any]] {
+//            for item in json {
+//                if let model = Mapper<RLMRecorder>().map(JSON: item) {
+//                    recorders.append(model)
+//                    try! Database.default.add(model: model)
+//                }
+//            }
+//        }
+        
         if let json = map["recorders"].currentValue as? [[String: Any]] {
-            for item in json {
-                if let model = Mapper<RLMRecorder>().map(JSON: item) {
+            _ = json.map {
+                if let model = Mapper<YearRecorder>().map(JSON: $0) {
                     recorders.append(model)
+                    
                     try! Database.default.add(model: model)
                 }
             }
@@ -68,7 +81,67 @@ class RLMRecorderSuper: RLMModel {
 //    }
     
     var totalPay: Int {
-        return self.recorders.reduce(0, { $0.0 + Int($0.1.money) })
+        return 0
+//        return self.recorders.reduce(0, { $0.0 + Int($0.1.money) })
     }
     
+    
+    
+    private class func json(at path: String) -> Any {
+        let path = Bundle.main.path(forResource: path, ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+        return json
+    }
+    class func fetchRecorders() {
+        if let json = json(at: "recorders_year_month") as? [[String: Any]] {
+            _ = json.map {
+                if let model = Mapper<RLMRecorderSuper>().map(JSON: $0) {
+                    try! Database.default.add(model: model)
+                }
+            }
+        }
+    }
+    
+}
+
+
+
+
+
+class YearRecorder: RLMModel {
+    dynamic var year: Int = 2017
+    var recorders = List<MonthRecorder>()
+    
+    override func mapping(map: Map) {
+        year <- map["year"]
+        if let json = map["recorders"].currentValue as? [[String: Any]] {
+            _ = json.map {
+                if let model = Mapper<MonthRecorder>().map(JSON: $0) {
+                    recorders.append(model)
+                    
+                    try! Database.default.add(model: model)
+                }
+            }
+        }
+    }
+}
+
+class MonthRecorder: RLMModel {
+    
+    dynamic var month: Int = 1
+    var recorders = List<RLMRecorder>()
+    
+    override func mapping(map: Map) {
+        month <- map["month"]
+        if let json = map["recorders"].currentValue as? [[String: Any]] {
+            _ = json.map {
+                if let model = Mapper<RLMRecorder>().map(JSON: $0) {
+                    recorders.append(model)
+                    
+                    try! Database.default.add(model: model)
+                }
+            }
+        }
+    }
 }

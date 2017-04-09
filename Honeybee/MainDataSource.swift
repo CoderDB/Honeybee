@@ -11,13 +11,13 @@ import RealmSwift
 
 class MainDataSource: NSObject {
     
-    var items: [RLMRecorderSuper]
+    var items: [RLMRecorder]
     fileprivate var vc: UIViewController
-    init(items: [RLMRecorderSuper], vc: UIViewController) {
+    init(items: [RLMRecorder], vc: UIViewController) {
         self.items = items
         self.vc = vc
     }
-    func item(at indexPath: IndexPath) -> RLMRecorderSuper {
+    func item(at indexPath: IndexPath) -> RLMRecorder {
         return items[indexPath.row]
     }
 }
@@ -32,19 +32,22 @@ extension MainDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let model = items[indexPath.row]
-        if model.recorders.count > 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
-            cell.delegate = self
-            cell.dataSource = item(at: indexPath).recorders
-            tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
-            return cell
-        } else {
+        
+//        if model.recorders.count > 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "\(GroupCell.self)") as! GroupCell
+//            cell.delegate = self
+//            cell.dataSource = item(at: indexPath).recorders
+////            cell.dataSource = item(at: indexPath).recorders
+//            tableView.rowHeight = CGFloat(cell.tvHeight + 33 + 24)
+//            return cell
+//        } else {
             tableView.estimatedRowHeight = 75
             tableView.rowHeight = UITableViewAutomaticDimension
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as! RecordCell
-            cell.recorder = model.recorders[0]
+//            cell.recorder = model.recorders[0]
+        cell.recorder = item(at: indexPath)
             return cell
-        }
+//        }
     }
 }
 
