@@ -53,13 +53,13 @@ class MainViewController: BaseTableViewController {
         
         
         // TODO: 收入模型
-        let month = Date().month
-        let recorders = Database.default.all(RLMRecorder.self)
-        let matched = Array(recorders.filter { $0.month == month })
+//        let month = Date().month
+//        let recorders = Database.default.all(RLMRecorder.self)
+//        let matched = Array(recorders.filter { $0.month == month })
 //        let payout = Array(matched.filter { $0.isPay })
         
         
-        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
+//        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
         
         
 //        RLMRecorderSuper.fetchRecorders()
@@ -173,14 +173,8 @@ extension MainViewController {
 
 extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = dataSource.item(at: indexPath)
-//        let detailVC = RecordDetailController(model: model)
-//        navigationController?.pushViewController(detailVC, animated: true)
-        
-//        if model.recorders.count == 1 {
-//            let detailVC = RecordDetailController(model: model.recorders[0])
-//            navigationController?.pushViewController(detailVC, animated: true)
-//        }
+        let detailVC = RecordDetailController(model: dataSource.item(at: indexPath))
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

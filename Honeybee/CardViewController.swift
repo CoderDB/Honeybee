@@ -195,6 +195,37 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     }
     func writeToDataBase() {
         let isExisted = Database.default.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
+        if isExisted.count > 0 { // 已存在
+            let year = recorderToWrite.year
+            let month = recorderToWrite.month
+            if let superModel = isExisted.first {
+                let yearModels = superModel.recorders.filter { $0.year == year }
+                
+                if let yearModel = superModel.recorders.first {
+                    if let monthModel = yearModel.recorders.first {
+                        if monthModel.month == month {
+                            do {
+                                try monthModel.realm?.write {
+                                    monthModel.recorders.append(recorderToWrite)
+                                }
+                            }
+                            catch {
+                            
+                            }
+                            
+                        }
+                    }
+                }
+                do {
+                    try superModel.realm?.write {
+                        superModel.recorders.append(<#T##object: YearRecorder##YearRecorder#>)
+                    }
+                } catch {
+                    
+                }
+            }
+            
+        }
     
 //        if isExisted.count > 0 {
 //            if let superModel = isExisted.first {
