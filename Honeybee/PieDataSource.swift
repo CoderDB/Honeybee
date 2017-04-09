@@ -163,7 +163,7 @@ extension PieDataSource {
         var set = Set<RLMRecorderSuper>()
         for ele in recorders {
             if let owner = ele.owner {
-                set.insert(owner)
+//                set.insert(owner)
             }
         }
         return Array(set)
