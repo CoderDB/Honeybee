@@ -40,11 +40,20 @@ class PieViewController: BaseTableViewController {
         popoverVC.permittedArrowDirections = .up
         destVC.didSelectRow = {row in
             print("----\(row)")
+            self.refresh(month: row)
         }
         present(destVC, animated: true, completion: nil)
     }
     func fetchData() {
         PieDataSource(items: []).fetch { [weak self] (items, ncp) in
+            self?.dataSource = PieDataSource(items: items)
+            self?.tableView.dataSource = self?.dataSource
+            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
+        }
+    }
+    
+    func refresh(month: Int) {
+        PieDataSource(items: []).fetch(month: month) {  [weak self] (items, ncp) in
             self?.dataSource = PieDataSource(items: items)
             self?.tableView.dataSource = self?.dataSource
             self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)

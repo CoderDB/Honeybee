@@ -127,6 +127,8 @@ class PieDataSource: NSObject, DataSourceProvider {
 // -----------------------------------------------------------------------------
 
 extension PieDataSource {
+    
+    
     func fetch(result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
 //        let date = Date().description
 //        let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
@@ -142,8 +144,22 @@ extension PieDataSource {
         result(models, ncn)
     }
     
-    private func fetch(top: Int) -> [RLMRecorderSuper] {
-        let recorders = Database.default.fetch(RLMRecorder.self, top: top)
+    
+    
+    func fetch(month: Int, result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
+        let all = Database.default.all(RLMRecorder.self)
+        let thisMonthData = Array(all.filter { $0.month == month })
+        let superRecorders = getRecorderSuper(recorders: thisMonthData)
+        
+        let ncp = names_colors_percents(models: superRecorders)
+        var models: [PieDataModel] = []
+        _ = superRecorders.map {
+            let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
+            models.append(dataModel)
+        }
+        result(models, ncp)
+    }
+    private func getRecorderSuper(recorders: [RLMRecorder]) -> [RLMRecorderSuper] {
         var set = Set<RLMRecorderSuper>()
         for ele in recorders {
             if let owner = ele.owner {
@@ -151,6 +167,12 @@ extension PieDataSource {
             }
         }
         return Array(set)
+    }
+    
+    
+    private func fetch(top: Int) -> [RLMRecorderSuper] {
+        let recorders = Database.default.fetch(RLMRecorder.self, top: top)
+        return getRecorderSuper(recorders: recorders)
     }
     private func names_colors_percents(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
         let allPay = models.map { $0.totalPay }.reduce(0, {$0.0 + $0.1})
