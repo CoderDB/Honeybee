@@ -12,7 +12,7 @@ class PiePopoverController: UITableViewController {
     
     var dataSource = [String]()
     
-    var didSelectRow: ((Int) -> ())?
+    var didSelectRow: ((Int) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
