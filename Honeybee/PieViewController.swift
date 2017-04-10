@@ -13,6 +13,8 @@ class PieViewController: BaseTableViewController {
 
     var dataSource: PieDataSource!
     var header: PieHeader!
+    var recorders = [RLMRecorder]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +25,7 @@ class PieViewController: BaseTableViewController {
         header = PieHeader(height: 250)
         tableView.tableHeaderView = header
         
-        fetchData()
+        fetchData(month: Date().localDate.month)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,21 +42,14 @@ class PieViewController: BaseTableViewController {
         popoverVC.permittedArrowDirections = .up
         destVC.didSelectRow = {row in
             print("----\(row)")
-            self.refresh(month: row)
+            self.fetchData(month: row)
         }
         present(destVC, animated: true, completion: nil)
     }
-    func fetchData() {
-        PieDataSource(items: []).fetch { [weak self] (items, ncp) in
-            self?.dataSource = PieDataSource(items: items)
-            self?.tableView.dataSource = self?.dataSource
-            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
-        }
-    }
-    
-    func refresh(month: Int) {
-        PieDataSource(items: []).fetch(month: month) {  [weak self] (items, ncp) in
-            self?.dataSource = PieDataSource(items: items)
+    func fetchData(month: Int) {
+        PieDataSource(items: []).fetch(month: month) { [weak self] (pieData, recorders, ncp) in
+            self?.recorders = recorders
+            self?.dataSource = PieDataSource(items: pieData)
             self?.tableView.dataSource = self?.dataSource
             self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
         }
@@ -75,7 +70,9 @@ extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let barVC = BarViewController()
-        barVC.category = dataSource.item(at: indexPath).category
+        barVC.dataSource = BarDataSource(items: recorders)
+        
+//        barVC.category = dataSource.item(at: indexPath).category
         barVC.setNavTitle(dataSource.item(at: indexPath).category.name)
         navigationController?.pushViewController(barVC, animated: true)
     }
