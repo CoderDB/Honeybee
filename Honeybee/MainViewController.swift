@@ -50,18 +50,6 @@ class MainViewController: BaseTableViewController {
 //    }
     
     func fetchData() {
-        
-        
-        // TODO: 收入模型
-        let month = Date().month
-        let recorders = Database.default.all(RLMRecorder.self)
-        let matched = Array(recorders.filter { $0.month == month })
-//        let payout = Array(matched.filter { $0.isPay })
-        
-        
-        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
-        
-        
         let data = Database.default.all(RLMRecorderSuper.self)
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
@@ -71,10 +59,16 @@ class MainViewController: BaseTableViewController {
             self.tableView.dataSource = self.dataSource
         })
     }
-
-    deinit {
-        notiToken?.stop()
+    
+    func totalPayText() -> String {
+        let month = Date().month
+        let recorders = Database.default.all(RLMRecorder.self)
+        let matched = Array(recorders.filter { $0.month == month })
+        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
+        return String(Int(allPay))
     }
+    
+    
     func fetchDataFromServe() {
         let serveIsChanged = true
         if serveIsChanged {
@@ -82,6 +76,9 @@ class MainViewController: BaseTableViewController {
             HoneybeeColor.fetchAllColors()
             HoneybeeIcon.fetchAllIcons()
         }
+    }
+    deinit {
+        notiToken?.stop()
     }
 }
 
@@ -136,6 +133,7 @@ extension MainViewController {
     }
     func addTableViewHeader() {
         let header = MainHeader(height: 205)
+        header.outMoneyLabel.text = totalPayText()
         header.tapContainerViewAction = { [weak self] in
             self?.navigationController?.pushViewController(PieViewController(), animated: true)
         }
