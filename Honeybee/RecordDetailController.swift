@@ -74,11 +74,14 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
                 if owner.recorders.count == 0  {
                     do {
                         try Database.default.delete(item: owner)
+//                        navigationController?.popToRootViewController(animated: true)
                         _ = navigationController?.popViewController(animated: true)
                     } catch let err {
                         Reminder.error(msg: err.localizedDescription)
                     }
                 } else {
+                    
+//                    navigationController?.popToRootViewController(animated: true)
                     _ = navigationController?.popViewController(animated: true)
                 }
             } catch let err {
