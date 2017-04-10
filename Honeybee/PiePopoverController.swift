@@ -16,9 +16,9 @@ class PiePopoverController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        preferredContentSize = CGSize(width: 130, height: 250)
+        preferredContentSize = CGSize(width: 100, height: 120)
         tableView.tableFooterView = UIView()
-        dataSource = ["2016年11月", "2016年12月","2017年01月","2017年02月","2017年03月",]
+        dataSource = [ "自定义", "上上月", "上月"]
     }
     
     override func didReceiveMemoryWarning() {

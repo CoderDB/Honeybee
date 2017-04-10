@@ -25,7 +25,8 @@ class RLMRecorderSuper: RLMModel {
     
     dynamic var color: String = ""
     dynamic var name: String = ""
-    var recorders = List<YearRecorder>()
+//    var recorders = List<YearRecorder>()
+        var recorders = List<RLMRecorder>()
     
 //    dynamic var year: UInt = 2017
 //    dynamic var month: UInt8 = 12
@@ -50,24 +51,24 @@ class RLMRecorderSuper: RLMModel {
         name <- map["name"]
 //        totalPay <- map["totalPay"]
         
-//        if let json = map["recorders"].currentValue as? [[String: Any]] {
-//            for item in json {
-//                if let model = Mapper<RLMRecorder>().map(JSON: item) {
-//                    recorders.append(model)
-//                    try! Database.default.add(model: model)
-//                }
-//            }
-//        }
-        
         if let json = map["recorders"].currentValue as? [[String: Any]] {
-            _ = json.map {
-                if let model = Mapper<YearRecorder>().map(JSON: $0) {
+            for item in json {
+                if let model = Mapper<RLMRecorder>().map(JSON: item) {
                     recorders.append(model)
-                    
                     try! Database.default.add(model: model)
                 }
             }
         }
+        
+//        if let json = map["recorders"].currentValue as? [[String: Any]] {
+//            _ = json.map {
+//                if let model = Mapper<YearRecorder>().map(JSON: $0) {
+//                    recorders.append(model)
+//                    
+//                    try! Database.default.add(model: model)
+//                }
+//            }
+//        }
         
     }
     override static func ignoredProperties() -> [String] {
@@ -81,8 +82,7 @@ class RLMRecorderSuper: RLMModel {
 //    }
     
     var totalPay: Int {
-        return 0
-//        return self.recorders.reduce(0, { $0.0 + Int($0.1.money) })
+        return self.recorders.reduce(0, { $0.0 + Int($0.1.money) })
     }
     
     
@@ -109,39 +109,39 @@ class RLMRecorderSuper: RLMModel {
 
 
 
-class YearRecorder: RLMModel {
-    dynamic var year: Int = 2017
-    var recorders = List<MonthRecorder>()
-    
-    override func mapping(map: Map) {
-        year <- map["year"]
-        if let json = map["recorders"].currentValue as? [[String: Any]] {
-            _ = json.map {
-                if let model = Mapper<MonthRecorder>().map(JSON: $0) {
-                    recorders.append(model)
-                    
-                    try! Database.default.add(model: model)
-                }
-            }
-        }
-    }
-}
-
-class MonthRecorder: RLMModel {
-    
-    dynamic var month: Int = 1
-    var recorders = List<RLMRecorder>()
-    
-    override func mapping(map: Map) {
-        month <- map["month"]
-        if let json = map["recorders"].currentValue as? [[String: Any]] {
-            _ = json.map {
-                if let model = Mapper<RLMRecorder>().map(JSON: $0) {
-                    recorders.append(model)
-                    
-                    try! Database.default.add(model: model)
-                }
-            }
-        }
-    }
-}
+//class YearRecorder: RLMModel {
+//    dynamic var year: Int = 2017
+//    var recorders = List<MonthRecorder>()
+//    
+//    override func mapping(map: Map) {
+//        year <- map["year"]
+//        if let json = map["recorders"].currentValue as? [[String: Any]] {
+//            _ = json.map {
+//                if let model = Mapper<MonthRecorder>().map(JSON: $0) {
+//                    recorders.append(model)
+//                    
+//                    try! Database.default.add(model: model)
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//class MonthRecorder: RLMModel {
+//    
+//    dynamic var month: Int = 1
+//    var recorders = List<RLMRecorder>()
+//    
+//    override func mapping(map: Map) {
+//        month <- map["month"]
+//        if let json = map["recorders"].currentValue as? [[String: Any]] {
+//            _ = json.map {
+//                if let model = Mapper<RLMRecorder>().map(JSON: $0) {
+//                    recorders.append(model)
+//                    
+//                    try! Database.default.add(model: model)
+//                }
+//            }
+//        }
+//    }
+//}
