@@ -77,7 +77,6 @@ extension PieDataSource {
         let all = Database.default.all(RLMRecorder.self)
         let thisMonthData = Array(all.filter { $0.month == month })
         let superRecorders = getRecorderSuper(recorders: thisMonthData)
-        
         let ncp = names_colors_percents(models: superRecorders)
         var models: [PieDataModel] = []
         _ = superRecorders.map {

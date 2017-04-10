@@ -13,6 +13,7 @@ class PieViewController: BaseTableViewController {
     var header: PieHeader!
     var recorders = [RLMRecorder]()
     
+    var MONTH: Int = Date().localDate.month
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,8 @@ class PieViewController: BaseTableViewController {
             } else if row == 1 {
                 row = Date().localDate.month - 2
             }
-            self.fetchData(month: row)
+            self.MONTH = row
+            self.fetchData(month: self.MONTH)
         }
         present(destVC, animated: true, completion: nil)
     }
@@ -73,11 +75,19 @@ extension PieViewController: UIPopoverPresentationControllerDelegate {
 extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let barVC = BarViewController()
-        barVC.dataSource = BarDataSource(items: recorders)
+        let model = dataSource.item(at: indexPath).category
         
-        //        barVC.category = dataSource.item(at: indexPath).category
-        barVC.setNavTitle(dataSource.item(at: indexPath).category.name)
+        let recorders = matchedRecorders(superModel: model, month: MONTH)
+        let barVC = BarViewController(recorders: recorders)
+        barVC.setNavTitle(model.name)
+
         navigationController?.pushViewController(barVC, animated: true)
+    }
+    
+    
+    func matchedRecorders(superModel: RLMRecorderSuper, month: Int) -> [RLMRecorder] {
+        let recorders = superModel.recorders
+        let matched = recorders.filter { $0.month == month }
+        return Array(matched)
     }
 }
