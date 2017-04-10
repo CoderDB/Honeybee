@@ -20,7 +20,7 @@ class MainViewController: BaseTableViewController {
     }
     
     var notiToken: NotificationToken? = nil
-    
+    var header: MainHeader!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,8 @@ class MainViewController: BaseTableViewController {
         notiToken = Database.default.notification({ [unowned self] (_, realm) in
             self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorderSuper.self)), vc: self)
             self.tableView.dataSource = self.dataSource
+            
+            self.header.outMoneyLabel.text = self.totalPayText()
         })
     }
 
@@ -132,7 +134,7 @@ extension MainViewController {
         tableView.register(GroupCell.self)
     }
     func addTableViewHeader() {
-        let header = MainHeader(height: 205)
+        header = MainHeader(height: 205)
         header.outMoneyLabel.text = totalPayText()
         header.tapContainerViewAction = { [weak self] in
             self?.navigationController?.pushViewController(PieViewController(), animated: true)

@@ -32,8 +32,14 @@ class BarViewController: BaseTableViewController {
 
     var dataSource: BarDataSource!
     
-    var category: RLMRecorderSuper!
     
+    init(recorders: [RLMRecorder]) {
+        super.init(nibName: nil, bundle: nil)
+        dataSource = BarDataSource(items: recorders)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +49,6 @@ class BarViewController: BaseTableViewController {
         
         setNavRightItem("筛选")
         fetchData()
-        
     }
     
     override func navRightItemClicked(_ btn: UIButton) {
@@ -62,9 +67,6 @@ class BarViewController: BaseTableViewController {
     }
     
     func fetchData() {
-
-//        let recorders = Array(category.recorders)
-//        dataSource = BarDataSource(items: recorders)
         tableView.dataSource = dataSource
         dataSource.fetch { (data) in
             tableView.tableHeaderView = BarHeader(height: 170, data: data)
