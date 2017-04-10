@@ -8,12 +8,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PieViewController: BaseTableViewController {
 
     var dataSource: PieDataSource!
     var header: PieHeader!
     var recorders = [RLMRecorder]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,12 @@ class PieViewController: BaseTableViewController {
         popoverVC.permittedArrowDirections = .up
         destVC.didSelectRow = {row in
             print("----\(row)")
+            var row = row
+            if row == 2 {
+                row = Date().localDate.month - 1
+            } else if row == 1 {
+                row = Date().localDate.month - 2
+            }
             self.fetchData(month: row)
         }
         present(destVC, animated: true, completion: nil)
