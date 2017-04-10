@@ -129,24 +129,24 @@ class PieDataSource: NSObject, DataSourceProvider {
 extension PieDataSource {
     
     
-    func fetch(result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
-//        let date = Date().description
-//        let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
-//        let superRecorders = fetchData(yearMonth: yearMonth)
-        
-        let superRecorders = fetch(top: 30)
-        let ncn = names_colors_percents(models: superRecorders)
-        var models: [PieDataModel] = []
-        _ = superRecorders.map {
-            let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
-            models.append(dataModel)
-        }
-        result(models, ncn)
-    }
+//    func fetch(result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
+////        let date = Date().description
+////        let yearMonth = date.substring(to: date.index(date.startIndex, offsetBy: 7))
+////        let superRecorders = fetchData(yearMonth: yearMonth)
+//        
+//        let superRecorders = fetch(top: 30)
+//        let ncn = names_colors_percents(models: superRecorders)
+//        var models: [PieDataModel] = []
+//        _ = superRecorders.map {
+//            let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
+//            models.append(dataModel)
+//        }
+//        result(models, ncn)
+//    }
     
     
     
-    func fetch(month: Int, result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
+    func fetch(month: Int, result: ([PieDataModel], _ recorders: [RLMRecorder], _ ncp: ([String], [UIColor], [Double])) -> Void) {
         let all = Database.default.all(RLMRecorder.self)
         let thisMonthData = Array(all.filter { $0.month == month })
         let superRecorders = getRecorderSuper(recorders: thisMonthData)
@@ -157,7 +157,7 @@ extension PieDataSource {
             let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
             models.append(dataModel)
         }
-        result(models, ncp)
+        result(models, thisMonthData, ncp)
     }
     private func getRecorderSuper(recorders: [RLMRecorder]) -> [RLMRecorderSuper] {
         var set = Set<RLMRecorderSuper>()
