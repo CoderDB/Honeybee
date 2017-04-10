@@ -68,23 +68,26 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     }
     
     func delete() {
-//        if let owner = model.owner {
-//            do {
-//                try Database.default.delete(item: model, in: owner.recorders)
-//                if owner.recorders.count == 0  {
-//                    do {
-//                        try Database.default.delete(item: owner)
-//                        _ = navigationController?.popViewController(animated: true)
-//                    } catch let err {
-//                        Reminder.error(msg: err.localizedDescription)
-//                    }
-//                } else {
-//                    _ = navigationController?.popViewController(animated: true)
-//                }
-//            } catch let err {
-//                Reminder.error(msg: err.localizedDescription)
-//            }
-//        }
+        if let owner = model.owner {
+            do {
+                try Database.default.delete(item: model, in: owner.recorders)
+                if owner.recorders.count == 0  {
+                    do {
+                        try Database.default.delete(item: owner)
+//                        navigationController?.popToRootViewController(animated: true)
+                        _ = navigationController?.popViewController(animated: true)
+                    } catch let err {
+                        Reminder.error(msg: err.localizedDescription)
+                    }
+                } else {
+                    
+//                    navigationController?.popToRootViewController(animated: true)
+                    _ = navigationController?.popViewController(animated: true)
+                }
+            } catch let err {
+                Reminder.error(msg: err.localizedDescription)
+            }
+        }
     }
 }
 

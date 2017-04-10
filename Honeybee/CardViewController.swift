@@ -1,3 +1,4 @@
+
 //
 //  CardViewController.swift
 //  Honeybee
@@ -5,17 +6,16 @@
 //  Created by Dongbing Hou on 30/11/2016.
 //  Copyright © 2016 Dongbing Hou. All rights reserved.
 //
-
 import UIKit
 import RealmSwift
 
 class CardViewController: BaseCollectionViewController {
-
+    
     var shouldReloadData: (() -> Void)?
     var notiToken: NotificationToken? = nil
     
     ///
-//    var dataToWrite: [String: Any] = [:]
+    //    var dataToWrite: [String: Any] = [:]
     ///
     var recorderToWrite: RLMRecorder!
     
@@ -47,30 +47,30 @@ class CardViewController: BaseCollectionViewController {
         dataSource = CardDataSource(items: Array(kinds))
         collectionView.dataSource = dataSource
         
-//        notiToken = dataSource.items._addNotificationBlock { (change) in
-//            
-//            
-//            self.collectionView.reloadData()
-//        }
+        //        notiToken = dataSource.items._addNotificationBlock { (change) in
+        //
+        //
+        //            self.collectionView.reloadData()
+        //        }
         
         notiToken = Database.default.notification { [unowned self] (_, realm) in
             self.dataSource = CardDataSource(items: Array(realm.objects(HoneybeeKind.self)))
             self.collectionView.dataSource = self.dataSource
         }
-//            .addNotificationBlock({ [weak self] (changes) in
-//            switch changes {
-//            case .initial:
-//                self?.collectionView.reloadData()
-//            case .update(_, let deletions, let insertions, let modifications):
-//                
-//                self?.collectionView.deleteItems(at: deletions.map { IndexPath(item: $0, section: 0) })
-//                self?.collectionView.insertItems(at: insertions.map { IndexPath(item: $0, section: 0) })
-//                self?.collectionView.reloadItems(at: modifications.map { IndexPath(item: $0, section: 0) })
-//            
-//            case .error(let err):
-//                print(err.localizedDescription)
-//            }
-//        })
+        //            .addNotificationBlock({ [weak self] (changes) in
+        //            switch changes {
+        //            case .initial:
+        //                self?.collectionView.reloadData()
+        //            case .update(_, let deletions, let insertions, let modifications):
+        //
+        //                self?.collectionView.deleteItems(at: deletions.map { IndexPath(item: $0, section: 0) })
+        //                self?.collectionView.insertItems(at: insertions.map { IndexPath(item: $0, section: 0) })
+        //                self?.collectionView.reloadItems(at: modifications.map { IndexPath(item: $0, section: 0) })
+        //
+        //            case .error(let err):
+        //                print(err.localizedDescription)
+        //            }
+        //        })
     }
     deinit {
         notiToken?.stop()
@@ -80,7 +80,6 @@ class CardViewController: BaseCollectionViewController {
 
 
 // MARK: UI / Event
-
 extension CardViewController {
     func addLeftNavItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
@@ -123,7 +122,6 @@ extension CardViewController {
 
 
 // MARK: UICollectionViewDelegateFlowLayout
-
 extension CardViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let kind = dataSource.item(at: indexPath)
@@ -144,7 +142,6 @@ extension CardViewController {
 
 
 // MARK: UIScrollViewDelegate
-
 extension CardViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastOffsetY = scrollView.contentOffset.y
@@ -185,89 +182,50 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
     func deleted(text: String) {
         header.numberLabel.text = text
     }
-    
-    func insert(item: RLMRecorder) {
-        let year = String(item.year)
-        let month = String(item.month)
-        
-        
-        
-    }
     func writeToDataBase() {
         let isExisted = Database.default.all(RLMRecorderSuper.self).filter("name == %@", recorderToWrite.superCategory)
-        if isExisted.count > 0 { // 已存在
-            let year = recorderToWrite.year
-            let month = recorderToWrite.month
+        
+        if isExisted.count > 0 {
             if let superModel = isExisted.first {
-                let yearModels = superModel.recorders.filter { $0.year == year }
-                
-                if let yearModel = superModel.recorders.first {
-                    if let monthModel = yearModel.recorders.first {
-                        if monthModel.month == month {
-                            do {
-                                try monthModel.realm?.write {
-                                    monthModel.recorders.append(recorderToWrite)
-                                }
-                            }
-                            catch {
-                            
-                            }
-                            
-                        }
-                    }
-                }
+                recorderToWrite.owner = superModel
                 do {
                     try superModel.realm?.write {
-                        superModel.recorders.append(<#T##object: YearRecorder##YearRecorder#>)
+                        superModel.recorders.append(recorderToWrite)
                     }
+                    Reminder.success()
                 } catch {
-                    
+                    Reminder.error()
                 }
             }
+        } else {
+            let superModel = RLMRecorderSuper()
+            superModel.name = recorderToWrite.superCategory
+            superModel.color = recorderToWrite.color
+            recorderToWrite.owner = superModel
             
+            do {
+                try Database.default.add(model: superModel)
+                do {
+                    try Database.default.append(item: recorderToWrite, to: superModel.recorders)
+                    Reminder.success()
+                } catch {
+                    Reminder.error()
+                }
+            } catch {
+                Reminder.error()
+            }
         }
-    
-//        if isExisted.count > 0 {
-//            if let superModel = isExisted.first {
-//                recorderToWrite.owner = superModel
-//                do {
-//                    try superModel.realm?.write {
-//                        superModel.recorders.append(recorderToWrite)
-//                    }
-//                    Reminder.success()
-//                } catch {
-//                    Reminder.error()
-//                }
-//            }
-//        } else {
-//            let superModel = RLMRecorderSuper()
-//            superModel.name = recorderToWrite.superCategory
-//            superModel.color = recorderToWrite.color
-//            recorderToWrite.owner = superModel
-//            
-//            do {
-//                try Database.default.add(model: superModel)
-//                do {
-//                    try Database.default.append(item: recorderToWrite, to: superModel.recorders)
-//                    Reminder.success()
-//                } catch {
-//                    Reminder.error()
-//                }
-//            } catch {
-//                Reminder.error()
-//            }
-//        }
     }
     func completed(text: Double) {
         header.numberLabel.text = "\(text)"
         
         recorderToWrite.money = text
         recorderToWrite.isPay = true
-    
+        
         writeToDataBase()
         
         recorderToWrite = nil
-//        recorderToWrite = RLMRecorder()
+        //        recorderToWrite = RLMRecorder()
         header.numberLabel.text = "0"
     }
     
@@ -287,8 +245,8 @@ extension CardViewController: HBKeyboardProtocol, AlertProvider {
         }, ok: { [unowned self] in
             self.hb_keyboard.up()
             
-        }, cancel: { [unowned self] in
-            self.hb_keyboard.up()
+            }, cancel: { [unowned self] in
+                self.hb_keyboard.up()
         })
     }
 }

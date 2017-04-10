@@ -57,20 +57,18 @@ class MainHeader: BaseHeader {
         let label = UILabel()
         label.font = HB.Font.h2_number
         label.textColor = .white
-        label.text = "34567"
+        label.text = "0"
         return label
     }()
     lazy var inMoneyLabel: UILabel = {
         let label = UILabel()
         label.font = HB.Font.h2_number
         label.textColor = .white
-        label.text = "76853"
+        label.text = "0"
         return label
     }()
-    
     override func setupUI() {
         super.setupUI()
-        
         rightBtn.setTitle("分类", for: .normal)
         containerView.isUserInteractionEnabled = true
 
@@ -142,14 +140,21 @@ class MainHeader: BaseHeader {
         filterAction?(btn)
     }
     func eyeBtnClicked(_ btn: UIButton) {
-        btn.isSelected = !btn.isSelected
         summaryView.rotateY360()
+        
+        btn.isSelected = !btn.isSelected
+        
         if btn.isSelected {
-            outMoneyLabel.text = "***"
-            inMoneyLabel.text = "***"
+            outMoneyLabel.isHidden = true
+            inMoneyLabel.isHidden = true
+//            outMoneyLabel.text = "***"
+//            inMoneyLabel.text = "***"
         } else {
-            outMoneyLabel.text = "123"
-            inMoneyLabel.text = "34589"
+            
+            outMoneyLabel.isHidden = false
+            inMoneyLabel.isHidden = false
+//            outMoneyLabel.text = outMoneyLabel.text
+//            inMoneyLabel.text = inMoneyLabel.text
         }
     }
 }

@@ -50,42 +50,35 @@ class MainViewController: BaseTableViewController {
 //    }
     
     func fetchData() {
-        
-        
-        // TODO: 收入模型
-//        let month = Date().month
-//        let recorders = Database.default.all(RLMRecorder.self)
-//        let matched = Array(recorders.filter { $0.month == month })
-//        let payout = Array(matched.filter { $0.isPay })
-        
-        
-//        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
-        
-        
-//        RLMRecorderSuper.fetchRecorders()
-        
-        let data = Database.default.all(RLMRecorder.self)
-        
+        let data = Database.default.all(RLMRecorderSuper.self)
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
         
         notiToken = Database.default.notification({ [unowned self] (_, realm) in
-            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorder.self)), vc: self)
+            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorderSuper.self)), vc: self)
             self.tableView.dataSource = self.dataSource
         })
     }
-    
 
-    deinit {
-        notiToken?.stop()
+    func totalPayText() -> String {
+        let month = Date().month
+        let recorders = Database.default.all(RLMRecorder.self)
+        let matched = Array(recorders.filter { $0.month == month })
+        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
+        return String(Int(allPay))
     }
+    
+    
     func fetchDataFromServe() {
-        let serveIsChanged = false
+        let serveIsChanged = true
         if serveIsChanged {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()
             HoneybeeIcon.fetchAllIcons()
         }
+    }
+    deinit {
+        notiToken?.stop()
     }
 }
 
@@ -140,6 +133,7 @@ extension MainViewController {
     }
     func addTableViewHeader() {
         let header = MainHeader(height: 205)
+        header.outMoneyLabel.text = totalPayText()
         header.tapContainerViewAction = { [weak self] in
             self?.navigationController?.pushViewController(PieViewController(), animated: true)
         }
@@ -172,9 +166,18 @@ extension MainViewController {
 // MARK: UITableViewDelegate
 
 extension MainViewController {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailVC = RecordDetailController(model: dataSource.item(at: indexPath).)
+//        navigationController?.pushViewController(detailVC, animated: true)
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = RecordDetailController(model: dataSource.item(at: indexPath))
-        navigationController?.pushViewController(detailVC, animated: true)
+        let model = dataSource.item(at: indexPath)
+        
+        if model.recorders.count == 1 {
+            let detailVC = RecordDetailController(model: model.recorders[0])
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 

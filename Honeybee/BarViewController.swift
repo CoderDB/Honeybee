@@ -62,8 +62,8 @@ class BarViewController: BaseTableViewController {
     }
     
     func fetchData() {
-        let recorders = Array(category.recorders)
-        
+
+//        let recorders = Array(category.recorders)
 //        dataSource = BarDataSource(items: recorders)
         tableView.dataSource = dataSource
         dataSource.fetch { (data) in
