@@ -43,16 +43,32 @@ extension SetupViewController {
     func addTableView() {
         tableView.rowHeight = HB.Constant.rowHeight
         tableView.register(SetupCell.self)
-        tableView.tableHeaderView = SetupHeader(height: 135)
+        let header = SetupHeader(height: 135)
+//        header.
+        
+        tableView.tableHeaderView = header
         tableView.tableFooterView = SetupFooter(height: 50)
+        
+//        navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 }
 
 // MARK: UITableViewDataSource
 extension SetupViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("----\(indexPath.row)")
         
-        navigationController?.pushViewController(ProfileViewController(), animated: true)
+        switch indexPath.row {
+        case 0:
+            break
+        case 1:
+            break
+        case 2:
+            navigationController?.pushViewController(PasswordViewController(), animated: true)
+            break
+        case 3:
+            break
+        default:
+            break
+        }
     }
 }
