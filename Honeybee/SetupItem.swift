@@ -19,7 +19,7 @@ class SetupItem: NSObject {
 }
 
 class SetupArrowItem: SetupItem {
-    
+  
 }
 
 class SetupSwitchItem: SetupItem {
