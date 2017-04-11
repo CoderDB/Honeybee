@@ -15,14 +15,14 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
     var previousString:String? = ""
     var password:String? = ""
     
-    var secKey:String = "GesturePassword4Swift"
+    var secKey:String = "HoneybeePasswordKey"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         previousString = ""
-//        password = KeychainWrapper.stringForKey(secKey)
+        password = KeychainWrapper.stringForKey(secKey)
         
         if( password == "" || password == nil){
             
@@ -31,12 +31,23 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
         else{
             self.verify()
         }
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.view.sendSubview(toBack: navigationController!.navigationBar)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.view.bringSubview(toFront: navigationController!.navigationBar)
     }
     
     //MARK: - 验证手势密码
     
     func verify(){
-        passwordView = PasswordView(frame: UIScreen.main.bounds)
+        passwordView = PasswordView(frame: view.bounds)
         passwordView.tentacleView!.rerificationDelegate = self
         passwordView.tentacleView!.style = 1
         passwordView.gesturePasswordDelegate = self
@@ -46,21 +57,18 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
     
     //MARK: - 重置手势密码
     func reset(){
-        
-        passwordView = PasswordView(frame: UIScreen.main.bounds)
+        passwordView = PasswordView(frame: view.bounds)
         passwordView.tentacleView!.resetDelegate = self
         passwordView.tentacleView!.style = 2
         passwordView.forgetButton!.isHidden = true
         passwordView.changeButton!.isHidden = true
-        
         self.view.addSubview(passwordView)
-        
     }
     
     func exist()->Bool{
         
         
-//        password = KeychainWrapper.stringForKey(secKey)
+        password = KeychainWrapper.stringForKey(secKey)
         if password == "" {
             return false
         }
@@ -69,8 +77,7 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
     
     //MARK: - 清空记录
     func clear(){
-        
-//        KeychainWrapper.removeObjectForKey(secKey)
+        KeychainWrapper.removeObjectForKey(secKey)
     }
     
     //MARK: - 改变手势密码
@@ -114,9 +121,7 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
             
             if(result == previousString){
                 
-                
-                
-//                KeychainWrapper.setString(result, forKey: secKey)
+                _ = KeychainWrapper.setString(result, forKey: secKey)
                 
                 passwordView.state!.textColor = UIColor(red: 2/255, green: 174/255, blue: 240/255, alpha: 1)
                 passwordView.state!.text = "已保存手势密码"
@@ -133,6 +138,4 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
             
         }
     }
-
-
 }
