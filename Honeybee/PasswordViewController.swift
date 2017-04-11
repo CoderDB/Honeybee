@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegate,GesturePasswordDelegate {
+class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegate {
 
     var passwordView: PasswordView!
     
@@ -60,14 +60,12 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
         passwordView = PasswordView(frame: view.bounds)
         passwordView.tentacleView!.resetDelegate = self
         passwordView.tentacleView!.style = 2
-        passwordView.forgetButton!.isHidden = true
-        passwordView.changeButton!.isHidden = true
+        passwordView.forgetButton.isHidden = true
+        passwordView.changeButton.isHidden = true
         self.view.addSubview(passwordView)
     }
     
-    func exist()->Bool{
-        
-        
+    func exist() -> Bool{
         password = KeychainWrapper.stringForKey(secKey)
         if password == "" {
             return false
@@ -77,19 +75,7 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
     
     //MARK: - 清空记录
     func clear(){
-        KeychainWrapper.removeObjectForKey(secKey)
-    }
-    
-    //MARK: - 改变手势密码
-    func change(){
-        
-        print("改变手势密码")
-        
-    }
-    
-    //MARK: - 忘记密码
-    func forget(){
-        print("忘记密码")
+        _ = KeychainWrapper.removeObjectForKey(secKey)
     }
     
     
@@ -98,13 +84,13 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
         // println("password:\(result)====\(password)")
         if(result == password){
             
-            passwordView.state!.textColor = UIColor.white
-            passwordView.state!.text = "输入正确"
+            passwordView.state.textColor = UIColor.white
+            passwordView.state.text = "输入正确"
             
             return true
         }
-        passwordView.state!.textColor = UIColor.red
-        passwordView.state!.text = "手势密码错误"
+        passwordView.state.textColor = UIColor.red
+        passwordView.state.text = "手势密码错误"
         return false
     }
     
@@ -113,8 +99,8 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
         if(previousString == ""){
             previousString = result
             passwordView.tentacleView!.enterArgin()
-            passwordView.state!.textColor = UIColor(red: 2/255, green: 174/255, blue: 240/255, alpha: 1)
-            passwordView.state!.text = "请验证输入密码"
+            passwordView.state.textColor = UIColor(red: 2/255, green: 174/255, blue: 240/255, alpha: 1)
+            passwordView.state.text = "请验证输入密码"
             
             return true
         }else{
@@ -123,19 +109,36 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
                 
                 _ = KeychainWrapper.setString(result, forKey: secKey)
                 
-                passwordView.state!.textColor = UIColor(red: 2/255, green: 174/255, blue: 240/255, alpha: 1)
-                passwordView.state!.text = "已保存手势密码"
+                passwordView.state.textColor = UIColor(red: 2/255, green: 174/255, blue: 240/255, alpha: 1)
+                passwordView.state.text = "已保存手势密码"
                 
                 
                 return true;
             }else{
                 previousString = "";
-                passwordView.state!.textColor = UIColor.red
-                passwordView.state!.text = "两次密码不一致，请重新输入"
+                passwordView.state.textColor = UIColor.red
+                passwordView.state.text = "两次密码不一致，请重新输入"
                 
                 return false
             }
             
         }
     }
+}
+
+extension PasswordViewController: PasswordViewProtocol {
+    
+    //MARK: - 改变手势密码
+    func change(){
+        
+        print("改变手势密码")
+        clear()
+    }
+    
+    //MARK: - 忘记密码
+    func forget(){
+        print("忘记密码")
+        clear()
+    }
+    
 }

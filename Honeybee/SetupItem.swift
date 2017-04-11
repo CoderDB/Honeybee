@@ -27,5 +27,9 @@ class SetupSwitchItem: SetupItem {
 }
 
 class SetupImageItem: SetupItem {
-    
+    let img: String
+    init(title: String, subTitle: String, img: String) {
+        self.img = img
+        super.init(title: title, subTitle: subTitle)
+    }
 }

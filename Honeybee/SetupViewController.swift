@@ -21,11 +21,12 @@ class SetupViewController: BaseTableViewController {
     func fetchData() {
         let item1 = SetupSwitchItem(title: "记账提醒", subTitle: "每天\n10:00")
 //        let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
-        let item3 = SetupImageItem(title: "背景", subTitle: "")
+        let item3 = SetupImageItem(title: "背景", subTitle: "", img: "")
         
         let item4 = SetupArrowItem(title: "绑定账号", subTitle: "")
         let item5 = SetupArrowItem(title: "手势密码", subTitle: "")
-        dataSource = SetupDataSource(items: [item1, item3, item4, item5])
+        let item6 = SetupImageItem(title: "指纹解锁", subTitle: "", img: "touchid")
+        dataSource = SetupDataSource(items: [item1, item3, item4, item5, item6])
         tableView.dataSource = dataSource
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -63,9 +64,9 @@ extension SetupViewController {
         case 1:
             break
         case 2:
-            navigationController?.pushViewController(PasswordViewController(), animated: true)
             break
         case 3:
+            navigationController?.pushViewController(PasswordViewController(), animated: true)
             break
         default:
             break
