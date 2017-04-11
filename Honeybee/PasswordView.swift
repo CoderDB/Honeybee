@@ -23,7 +23,7 @@ class PasswordView: UIView,TouchBeginDelegate {
     
     var gesturePasswordDelegate:GesturePasswordDelegate?
     
-    var imgView:UIImageView?
+//    var imgView:UIImageView?
     
     var forgetButton:UIButton?
     
@@ -75,12 +75,12 @@ class PasswordView: UIView,TouchBeginDelegate {
         state!.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(state!)
         
-        imgView = UIImageView(frame:CGRect(x: frame.size.width/2-35, y: frame.size.width/2-80, width: 70, height: 70))
-        imgView?.backgroundColor = UIColor.white
-        imgView!.layer.cornerRadius = 35
-        imgView!.layer.borderColor = UIColor.gray.cgColor
-        imgView!.layer.borderWidth = 3
-        self.addSubview(imgView!)
+//        imgView = UIImageView(frame:CGRect(x: frame.size.width/2-35, y: frame.size.width/2-80, width: 70, height: 70))
+//        imgView?.backgroundColor = UIColor.white
+//        imgView!.layer.cornerRadius = 35
+//        imgView!.layer.borderColor = UIColor.gray.cgColor
+//        imgView!.layer.borderWidth = 3
+//        self.addSubview(imgView!)
         
         forgetButton = UIButton(frame:CGRect(x: frame.size.width/2-150, y: frame.size.height/2+220, width: 120, height: 30))
         forgetButton!.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -106,32 +106,19 @@ class PasswordView: UIView,TouchBeginDelegate {
         super.init(coder: aDecoder)
     }
     
-    
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         
-        let context = UIGraphicsGetCurrentContext();
-        
-        let rgb = CGColorSpaceCreateDeviceRGB();
+        let rgb = CGColorSpaceCreateDeviceRGB()
         let colors:[CGFloat] = [134/255,157/255,147/255,1.0,3/255,3/255,37/255,1.0]
+        let nilUnsafePointer: UnsafePointer<CGFloat>? = nil
         
-        let  nilUnsafePointer:UnsafePointer<CGFloat>? = nil
-        
-        let gradient = CGGradient(colorSpace: rgb, colorComponents: colors, locations: nilUnsafePointer,count: 2)
-        
-        //CGGradientDrawingOptions()
-        
-        context?.drawLinearGradient(gradient!, start: CGPoint(x: 0.0,y: 0.0),end: CGPoint(x: 0.0,y: self.frame.size.height), options: [])
-        
-        
-        
+        guard let gradient = CGGradient(colorSpace: rgb, colorComponents: colors, locations: nilUnsafePointer,count: 2) else { return }
+        context.drawLinearGradient(gradient, start: CGPoint(x: 0.0,y: 0.0),end: CGPoint(x: 0.0,y: self.frame.size.height), options: [])
     }
     
     
     func gestureTouchBegin(){
-        
         self.state!.text = ""
     }
     

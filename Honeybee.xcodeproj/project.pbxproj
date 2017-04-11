@@ -81,6 +81,7 @@
 		8697CEE31E5DA2AE00993CFE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */; };
 		8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEE81E5DA9D900993CFE /* BarHeader.swift */; };
 		8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697CEEA1E5DADED00993CFE /* BarCell.swift */; };
+		8697F5DD1E9CF209002923E4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */; };
 		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
@@ -223,6 +224,7 @@
 		8697CEE21E5DA2AE00993CFE /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8697CEE81E5DA9D900993CFE /* BarHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarHeader.swift; sourceTree = "<group>"; };
 		8697CEEA1E5DADED00993CFE /* BarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
+		8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				86D1703C1E51DF4A0004E192 /* SetupItem.swift */,
 				86D170441E51EBA90004E192 /* Detail */,
 				8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */,
+				8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */,
 				8600D8F71E9CDBE600FA93D7 /* PasswordView.swift */,
 				8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */,
 				8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */,
@@ -1007,6 +1010,7 @@
 				863703AE1DEEB8BB00BC1153 /* SetupViewController.swift in Sources */,
 				86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */,
 				86FC4EC61E1112B10048E183 /* PieViewController.swift in Sources */,
+				8697F5DD1E9CF209002923E4 /* KeychainWrapper.swift in Sources */,
 				86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */,
 				86D170431E51EAB70004E192 /* SetupFooter.swift in Sources */,
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,

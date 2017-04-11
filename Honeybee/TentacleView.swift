@@ -10,18 +10,15 @@
 import UIKit
 
 
-protocol ResetDelegate
-{
-    func resetPassword(_ result:String) -> Bool
+protocol ResetDelegate {
+    func resetPassword(_ result: String) -> Bool
 }
 
-protocol VerificationDelegate
-{
-    func verification(_ result:String) -> Bool
+protocol VerificationDelegate {
+    func verification(_ result: String) -> Bool
 }
 
-protocol TouchBeginDelegate{
-    
+protocol TouchBeginDelegate {
     func gestureTouchBegin()
 }
 
