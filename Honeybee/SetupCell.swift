@@ -65,6 +65,7 @@ class SetupCell: BaseTableViewCell {
         } else if item.isKind(of: SetupSwitchItem.self) {
             let switchOn = UISwitch()
             subTitleLabel.isHidden = true
+            subTitleLabel.text = "每天\n10:00"
             switchOn.addTarget(self, action: #selector(switchOnChanhed(_:)), for: .valueChanged)
             accessoryView = switchOn
         } else {
@@ -73,12 +74,12 @@ class SetupCell: BaseTableViewCell {
     }
     func switchOnChanhed(_ switchOn: UISwitch) {
         
-        if isNotificationAllowed() {
+//        if isNotificationAllowed() {
             subTitleLabel.isHidden = !switchOn.isOn
-        } else {
+//        } else {
             print("打开alert")
 //            switchOn.setOn(false, animated: true)
-        }
+//        }
     }
     func isNotificationAllowed() -> Bool {
         if let settings = UIApplication.shared.currentUserNotificationSettings {

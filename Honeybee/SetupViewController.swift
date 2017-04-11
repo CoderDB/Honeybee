@@ -20,9 +20,12 @@ class SetupViewController: BaseTableViewController {
     }
     func fetchData() {
         let item1 = SetupSwitchItem(title: "记账提醒", subTitle: "每天\n10:00")
-        let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
-        let item3 = SetupImageItem(title: "头像", subTitle: "")
-        dataSource = SetupDataSource(items: [item1, item2, item3])
+//        let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
+        let item3 = SetupImageItem(title: "背景", subTitle: "")
+        
+        let item4 = SetupArrowItem(title: "绑定账号", subTitle: "")
+        let item5 = SetupArrowItem(title: "手势密码", subTitle: "")
+        dataSource = SetupDataSource(items: [item1, item3, item4, item5])
         tableView.dataSource = dataSource
     }
     override func viewWillAppear(_ animated: Bool) {
