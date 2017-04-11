@@ -50,8 +50,9 @@ class SetupCell: BaseTableViewCell {
     func updateUI() {
         if item.isKind(of: SetupArrowItem.self) {
             accessoryView = arrow
-        } else if item.isKind(of: SetupImageItem.self) {
+        } else if let item = item as? SetupImageItem {
             accessoryView = nil
+            imgView.image = UIImage(named: item.img)
             contentView.addSubview(imgView)
             imgView.snp.makeConstraints({ (make) in
                 make.right.equalTo(contentView).offset(-10)

@@ -22,7 +22,7 @@ class ProfileViewController: BaseTableViewController {
     }
     func fetchData() {
         let item1 = SetupItem(title: "昵称", subTitle: "MaryLee")
-        let item2 = SetupImageItem(title: "头像", subTitle: "")
+        let item2 = SetupImageItem(title: "头像", subTitle: "", img: "")
         
         dataSource = ProfileDataSource(items: [item1, item2])
         tableView.dataSource = dataSource

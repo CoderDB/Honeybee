@@ -8,46 +8,55 @@
 
 import UIKit
 
-protocol GesturePasswordDelegate
-{
+protocol PasswordViewProtocol: class {
     func forget()
     func change()
 }
 
-class PasswordView: UIView,TouchBeginDelegate {
+class PasswordView: UIView {
 
+    weak var gesturePasswordDelegate: PasswordViewProtocol?
     
-    var tentacleView:TentacleView?
     
-    var state:UILabel?
+    var tentacleView: TentacleView!
     
-    var gesturePasswordDelegate:GesturePasswordDelegate?
+    lazy var state: UILabel = {
+        $0.textAlignment = .center
+        $0.font = HB.Font.h4
+        return $0
+    }(UILabel())
+    lazy var forgetButton: UIButton = {
+        $0.titleLabel?.font = HB.Font.h4
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitle("忘记手势密码", for: .normal)
+        return $0
+    }(UIButton())
+    lazy var changeButton: UIButton = {
+        $0.titleLabel?.font = HB.Font.h4
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitle("修改手势密码", for: .normal)
+        return $0
+    }(UIButton())
     
-//    var imgView:UIImageView?
-    
-    var forgetButton:UIButton?
-    
-    var changeButton:UIButton?
-    
-    fileprivate var buttonArray:[PasswordButton]=[]
+    fileprivate var buttonArray: [PasswordButton] = []
     
     fileprivate var lineStartPoint:CGPoint?
     fileprivate var lineEndPoint:CGPoint?
     
     
     override init(frame: CGRect) {
-        
         super.init(frame: frame)
-        
-        // Initialization code
-        
+        setupUI()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setupUI() {
         let view = UIView(frame:CGRect(x: frame.size.width/2-160, y: frame.size.height/2-80, width: 320, height: 320))
-        
         for i in 0..<9 {
-            
             let row = Int(i/3)
             let col = Int(i%3)
-            
             let distance = Int(320/3)
             let size:Int = Int(Float(distance)/1.5)
             let margin = Int(size/4)
@@ -58,52 +67,25 @@ class PasswordView: UIView,TouchBeginDelegate {
             
             view.addSubview(gesturePasswordButton)
             buttonArray.append(gesturePasswordButton)
-            
         }
-        
-        
-        self.addSubview(view)
+        addSubview(view)
         
         tentacleView = TentacleView(frame: view.frame)
         
-        tentacleView!.buttonArray = buttonArray
-        tentacleView!.touchBeginDelegate = self
-        self.addSubview(tentacleView!)
+        tentacleView.buttonArray = buttonArray
+        tentacleView.touchBeginDelegate = self
+        addSubview(tentacleView!)
         
-        state = UILabel(frame: CGRect(x: frame.size.width/2-140, y: frame.size.height/2-120, width: 280, height: 30))
-        state!.textAlignment = NSTextAlignment.center
-        state!.font = UIFont.systemFont(ofSize: 14)
-        self.addSubview(state!)
+        state.frame = CGRect(x: frame.size.width/2-140, y: frame.size.height/2-120, width: 280, height: 30)
+        addSubview(state)
         
-//        imgView = UIImageView(frame:CGRect(x: frame.size.width/2-35, y: frame.size.width/2-80, width: 70, height: 70))
-//        imgView?.backgroundColor = UIColor.white
-//        imgView!.layer.cornerRadius = 35
-//        imgView!.layer.borderColor = UIColor.gray.cgColor
-//        imgView!.layer.borderWidth = 3
-//        self.addSubview(imgView!)
+        forgetButton.frame = CGRect(x: frame.size.width/2-150, y: frame.size.height/2+220, width: 120, height: 30)
+        forgetButton.addTarget(self, action: #selector(forget), for: .touchDown)
+        addSubview(forgetButton)
         
-        forgetButton = UIButton(frame:CGRect(x: frame.size.width/2-150, y: frame.size.height/2+220, width: 120, height: 30))
-        forgetButton!.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        forgetButton!.setTitleColor(UIColor.white, for: UIControlState())
-        forgetButton!.setTitle("忘记手势密码", for: UIControlState())
-        forgetButton!.addTarget(self, action: #selector(PasswordView.forget), for: UIControlEvents.touchDown)
-        self.addSubview(forgetButton!)
-        
-        
-        changeButton = UIButton(frame:CGRect(x: frame.size.width/2+30, y: frame.size.height/2+220, width: 120, height: 30))
-        changeButton!.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        changeButton!.setTitleColor(UIColor.white, for: UIControlState())
-        changeButton!.setTitle("修改手势密码", for: UIControlState())
-        changeButton!.addTarget(self, action: #selector(PasswordView.change), for: UIControlEvents.touchDown)
-        self.addSubview(changeButton!)
-        
-        
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
+        changeButton.frame = CGRect(x: frame.size.width/2+30, y: frame.size.height/2+220, width: 120, height: 30)
+        changeButton.addTarget(self, action: #selector(change), for: .touchDown)
+        addSubview(changeButton)
     }
     
     override func draw(_ rect: CGRect) {
@@ -114,25 +96,21 @@ class PasswordView: UIView,TouchBeginDelegate {
         let nilUnsafePointer: UnsafePointer<CGFloat>? = nil
         
         guard let gradient = CGGradient(colorSpace: rgb, colorComponents: colors, locations: nilUnsafePointer,count: 2) else { return }
-        context.drawLinearGradient(gradient, start: CGPoint(x: 0.0,y: 0.0),end: CGPoint(x: 0.0,y: self.frame.size.height), options: [])
-    }
-    
-    
-    func gestureTouchBegin(){
-        self.state!.text = ""
+        context.drawLinearGradient(gradient, start: CGPoint(x: 0.0,y: 0.0),end: CGPoint(x: 0.0,y: frame.height), options: [])
     }
     
     
     func forget(){
-        if(gesturePasswordDelegate != nil){
-            gesturePasswordDelegate!.forget()
-        }
+        gesturePasswordDelegate?.forget()
     }
-    
     func change(){
-        if(gesturePasswordDelegate != nil){
-            gesturePasswordDelegate!.change()
-        }
+        gesturePasswordDelegate?.change()
+    }
+}
+
+extension PasswordView: TouchBeginDelegate {
+    func gestureTouchBegin(){
+        state.text = ""
     }
     
 }
