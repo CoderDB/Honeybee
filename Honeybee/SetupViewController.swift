@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class SetupViewController: BaseTableViewController {
     
@@ -69,8 +70,33 @@ extension SetupViewController {
         case 3:
             navigationController?.pushViewController(PasswordViewController(), animated: true)
             break
+        case 4:
+            touchID()
+            break
         default:
             break
         }
+    }
+    
+    
+    func touchID() {
+        let context = LAContext()
+        var error: NSError? = nil
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "指纹解锁", reply: { (isSuccessed, error) in
+                if isSuccessed {
+                    print("成功")
+                } else {
+                    if let error = error as NSError? {
+                        print("----\(error.code)")
+                    }
+                }
+            })
+        }
+    }
+    
+    func touchIDErrorHandle() {
+        
     }
 }

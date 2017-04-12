@@ -63,6 +63,7 @@
 		866C91381E6E956A003026DD /* KindAddHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91371E6E956A003026DD /* KindAddHeader.swift */; };
 		866C913A1E6E9EA1003026DD /* KindAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91391E6E9EA1003026DD /* KindAddCell.swift */; };
 		866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C913B1E6EA09F003026DD /* BaseHeader.swift */; };
+		867A9EC21E9E726B00537925 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A9EC11E9E726B00537925 /* TouchId.swift */; };
 		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86840BE01E93D00C008BB303 /* KindAddSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */; };
@@ -206,6 +207,7 @@
 		866C91371E6E956A003026DD /* KindAddHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddHeader.swift; sourceTree = "<group>"; };
 		866C91391E6E9EA1003026DD /* KindAddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddCell.swift; sourceTree = "<group>"; };
 		866C913B1E6EA09F003026DD /* BaseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeader.swift; sourceTree = "<group>"; };
+		867A9EC11E9E726B00537925 /* TouchId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
 		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddSectionHeader.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
+				867A9EC11E9E726B00537925 /* TouchId.swift */,
 				1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */,
 				86D1702C1E51BA560004E192 /* SetupHeader.swift */,
 				86D170421E51EAB70004E192 /* SetupFooter.swift */,
@@ -974,6 +977,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867A9EC21E9E726B00537925 /* TouchId.swift in Sources */,
 				865B2F651E71632300719008 /* KindDataSource.swift in Sources */,
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
 				8614E4191E6999E400836FC9 /* RLMRecorderSuper.swift in Sources */,
