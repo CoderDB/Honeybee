@@ -45,12 +45,13 @@ extension SetupViewController {
         tableView.rowHeight = HB.Constant.rowHeight
         tableView.register(SetupCell.self)
         let header = SetupHeader(height: 135)
-//        header.
+        
+        header.rightButtonAction = { [weak self] _ in
+            self?.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        }
         
         tableView.tableHeaderView = header
         tableView.tableFooterView = SetupFooter(height: 50)
-        
-//        navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetupHeader: UIView {
+class SetupHeader: BaseHeader {
     
     
     lazy var headButton: UIButton = {
@@ -38,55 +38,41 @@ class SetupHeader: UIView {
     }()
     
     
-    lazy var editButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("编辑", for: .normal)
-        btn.setTitleColor(HB.Color.nav, for: .normal)
-        btn.titleLabel?.font = HB.Font.h5
-        return btn
-    }()
     
+//    convenience init(height: CGFloat) {
+//        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))        
+//    }
+//    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupUI()
+//    }
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
-    convenience init(height: CGFloat) {
-        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))        
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupUI() {
-        addSubview(editButton)
-        addSubview(headButton)
-        addSubview(nicknameLabel)
-        addSubview(bioLabel)
+    override func setupUI() {
+        super.setupUI()
+        
+        containerView.addSubview(headButton)
+        containerView.addSubview(nicknameLabel)
+        containerView.addSubview(bioLabel)
         
         
-        editButton.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(self).offset(-10)
-            make.width.equalTo(40)
-        }
         headButton.snp.makeConstraints { (make) in
-            make.top.left.equalTo(self).offset(10)
+            make.top.left.equalTo(containerView)
             make.width.height.equalTo(115)
         }
         nicknameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(headButton)
             make.left.equalTo(headButton.snp.right).offset(10)
-            make.right.equalTo(self).offset(-60).priority(HB.Priority.mid)
+            make.right.equalTo(containerView)
             make.height.equalTo(25)
         }
         bioLabel.snp.makeConstraints { (make) in
+            make.left.right.equalTo(nicknameLabel)
             make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
-            make.left.equalTo(nicknameLabel)
-            make.right.equalTo(editButton.snp.left).offset(-5).priority(HB.Priority.mid)
             make.bottom.equalTo(headButton).offset(-10)
-        } 
+        }
     }
-
-
 }
