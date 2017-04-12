@@ -11,9 +11,12 @@ import LocalAuthentication
 
 class SetupViewController: BaseTableViewController {
     
+    
+    
     var dataSource: SetupDataSource!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setNavTitle("设置")
         
         addTableView()
@@ -71,32 +74,21 @@ extension SetupViewController {
             navigationController?.pushViewController(PasswordViewController(), animated: true)
             break
         case 4:
-            touchID()
+            let touchId = TouchId()
+            touchId.delegate = self
+            touchId.accessTouchId(description: "请求使用指纹")
             break
         default:
             break
         }
     }
-    
-    
-    func touchID() {
-        let context = LAContext()
-        var error: NSError? = nil
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "指纹解锁", reply: { (isSuccessed, error) in
-                if isSuccessed {
-                    print("成功")
-                } else {
-                    if let error = error as NSError? {
-                        print("----\(error.code)")
-                    }
-                }
-            })
-        }
+}
+
+extension SetupViewController: TouchIdDelegate {
+    func touchIdAccessSuccessed() {
+        print("touchid successed")
     }
-    
-    func touchIDErrorHandle() {
-        
+    func touchIdAccessFailed(errorCode: Int) {
+        print("touchid failed--\(errorCode)")
     }
 }

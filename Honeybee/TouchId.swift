@@ -11,14 +11,14 @@ import LocalAuthentication
 
 
 protocol TouchIdDelegate: class {
-    func accessTouchIdSuccessed()
-    func accessTouchIdFailed(errorCode: Int)
+    func touchIdAccessSuccessed()
+    func touchIdAccessFailed(errorCode: Int)
 }
 
 class TouchId: NSObject {
   
     
-    weak var touchIdDelegate: TouchIdDelegate?
+    weak var delegate: TouchIdDelegate?
     
     private let context: LAContext
     
@@ -37,10 +37,10 @@ class TouchId: NSObject {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: description, reply: { (isSuccessed, error) in
                 if isSuccessed {
                     print("成功")
-                    self.touchIdDelegate?.accessTouchIdSuccessed()
+                    self.delegate?.touchIdAccessSuccessed()
                 } else {
                     if let error = error as NSError? {
-                        self.touchIdDelegate?.accessTouchIdFailed(errorCode: error.code)
+                        self.delegate?.touchIdAccessFailed(errorCode: error.code)
                     }
                 }
             })
