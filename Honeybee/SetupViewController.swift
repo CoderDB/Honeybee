@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LocalAuthentication
 
 class SetupViewController: BaseTableViewController {
     
@@ -59,7 +58,10 @@ extension SetupViewController {
     }
 }
 
-// MARK: UITableViewDataSource
+
+// -----------------------------------------------------------------------------
+// MARK: UITabelViewDelegate
+// -----------------------------------------------------------------------------
 extension SetupViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -84,6 +86,10 @@ extension SetupViewController {
     }
 }
 
+
+// -----------------------------------------------------------------------------
+// MARK: TouchIdDelegate
+// -----------------------------------------------------------------------------
 extension SetupViewController: TouchIdDelegate {
     func touchIdAccessSuccessed() {
         print("touchid successed")
