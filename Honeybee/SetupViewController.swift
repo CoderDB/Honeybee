@@ -71,7 +71,9 @@ extension SetupViewController {
         case 1:
             break
         case 2:
+            bindingAccounts()
             break
+            
         case 3:
             navigationController?.pushViewController(PasswordViewController(), animated: true)
             break
@@ -83,6 +85,35 @@ extension SetupViewController {
         default:
             break
         }
+    }
+    
+    func bindingAccounts() {
+        let actionSheet = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet)
+        
+        let btn = UIButton(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+        btn.setTitle("微信", for: .normal)
+        btn.backgroundColor = UIColor.cyan
+        
+        let weibo = UIButton(frame: CGRect(x: 70, y: 10, width: 50, height: 50))
+        weibo.setTitle("微博", for: .normal)
+        weibo.backgroundColor = .blue
+        
+        let qq = UIButton(frame: CGRect(x: 130, y: 10, width: 50, height: 50))
+        qq.setTitle("QQ", for: .normal)
+        qq.backgroundColor = .blue
+        
+        
+        
+        actionSheet.view.addSubview(btn)
+        actionSheet.view.addSubview(weibo)
+        actionSheet.view.addSubview(qq)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            print("cancel")
+        }
+        
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true, completion: nil)
+        
     }
 }
 
