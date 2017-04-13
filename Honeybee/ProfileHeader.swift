@@ -12,18 +12,16 @@ class ProfileHeader: BaseHeader {
 
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = HB.Font.h4
-        label.textColor = .white
-        label.text = "累计记账"
-        return label
-    }()
+        $0.font = HB.Font.h4
+        $0.textColor = .white
+        $0.text = "累计记账"
+        return $0
+    }(UILabel())
     lazy var countLabel: UILabel = {
-        let label = UILabel()
-        label.font = HB.Font.h1_number
-        label.textColor = .white
-        return label
-    }()
+        $0.font = HB.Font.h1_number
+        $0.textColor = .white
+        return $0
+    }(UILabel())
     
     convenience init(height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))

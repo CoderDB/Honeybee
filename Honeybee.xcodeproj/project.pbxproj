@@ -456,6 +456,17 @@
 			name = KindManager;
 			sourceTree = "<group>";
 		};
+		866ED3B41E9FBDB00065162B /* PasswordGesture */ = {
+			isa = PBXGroup;
+			children = (
+				8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */,
+				8600D8F71E9CDBE600FA93D7 /* PasswordView.swift */,
+				8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */,
+				8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */,
+			);
+			name = PasswordGesture;
+			sourceTree = "<group>";
+		};
 		8697CEE11E5DA28900993CFE /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,10 +622,7 @@
 				86D170301E51C4790004E192 /* SetupCell.swift */,
 				86D1703C1E51DF4A0004E192 /* SetupItem.swift */,
 				86D170441E51EBA90004E192 /* Detail */,
-				8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */,
-				8600D8F71E9CDBE600FA93D7 /* PasswordView.swift */,
-				8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */,
-				8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */,
+				866ED3B41E9FBDB00065162B /* PasswordGesture */,
 			);
 			name = Profile;
 			sourceTree = "<group>";

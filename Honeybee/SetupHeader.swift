@@ -12,30 +12,27 @@ class SetupHeader: BaseHeader {
     
     
     lazy var headButton: UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.backgroundColor = HB.Color.nav
-        btn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        btn.setImage(UIImage(named: "avatar"), for: .normal)
-        btn.layer.cornerRadius = HB.Constant.cornerRadius
-        return btn
-    }()
+        $0.backgroundColor = HB.Color.nav
+        $0.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        $0.setImage(UIImage(named: "avatar"), for: .normal)
+        $0.layer.cornerRadius = HB.Constant.cornerRadius
+        return $0
+    }(UIButton())
     
     lazy var nicknameLabel: UILabel = {
-        let label = UILabel()
-        label.font = HB.Font.h5
-        label.text = "二狗哥"
-        return label
-    }()
+        $0.font = HB.Font.h5
+        $0.text = "二狗哥"
+        return $0
+    }(UILabel())
     lazy var bioLabel: UILabel = {
-        let label = UILabel()
-        label.font = HB.Font.h6_medium
-        label.textColor = .gray
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.preferredMaxLayoutWidth = 200
-        label.text = "我是一个从来不记账的人，因为记账是一种修行。我是一个从来不记账的人，因为记账是一种修行。我是一个从来不记账的人，因为记账是一种修行。"
-        return label
-    }()
+        $0.font = HB.Font.h6_medium
+        $0.textColor = .gray
+        $0.numberOfLines = 0
+        $0.lineBreakMode = .byWordWrapping
+        $0.preferredMaxLayoutWidth = 200
+        $0.text = "我是一个从来不记账的人，因为记账是一种修行。我是一个从来不记账的人，因为记账是一种修行。我是一个从来不记账的人，因为记账是一种修行。"
+        return $0
+    }(UILabel())
     
     
     override func setupUI() {
