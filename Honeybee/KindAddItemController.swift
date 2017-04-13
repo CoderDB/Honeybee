@@ -44,7 +44,7 @@ class KindAddItemController: BaseCollectionViewController {
     }
     private func fetchData() {
         let items = Honeybee.default.allIcons()
-        dataSource = KindAddItemDataSource(items: items)
+        dataSource = KindAddItemDataSource(items: items.toArray)
         collectionView.dataSource = dataSource
     }
 }

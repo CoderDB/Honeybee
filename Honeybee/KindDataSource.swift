@@ -9,16 +9,22 @@
 import UIKit
 import RealmSwift
 
-class KindDataSource: NSObject {
+class KindDataSource: NSObject, DataSourceProvider {
     
-    var items: Results<HoneybeeKind>
-    
-    init(items: Results<HoneybeeKind>) {
+    typealias ItemType = HoneybeeKind
+    var items: [HoneybeeKind]
+    required init(items: [ItemType]) {
         self.items = items
     }
-    func item(at indexPath: IndexPath) -> HoneybeeKind {
-        return items[indexPath.item]
-    }
+    
+//    var items: Results<HoneybeeKind>
+//    
+//    init(items: Results<HoneybeeKind>) {
+//        self.items = items
+//    }
+//    func item(at indexPath: IndexPath) -> HoneybeeKind {
+//        return items[indexPath.item]
+//    }
     
    
 }
