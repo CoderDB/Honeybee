@@ -88,31 +88,70 @@ extension SetupViewController {
     }
     
     func bindingAccounts() {
-        let actionSheet = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet)
+        let actionSheet = AccountBindingController(title: "", message: "", preferredStyle: .actionSheet)
         
-        let btn = UIButton(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
-        btn.setTitle("微信", for: .normal)
-        btn.backgroundColor = UIColor.cyan
-        
-        let weibo = UIButton(frame: CGRect(x: 70, y: 10, width: 50, height: 50))
-        weibo.setTitle("微博", for: .normal)
-        weibo.backgroundColor = .blue
-        
-        let qq = UIButton(frame: CGRect(x: 130, y: 10, width: 50, height: 50))
-        qq.setTitle("QQ", for: .normal)
-        qq.backgroundColor = .blue
-        
-        
-        
-        actionSheet.view.addSubview(btn)
-        actionSheet.view.addSubview(weibo)
-        actionSheet.view.addSubview(qq)
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
             print("cancel")
         }
         
         actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true, completion: nil)
+        
+    }
+}
+
+class AccountBindingController: UIAlertController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+    lazy var weixin: UIButton = {
+        $0.setTitle("微信", for: .normal)
+        $0.backgroundColor = .cyan
+        return $0
+    }(UIButton())
+    
+    lazy var weibo: UIButton = {
+        $0.setTitle("微博", for: .normal)
+        $0.backgroundColor = .cyan
+        return $0
+    }(UIButton())
+    
+    lazy var qq: UIButton = {
+        $0.setTitle("QQ", for: .normal)
+        $0.backgroundColor = .cyan
+        return $0
+    }(UIButton())
+    
+    func setupUI() {
+        view.addSubview(weixin)
+        view.addSubview(weibo)
+        view.addSubview(qq)
+        weixin.addTarget(self, action: #selector(weixinBtnClicked), for: .touchUpInside)
+        weibo.addTarget(self, action: #selector(weiboBtnClicked), for: .touchUpInside)
+        qq.addTarget(self, action: #selector(qqBtnClicked), for: .touchUpInside)
+        weixin.snp.makeConstraints { (make) in
+            make.left.top.equalTo(view).offset(10)
+            make.width.height.equalTo(50)
+        }
+        weibo.snp.makeConstraints { (make) in
+            make.left.equalTo(weixin.snp.right).offset(10)
+            make.top.height.width.equalTo(weixin)
+        }
+        qq.snp.makeConstraints { (make) in
+            make.left.equalTo(weibo.snp.right).offset(10)
+            make.top.height.width.equalTo(weixin)
+        }
+    }
+    
+    func weixinBtnClicked() {
+        print("--weixinBtnClicked")
+    }
+    func weiboBtnClicked() {
+        
+    }
+    func qqBtnClicked() {
         
     }
 }
