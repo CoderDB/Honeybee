@@ -32,6 +32,7 @@ class ProfileHeader: BaseHeader {
         super.setupUI()
         
         containerView.backgroundColor = HB.Color.main
+        rightBtn.setTitle("分享", for: .normal)
         
         containerView.addSubview(titleLabel)
         containerView.addSubview(countLabel)
@@ -39,7 +40,6 @@ class ProfileHeader: BaseHeader {
         titleLabel.snp.makeConstraints { (make) in
             make.left.top.equalTo(containerView).offset(10)
         }
-        
         countLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(containerView).offset(-10)
             make.centerX.equalTo(containerView)
