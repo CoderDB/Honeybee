@@ -16,7 +16,7 @@ class ProfileViewController: BaseTableViewController {
         super.viewDidLoad()
         
         setNavTitle("个人信息")
-        setNavRightItem("分享")
+//        setNavRightItem("分享")
         addTableView()
         fetchData()
     }
@@ -30,11 +30,14 @@ class ProfileViewController: BaseTableViewController {
     func addTableView() {
         tableView.rowHeight = HB.Constant.rowHeight
         tableView.register(SetupCell.self)
-        tableView.tableHeaderView = ProfileHeader(height: 135)
+        let header = ProfileHeader(height: 135)
+        header.rightButtonAction = { [weak self] _ in
+            self?.presentShareView()
+        }
+        tableView.tableHeaderView = header
     }
     
-    override func navRightItemClicked(_ btn: UIButton) {
+    func presentShareView() {
         
     }
-    
 }

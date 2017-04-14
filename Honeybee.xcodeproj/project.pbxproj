@@ -544,7 +544,6 @@
 		86D170441E51EBA90004E192 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */,
 				86D170451E51EBCE0004E192 /* ProfileViewController.swift */,
 				1E1C0C821E76E88B00AF940E /* ProfileDataSource.swift */,
 				86D170491E51EDCB0004E192 /* ProfileHeader.swift */,
@@ -621,6 +620,7 @@
 				86D170421E51EAB70004E192 /* SetupFooter.swift */,
 				86D170301E51C4790004E192 /* SetupCell.swift */,
 				86D1703C1E51DF4A0004E192 /* SetupItem.swift */,
+				8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */,
 				86D170441E51EBA90004E192 /* Detail */,
 				866ED3B41E9FBDB00065162B /* PasswordGesture */,
 			);

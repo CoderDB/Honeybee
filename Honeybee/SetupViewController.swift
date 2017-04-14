@@ -113,14 +113,12 @@ class AccountBindingController: UIAlertController {
     }(UIButton())
     
     lazy var weibo: UIButton = {
-        $0.setTitle("微博", for: .normal)
-        $0.backgroundColor = .cyan
+        $0.setImage(UIImage(named: "weixin_icon"), for: .normal)
         return $0
     }(UIButton())
     
     lazy var qq: UIButton = {
-        $0.setTitle("QQ", for: .normal)
-        $0.backgroundColor = .cyan
+        $0.setImage(UIImage(named: "qq_icon"), for: .normal)
         return $0
     }(UIButton())
     
