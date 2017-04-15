@@ -8,11 +8,23 @@
 
 import UIKit
 
-class SetupDataSource: DataSource {
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+class SetupDataSource: NSObject, DataSourceProvider {
+    typealias ItemType = SetupItem
+    var items: [SetupItem]
+    required init(items: [ItemType]) {
+        self.items = items
+    }
+
+}
+
+extension SetupDataSource: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)")
-        if let cell = cell as? SetupCell, let item = items[indexPath.row] as? SetupItem {
-            cell.item = item
+        if let cell = cell as? SetupCell {
+            cell.item = item(at: indexPath)
         }
         return cell!
     }

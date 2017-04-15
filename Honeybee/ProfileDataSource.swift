@@ -17,13 +17,9 @@ class ProfileDataSource: NSObject, DataSourceProvider {
 }
 
 extension ProfileDataSource: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)")
         if let cell = cell as? SetupCell {
