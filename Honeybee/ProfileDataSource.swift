@@ -8,12 +8,26 @@
 
 import UIKit
 
-class ProfileDataSource: DataSource {
+class ProfileDataSource: NSObject, DataSourceProvider {
+    typealias ItemType = SetupItem
+    var items: [ItemType]
+    required init(items: [ItemType]) {
+        self.items = items
+    }
+}
+
+extension ProfileDataSource: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(SetupCell.self)")
-        if let cell = cell as? SetupCell, let item = items[indexPath.row] as? SetupItem {
-            cell.item = item
+        if let cell = cell as? SetupCell {
+            cell.item = item(at: indexPath)
         }
         return cell!
     }
