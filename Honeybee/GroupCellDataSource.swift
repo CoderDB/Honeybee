@@ -8,15 +8,32 @@
 
 import UIKit
 
-class GroupCellDataSource: DataSource {
+class GroupCellDataSource: NSObject, DataSourceProvider {
+    
+    typealias ItemType = RLMRecorder
+    var items: [RLMRecorder]
+    required init(items: [ItemType]) {
+        self.items = items
+    }
    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordLiteCell.self)") as! RecordLiteCell
+//        let model = items[indexPath.row] as! RLMRecorder
+//        cell.model = model
+//        
+////        dateLabel.text = model?.monthDay
+////        weekdayLabel.text = model?.weekday
+//        return cell
+//    }
+}
+
+extension GroupCellDataSource: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordLiteCell.self)") as! RecordLiteCell
-        let model = items[indexPath.row] as! RLMRecorder
-        cell.model = model
-        
-//        dateLabel.text = model?.monthDay
-//        weekdayLabel.text = model?.weekday
+        cell.model = item(at: indexPath)
         return cell
     }
 }
