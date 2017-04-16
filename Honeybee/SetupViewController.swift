@@ -32,10 +32,10 @@ class SetupViewController: BaseTableViewController {
         dataSource = SetupDataSource(items: [item1, item3, item4, item5, item6])
         tableView.dataSource = dataSource
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+//    }
     deinit {
         print("deinit --SetupViewController")
     }
