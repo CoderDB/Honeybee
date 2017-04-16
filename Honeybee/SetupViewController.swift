@@ -39,6 +39,7 @@ class SetupViewController: BaseTableViewController {
     deinit {
         print("deinit --SetupViewController")
     }
+    
 }
 
 // MARK: UI

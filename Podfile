@@ -12,6 +12,8 @@ def pods
     pod 'Then', '~> 2.1.0'    
     #pod 'ARSLineProgress', '~> 2.1.0'
     pod 'PKHUD', '~> 4.2.0'
+
+    pod 'FDFullscreenPopGesture', '~> 1.1'
 end
 
 target 'Honeybee' do
