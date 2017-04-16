@@ -21,6 +21,8 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fd_prefersNavigationBarHidden = true
+        
         previousString = ""
         password = KeychainWrapper.stringForKey(secKey)
         
@@ -33,16 +35,16 @@ class PasswordViewController: UIViewController,VerificationDelegate,ResetDelegat
         }
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-        navigationController?.view.sendSubview(toBack: navigationController!.navigationBar)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.view.bringSubview(toFront: navigationController!.navigationBar)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+////        navigationController?.setNavigationBarHidden(true, animated: false)
+//        navigationController?.view.sendSubview(toBack: navigationController!.navigationBar)
+//    }
+//    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        navigationController?.view.bringSubview(toFront: navigationController!.navigationBar)
+//    }
     
     //MARK: - 验证手势密码
     

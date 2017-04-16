@@ -27,10 +27,10 @@ class PieViewController: BaseTableViewController {
         
         fetchData(month: Date().localDate.month)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+//    }
     override func navRightItemClicked(_ btn: UIButton) {
         let destVC = PiePopoverController()
         destVC.modalPresentationStyle = .popover

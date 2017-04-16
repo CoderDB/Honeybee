@@ -35,10 +35,10 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
         addTableView()
         fetchData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+//    }
     func fetchData() {
         
 //        dataSource = RecorderDetailDataSource(model: model)

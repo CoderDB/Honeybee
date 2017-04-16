@@ -25,16 +25,18 @@ class MainViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
+        fd_prefersNavigationBarHidden = true
+        
         addTableView()
         addTableViewHeader()
         addAddBtn()
         fetchDataFromServe()
         fetchData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: true)
+//    }
 //    func sameRecorderBeGrouped() {
 //        let data = Database.manager.all(RLMRecorder.self)
 //        var recorders = [RLMRecorder]()
