@@ -195,6 +195,7 @@
 		864D25111E6312240005894A /* recorders_new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recorders_new.json; sourceTree = "<group>"; };
 		865184D41E7D6D3600EE940E /* MianPopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MianPopController.swift; sourceTree = "<group>"; };
 		8654B4B61E90F4A4000CD200 /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
+		8655E2A11EA365AB0064A468 /* Honeybee-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Honeybee-Bridging-Header.h"; sourceTree = "<group>"; };
 		865B2F641E71632300719008 /* KindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDataSource.swift; sourceTree = "<group>"; };
 		865B2F661E7171AF00719008 /* CardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDataSource.swift; sourceTree = "<group>"; };
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
@@ -623,6 +624,7 @@
 				8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */,
 				86D170441E51EBA90004E192 /* Detail */,
 				866ED3B41E9FBDB00065162B /* PasswordGesture */,
+				8655E2A11EA365AB0064A468 /* Honeybee-Bridging-Header.h */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -772,7 +774,7 @@
 					8638A9A11DE56CB9002369F9 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = WH5LSELR4Q;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					8638A9B51DE56CB9002369F9 = {
@@ -1239,7 +1241,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Honeybee.Honeybee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Honeybee/Honeybee-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1261,7 +1263,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Honeybee.Honeybee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Honeybee/Honeybee-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
