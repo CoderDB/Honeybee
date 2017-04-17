@@ -41,11 +41,14 @@ class BarViewController: BaseTableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var header: BarHeader!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.register(BarCell.self)
-        tableView.tableHeaderView = BarHeader(height: 170)
+        header = BarHeader(height: 170)
+        tableView.tableHeaderView = header//BarHeader(height: 170)
         
         setNavRightItem("筛选")
         fetchData()
@@ -69,6 +72,7 @@ class BarViewController: BaseTableViewController {
     func fetchData() {
         tableView.dataSource = dataSource
         dataSource.fetch { (data) in
+        
             tableView.tableHeaderView = BarHeader(height: 170, data: data)
         }
     }
@@ -92,19 +96,52 @@ extension BarViewController {
 
 
 extension BarViewController {
-    override var shouldAutorotate: Bool {
-        return true
+//    override var shouldAutorotate: Bool {
+//        return true
+//    }
+//    
+//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+//        return .landscapeLeft
+//    }
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return .all
+//    }
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        super.viewWillTransition(to: size, with: coordinator)
+//        
+////        let isLand = coordinator.containerView.bounds.width > coordinator.containerView.bounds.height
+////        coordinator.animate(alongsideTransition: { (context) in
+////            self.header = BarHeader(height: 370)
+////        }) { (context) in
+////            
+////        }
+//        header.snp.updateConstraints { (make) in
+//            make.top.left.right.equalTo(view)
+//            make.height.equalTo(300)
+//            
+//            
+//        }
+//        
+//    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return .landscapeLeft
-    }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .all
-    }
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func deviceOrientationDidChange(_ noti: Notification) {
+        let orientation = UIDevice.current.orientation
+        print(orientation)
+        if orientation.isLandscape {
+            
+        }
     }
     
 }
