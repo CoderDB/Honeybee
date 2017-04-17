@@ -51,6 +51,7 @@
 		864D25121E6312240005894A /* recorders_new.json in Resources */ = {isa = PBXBuildFile; fileRef = 864D25111E6312240005894A /* recorders_new.json */; };
 		865184D51E7D6D3600EE940E /* MianPopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865184D41E7D6D3600EE940E /* MianPopController.swift */; };
 		8654B4B71E90F4A4000CD200 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654B4B61E90F4A4000CD200 /* AlarmManager.swift */; };
+		8655E2A91EA5013B0064A468 /* LineViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655E2A81EA5013B0064A468 /* LineViewData.swift */; };
 		865B2F651E71632300719008 /* KindDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F641E71632300719008 /* KindDataSource.swift */; };
 		865B2F671E7171AF00719008 /* CardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865B2F661E7171AF00719008 /* CardDataSource.swift */; };
 		8669A0C11E697EEC0079E53A /* RecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A0C01E697EEC0079E53A /* RecorderSuper.swift */; };
@@ -196,6 +197,7 @@
 		865184D41E7D6D3600EE940E /* MianPopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MianPopController.swift; sourceTree = "<group>"; };
 		8654B4B61E90F4A4000CD200 /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
 		8655E2A11EA365AB0064A468 /* Honeybee-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Honeybee-Bridging-Header.h"; sourceTree = "<group>"; };
+		8655E2A81EA5013B0064A468 /* LineViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineViewData.swift; sourceTree = "<group>"; };
 		865B2F641E71632300719008 /* KindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDataSource.swift; sourceTree = "<group>"; };
 		865B2F661E7171AF00719008 /* CardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDataSource.swift; sourceTree = "<group>"; };
 		8669A0C01E697EEC0079E53A /* RecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderSuper.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */,
 				8627BFB41E0BADFD00C1A257 /* CurveCell.swift */,
 				8627BFB81E0BC83300C1A257 /* LineView.swift */,
+				8655E2A81EA5013B0064A468 /* LineViewData.swift */,
 			);
 			name = Chart;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				86D170431E51EAB70004E192 /* SetupFooter.swift in Sources */,
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,
 				864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */,
+				8655E2A91EA5013B0064A468 /* LineViewData.swift in Sources */,
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
 				86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */,
 				860593B01E8275F5008B6157 /* HoneybeeKind.swift in Sources */,
