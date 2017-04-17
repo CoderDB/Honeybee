@@ -34,7 +34,7 @@ class KindAddViewController: BaseCollectionViewController {
     }
     
     func fetchData() {
-        dataSource = KindAddDataSource()
+        dataSource = KindAddDataSource(items: [])
         collectionView.dataSource = dataSource
         
         header.containerView.backgroundColor = UIColor(hex: dataSource.item(at: selectedIdx).name)
