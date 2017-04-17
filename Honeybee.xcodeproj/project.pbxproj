@@ -320,6 +320,7 @@
 		861544471E4DA9D200A6EEBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8655E2A11EA365AB0064A468 /* Honeybee-Bridging-Header.h */,
 				86FD35861E9A33B0008B43F0 /* recorders_year_month.json */,
 				1EA5F0611E754DD300E90E7A /* colors.json */,
 				868C3F711E72A09D00D5443D /* icons.json */,
@@ -624,7 +625,6 @@
 				8697F5DC1E9CF209002923E4 /* KeychainWrapper.swift */,
 				86D170441E51EBA90004E192 /* Detail */,
 				866ED3B41E9FBDB00065162B /* PasswordGesture */,
-				8655E2A11EA365AB0064A468 /* Honeybee-Bridging-Header.h */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
