@@ -9,20 +9,34 @@
 import UIKit
 import RealmSwift
 
-class KindAddDataSource: NSObject {
+class KindAddDataSource: NSObject, DataSourceProvider {
     
-    fileprivate let items: [[HoneybeeColor]]
-    override init() {
+    typealias ItemType = [HoneybeeColor]
+    var items: [[HoneybeeColor]]
+    required init(items: [ItemType]) {
+        
         let all = Honeybee.default.allColors().toArray
         let used = all.filter { $0.isUsed }
         let unused = all.filter { !$0.isUsed }
         self.items = [unused, used]
-        
-        super.init()
     }
+    
     func item(at indexPath: IndexPath) -> HoneybeeColor {
         return items[indexPath.section][indexPath.item]
     }
+    
+//    fileprivate let items: [[HoneybeeColor]]
+//    override init() {
+//        let all = Honeybee.default.allColors().toArray
+//        let used = all.filter { $0.isUsed }
+//        let unused = all.filter { !$0.isUsed }
+//        self.items = [unused, used]
+//        
+//        super.init()
+//    }
+//    func item(at indexPath: IndexPath) -> HoneybeeColor {
+//        return items[indexPath.section][indexPath.item]
+//    }
 }
 
 extension KindAddDataSource: UICollectionViewDataSource {

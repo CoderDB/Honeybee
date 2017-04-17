@@ -8,7 +8,16 @@
 
 import Charts
 
+//protocol HoneybeeChartDataSource: class {
+//    associatedtype DataType
+//    var data: DataType? { get }
+//}
+
 class BarHeaderData: NSObject {
+//    typealias DataType = BarChartData
+//    var data: BarChartData?
+
+
     
     var data: BarChartData?
     
