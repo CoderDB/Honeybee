@@ -30,16 +30,27 @@ class BarHeader: UIView {
         
         axisFormatDelegate = self
         
-        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
-        gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
-        gradientLayer.cornerRadius = HB.Constant.cornerRadius
-        layer.addSublayer(gradientLayer)
+//        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
+//        gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
+//        gradientLayer.cornerRadius = HB.Constant.cornerRadius
+//        layer.addSublayer(gradientLayer)
+        layer.cornerRadius = HB.Constant.cornerRadius
+//        layer.borderWidth = 1
+        backgroundColor = .cyan
         setupUI()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    override var frame: CGRect {
+        didSet {
+            var newFrame = frame
+            newFrame.origin.x += 10
+//            newFrame.origin.y += 20
+            newFrame.size = CGSize(width: frame.width-20, height: frame.height)
+            super.frame = newFrame
+        }
+    }
     
     // ------------------------------
     // MARK: bar view
@@ -56,13 +67,13 @@ class BarHeader: UIView {
 //        
 //        // xAxis
         barV.xAxis.drawAxisLineEnabled = true      //不显示x轴
-        barV.xAxis.axisLineColor = .white
+        barV.xAxis.axisLineColor = .black
 //        barV.xAxis.axisLineDashPhase = 5
 //        barV.xAxis.yOffset = -50
         
         barV.xAxis.drawGridLinesEnabled = false     // 不显示竖格线
         barV.xAxis.labelPosition = .bottom
-        barV.xAxis.labelTextColor = .white
+        barV.xAxis.labelTextColor = .black
 //        barV.xAxis.drawLabelsEnabled = true        // x轴坐标值是否绘制 default true
         
         
@@ -103,7 +114,6 @@ class BarHeader: UIView {
     }()
     
     func setupUI() {
-        barView.xAxis.valueFormatter = axisFormatDelegate
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(20)
@@ -111,6 +121,8 @@ class BarHeader: UIView {
             make.bottom.equalTo(self).offset(-5)
             make.top.equalTo(self)
         }
+        
+        barView.xAxis.valueFormatter = axisFormatDelegate
     }
 }
 
