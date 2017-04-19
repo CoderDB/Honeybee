@@ -62,6 +62,10 @@ class BarHeader: UIView {
         barV.noDataText = "暂无数据"
         barV.chartDescription = nil
         
+        barV.noDataText = "没记录哦😢"
+        barV.noDataFont = HB.Font.h3
+        barV.noDataTextColor = .white
+        
 //        barV.leftAxis.drawZeroLineEnabled = false
 //        
 //        

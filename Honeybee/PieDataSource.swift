@@ -84,7 +84,24 @@ extension PieDataSource {
             models.append(dataModel)
         }
         result(models, thisMonthData, ncp)
+        
     }
+//    func totalPayOfOneMonth(recorders: [RLMRecorder], superRecorders: [RLMRecorderSuper]) -> Int {
+//        let keys = superRecorders.map { $0.name }
+//        
+//        var dict: [String: Double] = dictionaryWithValues(forKeys: keys) as! [String : Double]
+//        
+//        
+//        for k in dict.keys {
+//            for ele in recorders {
+//                if ele.category == k {
+//                    dict[k]! += ele.money
+//                }
+//            }
+//        }
+//        
+//        return 0
+//    }
     private func getRecorderSuper(recorders: [RLMRecorder]) -> [RLMRecorderSuper] {
         var set = Set<RLMRecorderSuper>()
         for ele in recorders {
