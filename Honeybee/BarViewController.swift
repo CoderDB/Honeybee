@@ -47,8 +47,8 @@ class BarViewController: BaseTableViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.register(BarCell.self)
-        header = BarHeader(height: 170)
-        tableView.tableHeaderView = header//BarHeader(height: 170)
+//        header = BarHeader(height: 170)
+//        tableView.tableHeaderView = header//BarHeader(height: 170)
         
         setNavRightItem("筛选")
         fetchData()
@@ -72,8 +72,10 @@ class BarViewController: BaseTableViewController {
     func fetchData() {
         tableView.dataSource = dataSource
         dataSource.fetch { (data) in
-        
-            tableView.tableHeaderView = BarHeader(height: 170, data: data)
+            
+            header = BarHeader(height: 200, data: data)
+            tableView.tableHeaderView = header
+            
         }
     }
 }
@@ -137,6 +139,16 @@ extension BarViewController {
     }
     
     func deviceOrientationDidChange(_ noti: Notification) {
+//        header.barView.snp.removeConstraints()
+//        header.barView.snp.updateConstraints { (make) in
+//            make.left.equalTo(view).offset(20)
+//            make.right.equalTo(view).offset(-20).priority(HB.Priority.mid)
+//            make.bottom.equalTo(view).offset(-20)
+//            make.top.equalTo(view).offset(44)
+////            make.bottom.equalTo(view.snp.bottom)
+////                        make.height.equalTo(view.snp.width).multipliedBy(UIScreen.main.bounds.width/UIScreen.main.bounds.height)
+//
+//        }
 //        let orientation = UIDevice.current.orientation
 //        print(orientation)
 //        let vc = TTestViewController()
