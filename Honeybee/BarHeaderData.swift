@@ -45,6 +45,8 @@ class BarHeaderData: NSObject {
         
         dataSet.valueTextColor = .black
         dataSet.valueFont = HB.Font.h6_number
+//        dataSet.valueColors = [.cyan, .black, .blue]
+        
         
         dataSet.valueFormatter = ivalueFormatterDelegate
         
@@ -66,6 +68,7 @@ class BarHeaderData: NSObject {
 
 extension BarHeaderData: IValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return value.isZero ? "" : "\(Int(value))"
+        
+        return value.isZero ? String() : "\(Int(value))"
     }
 }

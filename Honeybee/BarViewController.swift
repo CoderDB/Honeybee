@@ -127,7 +127,7 @@ extension BarViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -137,11 +137,15 @@ extension BarViewController {
     }
     
     func deviceOrientationDidChange(_ noti: Notification) {
-        let orientation = UIDevice.current.orientation
-        print(orientation)
-        if orientation.isLandscape {
-            
-        }
+//        let orientation = UIDevice.current.orientation
+//        print(orientation)
+//        let vc = TTestViewController()
+//        
+//        if orientation.isLandscape {
+//            present(vc, animated: false, completion: nil)
+//        } else {
+////            vc.dismiss(animated: false, completion: nil)
+//        }
     }
     
 }
