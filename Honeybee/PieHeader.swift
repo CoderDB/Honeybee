@@ -49,8 +49,8 @@ class PieHeader: UIView {
         pie.holeRadiusPercent = 0.4                     //圆心环半径 默认50%
         pie.transparentCircleRadiusPercent = 0.5        //中环半径
         
-//        pie.drawEntryLabelsEnabled = true
-        pie.drawEntryLabelsEnabled = false
+        pie.drawEntryLabelsEnabled = true
+//        pie.drawEntryLabelsEnabled = false
         
         pie.rotationEnabled = false
         pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)
@@ -81,6 +81,11 @@ class PieHeader: UIView {
         pie.layer.masksToBounds = true
         
         pie.backgroundColor = .cyan
+        
+        pie.noDataText = "没记录哦😢"
+        pie.noDataFont = HB.Font.h3
+        pie.noDataTextColor = .white
+//        pie.chartDescription?.text = ""
         
         
         return pie
