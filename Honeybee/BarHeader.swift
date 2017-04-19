@@ -119,17 +119,17 @@ class BarHeader: UIView {
         barV.layer.cornerRadius = HB.Constant.cornerRadius
         barV.layer.masksToBounds = true
         
-        barV.backgroundColor = UIColor.cyan
+        barV.backgroundColor = .cyan
         return barV
     }()
     func setupUI() {
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
-            
-            make.left.equalTo(self)//.offset(20)
-            make.right.equalTo(self)//.offset(-20).priority(HB.Priority.mid)
-            make.bottom.equalTo(self)//.offset(-50)
-            make.top.equalTo(self)
+            make.edges.equalTo(self)
+//            make.left.equalTo(self)//.offset(20)
+//            make.right.equalTo(self)//.offset(-20).priority(HB.Priority.mid)
+//            make.bottom.equalTo(self)//.offset(-50)
+//            make.top.equalTo(self)
             
 //            make.height.equalTo(self.snp.width).multipliedBy(UIScreen.main.bounds.width/UIScreen.main.bounds.height)
 //            make.height.equalTo(self.snp.width).multipliedBy((HB.Screen.w-40)/HB.Screen.h)
