@@ -21,17 +21,24 @@ class PieHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
-        gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
-        gradientLayer.cornerRadius = HB.Constant.cornerRadius
-        layer.addSublayer(gradientLayer)
+//        let gradientLayer = CAGradientLayer.gradient(colors: [UIColor(rgb: [248, 185, 81]), UIColor(rgb: [252, 91, 107])])
+//        gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
+//        gradientLayer.cornerRadius = HB.Constant.cornerRadius
+//        layer.addSublayer(gradientLayer)
 
         addPieView()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    override var frame: CGRect {
+        didSet {
+            var newFrame = frame
+            newFrame.origin.x += 10
+            newFrame.size = CGSize(width: frame.width-20, height: frame.height)
+            super.frame = newFrame
+        }
+    }
     
     
     lazy var pieView: PieChartView = {
@@ -69,6 +76,13 @@ class PieHeader: UIView {
         pie.chartDescription = nil
         
         pie.highlightPerTapEnabled = false
+        
+        pie.layer.cornerRadius = HB.Constant.cornerRadius
+        pie.layer.masksToBounds = true
+        
+        pie.backgroundColor = .cyan
+        
+        
         return pie
     }()
     
