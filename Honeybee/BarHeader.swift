@@ -107,6 +107,8 @@ class BarHeader: UIView {
         
         barV.drawValueAboveBarEnabled = true // 条形柱的值显示在条形柱上发
         
+        
+        barV.setExtraOffsets(left: 10, top: 0, right: 10, bottom: 10)
 
         barV.legend.enabled = false
         
@@ -118,19 +120,19 @@ class BarHeader: UIView {
         barV.layer.masksToBounds = true
         
         barV.backgroundColor = UIColor.cyan
-        
         return barV
     }()
-    
     func setupUI() {
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
+            
             make.left.equalTo(self)//.offset(20)
             make.right.equalTo(self)//.offset(-20).priority(HB.Priority.mid)
-//            make.bottom.equalTo(self).offset(-5)
+            make.bottom.equalTo(self)//.offset(-50)
             make.top.equalTo(self)
             
-            make.height.equalTo(self.snp.width).multipliedBy(UIScreen.main.bounds.width/UIScreen.main.bounds.height)
+//            make.height.equalTo(self.snp.width).multipliedBy(UIScreen.main.bounds.width/UIScreen.main.bounds.height)
+//            make.height.equalTo(self.snp.width).multipliedBy((HB.Screen.w-40)/HB.Screen.h)
         }
         
         barView.xAxis.valueFormatter = axisFormatDelegate
