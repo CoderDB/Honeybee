@@ -34,9 +34,9 @@ class BarHeader: UIView {
 //        gradientLayer.frame = CGRect(x: 10, y: 0, width: HB.Screen.w-20, height: frame.height)
 //        gradientLayer.cornerRadius = HB.Constant.cornerRadius
 //        layer.addSublayer(gradientLayer)
-        layer.cornerRadius = HB.Constant.cornerRadius
+//        layer.cornerRadius = HB.Constant.cornerRadius
 //        layer.borderWidth = 1
-        backgroundColor = .cyan
+//        backgroundColor = .cyan
         setupUI()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -106,20 +106,31 @@ class BarHeader: UIView {
         barV.leftAxis.drawZeroLineEnabled = false
         
         barV.drawValueAboveBarEnabled = true // 条形柱的值显示在条形柱上发
+        
 
         barV.legend.enabled = false
         
         barV.isUserInteractionEnabled = false
+        
+        
+        
+        barV.layer.cornerRadius = HB.Constant.cornerRadius
+        barV.layer.masksToBounds = true
+        
+        barV.backgroundColor = UIColor.cyan
+        
         return barV
     }()
     
     func setupUI() {
         addSubview(barView)
         barView.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(20)
-            make.right.equalTo(self).offset(-20).priority(HB.Priority.mid)
-            make.bottom.equalTo(self).offset(-5)
+            make.left.equalTo(self)//.offset(20)
+            make.right.equalTo(self)//.offset(-20).priority(HB.Priority.mid)
+//            make.bottom.equalTo(self).offset(-5)
             make.top.equalTo(self)
+            
+            make.height.equalTo(self.snp.width).multipliedBy(UIScreen.main.bounds.width/UIScreen.main.bounds.height)
         }
         
         barView.xAxis.valueFormatter = axisFormatDelegate
