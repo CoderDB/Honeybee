@@ -34,7 +34,8 @@ class CardViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        setNavTitle("记账")
+//        setNavTitle("记账")
+        navTitleView()
         addLeftNavItem()
         addHeader()
         addCollectionView()
@@ -81,6 +82,15 @@ class CardViewController: BaseCollectionViewController {
 
 // MARK: UI / Event
 extension CardViewController {
+    func navTitleView() {
+        let segment = UISegmentedControl(items: ["支出", "收入"])
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+        navigationItem.titleView = segment
+    }
+    func segmentChanged(_ seg: UISegmentedControl) {
+        
+    }
     func addLeftNavItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
         btn.setImage(UIImage(named: "left_arrow"), for: .normal)
