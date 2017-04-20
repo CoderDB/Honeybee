@@ -30,12 +30,13 @@ class PieHeaderData: NSObject {
         }
         let dataSet = PieChartDataSet(values: dataEntries, label: nil)
         dataSet.colors = colors
-        dataSet.sliceSpace = 5.0
+        dataSet.sliceSpace = 10.0
         
         dataSet.valueTextColor = .white
         dataSet.valueFont = HB.Font.h5_number
         
         dataSet.entryLabelFont = HB.Font.h4
+        
         
         // IValueFormatter
         dataSet.valueFormatter = ivalueFormatterDelegate

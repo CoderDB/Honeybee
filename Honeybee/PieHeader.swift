@@ -44,13 +44,14 @@ class PieHeader: UIView {
     lazy var pieView: PieChartView = {
         let pie = PieChartView()
         
+        
         pie.drawHoleEnabled = true                      //中环，圆心环是否显示
         pie.holeColor = .clear                          //圆心环颜色
         pie.holeRadiusPercent = 0.4                     //圆心环半径 默认50%
         pie.transparentCircleRadiusPercent = 0.5        //中环半径
         
-        pie.drawEntryLabelsEnabled = true
-//        pie.drawEntryLabelsEnabled = false
+//        pie.drawEntryLabelsEnabled = true
+        pie.drawEntryLabelsEnabled = false              // 分类名不显示
         
         pie.rotationEnabled = false
         pie.animate(xAxisDuration: 1, yAxisDuration: 1, easingX: nil, easingY: nil)

@@ -50,24 +50,24 @@ class BarViewController: BaseTableViewController {
 //        header = BarHeader(height: 170)
 //        tableView.tableHeaderView = header//BarHeader(height: 170)
         
-        setNavRightItem("筛选")
+//        setNavRightItem("筛选")
         fetchData()
     }
     
-    override func navRightItemClicked(_ btn: UIButton) {
-        let destVC = BarPopoverController()
-        destVC.modalPresentationStyle = .popover
-        let popoverVC = destVC.popoverPresentationController!
-        popoverVC.backgroundColor = .white
-        popoverVC.delegate = self
-        popoverVC.sourceView = btn
-        popoverVC.sourceRect = btn.bounds
-        popoverVC.permittedArrowDirections = .up
-        destVC.didSelectRow = {row in
-            print("----\(row)")
-        }
-        present(destVC, animated: true, completion: nil)
-    }
+//    override func navRightItemClicked(_ btn: UIButton) {
+//        let destVC = BarPopoverController()
+//        destVC.modalPresentationStyle = .popover
+//        let popoverVC = destVC.popoverPresentationController!
+//        popoverVC.backgroundColor = .white
+//        popoverVC.delegate = self
+//        popoverVC.sourceView = btn
+//        popoverVC.sourceRect = btn.bounds
+//        popoverVC.permittedArrowDirections = .up
+//        destVC.didSelectRow = {row in
+//            print("----\(row)")
+//        }
+//        present(destVC, animated: true, completion: nil)
+//    }
     
     func fetchData() {
         tableView.dataSource = dataSource
