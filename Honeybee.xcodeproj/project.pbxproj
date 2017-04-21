@@ -616,8 +616,8 @@
 			isa = PBXGroup;
 			children = (
 				86A939A51EAA00E50085E996 /* AddRecorderController.swift */,
-				86A939A81EAA0CAC0085E996 /* Income */,
 				86A939A71EAA0C9F0085E996 /* Payout */,
+				86A939A81EAA0CAC0085E996 /* Income */,
 				86E574711E4C6ED5001255CD /* Keyboard */,
 				86E574721E4C6EE7001255CD /* PresentTransition */,
 			);
