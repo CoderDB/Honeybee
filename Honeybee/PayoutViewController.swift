@@ -33,9 +33,7 @@ class PayoutViewController: BaseCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
         
-        addLeftNavItem()
         addHeader()
         addCollectionView()
         addKeyboard()
@@ -81,17 +79,6 @@ class PayoutViewController: BaseCollectionViewController {
 
 // MARK: UI / Event
 extension PayoutViewController {
-    func addLeftNavItem() {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
-        btn.setImage(UIImage(named: "left_arrow"), for: .normal)
-        btn.addTarget(self, action: #selector(navLeftItemAction), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
-    }
-    func navLeftItemAction() {
-        dismiss(animated: true) { [weak self] in
-            self?.shouldReloadData?()
-        }
-    }
     func addHeader() {
         header = PayoutHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
@@ -101,7 +88,7 @@ extension PayoutViewController {
     }
     func addCollectionView() {
         layout.itemSize = CGSize(width: 60, height: 70)
-        layout.sectionHeadersPinToVisibleBounds = false
+        layout.sectionHeadersPinToVisibleBounds = true
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.register(PayoutCell.self)
@@ -217,6 +204,7 @@ extension PayoutViewController: HBKeyboardProtocol, AlertProvider {
         }
     }
     func completed(text: Double) {
+        guard recorderToWrite != nil else { return }
         header.numberLabel.text = "\(text)"
         
         recorderToWrite.money = text
