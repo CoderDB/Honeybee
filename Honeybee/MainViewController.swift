@@ -157,7 +157,7 @@ extension MainViewController {
         view.addSubview(addBtn)
     }
     func addBtnClicked() {
-        let vc = AddViewController()//CardViewController()
+        let vc = AddRecorderController()//CardViewController()
 //        vc.shouldReloadData = { [unowned self] in
 //            self.fetchData()
 //        }

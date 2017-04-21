@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardCollectionCell: BaseCollectionViewCell {
+class PayoutCell: BaseCollectionViewCell {
   
     var model: HoneybeeItem? {
         didSet {
