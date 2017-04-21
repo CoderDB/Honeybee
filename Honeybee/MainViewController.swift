@@ -157,10 +157,11 @@ extension MainViewController {
         view.addSubview(addBtn)
     }
     func addBtnClicked() {
-        let vc = CardViewController()
-        vc.shouldReloadData = { [unowned self] in
-            self.fetchData()
-        }
+        let vc = AddViewController()//CardViewController()
+//        vc.shouldReloadData = { [unowned self] in
+//            self.fetchData()
+//        }
+        
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true, completion: nil)
     }
