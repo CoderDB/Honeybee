@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardHeader: BaseHeader {
+class PayoutHeader: BaseHeader {
     
     lazy var imgView = UIImageView(image: UIImage(named: "meal"))
     

@@ -14,18 +14,17 @@ class AddRecorderController: BaseViewController {
         super.viewDidLoad()
         
         navTitleView()
-        addVC()
+        addVCs()
     }
     
     var currentVC: UIViewController? = nil
-    let payoutVC = CardViewController()
+    let payoutVC = PayoutViewController()
     let incomeVC = IncomeViewController()
-    func addVC() {
-        view.addSubview(payoutVC.view)
+    func addVCs() {
         addChildViewController(payoutVC)
-        
         addChildViewController(incomeVC)
         
+        view.addSubview(payoutVC.view)
         currentVC = payoutVC
     }
     

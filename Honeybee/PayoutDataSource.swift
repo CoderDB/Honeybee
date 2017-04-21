@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardDataSource: NSObject, DataSourceProvider {
+class PayoutDataSource: NSObject, DataSourceProvider {
     typealias ItemType = HoneybeeKind
     var items: [ItemType]
     required init(items: [ItemType]) {
@@ -21,7 +21,7 @@ class CardDataSource: NSObject, DataSourceProvider {
 
 // MARK: UICollectionViewDataSource
 
-extension CardDataSource: UICollectionViewDataSource {
+extension PayoutDataSource: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return items.count
     }
@@ -29,14 +29,14 @@ extension CardDataSource: UICollectionViewDataSource {
         return items[section].items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardCollectionCell.self)", for: indexPath)
-        if let cell = cell as? CardCollectionCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(PayoutCell.self)", for: indexPath)
+        if let cell = cell as? PayoutCell {
             cell.model = items[indexPath.section].items[indexPath.item]
         }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CardSectionHeader.self)", for: indexPath) as! CardSectionHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(PayoutSectionHeader.self)", for: indexPath) as! PayoutSectionHeader
         header.titleLabel.text = items[indexPath.section].name
         return header
     }

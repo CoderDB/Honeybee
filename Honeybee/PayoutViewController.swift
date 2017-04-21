@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CardViewController: BaseCollectionViewController {
+class PayoutViewController: BaseCollectionViewController {
     
     var shouldReloadData: (() -> Void)?
     var notiToken: NotificationToken? = nil
@@ -26,16 +26,15 @@ class CardViewController: BaseCollectionViewController {
         keyboard.delegate = self
         return keyboard
     }()
-    var header: CardHeader!
-    var dataSource: CardDataSource!
+    var header: PayoutHeader!
+    var dataSource: PayoutDataSource!
     
     var lastOffsetY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-//        setNavTitle("记账")
-        navTitleView()
+        
         addLeftNavItem()
         addHeader()
         addCollectionView()
@@ -45,7 +44,7 @@ class CardViewController: BaseCollectionViewController {
     func fetchData() {
         let kinds = Honeybee.default.allKinds()
         
-        dataSource = CardDataSource(items: Array(kinds))
+        dataSource = PayoutDataSource(items: Array(kinds))
         collectionView.dataSource = dataSource
         
         //        notiToken = dataSource.items._addNotificationBlock { (change) in
@@ -55,7 +54,7 @@ class CardViewController: BaseCollectionViewController {
         //        }
         
         notiToken = Database.default.notification { [unowned self] (_, realm) in
-            self.dataSource = CardDataSource(items: Array(realm.objects(HoneybeeKind.self)))
+            self.dataSource = PayoutDataSource(items: Array(realm.objects(HoneybeeKind.self)))
             self.collectionView.dataSource = self.dataSource
         }
         //            .addNotificationBlock({ [weak self] (changes) in
@@ -81,16 +80,7 @@ class CardViewController: BaseCollectionViewController {
 
 
 // MARK: UI / Event
-extension CardViewController {
-    func navTitleView() {
-        let segment = UISegmentedControl(items: ["支出", "收入"])
-        segment.selectedSegmentIndex = 0
-        segment.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
-        navigationItem.titleView = segment
-    }
-    func segmentChanged(_ seg: UISegmentedControl) {
-        
-    }
+extension PayoutViewController {
     func addLeftNavItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
         btn.setImage(UIImage(named: "left_arrow"), for: .normal)
@@ -103,7 +93,7 @@ extension CardViewController {
         }
     }
     func addHeader() {
-        header = CardHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
+        header = PayoutHeader(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: 115))
         view.addSubview(header)
         header.rightButtonAction = {[unowned self] _ in
             self.navigationController?.pushViewController(KindViewController(), animated: true)
@@ -114,8 +104,8 @@ extension CardViewController {
         layout.sectionHeadersPinToVisibleBounds = false
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 50)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
-        collectionView.register(CardCollectionCell.self)
-        collectionView.register(CardSectionHeader.self)
+        collectionView.register(PayoutCell.self)
+        collectionView.register(PayoutSectionHeader.self)
         collectionView.snp.updateConstraints { (make) in
             make.top.equalTo(view).offset(64+115)
         }
@@ -132,7 +122,7 @@ extension CardViewController {
 
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension CardViewController {
+extension PayoutViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let kind = dataSource.item(at: indexPath)
         header.containerView.backgroundColor = UIColor(hex: kind.color)
@@ -152,7 +142,7 @@ extension CardViewController {
 
 
 // MARK: UIScrollViewDelegate
-extension CardViewController {
+extension PayoutViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastOffsetY = scrollView.contentOffset.y
     }
@@ -183,7 +173,7 @@ extension CardViewController {
 
 // MARK: HBKeyboardProtocol
 import ObjectMapper
-extension CardViewController: HBKeyboardProtocol, AlertProvider {
+extension PayoutViewController: HBKeyboardProtocol, AlertProvider {
     
     // result
     func inputing(text: String) {

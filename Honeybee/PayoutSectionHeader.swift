@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardSectionHeader: UICollectionReusableView {
+class PayoutSectionHeader: UICollectionReusableView {
 
     lazy var titleLabel: UILabel = {
         let label = UILabel()
