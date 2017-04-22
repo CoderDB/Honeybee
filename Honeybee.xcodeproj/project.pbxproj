@@ -108,6 +108,8 @@
 		86D170461E51EBCE0004E192 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170451E51EBCE0004E192 /* ProfileViewController.swift */; };
 		86D170481E51EBE70004E192 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170471E51EBE70004E192 /* BaseViewController.swift */; };
 		86D1704A1E51EDCB0004E192 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D170491E51EDCB0004E192 /* ProfileHeader.swift */; };
+		86D9EBC21EAAFF0F00B3C6B4 /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EBC11EAAFF0F00B3C6B4 /* IncomeCell.swift */; };
+		86D9EBC41EAB008D00B3C6B4 /* IncomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D9EBC31EAB008D00B3C6B4 /* IncomeDataSource.swift */; };
 		86DAD5911E865218004A7AD7 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DAD5901E865218004A7AD7 /* HUD.swift */; };
 		86DAD5961E86B288004A7AD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DAD5951E86B288004A7AD7 /* LoginViewController.swift */; };
 		86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */; };
@@ -256,6 +258,8 @@
 		86D170451E51EBCE0004E192 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86D170471E51EBE70004E192 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		86D170491E51EDCB0004E192 /* ProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		86D9EBC11EAAFF0F00B3C6B4 /* IncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
+		86D9EBC31EAB008D00B3C6B4 /* IncomeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeDataSource.swift; sourceTree = "<group>"; };
 		86DAD5901E865218004A7AD7 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		86DAD5951E86B288004A7AD7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86DEBC9E1E4B10F9003F8FCF /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
@@ -531,6 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				86A939A31EAA00A30085E996 /* IncomeViewController.swift */,
+				86D9EBC11EAAFF0F00B3C6B4 /* IncomeCell.swift */,
+				86D9EBC31EAB008D00B3C6B4 /* IncomeDataSource.swift */,
 			);
 			name = Income;
 			sourceTree = "<group>";
@@ -1085,6 +1091,7 @@
 				1E4219191E78110900274D59 /* BarDataSource.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
+				86D9EBC41EAB008D00B3C6B4 /* IncomeDataSource.swift in Sources */,
 				862D90011E881AB4003801BA /* RegisterViewController.swift in Sources */,
 				1E1BA4981E781F5500CD2ABF /* PieDataSource.swift in Sources */,
 				860593B41E827698008B6157 /* HoneybeeColor.swift in Sources */,
@@ -1114,6 +1121,7 @@
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
 				8600D8FC1E9CE07100FA93D7 /* TentacleView.swift in Sources */,
+				86D9EBC21EAAFF0F00B3C6B4 /* IncomeCell.swift in Sources */,
 				8654B4B71E90F4A4000CD200 /* AlarmManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
