@@ -9,6 +9,9 @@
 import UIKit
 
 class IncomeViewController: BaseViewController {
+    
+    var collectionView: UICollectionView!
+    
 
     lazy var salaryBtn: UIButton = {
         let btn = UIButton()
@@ -71,31 +74,55 @@ class IncomeViewController: BaseViewController {
     }
     
     func setupUI() {
-        view.addSubview(salaryBtn)
-        view.addSubview(partTimeBtn)
-        view.addSubview(otherBtn)
-        view.addSubview(addBtn)
         
-        salaryBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(64+20)
-            make.right.equalTo(view.snp.centerX).offset(-20)
-            make.width.equalTo(100)
-            make.height.equalTo(50)
-        }
-        partTimeBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.centerX).offset(20)
-            make.top.height.width.equalTo(salaryBtn)
-        }
-        otherBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(salaryBtn.snp.bottom).offset(10)
-            make.left.height.width.equalTo(salaryBtn)
-        }
-        addBtn.snp.makeConstraints { (make) in
-            make.left.height.width.equalTo(partTimeBtn)
-            make.top.equalTo(otherBtn)
-        }
+        let layout = UICollectionViewFlowLayout()
+        
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.register(IncomeCell.self)
+        
+        view.addSubview(collectionView)
+        
+        
+//        view.addSubview(salaryBtn)
+//        view.addSubview(partTimeBtn)
+//        view.addSubview(otherBtn)
+//        view.addSubview(addBtn)
+//        salaryBtn.addTarget(self, action: #selector(salaryBtnClicked), for: .touchUpInside)
+//        partTimeBtn.addTarget(self, action: #selector(partTimeBtnClicked), for: .touchUpInside)
+//        otherBtn.addTarget(self, action: #selector(otherBtnClicked), for: .touchUpInside)
+//        addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
+//        
+//        salaryBtn.snp.makeConstraints { (make) in
+//            make.top.equalTo(view).offset(64+20)
+//            make.right.equalTo(view.snp.centerX).offset(-20)
+//            make.width.equalTo(100)
+//            make.height.equalTo(50)
+//        }
+//        partTimeBtn.snp.makeConstraints { (make) in
+//            make.left.equalTo(view.snp.centerX).offset(20)
+//            make.top.height.width.equalTo(salaryBtn)
+//        }
+//        otherBtn.snp.makeConstraints { (make) in
+//            make.top.equalTo(salaryBtn.snp.bottom).offset(10)
+//            make.left.height.width.equalTo(salaryBtn)
+//        }
+//        addBtn.snp.makeConstraints { (make) in
+//            make.left.height.width.equalTo(partTimeBtn)
+//            make.top.equalTo(otherBtn)
+//        }
     }
-    
+    func salaryBtnClicked() {
+        
+    }
+    func partTimeBtnClicked() {
+        
+    }
+    func otherBtnClicked() {
+        
+    }
+    func addBtnClicked() {
+        
+    }
 
     func createBtn(title: String) -> UIButton {
         let btn = UIButton()
