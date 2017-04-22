@@ -52,7 +52,7 @@ class AddRecorderController: BaseViewController {
     
     func addLeftNavItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 25))
-        btn.setImage(UIImage(named: "left_arrow"), for: .normal)
+        btn.setImage(UIImage(named: "xmark"), for: .normal)
         btn.addTarget(self, action: #selector(navLeftItemAction), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }
