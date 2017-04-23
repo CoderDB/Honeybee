@@ -23,6 +23,7 @@ class IncomeViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 80, height: 40)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
         collectionView.register(IncomeCell.self)
         
         view.addSubview(collectionView)
