@@ -20,6 +20,7 @@
 		8600D8F81E9CDBE600FA93D7 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8F71E9CDBE600FA93D7 /* PasswordView.swift */; };
 		8600D8FA1E9CDF3300FA93D7 /* PasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */; };
 		8600D8FC1E9CE07100FA93D7 /* TentacleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */; };
+		86020C9C1EACC30400F5EFE4 /* HoneyBeeIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86020C9B1EACC30400F5EFE4 /* HoneyBeeIncome.swift */; };
 		860593B01E8275F5008B6157 /* HoneybeeKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593AF1E8275F5008B6157 /* HoneybeeKind.swift */; };
 		860593B21E827654008B6157 /* HoneybeeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593B11E827654008B6157 /* HoneybeeIcon.swift */; };
 		860593B41E827698008B6157 /* HoneybeeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593B31E827698008B6157 /* HoneybeeColor.swift */; };
@@ -163,6 +164,7 @@
 		8600D8F71E9CDBE600FA93D7 /* PasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordButton.swift; sourceTree = "<group>"; };
 		8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TentacleView.swift; sourceTree = "<group>"; };
+		86020C9B1EACC30400F5EFE4 /* HoneyBeeIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneyBeeIncome.swift; sourceTree = "<group>"; };
 		860593AF1E8275F5008B6157 /* HoneybeeKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeKind.swift; sourceTree = "<group>"; };
 		860593B11E827654008B6157 /* HoneybeeIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeIcon.swift; sourceTree = "<group>"; };
 		860593B31E827698008B6157 /* HoneybeeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeColor.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				86A939A31EAA00A30085E996 /* IncomeViewController.swift */,
+				86020C9B1EACC30400F5EFE4 /* HoneyBeeIncome.swift */,
 				86D9EBC11EAAFF0F00B3C6B4 /* IncomeCell.swift */,
 				86D9EBC31EAB008D00B3C6B4 /* IncomeDataSource.swift */,
 			);
@@ -1073,6 +1076,7 @@
 				868C3F741E72B5DD00D5443D /* DataSource.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
 				866C91341E6E84F5003026DD /* KindCell.swift in Sources */,
+				86020C9C1EACC30400F5EFE4 /* HoneyBeeIncome.swift in Sources */,
 				866C91321E6E80D3003026DD /* KindViewController.swift in Sources */,
 				86BDA6AE1E714B3F00AEFBC4 /* KindDetailDataSource.swift in Sources */,
 				865184D51E7D6D3600EE940E /* MianPopController.swift in Sources */,

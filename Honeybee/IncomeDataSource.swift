@@ -10,8 +10,8 @@ import UIKit
 
 class IncomeDataSource: NSObject, DataSourceProvider {
 
-    typealias ItemType = HoneybeeKind
-    var items: [HoneybeeKind]
+    typealias ItemType = HoneybeeIncome
+    var items: [HoneybeeIncome]
     required init(items: [ItemType]) {
         self.items = items
     }

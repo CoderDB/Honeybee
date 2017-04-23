@@ -26,7 +26,7 @@ class IncomeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func config(model: HoneybeeKind) {
+    func config(model: HoneybeeIncome) {
         titleLabel.text = model.name
         backgroundColor = UIColor(hex: model.color)
     }
