@@ -19,7 +19,7 @@ class IncomeCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = HB.Constant.cornerRadius
+        layer.cornerRadius = HB.Constant.cornerRadius * 0.5
         setupUI()
     }
     required init?(coder aDecoder: NSCoder) {

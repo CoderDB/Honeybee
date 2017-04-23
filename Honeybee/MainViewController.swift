@@ -79,6 +79,7 @@ class MainViewController: BaseTableViewController {
             HoneybeeKind.fetchAllKinds()
             HoneybeeColor.fetchAllColors()
             HoneybeeIcon.fetchAllIcons()
+            HoneybeeIncome.fetchAllIncomes()
         }
     }
     deinit {
