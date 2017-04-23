@@ -24,6 +24,7 @@ class IncomeViewController: BaseViewController {
         layout.itemSize = CGSize(width: 80, height: 40)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.register(IncomeCell.self)
         
         view.addSubview(collectionView)
@@ -34,6 +35,7 @@ class IncomeViewController: BaseViewController {
     }
     
     func fetchData() {
+        
         let incomes = Honeybee.default.all(HoneybeeIncome.self)
         dataSource = IncomeDataSource(items: incomes.toArray)
         collectionView.dataSource = dataSource
