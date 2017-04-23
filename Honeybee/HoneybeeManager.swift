@@ -26,4 +26,13 @@ class Honeybee {
     func allColors() -> Results<HoneybeeColor> {
         return Database.default.all(HoneybeeColor.self)
     }
+    func addIncomes() -> Results<HoneybeeIncome> {
+        return Database.default.all(HoneybeeIncome.self)
+    }
+    
+    
+    ///
+    func all<T: RLMModel>(_: T.Type) -> Results<T> {
+        return Database.default.all(T.self)
+    }
 }

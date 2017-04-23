@@ -34,8 +34,8 @@ class IncomeViewController: BaseViewController {
     }
     
     func fetchData() {
-        let kinds = Honeybee.default.allKinds()
-        dataSource = IncomeDataSource(items: kinds.toArray)
+        let incomes = Honeybee.default.all(HoneybeeIncome.self)
+        dataSource = IncomeDataSource(items: incomes.toArray)
         collectionView.dataSource = dataSource
     }
 }

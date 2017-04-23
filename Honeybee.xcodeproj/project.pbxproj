@@ -21,6 +21,7 @@
 		8600D8FA1E9CDF3300FA93D7 /* PasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */; };
 		8600D8FC1E9CE07100FA93D7 /* TentacleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */; };
 		86020C9C1EACC30400F5EFE4 /* HoneyBeeIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86020C9B1EACC30400F5EFE4 /* HoneyBeeIncome.swift */; };
+		86020C9E1EACC6A600F5EFE4 /* incomes.json in Resources */ = {isa = PBXBuildFile; fileRef = 86020C9D1EACC6A600F5EFE4 /* incomes.json */; };
 		860593B01E8275F5008B6157 /* HoneybeeKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593AF1E8275F5008B6157 /* HoneybeeKind.swift */; };
 		860593B21E827654008B6157 /* HoneybeeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593B11E827654008B6157 /* HoneybeeIcon.swift */; };
 		860593B41E827698008B6157 /* HoneybeeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860593B31E827698008B6157 /* HoneybeeColor.swift */; };
@@ -165,6 +166,7 @@
 		8600D8F91E9CDF3300FA93D7 /* PasswordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordButton.swift; sourceTree = "<group>"; };
 		8600D8FB1E9CE07100FA93D7 /* TentacleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TentacleView.swift; sourceTree = "<group>"; };
 		86020C9B1EACC30400F5EFE4 /* HoneyBeeIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneyBeeIncome.swift; sourceTree = "<group>"; };
+		86020C9D1EACC6A600F5EFE4 /* incomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = incomes.json; sourceTree = "<group>"; };
 		860593AF1E8275F5008B6157 /* HoneybeeKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeKind.swift; sourceTree = "<group>"; };
 		860593B11E827654008B6157 /* HoneybeeIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeIcon.swift; sourceTree = "<group>"; };
 		860593B31E827698008B6157 /* HoneybeeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoneybeeColor.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				8655E2A11EA365AB0064A468 /* Honeybee-Bridging-Header.h */,
+				86020C9D1EACC6A600F5EFE4 /* incomes.json */,
 				86FD35861E9A33B0008B43F0 /* recorders_year_month.json */,
 				1EA5F0611E754DD300E90E7A /* colors.json */,
 				868C3F711E72A09D00D5443D /* icons.json */,
@@ -850,6 +853,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86020C9E1EACC6A600F5EFE4 /* incomes.json in Resources */,
 				1EA5F0621E754DD300E90E7A /* colors.json in Resources */,
 				868C3F721E72A09D00D5443D /* icons.json in Resources */,
 				866C562E1E6D78DB00010D3F /* category_color.json in Resources */,
