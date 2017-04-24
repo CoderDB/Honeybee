@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class IncomeViewController: BaseViewController {
     
     var collectionView: UICollectionView!
     var dataSource: IncomeDataSource!
     
-    
+    var notiToken: NotificationToken? = nil
     
     fileprivate var alertController: UIAlertController!
     var newKindName: String! = nil
@@ -42,7 +43,9 @@ class IncomeViewController: BaseViewController {
     
     func fetchData() {
         
+        
         var incomes = Honeybee.default.all(HoneybeeIncome.self).toArray
+        
         let last = HoneybeeIncome()
         last.color = "RRR"
         last.name = "+"
@@ -50,6 +53,25 @@ class IncomeViewController: BaseViewController {
         
         dataSource = IncomeDataSource(items: incomes)
         collectionView.dataSource = dataSource
+        
+        
+        
+        notiToken = Database.default.notification({ [unowned self] (_, realm) in
+            var incomes = realm.objects(HoneybeeIncome.self).toArray
+            
+            let last = HoneybeeIncome()
+            last.color = "RRR"
+            last.name = "+"
+            incomes.append(last)
+            
+            self.dataSource = IncomeDataSource(items: incomes)
+            self.collectionView.dataSource = self.dataSource
+        })
+       
+    }
+    
+    deinit {
+        notiToken = nil
     }
 }
 
