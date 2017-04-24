@@ -26,6 +26,7 @@ class IncomeViewController: BaseViewController {
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 50, right: 15)
         collectionView.register(IncomeCell.self)
+        collectionView.delegate = self
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
@@ -36,8 +37,25 @@ class IncomeViewController: BaseViewController {
     
     func fetchData() {
         
-        let incomes = Honeybee.default.all(HoneybeeIncome.self)
-        dataSource = IncomeDataSource(items: incomes.toArray)
+        var incomes = Honeybee.default.all(HoneybeeIncome.self).toArray
+        let last = HoneybeeIncome()
+        last.color = "RRR"
+        last.name = "+"
+        incomes.append(last)
+        
+        dataSource = IncomeDataSource(items: incomes)
         collectionView.dataSource = dataSource
+    }
+}
+
+
+extension IncomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == dataSource.items.count - 1 {
+            print("最后")
+        } else {
+            
+        }
     }
 }
