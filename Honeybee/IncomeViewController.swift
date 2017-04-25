@@ -16,14 +16,31 @@ class IncomeViewController: BaseViewController {
     
     var notiToken: NotificationToken? = nil
     
+    lazy var hb_keyboard: HBKeyboard = {
+        let keyboard = HBKeyboard()
+        keyboard.calculateView.delegate = self
+        keyboard.dateView.delegate = self
+        keyboard.delegate = self
+        return keyboard
+    }()
+    
     fileprivate var alertController: UIAlertController!
     var newKindName: String! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         fetchData()
+        addKeyboard()
     }
     
+    func addKeyboard() {
+        view.addSubview(hb_keyboard)
+        hb_keyboard.snp.makeConstraints { (make) in
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(view).offset(10)
+            make.height.equalTo(250)
+        }
+    }
     func setupUI() {
         
         let layout = UICollectionViewFlowLayout()
@@ -141,5 +158,29 @@ extension IncomeViewController: UICollectionViewDelegate {
                 newKindName = targetText
             }
         }
+    }
+}
+
+// -------------------------------------------------------
+// MARK: HBKeyboardProtocol
+// -------------------------------------------------------
+extension IncomeViewController: HBKeyboardProtocol {
+    
+    // result
+    func inputing(text: String) {
+    }
+    func deleted(text: String) {
+    }
+    func completed(text: Double) {
+    }
+    
+    // Date
+    func selected(date: String) {
+    }
+    func callCamera() {
+        print("---call camera")
+    }
+    func remarkBtnAction() {
+        hb_keyboard.down()
     }
 }
