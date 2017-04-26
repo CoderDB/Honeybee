@@ -89,6 +89,7 @@
 		8699664C1DFAE20B006EAD41 /* HBPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */; };
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		869C43AA1EB0AF69009548B5 /* AccountBindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C43A91EB0AF69009548B5 /* AccountBindController.swift */; };
+		869C43AD1EB0B1B3009548B5 /* AccountBindHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C43AC1EB0B1B3009548B5 /* AccountBindHeader.swift */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
 		86A939A41EAA00A30085E996 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A939A31EAA00A30085E996 /* IncomeViewController.swift */; };
 		86A939A61EAA00E50085E996 /* AddRecorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A939A51EAA00E50085E996 /* AddRecorderController.swift */; };
@@ -243,6 +244,7 @@
 		8699664B1DFAE20B006EAD41 /* HBPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationAnimator.swift; sourceTree = "<group>"; };
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		869C43A91EB0AF69009548B5 /* AccountBindController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBindController.swift; sourceTree = "<group>"; };
+		869C43AC1EB0B1B3009548B5 /* AccountBindHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBindHeader.swift; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		86A939A31EAA00A30085E996 /* IncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		86A939A51EAA00E50085E996 /* AddRecorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecorderController.swift; sourceTree = "<group>"; };
@@ -528,6 +530,15 @@
 			name = Bar;
 			sourceTree = "<group>";
 		};
+		869C43AB1EB0B18A009548B5 /* AccountBind */ = {
+			isa = PBXGroup;
+			children = (
+				869C43A91EB0AF69009548B5 /* AccountBindController.swift */,
+				869C43AC1EB0B1B3009548B5 /* AccountBindHeader.swift */,
+			);
+			name = AccountBind;
+			sourceTree = "<group>";
+		};
 		86A939A71EAA0C9F0085E996 /* Payout */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,8 +668,8 @@
 		86E5746F1E4C6E88001255CD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				869C43AB1EB0B18A009548B5 /* AccountBind */,
 				863703AD1DEEB8BB00BC1153 /* SetupViewController.swift */,
-				869C43A91EB0AF69009548B5 /* AccountBindController.swift */,
 				867A9EC11E9E726B00537925 /* TouchId.swift */,
 				1E1C0C801E76E5D800AF940E /* SetupDataSource.swift */,
 				86D1702C1E51BA560004E192 /* SetupHeader.swift */,
@@ -1083,6 +1094,7 @@
 				86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */,
 				8697CEDE1E5D9E4100993CFE /* PieCell.swift in Sources */,
 				8697CEEB1E5DADED00993CFE /* BarCell.swift in Sources */,
+				869C43AD1EB0B1B3009548B5 /* AccountBindHeader.swift in Sources */,
 				8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */,
 				868C3F741E72B5DD00D5443D /* DataSource.swift in Sources */,
 				8627434E1DF2A8F8002597E1 /* DateView.swift in Sources */,
