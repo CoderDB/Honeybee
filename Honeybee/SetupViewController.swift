@@ -89,14 +89,15 @@ extension SetupViewController {
     }
     
     func bindingAccounts() {
-        let actionSheet = AccountBindingController(title: "", message: "", preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
-            print("cancel")
-        }
-        
-        actionSheet.addAction(cancelAction)
-        present(actionSheet, animated: true, completion: nil)
+        navigationController?.pushViewController(AccountBindController(), animated: true)
+//        let actionSheet = AccountBindingController(title: "", message: "", preferredStyle: .actionSheet)
+//        
+//        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+//            print("cancel")
+//        }
+//        
+//        actionSheet.addAction(cancelAction)
+//        present(actionSheet, animated: true, completion: nil)
         
     }
 }
