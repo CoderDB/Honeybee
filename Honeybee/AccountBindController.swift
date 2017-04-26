@@ -42,13 +42,7 @@ extension AccountBindController {
     func addTableView() {
         tableView.rowHeight = HB.Constant.rowHeight
         tableView.register(SetupCell.self)
-        let header = SetupHeader(height: 135)
-        
-        header.rightButtonAction = { [weak self] _ in
-            self?.navigationController?.pushViewController(ProfileViewController(), animated: true)
-        }
-        
-//        tableView.tableHeaderView = header
-        tableView.tableFooterView = SetupFooter(height: 50)
+        let header = AccountBindHeader(height: 200)
+        tableView.tableHeaderView = header
     }
 }
