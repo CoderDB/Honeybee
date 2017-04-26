@@ -40,7 +40,7 @@ class AccountBindHeader: UIView {
         
         iconImgView.snp.makeConstraints { (make) in
             make.center.equalTo(self)
-            make.width.height.equalTo(80)
+            make.width.height.equalTo(100)
         }
         describeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
