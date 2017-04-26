@@ -10,7 +10,7 @@ import UIKit
 
 class AccountBindController: BaseTableViewController {
 
-    var dataSource: SetupDataSource!
+    var dataSource: AccountBindDataSource!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,14 +20,11 @@ class AccountBindController: BaseTableViewController {
         fetchData()
     }
     func fetchData() {
-        let item1 = SetupSwitchItem(title: "记账提醒", subTitle: "每天\n10:00")
-        //        let item2 = SetupArrowItem(title: "昵称", subTitle: "二狗哥")
-        let item3 = SetupImageItem(title: "背景", subTitle: "", img: "")
+        let item1 = SetupSwitchItem(title: "微信", subTitle: "绑定成功")
+        let item2 = SetupSwitchItem(title: "微博", subTitle: "绑定成功")
+        let item3 = SetupSwitchItem(title: "QQ", subTitle: "绑定成功")
         
-        let item4 = SetupArrowItem(title: "绑定账号", subTitle: "")
-        let item5 = SetupArrowItem(title: "手势密码", subTitle: "")
-        let item6 = SetupImageItem(title: "指纹解锁", subTitle: "", img: "touchid")
-        dataSource = SetupDataSource(items: [item1, item3, item4, item5, item6])
+        dataSource = AccountBindDataSource(items: [item1, item2, item3])
         tableView.dataSource = dataSource
     }
     deinit {

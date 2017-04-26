@@ -90,6 +90,7 @@
 		8699664E1DFAE245006EAD41 /* HBPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699664D1DFAE245006EAD41 /* HBPresentationController.swift */; };
 		869C43AA1EB0AF69009548B5 /* AccountBindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C43A91EB0AF69009548B5 /* AccountBindController.swift */; };
 		869C43AD1EB0B1B3009548B5 /* AccountBindHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C43AC1EB0B1B3009548B5 /* AccountBindHeader.swift */; };
+		869C43AF1EB0DE71009548B5 /* AccountBindDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C43AE1EB0DE71009548B5 /* AccountBindDataSource.swift */; };
 		86A7B5A31E5F248B0061E49C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7B5A21E5F248B0061E49C /* Recorder.swift */; };
 		86A939A41EAA00A30085E996 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A939A31EAA00A30085E996 /* IncomeViewController.swift */; };
 		86A939A61EAA00E50085E996 /* AddRecorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A939A51EAA00E50085E996 /* AddRecorderController.swift */; };
@@ -245,6 +246,7 @@
 		8699664D1DFAE245006EAD41 /* HBPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBPresentationController.swift; sourceTree = "<group>"; };
 		869C43A91EB0AF69009548B5 /* AccountBindController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBindController.swift; sourceTree = "<group>"; };
 		869C43AC1EB0B1B3009548B5 /* AccountBindHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBindHeader.swift; sourceTree = "<group>"; };
+		869C43AE1EB0DE71009548B5 /* AccountBindDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBindDataSource.swift; sourceTree = "<group>"; };
 		86A7B5A21E5F248B0061E49C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		86A939A31EAA00A30085E996 /* IncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		86A939A51EAA00E50085E996 /* AddRecorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecorderController.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 			children = (
 				869C43A91EB0AF69009548B5 /* AccountBindController.swift */,
 				869C43AC1EB0B1B3009548B5 /* AccountBindHeader.swift */,
+				869C43AE1EB0DE71009548B5 /* AccountBindDataSource.swift */,
 			);
 			name = AccountBind;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				865B2F671E7171AF00719008 /* PayoutDataSource.swift in Sources */,
 				861B1EC51E703AAA009BBF48 /* KindDetailHeader.swift in Sources */,
 				861B1EC31E703A8D009BBF48 /* KindDetailController.swift in Sources */,
+				869C43AF1EB0DE71009548B5 /* AccountBindDataSource.swift in Sources */,
 				1E4219191E78110900274D59 /* BarDataSource.swift in Sources */,
 				86DEBCA01E4B10F9003F8FCF /* RecordCell.swift in Sources */,
 				868905991E7432350033C14C /* BaseViewModel.swift in Sources */,
