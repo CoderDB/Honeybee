@@ -10,13 +10,12 @@ import UIKit
 
 class PasswordButton: UIView {
 
-    var selected: Bool = false
-    
-    var success: Bool = true
+    var selected = false
+    var success = true
    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .clear
+        backgroundColor = .clear
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,20 +33,20 @@ class PasswordButton: UIView {
                 context.setFillColor(red: 208/255, green: 36/255, blue: 36/255,alpha: 1);
             }
             
-            let frame = CGRect(x: bounds.size.width/2-bounds.size.width/8+1, y: bounds.size.height/2-bounds.size.height/8, width: bounds.size.width/4, height: bounds.size.height/4);
+            let frame = CGRect(x: bounds.width/2-bounds.width/8+1, y: bounds.height/2-bounds.height/8, width: bounds.width/4, height: bounds.height/4);
             
             context.addEllipse(in: frame);
             context.fillPath();
             
         }else{
-            
+//            context.setStrokeColor(HB.Color.nav.cgColor)
             context.setStrokeColor(red: 1,green: 1,blue: 1,alpha: 1);//线条颜色
             
         }
         
         context.setLineWidth(2)
         
-        let frame:CGRect = CGRect(x: 2, y: 2, width: bounds.size.width-3, height: bounds.size.height-3)
+        let frame:CGRect = CGRect(x: 2, y: 2, width: bounds.width-3, height: bounds.height-3)
         context.addEllipse(in: frame)
         
         context.strokePath()
