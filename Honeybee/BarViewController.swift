@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import DZNEmptyDataSet
 
 
 protocol TableViewProvider {
@@ -47,6 +47,10 @@ class BarViewController: BaseTableViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.register(BarCell.self)
+        
+        
+        tableView.emptyDataSetSource = self
+        
 //        header = BarHeader(height: 170)
 //        tableView.tableHeaderView = header//BarHeader(height: 170)
         
@@ -77,6 +81,13 @@ class BarViewController: BaseTableViewController {
             tableView.tableHeaderView = header
             
         }
+    }
+}
+
+
+extension BarViewController: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "xmark")
     }
 }
 
