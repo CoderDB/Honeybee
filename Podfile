@@ -14,6 +14,8 @@ def pods
     pod 'PKHUD', '~> 4.2.0'
 
     pod 'FDFullscreenPopGesture', '~> 1.1'
+
+    pod 'DZNEmptyDataSet', '~> 1.8.1'
 end
 
 target 'Honeybee' do
