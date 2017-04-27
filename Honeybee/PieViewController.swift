@@ -6,6 +6,7 @@
 //  Copyright © 2016 Dongbing Hou. All rights reserved.
 //
 import UIKit
+import DZNEmptyDataSet
 
 class PieViewController: BaseTableViewController {
     
@@ -22,8 +23,9 @@ class PieViewController: BaseTableViewController {
         setNavRightItem("筛选")
         
         tableView.register(PieCell.self)
-        header = PieHeader(height: 250)
-        tableView.tableHeaderView = header
+        
+        tableView.emptyDataSetSource = self
+        
         
         fetchData(month: Date().localDate.month)
     }
@@ -63,6 +65,14 @@ class PieViewController: BaseTableViewController {
     }
 }
 
+
+// DZNEmptyDataSetSource
+extension PieViewController: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        
+        return UIImage(named: "xmark")
+    }
+}
 
 // MARK: UIPopoverPresentationControllerDelegate
 extension PieViewController: UIPopoverPresentationControllerDelegate {
