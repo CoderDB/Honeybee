@@ -76,14 +76,14 @@ class PasswordView: UIView {
         tentacleView.touchBeginDelegate = self
         addSubview(tentacleView!)
         
-        state.frame = CGRect(x: frame.size.width/2-140, y: frame.size.height/2-120, width: 280, height: 30)
+        state.frame = CGRect(x: frame.width/2-140, y: frame.height/2-120, width: 280, height: 30)
         addSubview(state)
         
-        forgetButton.frame = CGRect(x: frame.size.width/2-150, y: frame.size.height/2+220, width: 120, height: 30)
+        forgetButton.frame = CGRect(x: frame.width/2-150, y: frame.height/2+220, width: 120, height: 30)
         forgetButton.addTarget(self, action: #selector(forget), for: .touchDown)
         addSubview(forgetButton)
         
-        changeButton.frame = CGRect(x: frame.size.width/2+30, y: frame.size.height/2+220, width: 120, height: 30)
+        changeButton.frame = CGRect(x: frame.width/2+30, y: frame.height/2+220, width: 120, height: 30)
         changeButton.addTarget(self, action: #selector(change), for: .touchDown)
         addSubview(changeButton)
     }
