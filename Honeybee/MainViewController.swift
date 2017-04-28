@@ -52,12 +52,13 @@ class MainViewController: BaseTableViewController {
 //    }
     
     func fetchData() {
-        let data = Database.default.all(RLMRecorderSuper.self)
+        
+        let data = Database.default.all(RLMRecorder.self)
         dataSource = MainDataSource(items: Array(data), vc: self)
         tableView.dataSource = dataSource
         
         notiToken = Database.default.notification({ [unowned self] (_, realm) in
-            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorderSuper.self)), vc: self)
+            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorder.self)), vc: self)
             self.tableView.dataSource = self.dataSource
             
             self.header.outMoneyLabel.text = self.totalPayText()
@@ -180,10 +181,14 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataSource.item(at: indexPath)
         
-        if model.recorders.count == 1 {
-            let detailVC = RecordDetailController(model: model.recorders[0])
-            navigationController?.pushViewController(detailVC, animated: true)
-        }
+        let detailVC = RecordDetailController(model: model)
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+        
+//        if model.recorders.count == 1 {
+//            let detailVC = RecordDetailController(model: model.recorders[0])
+//            navigationController?.pushViewController(detailVC, animated: true)
+//        }
     }
 }
 
