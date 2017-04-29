@@ -16,6 +16,9 @@ def pods
     pod 'FDFullscreenPopGesture', '~> 1.1'
 
     pod 'DZNEmptyDataSet', '~> 1.8.1'
+
+    pod 'RxSwift', '~> 3.4.1'
+
 end
 
 target 'Honeybee' do
