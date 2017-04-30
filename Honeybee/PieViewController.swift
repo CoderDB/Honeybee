@@ -27,7 +27,9 @@ class PieViewController: BaseTableViewController {
         tableView.emptyDataSetSource = self
         
         
-        fetchData(month: Date().localDate.month)
+//        fetchData(month: Date().localDate.month)
+        
+        fetch()
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
@@ -51,18 +53,33 @@ class PieViewController: BaseTableViewController {
                 row = Date().localDate.month - 2
             }
             self.MONTH = row
-            self.fetchData(month: self.MONTH)
+//            self.fetchData(month: self.MONTH)
         }
         present(destVC, animated: true, completion: nil)
     }
-    func fetchData(month: Int) {
+    
+    
+    func fetch() {
+        let all = Database.default.all(RLMRecorder.self)
+        let matched = Array(all.filter { $0.month == self.MONTH })
+//        group(source: matched)
+        
+        dataSource = PieDataSource(items: matched)
+        tableView.dataSource = dataSource
+        tableView.tableHeaderView = PieHeader(height: 250, names: ["test"], colors: [.red], percents: [90])
+
+    }
+    
+    
+    
+//    func fetchData(month: Int) {
 //        PieDataSource(items: []).fetch(month: month) { [weak self] (pieData, recorders, ncp) in
 //            self?.recorders = recorders
 //            self?.dataSource = PieDataSource(items: pieData)
 //            self?.tableView.dataSource = self?.dataSource
 //            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
 //        }
-    }
+//    }
 }
 
 

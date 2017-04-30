@@ -39,8 +39,18 @@ class PieDataModel {
 // MARK: DataSourceProvider
 // -----------------------------------------------------------------------------
 
+//class PieDataSource: NSObject, DataSourceProvider {
+//    typealias ItemType = PieDataModel
+//    var items: [ItemType]
+//    
+//    required init(items: [ItemType]) {
+//        self.items = items
+//    }
+//}
+
+
 class PieDataSource: NSObject, DataSourceProvider {
-    typealias ItemType = PieDataModel
+    typealias ItemType = RLMRecorder
     var items: [ItemType]
     
     required init(items: [ItemType]) {
