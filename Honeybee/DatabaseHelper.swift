@@ -192,10 +192,10 @@ class Database: NSObject {
         return result
     }
     
-    
-    func insert(item: RLMRecorder, to: RLMRecorderSuper, year: String, month: String) {
-    }
-    
+//    
+//    func insert(item: RLMRecorder, to: RLMRecorderSuper, year: String, month: String) {
+//    }
+//    
     
     
     func notification(_ block: @escaping (Realm.Notification, Realm) -> Void) -> NotificationToken {

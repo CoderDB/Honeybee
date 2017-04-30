@@ -25,10 +25,10 @@ extension DataSourceProvider {
 
 
 class PieDataModel {
-    var category: RLMRecorderSuper
+    var category: String//RLMRecorderSuper
     var money: String
     
-    init(category: RLMRecorderSuper, money: String) {
+    init(category: String, money: String) {
         self.category = category
         self.money = money
     }
@@ -73,19 +73,19 @@ extension PieDataSource {
     
     
     
-    func fetch(month: Int, result: ([PieDataModel], _ recorders: [RLMRecorder], _ ncp: ([String], [UIColor], [Double])) -> Void) {
-        let all = Database.default.all(RLMRecorder.self)
-        let thisMonthData = Array(all.filter { $0.month == month })
-        let superRecorders = getRecorderSuper(recorders: thisMonthData)
-        let ncp = names_colors_percents(models: superRecorders)
-        var models: [PieDataModel] = []
-        _ = superRecorders.map {
-            let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
-            models.append(dataModel)
-        }
-        result(models, thisMonthData, ncp)
-        
-    }
+//    func fetch(month: Int, result: ([PieDataModel], _ recorders: [RLMRecorder], _ ncp: ([String], [UIColor], [Double])) -> Void) {
+//        let all = Database.default.all(RLMRecorder.self)
+//        let thisMonthData = Array(all.filter { $0.month == month })
+//        let superRecorders = getRecorderSuper(recorders: thisMonthData)
+//        let ncp = names_colors_percents(models: superRecorders)
+//        var models: [PieDataModel] = []
+//        _ = superRecorders.map {
+//            let dataModel = PieDataModel(category: $0, money: "\($0.totalPay)")
+//            models.append(dataModel)
+//        }
+//        result(models, thisMonthData, ncp)
+//        
+//    }
 //    func totalPayOfOneMonth(recorders: [RLMRecorder], superRecorders: [RLMRecorderSuper]) -> Int {
 //        let keys = superRecorders.map { $0.name }
 //        
@@ -102,38 +102,38 @@ extension PieDataSource {
 //        
 //        return 0
 //    }
-    private func getRecorderSuper(recorders: [RLMRecorder]) -> [RLMRecorderSuper] {
-        var set = Set<RLMRecorderSuper>()
-        for ele in recorders {
-            if let owner = ele.owner {
-                set.insert(owner)
-            }
-        }
-        return Array(set)
-    }
+//    private func getRecorderSuper(recorders: [RLMRecorder]) -> [RLMRecorderSuper] {
+//        var set = Set<RLMRecorderSuper>()
+//        for ele in recorders {
+//            if let owner = ele.owner {
+//                set.insert(owner)
+//            }
+//        }
+//        return Array(set)
+//    }
     
     
-    private func fetch(top: Int) -> [RLMRecorderSuper] {
-        let recorders = Database.default.fetch(RLMRecorder.self, top: top)
-        return getRecorderSuper(recorders: recorders)
-    }
-    private func names_colors_percents(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
-        let allPay = models.map { $0.totalPay }.reduce(0, {$0.0 + $0.1})
-
-        var colors: [UIColor] = [],
-        percents: [Double] = [],
-        names: [String] = []
-
-        _ = models.map {
-            names.append($0.name)
-            colors.append(UIColor(hex: $0.color))
-            
-            let totalPayOf = $0.totalPay
-            let per = percent(part: totalPayOf, all: allPay)
-            percents.append(per.1)
-        }
-        return (names, colors, percents)
-    }
+//    private func fetch(top: Int) -> [RLMRecorderSuper] {
+//        let recorders = Database.default.fetch(RLMRecorder.self, top: top)
+//        return getRecorderSuper(recorders: recorders)
+//    }
+//    private func names_colors_percents(models: [RLMRecorderSuper]) -> ([String], [UIColor], [Double]) {
+//        let allPay = models.map { $0.totalPay }.reduce(0, {$0.0 + $0.1})
+//
+//        var colors: [UIColor] = [],
+//        percents: [Double] = [],
+//        names: [String] = []
+//
+//        _ = models.map {
+//            names.append($0.name)
+//            colors.append(UIColor(hex: $0.color))
+//            
+//            let totalPayOf = $0.totalPay
+//            let per = percent(part: totalPayOf, all: allPay)
+//            percents.append(per.1)
+//        }
+//        return (names, colors, percents)
+//    }
     
     private func percent(part: Int, all: Int) -> (String, Double) {
         let part = Double(part), all = Double(all)
