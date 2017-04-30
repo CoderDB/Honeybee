@@ -29,7 +29,6 @@
 		86104A311E61B4E900AAEEAC /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */; };
 		8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612C2811DF02DEE00B3AD65 /* CalculateView.swift */; };
 		8614E4171E6999A400836FC9 /* RLMRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614E4161E6999A400836FC9 /* RLMRecorder.swift */; };
-		8614E4191E6999E400836FC9 /* RLMRecorderSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614E4181E6999E400836FC9 /* RLMRecorderSuper.swift */; };
 		8614E41B1E699A0E00836FC9 /* RLMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614E41A1E699A0E00836FC9 /* RLMModel.swift */; };
 		861544491E4DAA1E00A6EEBD /* Silom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861544481E4DAA1E00A6EEBD /* Silom.ttf */; };
 		861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B1EC01E7007D9009BBF48 /* MainHeader.swift */; };
@@ -178,7 +177,6 @@
 		86104A301E61B4E900AAEEAC /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8612C2811DF02DEE00B3AD65 /* CalculateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		8614E4161E6999A400836FC9 /* RLMRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMRecorder.swift; sourceTree = "<group>"; };
-		8614E4181E6999E400836FC9 /* RLMRecorderSuper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMRecorderSuper.swift; sourceTree = "<group>"; };
 		8614E41A1E699A0E00836FC9 /* RLMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMModel.swift; sourceTree = "<group>"; };
 		861544481E4DAA1E00A6EEBD /* Silom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silom.ttf; sourceTree = "<group>"; };
 		861B1EC01E7007D9009BBF48 /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
@@ -368,7 +366,6 @@
 			children = (
 				862B3CC41E66D8AB008485DD /* DatabaseHelper.swift */,
 				8614E4161E6999A400836FC9 /* RLMRecorder.swift */,
-				8614E4181E6999E400836FC9 /* RLMRecorderSuper.swift */,
 				8614E41A1E699A0E00836FC9 /* RLMModel.swift */,
 			);
 			name = Database;
@@ -1048,7 +1045,6 @@
 				867A9EC21E9E726B00537925 /* TouchId.swift in Sources */,
 				865B2F651E71632300719008 /* KindDataSource.swift in Sources */,
 				8689157E1DF990D20035CFD3 /* Extension.swift in Sources */,
-				8614E4191E6999E400836FC9 /* RLMRecorderSuper.swift in Sources */,
 				868C3F6E1E72925400D5443D /* KindAddItemDataSource.swift in Sources */,
 				8614E4171E6999A400836FC9 /* RLMRecorder.swift in Sources */,
 				86F6C8671E4F4C0D002016DB /* RecordDetailCell.swift in Sources */,
