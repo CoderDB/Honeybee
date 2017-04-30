@@ -26,10 +26,10 @@ class PieCell: BaseTableViewCell {
 
     var item: PieDataModel? {
         didSet {
-            if let item = item {
-                mainTitleLabel.text = item.category.name
-                subTitleLabel.attributedText = attributeString(text: item.money)
-            }
+//            if let item = item {
+//                mainTitleLabel.text = item.category.name
+//                subTitleLabel.attributedText = attributeString(text: item.money)
+//            }
         }
     }
     func attributeString(text: String) -> NSMutableAttributedString {

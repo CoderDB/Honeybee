@@ -56,12 +56,12 @@ class PieViewController: BaseTableViewController {
         present(destVC, animated: true, completion: nil)
     }
     func fetchData(month: Int) {
-        PieDataSource(items: []).fetch(month: month) { [weak self] (pieData, recorders, ncp) in
-            self?.recorders = recorders
-            self?.dataSource = PieDataSource(items: pieData)
-            self?.tableView.dataSource = self?.dataSource
-            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
-        }
+//        PieDataSource(items: []).fetch(month: month) { [weak self] (pieData, recorders, ncp) in
+//            self?.recorders = recorders
+//            self?.dataSource = PieDataSource(items: pieData)
+//            self?.tableView.dataSource = self?.dataSource
+//            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
+//        }
     }
 }
 
@@ -87,17 +87,17 @@ extension PieViewController {
         
         let model = dataSource.item(at: indexPath).category
         
-        let recorders = matchedRecorders(superModel: model, month: MONTH)
-        let barVC = BarViewController(recorders: recorders)
-        barVC.setNavTitle(model.name)
-
-        navigationController?.pushViewController(barVC, animated: true)
+//        let recorders = matchedRecorders(superModel: model, month: MONTH)
+//        let barVC = BarViewController(recorders: recorders)
+//        barVC.setNavTitle(model.name)
+//
+//        navigationController?.pushViewController(barVC, animated: true)
     }
     
     
-    func matchedRecorders(superModel: RLMRecorderSuper, month: Int) -> [RLMRecorder] {
-        let recorders = superModel.recorders
-        let matched = recorders.filter { $0.month == month }
-        return Array(matched)
-    }
+//    func matchedRecorders(superModel: RLMRecorderSuper, month: Int) -> [RLMRecorder] {
+//        let recorders = superModel.recorders
+//        let matched = recorders.filter { $0.month == month }
+//        return Array(matched)
+//    }
 }
