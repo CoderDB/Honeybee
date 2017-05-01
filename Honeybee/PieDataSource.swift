@@ -24,13 +24,24 @@ extension DataSourceProvider {
 
 
 
+//class PieDataModel {
+//    var category: String//RLMRecorderSuper
+//    var money: String
+//    
+//    init(category: String, money: String) {
+//        self.category = category
+//        self.money = money
+//    }
+//}
+
+
 class PieDataModel {
-    var category: String//RLMRecorderSuper
-    var money: String
+    var category: String
+    var recorders: [RLMRecorder]
     
-    init(category: String, money: String) {
+    init(category: String, recorders: [RLMRecorder]) {
         self.category = category
-        self.money = money
+        self.recorders = recorders
     }
 }
 
@@ -64,6 +75,7 @@ class PieDataSource: NSObject, DataSourceProvider {
 // -----------------------------------------------------------------------------
 
 extension PieDataSource {
+    
     
     
 //    func fetch(result: ([PieDataModel], _ ncp: ([String], [UIColor], [Double])) -> Void) {
