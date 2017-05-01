@@ -67,10 +67,25 @@ class PieViewController: BaseTableViewController {
         dataSource = PieDataSource(items: matched)
         tableView.dataSource = dataSource
         tableView.tableHeaderView = PieHeader(height: 250, names: ["test"], colors: [.red], percents: [90])
-
+        group(recorders: matched)
     }
     
-    
+    func group(recorders: [RLMRecorder]) -> [String: [RLMRecorder]] {
+        var result: [String: [RLMRecorder]] = [:]
+        let keys = Array(Set(recorders.map { $0.superCategory }))
+        
+        // TODO: group
+        
+        var iterator = recorders.makeIterator()
+        while let recorder = iterator.next() {
+            keys.map {_ in 
+                
+            }
+        }
+        
+        print(keys)
+        return result
+    }
     
 //    func fetchData(month: Int) {
 //        PieDataSource(items: []).fetch(month: month) { [weak self] (pieData, recorders, ncp) in
@@ -103,6 +118,8 @@ extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let model = dataSource.item(at: indexPath).category
+        
+        
         
 //        let recorders = matchedRecorders(superModel: model, month: MONTH)
 //        let barVC = BarViewController(recorders: recorders)
