@@ -31,10 +31,7 @@ class PieViewController: BaseTableViewController {
         
         fetch()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
+    
     override func navRightItemClicked(_ btn: UIButton) {
         let destVC = PiePopoverController()
         destVC.modalPresentationStyle = .popover
@@ -70,31 +67,26 @@ class PieViewController: BaseTableViewController {
         group(recorders: matched)
     }
     
+    // TODO: group
+    
     func group(recorders: [RLMRecorder]) -> [String: [RLMRecorder]] {
-        var result: [String: [RLMRecorder]] = [:]
         let keys = Array(Set(recorders.map { $0.superCategory }))
+//        var dict: [String: [RLMRecorder]] = dictionaryWithValues(forKeys: keys) as! [String : [RLMRecorder]]
+        var dict: [String: [RLMRecorder]] = [:]
         
-        // TODO: group
-        
-        var iterator = recorders.makeIterator()
-        while let recorder = iterator.next() {
-            keys.map {_ in 
-                
+        var iterator = keys.makeIterator()
+        while let key = iterator.next() {
+            dict[key] = []
+            _ = recorders.map {
+                if $0.superCategory == key {
+                    dict[key]?.append($0)
+                }
             }
         }
         
-        print(keys)
-        return result
+        return dict
     }
     
-//    func fetchData(month: Int) {
-//        PieDataSource(items: []).fetch(month: month) { [weak self] (pieData, recorders, ncp) in
-//            self?.recorders = recorders
-//            self?.dataSource = PieDataSource(items: pieData)
-//            self?.tableView.dataSource = self?.dataSource
-//            self?.tableView.tableHeaderView = PieHeader(height: 250, names: ncp.0, colors: ncp.1, percents: ncp.2)
-//        }
-//    }
 }
 
 
