@@ -64,10 +64,36 @@ class PieViewController: BaseTableViewController {
         dataSource = PieDataSource(items: grouped)
         tableView.dataSource = dataSource
         
+        let npm = name_color_percent(models: grouped)
+        tableView.tableHeaderView = PieHeader(height: 250, names: npm.0, colors: npm.1, percents: npm.2)
+    }
+    
+    func name_color_percent(models: [PieDataModel]) -> ([String], [UIColor], [Double]) {
         
-//        tableView.tableHeaderView = PieHeader(height: 250, names: ["test"], colors: [.red], percents: [90])
-        
-        
+        var colors: [UIColor] = [],
+        percents: [Double] = [],
+        names: [String] = []
+        var allPay = 0
+        _ = models.map {
+            names.append($0.category)
+            colors.append(UIColor(hex: $0.recorders[0].color))
+
+            let categoryPay = Int($0.recorders.reduce(0, { $0.0 + $0.1.money }))
+            allPay += categoryPay
+            let per = percent(part: categoryPay, all: allPay)
+            percents.append(per.1)
+        }
+        return (names, colors, percents)
+    }
+    func percent(part: Int, all: Int) -> (String, Double) {
+        let part = Double(part), all = Double(all)
+        let frac = (part / all) * 100
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 1
+        let fracStr = formatter.string(for: frac) ?? "0"
+        let fracNum = formatter.number(from: fracStr)?.doubleValue ?? 0
+        return (fracStr, fracNum)
     }
     
     // TODO: group
@@ -113,15 +139,10 @@ extension PieViewController: UIPopoverPresentationControllerDelegate {
 extension PieViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let model = dataSource.item(at: indexPath).category
-        
-        
-        
-//        let recorders = matchedRecorders(superModel: model, month: MONTH)
-//        let barVC = BarViewController(recorders: recorders)
-//        barVC.setNavTitle(model.name)
-//
-//        navigationController?.pushViewController(barVC, animated: true)
+        let model = dataSource.item(at: indexPath)
+        let barVC = BarViewController(recorders: model.recorders)
+        barVC.setNavTitle(model.category)
+        navigationController?.pushViewController(barVC, animated: true)
     }
     
     
