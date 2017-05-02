@@ -24,23 +24,24 @@ class PieCell: BaseTableViewCell {
     lazy var arrow = UIImageView(image: UIImage(named: "rightArrow"))
     
 
-    var item: RLMRecorder? {
+//    var item: RLMRecorder? {
+//        didSet {
+//            if let item = item {
+//                mainTitleLabel.text = item.superCategory
+//                subTitleLabel.attributedText = attributeString(text: "\(item.money)")
+//            }
+//        }
+//    }
+    
+    var item: PieDataModel? {
         didSet {
             if let item = item {
-                mainTitleLabel.text = item.superCategory
-                subTitleLabel.attributedText = attributeString(text: "\(item.money)")
+                mainTitleLabel.text = item.category
+                let totalMoney = item.recorders.reduce(0, { $0.0 + $0.1.money })
+                subTitleLabel.attributedText = attributeString(text: "\(totalMoney)")
             }
         }
     }
-    
-//    var item: PieDataModel? {
-//        didSet {
-////            if let item = item {
-////                mainTitleLabel.text = item.category.name
-////                subTitleLabel.attributedText = attributeString(text: item.money)
-////            }
-//        }
-//    }
     func attributeString(text: String) -> NSMutableAttributedString {
         let dayStr = "\(text)¥"
         let attr = NSMutableAttributedString(string: dayStr)

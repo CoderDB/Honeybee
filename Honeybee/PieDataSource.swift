@@ -61,7 +61,7 @@ class PieDataModel {
 
 
 class PieDataSource: NSObject, DataSourceProvider {
-    typealias ItemType = RLMRecorder
+    typealias ItemType = PieDataModel
     var items: [ItemType]
     
     required init(items: [ItemType]) {
