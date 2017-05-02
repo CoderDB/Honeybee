@@ -59,21 +59,24 @@ class PieViewController: BaseTableViewController {
     func fetch() {
         let all = Database.default.all(RLMRecorder.self)
         let matched = Array(all.filter { $0.month == self.MONTH })
-//        group(source: matched)
-        
-        dataSource = PieDataSource(items: matched)
+        let grouped = group(recorders: matched)
+
+        dataSource = PieDataSource(items: grouped)
         tableView.dataSource = dataSource
-        tableView.tableHeaderView = PieHeader(height: 250, names: ["test"], colors: [.red], percents: [90])
-        group(recorders: matched)
+        
+        
+//        tableView.tableHeaderView = PieHeader(height: 250, names: ["test"], colors: [.red], percents: [90])
+        
+        
     }
     
     // TODO: group
     
-    func group(recorders: [RLMRecorder]) -> [String: [RLMRecorder]] {
+    func group(recorders: [RLMRecorder]) -> [PieDataModel] {
         let keys = Array(Set(recorders.map { $0.superCategory }))
-//        var dict: [String: [RLMRecorder]] = dictionaryWithValues(forKeys: keys) as! [String : [RLMRecorder]]
         var dict: [String: [RLMRecorder]] = [:]
         
+        var result = [PieDataModel]()
         var iterator = keys.makeIterator()
         while let key = iterator.next() {
             dict[key] = []
@@ -82,9 +85,10 @@ class PieViewController: BaseTableViewController {
                     dict[key]?.append($0)
                 }
             }
+            let model = PieDataModel(category: key, recorders: dict[key]!)
+            result.append(model)
         }
-        
-        return dict
+        return result
     }
     
 }
