@@ -29,46 +29,7 @@ extension Result {
             return msg
         }
     }
-    
 }
-
-
-class ValidationService {
-    static let `default` = ValidationService()
-    private init() {}
-    
-    let minCharactersCount = 6
-    
-    func validate(_ text: String) -> Observable<Result> {
-        guard !text.isEmpty else {
-            return .just(.empty)
-        }
-        if text.characters.count < minCharactersCount {
-            return .just(.fail(msg: "The characters should be 6 at least"))
-        }
-        return .just(.success(msg: "Success"))
-    }
-    
-//    func validate(password: String) -> Observable<Result> {
-//        guard !password.isEmpty else {
-//            return .just(.empty)
-//        }
-//        if password.characters.count < minCharactersCount {
-//            return .just(.fail(msg: ""))
-//        }
-//        return .just(.success(msg: ""))
-//    }
-    
-    
-    func login(username: String, password: String) -> Observable<Result> {
-        if password == "123456" {
-            return .just(.success(msg: "Login Succeed"))
-        }
-        return .just(.fail(msg: "Login Failed"))
-    }
-    
-}
-
 
 
 class LoginViewModel {
