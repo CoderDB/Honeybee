@@ -18,7 +18,7 @@ def pods
     pod 'DZNEmptyDataSet', '~> 1.8.1'
 
     pod 'RxSwift', '~> 3.4.1'
-
+    pod 'RxCocoa', '~> 3.4.1'
 end
 
 target 'Honeybee' do

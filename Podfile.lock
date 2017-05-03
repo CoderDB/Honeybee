@@ -11,6 +11,8 @@ PODS:
   - Realm/Headers (2.4.4)
   - RealmSwift (2.4.4):
     - Realm (= 2.4.4)
+  - RxCocoa (3.4.1):
+    - RxSwift (~> 3.4)
   - RxSwift (3.4.1)
   - SnapKit (3.0.2)
   - Then (2.1.0)
@@ -22,6 +24,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 2.2.5)
   - PKHUD (~> 4.2.0)
   - RealmSwift (~> 2.4.4)
+  - RxCocoa (~> 3.4.1)
   - RxSwift (~> 3.4.1)
   - SnapKit (~> 3.0.2)
   - Then (~> 2.1.0)
@@ -34,10 +37,11 @@ SPEC CHECKSUMS:
   PKHUD: 48af884cf00c2213b0313b739d914e6cab1c0f5e
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
+  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 42975cb8474c14454b4bdf63b0680abccc8d3568
+PODFILE CHECKSUM: dc6ae2eaeb70f2b58649582cdc0c703dd759223b
 
 COCOAPODS: 1.2.1
