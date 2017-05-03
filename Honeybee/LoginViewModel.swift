@@ -38,7 +38,7 @@ class LoginViewModel {
     let loginButtonEnabled: Driver<Bool>
     let loginResult: Driver<Result>
     
-    init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>), service: ValidationService) {
+    init(input: (username: Driver<String>, password: Driver<String>, loginTap: Driver<Void>), service: ValidationService) {
         
         self.username = input.username
             .flatMapLatest {
@@ -49,13 +49,17 @@ class LoginViewModel {
         
         let usernameAndPwd = Driver.combineLatest(input.username, input.password) { ($0, $1) }
         
-        self.loginResult = input.loginTaps.withLatestFrom(usernameAndPwd).flatMapLatest {
-            return service
-                .login(username: $0.0, password: $0.1)
-                .asDriver(onErrorJustReturn: .fail(msg: "connect service failed"))
+        self.loginResult = input.loginTap
+            .withLatestFrom(usernameAndPwd)
+            .flatMapLatest {
+                return service
+                    .login(username: $0.0, password: $0.1)
+                    .asDriver(onErrorJustReturn: .fail(msg: "connect service failed"))
         }
-        
-        self.loginButtonEnabled = input.password.map { !$0.isEmpty } .asDriver()        
+        self.loginButtonEnabled = usernameAndPwd
+            .map { !$0.0.isEmpty && !$0.1.isEmpty }
+            .asDriver()
+//        self.loginButtonEnabled = input.password.map { !$0.isEmpty } .asDriver()
     }
     
 }

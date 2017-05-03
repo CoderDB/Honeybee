@@ -17,9 +17,12 @@ class ValidationService {
     let minCharactersCount = 6
     
     func validate(_ text: String) -> Observable<Result> {
-        guard !text.isEmpty else {
+        if text.isEmpty {
             return .just(.empty)
         }
+//        guard !text.isEmpty else {
+//            return .just(.empty)
+//        }
         if text.characters.count < minCharactersCount {
             return .just(.fail(msg: "The characters should be 6 at least"))
         }
@@ -38,10 +41,10 @@ class ValidationService {
     
     
     func login(username: String, password: String) -> Observable<Result> {
-        if password == "123456" {
+        if username == "dongbing", password == "123456" {
             return .just(.success(msg: "Login Succeed"))
         }
-        return .just(.fail(msg: "Login Failed"))
+        return .just(.fail(msg: "Username or Password is not true"))
     }
     
 }

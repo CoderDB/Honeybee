@@ -29,11 +29,14 @@ class LoginViewController: UIViewController {
             input: (
                 username: usernameTF.rx.text.orEmpty.asDriver(),
                 password: passwordTF.rx.text.orEmpty.asDriver(),
-                loginTaps: loginBtn.rx.tap.asDriver()
+                loginTap: loginBtn.rx.tap.asDriver()
             ),
             service: ValidationService.default
         )
         
+//        viewModel.username.drive(onNext: { (<#Result#>) in
+//            <#code#>
+//        }, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
         _ = viewModel.loginButtonEnabled
             .drive(onNext: { [unowned self] in
             self.loginBtn.isEnabled = $0
