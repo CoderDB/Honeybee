@@ -18,6 +18,20 @@ enum Result {
     case empty
 }
 
+extension Result {
+    var description: String {
+        switch self {
+        case .empty:
+            return ""
+        case let .success(msg):
+            return msg
+        case let .fail(msg):
+            return msg
+        }
+    }
+    
+}
+
 
 class ValidationService {
     static let `default` = ValidationService()
@@ -80,9 +94,7 @@ class LoginViewModel {
                 .asDriver(onErrorJustReturn: .fail(msg: "connect service failed"))
         }
         
-        self.loginButtonEnabled = input.password.map { !$0.isEmpty } .asDriver()
-        
-        
+        self.loginButtonEnabled = input.password.map { !$0.isEmpty } .asDriver()        
     }
     
 }

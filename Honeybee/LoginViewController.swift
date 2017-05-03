@@ -8,14 +8,53 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+
 class LoginViewController: UIViewController {
 
+    
+    var viewModel: LoginViewModel!
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = HB.Color.main
         
         setupUI()
+        
+        viewModel = LoginViewModel(
+            input: (
+                username: usernameTF.rx.text.orEmpty.asDriver(),
+                password: passwordTF.rx.text.orEmpty.asDriver(),
+                loginTaps: loginBtn.rx.tap.asDriver()
+            ),
+            service: ValidationService.default
+        )
+        
+        _ = viewModel.loginButtonEnabled
+            .drive(onNext: { [unowned self] in
+            self.loginBtn.isEnabled = $0
+            self.loginBtn.alpha = $0 ? 1 : 0.3
+            })
+        .addDisposableTo(disposeBag)
+        
+        
+        _ = viewModel.loginResult.drive(onNext: { (result) in
+            switch result {
+            case let .success(msg):
+                Reminder.success(msg: msg)
+            case let .fail(msg):
+                Reminder.error(msg: msg)
+            case .empty:
+                Reminder.error()
+            }
+        })
+        .addDisposableTo(disposeBag)
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
