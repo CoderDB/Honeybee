@@ -58,16 +58,16 @@ open class ChartDataSet: ChartBaseDataSet
     internal var _values: [ChartDataEntry]!
     
     /// maximum y-value in the value array
-    internal var _yMax: Double = -.greatestFiniteMagnitude
+    internal var _yMax: Double = -DBL_MAX
     
     /// minimum y-value in the value array
-    internal var _yMin: Double = .greatestFiniteMagnitude
+    internal var _yMin: Double = DBL_MAX
     
     /// maximum x-value in the value array
-    internal var _xMax: Double = -.greatestFiniteMagnitude
+    internal var _xMax: Double = -DBL_MAX
     
     /// minimum x-value in the value array
-    internal var _xMin: Double = .greatestFiniteMagnitude
+    internal var _xMin: Double = DBL_MAX
     
     /// *
     /// - note: Calls `notifyDataSetChanged()` after setting a new value.
@@ -98,10 +98,10 @@ open class ChartDataSet: ChartBaseDataSet
             return
         }
         
-        _yMax = -.greatestFiniteMagnitude
-        _yMin = .greatestFiniteMagnitude
-        _xMax = -.greatestFiniteMagnitude
-        _xMin = .greatestFiniteMagnitude
+        _yMax = -DBL_MAX
+        _yMin = DBL_MAX
+        _xMax = -DBL_MAX
+        _xMin = DBL_MAX
         
         for e in _values
         {
@@ -116,8 +116,8 @@ open class ChartDataSet: ChartBaseDataSet
             return
         }
         
-        _yMax = -.greatestFiniteMagnitude
-        _yMin = .greatestFiniteMagnitude
+        _yMax = -DBL_MAX
+        _yMin = DBL_MAX
         
         let indexFrom = entryIndex(x: fromX, closestToY: Double.nan, rounding: .down)
         let indexTo = entryIndex(x: toX, closestToY: Double.nan, rounding: .up)
