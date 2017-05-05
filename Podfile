@@ -24,6 +24,8 @@ def pods
     pod 'RxRealm', '~> 0.6.0'
 
     pod 'RxDataSources', '~> 1.0.3'
+
+    pod 'RxRealmDataSources'
 end
 
 target 'Honeybee' do
