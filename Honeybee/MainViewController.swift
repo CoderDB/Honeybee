@@ -25,7 +25,8 @@ extension UITableView {
     }
 }
 
-class MainViewController: BaseTableViewController {
+//class MainViewController: BaseTableViewController {
+class MainViewController: BaseViewController {
     
 //    var dataSource: MainDataSource! {
 //        didSet {
@@ -35,8 +36,10 @@ class MainViewController: BaseTableViewController {
     
 //    var notiToken: NotificationToken? = nil
     var header: MainHeader!
+    let tableView = UITableView()
     
-    let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
+    
+//    let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     private let disposeBag = DisposeBag()
     
     
@@ -44,23 +47,32 @@ class MainViewController: BaseTableViewController {
     
     
     func configRx() {
-//        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
-        
+        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+    
         
         recorders = Database.default.all(RLMRecorder.self)
         
+        Observable.from(optional: recorders)
+            .bind(to: tableView.rx.items(cellIdentifier: "\(RecordCell.self)", cellType: RecordCell.self))
+            {_, element, cell in cell.recorder = element }
+            .disposed(by: disposeBag)
+        
+//        Observable.collection(from: recorders)
+//            .bind(to: tableView.rx.items) { tv, ip, element in
+//                guard let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as? RecordCell else {
+//                    return UITableViewCell()
+//                }
+//                cell.recorder = element
+//                return cell
+//            }
+//            .addDisposableTo(disposeBag)
         
         Observable.collection(from: recorders)
-            .bind(to: tableView.rx.items) { tv, ip, element in
-                guard let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as? RecordCell else {
-                    return UITableViewCell()
-                }
-                cell.recorder = element
-                return cell
+            .map { $0.reduce(0) { $0.0 + Int($0.1.money) } }
+            .subscribe { [unowned self] (event) in
+                self.header.outMoneyLabel.text = "\(event.element ?? 0)"
             }
             .addDisposableTo(disposeBag)
-        
-        
         
 //        Observable.changeset(from: data)
 //            .subscribe(onNext: { [unowned self] (result, changed) in
@@ -175,8 +187,10 @@ extension MainViewController: UIPopoverPresentationControllerDelegate {
 
 extension MainViewController {
     func addTableView() {
-        tableView.snp.updateConstraints { (make) in
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(20)
+            make.left.right.bottom.equalTo(view)
         }
         tableView.estimatedRowHeight = 75
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -219,7 +233,7 @@ extension MainViewController {
 
 // MARK: UITableViewDelegate
 
-extension MainViewController {
+extension MainViewController: UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let detailVC = RecordDetailController(model: dataSource.item(at: indexPath).)
 //        navigationController?.pushViewController(detailVC, animated: true)
