@@ -12,21 +12,21 @@ import RxRealmDataSources
 import RxSwift
 import RxCocoa
 
-class KindViewController: BaseCollectionViewController, AlertProvider {
+class KindViewController: BaseViewController, AlertProvider {
 
 //    let rx_datasource = RxCollectionViewRealmDataSource(cellIdentifier: "") { (realm, collv, idx, obj) -> UICollectionViewCell in
 //        
 //    }
-//    
-    let rx_datasource = RxCollectionViewRealmDataSource<HoneybeeKind>(cellIdentifier: "\(KindCell.self)", cellType: KindCell.self) { (cell, _, element) in
+    var collectionView: UICollectionView!
+    private let bag = DisposeBag()
+    fileprivate let rx_datasource = RxCollectionViewRealmDataSource<HoneybeeKind>(cellIdentifier: "\(KindCell.self)", cellType: KindCell.self) { (cell, _, element) in
         cell.config(model: element)
     }
     
 //    var dataSource: KindDataSource!
-    var notiToken: NotificationToken? = nil
+//    var notiToken: NotificationToken? = nil
     
     var managerKindBtn: UIButton!
-    private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +44,22 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
 //        let kinds = Observable.changeset(from: Database.default.all(HoneybeeKind.self))
 //        kinds.bind(to: collectionView.rx.realmChanges(rx_datasource)).disposed(by: bag)
 
-        Observable.changeset(from: Database.default.all(HoneybeeKind.self))
+//        collectionView.rx.setDataSource(rx_datasource).disposed(by: bag)
+//        collectionView.rx.setDelegate(self).disposed(by: bag)
+        
+        let kinds = Database.default.all(HoneybeeKind.self)
+        Observable.changeset(from: kinds)
             .bind(to: collectionView.rx.realmChanges(rx_datasource))
+            .disposed(by: bag)
+        
+        collectionView.rx
+            .itemSelected
+            .map { idx in kinds[idx.row] }
+            .subscribe { [unowned self] (kind) in
+                let vc = KindDetailController()
+                vc.kind = kind.element
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             .disposed(by: bag)
         
     }
@@ -77,8 +91,18 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
     }
     
     func addCollectionView() {
+        let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 165)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 25, right: 25)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
+        
         collectionView.register(KindCell.self)
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
@@ -174,17 +198,18 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
 //        }
     }
     deinit {
-        notiToken?.stop()
+//        notiToken?.stop()
     }
 }
 
 
-// MARK: UICollectionViewDelegateFlowLayout
-extension KindViewController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("-------\(indexPath.section)----\(indexPath.row)")
-//        let vc = KindDetailController()
-//        vc.kind = dataSource.item(at: indexPath)
-//        navigationController?.pushViewController(vc, animated: true)
-    }
-}
+//// MARK: UICollectionViewDelegateFlowLayout
+//extension KindViewController {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        
+////        print("-------\(indexPath.section)----\(indexPath.row)")
+////        let vc = KindDetailController()
+////        vc.kind = dataSource.item(at: indexPath)
+////        navigationController?.pushViewController(vc, animated: true)
+//    }
+//}
