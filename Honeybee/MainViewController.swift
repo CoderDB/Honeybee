@@ -27,19 +27,14 @@ extension UITableView {
 
 
 
-class MainViewController: BaseViewController {
+class MainViewController: BaseViewController, UITableViewDelegate {
     
     
-    var header: MainHeader!
     let tableView = UITableView()
-    
-    
 //    let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     private let disposeBag = DisposeBag()
-    
-    
     var recorders: Results<RLMRecorder>!
-    
+    var header: MainHeader!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +48,10 @@ class MainViewController: BaseViewController {
         configRx()
     }
     
-    
-    
     func configRx() {
-        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+        tableView.rx
+            .setDelegate(self)
+            .addDisposableTo(disposeBag)
         
 //        let currentMonth = Date().month
         recorders = Database.default.all(RLMRecorder.self)
@@ -76,23 +71,17 @@ class MainViewController: BaseViewController {
             }
             .addDisposableTo(disposeBag)
         
-        tableView.rx.itemSelected
-            .map { [unowned self] idx in (idx, self.recorders[idx.row]) }
-            .subscribe(onNext: { (idx, model) in
+        tableView.rx
+            .itemSelected
+            .mapWithIndex { [unowned self] (_, row)  in
+                self.recorders[row]
+            }
+            .subscribe(onNext: { [unowned self] (model) in
                 let detailVC = RecordDetailController(model: model)
                 self.navigationController?.pushViewController(detailVC, animated: true)
             })
             .addDisposableTo(disposeBag)
     }
-
-    func totalPayText() -> String {
-        let month = Date().month
-        let recorders = Database.default.all(RLMRecorder.self)
-        let matched = Array(recorders.filter { $0.month == month })
-        let allPay = matched.reduce(0) { $0.0 + $0.1.money }
-        return String(Int(allPay))
-    }
-    
     
     func fetchDataFromServe() {
         let serveIsChanged = true
@@ -103,6 +92,7 @@ class MainViewController: BaseViewController {
             HoneybeeIncome.fetchAllIncomes()
         }
     }
+    
     deinit {
 //        notiToken?.stop()
     }
@@ -163,7 +153,7 @@ extension MainViewController {
     }
     func addTableViewHeader() {
         header = MainHeader(height: 205)
-        header.outMoneyLabel.text = totalPayText()
+//        header.outMoneyLabel.text = totalPayText()
         header.tapContainerViewAction = { [weak self] in
             self?.navigationController?.pushViewController(PieViewController(), animated: true)
         }
@@ -191,21 +181,6 @@ extension MainViewController {
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true, completion: nil)
     }
-}
-
-
-
-// -----------------------------------------------------------------------------
-// MARK: UITableViewDelegate
-// -----------------------------------------------------------------------------
-extension MainViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //        Observable.from(object: recorders[indexPath.row])
-//        
-//        let model = recorders[indexPath.row]//dataSource.item(at: indexPath)
-//        let detailVC = RecordDetailController(model: model)
-//        navigationController?.pushViewController(detailVC, animated: true)
-//    }
 }
 
 
