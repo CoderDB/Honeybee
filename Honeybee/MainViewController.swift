@@ -42,7 +42,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
     
     let tableView = UITableView()
 //    let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     var recorders: Results<RLMRecorder>!
     var header: MainHeader!
     
@@ -61,7 +61,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
     func configRx() {
         tableView.rx
             .setDelegate(self)
-            .disposed(by: disposeBag)
+            .disposed(by: bag)
         
 //        let currentMonth = Date().month
         recorders = Database.default.all(RLMRecorder.self)
@@ -73,7 +73,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
                 cellIdentifier: "\(RecordCell.self)",
                 cellType: RecordCell.self)
                 ) { _, model, cell in cell.recorder = model }
-            .disposed(by: disposeBag)
+            .disposed(by: bag)
         
         
         Observable.collection(from: recorders)
@@ -81,7 +81,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
             .subscribe { [unowned self] (event) in
                 self.header.outMoneyLabel.text = "\(event.element ?? 0)"
             }
-            .disposed(by: disposeBag)
+            .disposed(by: bag)
         
         tableView.rx
             .itemSelected
@@ -91,30 +91,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
                 let detailVC = RecordDetailController(model: model)
                 self.navigationController?.pushViewController(detailVC, animated: true)
             })
-            .disposed(by: disposeBag)
-        
-//        tableView.rx
-//            .itemSelected
-//            .mapWithIndex {  (idx, row) in
-//                print("\(idx.row)--\(row)")
-//                (idx, self.recorders[row])
-//            }
-//            .subscribe(onNext: { [unowned self] (idx, model) in
-//                let detailVC = RecordDetailController(model: model)
-//                self.navigationController?.pushViewController(detailVC, animated: true)
-//            })
-//            .disposed(by: disposeBag)
-        
-        
-//        addBtn.rx
-//            .tap
-//            .subscribe{ [unowned self] in
-//                let vc = AddRecorderController()
-//                let nav = UINavigationController(rootViewController: vc)
-//                self.present(nav, animated: true, completion: nil)
-//            }
-//            .disposed(by: disposeBag)
-        
+            .disposed(by: bag)
         
         addBtn.rx
             .tap
@@ -123,7 +100,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
                 let nav = UINavigationController(rootViewController: vc)
                 self.present(nav, animated: true, completion: nil)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: bag)
     }
     
     func fetchDataFromServe() {
@@ -139,6 +116,8 @@ class MainViewController: BaseViewController, UITableViewDelegate {
     deinit {
 //        notiToken?.stop()
     }
+    
+    
 }
 
 
@@ -217,5 +196,6 @@ extension MainViewController {
         }
     }
 }
+
 
 

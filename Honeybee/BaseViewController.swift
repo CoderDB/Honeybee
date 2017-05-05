@@ -52,5 +52,26 @@ class BaseViewController: UIViewController {
 //    }
     func navRightItemClicked(_ btn: UIButton) {
     }
-
 }
+
+
+class BaseViewModelViewController: UIViewController {
+    
+    
+    var baseViewModel: BaseViewModel?
+    
+    convenience init(viewModel: BaseViewModel) {
+        self.init(viewModel: viewModel, nibName: nil, bundle: nil)
+    }
+    
+    init(viewModel: BaseViewModel, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.baseViewModel = viewModel
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+

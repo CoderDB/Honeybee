@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 
-class MainViewModel {
+class MainViewModel: BaseViewModel {
 
 //    let items: Driver<[RLMRecorder]>
 //    let indicatorViewAnimating: Driver<Bool>
