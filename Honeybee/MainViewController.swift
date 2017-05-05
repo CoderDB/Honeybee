@@ -9,7 +9,21 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import RxDataSources
+import RxSwift
+import RxRealm
+import RxCocoa
 
+
+extension UITableView {
+    func applyChangeset(_ changes: RealmChangeset) {
+        beginUpdates()
+        deleteRows(at: changes.deleted.map { IndexPath(row: $0, section: 0)}, with: .automatic)
+        insertRows(at: changes.inserted.map { IndexPath(row: $0, section: 0)}, with: .automatic)
+        reloadRows(at: changes.updated.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+        endUpdates()
+    }
+}
 
 class MainViewController: BaseTableViewController {
     
@@ -22,6 +36,49 @@ class MainViewController: BaseTableViewController {
     var notiToken: NotificationToken? = nil
     var header: MainHeader!
     
+    let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
+    private let disposeBag = DisposeBag()
+    
+    
+    func configRx() {
+//        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+        
+        
+        let data = Database.default.all(RLMRecorder.self)
+        
+        Observable.collection(from: data)
+            .bind(to: tableView.rx.items) { tv, ip, element in
+                guard let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as? RecordCell else {
+                    return UITableViewCell()
+                }
+                cell.recorder = element
+                return cell
+            }
+            .addDisposableTo(disposeBag)
+        
+        
+        
+//        Observable.changeset(from: data)
+//            .subscribe(onNext: { [unowned self] (result, changed) in
+//                if let changed = changed {
+//                    self.tableView.applyChangeset(changed)
+//                } else {
+//                    self.tableView.reloadData()
+//                }
+//            })
+//            .addDisposableTo(disposeBag)
+////
+        
+//        rx_datasource.configureCell = { some, tableView, idx, model in
+//            
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)", for: idx) as? RecordCell else {
+//                return UITableViewCell()
+//            }
+//            cell.recorder = model
+//            return cell
+//        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -30,26 +87,12 @@ class MainViewController: BaseTableViewController {
         addTableView()
         addTableViewHeader()
         addAddBtn()
-        fetchDataFromServe()
-        fetchData()
+        
+        configRx()
+        
+//        fetchDataFromServe()
+//        fetchData()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: true)
-//    }
-//    func sameRecorderBeGrouped() {
-//        let data = Database.manager.all(RLMRecorder.self)
-//        var recorders = [RLMRecorder]()
-//        for recorder in data {
-//            recorders.append(recorder)
-//        }
-//        let grouped = group(recorders: recorders)
-//        var showing = [ShowRecorder]()
-//        for group in grouped {
-//            let show = ShowRecorder(recorders: group)
-//            showing.append(show)
-//        }
-//    }
     
     func fetchData() {
         
