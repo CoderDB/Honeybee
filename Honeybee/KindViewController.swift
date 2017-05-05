@@ -47,10 +47,10 @@ class KindViewController: BaseViewController, AlertProvider {
         
         configRx()
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        stopShake()
-    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        stopShake()
+//    }
     
     func configRx() {
         kinds = Database.default.all(HoneybeeKind.self)
@@ -77,20 +77,14 @@ class KindViewController: BaseViewController, AlertProvider {
             })
             .disposed(by: bag)
         
-        managerKindBtn.rx
-            .tap
-            .scan(false) { lastState, newValue in
-                !lastState
-            }
-            .bind(to: managerKindBtn.rx.isSelected)
-            .disposed(by: bag)
-        
-        managerKindBtn.rx
+        let state = managerKindBtn.rx
             .tap
             .scan(false) { lastState, _ in
                 !lastState
             }
-            .subscribe(onNext: { [unowned self] (state) in
+        state.bind(to: managerKindBtn.rx.isSelected).disposed(by: bag)
+        
+        state.subscribe(onNext: { [unowned self] (state) in
                 if let cells = self.collectionView.visibleCells as? [KindCell] {
                     if state {
                         _ = cells.map({ (cell) in
@@ -104,9 +98,6 @@ class KindViewController: BaseViewController, AlertProvider {
             })
             .disposed(by: bag)
         
-//        managerKindBtn.rx.tap.subscribe(onNext: { [weak self] in
-//            
-//        })
     }
     
     func setNavRightItems() {
@@ -128,41 +119,50 @@ class KindViewController: BaseViewController, AlertProvider {
         }
         
         collectionView.register(KindCell.self)
-        
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
+        let longGesture =
+            UILongPressGestureRecognizer()//UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
+        
+        longGesture.rx.event.subscribe(onNext: { (gesture) in
+            switch gesture.state {
+            case .began:break
+            default: break
+            }
+        }).disposed(by: bag)
+        
     }
    
-    func managerKindBtnClicked(_ btn: UIButton) {
-        btn.isSelected = !btn.isSelected
-        if let cells = collectionView.visibleCells as? [KindCell] {
-            if btn.isSelected {
-                _ = cells.map({ (cell) in
-                    cell.deleteBtn.isHidden = false; cell.shake()
-                    deleteWith(cell: cell)
-                })
-            } else {
-                _ = cells.map { $0.deleteBtn.isHidden = true; $0.stopShake() }
-            }
-        }
-    }
-    func stopShake() {
-        if self.managerKindBtn.isSelected {
-            self.managerKindBtnClicked(self.managerKindBtn)
-        }
-    }
+//    func managerKindBtnClicked(_ btn: UIButton) {
+//        btn.isSelected = !btn.isSelected
+//        if let cells = collectionView.visibleCells as? [KindCell] {
+//            if btn.isSelected {
+//                _ = cells.map({ (cell) in
+//                    cell.deleteBtn.isHidden = false; cell.shake()
+//                    deleteWith(cell: cell)
+//                })
+//            } else {
+//                _ = cells.map { $0.deleteBtn.isHidden = true; $0.stopShake() }
+//            }
+//        }
+//    }
+//    func stopShake() {
+//        if self.managerKindBtn.isSelected {
+//            self.managerKindBtnClicked(self.managerKindBtn)
+//        }
+//    }
     func deleteWith(cell: KindCell) {
-        cell.deleteBtnAction = { [unowned self] in
-            
-            self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
-                self.stopShake()
-                if let idx = self.collectionView.indexPath(for: cell) {
-                    
-                    self.deleteFromDatabase(self.kinds[idx.row])
-                    self.collectionView.deselectItem(at: idx, animated: true)
-                }
+        cell.deleteBtn.rx
+            .tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
+//                    self.stopShake()
+                    if let idx = self.collectionView.indexPath(for: cell) {
+                        self.deleteFromDatabase(self.kinds[idx.row])
+                        self.collectionView.deselectItem(at: idx, animated: true)
+                    }
+                })
             })
-        }
+            .disposed(by: bag)
     }
     func deleteFromDatabase(_ kind: HoneybeeKind) {
         do {
@@ -184,8 +184,8 @@ class KindViewController: BaseViewController, AlertProvider {
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            
-            managerKindBtnClicked(managerKindBtn)
+            break
+//            managerKindBtnClicked(managerKindBtn)
 //            guard let selectedIdx = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
 //                break
 //            }
