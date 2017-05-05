@@ -14,47 +14,54 @@ import RxCocoa
 
 class KindViewController: BaseViewController, AlertProvider {
 
-//    let rx_datasource = RxCollectionViewRealmDataSource(cellIdentifier: "") { (realm, collv, idx, obj) -> UICollectionViewCell in
-//        
-//    }
     var collectionView: UICollectionView!
+    var kinds: Results<HoneybeeKind>!
     private let bag = DisposeBag()
     fileprivate let rx_datasource = RxCollectionViewRealmDataSource<HoneybeeKind>(cellIdentifier: "\(KindCell.self)", cellType: KindCell.self) { (cell, _, element) in
         cell.config(model: element)
     }
     
-//    var dataSource: KindDataSource!
-//    var notiToken: NotificationToken? = nil
-    
-    var managerKindBtn: UIButton!
+    lazy var managerKindBtn: UIButton = {
+        $0.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
+        $0.setTitle("编辑", for: .normal)
+        $0.setTitle("完成", for: .selected)
+        $0.setTitleColor(HB.Color.nav, for: .normal)
+        $0.titleLabel?.font = HB.Font.h5
+        $0.contentHorizontalAlignment = .right
+        return $0
+    }(UIButton())
+    lazy var addNewKindBtn: UIButton = {
+        $0.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
+        $0.setTitle("添加", for: .normal)
+        $0.setTitleColor(HB.Color.nav, for: .normal)
+        $0.titleLabel?.font = HB.Font.h5
+        $0.contentHorizontalAlignment = .right
+        return $0
+    }(UIButton())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("类别管理")
         setNavRightItems()
         addCollectionView()
-//        fetchData()
         
-//        let realm = try! Realm(fileURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("honeybee.realm"))
+        configRx()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopShake()
+    }
+    
+    func configRx() {
+        kinds = Database.default.all(HoneybeeKind.self)
         
-//        let kinds = Observable
-//            .changeset(from: realm.objects(HoneybeeKind.self))
-//            .share()
-        
-//        let kinds = Observable.changeset(from: Database.default.all(HoneybeeKind.self))
-//        kinds.bind(to: collectionView.rx.realmChanges(rx_datasource)).disposed(by: bag)
-
-//        collectionView.rx.setDataSource(rx_datasource).disposed(by: bag)
-//        collectionView.rx.setDelegate(self).disposed(by: bag)
-        
-        let kinds = Database.default.all(HoneybeeKind.self)
         Observable.changeset(from: kinds)
             .bind(to: collectionView.rx.realmChanges(rx_datasource))
             .disposed(by: bag)
         
         collectionView.rx
             .itemSelected
-            .map { idx in kinds[idx.row] }
+            .map { [unowned self] idx in self.kinds[idx.row] }
             .subscribe { [unowned self] (kind) in
                 let vc = KindDetailController()
                 vc.kind = kind.element
@@ -62,30 +69,47 @@ class KindViewController: BaseViewController, AlertProvider {
             }
             .disposed(by: bag)
         
+        
+        addNewKindBtn.rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.pushViewController(KindAddViewController(), animated: true)
+            })
+            .disposed(by: bag)
+        
+        managerKindBtn.rx
+            .tap
+            .scan(false) { lastState, newValue in
+                !lastState
+            }
+            .bind(to: managerKindBtn.rx.isSelected)
+            .disposed(by: bag)
+        
+        managerKindBtn.rx
+            .tap
+            .scan(false) { lastState, _ in
+                !lastState
+            }
+            .subscribe(onNext: { [unowned self] (state) in
+                if let cells = self.collectionView.visibleCells as? [KindCell] {
+                    if state {
+                        _ = cells.map({ (cell) in
+                            cell.deleteBtn.isHidden = false; cell.shake()
+                            self.deleteWith(cell: cell)
+                        })
+                    } else {
+                        _ = cells.map { $0.deleteBtn.isHidden = true; $0.stopShake() }
+                    }
+                }
+            })
+            .disposed(by: bag)
+        
+//        managerKindBtn.rx.tap.subscribe(onNext: { [weak self] in
+//            
+//        })
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        stopShake()
-    }
     func setNavRightItems() {
-        let addNewKindBtn = UIButton(type: .custom)
-        addNewKindBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
-        addNewKindBtn.setTitle("添加", for: .normal)
-        addNewKindBtn.setTitleColor(HB.Color.nav, for: .normal)
-        addNewKindBtn.titleLabel?.font = HB.Font.h5
-        addNewKindBtn.contentHorizontalAlignment = .right
-        addNewKindBtn.addTarget(self, action: #selector(addNewKindBtnClicked), for: .touchUpInside)
-        
-        managerKindBtn = UIButton(type: .custom)
-        managerKindBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
-        managerKindBtn.setTitle("编辑", for: .normal)
-        managerKindBtn.setTitle("完成", for: .selected)
-        managerKindBtn.setTitleColor(HB.Color.nav, for: .normal)
-        managerKindBtn.titleLabel?.font = HB.Font.h5
-        managerKindBtn.contentHorizontalAlignment = .right
-        managerKindBtn.addTarget(self, action: #selector(managerKindBtnClicked(_:)), for: .touchUpInside)
-        
         let items = [UIBarButtonItem(customView: addNewKindBtn), UIBarButtonItem(customView: managerKindBtn)]
         navigationItem.setRightBarButtonItems(items, animated: true)
     }
@@ -108,9 +132,7 @@ class KindViewController: BaseViewController, AlertProvider {
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
         collectionView.addGestureRecognizer(longGesture)
     }
-    func addNewKindBtnClicked() {
-        navigationController?.pushViewController(KindAddViewController(), animated: true)
-    }
+   
     func managerKindBtnClicked(_ btn: UIButton) {
         btn.isSelected = !btn.isSelected
         if let cells = collectionView.visibleCells as? [KindCell] {
@@ -134,11 +156,11 @@ class KindViewController: BaseViewController, AlertProvider {
             
             self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
                 self.stopShake()
-//                if let idx = self.collectionView.indexPath(for: cell) {
-//                    let kind = self.dataSource.item(at: idx)
-//                    self.deleteFromDatabase(kind)
-//                    self.collectionView.deselectItem(at: idx, animated: true)
-//                }
+                if let idx = self.collectionView.indexPath(for: cell) {
+                    
+                    self.deleteFromDatabase(self.kinds[idx.row])
+                    self.collectionView.deselectItem(at: idx, animated: true)
+                }
             })
         }
     }
@@ -189,27 +211,7 @@ class KindViewController: BaseViewController, AlertProvider {
         }
     }
     
-    func fetchData() {
-//        let kinds = Honeybee.default.allKinds()
-//        dataSource = KindDataSource(items: kinds.toArray)
-//        collectionView.dataSource = dataSource
-//        notiToken = kinds.addNotificationBlock { (change) in
-//            self.collectionView.reloadData()
-//        }
-    }
     deinit {
 //        notiToken?.stop()
     }
 }
-
-
-//// MARK: UICollectionViewDelegateFlowLayout
-//extension KindViewController {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-////        print("-------\(indexPath.section)----\(indexPath.row)")
-////        let vc = KindDetailController()
-////        vc.kind = dataSource.item(at: indexPath)
-////        navigationController?.pushViewController(vc, animated: true)
-//    }
-//}
