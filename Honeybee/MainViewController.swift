@@ -25,16 +25,11 @@ extension UITableView {
     }
 }
 
-//class MainViewController: BaseTableViewController {
+
+
 class MainViewController: BaseViewController {
     
-//    var dataSource: MainDataSource! {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
     
-//    var notiToken: NotificationToken? = nil
     var header: MainHeader!
     let tableView = UITableView()
     
@@ -46,55 +41,6 @@ class MainViewController: BaseViewController {
     var recorders: Results<RLMRecorder>!
     
     
-    func configRx() {
-        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
-    
-        
-        recorders = Database.default.all(RLMRecorder.self)
-        
-        Observable.from(optional: recorders)
-            .bind(to: tableView.rx.items(cellIdentifier: "\(RecordCell.self)", cellType: RecordCell.self))
-            {_, element, cell in cell.recorder = element }
-            .disposed(by: disposeBag)
-        
-//        Observable.collection(from: recorders)
-//            .bind(to: tableView.rx.items) { tv, ip, element in
-//                guard let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as? RecordCell else {
-//                    return UITableViewCell()
-//                }
-//                cell.recorder = element
-//                return cell
-//            }
-//            .addDisposableTo(disposeBag)
-        
-        Observable.collection(from: recorders)
-            .map { $0.reduce(0) { $0.0 + Int($0.1.money) } }
-            .subscribe { [unowned self] (event) in
-                self.header.outMoneyLabel.text = "\(event.element ?? 0)"
-            }
-            .addDisposableTo(disposeBag)
-        
-//        Observable.changeset(from: data)
-//            .subscribe(onNext: { [unowned self] (result, changed) in
-//                if let changed = changed {
-//                    self.tableView.applyChangeset(changed)
-//                } else {
-//                    self.tableView.reloadData()
-//                }
-//            })
-//            .addDisposableTo(disposeBag)
-////
-        
-//        rx_datasource.configureCell = { some, tableView, idx, model in
-//            
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)", for: idx) as? RecordCell else {
-//                return UITableViewCell()
-//            }
-//            cell.recorder = model
-//            return cell
-//        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -105,23 +51,66 @@ class MainViewController: BaseViewController {
         addAddBtn()
         
         configRx()
-        
-//        fetchDataFromServe()
-//        fetchData()
     }
     
-    func fetchData() {
+    
+    
+    func configRx() {
+        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
         
-//        let data = Database.default.all(RLMRecorder.self)
-//        dataSource = MainDataSource(items: Array(data), vc: self)
-//        tableView.dataSource = dataSource
+        let currentMonth = Date().month
+        recorders = Database.default.all(RLMRecorder.self)
+//            .filter { $0.month == currentMonth }
         
-//        notiToken = Database.default.notification({ [unowned self] (_, realm) in
-//            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorder.self)), vc: self)
-//            self.tableView.dataSource = self.dataSource
-//            
-//            self.header.outMoneyLabel.text = self.totalPayText()
-//        })
+        
+        Observable.collection(from: recorders)
+            .bind(to: tableView.rx.items(cellIdentifier: "\(RecordCell.self)", cellType: RecordCell.self))
+            { _, model, cell in cell.recorder = model }
+            .disposed(by: disposeBag)
+        
+//        Observable.from(optional: recorders)
+//            .bind(to: tableView.rx.items(cellIdentifier: "\(RecordCell.self)", cellType: RecordCell.self))
+//            {_, element, cell in cell.recorder = element }
+//            .disposed(by: disposeBag)
+        
+//                Observable.collection(from: recorders)
+//                    .bind(to: tableView.rx.items) { tv, ip, element in
+//                        guard let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as? RecordCell else {
+//                            return UITableViewCell()
+//                        }
+//                        cell.recorder = element
+//                        return cell
+//                    }
+//                    .addDisposableTo(disposeBag)
+        Observable.collection(from: recorders)
+            .map { $0.reduce(0) { $0.0 + Int($0.1.money) } }
+            .subscribe { [unowned self] (event) in
+                self.header.outMoneyLabel.text = "\(event.element ?? 0)"
+            }
+            .addDisposableTo(disposeBag)
+        
+        
+        //        Observable.changeset(from: recorders).
+        
+        //        Observable.changeset(from: data)
+        //            .subscribe(onNext: { [unowned self] (result, changed) in
+        //                if let changed = changed {
+        //                    self.tableView.applyChangeset(changed)
+        //                } else {
+        //                    self.tableView.reloadData()
+        //                }
+        //            })
+        //            .addDisposableTo(disposeBag)
+        ////
+        
+        //        rx_datasource.configureCell = { some, tableView, idx, model in
+        //
+        //            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordCell.self)", for: idx) as? RecordCell else {
+        //                return UITableViewCell()
+        //            }
+        //            cell.recorder = model
+        //            return cell
+        //        }
     }
 
     func totalPayText() -> String {
@@ -149,8 +138,9 @@ class MainViewController: BaseViewController {
 
 
 
+// -----------------------------------------------------------------------------
 // MARK: Popover
-
+// -----------------------------------------------------------------------------
 extension MainViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -183,8 +173,9 @@ extension MainViewController: UIPopoverPresentationControllerDelegate {
 
 
 
+// -----------------------------------------------------------------------------
 // MARK: UI
-
+// -----------------------------------------------------------------------------
 extension MainViewController {
     func addTableView() {
         view.addSubview(tableView)
@@ -231,24 +222,15 @@ extension MainViewController {
 }
 
 
-// MARK: UITableViewDelegate
 
+// -----------------------------------------------------------------------------
+// MARK: UITableViewDelegate
+// -----------------------------------------------------------------------------
 extension MainViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailVC = RecordDetailController(model: dataSource.item(at: indexPath).)
-//        navigationController?.pushViewController(detailVC, animated: true)
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-//        Observable.from(object: recorders[indexPath.row])
-        
-        
+        //        Observable.from(object: recorders[indexPath.row])
         
         let model = recorders[indexPath.row]//dataSource.item(at: indexPath)
-        
-        
         let detailVC = RecordDetailController(model: model)
         navigationController?.pushViewController(detailVC, animated: true)
     }
