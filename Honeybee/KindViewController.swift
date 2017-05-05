@@ -8,29 +8,47 @@
 
 import UIKit
 import RealmSwift
-
+import RxRealmDataSources
+import RxSwift
+import RxCocoa
 
 class KindViewController: BaseCollectionViewController, AlertProvider {
 
+//    let rx_datasource = RxCollectionViewRealmDataSource(cellIdentifier: "") { (realm, collv, idx, obj) -> UICollectionViewCell in
+//        
+//    }
+//    
+    let rx_datasource = RxCollectionViewRealmDataSource<HoneybeeKind>(cellIdentifier: "\(KindCell.self)", cellType: KindCell.self) { (cell, _, element) in
+        cell.config(model: element)
+    }
     
-    var dataSource: KindDataSource!
+//    var dataSource: KindDataSource!
     var notiToken: NotificationToken? = nil
     
     var managerKindBtn: UIButton!
-    
+    private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavTitle("类别管理")
-//        setNavRightItem("添加种类")
         setNavRightItems()
         addCollectionView()
-        fetchData()
+//        fetchData()
+        
+//        let realm = try! Realm(fileURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("honeybee.realm"))
+        
+//        let kinds = Observable
+//            .changeset(from: realm.objects(HoneybeeKind.self))
+//            .share()
+        
+//        let kinds = Observable.changeset(from: Database.default.all(HoneybeeKind.self))
+//        kinds.bind(to: collectionView.rx.realmChanges(rx_datasource)).disposed(by: bag)
+
+        Observable.changeset(from: Database.default.all(HoneybeeKind.self))
+            .bind(to: collectionView.rx.realmChanges(rx_datasource))
+            .disposed(by: bag)
+        
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -92,11 +110,11 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
             
             self.showWarning(message: "你要删除整个类别？？？😱", ok: { [unowned self] in
                 self.stopShake()
-                if let idx = self.collectionView.indexPath(for: cell) {
-                    let kind = self.dataSource.item(at: idx)
-                    self.deleteFromDatabase(kind)
-                    self.collectionView.deselectItem(at: idx, animated: true)
-                }
+//                if let idx = self.collectionView.indexPath(for: cell) {
+//                    let kind = self.dataSource.item(at: idx)
+//                    self.deleteFromDatabase(kind)
+//                    self.collectionView.deselectItem(at: idx, animated: true)
+//                }
             })
         }
     }
@@ -148,12 +166,12 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
     }
     
     func fetchData() {
-        let kinds = Honeybee.default.allKinds()
-        dataSource = KindDataSource(items: kinds.toArray)
-        collectionView.dataSource = dataSource
-        notiToken = kinds.addNotificationBlock { (change) in
-            self.collectionView.reloadData()
-        }
+//        let kinds = Honeybee.default.allKinds()
+//        dataSource = KindDataSource(items: kinds.toArray)
+//        collectionView.dataSource = dataSource
+//        notiToken = kinds.addNotificationBlock { (change) in
+//            self.collectionView.reloadData()
+//        }
     }
     deinit {
         notiToken?.stop()
@@ -164,9 +182,9 @@ class KindViewController: BaseCollectionViewController, AlertProvider {
 // MARK: UICollectionViewDelegateFlowLayout
 extension KindViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("-------\(indexPath.section)----\(indexPath.row)")
-        let vc = KindDetailController()
-        vc.kind = dataSource.item(at: indexPath)
-        navigationController?.pushViewController(vc, animated: true)
+//        print("-------\(indexPath.section)----\(indexPath.row)")
+//        let vc = KindDetailController()
+//        vc.kind = dataSource.item(at: indexPath)
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
