@@ -85,14 +85,25 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         
         tableView.rx
             .itemSelected
-            .mapWithIndex { [unowned self] (_, row) in
-                self.recorders[row]
-            }
-            .subscribe(onNext: { [unowned self] (model) in
+            .map { [unowned self] (idx) in
+                self.recorders[idx.row]
+            }.subscribe(onNext: { [unowned self] (model) in
                 let detailVC = RecordDetailController(model: model)
                 self.navigationController?.pushViewController(detailVC, animated: true)
             })
             .disposed(by: disposeBag)
+        
+//        tableView.rx
+//            .itemSelected
+//            .mapWithIndex {  (idx, row) in
+//                print("\(idx.row)--\(row)")
+//                (idx, self.recorders[row])
+//            }
+//            .subscribe(onNext: { [unowned self] (idx, model) in
+//                let detailVC = RecordDetailController(model: model)
+//                self.navigationController?.pushViewController(detailVC, animated: true)
+//            })
+//            .disposed(by: disposeBag)
         
         
 //        addBtn.rx
