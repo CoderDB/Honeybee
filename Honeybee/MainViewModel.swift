@@ -22,4 +22,11 @@ class MainViewModel {
 //        
 //    }
     
+    
+    let recorder: RLMRecorder
+    
+    init(recorder: RLMRecorder) {
+        self.recorder = recorder
+    }
+    
 }

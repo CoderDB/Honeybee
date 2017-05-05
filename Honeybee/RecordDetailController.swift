@@ -8,6 +8,10 @@
 
 import UIKit
 
+import RxRealm
+//import RxCocoa
+import RxSwift
+import RealmSwift
 
 class RecordDetailController: BaseTableViewController, AlertProvider {
     
@@ -69,6 +73,18 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     
     func delete() {
         
+//        Observable.from(object: model).subscribe(Database.default.realm.rx.delete()).disposed(by: DisposeBag())
+//            
+        
+            
+//            .subscribe(onNext: { (_) in
+//                Database.default.realm.rx.delete()
+//            }, onError: { (error) in
+//                Reminder.error(msg: error.localizedDescription)
+//            }, onCompleted: { 
+//                Reminder.success()
+//            })
+//            .disposed(by: DisposeBag())
         
         do {
             try Database.default.delete(item: model)

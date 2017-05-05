@@ -9,11 +9,14 @@
 import UIKit
 import SnapKit
 import RealmSwift
-import RxDataSources
+
+//import RxDataSources
+
+//#if !RX_NO_MODULE
 import RxSwift
 import RxRealm
 import RxCocoa
-
+//#endif
 
 extension UITableView {
     func applyChangeset(_ changes: RealmChangeset) {
@@ -28,6 +31,13 @@ extension UITableView {
 
 
 class MainViewController: BaseViewController, UITableViewDelegate {
+    
+    
+    lazy var addBtn: UIButton = {
+        $0.setImage(UIImage(named: "add"), for: .normal)
+//        $0.frame = CGRect(x: (HB.Screen.w - 60) * 0.5, y: HB.Screen.h - 80, width: 60, height: 60)
+        return $0
+    }(UIButton())
     
     
     let tableView = UITableView()
@@ -51,7 +61,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
     func configRx() {
         tableView.rx
             .setDelegate(self)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
 //        let currentMonth = Date().month
         recorders = Database.default.all(RLMRecorder.self)
@@ -59,8 +69,10 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         
         
         Observable.collection(from: recorders)
-            .bind(to: tableView.rx.items(cellIdentifier: "\(RecordCell.self)", cellType: RecordCell.self))
-            { _, model, cell in cell.recorder = model }
+            .bind(to: tableView.rx.items(
+                cellIdentifier: "\(RecordCell.self)",
+                cellType: RecordCell.self)
+                ) { _, model, cell in cell.recorder = model }
             .disposed(by: disposeBag)
         
         
@@ -69,18 +81,38 @@ class MainViewController: BaseViewController, UITableViewDelegate {
             .subscribe { [unowned self] (event) in
                 self.header.outMoneyLabel.text = "\(event.element ?? 0)"
             }
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         tableView.rx
             .itemSelected
-            .mapWithIndex { [unowned self] (_, row)  in
+            .mapWithIndex { [unowned self] (_, row) in
                 self.recorders[row]
             }
             .subscribe(onNext: { [unowned self] (model) in
                 let detailVC = RecordDetailController(model: model)
                 self.navigationController?.pushViewController(detailVC, animated: true)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
+        
+        
+//        addBtn.rx
+//            .tap
+//            .subscribe{ [unowned self] in
+//                let vc = AddRecorderController()
+//                let nav = UINavigationController(rootViewController: vc)
+//                self.present(nav, animated: true, completion: nil)
+//            }
+//            .disposed(by: disposeBag)
+        
+        
+        addBtn.rx
+            .tap
+            .subscribe(onNext: { [unowned self] in
+                let vc = AddRecorderController()
+                let nav = UINavigationController(rootViewController: vc)
+                self.present(nav, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     func fetchDataFromServe() {
@@ -166,20 +198,12 @@ extension MainViewController {
         tableView.tableHeaderView = header
     }
     func addAddBtn() {
-        let addBtn = UIButton(type: .custom)
-        addBtn.setImage(UIImage(named: "add"), for: .normal)
-        addBtn.frame = CGRect(x: (HB.Screen.w - 60) * 0.5, y: HB.Screen.h - 80, width: 60, height: 60)
-        addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         view.addSubview(addBtn)
-    }
-    func addBtnClicked() {
-        let vc = AddRecorderController()//CardViewController()
-//        vc.shouldReloadData = { [unowned self] in
-//            self.fetchData()
-//        }
-        
-        let nav = UINavigationController(rootViewController: vc)
-        present(nav, animated: true, completion: nil)
+        addBtn.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.width.height.equalTo(60)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
+        }
     }
 }
 
