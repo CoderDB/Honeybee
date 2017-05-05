@@ -27,26 +27,30 @@ extension UITableView {
 
 class MainViewController: BaseTableViewController {
     
-    var dataSource: MainDataSource! {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+//    var dataSource: MainDataSource! {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
     
-    var notiToken: NotificationToken? = nil
+//    var notiToken: NotificationToken? = nil
     var header: MainHeader!
     
     let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     private let disposeBag = DisposeBag()
     
     
+    var recorders: Results<RLMRecorder>!
+    
+    
     func configRx() {
 //        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
         
         
-        let data = Database.default.all(RLMRecorder.self)
+        recorders = Database.default.all(RLMRecorder.self)
         
-        Observable.collection(from: data)
+        
+        Observable.collection(from: recorders)
             .bind(to: tableView.rx.items) { tv, ip, element in
                 guard let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)") as? RecordCell else {
                     return UITableViewCell()
@@ -96,16 +100,16 @@ class MainViewController: BaseTableViewController {
     
     func fetchData() {
         
-        let data = Database.default.all(RLMRecorder.self)
-        dataSource = MainDataSource(items: Array(data), vc: self)
-        tableView.dataSource = dataSource
+//        let data = Database.default.all(RLMRecorder.self)
+//        dataSource = MainDataSource(items: Array(data), vc: self)
+//        tableView.dataSource = dataSource
         
-        notiToken = Database.default.notification({ [unowned self] (_, realm) in
-            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorder.self)), vc: self)
-            self.tableView.dataSource = self.dataSource
-            
-            self.header.outMoneyLabel.text = self.totalPayText()
-        })
+//        notiToken = Database.default.notification({ [unowned self] (_, realm) in
+//            self.dataSource = MainDataSource(items: Array(realm.objects(RLMRecorder.self)), vc: self)
+//            self.tableView.dataSource = self.dataSource
+//            
+//            self.header.outMoneyLabel.text = self.totalPayText()
+//        })
     }
 
     func totalPayText() -> String {
@@ -127,7 +131,7 @@ class MainViewController: BaseTableViewController {
         }
     }
     deinit {
-        notiToken?.stop()
+//        notiToken?.stop()
     }
 }
 
@@ -222,16 +226,17 @@ extension MainViewController {
 //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = dataSource.item(at: indexPath)
+        
+        
+//        Observable.from(object: recorders[indexPath.row])
+        
+        
+        
+        let model = recorders[indexPath.row]//dataSource.item(at: indexPath)
+        
         
         let detailVC = RecordDetailController(model: model)
         navigationController?.pushViewController(detailVC, animated: true)
-        
-        
-//        if model.recorders.count == 1 {
-//            let detailVC = RecordDetailController(model: model.recorders[0])
-//            navigationController?.pushViewController(detailVC, animated: true)
-//        }
     }
 }
 
