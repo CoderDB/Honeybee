@@ -101,6 +101,7 @@
 		86AF07421E98E69A0077F733 /* PieHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07411E98E69A0077F733 /* PieHeaderData.swift */; };
 		86AF07441E98E8CE0077F733 /* BarHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07431E98E8CE0077F733 /* BarHeaderData.swift */; };
 		86AF07461E992A7F0077F733 /* PiePopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF07451E992A7F0077F733 /* PiePopoverController.swift */; };
+		86B5B7B11EBF26C800A75FE4 /* RecorderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5B7B01EBF26C800A75FE4 /* RecorderDetailViewModel.swift */; };
 		86B685171E5F14B5003F6EDC /* BarPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B685161E5F14B5003F6EDC /* BarPopoverController.swift */; };
 		86BA1BA81E5C4BF700669580 /* PieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA1BA71E5C4BF700669580 /* PieHeader.swift */; };
 		86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */; };
@@ -259,6 +260,7 @@
 		86AF07411E98E69A0077F733 /* PieHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeaderData.swift; sourceTree = "<group>"; };
 		86AF07431E98E8CE0077F733 /* BarHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarHeaderData.swift; sourceTree = "<group>"; };
 		86AF07451E992A7F0077F733 /* PiePopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiePopoverController.swift; sourceTree = "<group>"; };
+		86B5B7B01EBF26C800A75FE4 /* RecorderDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderDetailViewModel.swift; sourceTree = "<group>"; };
 		86B685161E5F14B5003F6EDC /* BarPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPopoverController.swift; sourceTree = "<group>"; };
 		86BA1BA71E5C4BF700669580 /* PieHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieHeader.swift; sourceTree = "<group>"; };
 		86BDA6A51E712A1A00AEFBC4 /* KindDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailCell.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
 				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
 				8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */,
+				86B5B7B01EBF26C800A75FE4 /* RecorderDetailViewModel.swift */,
 				8624F61C1E5047C00059788A /* RecordDetailHeader.swift */,
 				86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */,
 			);
@@ -1115,6 +1118,7 @@
 				86DF8AE51E6405AB0054152E /* UIColorExtension.swift in Sources */,
 				86FC4EC61E1112B10048E183 /* PieViewController.swift in Sources */,
 				8697F5DD1E9CF209002923E4 /* KeychainWrapper.swift in Sources */,
+				86B5B7B11EBF26C800A75FE4 /* RecorderDetailViewModel.swift in Sources */,
 				86BDA6A61E712A1A00AEFBC4 /* KindDetailCell.swift in Sources */,
 				86D170431E51EAB70004E192 /* SetupFooter.swift in Sources */,
 				86937D291DF2783300F180F6 /* HBKeyboard.swift in Sources */,
