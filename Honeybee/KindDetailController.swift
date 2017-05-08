@@ -25,6 +25,10 @@ class KindDetailController: BaseCollectionViewController {
     
     var notiToken: NotificationToken? = nil
     
+    var viewModel: KindDetailViewModel!
+    
+    var new_dataSource: ConfigurableDataSourceCollectionViewDataSource<KindDetailViewModel, KindDetailCell>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -36,12 +40,14 @@ class KindDetailController: BaseCollectionViewController {
         
     }
     fileprivate func fetchData() {
-        dataSource = KindDetailDataSource(items:kind.items)
-        collectionView.dataSource = dataSource
+//        dataSource = KindDetailDataSource(items:kind.items)
+        viewModel = KindDetailViewModel(kind: kind)
+        new_dataSource = ConfigurableDataSourceCollectionViewDataSource<KindDetailViewModel, KindDetailCell>(model: viewModel)
+        collectionView.dataSource = new_dataSource
         
-        notiToken = kind.items._addNotificationBlock { (changege) in
-            self.collectionView.reloadData()
-        }
+//        notiToken = kind.items._addNotificationBlock { (changege) in
+//            self.collectionView.reloadData()
+//        }
     }
     deinit {
         notiToken?.stop()

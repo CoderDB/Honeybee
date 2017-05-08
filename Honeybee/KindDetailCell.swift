@@ -49,3 +49,13 @@ class KindDetailCell: BaseCollectionViewCell {
     }
 }
 
+extension KindDetailCell: ConfigurableCell {
+    typealias ItemType = HoneybeeKind
+    func config(item: HoneybeeKind) {
+        
+    }
+    func configAdditional(at index: IndexPath, model: RLMRecorder) {
+        
+    }
+}
+

@@ -79,3 +79,27 @@ class ConfigurableDataSourceTableViewDataSource<Model: DataProvider, Cell: Confi
         return cell
     }
 }
+
+
+
+class ConfigurableDataSourceCollectionViewDataSource<Model: DataProvider, Cell: ConfigurableCell>: ConfigurableDataSource<Model>, UICollectionViewDataSource where Model.ItemType == Cell.ItemType, Cell: UICollectionViewCell {
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return model.numberOfSections()
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return model.numberOfItems(in: section)
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let collectionView.dequeueReusableCell(withReuseIdentifier: model.identifier(at: indexPath), for: indexPath) as? Cell else {
+//            return UICollectionViewCell()
+//        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: model.identifier(at: indexPath), for: indexPath) as! Cell
+        cell.config(item: model.item(at: indexPath))
+        return cell
+        
+        
+    }
+}
