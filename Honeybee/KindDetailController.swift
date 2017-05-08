@@ -11,6 +11,7 @@ import RealmSwift
 import RxSwift
 import RxCocoa
 //import Then
+import RxRealmDataSources
 
 class KindDetailController: BaseViewController {
     
@@ -43,6 +44,10 @@ class KindDetailController: BaseViewController {
     
     let bag = DisposeBag()
     
+    let rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeItem>(cellIdentifier: "\(KindDetailCell.self)", cellType: KindDetailCell.self) { (cell, _, item) in
+        cell.configWith(model: item, isEditing: false)
+    }
+    
     var new_dataSource: ConfigurableDataSourceCollectionViewDataSource<KindDetailViewModel, KindDetailCell>!
     
     override func viewDidLoad() {
@@ -52,20 +57,64 @@ class KindDetailController: BaseViewController {
         addHeader()
         addTipView()
         addCollectionView()
-//        fetchData()
         
         configRx()
         
     }
     
     func configRx() {
-        Observable.collection(from: kind.items)
-            .bind(to: collectionView.rx.items(
-                cellIdentifier: "\(KindDetailCell.self)",
-                cellType: KindDetailCell.self)
-                ) { row, item, cell in
-                    cell.configWith(model: item, isEditing: false)
+//        collectionView.rx.setDataSource(rx_dataSource).disposed(by: bag)
+        
+//        Observable.collection(from: kind.items)
+//            .bind(to: collectionView.rx.items(
+//                cellIdentifier: "\(KindDetailCell.self)",
+//                cellType: KindDetailCell.self)
+//                ) { row, item, cell in
+//                    cell.configWith(model: item, isEditing: false)
+//            }
+//            .disposed(by: bag)
+        
+        
+        
+//        Observable.changeset(from: kind.items)
+//            .subscribe(onNext: { (items, changes) in
+//                if let changes = changes {
+//                    self.collectionView.applyChangeset(changes)
+//                }
+//            })
+//            .disposed(by: bag)
+        
+        header.addBtn.rx
+            .tap
+            .subscribe(onNext: { [unowned self] in
+                let vc = KindAddItemController()
+                vc.kind = self.kind
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: bag)
+        let scan = header.deleteBtn.rx
+            .tap
+            .scan(false) { lastState, _ in
+                !lastState
+        }
+        scan.bind(to: header.deleteBtn.rx.isSelected)
+            .disposed(by: bag)
+        
+        scan.subscribe(onNext: { [unowned self] (isSelected) in
+            if isSelected {
+                self.allCellEditing()
+            } else {
+                self.allCellEndEdit()
             }
+        }).disposed(by: bag)
+        
+        header.rightBtn.rx
+            .tap
+            .subscribe(onNext: { [unowned self] in
+                self.showTextFieldAlert(completion: { [unowned self] in
+                    self.updateItem()
+                })
+            })
             .disposed(by: bag)
 
     }
@@ -111,23 +160,23 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
         header.titleLabel.backgroundColor = UIColor(hex: kind.color)
         view.addSubview(header)
         
-        header.addNewItemAction = { [unowned self] in
-            let vc = KindAddItemController()
-            vc.kind = self.kind
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        header.deleteBtnAction = { btn in
-            if btn.isSelected {
-                self.allCellEditing()
-            } else {
-                self.allCellEndEdit()
-            }
-        }
-        header.rightButtonAction = { [unowned self] _ in
-            self.showTextFieldAlert(completion: { [unowned self] in
-                self.updateItem()
-            })
-        }
+//        header.addNewItemAction = { [unowned self] in
+//            let vc = KindAddItemController()
+//            vc.kind = self.kind
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//        header.deleteBtnAction = { btn in
+//            if btn.isSelected {
+//                self.allCellEditing()
+//            } else {
+//                self.allCellEndEdit()
+//            }
+//        }
+//        header.rightButtonAction = { [unowned self] _ in
+//            self.showTextFieldAlert(completion: { [unowned self] in
+//                self.updateItem()
+//            })
+//        }
     }
     func updateItem() {
         if let name = kindName {
