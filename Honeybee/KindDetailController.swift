@@ -21,26 +21,8 @@ class KindDetailController: BaseViewController {
     fileprivate var alertController: UIAlertController!
     fileprivate var kindName: String?
     
-    fileprivate var dataSource: KindDetailDataSource! {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    
     lazy var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     var collectionView: UICollectionView!
-//    let collectionView: UICollectionView = UICollectionView().then {
-//        $0.backgroundColor = .white
-//        $0.showsVerticalScrollIndicator = false
-//        $0.showsHorizontalScrollIndicator = false
-//        $0.collectionViewLayout = layout
-////        view.dataSource = self
-////        view.delegate = self
-//    }
-    
-//    var notiToken: NotificationToken? = nil
-    
-    var viewModel: KindDetailViewModel!
     
     let bag = DisposeBag()
     
@@ -48,7 +30,6 @@ class KindDetailController: BaseViewController {
         cell.configWith(model: item, isEditing: false)
     }
     
-    var new_dataSource: ConfigurableDataSourceCollectionViewDataSource<KindDetailViewModel, KindDetailCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,34 +44,11 @@ class KindDetailController: BaseViewController {
     }
     
     func configRx() {
-//        collectionView.rx.setDataSource(rx_dataSource).disposed(by: bag)
-        
-//        Observable.collection(from: kind.items)
-//            .bind(to: collectionView.rx.items(
-//                cellIdentifier: "\(KindDetailCell.self)",
-//                cellType: KindDetailCell.self)
-//                ) { row, item, cell in
-//                    cell.configWith(model: item, isEditing: false)
-//            }
-//            .disposed(by: bag)
-        
-//        let items = Observable.changeset(from: kind.items).share()
-//        items
-//            .bind(to: collectionView.rx.realmChanges(rx_dataSource))
-//            .disposed(by: bag)
         
         Observable.changeset(from: kind.items)
             .share()
             .bind(to: collectionView.rx.realmChanges(rx_dataSource))
             .disposed(by: bag)
-        
-//        Observable.changeset(from: kind.items)
-//            .subscribe(onNext: { (items, changes) in
-//                if let changes = changes {
-//                    self.collectionView.applyChangeset(changes)
-//                }
-//            })
-//            .disposed(by: bag)
         
         header.addBtn.rx
             .tap
@@ -100,6 +58,7 @@ class KindDetailController: BaseViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: bag)
+        
         let scan = header.deleteBtn.rx
             .tap
             .scan(false) { lastState, _ in
@@ -126,18 +85,8 @@ class KindDetailController: BaseViewController {
             .disposed(by: bag)
 
     }
-    fileprivate func fetchData() {
-//        dataSource = KindDetailDataSource(items:kind.items)
-        viewModel = KindDetailViewModel(kind: kind)
-        new_dataSource = ConfigurableDataSourceCollectionViewDataSource<KindDetailViewModel, KindDetailCell>(model: viewModel)
-        collectionView.dataSource = new_dataSource
-        
-//        notiToken = kind.items._addNotificationBlock { (changege) in
-//            self.collectionView.reloadData()
-//        }
-    }
     deinit {
-//        notiToken?.stop()
+        print("KindDetailController---deinit")
     }
 }
 
@@ -167,24 +116,6 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
         header.titleLabel.text = kind.name
         header.titleLabel.backgroundColor = UIColor(hex: kind.color)
         view.addSubview(header)
-        
-//        header.addNewItemAction = { [unowned self] in
-//            let vc = KindAddItemController()
-//            vc.kind = self.kind
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//        header.deleteBtnAction = { btn in
-//            if btn.isSelected {
-//                self.allCellEditing()
-//            } else {
-//                self.allCellEndEdit()
-//            }
-//        }
-//        header.rightButtonAction = { [unowned self] _ in
-//            self.showTextFieldAlert(completion: { [unowned self] in
-//                self.updateItem()
-//            })
-//        }
     }
     func updateItem() {
         if let name = kindName {
@@ -242,12 +173,12 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
 
 extension KindDetailController {
     func allCellEditing() {
-        dataSource = KindDetailDataSource(items: kind.items, isEditing: true)
-        collectionView.dataSource = dataSource
+//        dataSource = KindDetailDataSource(items: kind.items, isEditing: true)
+//        collectionView.dataSource = dataSource
     }
     func allCellEndEdit() {
-        dataSource = KindDetailDataSource(items: kind.items, isEditing: false)
-        collectionView.dataSource = dataSource
+//        dataSource = KindDetailDataSource(items: kind.items, isEditing: false)
+//        collectionView.dataSource = dataSource
     }
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
@@ -260,15 +191,5 @@ extension KindDetailController {
         default:
             collectionView.cancelInteractiveMovement()
         }
-    }
-}
-
-
-
-// MARK: UICollectionViewDelegateFlowLayout
-
-extension KindDetailController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("-------\(indexPath.section)----\(indexPath.row)")
     }
 }
