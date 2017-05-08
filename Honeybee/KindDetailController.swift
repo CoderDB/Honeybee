@@ -74,7 +74,15 @@ class KindDetailController: BaseViewController {
 //            }
 //            .disposed(by: bag)
         
+//        let items = Observable.changeset(from: kind.items).share()
+//        items
+//            .bind(to: collectionView.rx.realmChanges(rx_dataSource))
+//            .disposed(by: bag)
         
+        Observable.changeset(from: kind.items)
+            .share()
+            .bind(to: collectionView.rx.realmChanges(rx_dataSource))
+            .disposed(by: bag)
         
 //        Observable.changeset(from: kind.items)
 //            .subscribe(onNext: { (items, changes) in
