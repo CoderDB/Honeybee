@@ -8,8 +8,11 @@
 
 import UIKit
 import RealmSwift
+import RxSwift
+import RxCocoa
+//import Then
 
-class KindDetailController: BaseCollectionViewController {
+class KindDetailController: BaseViewController {
     
     var kind: HoneybeeKind!
     fileprivate var header: KindDetailHeader!
@@ -23,9 +26,22 @@ class KindDetailController: BaseCollectionViewController {
         }
     }
     
-    var notiToken: NotificationToken? = nil
+    lazy var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    var collectionView: UICollectionView!
+//    let collectionView: UICollectionView = UICollectionView().then {
+//        $0.backgroundColor = .white
+//        $0.showsVerticalScrollIndicator = false
+//        $0.showsHorizontalScrollIndicator = false
+//        $0.collectionViewLayout = layout
+////        view.dataSource = self
+////        view.delegate = self
+//    }
+    
+//    var notiToken: NotificationToken? = nil
     
     var viewModel: KindDetailViewModel!
+    
+    let bag = DisposeBag()
     
     var new_dataSource: ConfigurableDataSourceCollectionViewDataSource<KindDetailViewModel, KindDetailCell>!
     
@@ -36,8 +52,22 @@ class KindDetailController: BaseCollectionViewController {
         addHeader()
         addTipView()
         addCollectionView()
-        fetchData()
+//        fetchData()
         
+        configRx()
+        
+    }
+    
+    func configRx() {
+        Observable.collection(from: kind.items)
+            .bind(to: collectionView.rx.items(
+                cellIdentifier: "\(KindDetailCell.self)",
+                cellType: KindDetailCell.self)
+                ) { row, item, cell in
+                    cell.configWith(model: item, isEditing: false)
+            }
+            .disposed(by: bag)
+
     }
     fileprivate func fetchData() {
 //        dataSource = KindDetailDataSource(items:kind.items)
@@ -50,7 +80,7 @@ class KindDetailController: BaseCollectionViewController {
 //        }
     }
     deinit {
-        notiToken?.stop()
+//        notiToken?.stop()
     }
 }
 
@@ -59,11 +89,17 @@ class KindDetailController: BaseCollectionViewController {
 
 extension KindDetailController: HoneybeeViewProvider, AlertProvider {
     func addCollectionView() {
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         layout.itemSize = CGSize(width: 65, height: 65)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
-        collectionView.snp.updateConstraints { (make) in
+        collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(115+64)
             make.right.equalTo(view).offset(-60)
+            make.left.bottom.equalTo(view)
         }
         collectionView.register(KindDetailCell.self)
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureAction(_:)))
