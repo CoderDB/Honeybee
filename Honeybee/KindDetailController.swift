@@ -45,15 +45,10 @@ class KindDetailController: BaseViewController {
     
     func configRx() {
         
-        
         Observable.changeset(from: kind.items)
             .share()
             .bind(to: collectionView.rx.realmChanges(rx_dataSource))
             .disposed(by: bag)
-        
-        collectionView.rx.itemSelected.subscribe(onNext: { idx in
-            
-        }).disposed(by: bag)
         
         
         header.addBtn.rx
@@ -179,6 +174,7 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
 
 extension KindDetailController {
     func allCellEditing() {
+        
         rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeItem>(cellIdentifier: "\(KindDetailCell.self)", cellType: KindDetailCell.self, cellConfig: { (cell, _, item) in
             cell.configWith(model: item, isEditing: true)
             

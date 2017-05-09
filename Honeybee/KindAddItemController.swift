@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import RxRealmDataSources
+import RxSwift
 
+class KindAddItemController: BaseViewController {
 
-
-class KindAddItemController: BaseCollectionViewController {
-
+    var collectionView: UICollectionView!
+    
+    let bag = DisposeBag()
+    
     var kind: HoneybeeKind!
     fileprivate var dataSource: KindAddItemDataSource!
     fileprivate var header: KindAddItemHeader!
     
     fileprivate var alertController: UIAlertController!
     
+    let rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeIcon>(cellIdentifier: "\(KindAddItemCell.self)", cellType: KindAddItemCell.self) { (cell, _, item) in
+        cell.imgView.image = UIImage(named: item.name)
+    }
     // add item (HoneybeeItem)
     fileprivate var kindName: String?
     fileprivate var iconName: String? = "meal" // default image
@@ -30,23 +37,61 @@ class KindAddItemController: BaseCollectionViewController {
         addHeader()
         addCollectionView()
         addTipView()
-        fetchData()
+//        fetchData()
+        
+        configRx()
     }
     private func addCollectionView() {
-        
+        let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 45, height: 45)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 50, right: 0)
-        collectionView.snp.updateConstraints { (make) in
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(115+64)
             make.right.equalTo(view).offset(-60)
+            make.left.bottom.equalTo(view)
         }
         collectionView.register(KindAddItemCell.self)
     }
-    private func fetchData() {
-        let items = Honeybee.default.allIcons()
-        dataSource = KindAddItemDataSource(items: items.toArray)
-        collectionView.dataSource = dataSource
+    
+    
+    func configRx() {
+//        collectionView.rx.setDelegate(self).disposed(by: bag)
+        
+        let all = Honeybee.default.allIcons()
+        Observable.changeset(from: all)
+            .share()
+            .bind(to: collectionView.rx.realmChanges(rx_dataSource))
+            .disposed(by: bag)
+        
+//        collectionView.rx
+//            .modelSelected(HoneybeeIcon.self)
+//            .subscribe(onNext: { [unowned self] (icon) in
+//                self.header.imgView.image = UIImage(named: icon.name)
+//                self.iconName = icon.name
+//            })
+//            .disposed(by: bag)
+        
+        collectionView.rx
+            .itemSelected
+            .subscribe(onNext: { [unowned self] idx in
+                let item = all[idx.item]
+                self.header.imgView.image = UIImage(named: item.name)
+                self.iconName = item.name
+            })
+            .disposed(by: bag)
+        
     }
+    
+//    private func fetchData() {
+//        let items = Honeybee.default.allIcons()
+//        dataSource = KindAddItemDataSource(items: items.toArray)
+//        collectionView.dataSource = dataSource
+//    }
 }
 
 // MARK: Alert
@@ -127,12 +172,12 @@ extension KindAddItemController: HoneybeeViewProvider {
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension KindAddItemController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let name = dataSource.items[indexPath.item].name
-        header.imgView.image = UIImage(named: name)
-        iconName = name
-    }
-}
+//extension KindAddItemController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let name = dataSource.items[indexPath.item].name
+//        header.imgView.image = UIImage(named: name)
+//        iconName = name
+//    }
+//}
 
 

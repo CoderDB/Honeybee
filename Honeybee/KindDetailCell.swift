@@ -11,7 +11,7 @@ import RxSwift
 
 class KindDetailCell: BaseCollectionViewCell {
     
-    var bag = DisposeBag()
+    private (set) var bag = DisposeBag()
     lazy var deleteBtn: UIButton = {
         let btn = UIButton()
         btn.isHidden = true
@@ -51,7 +51,7 @@ class KindDetailCell: BaseCollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.bag = DisposeBag()
+        bag = DisposeBag()  // because life cicle of every cell ends on prepare for reuse
     }
 }
 
