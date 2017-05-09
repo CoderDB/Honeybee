@@ -21,7 +21,7 @@ class KindDetailController: BaseViewController {
     fileprivate var alertController: UIAlertController!
     fileprivate var kindName: String?
     
-    lazy var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    lazy var layout = UICollectionViewFlowLayout()
     var collectionView: UICollectionView!
     
     let bag = DisposeBag()
@@ -50,6 +50,11 @@ class KindDetailController: BaseViewController {
             .share()
             .bind(to: collectionView.rx.realmChanges(rx_dataSource))
             .disposed(by: bag)
+        
+        collectionView.rx.itemSelected.subscribe(onNext: { idx in
+            
+        }).disposed(by: bag)
+        
         
         header.addBtn.rx
             .tap
@@ -179,7 +184,7 @@ extension KindDetailController {
             
             cell.deleteBtn.rx.tap.subscribe(onNext: { [unowned self] in
                 self.delete(item: item)
-            }).disposed(by: self.bag)
+            }).disposed(by: cell.bag)
         })
         Observable.changeset(from: kind.items)
             .share()

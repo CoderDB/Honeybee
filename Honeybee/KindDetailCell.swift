@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class KindDetailCell: BaseCollectionViewCell {
     
-    
+    var bag = DisposeBag()
     lazy var deleteBtn: UIButton = {
         let btn = UIButton()
         btn.isHidden = true
@@ -46,6 +47,11 @@ class KindDetailCell: BaseCollectionViewCell {
             layer.borderWidth = 0
             deleteBtn.isHidden = true
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.bag = DisposeBag()
     }
 }
 
