@@ -26,7 +26,7 @@ class KindDetailController: BaseViewController {
     
     let bag = DisposeBag()
     
-    let rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeItem>(cellIdentifier: "\(KindDetailCell.self)", cellType: KindDetailCell.self) { (cell, _, item) in
+    var rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeItem>(cellIdentifier: "\(KindDetailCell.self)", cellType: KindDetailCell.self) { (cell, _, item) in
         cell.configWith(model: item, isEditing: false)
     }
     
@@ -44,6 +44,7 @@ class KindDetailController: BaseViewController {
     }
     
     func configRx() {
+        
         
         Observable.changeset(from: kind.items)
             .share()
@@ -173,18 +174,43 @@ extension KindDetailController: HoneybeeViewProvider, AlertProvider {
 
 extension KindDetailController {
     func allCellEditing() {
-//        dataSource = KindDetailDataSource(items: kind.items, isEditing: true)
-//        collectionView.dataSource = dataSource
+        rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeItem>(cellIdentifier: "\(KindDetailCell.self)", cellType: KindDetailCell.self, cellConfig: { (cell, _, item) in
+            cell.configWith(model: item, isEditing: true)
+            
+            cell.deleteBtn.rx.tap.subscribe(onNext: { [unowned self] in
+                self.delete(item: item)
+            }).disposed(by: self.bag)
+        })
+        Observable.changeset(from: kind.items)
+            .share()
+            .bind(to: collectionView.rx.realmChanges(rx_dataSource))
+            .disposed(by: bag)
     }
     func allCellEndEdit() {
-//        dataSource = KindDetailDataSource(items: kind.items, isEditing: false)
-//        collectionView.dataSource = dataSource
+        rx_dataSource = RxCollectionViewRealmDataSource<HoneybeeItem>(cellIdentifier: "\(KindDetailCell.self)", cellType: KindDetailCell.self, cellConfig: { (cell, _, item) in
+            cell.configWith(model: item, isEditing: false)
+        })
+        Observable.changeset(from: kind.items)
+            .share()
+            .bind(to: collectionView.rx.realmChanges(rx_dataSource))
+            .disposed(by: bag)
     }
+    
+    
+    func delete(item: HoneybeeItem) {
+        do {
+            try Database.default.delete(item: item, in: kind.items)
+        } catch let err {
+            Reminder.error(msg: err.localizedDescription)
+        }
+    }
+
+
     func longGestureAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
             allCellEditing()
-            header.deleteBtn.isSelected = true
+//            header.deleteBtn.isSelected = true
             
         case .ended:
             collectionView.endInteractiveMovement()
