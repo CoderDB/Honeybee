@@ -10,6 +10,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RxMoya
 
 
 class MainViewModel: BaseViewModel {
@@ -30,3 +31,15 @@ class MainViewModel: BaseViewModel {
     }
     
 }
+
+//extension MainViewModel: DataProvider {
+//    typealias ItemType = RLMRecorder
+//    typealias AnotherItemType = RLMRecorder
+//    func numberOfSections() -> Int {
+//        return 1
+//    }
+//    func numberOfItems(in section: Int) -> Int {
+//        return
+//    }
+//
+//}

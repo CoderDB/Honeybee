@@ -26,6 +26,8 @@ def pods
     pod 'RxDataSources', '~> 1.0.3'
 
     pod 'RxRealmDataSources'
+
+    pod 'Moya/RxSwift'
 end
 
 target 'Honeybee' do
