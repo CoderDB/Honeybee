@@ -33,6 +33,10 @@ PODS:
     - RxRealm (~> 0.5)
     - RxSwift (~> 3.1)
   - RxSwift (3.4.1)
+  - RxSwiftExt (2.4.1):
+    - RxSwiftExt/Core (= 2.4.1)
+  - RxSwiftExt/Core (2.4.1):
+    - RxSwift (~> 3.4)
   - SnapKit (3.0.2)
   - Then (2.1.0)
 
@@ -49,6 +53,7 @@ DEPENDENCIES:
   - RxRealm (~> 0.6.0)
   - RxRealmDataSources
   - RxSwift (~> 3.4.1)
+  - RxSwiftExt
   - SnapKit (~> 3.0.2)
   - Then (~> 2.1.0)
 
@@ -68,9 +73,10 @@ SPEC CHECKSUMS:
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
   RxRealmDataSources: 743901f35ef18533b2fc5d41a0f6b6b62b3c3304
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
+  RxSwiftExt: 72278e4a84f35324a82a8dd359859782706576a6
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 15e59b95021bf7dffd0c1bcbf2b9dc8185ee7a65
+PODFILE CHECKSUM: d9c810b4020b681e1466e74d8c4280e1010eee7a
 
 COCOAPODS: 1.2.1
