@@ -28,6 +28,7 @@ def pods
     pod 'RxRealmDataSources'
 
     pod 'Moya/RxSwift'
+    pod 'RxSwiftExt'
 end
 
 target 'Honeybee' do
