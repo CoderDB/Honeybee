@@ -5,6 +5,7 @@ PODS:
   - Charts/Core (3.0.2)
   - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
+  - HandyJSON (1.7.1)
   - Moya/Core (8.0.3):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - Charts (~> 3.0.1)
   - DZNEmptyDataSet (~> 1.8.1)
   - FDFullscreenPopGesture (~> 1.1)
+  - HandyJSON (~> 1.7.1)
   - Moya/RxSwift
   - ObjectMapper (~> 2.2.5)
   - PKHUD (~> 4.2.0)
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  HandyJSON: 54b6ce942795f7b2e61b82fe73cf25d9f139d125
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   PKHUD: 957ce2a68b3c97a51839b30216120c1dbc0c3a78
@@ -77,6 +80,6 @@ SPEC CHECKSUMS:
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: d9c810b4020b681e1466e74d8c4280e1010eee7a
+PODFILE CHECKSUM: f0b10a8a9845779876315d4512ebae02b5a91078
 
 COCOAPODS: 1.2.1

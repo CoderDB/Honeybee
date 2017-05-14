@@ -363,33 +363,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		842A930B1EC003A8001F7662 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		842A930C1EC003B1001F7662 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8689059A1E7432CD0033C14C /* RecorderDetailDataSource.swift */,
-				86B5B7B01EBF26C800A75FE4 /* RecorderDetailViewModel.swift */,
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		842A930D1EC003CD001F7662 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				86F6C8661E4F4C0D002016DB /* RecordDetailCell.swift */,
-				8624F61C1E5047C00059788A /* RecordDetailHeader.swift */,
-				86D1702A1E51A4190004E192 /* RecordDetailFooter.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		842A93591EC08DB7001F7662 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1425,6 +1398,7 @@
 				INFOPLIST_FILE = Honeybee/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = Honeybee.Honeybee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -1447,6 +1421,7 @@
 				INFOPLIST_FILE = Honeybee/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = Honeybee.Honeybee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
