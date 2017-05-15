@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupNavAppearance()
         
         if isLogin {
+            let provider = RxMoyaProvider<ApiProvider>()
             let nav = UINavigationController(rootViewController: MainViewController())
             window?.rootViewController = nav
         } else {

@@ -10,35 +10,14 @@ import UIKit
 
 import RxSwift
 import RxCocoa
-
+import Moya
 
 class MainViewModel: BaseViewModel {
-
-//    let items: Driver<[RLMRecorder]>
-//    let indicatorViewAnimating: Driver<Bool>
-//    let loadError: Driver<Error>
-//    
-//    init() {
-//        
-//    }
     
+    let viewDidLoad: PublishSubject<Void> = .init()
     
-    let recorder: RLMRecorder
-    
-    init(recorder: RLMRecorder) {
-        self.recorder = recorder
+    init(provider: RxMoyaProvider<ApiProvider>) {
+        
     }
     
 }
-
-//extension MainViewModel: DataProvider {
-//    typealias ItemType = RLMRecorder
-//    typealias AnotherItemType = RLMRecorder
-//    func numberOfSections() -> Int {
-//        return 1
-//    }
-//    func numberOfItems(in section: Int) -> Int {
-//        return
-//    }
-//
-//}

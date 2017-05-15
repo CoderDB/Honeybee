@@ -22,15 +22,21 @@ import RxCocoa
 class MainViewController: BaseViewController, UITableViewDelegate {
     
     
+    convenience init(viewModel: MainViewModel) {
+        self.init()
+//        self.init(nibName: "", bundle: nil)
+        
+//        self.rx.view
+    }
+    
     lazy var addBtn: UIButton = {
         $0.setImage(UIImage(named: "add"), for: .normal)
-//        $0.frame = CGRect(x: (HB.Screen.w - 60) * 0.5, y: HB.Screen.h - 80, width: 60, height: 60)
         return $0
     }(UIButton())
     
     
     let tableView = UITableView()
-//    let rx_datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
+    
     private let bag = DisposeBag()
     var recorders: Results<RLMRecorder>!
     var header: MainHeader!

@@ -9,8 +9,6 @@
 import UIKit
 
 import RxRealm
-//import RxCocoa
-import RxSwift
 import RealmSwift
 
 class RecordDetailController: BaseTableViewController, AlertProvider {
@@ -18,7 +16,6 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     
     private var model: RLMRecorder
     
-//    var dataSource: RecorderDetailDataSource!
     init(model: RLMRecorder) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
@@ -39,15 +36,7 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
         addTableView()
         fetchData()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
     func fetchData() {
-        
-//        dataSource = RecorderDetailDataSource(model: model)
-//        tableView.dataSource = dataSource
-        
         viewModel = RecorderDetailViewModel(model: model)
         dataSource = ConfigurableDataSourceTableViewDataSource<Model, Cell>(model: viewModel)
         tableView.dataSource = dataSource
@@ -73,19 +62,6 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
     
     func delete() {
         
-//        Observable.from(object: model).subscribe(Database.default.realm.rx.delete()).disposed(by: DisposeBag())
-//            
-        
-            
-//            .subscribe(onNext: { (_) in
-//                Database.default.realm.rx.delete()
-//            }, onError: { (error) in
-//                Reminder.error(msg: error.localizedDescription)
-//            }, onCompleted: { 
-//                Reminder.success()
-//            })
-//            .disposed(by: DisposeBag())
-        
         do {
             try Database.default.delete(item: model)
             Reminder.success()
@@ -94,39 +70,7 @@ class RecordDetailController: BaseTableViewController, AlertProvider {
         } catch {
             Reminder.error()
         }
-        
-//        if let owner = model.owner {
-//            do {
-//                try Database.default.delete(item: model, in: owner.recorders)
-//                if owner.recorders.count == 0  {
-//                    do {
-//                        try Database.default.delete(item: owner)
-////                        navigationController?.popToRootViewController(animated: true)
-//                        _ = navigationController?.popViewController(animated: true)
-//                    } catch let err {
-//                        Reminder.error(msg: err.localizedDescription)
-//                    }
-//                } else {
-//                    
-////                    navigationController?.popToRootViewController(animated: true)
-//                    _ = navigationController?.popViewController(animated: true)
-//                }
-//            } catch let err {
-//                Reminder.error(msg: err.localizedDescription)
-//            }
-//        }
     }
 }
-
-//struct AlertMessage {
-//    typealias testAction = () -> ()
-//    var title: String? = "确定?"
-//    var message: String
-//    var okText: String
-//    var cancelText: String
-//    var ok: () -> ()
-//    var cancel: (() -> ())?
-//}
-
 
 
