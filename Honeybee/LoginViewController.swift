@@ -10,7 +10,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
-
+import Moya
 
 class LoginViewController: UIViewController {
 
@@ -180,7 +180,11 @@ extension LoginViewController {
     }
     func loginBtnClicked() {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+            
+            let viewModel = MainViewModel(provider: RxMoyaProvider<ApiProvider>())
+            let vc = MainViewController(viewModel: viewModel)
+            let nav = UINavigationController(rootViewController: vc)
+            delegate.window?.rootViewController = nav
         }
     }
     func forgetPassworfBtnClicked() {

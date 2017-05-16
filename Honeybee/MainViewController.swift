@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-//import RxDataSources
+import RxDataSources
 
 //#if !RX_NO_MODULE
 import RxSwift
@@ -20,13 +20,23 @@ import RxCocoa
 
 
 class MainViewController: BaseViewController, UITableViewDelegate {
-    
-    
+    let disposeBag = DisposeBag()
+    let rx_dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     convenience init(viewModel: MainViewModel) {
         self.init()
-//        self.init(nibName: "", bundle: nil)
+//        self.init(nibName: nil, bundle: nil)
         
-//        self.rx.view
+        self.rx
+            .viewDidLoad
+            .subscribe(onNext: { [weak self] _ in
+                self?.configRx(viewModel: viewModel)
+            })
+            .disposed(by: disposeBag)
+        
+        self.rx
+            .viewDidLoad
+            .bind(to: viewModel.viewDidLoad)
+            .disposed(by: disposeBag)
     }
     
     lazy var addBtn: UIButton = {
@@ -34,11 +44,8 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         return $0
     }(UIButton())
     
-    
     let tableView = UITableView()
     
-    private let bag = DisposeBag()
-    var recorders: Results<RLMRecorder>!
     var header: MainHeader!
     
     override func viewDidLoad() {
@@ -50,43 +57,32 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         addTableViewHeader()
         addAddBtn()
         
-        configRx()
+        configUI()
     }
     
-    func configRx() {
+    
+    private func configUI() {
+        rx_dataSource.configureCell = { ds, tv, idx, item in
+            if let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)", for: idx) as? RecordCell {
+                cell.recorder = item
+                return cell
+            }
+            return UITableViewCell()
+        }
+    }
+    
+    func configRx(viewModel: MainViewModel) {
+        
+        // MARK: - Out
+        
         tableView.rx
             .setDelegate(self)
-            .disposed(by: bag)
-        
-//        let currentMonth = Date().month
-        recorders = Database.default.all(RLMRecorder.self)
-//            .filter { $0.month == currentMonth }
-        
-        
-        Observable.collection(from: recorders)
-            .bind(to: tableView.rx.items(
-                cellIdentifier: "\(RecordCell.self)",
-                cellType: RecordCell.self)
-                ) { _, model, cell in cell.recorder = model }
-            .disposed(by: bag)
-        
-        
-        Observable.collection(from: recorders)
-            .map { $0.reduce(0) { $0.0 + Int($0.1.money) } }
-            .subscribe { [unowned self] (event) in
-                self.header.outMoneyLabel.text = "\(event.element ?? 0)"
-            }
-            .disposed(by: bag)
+            .disposed(by: disposeBag)
         
         tableView.rx
             .itemSelected
-            .map { [unowned self] (idx) in
-                self.recorders[idx.row]
-            }.subscribe(onNext: { [unowned self] (model) in
-                let detailVC = RecordDetailController(model: model)
-                self.navigationController?.pushViewController(detailVC, animated: true)
-            })
-            .disposed(by: bag)
+            .bind(to: viewModel.itemSelected)
+            .disposed(by: disposeBag)
         
         addBtn.rx
             .tap
@@ -95,7 +91,31 @@ class MainViewController: BaseViewController, UITableViewDelegate {
                 let nav = UINavigationController(rootViewController: vc)
                 self.present(nav, animated: true, completion: nil)
             })
-            .disposed(by: bag)
+            .disposed(by: disposeBag)
+        
+        
+        
+        // MARK: - In
+        
+        viewModel.section.asObservable()
+            .bind(to: tableView.rx.items(dataSource: rx_dataSource))
+            .disposed(by: disposeBag)
+        
+        
+//        Observable.collection(from: recorders)
+//            .bind(to: tableView.rx.items(
+//                cellIdentifier: "\(RecordCell.self)",
+//                cellType: RecordCell.self)
+//                ) { _, model, cell in cell.recorder = model }
+//            .disposed(by: disposeBag)
+//        
+//        
+//        Observable.collection(from: recorders)
+//            .map { $0.reduce(0) { $0.0 + Int($0.1.money) } }
+//            .subscribe { [unowned self] (event) in
+//                self.header.outMoneyLabel.text = "\(event.element ?? 0)"
+//            }
+//            .disposed(by: disposeBag)
     }
     
     func fetchDataFromServe() {
@@ -109,7 +129,7 @@ class MainViewController: BaseViewController, UITableViewDelegate {
     }
     
     deinit {
-//        notiToken?.stop()
+        print("MainViewController ---deinit")
     }
     
     
@@ -139,9 +159,6 @@ extension MainViewController: UIPopoverPresentationControllerDelegate {
         
         destVC.incomeBtnAction = {
             print("income")
-            //            let data = Database.manager.allPayout()
-            //            print(data)
-            //            self.dataSource = MainDataSource(items: data, vc: self)
             
         }
         destVC.expendBtnAction = {
@@ -170,7 +187,6 @@ extension MainViewController {
     }
     func addTableViewHeader() {
         header = MainHeader(height: 205)
-//        header.outMoneyLabel.text = totalPayText()
         header.tapContainerViewAction = { [weak self] in
             self?.navigationController?.pushViewController(PieViewController(), animated: true)
         }

@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupNavAppearance()
         
         if isLogin {
-            let provider = RxMoyaProvider<ApiProvider>()
-            let nav = UINavigationController(rootViewController: MainViewController())
+            let viewModel = MainViewModel(provider: RxMoyaProvider<ApiProvider>())
+            let vc = MainViewController(viewModel: viewModel)
+            let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         } else {
             let nav = UINavigationController(rootViewController: LoginViewController())
