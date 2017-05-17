@@ -19,12 +19,14 @@ import RxCocoa
 //#endif
 
 
-class MainViewController: BaseViewController, UITableViewDelegate {
-    let disposeBag = DisposeBag()
-    let rx_dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
+class MainViewController: BaseViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    private let disposeBag = DisposeBag()
+    private let rx_dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
+    
     convenience init(viewModel: MainViewModel) {
-        self.init()
-//        self.init(nibName: nil, bundle: nil)
+        self.init(nibName: "MainViewController", bundle: Bundle.main)
         
         self.rx
             .viewDidLoad
@@ -44,7 +46,6 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         return $0
     }(UIButton())
     
-    let tableView = UITableView()
     
     var header: MainHeader!
     
@@ -53,7 +54,6 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         automaticallyAdjustsScrollViewInsets = false
         fd_prefersNavigationBarHidden = true
         
-        addTableView()
         addTableViewHeader()
         addAddBtn()
         
@@ -62,23 +62,22 @@ class MainViewController: BaseViewController, UITableViewDelegate {
     
     
     private func configUI() {
+        tableView.estimatedRowHeight = 75
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
+        tableView.register(RecordCell.self)
+        tableView.register(GroupCell.self)
+        
         rx_dataSource.configureCell = { ds, tv, idx, item in
-            if let cell = tv.dequeueReusableCell(withIdentifier: "\(RecordCell.self)", for: idx) as? RecordCell {
-                cell.recorder = item
-                return cell
-            }
-            return UITableViewCell()
+            let cell = tv.dequeueCell(RecordCell.self, for: idx)
+            cell.recorder = item
+            return cell
         }
     }
     
     func configRx(viewModel: MainViewModel) {
         
         // MARK: - Out
-        
-        tableView.rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
-        
         tableView.rx
             .itemSelected
             .bind(to: viewModel.itemSelected)
@@ -100,22 +99,6 @@ class MainViewController: BaseViewController, UITableViewDelegate {
         viewModel.section.asObservable()
             .bind(to: tableView.rx.items(dataSource: rx_dataSource))
             .disposed(by: disposeBag)
-        
-        
-//        Observable.collection(from: recorders)
-//            .bind(to: tableView.rx.items(
-//                cellIdentifier: "\(RecordCell.self)",
-//                cellType: RecordCell.self)
-//                ) { _, model, cell in cell.recorder = model }
-//            .disposed(by: disposeBag)
-//        
-//        
-//        Observable.collection(from: recorders)
-//            .map { $0.reduce(0) { $0.0 + Int($0.1.money) } }
-//            .subscribe { [unowned self] (event) in
-//                self.header.outMoneyLabel.text = "\(event.element ?? 0)"
-//            }
-//            .disposed(by: disposeBag)
     }
     
     func fetchDataFromServe() {
@@ -173,18 +156,7 @@ extension MainViewController: UIPopoverPresentationControllerDelegate {
 // MARK: UI
 // -----------------------------------------------------------------------------
 extension MainViewController {
-    func addTableView() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(20)
-            make.left.right.bottom.equalTo(view)
-        }
-        tableView.estimatedRowHeight = 75
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.tableFooterView = UIView()
-        tableView.register(RecordCell.self)
-        tableView.register(GroupCell.self)
-    }
+    
     func addTableViewHeader() {
         header = MainHeader(height: 205)
         header.tapContainerViewAction = { [weak self] in

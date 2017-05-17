@@ -17,6 +17,8 @@
 		1EA5F0621E754DD300E90E7A /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5F0611E754DD300E90E7A /* colors.json */; };
 		200584F2B6CDF4377849DC3E /* Pods_HoneybeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A52E8387B5F123C3F73CB8 /* Pods_HoneybeeUITests.framework */; };
 		840480A11ECFFE3A005C3EE8 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A01ECFFE3A005C3EE8 /* UIViewController+Rx.swift */; };
+		840480A51ED0519D005C3EE8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840480A31ED0519D005C3EE8 /* MainViewController.xib */; };
+		840480A71ED051F1005C3EE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A61ED051F1005C3EE8 /* MainViewController.swift */; };
 		842248E51EBB2D8F00A2FAEF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842248E41EBB2D8F00A2FAEF /* MainViewModel.swift */; };
 		842A930F1EC004AA001F7662 /* KindDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A930E1EC004AA001F7662 /* KindDetailViewModel.swift */; };
 		842A935B1EC08DFB001F7662 /* UITableView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */; };
@@ -73,7 +75,6 @@
 		866C913A1E6E9EA1003026DD /* KindAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C91391E6E9EA1003026DD /* KindAddCell.swift */; };
 		866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C913B1E6EA09F003026DD /* BaseHeader.swift */; };
 		867A9EC21E9E726B00537925 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A9EC11E9E726B00537925 /* TouchId.swift */; };
-		8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */; };
 		8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */; };
 		86840BE01E93D00C008BB303 /* KindAddSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */; };
 		86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */; };
@@ -174,6 +175,8 @@
 		602B4AA0738D3A5A175F2145 /* Pods-HoneybeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeTests/Pods-HoneybeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F9F8339673706F2CFC7B4F1 /* Pods-HoneybeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoneybeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoneybeeUITests/Pods-HoneybeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		840480A01ECFFE3A005C3EE8 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		840480A31ED0519D005C3EE8 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		840480A61ED051F1005C3EE8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		842248E41EBB2D8F00A2FAEF /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		842A930E1EC004AA001F7662 /* KindDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailViewModel.swift; sourceTree = "<group>"; };
 		842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Ex.swift"; sourceTree = "<group>"; };
@@ -237,7 +240,6 @@
 		866C91391E6E9EA1003026DD /* KindAddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddCell.swift; sourceTree = "<group>"; };
 		866C913B1E6EA09F003026DD /* BaseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeader.swift; sourceTree = "<group>"; };
 		867A9EC11E9E726B00537925 /* TouchId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
-		8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8683B2831DEEB40E0023E3A6 /* CurveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveViewController.swift; sourceTree = "<group>"; };
 		86840BDF1E93D00C008BB303 /* KindAddSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindAddSectionHeader.swift; sourceTree = "<group>"; };
 		86852FC41E6C24BE00FF1EA9 /* CardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeader.swift; sourceTree = "<group>"; };
@@ -348,8 +350,9 @@
 		842248E21EBB2CD800A2FAEF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8683B2811DEEAC8D0023E3A6 /* MainViewController.swift */,
 				865184D41E7D6D3600EE940E /* MianPopController.swift */,
+				840480A61ED051F1005C3EE8 /* MainViewController.swift */,
+				840480A31ED0519D005C3EE8 /* MainViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				868C3F721E72A09D00D5443D /* icons.json in Resources */,
 				866C562E1E6D78DB00010D3F /* category_color.json in Resources */,
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
+				840480A51ED0519D005C3EE8 /* MainViewController.xib in Resources */,
 				86E694FF1E7974B700CBD894 /* recorder.json in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
 				86FD35871E9A33B0008B43F0 /* recorders_year_month.json in Resources */,
@@ -1204,6 +1208,7 @@
 				8612C2821DF02DEE00B3AD65 /* CalculateView.swift in Sources */,
 				1E1C0C851E76FC8200AF940E /* MainDataSource.swift in Sources */,
 				86BDA6A81E7140EC00AEFBC4 /* PayoutSectionHeader.swift in Sources */,
+				840480A71ED051F1005C3EE8 /* MainViewController.swift in Sources */,
 				8697CEE91E5DA9D900993CFE /* BarHeader.swift in Sources */,
 				8683B2841DEEB40E0023E3A6 /* CurveViewController.swift in Sources */,
 				84C86F181EB9CA9000EBD289 /* LoginViewModel.swift in Sources */,
@@ -1245,7 +1250,6 @@
 				8600D8F81E9CDBE600FA93D7 /* PasswordView.swift in Sources */,
 				861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
-				8683B2821DEEAC8D0023E3A6 /* MainViewController.swift in Sources */,
 				8600D8FC1E9CE07100FA93D7 /* TentacleView.swift in Sources */,
 				840480A11ECFFE3A005C3EE8 /* UIViewController+Rx.swift in Sources */,
 				86D9EBC21EAAFF0F00B3C6B4 /* IncomeCell.swift in Sources */,
