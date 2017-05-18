@@ -19,6 +19,7 @@
 		840480A11ECFFE3A005C3EE8 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A01ECFFE3A005C3EE8 /* UIViewController+Rx.swift */; };
 		840480A51ED0519D005C3EE8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840480A31ED0519D005C3EE8 /* MainViewController.xib */; };
 		840480A71ED051F1005C3EE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A61ED051F1005C3EE8 /* MainViewController.swift */; };
+		840480A91ED05967005C3EE8 /* RecorderrDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A81ED05967005C3EE8 /* RecorderrDetailViewModel.swift */; };
 		842248E51EBB2D8F00A2FAEF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842248E41EBB2D8F00A2FAEF /* MainViewModel.swift */; };
 		842A930F1EC004AA001F7662 /* KindDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A930E1EC004AA001F7662 /* KindDetailViewModel.swift */; };
 		842A935B1EC08DFB001F7662 /* UITableView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */; };
@@ -177,6 +178,7 @@
 		840480A01ECFFE3A005C3EE8 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		840480A31ED0519D005C3EE8 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		840480A61ED051F1005C3EE8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		840480A81ED05967005C3EE8 /* RecorderrDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderrDetailViewModel.swift; sourceTree = "<group>"; };
 		842248E41EBB2D8F00A2FAEF /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		842A930E1EC004AA001F7662 /* KindDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailViewModel.swift; sourceTree = "<group>"; };
 		842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Ex.swift"; sourceTree = "<group>"; };
@@ -350,9 +352,9 @@
 		842248E21EBB2CD800A2FAEF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				865184D41E7D6D3600EE940E /* MianPopController.swift */,
 				840480A61ED051F1005C3EE8 /* MainViewController.swift */,
 				840480A31ED0519D005C3EE8 /* MainViewController.xib */,
+				865184D41E7D6D3600EE940E /* MianPopController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -640,6 +642,7 @@
 			isa = PBXGroup;
 			children = (
 				86B5B7B01EBF26C800A75FE4 /* RecorderDetailViewModel.swift */,
+				840480A81ED05967005C3EE8 /* RecorderrDetailViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -1186,6 +1189,7 @@
 				864D250E1E62F1A60005894A /* RecorderViewModel.swift in Sources */,
 				8655E2A91EA5013B0064A468 /* LineViewData.swift in Sources */,
 				86D170311E51C4790004E192 /* SetupCell.swift in Sources */,
+				840480A91ED05967005C3EE8 /* RecorderrDetailViewModel.swift in Sources */,
 				86852FC51E6C24BE00FF1EA9 /* CardHeader.swift in Sources */,
 				860593B01E8275F5008B6157 /* HoneybeeKind.swift in Sources */,
 				86F6C8601E4F2791002016DB /* GroupCell.swift in Sources */,

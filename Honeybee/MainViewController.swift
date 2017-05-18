@@ -78,8 +78,13 @@ class MainViewController: BaseViewController {
     func configRx(viewModel: MainViewModel) {
         
         // MARK: - Out
+//        tableView.rx
+//            .itemSelected
+//            .bind(to: viewModel.itemSelected)
+//            .disposed(by: disposeBag)
+        
         tableView.rx
-            .itemSelected
+            .modelSelected(RLMRecorder.self)
             .bind(to: viewModel.itemSelected)
             .disposed(by: disposeBag)
         

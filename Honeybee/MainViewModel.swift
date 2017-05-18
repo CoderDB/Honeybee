@@ -2,7 +2,7 @@
 //  MainViewModel.swift
 //  Honeybee
 //
-//  Created by admin on 04/05/2017.
+//  Created by Dongbing Hou on 04/05/2017.
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
 
@@ -19,7 +19,7 @@ class MainViewModel: BaseViewModel {
     
     // In
     let viewDidLoad: PublishSubject<Void> = .init()
-    let itemSelected: PublishSubject<IndexPath> = .init()
+    let itemSelected: PublishSubject<RLMRecorder> = .init()
     
     // Out
     let itemSelectedAction: Driver<RecorderDetailViewModel>
@@ -27,6 +27,7 @@ class MainViewModel: BaseViewModel {
     
     init(provider: RxMoyaProvider<ApiProvider>) {
         
+        let bag = DisposeBag()
         
         // In
         section = viewDidLoad
@@ -40,7 +41,12 @@ class MainViewModel: BaseViewModel {
         
         // Out
         
-        itemSelectedAction = Driver.just(RecorderDetailViewModel(model: RLMRecorder()))
+        itemSelectedAction =
+            itemSelected
+            .map {
+                RecorderrDetailViewModel(provider: provider, item: $0)
+            }.asDriver(onErrorJustReturn: RecorderrDetailViewModel(provider: provider, item: RLMRecorder()))
+        
         
     }
     
