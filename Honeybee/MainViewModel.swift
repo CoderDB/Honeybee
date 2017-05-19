@@ -22,7 +22,7 @@ class MainViewModel: BaseViewModel {
     let itemSelected: PublishSubject<RLMRecorder> = .init()
     
     // Out
-    let itemSelectedAction: Driver<RecorderDetailViewModel>
+    let itemSelectedAction: Driver<RecorderrDetailViewModel>
     let section: Driver<[SectionModel<String, RLMRecorder>]>
     
     init(provider: RxMoyaProvider<ApiProvider>) {
@@ -45,9 +45,9 @@ class MainViewModel: BaseViewModel {
             itemSelected
             .map {
                 RecorderrDetailViewModel(provider: provider, item: $0)
-            }.asDriver(onErrorJustReturn: RecorderrDetailViewModel(provider: provider, item: RLMRecorder()))
-        
-        
+            }.asDriver(onErrorJustReturn:
+                RecorderrDetailViewModel(provider: provider, item: RLMRecorder())
+            )
     }
     
 }

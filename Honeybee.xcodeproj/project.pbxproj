@@ -20,6 +20,8 @@
 		840480A51ED0519D005C3EE8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840480A31ED0519D005C3EE8 /* MainViewController.xib */; };
 		840480A71ED051F1005C3EE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A61ED051F1005C3EE8 /* MainViewController.swift */; };
 		840480A91ED05967005C3EE8 /* RecorderrDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480A81ED05967005C3EE8 /* RecorderrDetailViewModel.swift */; };
+		840480AC1ED05F60005C3EE8 /* RecorderrDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840480AA1ED05F60005C3EE8 /* RecorderrDetailController.swift */; };
+		840480AD1ED05F60005C3EE8 /* RecorderrDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840480AB1ED05F60005C3EE8 /* RecorderrDetailController.xib */; };
 		842248E51EBB2D8F00A2FAEF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842248E41EBB2D8F00A2FAEF /* MainViewModel.swift */; };
 		842A930F1EC004AA001F7662 /* KindDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A930E1EC004AA001F7662 /* KindDetailViewModel.swift */; };
 		842A935B1EC08DFB001F7662 /* UITableView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */; };
@@ -179,6 +181,8 @@
 		840480A31ED0519D005C3EE8 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		840480A61ED051F1005C3EE8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		840480A81ED05967005C3EE8 /* RecorderrDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderrDetailViewModel.swift; sourceTree = "<group>"; };
+		840480AA1ED05F60005C3EE8 /* RecorderrDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderrDetailController.swift; sourceTree = "<group>"; };
+		840480AB1ED05F60005C3EE8 /* RecorderrDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderrDetailController.xib; sourceTree = "<group>"; };
 		842248E41EBB2D8F00A2FAEF /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		842A930E1EC004AA001F7662 /* KindDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindDetailViewModel.swift; sourceTree = "<group>"; };
 		842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Ex.swift"; sourceTree = "<group>"; };
@@ -661,6 +665,8 @@
 			isa = PBXGroup;
 			children = (
 				86F6C8631E4F2EBC002016DB /* RecordDetailController.swift */,
+				840480AA1ED05F60005C3EE8 /* RecorderrDetailController.swift */,
+				840480AB1ED05F60005C3EE8 /* RecorderrDetailController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -972,6 +978,7 @@
 				868C3F721E72A09D00D5443D /* icons.json in Resources */,
 				866C562E1E6D78DB00010D3F /* category_color.json in Resources */,
 				8638A9B01DE56CB9002369F9 /* LaunchScreen.storyboard in Resources */,
+				840480AD1ED05F60005C3EE8 /* RecorderrDetailController.xib in Resources */,
 				840480A51ED0519D005C3EE8 /* MainViewController.xib in Resources */,
 				86E694FF1E7974B700CBD894 /* recorder.json in Resources */,
 				8638A9AD1DE56CB9002369F9 /* Assets.xcassets in Resources */,
@@ -1253,6 +1260,7 @@
 				8600D8FA1E9CDF3300FA93D7 /* PasswordButton.swift in Sources */,
 				8600D8F81E9CDBE600FA93D7 /* PasswordView.swift in Sources */,
 				861B1EC11E7007D9009BBF48 /* MainHeader.swift in Sources */,
+				840480AC1ED05F60005C3EE8 /* RecorderrDetailController.swift in Sources */,
 				868915801DF9955B0035CFD3 /* Theme.swift in Sources */,
 				8600D8FC1E9CE07100FA93D7 /* TentacleView.swift in Sources */,
 				840480A11ECFFE3A005C3EE8 /* UIViewController+Rx.swift in Sources */,

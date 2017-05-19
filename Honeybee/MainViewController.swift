@@ -104,6 +104,13 @@ class MainViewController: BaseViewController {
         viewModel.section.asObservable()
             .bind(to: tableView.rx.items(dataSource: rx_dataSource))
             .disposed(by: disposeBag)
+        
+        viewModel.itemSelectedAction.asObservable()
+            .subscribe(onNext: { [weak self] (vm) in
+                let vc = RecorderrDetailController(viewModel: vm)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     func fetchDataFromServe() {

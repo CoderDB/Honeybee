@@ -8,8 +8,12 @@
 
 import Foundation
 import Moya
+import RxSwift
 
 class RecorderrDetailViewModel: NSObject {
+    
+    let viewDidLoad: PublishSubject<Void> = .init()
+    
     init(provider: RxMoyaProvider<ApiProvider>, item: RLMRecorder) {
     
     }
