@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecorderrDetailController" customModule="Honeybee" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="IST-Cb-ahP" id="o3L-fC-qIj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

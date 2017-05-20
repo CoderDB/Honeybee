@@ -11,9 +11,11 @@ import RxDataSources
 import RxSwift
 
 
-class RecorderrDetailController: UIViewController {
+class RecorderrDetailController: BaseViewController {
     
-    let disposeBag = DisposeBag()
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let disposeBag = DisposeBag()
     
     convenience init(viewModel: RecorderrDetailViewModel) {
         self.init(nibName: "RecorderrDetailController", bundle: Bundle.main)
@@ -32,11 +34,26 @@ class RecorderrDetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
+        configUI()
     }
-
-
-    func configRx(viewModel: RecorderrDetailViewModel) {
+    deinit {
+        print("RecorderrDetailController---deinit")
+    }
+    private func configUI() {
+        tableView.estimatedRowHeight = HB.Constant.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.contentInset.bottom = 100
+        let header = RecordDetailHeader(height: 115, title: "", imageName: "meal", color: "")
+        tableView.tableHeaderView = header
+        tableView.tableFooterView = RecordDetailFooter(height: 50)
+        tableView.register(RecordDetailCell.self)
+    }
+    
+    private func configRx(viewModel: RecorderrDetailViewModel) {
+        
+        // In
+        viewModel.navigationBarTitle.drive(self.rx.title).disposed(by: disposeBag)
+        
         
     }
 }
