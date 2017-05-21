@@ -31,6 +31,8 @@ def pods
     pod 'RxSwiftExt'
 
     pod 'HandyJSON', '~> 1.7.1'
+    
+    pod 'RxSwiftUtilities'
 end
 
 target 'Honeybee' do

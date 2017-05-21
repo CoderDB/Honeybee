@@ -106,6 +106,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxRealmDataSources/RxRealmDataSources.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwiftExt/RxSwiftExt.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RxSwiftUtilities/RxSwiftUtilities.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Then/Then.framework"
 fi
@@ -127,6 +128,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxRealmDataSources/RxRealmDataSources.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwiftExt/RxSwiftExt.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RxSwiftUtilities/RxSwiftUtilities.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Then/Then.framework"
 fi
