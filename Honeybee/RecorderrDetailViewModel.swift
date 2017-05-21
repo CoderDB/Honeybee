@@ -27,6 +27,7 @@ class RecorderrDetailViewModel: NSObject {
     let loadingIsActive: Driver<Bool>
     let showSuccess: Driver<RxHUDValue>
     let popViewController: Observable<Void>
+    let deletedItemOutput: Observable<RLMRecorder>
     
     init(provider: RxMoyaProvider<ApiProvider>, item: RLMRecorder) {
     
@@ -55,13 +56,13 @@ class RecorderrDetailViewModel: NSObject {
             .map {
                 try Database.default.delete(item: item)
             }
-            .trackActivity(activityIndicator)
-            .catchError { _ in return }
+            .mapToVoid()
             .shareReplay(1)
             .map { _ in successHUD }
             .asDriver(onErrorJustReturn: failHUD)
         
-        
         popViewController = showSuccess.asObservable().mapToVoid()
+        
+        deletedItemOutput = Observable.just(item)
     }
 }

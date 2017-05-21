@@ -45,7 +45,6 @@ class RecorderrDetailController: BaseViewController {
         tableView.estimatedRowHeight = HB.Constant.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.contentInset.bottom = 100
-        tableView.tableFooterView = RecordDetailFooter(height: 50)
         tableView.register(RecordDetailCell.self)
     }
     
@@ -55,6 +54,14 @@ class RecorderrDetailController: BaseViewController {
             cell.config(at: idx, model: item)
             return cell
         }
+        
+        let footer = RecordDetailFooter(height: 50)
+        tableView.tableFooterView = footer
+        
+        footer.button.rx
+            .tap
+            .bind(to: viewModel.deleteAction)
+            .disposed(by: disposeBag)
         
         // In
         viewModel.navigationBarTitle

@@ -28,13 +28,13 @@ class MainViewController: BaseViewController {
     convenience init(viewModel: MainViewModel) {
         self.init(nibName: "MainViewController", bundle: Bundle.main)
         
+        
         self.rx
             .viewDidLoad
             .subscribe(onNext: { [weak self] _ in
                 self?.configRx(viewModel: viewModel)
             })
             .disposed(by: disposeBag)
-        
         self.rx
             .viewDidLoad
             .bind(to: viewModel.viewDidLoad)
@@ -56,7 +56,7 @@ class MainViewController: BaseViewController {
         
         addTableViewHeader()
         addAddBtn()
-        
+        fetchDataFromServe()
         configUI()
     }
     
@@ -67,7 +67,6 @@ class MainViewController: BaseViewController {
         tableView.tableFooterView = UIView()
         tableView.register(RecordCell.self)
         tableView.register(GroupCell.self)
-        
         rx_dataSource.configureCell = { ds, tv, idx, item in
             let cell = tv.dequeueCell(RecordCell.self, for: idx)
             cell.recorder = item

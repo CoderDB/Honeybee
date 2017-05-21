@@ -28,11 +28,18 @@ class MainViewModel: BaseViewModel {
     init(provider: RxMoyaProvider<ApiProvider>) {
         
         let bag = DisposeBag()
+        let deletedItemInput: Variable<RLMRecorder?> = .init(nil)
+
         
         // In
-        section = viewDidLoad
+        section = Observable.combineLatest(viewDidLoad.asObservable(), deletedItemInput.asObservable())
             .map {
-                let recorders = Database.default.all(RLMRecorder.self).toArray()
+                var recorders = Database.default.all(RLMRecorder.self).toArray()
+                if let model = $0.1 {
+                    if let idx = recorders.index(of: model) {
+                        recorders.remove(at: idx)
+                    }
+                }
                 return [SectionModel(model: "", items: recorders)]
             }
             .asDriver(onErrorJustReturn: [])
@@ -42,12 +49,12 @@ class MainViewModel: BaseViewModel {
         // Out
         
         itemSelectedAction =
-            itemSelected
-            .map {
-                RecorderrDetailViewModel(provider: provider, item: $0)
-            }.asDriver(onErrorJustReturn:
-                RecorderrDetailViewModel(provider: provider, item: RLMRecorder())
-            )
+            itemSelected.map {
+                let viewModel = RecorderrDetailViewModel(provider: provider, item: $0)
+                viewModel.deletedItemOutput.bind(to: deletedItemInput).disposed(by: bag)
+                return viewModel
+            }
+            .asDriverOnErrorJustComplete()
     }
     
 }
