@@ -2,7 +2,7 @@
 //  LoginViewModel.swift
 //  Honeybee
 //
-//  Created by admin on 03/05/2017.
+//  Created by Dongbing Hou on 03/05/2017.
 //  Copyright © 2017 Dongbing Hou. All rights reserved.
 //
 

@@ -10,6 +10,7 @@ import Foundation
 import Moya
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class RecorderrDetailViewModel: NSObject {
     
@@ -18,10 +19,26 @@ class RecorderrDetailViewModel: NSObject {
     
     // Out
     let navigationBarTitle: Driver<String>
+    let headerInfo: Driver<(title: String, imgName: String, color: String)>
+    let section: Observable<[SectionModel<String, RLMRecorder>]>
     
     init(provider: RxMoyaProvider<ApiProvider>, item: RLMRecorder) {
     
         // Out
         navigationBarTitle = .just("详情")
+        
+        headerInfo = Observable
+            .just(item)
+            .map { ($0.category, $0.imageName, $0.color) }
+            .asDriver(onErrorJustReturn: ("", "", ""))
+        
+        section = Observable
+            .just([
+                SectionModel.init(model: "", items: [item]),
+                SectionModel.init(model: "", items: [item]),
+                SectionModel.init(model: "", items: [item]),
+                SectionModel.init(model: "", items: [item])
+            ])
+        
     }
 }

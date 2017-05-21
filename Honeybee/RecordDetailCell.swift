@@ -28,6 +28,24 @@ class RecordDetailCell: BaseTableViewCell {
         return label
     }()
     
+    
+    
+    func config(at indexPath: IndexPath, model: RLMRecorder) {
+        if indexPath.section == 0 {
+            mainTitleLabel.text = "支出"
+            subTitleLabel.attributedText = NSAttributedString(string: "\(model.money)", attributes: [NSFontAttributeName: HB.Font.h3_number])
+        } else if indexPath.section == 1 {
+            mainTitleLabel.text = "记录时间"
+            subTitleLabel.attributedText = NSAttributedString(string: model.yearMonthDay + "\n" + model.hourMinute + "\n", attributes: [NSFontAttributeName: HB.Font.h4_number])
+        } else if indexPath.section == 2 {
+            mainTitleLabel.text = "类别"
+            subTitleLabel.attributedText = NSAttributedString(string: model.superCategory + ">" + model.category + "\n", attributes: [NSFontAttributeName: HB.Font.h5])
+        } else {
+            mainTitleLabel.text = "备注"
+            subTitleLabel.text = model.remark
+        }
+    }
+    
     func setSubTitleAttributes(indexPath: IndexPath, model: RLMRecorder) {
         if indexPath.row == 0 {
             subTitleLabel.attributedText = NSAttributedString(string: "\(model.money)", attributes: [NSFontAttributeName: HB.Font.h3_number])

@@ -16,6 +16,7 @@ class RecorderrDetailController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
+    private let rx_dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     
     convenience init(viewModel: RecorderrDetailViewModel) {
         self.init(nibName: "RecorderrDetailController", bundle: Bundle.main)
@@ -43,17 +44,33 @@ class RecorderrDetailController: BaseViewController {
         tableView.estimatedRowHeight = HB.Constant.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.contentInset.bottom = 100
-        let header = RecordDetailHeader(height: 115, title: "", imageName: "meal", color: "")
-        tableView.tableHeaderView = header
         tableView.tableFooterView = RecordDetailFooter(height: 50)
         tableView.register(RecordDetailCell.self)
     }
     
     private func configRx(viewModel: RecorderrDetailViewModel) {
+        rx_dataSource.configureCell = { ds, tv, idx, item in
+            let cell = tv.dequeueCell(RecordDetailCell.self, for: idx)
+            cell.config(at: idx, model: item)
+            return cell
+        }
         
         // In
-        viewModel.navigationBarTitle.drive(self.rx.title).disposed(by: disposeBag)
+        viewModel.navigationBarTitle
+            .drive(navigationItem.rx.title)
+            .disposed(by: disposeBag)
         
+        viewModel.headerInfo.asObservable()
+            .subscribe(onNext: { [unowned self] (data) in
+                let header = RecordDetailHeader(height: 115, title: data.title, imageName: data.imgName, color: data.color)
+                self.tableView.tableHeaderView = header
+        })
+        .disposed(by: disposeBag)
+        
+        viewModel
+            .section
+            .bind(to: tableView.rx.items(dataSource: rx_dataSource))
+            .disposed(by: disposeBag)
         
     }
 }
