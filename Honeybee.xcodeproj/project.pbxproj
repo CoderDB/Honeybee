@@ -27,6 +27,7 @@
 		842A935B1EC08DFB001F7662 /* UITableView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */; };
 		842A935D1EC08E2E001F7662 /* UICollectionView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A935C1EC08E2E001F7662 /* UICollectionView+Ex.swift */; };
 		84649E321ED292F300DAE264 /* PKHUD+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84649E311ED292F300DAE264 /* PKHUD+Rx.swift */; };
+		84649E341ED2A95E00DAE264 /* Observable+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84649E331ED2A95E00DAE264 /* Observable+Ex.swift */; };
 		84C86F181EB9CA9000EBD289 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C86F171EB9CA9000EBD289 /* LoginViewModel.swift */; };
 		84C86F1A1EB9DEC000EBD289 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C86F191EB9DEC000EBD289 /* ValidationService.swift */; };
 		8600D8F61E9CDBB200FA93D7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */; };
@@ -189,6 +190,7 @@
 		842A935A1EC08DFB001F7662 /* UITableView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Ex.swift"; sourceTree = "<group>"; };
 		842A935C1EC08E2E001F7662 /* UICollectionView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ex.swift"; sourceTree = "<group>"; };
 		84649E311ED292F300DAE264 /* PKHUD+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PKHUD+Rx.swift"; sourceTree = "<group>"; };
+		84649E331ED2A95E00DAE264 /* Observable+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Ex.swift"; sourceTree = "<group>"; };
 		84C86F171EB9CA9000EBD289 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		84C86F191EB9DEC000EBD289 /* ValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				842A935C1EC08E2E001F7662 /* UICollectionView+Ex.swift */,
 				840480A01ECFFE3A005C3EE8 /* UIViewController+Rx.swift */,
 				84649E311ED292F300DAE264 /* PKHUD+Rx.swift */,
+				84649E331ED2A95E00DAE264 /* Observable+Ex.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1165,6 +1168,7 @@
 				8697CEE01E5DA1D700993CFE /* BarViewController.swift in Sources */,
 				866C913C1E6EA09F003026DD /* BaseHeader.swift in Sources */,
 				866C562C1E6D585900010D3F /* BaseCollectionViewController.swift in Sources */,
+				84649E341ED2A95E00DAE264 /* Observable+Ex.swift in Sources */,
 				860593B21E827654008B6157 /* HoneybeeIcon.swift in Sources */,
 				86F6DD4A1EC7077B00F4CDF6 /* ApiProvider.swift in Sources */,
 				86F6C85E1E4F1C63002016DB /* RecordLiteCell.swift in Sources */,

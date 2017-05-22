@@ -60,7 +60,8 @@ class RecorderrDetailController: BaseViewController {
         viewModel.navigationBarTitle
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
-//        viewModel.loadingIsActive.drive()
+        
+        viewModel.loadingIsActive.drive(HUD.rx_loading).disposed(by: disposeBag)
         
         viewModel.headerInfo.asObservable()
             .subscribe(onNext: { [unowned self] (data) in
@@ -72,6 +73,14 @@ class RecorderrDetailController: BaseViewController {
         viewModel
             .section
             .bind(to: tableView.rx.items(dataSource: rx_dataSource))
+            .disposed(by: disposeBag)
+        
+        viewModel.showSuccess.drive(HUD.rx_flash).disposed(by: disposeBag)
+        
+        viewModel.popViewController
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            })
             .disposed(by: disposeBag)
         
     }
