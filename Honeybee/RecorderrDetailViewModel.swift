@@ -11,6 +11,7 @@ import Moya
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxSwiftUtilities
 
 class RecorderrDetailViewModel: NSObject {
     
@@ -21,6 +22,7 @@ class RecorderrDetailViewModel: NSObject {
     let navigationBarTitle: Driver<String>
     let headerInfo: Driver<(title: String, imgName: String, color: String)>
     let section: Observable<[SectionModel<String, RLMRecorder>]>
+    let loadingIsActive: Driver<Bool>
     
     init(provider: RxMoyaProvider<ApiProvider>, item: RLMRecorder) {
     
@@ -39,6 +41,10 @@ class RecorderrDetailViewModel: NSObject {
                 SectionModel.init(model: "", items: [item]),
                 SectionModel.init(model: "", items: [item])
             ])
+        
+        let activityIndicator = ActivityIndicator()
+        loadingIsActive = activityIndicator.asDriver()
+        
         
     }
 }

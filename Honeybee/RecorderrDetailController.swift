@@ -9,6 +9,7 @@
 import UIKit
 import RxDataSources
 import RxSwift
+import PKHUD
 
 
 class RecorderrDetailController: BaseViewController {
@@ -59,6 +60,7 @@ class RecorderrDetailController: BaseViewController {
         viewModel.navigationBarTitle
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
+//        viewModel.loadingIsActive.drive()
         
         viewModel.headerInfo.asObservable()
             .subscribe(onNext: { [unowned self] (data) in
