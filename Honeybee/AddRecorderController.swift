@@ -9,6 +9,21 @@
 import UIKit
 
 class AddRecorderController: BaseViewController {
+    
+    convenience init(viewModel: AddRecorderViewModel) {
+        self.init()
+        
+        self.rx.viewDidLoad
+            .subscribe(onNext: { [weak self] _ in
+                self?.configRx(viewModel: viewModel)
+            })
+            .disposed(by: disposeBag)
+        
+        self.rx.viewDidLoad
+            .bind(to: viewModel.viewDidLoad)
+            .disposed(by: disposeBag)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +31,10 @@ class AddRecorderController: BaseViewController {
         navTitleView()
         addLeftNavItem()
         addVCs()
+    }
+    
+    private func configRx(viewModel: AddRecorderViewModel) {
+        
     }
     
     
@@ -37,7 +56,6 @@ class AddRecorderController: BaseViewController {
         addChildViewController(to)
         
         transition(from: from, to: to, duration: 0.5, options: .allowAnimatedContent, animations: {
-//            from.view.transform = CGAffineTransform(translationX: HB.Screen.w, y: 1)
         }) { (isFinished) in
             if isFinished {
                 from.view.transform = .identity
@@ -58,9 +76,6 @@ class AddRecorderController: BaseViewController {
     }
     func navLeftItemAction() {
         dismiss(animated: true, completion: nil)
-        //        dismiss(animated: true) { [weak self] in
-        //            self?.shouldReloadData?()
-        //        }
     }
     
     

@@ -22,7 +22,6 @@ import RxCocoa
 class MainViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private let disposeBag = DisposeBag()
     private let rx_dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     
     convenience init(viewModel: MainViewModel) {
@@ -77,10 +76,6 @@ class MainViewController: BaseViewController {
     func configRx(viewModel: MainViewModel) {
         
         // MARK: - Out
-//        tableView.rx
-//            .itemSelected
-//            .bind(to: viewModel.itemSelected)
-//            .disposed(by: disposeBag)
         
         tableView.rx
             .modelSelected(RLMRecorder.self)
@@ -89,11 +84,7 @@ class MainViewController: BaseViewController {
         
         addBtn.rx
             .tap
-            .subscribe(onNext: { [unowned self] in
-                let vc = AddRecorderController()
-                let nav = UINavigationController(rootViewController: vc)
-                self.present(nav, animated: true, completion: nil)
-            })
+            .bind(to: viewModel.addButtonClicked)
             .disposed(by: disposeBag)
         
         
@@ -108,6 +99,13 @@ class MainViewController: BaseViewController {
             .subscribe(onNext: { [weak self] (vm) in
                 let vc = RecorderrDetailController(viewModel: vm)
                 self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+        viewModel.presentAddRecorderViewModel
+            .subscribe(onNext: { [unowned self] (vm) in
+                let vc = AddRecorderController(viewModel: vm)
+                let nav = UINavigationController(rootViewController: vc)
+                self.present(nav, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

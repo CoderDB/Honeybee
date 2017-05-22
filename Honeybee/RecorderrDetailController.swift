@@ -16,7 +16,6 @@ class RecorderrDetailController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let disposeBag = DisposeBag()
     private let rx_dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, RLMRecorder>>()
     
     convenience init(viewModel: RecorderrDetailViewModel) {

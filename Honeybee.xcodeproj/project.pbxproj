@@ -28,6 +28,7 @@
 		842A935D1EC08E2E001F7662 /* UICollectionView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A935C1EC08E2E001F7662 /* UICollectionView+Ex.swift */; };
 		84649E321ED292F300DAE264 /* PKHUD+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84649E311ED292F300DAE264 /* PKHUD+Rx.swift */; };
 		84649E341ED2A95E00DAE264 /* Observable+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84649E331ED2A95E00DAE264 /* Observable+Ex.swift */; };
+		848CE3B31ED2F5B900A26FC3 /* AddRecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CE3B21ED2F5B900A26FC3 /* AddRecorderViewModel.swift */; };
 		84C86F181EB9CA9000EBD289 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C86F171EB9CA9000EBD289 /* LoginViewModel.swift */; };
 		84C86F1A1EB9DEC000EBD289 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C86F191EB9DEC000EBD289 /* ValidationService.swift */; };
 		8600D8F61E9CDBB200FA93D7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */; };
@@ -191,6 +192,7 @@
 		842A935C1EC08E2E001F7662 /* UICollectionView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ex.swift"; sourceTree = "<group>"; };
 		84649E311ED292F300DAE264 /* PKHUD+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PKHUD+Rx.swift"; sourceTree = "<group>"; };
 		84649E331ED2A95E00DAE264 /* Observable+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Ex.swift"; sourceTree = "<group>"; };
+		848CE3B21ED2F5B900A26FC3 /* AddRecorderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecorderViewModel.swift; sourceTree = "<group>"; };
 		84C86F171EB9CA9000EBD289 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		84C86F191EB9DEC000EBD289 /* ValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		8600D8F51E9CDBB200FA93D7 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 			isa = PBXGroup;
 			children = (
 				86A939A51EAA00E50085E996 /* AddRecorderController.swift */,
+				848CE3B21ED2F5B900A26FC3 /* AddRecorderViewModel.swift */,
 				86A939A71EAA0C9F0085E996 /* Payout */,
 				86A939A81EAA0CAC0085E996 /* Income */,
 				86E574711E4C6ED5001255CD /* Keyboard */,
@@ -1261,6 +1264,7 @@
 				8689059B1E7432CD0033C14C /* RecorderDetailDataSource.swift in Sources */,
 				86F6C8641E4F2EBC002016DB /* RecordDetailController.swift in Sources */,
 				862996311E6ACD5800494C74 /* NetworkManager.swift in Sources */,
+				848CE3B31ED2F5B900A26FC3 /* AddRecorderViewModel.swift in Sources */,
 				866C913A1E6E9EA1003026DD /* KindAddCell.swift in Sources */,
 				866C91361E6E8A33003026DD /* KindAddViewController.swift in Sources */,
 				86B685171E5F14B5003F6EDC /* BarPopoverController.swift in Sources */,

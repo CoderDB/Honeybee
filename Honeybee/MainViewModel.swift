@@ -19,11 +19,13 @@ class MainViewModel: BaseViewModel {
     
     // In
     let viewDidLoad: PublishSubject<Void> = .init()
+    let addButtonClicked: PublishSubject<Void> = .init()
     let itemSelected: PublishSubject<RLMRecorder> = .init()
     
     // Out
     let itemSelectedAction: Driver<RecorderrDetailViewModel>
     let section: Driver<[SectionModel<String, RLMRecorder>]>
+    let presentAddRecorderViewModel: Observable<AddRecorderViewModel>
     
     init(provider: RxMoyaProvider<ApiProvider>) {
         
@@ -55,6 +57,10 @@ class MainViewModel: BaseViewModel {
                 return viewModel
             }
             .asDriverOnErrorJustComplete()
+        
+        presentAddRecorderViewModel = addButtonClicked.map {
+            AddRecorderViewModel(provider: provider)
+        }
     }
     
 }
