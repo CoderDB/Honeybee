@@ -34,7 +34,6 @@ def pods
     
     pod 'RxSwiftUtilities'
     
-    pod 'ExSwift'
 end
 
 target 'Honeybee' do
